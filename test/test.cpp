@@ -6,7 +6,7 @@
 
 #include <gtest/gtest.h>
 
-#include "../src/include/memory.h"
+#include "../src/memory.h"
 #include "../src/memory.cpp"
 
 

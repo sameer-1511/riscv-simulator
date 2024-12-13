@@ -19,25 +19,31 @@ private:
     size_t pos_;
 
     void skipWhitespace();
+
     void skipComment();
+
+    void skipLine();
+
     Token identifier();
+
     Token number();
+
     Token directive();
+
     Token stringLiteral();
 
     Token nextToken();
 
 public:
-    Lexer(const std::string& filename);
+    Lexer(const std::string &filename);
 
     ~Lexer();
-    
+
 
     Token getNextToken();
 
     std::vector<Token> getTokenList();
 
-    
 
 };
 

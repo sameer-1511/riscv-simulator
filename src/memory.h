@@ -33,22 +33,26 @@ public:
     void write(uint64_t address, uint8_t value);
 
     uint8_t readByte(uint64_t address);
+
     uint16_t readHalfWord(uint64_t address);
+
     uint32_t readWord(uint64_t address);
+
     uint64_t readDoubleWord(uint64_t address);
 
     void writeByte(uint64_t address, uint8_t value);
+
     void writeHalfWord(uint64_t address, uint16_t value);
+
     void writeWord(uint64_t address, uint32_t value);
+
     void writeDoubleWord(uint64_t address, uint64_t value);
 
 
     void printMemoryUsage() const;
 
 
-
-    
-}; 
+};
 
 
 #endif // MEMORY_H

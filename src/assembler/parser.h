@@ -6,6 +6,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include <utility>
+
 #include "../pch.h"
 
 
@@ -39,8 +41,8 @@ struct ParseError {
     int line;
     int column;
 
-    ParseError(ErrorType type, const std::string& message, int line, int column)
-        : type(type), message(message), line(line), column(column) {}
+    ParseError(ErrorType type, std::string message, int line, int column)
+            : type(type), message(std::move(message)), line(line), column(column) {}
 };
 
 class Parser {
@@ -66,40 +68,45 @@ private:
 
 
     Token prevToken();
+
     Token currentToken();
+
     Token nextToken();
+
     Token peekNextToken();
+
     Token peekToken(int n);
+
     void skipCurrentLine();
+
     void checkAndConsumeComma();
 
 public:
-    Parser(const std::vector<Token>& tokens);
+    Parser(const std::vector<Token> &tokens);
+
     ~Parser();
 
-    const std::vector<ParseError>& getErrors() const;
+    const std::vector<ParseError> &getErrors() const;
 
     void printSymbolTable() const;
 
 
-    std::vector<std::pair<int, uint64_t>>& getDataBuffer();
+    std::vector<std::pair<int, uint64_t>> &getDataBuffer();
+
     void printDataBuffer() const;
 
 
-    const std::vector<std::pair<ICUnit, bool>>& getIntermediateCode() const;
+    const std::vector<std::pair<ICUnit, bool>> &getIntermediateCode() const;
 
     void printIntermediateCode() const;
 
 
-    
+    void parseDataDirective();
 
-
-
-
-    void parseDataDirective();    
     void parseTextDirective();
+
     void parse();
-    
+
 };
 
 

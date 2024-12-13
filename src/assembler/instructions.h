@@ -18,8 +18,9 @@ struct InstructionEncoding {
     std::string funct7;
     std::string funct6;
 
-    InstructionEncoding(const std::string& opcode, const std::string& funct3, const std::string& funct7, const std::string& funct6)
-        : opcode(opcode), funct3(funct3), funct7(funct7), funct6(funct6) {}
+    InstructionEncoding(const std::string &opcode, const std::string &funct3, const std::string &funct7,
+                        const std::string &funct6)
+            : opcode(opcode), funct3(funct3), funct7(funct7), funct6(funct6) {}
 };
 
 struct RTypeInstructionEncoding {
@@ -28,7 +29,7 @@ struct RTypeInstructionEncoding {
     std::bitset<7> funct7;
 
     RTypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct7)
-        : opcode(opcode), funct3(funct3), funct7(funct7) {}
+            : opcode(opcode), funct3(funct3), funct7(funct7) {}
 };
 
 struct ITypeInstructionEncoding {
@@ -37,7 +38,7 @@ struct ITypeInstructionEncoding {
     std::optional<std::bitset<6>> funct6;
 
     ITypeInstructionEncoding(unsigned int opcode, unsigned int funct3, std::optional<unsigned int> funct6)
-        : opcode(opcode), funct3(funct3), funct6(funct6) {}
+            : opcode(opcode), funct3(funct3), funct6(funct6) {}
 };
 
 struct STypeInstructionEncoding {
@@ -45,7 +46,7 @@ struct STypeInstructionEncoding {
     std::bitset<3> funct3;
 
     STypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
-        : opcode(opcode), funct3(funct3) {}
+            : opcode(opcode), funct3(funct3) {}
 };
 
 struct BTypeInstructionEncoding {
@@ -53,21 +54,21 @@ struct BTypeInstructionEncoding {
     std::bitset<3> funct3;
 
     BTypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
-        : opcode(opcode), funct3(funct3) {}
+            : opcode(opcode), funct3(funct3) {}
 };
 
 struct UTypeInstructionEncoding {
     std::bitset<7> opcode;
 
     UTypeInstructionEncoding(unsigned int opcode)
-        : opcode(opcode) {}
+            : opcode(opcode) {}
 };
 
 struct JTypeInstructionEncoding {
     std::bitset<7> opcode;
 
     JTypeInstructionEncoding(unsigned int opcode)
-        : opcode(opcode) {}
+            : opcode(opcode) {}
 };
 
 struct MExtensionInstructionEncoding {
@@ -76,7 +77,7 @@ struct MExtensionInstructionEncoding {
     std::bitset<7> funct7;
 
     MExtensionInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct7)
-        : opcode(opcode), funct3(funct3), funct7(funct7) {}
+            : opcode(opcode), funct3(funct3), funct7(funct7) {}
 };
 
 struct FExtensionInstructionEncoding {
@@ -85,7 +86,7 @@ struct FExtensionInstructionEncoding {
     std::optional<std::bitset<7>> funct7;
 
     FExtensionInstructionEncoding(unsigned int opcode, unsigned int funct3)
-        : opcode(opcode), funct3(funct3) {}
+            : opcode(opcode), funct3(funct3) {}
 };
 
 enum class SyntaxType {
@@ -104,23 +105,23 @@ extern std::unordered_map<std::string, InstructionEncoding> instruction_encoding
 
 extern std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map;
 
-bool isValidInstruction(const std::string& instruction);
+bool isValidInstruction(const std::string &instruction);
 
-bool isValidRTypeInstruction(const std::string& instruction);
+bool isValidRTypeInstruction(const std::string &instruction);
 
-bool isValidITypeInstruction(const std::string& instruction);
+bool isValidITypeInstruction(const std::string &instruction);
 
-bool isValidSTypeInstruction(const std::string& instruction);
+bool isValidSTypeInstruction(const std::string &instruction);
 
-bool isValidBTypeInstruction(const std::string& instruction);
+bool isValidBTypeInstruction(const std::string &instruction);
 
-bool isValidUTypeInstruction(const std::string& instruction);
+bool isValidUTypeInstruction(const std::string &instruction);
 
-bool isValidJTypeInstruction(const std::string& instruction);
+bool isValidJTypeInstruction(const std::string &instruction);
 
-std::string syntaxType(const std::string& opcode);
+std::string syntaxType(const std::string &opcode);
 
-SyntaxType getSyntaxType(const std::string& opcode);
+SyntaxType getSyntaxType(const std::string &opcode);
 
 
 #endif // INSTRUCTIONS_H

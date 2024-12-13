@@ -29,10 +29,10 @@ struct Token {
     int line;
     int column;
 
-    Token(TokenType type = TokenType::INVALID, const std::string& value = "", int line = 0, int column = 0)
-        : type(type), value(value), line(line), column(column) {}
-    
-    friend std::ostream& operator<<(std::ostream& os, const Token& token);
+    Token(TokenType type = TokenType::INVALID, const std::string &value = "", int line = 0, int column = 0)
+            : type(type), value(value), line(line), column(column) {}
+
+    friend std::ostream &operator<<(std::ostream &os, const Token &token);
 
 };
 

@@ -8,5 +8,6 @@
 
 #include "pch.h"
 
-int64_t countLines(const std::string& filename);
+int64_t countLines(const std::string &filename);
+
 #endif // UTILS_H

@@ -90,7 +90,7 @@ void Memory::writeDoubleWord(uint64_t address, uint64_t value) {
 
 void Memory::printMemoryUsage() const {
     std::cout << "Allocated Blocks: " << blocks_.size() << "\n";
-    for (const auto& [block_index, block] : blocks_) {
+    for (const auto &[block_index, block]: blocks_) {
         std::cout << "Block " << block_index << " allocated.\n";
     }
 }

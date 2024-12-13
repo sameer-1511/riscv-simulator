@@ -25,6 +25,8 @@ ld x11, bb
 
 main: 
 
+fadd.s s0, s1, s2
+
 addi x0, x1, 1
 xori x0, x1, 1
 ori x0, x1, 1
@@ -35,8 +37,8 @@ srai x0, x1, 1
 slti x0, x1, 1
 sltiu x0, x1, 1
 
-jal x1, lol
 
+jal x1, lol
 lol:
 
 #

@@ -26,7 +26,7 @@ int main() {
     parser.parse();
 
     std::vector<ParseError> errors = parser.getErrors();
-    for (const ParseError& error : errors) {
+    for (const ParseError &error: errors) {
         std::cout << "Error: " << error.message << " at line " << error.line << " column " << error.column << std::endl;
     }
 
@@ -36,8 +36,8 @@ int main() {
 
     std::vector<std::string> machine_code = printIntermediateCode(parser.getIntermediateCode());
 
-    
-    for (const std::string& code : machine_code) {
+
+    for (const std::string &code: machine_code) {
         std::cout << code << std::endl;
     }
 

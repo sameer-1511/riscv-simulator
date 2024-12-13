@@ -19,6 +19,6 @@ extern const std::unordered_set<std::string> valid_registers;
 
 extern const std::unordered_map<std::string, std::string> reg_alias_to_name;
 
-bool isValidRegister(const std::string& reg);
+bool isValidRegister(const std::string &reg);
 
 #endif // REGISTERS_H

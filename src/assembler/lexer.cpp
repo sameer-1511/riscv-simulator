@@ -13,7 +13,7 @@
 #include <regex>
 
 
-Lexer::Lexer(const std::string& filename) : filename_(filename), pos_(0) {
+Lexer::Lexer(const std::string &filename) : filename_(filename), pos_(0) {
     input_.open(filename_);
     if (!input_.is_open()) {
         std::cerr << "Error: Could not open file " << filename_ << std::endl;
@@ -33,7 +33,7 @@ Lexer::~Lexer() {
 }
 
 
-void Lexer::skipWhitespace() {  
+void Lexer::skipWhitespace() {
     while (pos_ < current_line_.size() && std::isspace(current_line_[pos_])) {
         if (current_line_[pos_] == '\n') {
             ++line_number_;
@@ -56,9 +56,22 @@ void Lexer::skipComment() {
     }
 }
 
+void Lexer::skipLine() {
+    while (pos_ < current_line_.size() && current_line_[pos_] != '\n') {
+        ++pos_;
+        ++column_number_;
+    }
+    if (pos_ < current_line_.size() && current_line_[pos_] == '\n') {
+        ++line_number_;
+        column_number_ = 0;
+    }
+}
+
+
 Token Lexer::identifier() {
     size_t start_pos = pos_;
-    while (pos_ < current_line_.size() && (std::isalnum(current_line_[pos_]) || current_line_[pos_] == '_' || current_line_[pos_] == '.')) {
+    while (pos_ < current_line_.size() &&
+           (std::isalnum(current_line_[pos_]) || current_line_[pos_] == '_' || current_line_[pos_] == '.')) {
         ++pos_;
         ++column_number_;
     }
@@ -74,6 +87,7 @@ Token Lexer::identifier() {
         return Token(TokenType::LABEL, value, line_number_, start_pos);
     }
     std::string value = current_line_.substr(start_pos, pos_ - start_pos);
+
 
     if (isValidInstruction(value)) {
         return Token(TokenType::OPCODE, value, line_number_, start_pos);
@@ -93,15 +107,15 @@ Token Lexer::identifier() {
 Token Lexer::number() {
     size_t start_pos = pos_;
 
-    while (pos_ < current_line_.size() 
-    && (std::isdigit(current_line_[pos_])
-     || current_line_[pos_] == '-'
-     || current_line_[pos_] == 'x'
-     || current_line_[pos_] == 'X'
-     || current_line_[pos_] == 'o'
-     || current_line_[pos_] == 'O'
-     || current_line_[pos_] == 'b'
-     || current_line_[pos_] == 'B')) {
+    while (pos_ < current_line_.size()
+           && (std::isdigit(current_line_[pos_])
+               || current_line_[pos_] == '-'
+               || current_line_[pos_] == 'x'
+               || current_line_[pos_] == 'X'
+               || current_line_[pos_] == 'o'
+               || current_line_[pos_] == 'O'
+               || current_line_[pos_] == 'b'
+               || current_line_[pos_] == 'B')) {
         ++pos_;
         ++column_number_;
     }
@@ -127,7 +141,7 @@ Token Lexer::number() {
     } else {
         return Token(TokenType::INVALID, value, line_number_, start_pos);
     }
-    
+
     return Token(TokenType::NUM, std::to_string(num), line_number_, start_pos);
 
     /*
@@ -229,7 +243,7 @@ Token Lexer::directive() {
 }
 
 Token Lexer::stringLiteral() {
-    ++pos_; 
+    ++pos_;
     ++column_number_;
     size_t start_pos = pos_;
 
@@ -260,40 +274,33 @@ Token Lexer::getNextToken() {
 
     if (std::isalpha(current_char) || current_char == '_') {
         return identifier();
-    }
-    else if (std::isdigit(current_char) || current_char == '-') {
+    } else if (std::isdigit(current_char) || current_char == '-') {
         return number();
-    }
-    else if (current_char == ',') {
+    } else if (current_char == ',') {
         ++pos_;
         ++column_number_;
         return Token(TokenType::COMMA, ",", line_number_, pos_);
-    }
-    else if (current_char == '"') {
+    } else if (current_char == '"') {
         return stringLiteral();
-    }
-    else if (current_char == '(') {
+    } else if (current_char == '(') {
         ++pos_;
         ++column_number_;
         return Token(TokenType::LPAREN, "(", line_number_, pos_);
-    }
-    else if (current_char == ')') {
+    } else if (current_char == ')') {
         ++pos_;
         ++column_number_;
         return Token(TokenType::RPAREN, ")", line_number_, pos_);
-    }
-    else if (current_char == '.') {
+    } else if (current_char == '.') {
         return directive();
-    }
-    else if (current_char == '#' || current_char == ';') {
+    } else if (current_char == '#' || current_char == ';') {
         skipComment();
         return getNextToken();
-    }
-    else {
-        std::cerr << "Error: Invalid character " << current_char << " at line " << line_number_ << std::endl;
+    } else {
+        //std::cerr << "Error: Invalid character " << current_char << " at line " << line_number_ << std::endl;
+        skipLine();
         return Token(TokenType::INVALID, "", line_number_, pos_);
     }
-    
+
 }
 
 std::vector<Token> Lexer::getTokenList() {
@@ -307,9 +314,9 @@ std::vector<Token> Lexer::getTokenList() {
         while (pos_ < current_line_.size()) {
             Token token = getNextToken();
             if (token.type == TokenType::INVALID) {
-                //std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
+                std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
             }
-            if (/*token.type != TokenType::INVALID &&*/ token.type != TokenType::EOF_) {
+            if (token.type != TokenType::INVALID && token.type != TokenType::EOF_) {
                 tokens.push_back(token);
             }
         }

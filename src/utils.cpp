@@ -6,7 +6,7 @@
 
 #include "pch.h"
 
-int64_t countLines(const std::string& filename) {
+int64_t countLines(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cerr << "Error: Could not open file \"" << filename << "\"" << std::endl;
