@@ -13,6 +13,7 @@
  * which is used to generate the final machine code.
 */
 struct ICUnit {
+    int line_number;
     std::array<char, 21> opcode;  // 20 characters + null terminator
     std::array<char, 21> rd;
     std::array<char, 21> rs1;
@@ -20,7 +21,7 @@ struct ICUnit {
     std::array<char, 33> imm;
     std::string label;
 
-    ICUnit() : opcode{}, rd{}, rs1{}, rs2{}, imm{}, label{} {}
+    ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, imm{}, label{} {}
 
     friend std::ostream &operator<<(std::ostream &os, const ICUnit &unit) {
         os << unit.opcode.data() << " "
@@ -32,6 +33,9 @@ struct ICUnit {
         return os;
     }
 
+    void setLineNumber(int value) {
+        line_number = value;
+    }
 
     // Setter functions to ensure max size is 20 characters
     void setOpcode(const std::string &value) {
@@ -61,6 +65,10 @@ struct ICUnit {
 
     void setLabel(const std::string &value) {
         label = value;
+    }
+
+    int getLineNumber() const {
+        return line_number;
     }
 
     std::string getOpcode() const {

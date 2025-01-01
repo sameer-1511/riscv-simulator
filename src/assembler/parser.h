@@ -13,27 +13,8 @@
 
 #include "tokens.h"
 #include "code_generator.h"
+#include "errors.h"
 
-enum class ErrorType {
-    UNEXPECTED_TOKEN,
-    UNEXPECTED_EOF,
-
-
-    INVALID_OPERAND,
-    INVALID_DIRECTIVE,
-    INVALID_INSTRUCTION,
-    INVALID_REGISTER,
-    INVALID_IMMEDIATE,
-    INVALID_LABEL,
-    INVALID_LABEL_REF,
-    INVALID_TOKEN,
-    INVALID_SYNTAX,
-
-    MISALIGNED_IMMEDIATE,
-    MISALIGNED_LABEL,
-    IMMEDIATE_OUT_OF_RANGE,
-    UNKNOWN_ERROR,
-};
 
 struct ParseError {
     ErrorType type;
@@ -47,15 +28,30 @@ struct ParseError {
 
 class Parser {
 private:
+    std::string filename_;
     std::vector<Token> tokens_;
-    size_t line_number_;
-    size_t column_number_;
-    size_t pos_;
+    size_t line_number_ = 1;
+    size_t column_number_ = 1;
+    size_t pos_ = 0;
 
-    int error_count_;
+    int error_count_ = 0;
     std::vector<ParseError> errors_;
 
+    std::vector<std::variant<SyntaxError, UnexpectedTokenError, ImmediateOutOfRangeError, MisallignedImmediateError, UnexpectedOperandError, InvalidLabelRefError>> all_errors_;
+
+    std::vector<SyntaxError> syntax_errors_;
+    std::vector<UnexpectedTokenError> unexpected_token_errors_;
+
+
     std::vector<std::pair<int, uint64_t>> data_buffer_;
+
+    uint64_t data_index_ = 0; // TODO: refactor this
+
+    std::vector<std::pair<int, uint8_t>> byte_buffer_;
+    std::vector<std::pair<int, uint16_t>> halfword_buffer_;
+    std::vector<std::pair<int, uint32_t>> word_buffer_;
+    std::vector<std::pair<int, uint64_t>> dword_buffer_;
+    std::vector<std::pair<int, std::string>> string_buffer_;
 
     struct SymbolData {
         uint64_t address; // Address or instruction location
@@ -66,34 +62,35 @@ private:
     std::vector<int> backPatch;
     std::vector<std::pair<ICUnit, bool>> IntermediateCode;
 
-
     Token prevToken();
-
     Token currentToken();
-
     Token nextToken();
-
     Token peekNextToken();
-
     Token peekToken(int n);
 
     void skipCurrentLine();
-
     void checkAndConsumeComma();
 
 public:
-    Parser(const std::vector<Token> &tokens);
+    Parser(const std::string &filename, const std::vector<Token> &tokens);
 
     ~Parser();
 
+    const std::vector<SyntaxError> &getSyntaxErrors() const;
+    const std::vector<UnexpectedTokenError> &getUnexpectedTokenErrors() const;
+
+    void printErrors() const;
+
+
     const std::vector<ParseError> &getErrors() const;
+
 
     void printSymbolTable() const;
 
 
     std::vector<std::pair<int, uint64_t>> &getDataBuffer();
 
-    void printDataBuffer() const;
+    void printDataBuffers() const;
 
 
     const std::vector<std::pair<ICUnit, bool>> &getIntermediateCode() const;

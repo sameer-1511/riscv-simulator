@@ -10,4 +10,6 @@
 
 int64_t countLines(const std::string &filename);
 
+std::string getLineFromFile(const std::string& fileName, int lineNumber);
+
 #endif // UTILS_H

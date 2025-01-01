@@ -28,6 +28,10 @@ Lexer::Lexer(const std::string &filename) : filename_(filename), pos_(0) {
 
 }
 
+std::string Lexer::getFilename() const {
+    return filename_;
+}
+
 Lexer::~Lexer() {
     input_.close();
 }
@@ -95,12 +99,12 @@ Token Lexer::identifier() {
         return Token(TokenType::REGISTER, value, line_number_, start_pos);
     } else if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
         return Token(TokenType::LABEL, value, line_number_, start_pos);
-    } else {
+    } else if (tokens_.back().type == TokenType::COMMA) {
         return Token(TokenType::LABEL_REF, value, line_number_, start_pos);
-    }
+    }   
 
 
-    return Token(TokenType::IDENTIFIER, value, line_number_, start_pos);
+    return Token(TokenType::INVALID, value, line_number_, start_pos);
 }
 
 // TODO: add support for floating point numbers
@@ -304,7 +308,6 @@ Token Lexer::getNextToken() {
 }
 
 std::vector<Token> Lexer::getTokenList() {
-    std::vector<Token> tokens;
     line_number_ = 0;
 
     while (std::getline(input_, current_line_)) {
@@ -314,14 +317,14 @@ std::vector<Token> Lexer::getTokenList() {
         while (pos_ < current_line_.size()) {
             Token token = getNextToken();
             if (token.type == TokenType::INVALID) {
-                std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
+               // std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
             }
-            if (token.type != TokenType::INVALID && token.type != TokenType::EOF_) {
-                tokens.push_back(token);
+            if (/* token.type != TokenType::INVALID && */ token.type != TokenType::EOF_) {
+                tokens_.push_back(token);
             }
         }
     }
 
-    tokens.push_back(Token(TokenType::EOF_, "", line_number_, column_number_));
-    return tokens;
+    tokens_.push_back(Token(TokenType::EOF_, "", line_number_, column_number_));
+    return tokens_;
 }

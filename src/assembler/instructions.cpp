@@ -19,6 +19,14 @@ static const std::unordered_set<std::string> valid_instructions = {
         "lui", "auipc",
         "jal", "jalr",
         "ecall", "ebreak",
+
+        "la", "nop", "li", "mv", "not", "neg", "negw", 
+        "sext", "seqz", "snez", "sltz", "sgtz",
+        "beqz", "bnez", "blez", "bgez", "bltz", "bgtz",
+        "bgt", "ble", "bgtu", "bleu",
+        "j", "jr", "ret", "call", "tail", "fence", "fence_i",
+
+
         "mul", "mulh", "mulhsu", "mulhu", "div", "divu", "rem", "remu",
         "mulw", "divw", "divuw", "remw", "remuw",
 
@@ -444,4 +452,37 @@ bool isValidUTypeInstruction(const std::string &name) {
 
 bool isValidJTypeInstruction(const std::string &name) {
     return JTypeInstructions.find(name) != JTypeInstructions.end();
+}
+
+std::string getExpectedSyntaxes(const std::string &name) {
+    std::string syntaxes = "";
+    bool first = true; // Flag to handle the first iteration
+    for (const auto &syntax : instruction_syntax_map[name]) {
+        if (!first) {
+            syntaxes += " or ";
+        }
+        first = false;
+
+        if (syntax == SyntaxType::O) {
+            syntaxes += "O";
+        } else if (syntax == SyntaxType::O_R_C_R_C_R) {
+            syntaxes += (name + " <reg>, <reg>, <reg>");
+        } else if (syntax == SyntaxType::O_R_C_R_C_I) {
+            syntaxes += (name + " <reg>, <reg>, <imm>");
+        } else if (syntax == SyntaxType::O_R_C_R_C_IL) {
+            syntaxes += (name + " <reg>, <reg>, <text label>");
+        } else if (syntax == SyntaxType::O_R_C_R_C_DL) {
+            syntaxes += (name + " <reg>, <reg>, <data label>");
+        } else if (syntax == SyntaxType::O_R_C_I_LP_R_RP) {
+            syntaxes += (name + " <reg>, <imm>(<reg>)");
+        } else if (syntax == SyntaxType::O_R_C_I) {
+            syntaxes += (name + " <reg>, <imm>");
+        } else if (syntax == SyntaxType::O_R_C_IL) {
+            syntaxes += (name + " <reg>, <text label>");
+        } else if (syntax == SyntaxType::O_R_C_DL) {
+            syntaxes += (name + " <reg>, <data label>");
+        }
+    }
+
+    return syntaxes;
 }

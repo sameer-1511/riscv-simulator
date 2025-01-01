@@ -26,11 +26,11 @@ enum class TokenType {
 struct Token {
     TokenType type;
     std::string value;
-    int line;
-    int column;
+    int line_number;
+    int column_number;
 
     Token(TokenType type = TokenType::INVALID, const std::string &value = "", int line = 0, int column = 0)
-            : type(type), value(value), line(line), column(column) {}
+            : type(type), value(value), line_number(line), column_number(column) {}
 
     friend std::ostream &operator<<(std::ostream &os, const Token &token);
 

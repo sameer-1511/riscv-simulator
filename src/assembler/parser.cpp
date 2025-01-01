@@ -8,10 +8,11 @@
 #include "parser.h"
 #include "instructions.h"
 #include "../registers.h"
+#include "../utils.h"
 
-Parser::Parser(const std::vector<Token> &tokens)
-        : tokens_(tokens), line_number_(1), column_number_(1), pos_(0) {
-    error_count_ = 0;
+
+Parser::Parser(const std::string &filename, const std::vector<Token> &tokens)
+        : filename_(std::move(filename)), tokens_(tokens) {
 }
 
 Parser::~Parser() {
@@ -51,8 +52,8 @@ Token Parser::peekToken(int n) {
 }
 
 void Parser::skipCurrentLine() {
-    int currLine = currentToken().line;
-    while (currentToken().line == currLine && currentToken().type != TokenType::EOF_) {
+    int currLine = currentToken().line_number;
+    while (currentToken().line_number == currLine && currentToken().type != TokenType::EOF_) {
         nextToken();
     }
 }
@@ -60,6 +61,17 @@ void Parser::skipCurrentLine() {
 const std::vector<ParseError> &Parser::getErrors() const {
     return errors_;
 }
+
+const std::vector<SyntaxError> &Parser::getSyntaxErrors() const {
+    return syntax_errors_;
+}
+
+void Parser::printErrors() const {
+    for (const auto &error: all_errors_) {
+        std::visit([](auto &&arg) { std::cout << arg; }, error);
+    }
+}
+
 
 void Parser::printSymbolTable() const {
     if (symbol_table_.empty()) {
@@ -76,15 +88,34 @@ std::vector<std::pair<int, uint64_t>> &Parser::getDataBuffer() {
     return data_buffer_;
 }
 
-void Parser::printDataBuffer() const {
-    if (data_buffer_.empty()) {
-        std::cout << "Data buffer is empty." << std::endl;
-        return;
+void Parser::printDataBuffers() const {
+    size_t i = 0;
+    size_t j = 0;
+    size_t k = 0;
+    size_t l = 0;
+    size_t m = 0;
+
+    while (i < byte_buffer_.size() || j < halfword_buffer_.size() || k < word_buffer_.size() ||
+           l < dword_buffer_.size() || m < string_buffer_.size()) {
+        if (i < byte_buffer_.size()) {
+            std::cout << byte_buffer_[i].first << " -> " << (int) byte_buffer_[i].second << '\n';
+            i++;
+        } else if (j < halfword_buffer_.size()) {
+            std::cout << halfword_buffer_[j].first << " -> " << halfword_buffer_[j].second << '\n';
+            j++;
+        } else if (k < word_buffer_.size()) {
+            std::cout << word_buffer_[k].first << " -> " << word_buffer_[k].second << '\n';
+            k++;
+        } else if (l < dword_buffer_.size()) {
+            std::cout << dword_buffer_[l].first << " -> " << dword_buffer_[l].second << '\n';
+            l++;
+        } else if (m < string_buffer_.size()) {
+            std::cout << string_buffer_[m].first << " -> " << string_buffer_[m].second << '\n';
+            m++;
+        }
     }
 
-    for (const auto &pair: data_buffer_) {
-        std::cout << pair.first << " -> " << pair.second << '\n';
-    }
+
 }
 
 void Parser::printIntermediateCode() const {
@@ -104,7 +135,6 @@ const std::vector<std::pair<ICUnit, bool>> &Parser::getIntermediateCode() const 
 
 
 void Parser::parseDataDirective() {
-    uint64_t data_index_ = 0;
     while (currentToken().value != "text"
            && currentToken().value != "data"
            && currentToken().value != "bss"
@@ -125,7 +155,7 @@ void Parser::parseDataDirective() {
                        || currentToken().type == TokenType::COMMA)) {
 
                 if (currentToken().type == TokenType::NUM)
-                    data_buffer_.push_back(std::make_pair(8, std::stoull(currentToken().value)));
+                    dword_buffer_.push_back(std::make_pair(data_index_, std::stoull(currentToken().value)));
                 data_index_ += 8;
                 nextToken();
             }
@@ -136,7 +166,7 @@ void Parser::parseDataDirective() {
                        || currentToken().type == TokenType::COMMA)) {
 
                 if (currentToken().type == TokenType::NUM)
-                    data_buffer_.push_back(std::make_pair(4, std::stoull(currentToken().value)));
+                    word_buffer_.push_back(std::make_pair(data_index_, std::stoull(currentToken().value)));
                 data_index_ += 4;
                 nextToken();
             }
@@ -148,7 +178,7 @@ void Parser::parseDataDirective() {
                        || currentToken().type == TokenType::COMMA)) {
 
                 if (currentToken().type == TokenType::NUM)
-                    data_buffer_.push_back(std::make_pair(2, std::stoull(currentToken().value)));
+                    halfword_buffer_.push_back(std::make_pair(data_index_, std::stoull(currentToken().value)));
                 data_index_ += 2;
                 nextToken();
             }
@@ -159,7 +189,7 @@ void Parser::parseDataDirective() {
                        || currentToken().type == TokenType::COMMA)) {
 
                 if (currentToken().type == TokenType::NUM)
-                    data_buffer_.push_back(std::make_pair(1, std::stoull(currentToken().value)));
+                    byte_buffer_.push_back(std::make_pair(data_index_, std::stoull(currentToken().value)));
                 data_index_ += 1;
                 nextToken();
             }
@@ -170,14 +200,13 @@ void Parser::parseDataDirective() {
                        || currentToken().type == TokenType::COMMA)) {
 
                 if (currentToken().type == TokenType::STRING)
-                    data_buffer_.push_back(
-                            std::make_pair(currentToken().value.size(), std::stoull(currentToken().value)));
+                    string_buffer_.push_back(std::make_pair(data_index_, currentToken().value));
                 data_index_ += currentToken().value.size();
                 nextToken();
             }
         } else {
-            errors_.push_back(ParseError(ErrorType::INVALID_DIRECTIVE, "Invalid directive", currentToken().line,
-                                         currentToken().column));
+            errors_.push_back(ParseError(ErrorType::INVALID_DIRECTIVE, "Invalid directive", currentToken().line_number,
+                                         currentToken().column_number));
             nextToken();
         }
 
@@ -204,23 +233,24 @@ void Parser::parseTextDirective() {
             bool valid_syntax = false;
 
             for (const SyntaxType &syntax: syntaxes) {
-                int current_line = currentToken().line;
+                int current_line = currentToken().line_number;
 
                 switch (syntax) {
                     case SyntaxType::O_R_C_R_C_R: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::REGISTER
-                            && peekToken(4).line == current_line
+                            && peekToken(4).line_number == current_line
                             && peekToken(4).type == TokenType::COMMA
-                            && peekToken(5).line == current_line
+                            && peekToken(5).line_number == current_line
                             && peekToken(5).type == TokenType::REGISTER) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidRTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -241,19 +271,20 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_R_C_I: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::REGISTER
-                            && peekToken(4).line == current_line
+                            && peekToken(4).line_number == current_line
                             && peekToken(4).type == TokenType::COMMA
-                            && peekToken(5).line == current_line
+                            && peekToken(5).line_number == current_line
                             && (peekToken(5).type == TokenType::NUM)) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidITypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -267,14 +298,20 @@ void Parser::parseTextDirective() {
                                 if (-2048 <= imm && imm <= 2047) {
                                     block.setImm(std::to_string(imm));
                                 } else {
-                                    errors_.push_back(
-                                            ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                       currentToken().line, currentToken().column));
+                                    
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: -2048 <= imm <= 2047",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
                                 nextToken();
                             } else if (isValidBTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRs1(reg);
                                 nextToken(); // skip register
@@ -289,16 +326,24 @@ void Parser::parseTextDirective() {
                                     if (imm % 4 == 0) {
                                         block.setImm(std::to_string(imm));
                                     } else {
-                                        errors_.push_back(ParseError(ErrorType::MISALIGNED_IMMEDIATE,
-                                                                     "Misaligned immediate value", currentToken().line,
-                                                                     currentToken().column));
+                                        all_errors_.push_back(MisallignedImmediateError("Misaligned immediate value",
+                                                                                      "Expected: imm % 4 == 0",
+                                                                                      filename_,
+                                                                                      currentToken().line_number,
+                                                                                      currentToken().column_number,
+                                                                                      getLineFromFile(filename_, currentToken().line_number)));
+
                                         skipCurrentLine();
                                         break;
                                     }
                                 } else {
-                                    errors_.push_back(
-                                            ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                       currentToken().line, currentToken().column));
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: -4096 <= imm <= 4095",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
@@ -313,19 +358,20 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_R_C_IL: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::REGISTER
-                            && peekToken(4).line == current_line
+                            && peekToken(4).line_number == current_line
                             && peekToken(4).type == TokenType::COMMA
-                            && peekToken(5).line == current_line
+                            && peekToken(5).line_number == current_line
                             && (peekToken(5).type == TokenType::LABEL_REF)) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidBTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRs1(reg);
                                 nextToken(); // skip register
@@ -342,9 +388,13 @@ void Parser::parseTextDirective() {
                                         block.setImm(std::to_string(offset));
                                         block.setLabel(currentToken().value);
                                     } else {
-                                        errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE,
-                                                                     "Immediate value out of range",
-                                                                     currentToken().line, currentToken().column));
+                                        all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                       "Expected: -4096 <= imm <= 4095",
+                                                                                       filename_,
+                                                                                       currentToken().line_number,
+                                                                                       currentToken().column_number,
+                                                                                       getLineFromFile(filename_, currentToken().line_number)));
+
                                         skipCurrentLine();
                                         break;
                                     }
@@ -366,21 +416,22 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_I_LP_R_RP: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::NUM
-                            && peekToken(4).line == current_line
+                            && peekToken(4).line_number == current_line
                             && peekToken(4).type == TokenType::LPAREN
-                            && peekToken(5).line == current_line
+                            && peekToken(5).line_number == current_line
                             && peekToken(5).type == TokenType::REGISTER
-                            && peekToken(6).line == current_line
+                            && peekToken(6).line_number == current_line
                             && peekToken(6).type == TokenType::RPAREN) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidITypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -389,9 +440,13 @@ void Parser::parseTextDirective() {
                                 if (-2048 <= imm && imm <= 2047) {
                                     block.setImm(std::to_string(imm));
                                 } else {
-                                    errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE,
-                                                                 "Immediate value out of range", currentToken().line,
-                                                                 currentToken().column));
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: -2048 <= imm <= 2047",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
@@ -402,6 +457,7 @@ void Parser::parseTextDirective() {
                                 nextToken(); // skip register
                                 nextToken(); // skip rparen
                             } else if (isValidSTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRs2(reg);
                                 nextToken(); // skip register
@@ -410,9 +466,13 @@ void Parser::parseTextDirective() {
                                 if (-2048 <= imm && imm <= 2047) {
                                     block.setImm(std::to_string(imm));
                                 } else {
-                                    errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE,
-                                                                 "Immediate value out of range", currentToken().line,
-                                                                 currentToken().column));
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: -2048 <= imm <= 2047",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
@@ -431,15 +491,16 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_I: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && (peekToken(3).type == TokenType::NUM)) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidUTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -448,14 +509,19 @@ void Parser::parseTextDirective() {
                                 if (0 <= imm && imm <= 1048575) {
                                     block.setImm(std::to_string(imm));
                                 } else {
-                                    errors_.push_back(
-                                            ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                       currentToken().line, currentToken().column));
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: 0 <= imm <= 1048575",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
                                 nextToken(); // skip immediate
                             } else if (isValidJTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -465,16 +531,24 @@ void Parser::parseTextDirective() {
                                     if (imm % 4 == 0) {
                                         block.setImm(std::to_string(imm));
                                     } else {
-                                        errors_.push_back(ParseError(ErrorType::MISALIGNED_IMMEDIATE,
-                                                                     "Misaligned immediate value", currentToken().line,
-                                                                     currentToken().column));
+                                        all_errors_.push_back(MisallignedImmediateError("Misaligned immediate value",
+                                                                                      "Expected: imm % 4 == 0",
+                                                                                      filename_,
+                                                                                      currentToken().line_number,
+                                                                                      currentToken().column_number,
+                                                                                      getLineFromFile(filename_, currentToken().line_number)));
+
                                         skipCurrentLine();
                                         break;
                                     }
                                 } else {
-                                    errors_.push_back(
-                                            ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                       currentToken().line, currentToken().column));
+                                    all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                   "Expected: -1048576 <= imm <= 1048575",
+                                                                                   filename_,
+                                                                                   currentToken().line_number,
+                                                                                   currentToken().column_number,
+                                                                                   getLineFromFile(filename_, currentToken().line_number)));
+
                                     skipCurrentLine();
                                     break;
                                 }
@@ -488,15 +562,16 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_IL: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::LABEL_REF) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidJTypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -509,9 +584,13 @@ void Parser::parseTextDirective() {
                                         block.setImm(std::to_string(offset));
                                         block.setLabel(currentToken().value);
                                     } else {
-                                        errors_.push_back(
-                                                ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                           currentToken().line, currentToken().column));
+                                        all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                       "Expected: -1048576 <= imm <= 1048575",
+                                                                                       filename_,
+                                                                                       currentToken().line_number,
+                                                                                       currentToken().column_number,
+                                                                                       getLineFromFile(filename_, currentToken().line_number)));
+
                                         skipCurrentLine();
                                         break;
                                     }
@@ -533,15 +612,16 @@ void Parser::parseTextDirective() {
 
 
                     case SyntaxType::O_R_C_DL: {
-                        if (peekToken(1).line == current_line
+                        if (peekToken(1).line_number == current_line
                             && peekToken(1).type == TokenType::REGISTER
-                            && peekToken(2).line == current_line
+                            && peekToken(2).line_number == current_line
                             && peekToken(2).type == TokenType::COMMA
-                            && peekToken(3).line == current_line
+                            && peekToken(3).line_number == current_line
                             && peekToken(3).type == TokenType::LABEL_REF) {
                             nextToken(); // skip opcode
                             valid_syntax = true;
                             if (isValidITypeInstruction(block.getOpcode())) {
+                                block.setLineNumber(current_line);
                                 std::string reg = reg_alias_to_name.at(currentToken().value);
                                 block.setRd(reg);
                                 nextToken(); // skip register
@@ -553,9 +633,13 @@ void Parser::parseTextDirective() {
                                     if (-2048 <= offset && offset <= 2047) {
                                         block.setImm(std::to_string(offset));
                                     } else {
-                                        errors_.push_back(
-                                                ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range",
-                                                           currentToken().line, currentToken().column));
+                                        all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                                       "Expected: -2048 <= imm <= 2047",
+                                                                                       filename_,
+                                                                                       currentToken().line_number,
+                                                                                       currentToken().column_number,
+                                                                                       getLineFromFile(filename_, currentToken().line_number)));
+
                                         skipCurrentLine();
                                         break;
                                     }
@@ -576,335 +660,53 @@ void Parser::parseTextDirective() {
 
                     }
 
-                    default:
-                        errors_.push_back(ParseError(ErrorType::INVALID_SYNTAX, "Invalid syntax", currentToken().line,
-                                                     currentToken().column));
-                        skipCurrentLine();
-                        break;
+
                 }
-                /*
-                      else if (syntax == "O_R_C_R_C_I") {
-                          if (peekToken(1).line == current_line
-                          && peekToken(1).type == TokenType::REGISTER
-                          && peekToken(2).line == current_line
-                          && peekToken(2).type == TokenType::COMMA
-                          && peekToken(3).line == current_line
-                          && peekToken(3).type == TokenType::REGISTER
-                          && peekToken(4).line == current_line
-                          && peekToken(4).type == TokenType::COMMA
-                          && peekToken(5).line == current_line
-                          && (peekToken(5).type == TokenType::NUM)) {
-                              nextToken(); // skip opcode
-                              valid_syntax = true;
-                              if (isValidITypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs1(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                              }
-                              else if (isValidBTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs1(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs2(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                              }
+            }
 
-                              if (isValidITypeInstruction(block.getOpcode())) {
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (-2048 <= imm && imm <= 2047) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;;
-                                  }
-                                  nextToken();
-                              }
-                              else if (isValidBTypeInstruction(block.getOpcode())) {
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (-4096 <= imm && imm <= 4095) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;
-                                  }
-                                  nextToken();
-                              }
+            // pseudo-insructions
+            // nop
+            if (currentToken().value == "nop") {
+                valid_syntax = true;
+                block.setLineNumber(currentToken().line_number);
+                block.setOpcode("addi");
+                block.setRd("x0");
+                block.setRs1("x0");
+                block.setRs2("x0");
+                block.setImm("0");
+                IntermediateCode.push_back(std::make_pair(block, true));
+                instruction_index++;
+                nextToken();
+            }
+                // li
+            else if (currentToken().value == "li") {
+                if (peekToken(1).type == TokenType::REGISTER) {
 
-                              IntermediateCode.push_back(std::make_pair(block, true));
-                              instruction_index++;
-                              break;
-                          }
-                      }
+                } else {
+                    all_errors_.push_back(
+                            UnexpectedOperandError("Unexpected operand", "Expected register", filename_, currentToken().line_number,
+                                                   currentToken().column_number, getLineFromFile(filename_, currentToken().line_number)));
 
-                      else if (syntax == "O_R_C_R_C_IL") {
-                          if (peekToken(1).line == current_line
-                          && peekToken(1).type == TokenType::REGISTER
-                          && peekToken(2).line == current_line
-                          && peekToken(2).type == TokenType::COMMA
-                          && peekToken(3).line == current_line
-                          && peekToken(3).type == TokenType::REGISTER
-                          && peekToken(4).line == current_line
-                          && peekToken(4).type == TokenType::COMMA
-                          && peekToken(5).line == current_line
-                          && (peekToken(5).type == TokenType::LABEL_REF)) {
-                              nextToken(); // skip opcode
-                              valid_syntax = true;
-                              if (isValidBTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs1(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs2(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-
-                                  if (symbol_table_.find(currentToken().value) != symbol_table_.end()
-                                  && !symbol_table_[currentToken().value].isData) {
-                                      uint64_t address = symbol_table_[currentToken().value].address;
-                                      int64_t offset = static_cast<int64_t>(address - instruction_index * 4);
-                                      if (-4096 <= offset && offset <= 4095) {
-                                          block.setImm(std::to_string(offset));
-                                          block.setLabel(currentToken().value);
-                                      }
-                                      else {
-                                          errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                          skipCurrentLine();
-                                          break;
-                                      }
-                                      nextToken();
-                                  }
-                                  else {
-                                      backPatch.push_back(instruction_index);
-                                      block.setImm(currentToken().value);
-                                      IntermediateCode.push_back(std::make_pair(block, false));
-                                      instruction_index++;
-                                      nextToken();
-                                      break;
-                                  }
-                              }
-
-                              IntermediateCode.push_back(std::make_pair(block, true));
-                              instruction_index++;
-                              break;
-                          }
-                      }
-
-
-
-                      else if (syntax == "O_R_C_I_LP_R_RP") {
-                          if (peekToken(1).line == current_line
-                          && peekToken(1).type == TokenType::REGISTER
-                          && peekToken(2).line == current_line
-                          && peekToken(2).type == TokenType::COMMA
-                          && peekToken(3).line == current_line
-                          && peekToken(3).type == TokenType::NUM
-                          && peekToken(4).line == current_line
-                          && peekToken(4).type == TokenType::LPAREN
-                          && peekToken(5).line == current_line
-                          && peekToken(5).type == TokenType::REGISTER
-                          && peekToken(6).line == current_line
-                          && peekToken(6).type == TokenType::RPAREN) {
-                              nextToken(); // skip opcode
-                              valid_syntax = true;
-
-                              if (isValidITypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (-2048 <= imm && imm <= 2047) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;
-                                  }
-                                  nextToken(); // skip immediate
-                                  nextToken(); // skip lparen
-                                  reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs1(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip rparen
-                              }
-                              else if (isValidSTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs2(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (-2048 <= imm && imm <= 2047) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;
-                                  }
-                                  nextToken(); // skip immediate
-                                  nextToken(); // skip lparen
-                                  reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRs1(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip rparen
-                              }
-
-                              IntermediateCode.push_back(std::make_pair(block, true));
-                              instruction_index++;
-                              break;
-                          }
-                      }
-
-                      else if (syntax == "O_R_C_I") {
-                          if (peekToken(1).line == current_line
-                          && peekToken(1).type == TokenType::REGISTER
-                          && peekToken(2).line == current_line
-                          && peekToken(2).type == TokenType::COMMA
-                          && peekToken(3).line == current_line
-                          && (peekToken(3).type == TokenType::NUM)) {
-                              nextToken(); // skip opcode
-                              valid_syntax = true;
-                              if (isValidUTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (0 <= imm && imm <= 1048575) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;
-                                  }
-                                  nextToken(); // skip immediate
-                              }
-                              else if (isValidJTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  int64_t imm = std::stoll(currentToken().value);
-                                  if (-1048576 <= imm && imm <= 1048575) {
-                                      block.setImm(std::to_string(imm));
-                                  }
-                                  else {
-                                      errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                      skipCurrentLine();
-                                      break;
-                                  }
-                                  nextToken(); // skip immediate
-                              }
-
-                              IntermediateCode.push_back(std::make_pair(block, true));
-                              instruction_index++;
-                              break;
-                          }
-                      }
-
-                      else if (syntax == "O_R_C_L") {
-                          if (peekToken(1).line == current_line
-                          && peekToken(1).type == TokenType::REGISTER
-                          && peekToken(2).line == current_line
-                          && peekToken(2).type == TokenType::COMMA
-                          && peekToken(3).line == current_line
-                          && peekToken(3).type == TokenType::LABEL_REF) {
-                              nextToken(); // skip opcode
-                              valid_syntax = true;
-
-                              // TODO: needs work, use auipc for portability
-                              if (isValidITypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  if (symbol_table_.find(currentToken().value) != symbol_table_.end()
-                                  && symbol_table_[currentToken().value].isData) {
-                                      uint64_t address = symbol_table_[currentToken().value].address;
-                                      int64_t offset = static_cast<int64_t>(address);
-                                      if (-2048 <= offset && offset <= 2047) {
-                                          block.setImm(std::to_string(offset));
-                                      }
-                                      else {
-                                          errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                          skipCurrentLine();
-                                          break;
-                                      }
-                                      nextToken();
-                                  }
-                                  else {
-                                      backPatch.push_back(instruction_index);
-                                      block.setImm(currentToken().value);
-                                      IntermediateCode.push_back(std::make_pair(block, false));
-                                      instruction_index++;
-                                      nextToken();
-                                      break;
-                                  }
-                              }
-                              else if (isValidJTypeInstruction(block.getOpcode())) {
-                                  std::string reg = reg_alias_to_name.at(currentToken().value);
-                                  block.setRd(reg);
-                                  nextToken(); // skip register
-                                  nextToken(); // skip comma
-                                  if (symbol_table_.find(currentToken().value) != symbol_table_.end()
-                                  && !symbol_table_[currentToken().value].isData) {
-                                      uint64_t address = symbol_table_[currentToken().value].address;
-                                      int64_t offset = static_cast<int64_t>(address - instruction_index * 4);
-                                      if (-1048576 <= offset && offset <= 1048575) {
-                                          block.setImm(std::to_string(offset));
-                                          block.setLabel(currentToken().value);
-                                      }
-                                      else {
-                                          errors_.push_back(ParseError(ErrorType::INVALID_IMMEDIATE, "Immediate value out of range", currentToken().line, currentToken().column));
-                                          skipCurrentLine();
-                                          break;
-                                      }
-                                      nextToken();
-                                  }
-                                  else {
-                                      backPatch.push_back(instruction_index);
-                                      block.setImm(currentToken().value);
-                                      IntermediateCode.push_back(std::make_pair(block, false));
-                                      instruction_index++;
-                                      nextToken();
-                                      break;
-                                  }
-                              }
-
-                              IntermediateCode.push_back(std::make_pair(block, true));
-                              instruction_index++;
-                              break;
-                          }
-                      }
-                */
+                    skipCurrentLine();
+                }
+            } else if (currentToken().value == "mv") {
 
             }
 
+
             if (!valid_syntax) {
-                errors_.push_back(ParseError(ErrorType::INVALID_SYNTAX, "Invalid syntax", currentToken().line,
-                                             currentToken().column));
+                all_errors_.push_back(SyntaxError("Syntax error", "Expected: " + getExpectedSyntaxes(currentToken().value), filename_,
+                                                  currentToken().line_number, currentToken().column_number, getLineFromFile(filename_, currentToken().line_number)));
+
                 skipCurrentLine();
             }
 
 
         } else {
-            errors_.push_back(ParseError(ErrorType::INVALID_DIRECTIVE, "Invalid token", currentToken().line,
-                                         currentToken().column));
+            all_errors_.push_back(UnexpectedTokenError("Unexpected token", filename_, currentToken().line_number,
+                                                      currentToken().column_number,
+                                                      getLineFromFile(filename_, currentToken().line_number)));
+
             skipCurrentLine();
             continue;
         }
@@ -930,8 +732,8 @@ void Parser::parse() {
             //    parseBssDirective();
             //}
         else {
-            errors_.push_back(ParseError(ErrorType::INVALID_DIRECTIVE, "Invalid directive", currentToken().line,
-                                         currentToken().column));
+            errors_.push_back(ParseError(ErrorType::INVALID_DIRECTIVE, "Invalid directive", currentToken().line_number,
+                                         currentToken().column_number));
             nextToken();
         }
     }
@@ -953,16 +755,25 @@ void Parser::parse() {
                     if (-4096 <= offset && offset <= 4095) {
                         block.setImm(std::to_string(offset));
                     } else {
-                        errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE,
-                                                     "Immediate value out of range",
-                                                     currentToken().line, currentToken().column));
+                        all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                       "Expected: -4096 <= imm <= 4095",
+                                                                       filename_,
+                                                                       block.getLineNumber(),
+                                                                       0,
+                                                                       getLineFromFile(filename_, block.getLineNumber())));
                         skipCurrentLine();
                         break;
                     }
                 } else {
+                    all_errors_.push_back(InvalidLabelRefError("Invalid label reference", "Label reference not found",
+                                                               filename_,
+                                                               block.getLineNumber(),
+                                                               0,
+                                                               getLineFromFile(filename_, block.getLineNumber())));
+
                     errors_.push_back(ParseError(ErrorType::INVALID_LABEL_REF, "Label reference not found",
-                                                 currentToken().line,
-                                                 currentToken().column));
+                                                 block.getLineNumber(),
+                                                 0));
                 }
             } else if (isValidJTypeInstruction(block.getOpcode())) {
                 if (symbol_table_[block.getImm()].isData) {
@@ -975,9 +786,16 @@ void Parser::parse() {
                         block.setImm(std::to_string(offset));
                         block.setLabel(block.getImm());
                     } else {
+                        all_errors_.push_back(ImmediateOutOfRangeError("Immediate value out of range",
+                                                                       "Expected: -1048576 <= imm <= 1048575",
+                                                                       filename_,
+                                                                       block.getLineNumber(),
+                                                                       0,
+                                                                       getLineFromFile(filename_, block.getLineNumber())));
+
                         errors_.push_back(ParseError(ErrorType::IMMEDIATE_OUT_OF_RANGE,
                                                      "Immediate value out of range",
-                                                     currentToken().line, currentToken().column));
+                                                     block.getLineNumber(), currentToken().column_number));
                         skipCurrentLine();
                         break;
                     }
@@ -1000,8 +818,13 @@ void Parser::parse() {
             IntermediateCode[index].first = block;
             IntermediateCode[index].second = true;
         } else {
-            errors_.push_back(ParseError(ErrorType::INVALID_LABEL_REF, "Label reference not found", currentToken().line,
-                                         currentToken().column));
+            all_errors_.push_back(InvalidLabelRefError("Invalid label reference", "Label reference not found", filename_,
+                                                       block.getLineNumber(), 0,
+                                                       getLineFromFile(filename_, block.getLineNumber())));
+
+            errors_.push_back(
+                    ParseError(ErrorType::INVALID_LABEL_REF, "Label reference not found", block.getLineNumber(),
+                               currentToken().column_number));
         }
     }
 

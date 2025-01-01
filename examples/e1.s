@@ -2,10 +2,13 @@
 bb: .dword 0x1234567890
 aa: .word 0x12345
 
+.string "Hello, World!\n"
+
 .text
 
 #lw x0, aa
 
+nop
 
 add x0, x1, x2
 sub x0, x1, x2
@@ -29,16 +32,17 @@ fadd.s s0, s1, s2
 
 addi x0, x1, 1
 xori x0, x1, 1
-ori x0, x1, 1
+ori x0, x, 1
 andi x0, x1, 1
-slli x0, x1, 1
+slli x0, x1, 1    fsad
 srli x0, x1, 1
 srai x0, x1, 1
 slti x0, x1, 1
 sltiu x0, x1, 1
 
 
-jal x1, lol
+fdsff
+jal x1, lfol
 lol:
 
 #

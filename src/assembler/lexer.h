@@ -18,6 +18,8 @@ private:
     size_t column_number_;
     size_t pos_;
 
+    std::vector<Token> tokens_;
+
     void skipWhitespace();
 
     void skipComment();
@@ -39,6 +41,7 @@ public:
 
     ~Lexer();
 
+    std::string getFilename() const;
 
     Token getNextToken();
 

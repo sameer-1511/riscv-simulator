@@ -11,8 +11,8 @@
 std::ostream &operator<<(std::ostream &os, const Token &token) {
     os << "Token<Type: " << tokenTypeToString(token.type)
        << ", Value: \"" << token.value
-       << "\", Line: " << token.line
-       << ", Column: " << token.column << ">";
+       << "\", Line: " << token.line_number
+       << ", Column: " << token.column_number << ">";
     return os;
 }
 

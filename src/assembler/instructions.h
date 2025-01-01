@@ -119,9 +119,7 @@ bool isValidUTypeInstruction(const std::string &instruction);
 
 bool isValidJTypeInstruction(const std::string &instruction);
 
-std::string syntaxType(const std::string &opcode);
-
-SyntaxType getSyntaxType(const std::string &opcode);
+std::string getExpectedSyntaxes(const std::string &opcode);
 
 
 #endif // INSTRUCTIONS_H
