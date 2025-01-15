@@ -6,7 +6,7 @@ BUILD_DIR = ../build
 GTEST_DIR = /usr/local/include
 LIB_DIR = /usr/lib
 
-SRC = test.cpp
+SRC = test_main.cpp
 OUT = testex
 
 LIBS = -lgtest -lgtest_main

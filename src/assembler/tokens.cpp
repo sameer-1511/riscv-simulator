@@ -1,18 +1,20 @@
+/** @cond DOXYGEN_IGNORE */
 /**
  * File Name: tokens.cpp
  * Author: Vishank Singh
  * Github: https://github.com/VishankSingh
  */
+/** @endcond */
 
 #include "../pch.h"
 #include "tokens.h"
 
 
 std::ostream &operator<<(std::ostream &os, const Token &token) {
-    os << "Token<Type: " << tokenTypeToString(token.type)
+    os << "Token(Type: " << tokenTypeToString(token.type)
        << ", Value: \"" << token.value
        << "\", Line: " << token.line_number
-       << ", Column: " << token.column_number << ">";
+       << ", Column: " << token.column_number << ")";
     return os;
 }
 

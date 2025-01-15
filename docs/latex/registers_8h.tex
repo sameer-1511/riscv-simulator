@@ -1,0 +1,81 @@
+\hypertarget{registers_8h}{}\doxysection{src/registers.h File Reference}
+\label{registers_8h}\index{src/registers.h@{src/registers.h}}
+
+
+Contains the definition of the \mbox{\hyperlink{classRegisterFile}{Register\+File}} class for managing registers in the simulator.  
+
+
+{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+Include dependency graph for registers.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classRegisterFile}{Register\+File}}
+\begin{DoxyCompactList}\small\item\em Represents a register file containing integer, floating-\/point, and vector registers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}{is\+Valid\+Register}} (const std\+::string \&reg)
+\begin{DoxyCompactList}\small\item\em Checks whether a given register name is valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}{valid\+\_\+registers}}
+\begin{DoxyCompactList}\small\item\em Set of valid register names for validation. \end{DoxyCompactList}\item 
+const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}{reg\+\_\+alias\+\_\+to\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Map of register aliases to their actual names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the definition of the \mbox{\hyperlink{classRegisterFile}{Register\+File}} class for managing registers in the simulator. 
+
+\begin{DoxyAuthor}{Author}
+Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}\label{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}} 
+\index{registers.h@{registers.h}!isValidRegister@{isValidRegister}}
+\index{isValidRegister@{isValidRegister}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{isValidRegister()}{isValidRegister()}}
+{\footnotesize\ttfamily bool is\+Valid\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+
+
+
+Checks whether a given register name is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & The register name to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the register name is valid, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}\label{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}} 
+\index{registers.h@{registers.h}!reg\_alias\_to\_name@{reg\_alias\_to\_name}}
+\index{reg\_alias\_to\_name@{reg\_alias\_to\_name}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{reg\_alias\_to\_name}{reg\_alias\_to\_name}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ reg\+\_\+alias\+\_\+to\+\_\+name\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Map of register aliases to their actual names. 
+
+\mbox{\Hypertarget{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}\label{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}} 
+\index{registers.h@{registers.h}!valid\_registers@{valid\_registers}}
+\index{valid\_registers@{valid\_registers}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{valid\_registers}{valid\_registers}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+registers\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Set of valid register names for validation. 
+

@@ -1,14 +1,14 @@
+/** @cond DOXYGEN_IGNORE */
 /**
  * File Name: code_generator.cpp
  * Author: Vishank Singh
  * Github: https://github.com/VishankSingh
  */
+/** @endcond */
 
 #include "code_generator.h"
 #include "../pch.h"
 #include "instructions.h"
-
-#include <bitset>
 
 std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::string> ICList;
@@ -179,9 +179,6 @@ std::vector<std::string> generateMachineCode(const std::vector<std::pair<ICUnit,
         } else if (isValidJTypeInstruction(block.getOpcode())) {
             code = generateJTypeMachineCode(block);
         }
-        // else {
-        //     code = generatePsuedoMachineCode(block);
-        // }
         machine_code.push_back(code);
     }
     return machine_code;

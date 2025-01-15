@@ -1,0 +1,85 @@
+\hypertarget{utils_8cpp}{}\doxysection{src/utils.cpp File Reference}
+\label{utils_8cpp}\index{src/utils.cpp@{src/utils.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+Include dependency graph for utils.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int64\+\_\+t \mbox{\hyperlink{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}{count\+Lines}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Counts the number of lines in a given file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}{get\+Line\+From\+File}} (const std\+::string \&file\+Name, unsigned int line\+Number)
+\begin{DoxyCompactList}\small\item\em Retrieves a specific line from a file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}{parse\+Escaped\+String}} (const std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em Parses a string containing escaped characters into its unescaped form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}\label{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}} 
+\index{utils.cpp@{utils.cpp}!countLines@{countLines}}
+\index{countLines@{countLines}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{countLines()}{countLines()}}
+{\footnotesize\ttfamily int64\+\_\+t count\+Lines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Counts the number of lines in a given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to count lines in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lines in the file. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}\label{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}} 
+\index{utils.cpp@{utils.cpp}!getLineFromFile@{getLineFromFile}}
+\index{getLineFromFile@{getLineFromFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{getLineFromFile()}{getLineFromFile()}}
+{\footnotesize\ttfamily std\+::string get\+Line\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{unsigned int}]{line\+Number }\end{DoxyParamCaption})}
+
+
+
+Retrieves a specific line from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the file to read from. \\
+\hline
+{\em line\+Number} & The 1-\/based index of the line to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The content of the specified line as a string. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the line\+Number is invalid. \\
+\hline
+{\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}\label{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}} 
+\index{utils.cpp@{utils.cpp}!parseEscapedString@{parseEscapedString}}
+\index{parseEscapedString@{parseEscapedString}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{parseEscapedString()}{parseEscapedString()}}
+{\footnotesize\ttfamily std\+::string parse\+Escaped\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Parses a string containing escaped characters into its unescaped form. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The input string with escaped characters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The unescaped string. 
+\end{DoxyReturn}

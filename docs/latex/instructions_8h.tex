@@ -1,0 +1,309 @@
+\hypertarget{instructions_8h}{}\doxysection{src/assembler/instructions.h File Reference}
+\label{instructions_8h}\index{src/assembler/instructions.h@{src/assembler/instructions.h}}
+
+
+Contains the declarations for the \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}} struct and related functions.  
+
+
+{\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+Include dependency graph for instructions.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}}
+\begin{DoxyCompactList}\small\item\em Encodes the components of an instruction. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structRTypeInstructionEncoding}{RType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structITypeInstructionEncoding}{IType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structSTypeInstructionEncoding}{SType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structBTypeInstructionEncoding}{BType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structUTypeInstructionEncoding}{UType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structJTypeInstructionEncoding}{JType\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structMExtensionInstructionEncoding}{MExtension\+Instruction\+Encoding}}
+\item 
+struct \mbox{\hyperlink{structFExtensionInstructionEncoding}{FExtension\+Instruction\+Encoding}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}} \{ \newline
+\mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12ae445b2f6b36163cd053217f0512d368a}{O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+R}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a4bba3da1fe90b2d0dcea61ce7a229001}{O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+I}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6838e1305b98ae9ec076334bcbafd36a}{O\+\_\+\+R\+\_\+\+C\+\_\+I}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a5518cb0a824d1408bf60e64030177799}{O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+\+IL}}
+, \newline
+\mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a861c63e74b264868c2be87bd08ab6ad0}{O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+\+DL}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12adef2da0d681fd47ec2bc7d9f12b09ffd}{O\+\_\+\+R\+\_\+\+C\+\_\+\+IL}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6192351854bdcfa829f2efbd18aab905}{O\+\_\+\+R\+\_\+\+C\+\_\+\+DL}}
+, \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a817f4e87331959174e251a38d4b185d9}{O\+\_\+\+R\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+R\+\_\+\+RP}}
+, \newline
+\mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12af186217753c37b9b9f958d906208506e}{O}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that represents different syntax types for instructions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{instructions_8h_a08ec7110d476316c78a3bdc71b14b37c}{is\+Valid\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_a35d8c74d790957ff351f6008f1c13d71}{is\+Valid\+RType\+Instruction}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Validates if a given R-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_a6859e1c433fcca09321cd1cfca53e213}{is\+Valid\+IType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given I-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_af554c1c77849256be3d135e43b7062b6}{is\+Valid\+SType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given S-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_a01c5e465f1e1febdafb011d5746abfdb}{is\+Valid\+BType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given B-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_ae7729cbfdf142ccc0b7ff80253c49aac}{is\+Valid\+UType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given U-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8h_a54a7c24fad2402344fd60a8178396510}{is\+Valid\+JType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given J-\/type instruction is valid. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{instructions_8h_afb96d63320633597bde5c5f9ac3e75ec}{get\+Expected\+Syntaxes}} (const std\+::string \&opcode)
+\begin{DoxyCompactList}\small\item\em Retrieves the expected syntax for a given opcode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8h_a1cf7ac5cb234065b6d840a8904ff0281}{instruction\+\_\+encoding\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their corresponding encoding. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}} $>$ $>$ \mbox{\hyperlink{instructions_8h_a8e401697b6859c168afc4ed643ac238c}{instruction\+\_\+syntax\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their expected syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the declarations for the \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}} struct and related functions. 
+
+\begin{DoxyAuthor}{Author}
+Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}} 
+\index{instructions.h@{instructions.h}!SyntaxType@{SyntaxType}}
+\index{SyntaxType@{SyntaxType}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{SyntaxType}{SyntaxType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum that represents different syntax types for instructions. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_R\_C\_R@{O\_R\_C\_R\_C\_R}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_R\_C\_R@{O\_R\_C\_R\_C\_R}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12ae445b2f6b36163cd053217f0512d368a}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12ae445b2f6b36163cd053217f0512d368a}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+R&Opcode register , register , register. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_R\_C\_I@{O\_R\_C\_R\_C\_I}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_R\_C\_I@{O\_R\_C\_R\_C\_I}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a4bba3da1fe90b2d0dcea61ce7a229001}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a4bba3da1fe90b2d0dcea61ce7a229001}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+I&Opcode register , register , immediate. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_I@{O\_R\_C\_I}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_I@{O\_R\_C\_I}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6838e1305b98ae9ec076334bcbafd36a}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6838e1305b98ae9ec076334bcbafd36a}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+I&Opcode register , immediate. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_R\_C\_IL@{O\_R\_C\_R\_C\_IL}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_R\_C\_IL@{O\_R\_C\_R\_C\_IL}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a5518cb0a824d1408bf60e64030177799}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a5518cb0a824d1408bf60e64030177799}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+\+IL&Opcode register , register , immediate , instruction\+\_\+label. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_R\_C\_DL@{O\_R\_C\_R\_C\_DL}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_R\_C\_DL@{O\_R\_C\_R\_C\_DL}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a861c63e74b264868c2be87bd08ab6ad0}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a861c63e74b264868c2be87bd08ab6ad0}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+R\+\_\+\+C\+\_\+\+DL&Opcode register , register , immediate , data\+\_\+label. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_IL@{O\_R\_C\_IL}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_IL@{O\_R\_C\_IL}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12adef2da0d681fd47ec2bc7d9f12b09ffd}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12adef2da0d681fd47ec2bc7d9f12b09ffd}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+IL&Opcode register , instruction\+\_\+label. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_DL@{O\_R\_C\_DL}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_DL@{O\_R\_C\_DL}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6192351854bdcfa829f2efbd18aab905}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a6192351854bdcfa829f2efbd18aab905}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+DL&Opcode register , data\+\_\+label. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\_R\_C\_I\_LP\_R\_RP@{O\_R\_C\_I\_LP\_R\_RP}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O\_R\_C\_I\_LP\_R\_RP@{O\_R\_C\_I\_LP\_R\_RP}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a817f4e87331959174e251a38d4b185d9}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12a817f4e87331959174e251a38d4b185d9}} 
+O\+\_\+\+R\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+R\+\_\+\+RP&Opcode register , immediate , lparen , register , rparen. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O@{O}!instructions.h@{instructions.h}}\index{instructions.h@{instructions.h}!O@{O}}}\mbox{\Hypertarget{instructions_8h_a5384e121bfc969afb98083be9f7bcc12af186217753c37b9b9f958d906208506e}\label{instructions_8h_a5384e121bfc969afb98083be9f7bcc12af186217753c37b9b9f958d906208506e}} 
+O&Opcode. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{instructions_8h_afb96d63320633597bde5c5f9ac3e75ec}\label{instructions_8h_afb96d63320633597bde5c5f9ac3e75ec}} 
+\index{instructions.h@{instructions.h}!getExpectedSyntaxes@{getExpectedSyntaxes}}
+\index{getExpectedSyntaxes@{getExpectedSyntaxes}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{getExpectedSyntaxes()}{getExpectedSyntaxes()}}
+{\footnotesize\ttfamily std\+::string get\+Expected\+Syntaxes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{opcode }\end{DoxyParamCaption})}
+
+
+
+Retrieves the expected syntax for a given opcode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcode} & The opcode of the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the expected syntax of the instruction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_a01c5e465f1e1febdafb011d5746abfdb}\label{instructions_8h_a01c5e465f1e1febdafb011d5746abfdb}} 
+\index{instructions.h@{instructions.h}!isValidBTypeInstruction@{isValidBTypeInstruction}}
+\index{isValidBTypeInstruction@{isValidBTypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidBTypeInstruction()}{isValidBTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+BType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given B-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The B-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_a08ec7110d476316c78a3bdc71b14b37c}\label{instructions_8h_a08ec7110d476316c78a3bdc71b14b37c}} 
+\index{instructions.h@{instructions.h}!isValidInstruction@{isValidInstruction}}
+\index{isValidInstruction@{isValidInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidInstruction()}{isValidInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_a6859e1c433fcca09321cd1cfca53e213}\label{instructions_8h_a6859e1c433fcca09321cd1cfca53e213}} 
+\index{instructions.h@{instructions.h}!isValidITypeInstruction@{isValidITypeInstruction}}
+\index{isValidITypeInstruction@{isValidITypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidITypeInstruction()}{isValidITypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+IType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given I-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The I-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_a54a7c24fad2402344fd60a8178396510}\label{instructions_8h_a54a7c24fad2402344fd60a8178396510}} 
+\index{instructions.h@{instructions.h}!isValidJTypeInstruction@{isValidJTypeInstruction}}
+\index{isValidJTypeInstruction@{isValidJTypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidJTypeInstruction()}{isValidJTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+JType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given J-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The J-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_a35d8c74d790957ff351f6008f1c13d71}\label{instructions_8h_a35d8c74d790957ff351f6008f1c13d71}} 
+\index{instructions.h@{instructions.h}!isValidRTypeInstruction@{isValidRTypeInstruction}}
+\index{isValidRTypeInstruction@{isValidRTypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidRTypeInstruction()}{isValidRTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+RType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Validates if a given R-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The R-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_af554c1c77849256be3d135e43b7062b6}\label{instructions_8h_af554c1c77849256be3d135e43b7062b6}} 
+\index{instructions.h@{instructions.h}!isValidSTypeInstruction@{isValidSTypeInstruction}}
+\index{isValidSTypeInstruction@{isValidSTypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidSTypeInstruction()}{isValidSTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+SType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given S-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The S-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8h_ae7729cbfdf142ccc0b7ff80253c49aac}\label{instructions_8h_ae7729cbfdf142ccc0b7ff80253c49aac}} 
+\index{instructions.h@{instructions.h}!isValidUTypeInstruction@{isValidUTypeInstruction}}
+\index{isValidUTypeInstruction@{isValidUTypeInstruction}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{isValidUTypeInstruction()}{isValidUTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+UType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given U-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The U-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{instructions_8h_a1cf7ac5cb234065b6d840a8904ff0281}\label{instructions_8h_a1cf7ac5cb234065b6d840a8904ff0281}} 
+\index{instructions.h@{instructions.h}!instruction\_encoding\_map@{instruction\_encoding\_map}}
+\index{instruction\_encoding\_map@{instruction\_encoding\_map}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{instruction\_encoding\_map}{instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}}$>$ instruction\+\_\+encoding\+\_\+map\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+A map that associates instruction names with their corresponding encoding. 
+
+This map stores the encoding details for various instructions, indexed by their names. \mbox{\Hypertarget{instructions_8h_a8e401697b6859c168afc4ed643ac238c}\label{instructions_8h_a8e401697b6859c168afc4ed643ac238c}} 
+\index{instructions.h@{instructions.h}!instruction\_syntax\_map@{instruction\_syntax\_map}}
+\index{instruction\_syntax\_map@{instruction\_syntax\_map}!instructions.h@{instructions.h}}
+\doxysubsubsection{\texorpdfstring{instruction\_syntax\_map}{instruction\_syntax\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}}$>$ $>$ instruction\+\_\+syntax\+\_\+map\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+A map that associates instruction names with their expected syntax. 
+
+This map stores the expected syntax for various instructions, indexed by their names. 

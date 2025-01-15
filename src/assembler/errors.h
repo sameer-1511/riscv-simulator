@@ -1,73 +1,99 @@
 /**
- * File Name: errors.h
- * Author: Vishank Singh
- * Github: https://github.com/VishankSingh
+ * @file errors.h
+ * @brief Defines error handling structures and error types for syntax and semantic errors in the assembler.
+ * @author Vishank Singh, https://github.com/VishankSingh
  */
+
 #ifndef ERRORS_H
 #define ERRORS_H
 
 #include "../pch.h"
 
+/// ANSI code for red-colored text.
 const std::string ANSI_code_red = "\033[31m";
+
+/// ANSI code to reset text formatting.
 const std::string ANSI_code_reset = "\033[0m";
 
-
+/**
+ * @enum ErrorType
+ * @brief Enumerates various types of errors that can occur during assembly.
+ */
 enum class ErrorType {
-    UNEXPECTED_TOKEN,
-    UNEXPECTED_EOF,
-    UNEXPECTED_OPERAND,
+    UNEXPECTED_TOKEN,      ///< An unexpected token was encountered.
+    UNEXPECTED_EOF,        ///< Unexpected end of file.
+    UNEXPECTED_OPERAND,    ///< Unexpected operand in the instruction.
 
-    MISSING_OPERAND,
-    MISSING_COMMA,
-    MISSING_LPAREN,
-    MISSING_RPAREN,
+    MISSING_OPERAND,       ///< Missing operand in the instruction.
+    MISSING_COMMA,         ///< Missing comma in the instruction.
+    MISSING_LPAREN,        ///< Missing left parenthesis.
+    MISSING_RPAREN,        ///< Missing right parenthesis.
 
-    EXPECTED_REGISTER,
-    EXPECTED_IMMEDIATE,
-    EXPECTED_LABEL,
+    EXPECTED_REGISTER,     ///< Expected a register but found something else.
+    EXPECTED_IMMEDIATE,    ///< Expected an immediate value.
+    EXPECTED_LABEL,        ///< Expected a label.
 
-    INVALID_OPERAND,
-    INVALID_DIRECTIVE,
-    INVALID_INSTRUCTION,
-    INVALID_REGISTER,
-    INVALID_IMMEDIATE,
-    INVALID_LABEL,
-    INVALID_LABEL_REF,
-    INVALID_TOKEN,
-    INVALID_SYNTAX,
+    INVALID_OPERAND,       ///< Operand is invalid.
+    INVALID_DIRECTIVE,     ///< Directive is invalid.
+    INVALID_INSTRUCTION,   ///< Instruction is invalid.
+    INVALID_REGISTER,      ///< Register name is invalid.
+    INVALID_IMMEDIATE,     ///< Immediate value is invalid.
+    INVALID_LABEL,         ///< Label is invalid.
+    INVALID_LABEL_REF,     ///< Label reference is invalid.
+    INVALID_TOKEN,         ///< Token is invalid.
+    INVALID_SYNTAX,        ///< Syntax is invalid.
 
-    MISALIGNED_IMMEDIATE,
-    MISALIGNED_LABEL,
-    IMMEDIATE_OUT_OF_RANGE,
-    UNKNOWN_ERROR,
+    MISALIGNED_IMMEDIATE,  ///< Immediate value is misaligned.
+    MISALIGNED_LABEL,      ///< Label is misaligned.
+    IMMEDIATE_OUT_OF_RANGE,///< Immediate value is out of range.
+    UNKNOWN_ERROR          ///< An unknown error occurred.
 };
 
-
+/**
+ * @struct SyntaxError
+ * @brief Represents a generic syntax error in the assembler.
+ *
+ * This structure is used to store details of a syntax error, including the error message,
+ * file location, and the line where the error occurred.
+ */
 struct SyntaxError {
-    std::string main_message;
-    std::string sub_message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;   ///< Line number where the error occurred.
+    unsigned int column_number; ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
-    SyntaxError(std::string main_message, std::string sub_message, std::string filename, int line_number,
-                int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    SyntaxError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                unsigned int column_number, std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
+    /**
+     * @brief Overloads the output stream operator to print the error.
+     * @param os Output stream.
+     * @param error The SyntaxError to print.
+     * @return Modified output stream.
+     */
     friend std::ostream &operator<<(std::ostream &os, const SyntaxError &error);
 };
 
-struct UnexpectedTokenError {
-    std::string message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+// Other error structures follow a similar pattern. Brief explanations added for clarity.
 
-    UnexpectedTokenError(std::string message, std::string filename, int line_number, int column_number,
+/**
+ * @struct UnexpectedTokenError
+ * @brief Represents an error caused by an unexpected token in the input.
+ */
+struct UnexpectedTokenError {
+    std::string message;        ///< The error message explaining the issue.
+    std::string filename;       ///< The name of the file where the error occurred.
+    unsigned int line_number;            ///< The line number where the error occurred.
+    unsigned int column_number;          ///< The column number where the error occurred.
+    std::string line_text;      ///< The text of the line where the error occurred.
+
+
+    UnexpectedTokenError(std::string message, std::string filename, unsigned int line_number, unsigned int column_number,
                          std::string line_text)
             : message(std::move(message)), filename(std::move(filename)), line_number(line_number),
               column_number(column_number), line_text(std::move(line_text)) {}
@@ -75,16 +101,20 @@ struct UnexpectedTokenError {
     friend std::ostream &operator<<(std::ostream &os, const UnexpectedTokenError &error);
 };
 
+/**
+ * @struct ImmediateOutOfRangeError
+ * @brief Represents an error caused by an immediate value being outside the valid range.
+ */
 struct ImmediateOutOfRangeError {
-    std::string main_message;
-    std::string sub_message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
-    ImmediateOutOfRangeError(std::string main_message, std::string sub_message, std::string filename, int line_number,
-                             int column_number, std::string line_text)
+    ImmediateOutOfRangeError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                             unsigned int column_number, std::string line_text)
             : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
               filename(std::move(filename)), line_number(line_number), column_number(column_number),
               line_text(std::move(line_text)) {}
@@ -92,33 +122,41 @@ struct ImmediateOutOfRangeError {
     friend std::ostream &operator<<(std::ostream &os, const ImmediateOutOfRangeError &error);
 };
 
-struct MisallignedImmediateError {
-    std::string main_message;
-    std::string sub_message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+/**
+ * @struct MisalignedImmediateError
+ * @brief Represents an error caused by an immediate value being misaligned.
+ */
+struct MisalignedImmediateError {
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
-    MisallignedImmediateError(std::string main_message, std::string sub_message, std::string filename, int line_number,
-                              int column_number, std::string line_text)
+    MisalignedImmediateError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                              unsigned int column_number, std::string line_text)
             : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
               filename(std::move(filename)), line_number(line_number), column_number(column_number),
               line_text(std::move(line_text)) {}
 
-    friend std::ostream &operator<<(std::ostream &os, const MisallignedImmediateError &error);
+    friend std::ostream &operator<<(std::ostream &os, const MisalignedImmediateError &error);
 };
 
+/**
+ * @struct UnexpectedOperandError
+ * @brief Represents an error caused by encountering an unexpected operand.
+ */
 struct UnexpectedOperandError {
-    std::string main_message;
-    std::string sub_message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
-    UnexpectedOperandError(std::string main_message, std::string sub_message, std::string filename, int line_number,
-                           int column_number, std::string line_text)
+    UnexpectedOperandError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                           unsigned int column_number, std::string line_text)
             : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
               filename(std::move(filename)), line_number(line_number), column_number(column_number),
               line_text(std::move(line_text)) {}
@@ -126,16 +164,20 @@ struct UnexpectedOperandError {
     friend std::ostream &operator<<(std::ostream &os, const UnexpectedOperandError &error);
 };
 
+/**
+ * @struct InvalidLabelRefError
+ * @brief Represents an error caused by referencing an invalid or undefined label.
+ */
 struct InvalidLabelRefError {
-    std::string main_message;
-    std::string sub_message;
-    std::string filename;
-    int line_number;
-    int column_number;
-    std::string line_text;
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
-    InvalidLabelRefError(std::string main_message, std::string sub_message, std::string filename, int line_number,
-                      int column_number, std::string line_text)
+    InvalidLabelRefError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                         unsigned int column_number, std::string line_text)
             : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
               filename(std::move(filename)), line_number(line_number), column_number(column_number),
               line_text(std::move(line_text)) {}
@@ -143,7 +185,26 @@ struct InvalidLabelRefError {
     friend std::ostream &operator<<(std::ostream &os, const InvalidLabelRefError &error);
 };
 
+/**
+ * @struct LabelRedefinitionError
+ * @brief Represents an error caused by redefining a previously defined label.
+ */
+struct LabelRedefinitionError {
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
 
+    LabelRedefinitionError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
+                           unsigned int column_number, std::string line_text)
+            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+              filename(std::move(filename)), line_number(line_number), column_number(column_number),
+              line_text(std::move(line_text)) {}
+
+    friend std::ostream &operator<<(std::ostream &os, const LabelRedefinitionError &error);
+};
 
 
 #endif // ERRORS_H

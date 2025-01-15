@@ -14,5 +14,9 @@
 #include <variant>
 #include <cctype>
 #include <cstring>
+#include <bitset>
+#include <optional>
+#include <utility>
+#include <regex>
 
 // g++ -x c++-header pch.h -o pch.h.gch

@@ -1,26 +1,36 @@
 /**
- * File Name: instructions.h
- * Author: Vishank Singh
- * Github: https://github.com/VishankSingh
+ * @file instructions.h
+ * @brief Contains the declarations for the InstructionEncoding struct and related functions.
+ * @author Vishank Singh, https://github.com/VishankSingh
  */
+
 #ifndef INSTRUCTIONS_H
 #define INSTRUCTIONS_H
 
 #include "../pch.h"
 
-#include <optional>
-#include <bitset>
-
-
+/**
+ * @brief Encodes the components of an instruction.
+ * 
+ * This struct holds the encoding for the opcode, funct3, funct7, and funct6 fields
+ * of an instruction, which are used for representing the instruction in machine code.
+ */
 struct InstructionEncoding {
-    std::string opcode;
-    std::string funct3;
-    std::string funct7;
-    std::string funct6;
+    std::string opcode;   ///< The opcode part of the instruction.
+    std::string funct3;   ///< The funct3 part of the instruction.
+    std::string funct7;   ///< The funct7 part of the instruction.
+    std::string funct6;   ///< The funct6 part of the instruction.
 
-    InstructionEncoding(const std::string &opcode, const std::string &funct3, const std::string &funct7,
-                        const std::string &funct6)
-            : opcode(opcode), funct3(funct3), funct7(funct7), funct6(funct6) {}
+    /**
+     * @brief Constructs an InstructionEncoding object.
+     * 
+     * @param opcode The opcode field.
+     * @param funct3 The funct3 field.
+     * @param funct7 The funct7 field.
+     * @param funct6 The funct6 field.
+     */
+    InstructionEncoding(std::string opcode, std::string funct3, std::string funct7, std::string funct6)
+            : opcode(std::move(opcode)), funct3(std::move(funct3)), funct7(std::move(funct7)), funct6(std::move(funct6)) {}
 };
 
 struct RTypeInstructionEncoding {
@@ -89,36 +99,97 @@ struct FExtensionInstructionEncoding {
             : opcode(opcode), funct3(funct3) {}
 };
 
+/**
+ * @brief Enum that represents different syntax types for instructions.
+ */
 enum class SyntaxType {
-    O_R_C_R_C_R,        // Opcode register , register , register
-    O_R_C_R_C_I,        // Opcode register , register , immediate
-    O_R_C_I,            // Opcode register , immediate
-    O_R_C_R_C_IL,       // Opcode register , register , immediate , instruction_label
-    O_R_C_R_C_DL,       // Opcode register , register , immediate , data_label
-    O_R_C_IL,           // Opcode register , instruction_label
-    O_R_C_DL,           // Opcode register , data_label
-    O_R_C_I_LP_R_RP,    // Opcode register , immediate , lparen , register , rparen
-    O,                  // Opcode
+    O_R_C_R_C_R,        ///< Opcode register , register , register
+    O_R_C_R_C_I,        ///< Opcode register , register , immediate
+    O_R_C_I,            ///< Opcode register , immediate
+    O_R_C_R_C_IL,       ///< Opcode register , register , immediate , instruction_label
+    O_R_C_R_C_DL,       ///< Opcode register , register , immediate , data_label
+    O_R_C_IL,           ///< Opcode register , instruction_label
+    O_R_C_DL,           ///< Opcode register , data_label
+    O_R_C_I_LP_R_RP,    ///< Opcode register , immediate , lparen , register , rparen
+    O,                  ///< Opcode
 };
 
+/**
+ * @brief A map that associates instruction names with their corresponding encoding.
+ * 
+ * This map stores the encoding details for various instructions, indexed by their names.
+ */
 extern std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map;
 
+/**
+ * @brief A map that associates instruction names with their expected syntax.
+ * 
+ * This map stores the expected syntax for various instructions, indexed by their names.
+ */
 extern std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map;
 
+/**
+ * @brief Validates if a given instruction is valid.
+ * 
+ * @param instruction The instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidInstruction(const std::string &instruction);
 
-bool isValidRTypeInstruction(const std::string &instruction);
+/**
+ * @brief Validates if a given R-type instruction is valid.
+ * 
+ * @param instruction The R-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
+bool isValidRTypeInstruction(const std::string &name);
 
+/**
+ * @brief Validates if a given I-type instruction is valid.
+ * 
+ * @param instruction The I-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidITypeInstruction(const std::string &instruction);
 
+/**
+ * @brief Validates if a given S-type instruction is valid.
+ * 
+ * @param instruction The S-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidSTypeInstruction(const std::string &instruction);
 
+/**
+ * @brief Validates if a given B-type instruction is valid.
+ * 
+ * @param instruction The B-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidBTypeInstruction(const std::string &instruction);
 
+/**
+ * @brief Validates if a given U-type instruction is valid.
+ * 
+ * @param instruction The U-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidUTypeInstruction(const std::string &instruction);
 
+/**
+ * @brief Validates if a given J-type instruction is valid.
+ * 
+ * @param instruction The J-type instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
 bool isValidJTypeInstruction(const std::string &instruction);
 
+/**
+ * @brief Retrieves the expected syntax for a given opcode.
+ * 
+ * @param opcode The opcode of the instruction.
+ * @return A string representing the expected syntax of the instruction.
+ */
 std::string getExpectedSyntaxes(const std::string &opcode);
 
 

@@ -1,0 +1,191 @@
+\hypertarget{code__generator_8h}{}\doxysection{src/assembler/code\+\_\+generator.h File Reference}
+\label{code__generator_8h}\index{src/assembler/code\_generator.h@{src/assembler/code\_generator.h}}
+
+
+Contains the definition of the \mbox{\hyperlink{structICUnit}{ICUnit}} struct and functions for generating machine code.  
+
+
+{\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
+Include dependency graph for code\+\_\+generator.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structICUnit}{ICUnit}}
+\begin{DoxyCompactList}\small\item\em Represents a unit of intermediate code used for generating machine code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{code__generator_8h_add0059bcf4bc90896326c8d058d08237}{print\+Intermediate\+Code}} (const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$$>$ \&Intermediate\+Code)
+\begin{DoxyCompactList}\small\item\em Prints the intermediate code to a vector of strings. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_a26885a8328028146f574ce756b46cd9f}{generate\+RType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for an R-\/type instruction. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_af01bb3bf179fa4cf9e4269e5ac71036b}{generate\+IType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for an I-\/type instruction. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_ad4434c5d31ea2c24db78c811b8b6cb2b}{generate\+SType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for an S-\/type instruction. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_a2dc28203a9f6906f1e6b6406e2f7b637}{generate\+BType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for a B-\/type instruction. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_ad6596bd8906b00ddbffeb49faa4016b5}{generate\+UType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for a U-\/type instruction. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{code__generator_8h_a4d83ed0d7311f94961ea578a9cab49a3}{generate\+JType\+Machine\+Code}} (const \mbox{\hyperlink{structICUnit}{ICUnit}} \&block)
+\begin{DoxyCompactList}\small\item\em Generates machine code for a J-\/type instruction. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{code__generator_8h_a6f7749a29a7a4e5ada5a22470884be96}{generate\+Machine\+Code}} (const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$$>$ \&Intermediate\+Code)
+\begin{DoxyCompactList}\small\item\em Generates machine code from a vector of intermediate code blocks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the definition of the \mbox{\hyperlink{structICUnit}{ICUnit}} struct and functions for generating machine code. 
+
+\begin{DoxyAuthor}{Author}
+Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{code__generator_8h_a2dc28203a9f6906f1e6b6406e2f7b637}\label{code__generator_8h_a2dc28203a9f6906f1e6b6406e2f7b637}} 
+\index{code\_generator.h@{code\_generator.h}!generateBTypeMachineCode@{generateBTypeMachineCode}}
+\index{generateBTypeMachineCode@{generateBTypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateBTypeMachineCode()}{generateBTypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+BType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for a B-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_af01bb3bf179fa4cf9e4269e5ac71036b}\label{code__generator_8h_af01bb3bf179fa4cf9e4269e5ac71036b}} 
+\index{code\_generator.h@{code\_generator.h}!generateITypeMachineCode@{generateITypeMachineCode}}
+\index{generateITypeMachineCode@{generateITypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateITypeMachineCode()}{generateITypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+IType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for an I-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_a4d83ed0d7311f94961ea578a9cab49a3}\label{code__generator_8h_a4d83ed0d7311f94961ea578a9cab49a3}} 
+\index{code\_generator.h@{code\_generator.h}!generateJTypeMachineCode@{generateJTypeMachineCode}}
+\index{generateJTypeMachineCode@{generateJTypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateJTypeMachineCode()}{generateJTypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+JType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for a J-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_a6f7749a29a7a4e5ada5a22470884be96}\label{code__generator_8h_a6f7749a29a7a4e5ada5a22470884be96}} 
+\index{code\_generator.h@{code\_generator.h}!generateMachineCode@{generateMachineCode}}
+\index{generateMachineCode@{generateMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateMachineCode()}{generateMachineCode()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ generate\+Machine\+Code (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$$>$ \&}]{Intermediate\+Code }\end{DoxyParamCaption})}
+
+
+
+Generates machine code from a vector of intermediate code blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Intermediate\+Code} & A vector of pairs containing \mbox{\hyperlink{structICUnit}{ICUnit}} and a boolean flag. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings representing the machine code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_a26885a8328028146f574ce756b46cd9f}\label{code__generator_8h_a26885a8328028146f574ce756b46cd9f}} 
+\index{code\_generator.h@{code\_generator.h}!generateRTypeMachineCode@{generateRTypeMachineCode}}
+\index{generateRTypeMachineCode@{generateRTypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateRTypeMachineCode()}{generateRTypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+RType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for an R-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_ad4434c5d31ea2c24db78c811b8b6cb2b}\label{code__generator_8h_ad4434c5d31ea2c24db78c811b8b6cb2b}} 
+\index{code\_generator.h@{code\_generator.h}!generateSTypeMachineCode@{generateSTypeMachineCode}}
+\index{generateSTypeMachineCode@{generateSTypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateSTypeMachineCode()}{generateSTypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+SType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for an S-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_ad6596bd8906b00ddbffeb49faa4016b5}\label{code__generator_8h_ad6596bd8906b00ddbffeb49faa4016b5}} 
+\index{code\_generator.h@{code\_generator.h}!generateUTypeMachineCode@{generateUTypeMachineCode}}
+\index{generateUTypeMachineCode@{generateUTypeMachineCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{generateUTypeMachineCode()}{generateUTypeMachineCode()}}
+{\footnotesize\ttfamily std\+::string generate\+UType\+Machine\+Code (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{block }\end{DoxyParamCaption})}
+
+
+
+Generates machine code for a U-\/type instruction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & The \mbox{\hyperlink{structICUnit}{ICUnit}} representing the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The machine code string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{code__generator_8h_add0059bcf4bc90896326c8d058d08237}\label{code__generator_8h_add0059bcf4bc90896326c8d058d08237}} 
+\index{code\_generator.h@{code\_generator.h}!printIntermediateCode@{printIntermediateCode}}
+\index{printIntermediateCode@{printIntermediateCode}!code\_generator.h@{code\_generator.h}}
+\doxysubsubsection{\texorpdfstring{printIntermediateCode()}{printIntermediateCode()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ print\+Intermediate\+Code (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$$>$ \&}]{Intermediate\+Code }\end{DoxyParamCaption})}
+
+
+
+Prints the intermediate code to a vector of strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Intermediate\+Code} & A vector of pairs containing \mbox{\hyperlink{structICUnit}{ICUnit}} and a boolean flag. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings representing the intermediate code. 
+\end{DoxyReturn}

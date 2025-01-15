@@ -1,11 +1,112 @@
 /**
- * File Name: registers.cpp
- * Author: Vishank Singh
- * Github: https://github.com/VishankSingh
+ * @file registers.cpp
+ * @brief Contains the implementation of the RegisterFile class and related
+ * @author Vishank Singh, https://github.com/VishankSingh
  */
 
 #include "registers.h"
 #include "pch.h"
+
+RegisterFile::RegisterFile() = default;
+
+void RegisterFile::reset() {
+    gpr_.fill(0);
+    fpr_.fill(0.0);
+    for (auto& vec : vr_) vec.fill(0);
+}
+
+int64_t RegisterFile::readGPR(size_t reg) const {
+    if (reg >= NUM_GPR) throw std::out_of_range("Invalid GPR index");
+    return gpr_[reg];
+}
+
+void RegisterFile::writeGPR(size_t reg, int64_t value) {
+    if (reg >= NUM_GPR) throw std::out_of_range("Invalid GPR index");
+    gpr_[reg] = value;
+}
+
+double RegisterFile::readFPR(size_t reg) const {
+    if (reg >= NUM_FPR) throw std::out_of_range("Invalid FPR index");
+    return fpr_[reg];
+}
+
+void RegisterFile::writeFPR(size_t reg, double value) {
+    if (reg >= NUM_FPR) throw std::out_of_range("Invalid FPR index");
+    fpr_[reg] = value;
+}
+
+std::array<uint64_t, 8> RegisterFile::readVR(size_t reg) const {
+    if (reg >= NUM_VR) throw std::out_of_range("Invalid VR index");
+    return vr_[reg];
+}
+
+void RegisterFile::writeVR(size_t reg, const std::array<uint64_t, 8>& value) {
+    if (reg >= NUM_VR) throw std::out_of_range("Invalid VR index");
+    vr_[reg] = value;
+}
+
+std::vector<int64_t> RegisterFile::getGPRValues() const {
+    return {gpr_.begin(), gpr_.end()};
+}
+
+std::vector<double> RegisterFile::getFPRValues() const {
+    return {fpr_.begin(), fpr_.end()};
+}
+
+std::vector<std::array<uint64_t, 8>> RegisterFile::getVRValues() const {
+    return vr_;
+}
+
+std::string RegisterFile::gprToString() const {
+    return formatRegisterValues(gpr_);
+}
+
+std::string RegisterFile::fprToString() const {
+    return formatRegisterValues(fpr_);
+}
+
+std::string RegisterFile::vrToString() const {
+    std::ostringstream oss;
+    for (size_t i = 0; i < vr_.size(); ++i) {
+        oss << "VR[" << i << "] : ";
+        for (const auto& val : vr_[i]) {
+            oss << std::hex << std::setfill('0') << std::setw(16) << val << " ";
+        }
+        oss << "\n";
+    }
+    return oss.str();
+}
+
+size_t RegisterFile::getRegisterCount(RegisterType type) {
+    switch (type) {
+        case RegisterType::INTEGER: return NUM_GPR;
+        case RegisterType::FLOATING_POINT: return NUM_FPR;
+        case RegisterType::VECTOR: return NUM_VR;
+        default: return 0;
+    }
+}
+
+std::string RegisterFile::getGPRName(size_t reg) {
+    return "GPR[" + std::to_string(reg) + "]";
+}
+
+std::string RegisterFile::getFPRName(size_t reg) {
+    return "FPR[" + std::to_string(reg) + "]";
+}
+
+std::string RegisterFile::getVRName(size_t reg) {
+    return "VR[" + std::to_string(reg) + "]";
+}
+
+template <typename T>
+std::string RegisterFile::formatRegisterValues(const std::array<T, NUM_GPR>& values) {
+    std::ostringstream oss;
+    for (size_t i = 0; i < values.size(); ++i) {
+        oss << "R[" << i << "] : " << values[i] << "\n";
+    }
+    return oss.str();
+}
+
 
 const std::unordered_set<std::string> valid_registers = {
         "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9",
@@ -119,7 +220,6 @@ const std::unordered_map<std::string, std::string> reg_alias_to_name = {
         {"fa6",  "fa6"},
 
 };
-
 
 bool isValidRegister(const std::string &reg) {
     return valid_registers.find(reg) != valid_registers.end();

@@ -1,0 +1,78 @@
+\hypertarget{errors_8cpp}{}\doxysection{src/assembler/errors.cpp File Reference}
+\label{errors_8cpp}\index{src/assembler/errors.cpp@{src/assembler/errors.cpp}}
+{\ttfamily \#include \char`\"{}errors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
+Include dependency graph for errors.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a7c1425e4280f14accb1ca6835b562347}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structSyntaxError}{Syntax\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a0b4f5c56c4b3269ea4dc91d743c924ac}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structUnexpectedTokenError}{Unexpected\+Token\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a64fad90e784a790f54e9950e9dde4088}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structImmediateOutOfRangeError}{Immediate\+Out\+Of\+Range\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a2465fce78d16fd21f0bfdf615ff69100}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structMisalignedImmediateError}{Misaligned\+Immediate\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a200560f3291852734629e64dbfade282}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structUnexpectedOperandError}{Unexpected\+Operand\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_a2652b803229e5331c3fbc2815cd73e2e}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structInvalidLabelRefError}{Invalid\+Label\+Ref\+Error}} \&error)
+\item 
+std\+::ostream \& \mbox{\hyperlink{errors_8cpp_ab33047f155b28f42f59c13371e0a2894}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structLabelRedefinitionError}{Label\+Redefinition\+Error}} \&error)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{errors_8cpp_a64fad90e784a790f54e9950e9dde4088}\label{errors_8cpp_a64fad90e784a790f54e9950e9dde4088}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structImmediateOutOfRangeError}{Immediate\+Out\+Of\+Range\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{errors_8cpp_a2652b803229e5331c3fbc2815cd73e2e}\label{errors_8cpp_a2652b803229e5331c3fbc2815cd73e2e}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structInvalidLabelRefError}{Invalid\+Label\+Ref\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{errors_8cpp_ab33047f155b28f42f59c13371e0a2894}\label{errors_8cpp_ab33047f155b28f42f59c13371e0a2894}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structLabelRedefinitionError}{Label\+Redefinition\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{errors_8cpp_a2465fce78d16fd21f0bfdf615ff69100}\label{errors_8cpp_a2465fce78d16fd21f0bfdf615ff69100}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structMisalignedImmediateError}{Misaligned\+Immediate\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{errors_8cpp_a7c1425e4280f14accb1ca6835b562347}\label{errors_8cpp_a7c1425e4280f14accb1ca6835b562347}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structSyntaxError}{Syntax\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Output stream. \\
+\hline
+{\em error} & The \mbox{\hyperlink{structSyntaxError}{Syntax\+Error}} to print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Modified output stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{errors_8cpp_a200560f3291852734629e64dbfade282}\label{errors_8cpp_a200560f3291852734629e64dbfade282}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structUnexpectedOperandError}{Unexpected\+Operand\+Error}} \&}]{error }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{errors_8cpp_a0b4f5c56c4b3269ea4dc91d743c924ac}\label{errors_8cpp_a0b4f5c56c4b3269ea4dc91d743c924ac}} 
+\index{errors.cpp@{errors.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!errors.cpp@{errors.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structUnexpectedTokenError}{Unexpected\+Token\+Error}} \&}]{error }\end{DoxyParamCaption})}
+

@@ -1,13 +1,17 @@
 .data
 bb: .dword 0x1234567890
 aa: .word 0x12345
+cc: .word -32
 
-.string "Hello, World!\n"
+gg: .string "Hello, World!\n"
 
 .text
 
 #lw x0, aa
+lw x10, aa
+ld x11, bb
 
+lw x12, gg
 nop
 
 add x0, x1, x2
@@ -21,10 +25,12 @@ sra x0, x1, x2
 slt x0, x1, x2
 sltu x0, x1, x2
 
+nop 
+add x0,x0,x0
+
 llll:
 
-lw x10, aa
-ld x11, bb
+
 
 main: 
 
@@ -32,17 +38,17 @@ fadd.s s0, s1, s2
 
 addi x0, x1, 1
 xori x0, x1, 1
-ori x0, x, 1
+ori x0, x1, 1
 andi x0, x1, 1
-slli x0, x1, 1    fsad
+slli x0, x1, 1
 srli x0, x1, 1
 srai x0, x1, 1
 slti x0, x1, 1
 sltiu x0, x1, 1
 
 
-fdsff
-jal x1, lfol
+fdsff:
+jal x1, lol
 lol:
 
 #

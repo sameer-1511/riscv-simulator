@@ -1,0 +1,260 @@
+\hypertarget{classMemory}{}\doxysection{Memory Class Reference}
+\label{classMemory}\index{Memory@{Memory}}
+
+
+Represents a memory management system with dynamic memory block allocation.  
+
+
+
+
+{\ttfamily \#include $<$memory.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMemory_aed904e332f4f45cce80089e032d81fae}{Memory}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classMemory}{Memory}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMemory_a2b517b46ae4b070d9f6a7b6d9efeb7a1}{$\sim$\+Memory}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classMemory}{Memory}} object. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classMemory_af6da51b92a4f9af3c0c02b16e239b9ab}{read}} (uint64\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads a single byte from the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_a23e394228e46d803d654abf75a5ba7c0}{write}} (uint64\+\_\+t address, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Writes a single byte to the given memory address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classMemory_a68c4ae8119f147e2f0eb016f64deee62}{read\+Byte}} (uint64\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads a single byte from the given memory address. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{classMemory_acc9da0ef6cc9e35d77c8c6d3dbb756fe}{read\+Half\+Word}} (uint64\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads a 16-\/bit halfword from the given memory address. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classMemory_a8f21815efc9f437a8011f163aad7f260}{read\+Word}} (uint64\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads a 32-\/bit word from the given memory address. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classMemory_acef0869cc61471f006f8eb857f486ba1}{read\+Double\+Word}} (uint64\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Reads a 64-\/bit double word from the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_a0cf67c6c6f6cc68f639a631b630c2f1e}{write\+Byte}} (uint64\+\_\+t address, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Writes a single byte to the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_af566a2a9b918da9b517265f0a9f3d9de}{write\+Half\+Word}} (uint64\+\_\+t address, uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Writes a 16-\/bit halfword to the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_af597f709d0d312cdf49b4ab959ba8cdd}{write\+Word}} (uint64\+\_\+t address, uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Writes a 32-\/bit word to the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_a6646b6581734228cf3e5efec556c7eb1}{write\+Double\+Word}} (uint64\+\_\+t address, uint64\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Writes a 64-\/bit double word to the given memory address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMemory_a3ecb28f33d2f59ed261390f67552af99}{print\+Memory\+Usage}} () const
+\begin{DoxyCompactList}\small\item\em Prints the current memory usage to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a memory management system with dynamic memory block allocation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMemory_aed904e332f4f45cce80089e032d81fae}\label{classMemory_aed904e332f4f45cce80089e032d81fae}} 
+\index{Memory@{Memory}!Memory@{Memory}}
+\index{Memory@{Memory}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{Memory()}{Memory()}}
+{\footnotesize\ttfamily Memory\+::\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Constructs a \mbox{\hyperlink{classMemory}{Memory}} object. 
+
+\mbox{\Hypertarget{classMemory_a2b517b46ae4b070d9f6a7b6d9efeb7a1}\label{classMemory_a2b517b46ae4b070d9f6a7b6d9efeb7a1}} 
+\index{Memory@{Memory}!````~Memory@{$\sim$Memory}}
+\index{````~Memory@{$\sim$Memory}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{$\sim$Memory()}{~Memory()}}
+{\footnotesize\ttfamily Memory\+::$\sim$\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destroys the \mbox{\hyperlink{classMemory}{Memory}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMemory_a3ecb28f33d2f59ed261390f67552af99}\label{classMemory_a3ecb28f33d2f59ed261390f67552af99}} 
+\index{Memory@{Memory}!printMemoryUsage@{printMemoryUsage}}
+\index{printMemoryUsage@{printMemoryUsage}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{printMemoryUsage()}{printMemoryUsage()}}
+{\footnotesize\ttfamily void Memory\+::print\+Memory\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the current memory usage to the console. 
+
+\mbox{\Hypertarget{classMemory_af6da51b92a4f9af3c0c02b16e239b9ab}\label{classMemory_af6da51b92a4f9af3c0c02b16e239b9ab}} 
+\index{Memory@{Memory}!read@{read}}
+\index{read@{read}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily uint8\+\_\+t Memory\+::read (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads a single byte from the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The byte value at the given address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemory_a68c4ae8119f147e2f0eb016f64deee62}\label{classMemory_a68c4ae8119f147e2f0eb016f64deee62}} 
+\index{Memory@{Memory}!readByte@{readByte}}
+\index{readByte@{readByte}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{readByte()}{readByte()}}
+{\footnotesize\ttfamily uint8\+\_\+t Memory\+::read\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads a single byte from the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The byte value at the given address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemory_acef0869cc61471f006f8eb857f486ba1}\label{classMemory_acef0869cc61471f006f8eb857f486ba1}} 
+\index{Memory@{Memory}!readDoubleWord@{readDoubleWord}}
+\index{readDoubleWord@{readDoubleWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{readDoubleWord()}{readDoubleWord()}}
+{\footnotesize\ttfamily uint64\+\_\+t Memory\+::read\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads a 64-\/bit double word from the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 64-\/bit value at the given address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemory_acc9da0ef6cc9e35d77c8c6d3dbb756fe}\label{classMemory_acc9da0ef6cc9e35d77c8c6d3dbb756fe}} 
+\index{Memory@{Memory}!readHalfWord@{readHalfWord}}
+\index{readHalfWord@{readHalfWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{readHalfWord()}{readHalfWord()}}
+{\footnotesize\ttfamily uint16\+\_\+t Memory\+::read\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads a 16-\/bit halfword from the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 16-\/bit value at the given address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemory_a8f21815efc9f437a8011f163aad7f260}\label{classMemory_a8f21815efc9f437a8011f163aad7f260}} 
+\index{Memory@{Memory}!readWord@{readWord}}
+\index{readWord@{readWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{readWord()}{readWord()}}
+{\footnotesize\ttfamily uint32\+\_\+t Memory\+::read\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Reads a 32-\/bit word from the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 32-\/bit value at the given address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMemory_a23e394228e46d803d654abf75a5ba7c0}\label{classMemory_a23e394228e46d803d654abf75a5ba7c0}} 
+\index{Memory@{Memory}!write@{write}}
+\index{write@{write}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Memory\+::write (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes a single byte to the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to write to. \\
+\hline
+{\em value} & The byte value to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMemory_a0cf67c6c6f6cc68f639a631b630c2f1e}\label{classMemory_a0cf67c6c6f6cc68f639a631b630c2f1e}} 
+\index{Memory@{Memory}!writeByte@{writeByte}}
+\index{writeByte@{writeByte}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{writeByte()}{writeByte()}}
+{\footnotesize\ttfamily void Memory\+::write\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes a single byte to the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to write to. \\
+\hline
+{\em value} & The byte value to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMemory_a6646b6581734228cf3e5efec556c7eb1}\label{classMemory_a6646b6581734228cf3e5efec556c7eb1}} 
+\index{Memory@{Memory}!writeDoubleWord@{writeDoubleWord}}
+\index{writeDoubleWord@{writeDoubleWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{writeDoubleWord()}{writeDoubleWord()}}
+{\footnotesize\ttfamily void Memory\+::write\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint64\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes a 64-\/bit double word to the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to write to. \\
+\hline
+{\em value} & The 64-\/bit value to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMemory_af566a2a9b918da9b517265f0a9f3d9de}\label{classMemory_af566a2a9b918da9b517265f0a9f3d9de}} 
+\index{Memory@{Memory}!writeHalfWord@{writeHalfWord}}
+\index{writeHalfWord@{writeHalfWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{writeHalfWord()}{writeHalfWord()}}
+{\footnotesize\ttfamily void Memory\+::write\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes a 16-\/bit halfword to the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to write to. \\
+\hline
+{\em value} & The 16-\/bit value to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMemory_af597f709d0d312cdf49b4ab959ba8cdd}\label{classMemory_af597f709d0d312cdf49b4ab959ba8cdd}} 
+\index{Memory@{Memory}!writeWord@{writeWord}}
+\index{writeWord@{writeWord}!Memory@{Memory}}
+\doxysubsubsection{\texorpdfstring{writeWord()}{writeWord()}}
+{\footnotesize\ttfamily void Memory\+::write\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Writes a 32-\/bit word to the given memory address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The memory address to write to. \\
+\hline
+{\em value} & The 32-\/bit value to write. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{memory_8h}{memory.\+h}}\item 
+src/\mbox{\hyperlink{memory_8cpp}{memory.\+cpp}}\end{DoxyCompactItemize}

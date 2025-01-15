@@ -1,12 +1,12 @@
+/** @cond DOXYGEN_IGNORE */
 /**
  * File Name: instructions.cpp
  * Author: Vishank Singh
  * Github: https://github.com/VishankSingh
  */
+/** @endcond */
 
 #include "instructions.h"
-
-// TODO: add all valid instructions
 
 static const std::unordered_set<std::string> valid_instructions = {
         "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
@@ -21,7 +21,7 @@ static const std::unordered_set<std::string> valid_instructions = {
         "ecall", "ebreak",
 
         "la", "nop", "li", "mv", "not", "neg", "negw", 
-        "sext", "seqz", "snez", "sltz", "sgtz",
+        "sext.w", "seqz", "snez", "sltz", "sgtz",
         "beqz", "bnez", "blez", "bgez", "bltz", "bgtz",
         "bgt", "ble", "bgtu", "bleu",
         "j", "jr", "ret", "call", "tail", "fence", "fence_i",
@@ -425,62 +425,88 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 };
 
 
-bool isValidInstruction(const std::string &name) {
-    return valid_instructions.find(name) != valid_instructions.end();
+bool isValidInstruction(const std::string &instruction) {
+    return valid_instructions.find(instruction) != valid_instructions.end();
 }
 
 
-bool isValidRTypeInstruction(const std::string &name) {
-    return RTypeInstructions.find(name) != RTypeInstructions.end();
+bool isValidRTypeInstruction(const std::string &instruction) {
+    return RTypeInstructions.find(instruction) != RTypeInstructions.end();
 }
 
-bool isValidITypeInstruction(const std::string &name) {
-    return ITypeInstructions.find(name) != ITypeInstructions.end();
+bool isValidITypeInstruction(const std::string &instruction) {
+    return ITypeInstructions.find(instruction) != ITypeInstructions.end();
 }
 
-bool isValidSTypeInstruction(const std::string &name) {
-    return STypeInstructions.find(name) != STypeInstructions.end();
+bool isValidSTypeInstruction(const std::string &instruction) {
+    return STypeInstructions.find(instruction) != STypeInstructions.end();
 }
 
-bool isValidBTypeInstruction(const std::string &name) {
-    return BTypeInstructions.find(name) != BTypeInstructions.end();
+bool isValidBTypeInstruction(const std::string &instruction) {
+    return BTypeInstructions.find(instruction) != BTypeInstructions.end();
 }
 
-bool isValidUTypeInstruction(const std::string &name) {
-    return UTypeInstructions.find(name) != UTypeInstructions.end();
+bool isValidUTypeInstruction(const std::string &instruction) {
+    return UTypeInstructions.find(instruction) != UTypeInstructions.end();
 }
 
-bool isValidJTypeInstruction(const std::string &name) {
-    return JTypeInstructions.find(name) != JTypeInstructions.end();
+bool isValidJTypeInstruction(const std::string &instruction) {
+    return JTypeInstructions.find(instruction) != JTypeInstructions.end();
 }
 
-std::string getExpectedSyntaxes(const std::string &name) {
-    std::string syntaxes = "";
-    bool first = true; // Flag to handle the first iteration
-    for (const auto &syntax : instruction_syntax_map[name]) {
-        if (!first) {
+std::string getExpectedSyntaxes(const std::string &opcode) {
+    static const std::unordered_map<std::string, std::string> opcodeSyntaxMap = {
+        {"nop", "nop"},
+        {"li", "li <reg>, <imm>"},
+        {"mv", "mv <reg>, <reg>"},
+        {"not", "not <reg>, <reg>"},
+        {"neg", "neg <reg>, <reg>"},
+        {"seqz", "seqz <reg>, <reg>"},
+        {"snez", "snez <reg>, <reg>"},
+        {"sltz", "sltz <reg>, <reg>"},
+        {"sgtz", "sgtz <reg>, <reg>"},
+        {"beqz", "beqz <reg>, <text label>"},
+        {"bnez", "bnez <reg>, <text label>"},
+        {"blez", "blez <reg>, <text label>"},
+        {"bgez", "bgez <reg>, <text label>"},
+        {"bltz", "bltz <reg>, <text label>"},
+        {"bgtz", "bgtz <reg>, <text label>"},
+        {"j", "j <text label>"},
+        {"jal", "jal <text label>"},
+        {"jr", "jr <reg>"},
+        {"jalr", "jalr <reg>"},
+        {"la", "la <reg>, <text label>"},
+        {"call", "call <text label>"},
+        {"tail", "tail <text label>"},
+        {"fence", "fence"}
+    };
+
+    auto opcodeIt = opcodeSyntaxMap.find(opcode);
+    if (opcodeIt != opcodeSyntaxMap.end()) {
+        return opcodeIt->second;
+    }
+
+    static const std::unordered_map<SyntaxType, std::string> syntaxTypeToString = {
+        {SyntaxType::O, "O"},
+        {SyntaxType::O_R_C_R_C_R, "<reg>, <reg>, <reg>"},
+        {SyntaxType::O_R_C_R_C_I, "<reg>, <reg>, <imm>"},
+        {SyntaxType::O_R_C_R_C_IL, "<reg>, <reg>, <text label>"},
+        {SyntaxType::O_R_C_R_C_DL, "<reg>, <reg>, <data label>"},
+        {SyntaxType::O_R_C_I_LP_R_RP, "<reg>, <imm>(<reg>)"},
+        {SyntaxType::O_R_C_I, "<reg>, <imm>"},
+        {SyntaxType::O_R_C_IL, "<reg>, <text label>"},
+        {SyntaxType::O_R_C_DL, "<reg>, <data label>"}
+    };
+
+    std::string syntaxes;
+    const auto &syntaxList = instruction_syntax_map[opcode];
+    for (size_t i = 0; i < syntaxList.size(); ++i) {
+        if (i > 0) {
             syntaxes += " or ";
         }
-        first = false;
-
-        if (syntax == SyntaxType::O) {
-            syntaxes += "O";
-        } else if (syntax == SyntaxType::O_R_C_R_C_R) {
-            syntaxes += (name + " <reg>, <reg>, <reg>");
-        } else if (syntax == SyntaxType::O_R_C_R_C_I) {
-            syntaxes += (name + " <reg>, <reg>, <imm>");
-        } else if (syntax == SyntaxType::O_R_C_R_C_IL) {
-            syntaxes += (name + " <reg>, <reg>, <text label>");
-        } else if (syntax == SyntaxType::O_R_C_R_C_DL) {
-            syntaxes += (name + " <reg>, <reg>, <data label>");
-        } else if (syntax == SyntaxType::O_R_C_I_LP_R_RP) {
-            syntaxes += (name + " <reg>, <imm>(<reg>)");
-        } else if (syntax == SyntaxType::O_R_C_I) {
-            syntaxes += (name + " <reg>, <imm>");
-        } else if (syntax == SyntaxType::O_R_C_IL) {
-            syntaxes += (name + " <reg>, <text label>");
-        } else if (syntax == SyntaxType::O_R_C_DL) {
-            syntaxes += (name + " <reg>, <data label>");
+        auto syntaxIt = syntaxTypeToString.find(syntaxList[i]);
+        if (syntaxIt != syntaxTypeToString.end()) {
+            syntaxes += opcode + " " + syntaxIt->second;
         }
     }
 

@@ -1,6 +1,8 @@
 CC = g++
-CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -pedantic -std=c++17 -g 
+CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -pedantic -std=c++17 -g -O3
 LDFLAGS = -lm
+
+ASAN_FLAGS = -fsanitize=address
 
 # -Werror
 
@@ -40,6 +42,11 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@printf "$(YELLOW)[Compiling] %s$(NC)\n" "$<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+asan: CFLAGS += $(ASAN_FLAGS)
+asan: LDFLAGS += $(ASAN_FLAGS)
+asan: $(TARGET)
+.PHONY: asan
+
 clean:
 	@rm -rf $(BUILD_DIR)
 	@printf "$(RED)[Cleaned]$(NC)\n"
@@ -57,4 +64,7 @@ valgrind: $(TARGET)
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes $(TARGET)
 .PHONY: valgrind
 
+docs:
+	@doxygen Doxyfile
+.PHONY: docs
 

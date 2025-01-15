@@ -1,0 +1,338 @@
+\hypertarget{instructions_8cpp}{}\doxysection{src/assembler/instructions.cpp File Reference}
+\label{instructions_8cpp}\index{src/assembler/instructions.cpp@{src/assembler/instructions.cpp}}
+{\ttfamily \#include \char`\"{}instructions.\+h\char`\"{}}\newline
+Include dependency graph for instructions.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{instructions_8cpp_a08ec7110d476316c78a3bdc71b14b37c}{is\+Valid\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_ab29afe3b6a248d9cc3365e3fcce13934}{is\+Valid\+RType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given R-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_a6859e1c433fcca09321cd1cfca53e213}{is\+Valid\+IType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given I-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_af554c1c77849256be3d135e43b7062b6}{is\+Valid\+SType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given S-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_a01c5e465f1e1febdafb011d5746abfdb}{is\+Valid\+BType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given B-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_ae7729cbfdf142ccc0b7ff80253c49aac}{is\+Valid\+UType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given U-\/type instruction is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{instructions_8cpp_a54a7c24fad2402344fd60a8178396510}{is\+Valid\+JType\+Instruction}} (const std\+::string \&instruction)
+\begin{DoxyCompactList}\small\item\em Validates if a given J-\/type instruction is valid. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{instructions_8cpp_afb96d63320633597bde5c5f9ac3e75ec}{get\+Expected\+Syntaxes}} (const std\+::string \&opcode)
+\begin{DoxyCompactList}\small\item\em Retrieves the expected syntax for a given opcode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structRTypeInstructionEncoding}{RType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_a7f264fe525a1f21f16610edf99a3f8ab}{R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structITypeInstructionEncoding}{IType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_a3247772834bb49f9da804813a16bf24a}{I\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structSTypeInstructionEncoding}{SType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_a6d742e03626b59b7701736fa9884f7fe}{S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structBTypeInstructionEncoding}{BType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_ab9d5ce36aeb8fc49efa3c50be13773e4}{B\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structUTypeInstructionEncoding}{UType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_afeb75044c22da976d65e09f23c763ff0}{U\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structJTypeInstructionEncoding}{JType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_a665a25cc869a4aeb05bf16befa3373d0}{J\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}} $>$ \mbox{\hyperlink{instructions_8cpp_a1cf7ac5cb234065b6d840a8904ff0281}{instruction\+\_\+encoding\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their corresponding encoding. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}} $>$ $>$ \mbox{\hyperlink{instructions_8cpp_a8e401697b6859c168afc4ed643ac238c}{instruction\+\_\+syntax\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their expected syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{instructions_8cpp_afb96d63320633597bde5c5f9ac3e75ec}\label{instructions_8cpp_afb96d63320633597bde5c5f9ac3e75ec}} 
+\index{instructions.cpp@{instructions.cpp}!getExpectedSyntaxes@{getExpectedSyntaxes}}
+\index{getExpectedSyntaxes@{getExpectedSyntaxes}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{getExpectedSyntaxes()}{getExpectedSyntaxes()}}
+{\footnotesize\ttfamily std\+::string get\+Expected\+Syntaxes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{opcode }\end{DoxyParamCaption})}
+
+
+
+Retrieves the expected syntax for a given opcode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcode} & The opcode of the instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the expected syntax of the instruction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_a01c5e465f1e1febdafb011d5746abfdb}\label{instructions_8cpp_a01c5e465f1e1febdafb011d5746abfdb}} 
+\index{instructions.cpp@{instructions.cpp}!isValidBTypeInstruction@{isValidBTypeInstruction}}
+\index{isValidBTypeInstruction@{isValidBTypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidBTypeInstruction()}{isValidBTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+BType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given B-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The B-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_a08ec7110d476316c78a3bdc71b14b37c}\label{instructions_8cpp_a08ec7110d476316c78a3bdc71b14b37c}} 
+\index{instructions.cpp@{instructions.cpp}!isValidInstruction@{isValidInstruction}}
+\index{isValidInstruction@{isValidInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidInstruction()}{isValidInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_a6859e1c433fcca09321cd1cfca53e213}\label{instructions_8cpp_a6859e1c433fcca09321cd1cfca53e213}} 
+\index{instructions.cpp@{instructions.cpp}!isValidITypeInstruction@{isValidITypeInstruction}}
+\index{isValidITypeInstruction@{isValidITypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidITypeInstruction()}{isValidITypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+IType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given I-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The I-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_a54a7c24fad2402344fd60a8178396510}\label{instructions_8cpp_a54a7c24fad2402344fd60a8178396510}} 
+\index{instructions.cpp@{instructions.cpp}!isValidJTypeInstruction@{isValidJTypeInstruction}}
+\index{isValidJTypeInstruction@{isValidJTypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidJTypeInstruction()}{isValidJTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+JType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given J-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The J-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_ab29afe3b6a248d9cc3365e3fcce13934}\label{instructions_8cpp_ab29afe3b6a248d9cc3365e3fcce13934}} 
+\index{instructions.cpp@{instructions.cpp}!isValidRTypeInstruction@{isValidRTypeInstruction}}
+\index{isValidRTypeInstruction@{isValidRTypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidRTypeInstruction()}{isValidRTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+RType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Validates if a given R-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The R-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_af554c1c77849256be3d135e43b7062b6}\label{instructions_8cpp_af554c1c77849256be3d135e43b7062b6}} 
+\index{instructions.cpp@{instructions.cpp}!isValidSTypeInstruction@{isValidSTypeInstruction}}
+\index{isValidSTypeInstruction@{isValidSTypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidSTypeInstruction()}{isValidSTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+SType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given S-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The S-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{instructions_8cpp_ae7729cbfdf142ccc0b7ff80253c49aac}\label{instructions_8cpp_ae7729cbfdf142ccc0b7ff80253c49aac}} 
+\index{instructions.cpp@{instructions.cpp}!isValidUTypeInstruction@{isValidUTypeInstruction}}
+\index{isValidUTypeInstruction@{isValidUTypeInstruction}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidUTypeInstruction()}{isValidUTypeInstruction()}}
+{\footnotesize\ttfamily bool is\+Valid\+UType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+
+
+
+Validates if a given U-\/type instruction is valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instruction} & The U-\/type instruction string to validate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the instruction is valid, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{instructions_8cpp_ab9d5ce36aeb8fc49efa3c50be13773e4}\label{instructions_8cpp_ab9d5ce36aeb8fc49efa3c50be13773e4}} 
+\index{instructions.cpp@{instructions.cpp}!B\_type\_instruction\_encoding\_map@{B\_type\_instruction\_encoding\_map}}
+\index{B\_type\_instruction\_encoding\_map@{B\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{B\_type\_instruction\_encoding\_map}{B\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structBTypeInstructionEncoding}{BType\+Instruction\+Encoding}}$>$ B\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}beq"{}},  \{0b1100011, 0b000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}bne"{}},  \{0b1100011, 0b001\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}blt"{}},  \{0b1100011, 0b100\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}bge"{}},  \{0b1100011, 0b101\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}bltu"{}}, \{0b1100011, 0b110\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}bgeu"{}}, \{0b1100011, 0b111\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{instructions_8cpp_a3247772834bb49f9da804813a16bf24a}\label{instructions_8cpp_a3247772834bb49f9da804813a16bf24a}} 
+\index{instructions.cpp@{instructions.cpp}!I\_type\_instruction\_encoding\_map@{I\_type\_instruction\_encoding\_map}}
+\index{I\_type\_instruction\_encoding\_map@{I\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{I\_type\_instruction\_encoding\_map}{I\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structITypeInstructionEncoding}{IType\+Instruction\+Encoding}}$>$ I\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}addi"{}},  \{0b0010011, 0b000, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}xori"{}},  \{0b0010011, 0b100, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}ori"{}},   \{0b0010011, 0b110, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}andi"{}},  \{0b0010011, 0b111, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}slli"{}},  \{0b0010011, 0b001, 0b000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sltiu"{}}, \{0b0010011, 0b011, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}srli"{}},  \{0b0010011, 0b101, 0b000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}srai"{}},  \{0b0010011, 0b101, 0b010000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}slti"{}},  \{0b0010011, 0b010, std::nullopt\}\}, }
+\DoxyCodeLine{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}addiw"{}}, \{0b0011011, 0b000, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}slliw"{}}, \{0b0011011, 0b001, 0b000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}srliw"{}}, \{0b0011011, 0b101, 0b000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sraiw"{}}, \{0b0011011, 0b101, 0b010000\}\}, }
+\DoxyCodeLine{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lh"{}},    \{0b0000011, 0b001, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lw"{}},    \{0b0000011, 0b010, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lb"{}},    \{0b0000011, 0b000, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}ld"{}},    \{0b0000011, 0b011, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lbu"{}},   \{0b0000011, 0b100, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lhu"{}},   \{0b0000011, 0b101, std::nullopt\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lwu"{}},   \{0b0000011, 0b110, std::nullopt\}\}, }
+\DoxyCodeLine{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}jalr"{}},  \{0b1100111, 0b000, std::nullopt\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{instructions_8cpp_a1cf7ac5cb234065b6d840a8904ff0281}\label{instructions_8cpp_a1cf7ac5cb234065b6d840a8904ff0281}} 
+\index{instructions.cpp@{instructions.cpp}!instruction\_encoding\_map@{instruction\_encoding\_map}}
+\index{instruction\_encoding\_map@{instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{instruction\_encoding\_map}{instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structInstructionEncoding}{Instruction\+Encoding}}$>$ instruction\+\_\+encoding\+\_\+map}
+
+
+
+A map that associates instruction names with their corresponding encoding. 
+
+This map stores the encoding details for various instructions, indexed by their names. \mbox{\Hypertarget{instructions_8cpp_a8e401697b6859c168afc4ed643ac238c}\label{instructions_8cpp_a8e401697b6859c168afc4ed643ac238c}} 
+\index{instructions.cpp@{instructions.cpp}!instruction\_syntax\_map@{instruction\_syntax\_map}}
+\index{instruction\_syntax\_map@{instruction\_syntax\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{instruction\_syntax\_map}{instruction\_syntax\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{instructions_8h_a5384e121bfc969afb98083be9f7bcc12}{Syntax\+Type}}$>$ $>$ instruction\+\_\+syntax\+\_\+map}
+
+
+
+A map that associates instruction names with their expected syntax. 
+
+This map stores the expected syntax for various instructions, indexed by their names. \mbox{\Hypertarget{instructions_8cpp_a665a25cc869a4aeb05bf16befa3373d0}\label{instructions_8cpp_a665a25cc869a4aeb05bf16befa3373d0}} 
+\index{instructions.cpp@{instructions.cpp}!J\_type\_instruction\_encoding\_map@{J\_type\_instruction\_encoding\_map}}
+\index{J\_type\_instruction\_encoding\_map@{J\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{J\_type\_instruction\_encoding\_map}{J\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structJTypeInstructionEncoding}{JType\+Instruction\+Encoding}}$>$ J\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}jal"{}}, \{0b1101111\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{instructions_8cpp_a7f264fe525a1f21f16610edf99a3f8ab}\label{instructions_8cpp_a7f264fe525a1f21f16610edf99a3f8ab}} 
+\index{instructions.cpp@{instructions.cpp}!R\_type\_instruction\_encoding\_map@{R\_type\_instruction\_encoding\_map}}
+\index{R\_type\_instruction\_encoding\_map@{R\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{R\_type\_instruction\_encoding\_map}{R\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structRTypeInstructionEncoding}{RType\+Instruction\+Encoding}}$>$ R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}add"{}},  \{0b0110011, 0b000, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sub"{}},  \{0b0110011, 0b000, 0b0100000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}xor"{}},  \{0b0110011, 0b100, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}or"{}},   \{0b0110011, 0b110, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}and"{}},  \{0b0110011, 0b111, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sll"{}},  \{0b0110011, 0b001, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}srl"{}},  \{0b0110011, 0b101, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sra"{}},  \{0b0110011, 0b101, 0b0100000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}slt"{}},  \{0b0110011, 0b010, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sltu"{}}, \{0b0110011, 0b011, 0b0000000\}\}, }
+\DoxyCodeLine{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}addw"{}}, \{0b0111011, 0b000, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}subw"{}}, \{0b0111011, 0b000, 0b0100000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sllw"{}}, \{0b0111011, 0b001, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}srlw"{}}, \{0b0111011, 0b101, 0b0000000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sraw"{}}, \{0b0111011, 0b101, 0b0100000\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{instructions_8cpp_a6d742e03626b59b7701736fa9884f7fe}\label{instructions_8cpp_a6d742e03626b59b7701736fa9884f7fe}} 
+\index{instructions.cpp@{instructions.cpp}!S\_type\_instruction\_encoding\_map@{S\_type\_instruction\_encoding\_map}}
+\index{S\_type\_instruction\_encoding\_map@{S\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{S\_type\_instruction\_encoding\_map}{S\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structSTypeInstructionEncoding}{SType\+Instruction\+Encoding}}$>$ S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sb"{}}, \{0b0100011, 0b000\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sh"{}}, \{0b0100011, 0b001\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sw"{}}, \{0b0100011, 0b010\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}sd"{}}, \{0b0100011, 0b011\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{instructions_8cpp_afeb75044c22da976d65e09f23c763ff0}\label{instructions_8cpp_afeb75044c22da976d65e09f23c763ff0}} 
+\index{instructions.cpp@{instructions.cpp}!U\_type\_instruction\_encoding\_map@{U\_type\_instruction\_encoding\_map}}
+\index{U\_type\_instruction\_encoding\_map@{U\_type\_instruction\_encoding\_map}!instructions.cpp@{instructions.cpp}}
+\doxysubsubsection{\texorpdfstring{U\_type\_instruction\_encoding\_map}{U\_type\_instruction\_encoding\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structUTypeInstructionEncoding}{UType\+Instruction\+Encoding}}$>$ U\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}lui"{}},   \{0b0110111\}\}, }
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}auipc"{}}, \{0b0010111\}\}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
