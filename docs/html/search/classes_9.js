@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stypeinstructionencoding_243',['STypeInstructionEncoding',['../structSTypeInstructionEncoding.html',1,'']]],
-  ['syntaxerror_244',['SyntaxError',['../structSyntaxError.html',1,'']]]
+  ['stypeinstructionencoding_242',['STypeInstructionEncoding',['../structSTypeInstructionEncoding.html',1,'']]],
+  ['syntaxerror_243',['SyntaxError',['../structSyntaxError.html',1,'']]]
 ];

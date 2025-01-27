@@ -1,0 +1,6 @@
+<map id="src/registers.h" name="src/registers.h">
+<area shape="rect" id="node1" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="239,5,354,32"/>
+<area shape="rect" id="node2" href="$lexer_8cpp.html" title=" " alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node3" href="$parser_8cpp.html" title=" " alt="" coords="205,80,389,107"/>
+<area shape="rect" id="node4" href="$registers_8cpp.html" title="Contains the implementation of the RegisterFile class and related." alt="" coords="413,80,543,107"/>
+</map>

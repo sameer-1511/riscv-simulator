@@ -18,7 +18,7 @@ The \mbox{\hyperlink{classParser}{Parser}} class is responsible for parsing toke
 \begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classParser}{Parser}} instance. \end{DoxyCompactList}\item 
 const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \& \mbox{\hyperlink{classParser_a3013f3bc6bb73bffe54413d7d6e24d3c}{get\+Errors}} () const
 \begin{DoxyCompactList}\small\item\em Returns the list of parse errors. \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::pair$<$ int, uint64\+\_\+t $>$ $>$ \& \mbox{\hyperlink{classParser_a85f7fa03b02be478c607ff5a78e83168}{get\+Data\+Buffer}} ()
+std\+::vector$<$ std\+::variant$<$ uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string $>$ $>$ \& \mbox{\hyperlink{classParser_a3b9bb743ae7cb2c32871abc494509bcf}{get\+Data\+Buffer}} ()
 \begin{DoxyCompactList}\small\item\em Returns the data buffer. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$ $>$ \& \mbox{\hyperlink{classParser_ab107a7fe36c012612760c415b45ce30d}{get\+Intermediate\+Code}} () const
 \begin{DoxyCompactList}\small\item\em Returns the generated intermediate code. \end{DoxyCompactList}\item 
@@ -68,11 +68,11 @@ Destroys the \mbox{\hyperlink{classParser}{Parser}} instance.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classParser_a85f7fa03b02be478c607ff5a78e83168}\label{classParser_a85f7fa03b02be478c607ff5a78e83168}} 
+\mbox{\Hypertarget{classParser_a3b9bb743ae7cb2c32871abc494509bcf}\label{classParser_a3b9bb743ae7cb2c32871abc494509bcf}} 
 \index{Parser@{Parser}!getDataBuffer@{getDataBuffer}}
 \index{getDataBuffer@{getDataBuffer}!Parser@{Parser}}
 \doxysubsubsection{\texorpdfstring{getDataBuffer()}{getDataBuffer()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ int, uint64\+\_\+t $>$ $>$ \& Parser\+::get\+Data\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::variant$<$ uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string $>$ $>$ \& Parser\+::get\+Data\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 

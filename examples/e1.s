@@ -4,7 +4,6 @@ aa: .word 0x12345
 cc: .word -32
 
 gg: .string "Hello, World!\n"
-
 .text
 
 #lw x0, aa
@@ -48,8 +47,8 @@ sltiu x0, x1, 1
 
 
 fdsff:
-jal x1, lol
 lol:
+jal x1, 12
 
 #
 #lb x0, 0(x1)

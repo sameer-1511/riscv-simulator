@@ -9,6 +9,8 @@
 
 #include "../pch.h"
 
+namespace InstructionSet {
+
 /**
  * @brief Encodes the components of an instruction.
  * 
@@ -112,6 +114,7 @@ enum class SyntaxType {
     O_R_C_DL,           ///< Opcode register , data_label
     O_R_C_I_LP_R_RP,    ///< Opcode register , immediate , lparen , register , rparen
     O,                  ///< Opcode
+    PSEUDO              ///< Pseudo instruction
 };
 
 /**
@@ -185,12 +188,22 @@ bool isValidUTypeInstruction(const std::string &instruction);
 bool isValidJTypeInstruction(const std::string &instruction);
 
 /**
+ * @brief Validates if a given pseudo-instruction is valid.
+ * 
+ * @param instruction The pseudo-instruction string to validate.
+ * @return True if the pseudo-instruction is valid, false otherwise.
+ */
+bool isValidPseudoInstruction(const std::string &instruction);
+
+/**
  * @brief Retrieves the expected syntax for a given opcode.
  * 
  * @param opcode The opcode of the instruction.
  * @return A string representing the expected syntax of the instruction.
  */
 std::string getExpectedSyntaxes(const std::string &opcode);
+
+} // namespace InstructionSet
 
 
 #endif // INSTRUCTIONS_H

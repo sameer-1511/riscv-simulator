@@ -10,6 +10,8 @@
 
 #include "../pch.h"
 
+namespace Errors {
+
 std::ostream &operator<<(std::ostream &os, const SyntaxError &error) {
     os << error.filename << ":" << error.line_number << ":" << error.column_number << ": "
        << ANSI_code_red << "[ERROR]" << ANSI_code_reset << " "
@@ -100,3 +102,4 @@ std::ostream &operator<<(std::ostream &os, const LabelRedefinitionError &error) 
     return os;
 }
 
+} // namespace Errors

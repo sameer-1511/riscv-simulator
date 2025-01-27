@@ -6,8 +6,13 @@
 
 #include <gtest/gtest.h>
 
-#include "../src/memory.h"
-#include "../src/memory.cpp"
+#include "../src/vm/main_memory.h"
+#include "../src/vm/main_memory.cpp"
+
+#include "../src/globals.h"
+#include "../src/globals.cpp"
+#include "../src/config.h"
+#include "../src/config.cpp"
 
 
 // TODO: write tests for the Memory class
@@ -53,6 +58,32 @@ TEST(MemoryTest, ReadWriteHalfWordTest) {
     ASSERT_EQ(memory.readHalfWord(268435456), 4);
 
 }
+
+
+TEST(ConfigTest, GetKeyValueTest) {
+    std::string processor_type = vmConfig::INI::get("Execution", "processor_type");
+    std::string memory_size = vmConfig::INI::get("Memory", "memory_size");
+    ASSERT_EQ(processor_type, "single_cycle");
+    ASSERT_EQ(memory_size, "");
+}
+
+
+TEST(ConfigTest, SetKeyValueTest) {
+    vmConfig::INI::set("Execution", "hazard_detection", "false");
+    std::string hazard_detection_status = vmConfig::INI::get("Execution", "hazard_detection");
+    ASSERT_EQ(hazard_detection_status, "false");
+
+    vmConfig::INI::set("Cache", "cache_enabled", "false");
+    std::string cache_enabled = vmConfig::INI::get("Cache", "cache_enabled");
+    ASSERT_EQ(cache_enabled, "false");
+}
+
+TEST(ConfigTest, InvalidKeyValueTest) {
+    ASSERT_THROW(vmConfig::INI::get("NonExistentSection", "non_existent_key"), std::invalid_argument);
+    ASSERT_THROW(vmConfig::INI::set("NonExistentSection", "non_existent_key", "value"), std::invalid_argument);
+}
+
+
 
 
 

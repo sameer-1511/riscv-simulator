@@ -1,0 +1,9 @@
+<map id="src/assembler/code_generator.h" name="src/assembler/code_generator.h">
+<area shape="rect" id="node1" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="323,5,471,47"/>
+<area shape="rect" id="node2" href="$assembler_8h.html" title=" " alt="" coords="13,102,209,129"/>
+<area shape="rect" id="node4" href="$code__generator_8cpp.html" title=" " alt="" coords="233,95,381,136"/>
+<area shape="rect" id="node5" href="$parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="405,102,574,129"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title=" " alt="" coords="559,184,665,211"/>
+<area shape="rect" id="node3" href="$assembler_8cpp.html" title=" " alt="" coords="5,184,216,211"/>
+<area shape="rect" id="node6" href="$parser_8cpp.html" title=" " alt="" coords="351,184,535,211"/>
+</map>

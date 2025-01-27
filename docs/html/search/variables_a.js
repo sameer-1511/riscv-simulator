@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['opcode_404',['opcode',['../structICUnit.html#a713091fe83a24ddea9df6b0a8b0fdbda',1,'ICUnit::opcode()'],['../structInstructionEncoding.html#acd8bd96c3417aa2b197ef874d6a98aa1',1,'InstructionEncoding::opcode()'],['../structRTypeInstructionEncoding.html#a3ad5374d61feee4ea6eb266ed10411b6',1,'RTypeInstructionEncoding::opcode()'],['../structITypeInstructionEncoding.html#a072e244f21ae729db86b3c190eacea1b',1,'ITypeInstructionEncoding::opcode()'],['../structSTypeInstructionEncoding.html#a816a92c4d36d7119fbd4120f42e66c49',1,'STypeInstructionEncoding::opcode()'],['../structBTypeInstructionEncoding.html#a5b2f865a76cfe8f6948bec1404cdf0b6',1,'BTypeInstructionEncoding::opcode()'],['../structUTypeInstructionEncoding.html#a18821b81041b4014c5bc7baecca797c5',1,'UTypeInstructionEncoding::opcode()'],['../structJTypeInstructionEncoding.html#af5fd819f7a13fa1b01b0337a7332bdcb',1,'JTypeInstructionEncoding::opcode()'],['../structMExtensionInstructionEncoding.html#a938001017551f5f4a0246440b6b31450',1,'MExtensionInstructionEncoding::opcode()'],['../structFExtensionInstructionEncoding.html#ad676513e3c2d0c6e9cc5d3d531129db8',1,'FExtensionInstructionEncoding::opcode()']]]
+  ['r_5ftype_5finstruction_5fencoding_5fmap_405',['R_type_instruction_encoding_map',['../instructions_8cpp.html#a7f264fe525a1f21f16610edf99a3f8ab',1,'instructions.cpp']]],
+  ['rd_406',['rd',['../structICUnit.html#af75780644a57c1e020aa8f078f6146b6',1,'ICUnit']]],
+  ['reg_5falias_5fto_5fname_407',['reg_alias_to_name',['../registers_8cpp.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp'],['../registers_8h.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp']]],
+  ['rs1_408',['rs1',['../structICUnit.html#a0947022dbae029010b185b472ecc5cda',1,'ICUnit']]],
+  ['rs2_409',['rs2',['../structICUnit.html#ab296c54a4a476cee851afa50c0db21a0',1,'ICUnit']]]
 ];

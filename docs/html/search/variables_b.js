@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['r_5ftype_5finstruction_5fencoding_5fmap_405',['R_type_instruction_encoding_map',['../instructions_8cpp.html#a7f264fe525a1f21f16610edf99a3f8ab',1,'instructions.cpp']]],
-  ['rd_406',['rd',['../structICUnit.html#af75780644a57c1e020aa8f078f6146b6',1,'ICUnit']]],
-  ['reg_5falias_5fto_5fname_407',['reg_alias_to_name',['../registers_8cpp.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp'],['../registers_8h.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp']]],
-  ['rs1_408',['rs1',['../structICUnit.html#a0947022dbae029010b185b472ecc5cda',1,'ICUnit']]],
-  ['rs2_409',['rs2',['../structICUnit.html#ab296c54a4a476cee851afa50c0db21a0',1,'ICUnit']]]
+  ['s_5ftype_5finstruction_5fencoding_5fmap_410',['S_type_instruction_encoding_map',['../instructions_8cpp.html#a6d742e03626b59b7701736fa9884f7fe',1,'instructions.cpp']]],
+  ['sub_5fmessage_411',['sub_message',['../structSyntaxError.html#a0b769ff07016ae1d00586c944904e512',1,'SyntaxError::sub_message()'],['../structImmediateOutOfRangeError.html#a9d135ac2d92ae582adfae198c9669278',1,'ImmediateOutOfRangeError::sub_message()'],['../structMisalignedImmediateError.html#a917b1b805b057ce0ee96234c793ef598',1,'MisalignedImmediateError::sub_message()'],['../structUnexpectedOperandError.html#a4c3708b8a5404a3e690f9232b1cbbeea',1,'UnexpectedOperandError::sub_message()'],['../structInvalidLabelRefError.html#ac35644654fbc748a91adb83d8e130157',1,'InvalidLabelRefError::sub_message()'],['../structLabelRedefinitionError.html#a3621260c5457afb05ce02148cb6d68b4',1,'LabelRedefinitionError::sub_message()']]]
 ];

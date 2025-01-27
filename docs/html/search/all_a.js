@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['label_95',['label',['../structICUnit.html#a921f316aff42a88dd124f88c1c9b0c4d',1,'ICUnit']]],
-  ['label_96',['LABEL',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb',1,'tokens.h']]],
-  ['label_5fref_97',['LABEL_REF',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c',1,'tokens.h']]],
-  ['labelredefinitionerror_98',['LabelRedefinitionError',['../structLabelRedefinitionError.html#a880fec3f0b6ba196f6e078b554febe3a',1,'LabelRedefinitionError::LabelRedefinitionError()'],['../structLabelRedefinitionError.html',1,'LabelRedefinitionError']]],
-  ['lexer_99',['Lexer',['../classLexer.html',1,'Lexer'],['../classLexer.html#a34795506b1a97fc3776fcd6fcd9264cd',1,'Lexer::Lexer()']]],
-  ['lexer_2ecpp_100',['lexer.cpp',['../lexer_8cpp.html',1,'']]],
-  ['lexer_2eh_101',['lexer.h',['../lexer_8h.html',1,'']]],
-  ['line_102',['line',['../structParseError.html#a555bb159e539823c3a02804d1e5cbc6a',1,'ParseError']]],
-  ['line_5fnumber_103',['line_number',['../structUnexpectedOperandError.html#a4b5d21509aced7543dfa6545218bd224',1,'UnexpectedOperandError::line_number()'],['../structToken.html#ad06cb77d13e3a90614657da0eb7586d5',1,'Token::line_number()'],['../structLabelRedefinitionError.html#acbbe790986a07558e3b94da500e7651f',1,'LabelRedefinitionError::line_number()'],['../structInvalidLabelRefError.html#ad1baaefb25b087831c2c7d90f0ad42fd',1,'InvalidLabelRefError::line_number()'],['../structMisalignedImmediateError.html#a4a44eaed550a7ad12039fd4af79b7096',1,'MisalignedImmediateError::line_number()'],['../structImmediateOutOfRangeError.html#a03b5a704355547727e9030952692dc5c',1,'ImmediateOutOfRangeError::line_number()'],['../structUnexpectedTokenError.html#a00aceaeab70a9ab13981f26c74c01494',1,'UnexpectedTokenError::line_number()'],['../structSyntaxError.html#a3089d545ce8e46b9ba8d254842fb074f',1,'SyntaxError::line_number()'],['../structICUnit.html#a6d0abe84de5612ca74dc7ec11352a190',1,'ICUnit::line_number()']]],
-  ['line_5ftext_104',['line_text',['../structSyntaxError.html#ae410b226a26da9eff98796d7579378af',1,'SyntaxError::line_text()'],['../structUnexpectedTokenError.html#a03bdb3c2e3415ef5d6d2d37086feda93',1,'UnexpectedTokenError::line_text()'],['../structImmediateOutOfRangeError.html#abddd8aab445aa8c0ad65bb709c047f00',1,'ImmediateOutOfRangeError::line_text()'],['../structMisalignedImmediateError.html#a31ee55aa2e12347d3a25a0e91f8cda89',1,'MisalignedImmediateError::line_text()'],['../structUnexpectedOperandError.html#ad59715607abef12156d485cbf4781492',1,'UnexpectedOperandError::line_text()'],['../structInvalidLabelRefError.html#aa233334102a1684991f9d5d77c0eda8f',1,'InvalidLabelRefError::line_text()'],['../structLabelRedefinitionError.html#a5f3c5555425ae9993970f89788e4f4f0',1,'LabelRedefinitionError::line_text()']]],
-  ['lparen_105',['LPAREN',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286',1,'tokens.h']]]
+  ['main_104',['main',['../test__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_main.cpp'],['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp']]],
+  ['main_2ecpp_105',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main_2eh_106',['main.h',['../main_8h.html',1,'']]],
+  ['main_5fmessage_107',['main_message',['../structSyntaxError.html#a9c064e330b5cc93293bda3fd208159d5',1,'SyntaxError::main_message()'],['../structImmediateOutOfRangeError.html#af9a509f8ea365ff85d9cb5e5430daed8',1,'ImmediateOutOfRangeError::main_message()'],['../structMisalignedImmediateError.html#a87d4867630d76f4229d65730eff82a5e',1,'MisalignedImmediateError::main_message()'],['../structUnexpectedOperandError.html#ad79ecfccc13d92272af363134fb42b4b',1,'UnexpectedOperandError::main_message()'],['../structInvalidLabelRefError.html#add14c8efe24a203ff8a41d948a50e79b',1,'InvalidLabelRefError::main_message()'],['../structLabelRedefinitionError.html#a85d60823962a8c37a48d63c868b78b6c',1,'LabelRedefinitionError::main_message()']]],
+  ['memory_108',['Memory',['../classMemory.html',1,'Memory'],['../classMemory.html#aed904e332f4f45cce80089e032d81fae',1,'Memory::Memory()']]],
+  ['memory_2ecpp_109',['memory.cpp',['../memory_8cpp.html',1,'']]],
+  ['memory_2eh_110',['memory.h',['../memory_8h.html',1,'']]],
+  ['memoryblock_111',['MemoryBlock',['../structMemoryBlock.html',1,'MemoryBlock'],['../structMemoryBlock.html#a734af8678e5b969cfc2b10e3395c101a',1,'MemoryBlock::MemoryBlock()']]],
+  ['message_112',['message',['../structUnexpectedTokenError.html#a01937489ea3ae2398127c2113d9db822',1,'UnexpectedTokenError::message()'],['../structParseError.html#afe0253424394e0b21fa5c46562d3e2a5',1,'ParseError::message()']]],
+  ['mextensioninstructionencoding_113',['MExtensionInstructionEncoding',['../structMExtensionInstructionEncoding.html#a9052a4b68f710aa5e9c2ac5e39395332',1,'MExtensionInstructionEncoding::MExtensionInstructionEncoding()'],['../structMExtensionInstructionEncoding.html',1,'MExtensionInstructionEncoding']]],
+  ['misaligned_5fimmediate_114',['MISALIGNED_IMMEDIATE',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa71b8e49b5ac60a6d3468de1fa2b67932',1,'errors.h']]],
+  ['misaligned_5flabel_115',['MISALIGNED_LABEL',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aae654793b308eb6923f12cf695d6fb902',1,'errors.h']]],
+  ['misalignedimmediateerror_116',['MisalignedImmediateError',['../structMisalignedImmediateError.html#a7fe9131a8822a9bbc092d08acc9afb31',1,'MisalignedImmediateError::MisalignedImmediateError()'],['../structMisalignedImmediateError.html',1,'MisalignedImmediateError']]],
+  ['missing_5fcomma_117',['MISSING_COMMA',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aad747dec1e9ebdda3b5eba6ab9f3450d8',1,'errors.h']]],
+  ['missing_5flparen_118',['MISSING_LPAREN',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aae7feccc35303a919358574bb9873ec6d',1,'errors.h']]],
+  ['missing_5foperand_119',['MISSING_OPERAND',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa2dee638c1209e59a0584ec345d2469b5',1,'errors.h']]],
+  ['missing_5frparen_120',['MISSING_RPAREN',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa8cb50830806d95b68fe452830a94d51e',1,'errors.h']]]
 ];

@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['valid_5fregisters_204',['valid_registers',['../registers_8cpp.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp'],['../registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp']]],
-  ['value_205',['value',['../structToken.html#a4b7142147b8598f8e24c404928d9263b',1,'Token']]],
-  ['vector_206',['VECTOR',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e',1,'RegisterFile']]],
-  ['vm_2ecpp_207',['vm.cpp',['../vm_8cpp.html',1,'']]],
-  ['vm_2eh_208',['vm.h',['../vm_8h.html',1,'']]],
-  ['vrtostring_209',['vrToString',['../classRegisterFile.html#a28749e3b715ebd11ad2814d735cfb5b1',1,'RegisterFile']]]
+  ['write_210',['write',['../classMemory.html#a23e394228e46d803d654abf75a5ba7c0',1,'Memory']]],
+  ['writebyte_211',['writeByte',['../classMemory.html#a0cf67c6c6f6cc68f639a631b630c2f1e',1,'Memory']]],
+  ['writedoubleword_212',['writeDoubleWord',['../classMemory.html#a6646b6581734228cf3e5efec556c7eb1',1,'Memory']]],
+  ['writefpr_213',['writeFPR',['../classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa',1,'RegisterFile']]],
+  ['writegpr_214',['writeGPR',['../classRegisterFile.html#a7fa96f56b6224e42d27c2f199ce39cf3',1,'RegisterFile']]],
+  ['writehalfword_215',['writeHalfWord',['../classMemory.html#af566a2a9b918da9b517265f0a9f3d9de',1,'Memory']]],
+  ['writevr_216',['writeVR',['../classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81',1,'RegisterFile']]],
+  ['writeword_217',['writeWord',['../classMemory.html#af597f709d0d312cdf49b4ab959ba8cdd',1,'Memory']]]
 ];

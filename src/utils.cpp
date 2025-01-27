@@ -6,6 +6,8 @@
 
 #include "pch.h"
 
+#include "utils.h"
+
 int64_t countLines(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -58,4 +60,31 @@ std::string parseEscapedString(const std::string &input) {
     return oss.str();
 }
 
+void dumpErrors(const std::string &filename, const std::vector<ParseError> &errors) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Unable to open file: " + filename);
+    }
+
+    file << "{\n";
+    file << "    \"errorCode\": 1,\n";
+    file << "    \"errors\": [\n";
+
+    for (size_t i = 0; i < errors.size(); ++i) {
+        const auto &error = errors[i];
+        file << "        {\n";
+        file << "            \"line\": " << error.line << ",\n";
+        file << "            \"message\": \"" << error.message << "\"\n";
+        file << "        }";
+        if (i != errors.size() - 1) {
+            file << ",";
+        }
+        file << "\n";
+    }
+
+    file << "    ]\n";
+    file << "}\n";
+
+    file.close();
+}
 

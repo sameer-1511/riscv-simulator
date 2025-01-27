@@ -45,21 +45,22 @@ private:
     std::string filename_; ///< The filename being parsed.
     std::vector<Token> tokens_; ///< The list of tokens to parse.
     size_t pos_ = 0; ///< The current position in the token list.
+    unsigned int instruction_index_ = 0; ///< The current instruction index.
 
     /**
      * @brief Tracks parsing errors.
      */
     struct ErrorTracker {
-        int count = 0; ///< The total number of errors.
+        unsigned int count = 0; ///< The total number of errors.
         std::vector<ParseError> parse_errors; ///< A list of parse errors.
         std::vector<std::variant<
-            SyntaxError,
-            UnexpectedTokenError,
-            ImmediateOutOfRangeError,
-            MisalignedImmediateError,
-            UnexpectedOperandError,
-            InvalidLabelRefError,
-            LabelRedefinitionError
+            Errors::SyntaxError,
+            Errors::UnexpectedTokenError,
+            Errors::ImmediateOutOfRangeError,
+            Errors::MisalignedImmediateError,
+            Errors::UnexpectedOperandError,
+            Errors::InvalidLabelRefError,
+            Errors::LabelRedefinitionError
         >> all_errors; ///< A list of all errors, including syntax and semantic errors.
     };
 
@@ -100,12 +101,6 @@ private:
     Token peekToken(int n);
 
     /**
-     * @brief Peeks at the next token without advancing the position.
-     * @return The next token.
-     */
-    Token peekNextToken();
-
-    /**
      * @brief Skips the current line during parsing.
      */
     void skipCurrentLine();
@@ -115,6 +110,26 @@ private:
      * @param error The parse error to record.
      */
     void recordError(const ParseError &error);
+
+    bool parse_O_R_C_R_C_R();
+
+    bool parse_O_R_C_R_C_I();
+
+    bool parse_O_R_C_I();
+
+    bool parse_O_R_C_R_C_IL();
+
+    bool parse_O_R_C_R_C_DL();
+
+    bool parse_O_R_C_IL();
+
+    bool parse_O_R_C_DL();
+
+    bool parse_O_R_C_I_LP_R_RP();
+
+    bool parse_O();
+
+    bool parse_pseudo();
 
     /**
      * @brief Parses a data directive.
@@ -138,6 +153,13 @@ public:
      * @brief Destroys the Parser instance.
      */
     ~Parser();
+
+    /**
+     * @brief Parses the tokens to generate intermediate code and symbol tables.
+     */
+    void parse();
+
+    unsigned int getErrorCount() const;
 
     /**
      * @brief Returns the list of parse errors.
@@ -177,10 +199,6 @@ public:
      */
     void printIntermediateCode() const;
 
-    /**
-     * @brief Parses the tokens to generate intermediate code and symbol tables.
-     */
-    void parse();
 };
 
 

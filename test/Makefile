@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -pthread -isystem ../src/include
+CXXFLAGS = -std=c++17 -pthread -isystem ../src/include -g
 
 SRC_DIR = ../src
 BUILD_DIR = ../build

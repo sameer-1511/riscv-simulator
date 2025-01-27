@@ -1,16 +1,14 @@
-/** @cond DOXYGEN_IGNORE */
 /**
- * File Name: lexer.cpp
- * Author: Vishank Singh
- * Github: https://github.com/VishankSingh
+ * @file lexer.cpp
+ * @brief Contains the implementation of the Lexer class for tokenizing source code.
+ * @author Vishank Singh, https://github.com/VishankSingh
  */
-/** @endcond */
 
 #include "../pch.h"
 
 #include "lexer.h"
 #include "instructions.h"
-#include "../registers.h"
+#include "../vm/registers.h"
 
 Lexer::Lexer(const std::string &filename) : filename_(filename), line_number_(0), column_number_(0), pos_(0) {
     input_.open(filename_);
@@ -28,7 +26,6 @@ Lexer::~Lexer() {
         input_.close();
     }
 }
-
 
 void Lexer::skipWhitespace() {
     while (pos_ < current_line_.size() && std::isspace(current_line_[pos_])) {
@@ -65,16 +62,25 @@ void Lexer::skipLine() {
 }
 
 
+// TODO: make this better
 Token Lexer::identifier() {
     size_t start_pos = pos_;
     unsigned int start_column = column_number_;
     while (pos_ < current_line_.size() &&
-           (std::isalnum(current_line_[pos_]) || current_line_[pos_] == '_' || current_line_[pos_] == '.')) {
+           (std::isalnum(current_line_[pos_]) 
+           || current_line_[pos_] == '_' 
+           || current_line_[pos_] == '.' 
+           // || current_line_[pos_] == ':'
+           
+           )) {
         ++pos_;
         ++column_number_;
     }
+    std::string value = current_line_.substr(start_pos, pos_ - start_pos);
+    
+    std::regex label_regex("^[a-zA-Z][a-zA-Z0-9_]*:$");
+
     if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
-        std::string value = current_line_.substr(start_pos, pos_ - start_pos);
         if (value.find('.') != std::string::npos) {
             ++pos_;
             ++column_number_;
@@ -84,21 +90,24 @@ Token Lexer::identifier() {
         ++column_number_;
         return {TokenType::LABEL, value, line_number_, start_column};
     }
-    std::string value = current_line_.substr(start_pos, pos_ - start_pos);
 
 
-    if (isValidInstruction(value)) {
+    if (InstructionSet::isValidInstruction(value)) {
         return {TokenType::OPCODE, value, line_number_, start_column};
-    } else if (isValidRegister(value)) {
+    } 
+    if (isValidRegister(value)) {
         return {TokenType::REGISTER, value, line_number_, start_column};
-    } else if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
+    } 
+    if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
         return {TokenType::LABEL, value, line_number_, start_column};
-    } else if (!tokens_.empty() && tokens_.back().type == TokenType::COMMA) {
+    } 
+    if (!tokens_.empty() && tokens_.back().type == TokenType::COMMA) {
         return {TokenType::LABEL_REF, value, line_number_, start_column};
     }
 
 
 
+    // Default case: invalid token
     return {TokenType::INVALID, value, line_number_, start_column};
 }
 

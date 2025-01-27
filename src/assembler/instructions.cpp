@@ -8,6 +8,7 @@
 
 #include "instructions.h"
 
+namespace InstructionSet {
 static const std::unordered_set<std::string> valid_instructions = {
         "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
         "addw", "subw", "sllw", "srlw", "sraw",
@@ -90,8 +91,12 @@ static const std::unordered_set<std::string> JTypeInstructions = {
         "jal"
 };
 
-static const std::unordered_set<std::string> PsuedoInstructions = {
-        "ecall", "ebreak"
+static const std::unordered_set<std::string> PseudoInstructions = {
+        "la", "nop", "li", "mv", "not", "neg", "negw", 
+        "sext.w", "seqz", "snez", "sltz", "sgtz",
+        "beqz", "bnez", "blez", "bgez", "bltz", "bgtz",
+        "bgt", "ble", "bgtu", "bleu",
+        "j", "jr", "ret", "call", "tail", "fence", "fence_i",
 };
 
 static const std::unordered_set<std::string> MExtInstructions = {
@@ -109,6 +114,8 @@ static const std::unordered_set<std::string> FExtensionInstructions = {
         "fclass.s", "fcvt.s.w", "fcvt.s.wu", "fmv.w.x",
         "fcvt.l.s", "fcvt.lu.s", "fcvt.s.l", "fcvt.s.lu",
 };
+
+#ifdef lol 
 
 std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map = {
         {"add",  {0b0110011, 0b000, 0b0000000}}, // O_R_C_R_C_R
@@ -181,6 +188,7 @@ std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_enc
         {"jal", {0b1101111}}, // O_R_C_IL
 };
 
+#endif // lol
 
 std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map = {
 
@@ -281,10 +289,6 @@ std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map = 
         {"fsw",       {"0100111", "010", "",        ""}}, // O_R_C_I_LP_R_RP
 
 
-        {"fmadd.s",   {"1000011", "00",  "0000000", ""}}, // O_R_C_R_C_R
-        {"fmsub.d",   {"1000111", "00",  "0000000", ""}}, // O_R_C_R_C_R
-        {"fnmsub.s",  {"1001011", "00",  "0000000", ""}}, // O_R_C_R_C_R
-        {"fnmadd.s",  {"1001111", "00",  "0000000", ""}}, // O_R_C_R_C_R
         {"fadd.s",    {"1010011", "000", "0000000", ""}}, // O_R_C_R_C_R
         {"fsub.s",    {"1010011", "000", "0000100", ""}}, // O_R_C_R_C_R
         {"fmul.s",    {"1010011", "000", "0001000", ""}}, // O_R_C_R_C_R
@@ -295,16 +299,77 @@ std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map = 
         {"fsgnjx.s",  {"1010011", "010", "0010000", ""}}, // O_R_C_R_C_R
         {"fmin.s",    {"1010011", "000", "0001100", ""}}, // O_R_C_R_C_R
         {"fmax.s",    {"1010011", "001", "0001100", ""}}, // O_R_C_R_C_R
-        {"fcvt.w.s",  {"1010011", "000", "1100000", ""}}, // O_R_C_R_C_R
-        {"fcvt.wu.s", {"1010011", "000", "1100001", ""}}, // O_R_C_R_C_R
-        {"fmv.x.w",   {"1010011", "000", "1110000", ""}}, // O_R_C_R_C_R
         {"feq.s",     {"1010011", "101", "1010000", ""}}, // O_R_C_R_C_R
         {"flt.s",     {"1010011", "110", "1010000", ""}}, // O_R_C_R_C_R
         {"fle.s",     {"1010011", "111", "1010000", ""}}, // O_R_C_R_C_R
-        {"fclass.s",  {"1010011", "000", "1110000", ""}}, // O_R_C_R_C_R
+
+        {"fcvt.w.s",  {"1010011", "000", "1100000", ""}}, // O_R_C_R_C_R
+        {"fcvt.wu.s", {"1010011", "000", "1100001", ""}}, // O_R_C_R_C_R
         {"fcvt.s.w",  {"1010011", "001", "1100000", ""}}, // O_R_C_R_C_R
         {"fcvt.s.wu", {"1010011", "001", "1100001", ""}}, // O_R_C_R_C_R
+
+        {"fcvt.l.s",  {"1010011", "010", "1100000", ""}}, // O_R_C_R_C_R
+        {"fcvt.lu.s", {"1010011", "011", "1100000", ""}}, // O_R_C_R_C_R
+        {"fcvt.s.l",  {"1010011", "101", "1100000", ""}}, // O_R_C_R_C_R
+        {"fcvt.s.lu", {"1010011", "110", "1100000", ""}}, // O_R_C_R_C_R
+
+        {"fclass.s",  {"1010011", "000", "1110000", ""}}, // O_R_C_R_C_R
+
+        {"fmadd.s",   {"1000011", "00",  "0000000", ""}}, // O_R_C_R_C_R
+        {"fmsub.s",   {"1000111", "00",  "0000000", ""}}, // O_R_C_R_C_R
+        {"fnmsub.s",  {"1001011", "00",  "0000000", ""}}, // O_R_C_R_C_R
+        {"fnmadd.s",  {"1001111", "00",  "0000000", ""}}, // O_R_C_R_C_R
+        {"fmv.x.w",   {"1010011", "000", "1110000", ""}}, // O_R_C_R_C_R
         {"fmv.w.x",   {"1010011", "000", "1110000", ""}}, // O_R_C_R_C_R
+
+
+//==RV64D======================================================================================
+
+        {"fadd.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fsub.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmul.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fdiv.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fsqrt.d",   {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fsgnj.d",   {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fsgnjn.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fsgnjx.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmin.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmax.d",    {"", "", "", ""}}, // O_R_C_R_C_R
+        {"feq.d",     {"", "", "", ""}}, // O_R_C_R_C_R
+        {"flt.d",     {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fle.d",     {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fcvt.w.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.wu.d", {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.d.w",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.d.wu", {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fcvt.l.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.lu.d", {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.d.l",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.d.lu", {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fld",       {"", "",  "", ""}}, // O_R_C_R_C_R
+        {"fsd",       {"", "",  "", ""}}, // O_R_C_R_C_R
+
+        {"fcvt.s.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fcvt.d.s",  {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fclass.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fmadd.d",   {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmsub.d",   {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fnmsub.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fnmadd.d",  {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmv.x.d",   {"", "", "", ""}}, // O_R_C_R_C_R
+        {"fmv.d.x",   {"", "", "", ""}}, // O_R_C_R_C_R
+
+        {"fld",       {"", "",  "", ""}}, // O_R_C_R_C_R
+        {"fsd",       {"", "",  "", ""}}, // O_R_C_R_C_R
+        
+
+
+
 
 };
 
@@ -376,6 +441,37 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 
         {"ecall",     {SyntaxType::O}},
         {"ebreak",    {SyntaxType::O}},
+
+//////////////////////////////////////////////////////////////////////////////
+
+        {"nop",       {SyntaxType::PSEUDO}},
+        {"li",        {SyntaxType::PSEUDO}},
+        {"mv",        {SyntaxType::PSEUDO}},
+        {"not",       {SyntaxType::PSEUDO}},
+        {"neg",       {SyntaxType::PSEUDO}},
+        {"negw",      {SyntaxType::PSEUDO}},
+        {"sext.w",    {SyntaxType::PSEUDO}},
+        {"seqz",      {SyntaxType::PSEUDO}},
+        {"snez",      {SyntaxType::PSEUDO}},
+        {"sltz",      {SyntaxType::PSEUDO}},
+        {"sgtz",      {SyntaxType::PSEUDO}},
+        {"beqz",      {SyntaxType::PSEUDO}},
+        {"bnez",      {SyntaxType::PSEUDO}},
+        {"blez",      {SyntaxType::PSEUDO}},
+        {"bgez",      {SyntaxType::PSEUDO}},
+        {"bltz",      {SyntaxType::PSEUDO}},
+        {"bgtz",      {SyntaxType::PSEUDO}},
+        {"bgt",       {SyntaxType::PSEUDO}},
+        {"ble",       {SyntaxType::PSEUDO}},
+        {"bgtu",      {SyntaxType::PSEUDO}},
+        {"bleu",      {SyntaxType::PSEUDO}},
+        {"j",         {SyntaxType::PSEUDO}},
+        {"jr",        {SyntaxType::PSEUDO}},
+        {"ret",       {SyntaxType::PSEUDO}},
+        {"call",      {SyntaxType::PSEUDO}},
+        {"tail",      {SyntaxType::PSEUDO}},
+        {"fence",     {SyntaxType::PSEUDO}},
+        {"fence_i",   {SyntaxType::PSEUDO}},
 
 //////////////////////////////////////////////////////////////////////////////
         {"mul",       {SyntaxType::O_R_C_R_C_R}},
@@ -454,6 +550,10 @@ bool isValidJTypeInstruction(const std::string &instruction) {
     return JTypeInstructions.find(instruction) != JTypeInstructions.end();
 }
 
+bool isValidPseudoInstruction(const std::string &instruction) {
+    return PseudoInstructions.find(instruction) != PseudoInstructions.end();
+}
+
 std::string getExpectedSyntaxes(const std::string &opcode) {
     static const std::unordered_map<std::string, std::string> opcodeSyntaxMap = {
         {"nop", "nop"},
@@ -511,4 +611,5 @@ std::string getExpectedSyntaxes(const std::string &opcode) {
     }
 
     return syntaxes;
+}
 }

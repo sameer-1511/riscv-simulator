@@ -9,6 +9,8 @@
 
 #include "../pch.h"
 
+namespace Errors {
+
 /// ANSI code for red-colored text.
 const std::string ANSI_code_red = "\033[31m";
 
@@ -205,6 +207,8 @@ struct LabelRedefinitionError {
 
     friend std::ostream &operator<<(std::ostream &os, const LabelRedefinitionError &error);
 };
+
+} // namespace Errors
 
 
 #endif // ERRORS_H

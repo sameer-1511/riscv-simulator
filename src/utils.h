@@ -8,6 +8,7 @@
 #define UTILS_H
 
 #include "pch.h"
+#include "./assembler/parser.h"
 
 /**
  * @brief Counts the number of lines in a given file.
@@ -36,6 +37,8 @@ std::string getLineFromFile(const std::string& fileName, unsigned int lineNumber
  * @return The unescaped string.
  */
 std::string parseEscapedString(const std::string &input);
+
+void dumpErrors(const std::string &filename, const std::vector<ParseError> &errors);
 
 
 #endif // UTILS_H
