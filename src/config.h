@@ -32,7 +32,7 @@ namespace vmConfig {
          * 
          * @param str The string to be trimmed.
          */
-        static void trim(std::string& str);
+        [[maybe_unused]] void trim(std::string& str);
         /**
          * @brief Retrieves the value associated with a given section and key.
          * 

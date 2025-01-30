@@ -34,10 +34,23 @@ AssembledProgram assemble(const std::string &filename) {
     Parser parser(lexer->getFilename(), tokens);
     parser.parse();
 
+    AssembledProgram program;
+
     if (parser.getErrorCount() == 0) {
         // parser.printDataBuffers();
         // parser.printSymbolTable();
         // parser.printIntermediateCode();
+
+        std::vector<std::pair<ICUnit, bool>> IntermediateCode = parser.getIntermediateCode();
+        //std::vector<std::string> machine_code = printIntermediateCode(IntermediateCode);
+        //for (const std::string &code: machine_code) {
+        //    std::cout << code << std::endl;
+        //}
+
+        std::vector<std::bitset<32>> machine_code_bits = generateMachineCode(IntermediateCode);
+
+        program.instruction_buffer = machine_code_bits;
+        
 
         // std::vector<std::string> machine_code = printIntermediateCode(parser.getIntermediateCode());
         // for (const std::string &code: machine_code) {
@@ -53,12 +66,11 @@ AssembledProgram assemble(const std::string &filename) {
         throw std::runtime_error("Failed to parse file: " + filename);
     }
 
-    AssembledProgram program;
     program.filename = filename;
-    program.instruction_buffer = {
-            std::bitset<32>(0b00000000000000000000000000110011),
-            std::bitset<32>(0b00000000000000000000000000110011),
-    };
+    // program.instruction_buffer = {
+    //         std::bitset<32>(0b00000000000000000000000000110011),
+    //         std::bitset<32>(0b00000000000000000000000000110011),
+    // };
     return program;
 }
 

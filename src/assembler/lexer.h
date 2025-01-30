@@ -53,11 +53,6 @@ private:
     void skipLine();
 
     /**
-     * @brief Skips the remainder of the current line.
-     * 
-     * This function skips all characters on the current line after the current position.
-     */
-    /**
      * @brief Tokenizes an identifier.
      * 
      * This function handles identifiers (e.g., variable names, function names) in the source code.

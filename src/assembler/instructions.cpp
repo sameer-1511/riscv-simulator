@@ -75,6 +75,22 @@ static const std::unordered_set<std::string> ITypeInstructions = {
         "jalr"
 };
 
+static const std::unordered_set<std::string> I1TypeInstructions = {
+        "addi", "xori", "ori", "andi", "sltiu", "slti",
+        "addiw",
+        "lb", "lh", "lw", "ld", "lbu", "lhu", "lwu",
+        "jalr"
+};
+
+static const std::unordered_set<std::string> I2TypeInstructions = {
+        "slli", "srli", "srai",
+        "slliw", "srliw", "sraiw"
+};
+
+static const std::unordered_set<std::string> I3TypeInstructions = {
+        "ecall", "ebreak"
+};
+
 static const std::unordered_set<std::string> STypeInstructions = {
         "sb", "sh", "sw", "sd"
 };
@@ -115,7 +131,6 @@ static const std::unordered_set<std::string> FExtensionInstructions = {
         "fcvt.l.s", "fcvt.lu.s", "fcvt.s.l", "fcvt.s.lu",
 };
 
-#ifdef lol 
 
 std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map = {
         {"add",  {0b0110011, 0b000, 0b0000000}}, // O_R_C_R_C_R
@@ -136,31 +151,40 @@ std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_enc
         {"sraw", {0b0111011, 0b101, 0b0100000}}, // O_R_C_R_C_R
 };
 
-std::unordered_map<std::string, ITypeInstructionEncoding> I_type_instruction_encoding_map = {
-        {"addi",  {0b0010011, 0b000, std::nullopt}}, // O_R_C_R_C_I
-        {"xori",  {0b0010011, 0b100, std::nullopt}}, // O_R_C_R_C_I
-        {"ori",   {0b0010011, 0b110, std::nullopt}}, // O_R_C_R_C_I
-        {"andi",  {0b0010011, 0b111, std::nullopt}}, // O_R_C_R_C_I
+std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map = {
+        {"addi",  {0b0010011, 0b000}}, // O_R_C_R_C_I
+        {"xori",  {0b0010011, 0b100}}, // O_R_C_R_C_I
+        {"ori",   {0b0010011, 0b110}}, // O_R_C_R_C_I
+        {"andi",  {0b0010011, 0b111}}, // O_R_C_R_C_I
+        {"sltiu", {0b0010011, 0b011}}, // O_R_C_R_C_I
+        {"slti",  {0b0010011, 0b010}}, // O_R_C_R_C_I
+
+        {"addiw", {0b0011011, 0b000}}, // O_R_C_R_C_I
+
+        {"lh",    {0b0000011, 0b001}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"lw",    {0b0000011, 0b010}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"lb",    {0b0000011, 0b000}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"ld",    {0b0000011, 0b011}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"lbu",   {0b0000011, 0b100}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"lhu",   {0b0000011, 0b101}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+        {"lwu",   {0b0000011, 0b110}}, // O_R_C_I_LP_R_RP, O_R_C_DL
+
+        {"jalr",  {0b1100111, 0b000}}, // O_R_C_I
+};
+
+std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map = {
+        {"ecall",  {0b1110011, 0b000, 0b0000000}}, // O
+        {"ebreak", {0b1110011, 0b001, 0b0000000}}, // O
+};
+
+std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map = {
         {"slli",  {0b0010011, 0b001, 0b000000}}, // O_R_C_R_C_I
-        {"sltiu", {0b0010011, 0b011, std::nullopt}}, // O_R_C_R_C_I
         {"srli",  {0b0010011, 0b101, 0b000000}}, // O_R_C_R_C_I
         {"srai",  {0b0010011, 0b101, 0b010000}}, // O_R_C_R_C_I
-        {"slti",  {0b0010011, 0b010, std::nullopt}}, // O_R_C_R_C_I
 
-        {"addiw", {0b0011011, 0b000, std::nullopt}}, // O_R_C_R_C_I
         {"slliw", {0b0011011, 0b001, 0b000000}}, // O_R_C_R_C_I
         {"srliw", {0b0011011, 0b101, 0b000000}}, // O_R_C_R_C_I
         {"sraiw", {0b0011011, 0b101, 0b010000}}, // O_R_C_R_C_I
-
-        {"lh",    {0b0000011, 0b001, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lw",    {0b0000011, 0b010, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lb",    {0b0000011, 0b000, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"ld",    {0b0000011, 0b011, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lbu",   {0b0000011, 0b100, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lhu",   {0b0000011, 0b101, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lwu",   {0b0000011, 0b110, std::nullopt}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-
-        {"jalr",  {0b1100111, 0b000, std::nullopt}}, // O_R_C_I
 };
 
 std::unordered_map<std::string, STypeInstructionEncoding> S_type_instruction_encoding_map = {
@@ -188,7 +212,70 @@ std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_enc
         {"jal", {0b1101111}}, // O_R_C_IL
 };
 
-#endif // lol
+
+std::unordered_map<std::string, InstructionType> instruction_opcode_type_map = {
+        {"add",         InstructionType::R},
+        {"sub",         InstructionType::R},
+        {"xor",         InstructionType::R},
+        {"or",          InstructionType::R},
+        {"and",         InstructionType::R},
+        {"sll",         InstructionType::R},
+        {"srl",         InstructionType::R},
+        {"sra",         InstructionType::R},
+        {"slt",         InstructionType::R},
+        {"sltu",        InstructionType::R},
+
+        {"addw",        InstructionType::R},
+        {"subw",        InstructionType::R},
+        {"sllw",        InstructionType::R},
+        {"srlw",        InstructionType::R},
+        {"sraw",        InstructionType::R},
+
+        {"addi",        InstructionType::I1},
+        {"xori",        InstructionType::I1},
+        {"ori",         InstructionType::I1},
+        {"andi",        InstructionType::I1},
+        {"slli",        InstructionType::I2},
+        {"srli",        InstructionType::I2},
+        {"srai",        InstructionType::I2},
+        {"slti",        InstructionType::I1},
+        {"sltiu",       InstructionType::I1},
+
+        // {"addiw",     InstructionType::I1},
+        // {"slliw",     InstructionType::I2},
+        // {"srliw",     InstructionType::I2},
+        // {"sraiw",     InstructionType::I2},
+
+        {"lb",          InstructionType::I1},
+        {"lh",          InstructionType::I1},
+        {"lw",          InstructionType::I1},
+        {"ld",          InstructionType::I1},
+        {"lbu",         InstructionType::I1},
+        {"lhu",         InstructionType::I1},
+        {"lwu",         InstructionType::I1},
+
+        {"jalr",        InstructionType::I1},
+
+        {"sb",          InstructionType::S},
+        {"sh",          InstructionType::S},
+        {"sw",          InstructionType::S},
+        {"sd",          InstructionType::S},
+
+        {"beq",         InstructionType::B},
+        {"bne",         InstructionType::B},
+        {"blt",         InstructionType::B},
+        {"bge",         InstructionType::B},
+        {"bltu",        InstructionType::B},
+        {"bgeu",        InstructionType::B},
+
+        {"lui",         InstructionType::U},
+        {"auipc",       InstructionType::U},
+
+        {"jal",         InstructionType::J},
+
+        {"ecall",       InstructionType::I3},
+        {"ebreak",      InstructionType::I3},
+};
 
 std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map = {
 
@@ -531,7 +618,21 @@ bool isValidRTypeInstruction(const std::string &instruction) {
 }
 
 bool isValidITypeInstruction(const std::string &instruction) {
-    return ITypeInstructions.find(instruction) != ITypeInstructions.end();
+    return (I1TypeInstructions.find(instruction) != I1TypeInstructions.end()) ||
+           (I2TypeInstructions.find(instruction) != I2TypeInstructions.end()) ||
+           (I3TypeInstructions.find(instruction) != I3TypeInstructions.end());
+}
+
+bool isValidI1TypeInstruction(const std::string &instruction) {
+    return I1TypeInstructions.find(instruction) != I1TypeInstructions.end();
+}
+
+bool isValidI2TypeInstruction(const std::string &instruction) {
+    return I2TypeInstructions.find(instruction) != I2TypeInstructions.end();
+}
+
+bool isValidI3TypeInstruction(const std::string &instruction) {
+    return I3TypeInstructions.find(instruction) != I3TypeInstructions.end();
 }
 
 bool isValidSTypeInstruction(const std::string &instruction) {

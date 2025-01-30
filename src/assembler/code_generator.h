@@ -25,18 +25,8 @@ struct ICUnit {
     std::array<char, 33> imm;     ///< Immediate value (up to 32 characters, null-terminated).
     std::string label;            ///< Label associated with this code block, if any.
 
-    /**
-     * @brief Default constructor initializing all members to default values.
-     */
     ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, imm{}, label{} {}
 
-     /**
-     * @brief Overloaded stream insertion operator for displaying the ICUnit.
-     * 
-     * @param os The output stream.
-     * @param unit The ICUnit to display.
-     * @return The modified output stream.
-     */
     friend std::ostream &operator<<(std::ostream &os, const ICUnit &unit) {
         os << unit.opcode.data() << " "
            << unit.rd.data() << " "
@@ -191,57 +181,73 @@ std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUni
  * @brief Generates machine code for an R-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateRTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateRTypeMachineCode(const ICUnit &block);
 
 /**
- * @brief Generates machine code for an I-type instruction.
+ * @brief Generates machine code for an I1-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateITypeMachineCode(const ICUnit &block);
+std::bitset<32> generateI1TypeMachineCode(const ICUnit &block);
+
+/**
+ * @brief Generates machine code for an I2-type instruction.
+ * 
+ * @param block The ICUnit representing the instruction.
+ * @return The machine code bitset<32>.
+ */
+std::bitset<32> generateI2TypeMachineCode(const ICUnit &block);
+
+/**
+ * @brief Generates machine code for an I3-type instruction.
+ * 
+ * @param block The ICUnit representing the instruction.
+ * @return The machine code bitset<32>.
+ */
+std::bitset<32> generateI3TypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for an S-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateSTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateSTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a B-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateBTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateBTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a U-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateUTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateUTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a J-type instruction.
  * 
  * @param block The ICUnit representing the instruction.
- * @return The machine code string.
+ * @return The machine code bitset<32>.
  */
-std::string generateJTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code from a vector of intermediate code blocks.
  * 
  * @param IntermediateCode A vector of pairs containing ICUnit and a boolean flag.
- * @return A vector of strings representing the machine code.
+ * @return A vector of bitset<32> representing the machine code.
  */
-std::vector<std::string> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode);
+std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode);
 
 
 #endif // CODE_GENERATOR_H

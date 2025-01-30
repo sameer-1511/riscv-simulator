@@ -397,7 +397,7 @@ bool Parser::parse_O_R_C_DL() {
         && peekToken(2).type == TokenType::COMMA
         && peekToken(3).line_number == currentToken().line_number
         && peekToken(3).type == TokenType::LABEL_REF
-        && peekToken(4).line_number != currentToken().line_number
+        && (peekToken(4).type == TokenType::EOF_ || peekToken(4).line_number != currentToken().line_number)
             ) {
         ICUnit block;
         block.setOpcode(currentToken().value);
@@ -458,7 +458,7 @@ bool Parser::parse_O_R_C_I_LP_R_RP() {
         && peekToken(5).type == TokenType::REGISTER
         && peekToken(6).line_number == currentToken().line_number
         && peekToken(6).type == TokenType::RPAREN
-        && peekToken(7).line_number != currentToken().line_number
+        && (peekToken(7).type == TokenType::EOF_ || peekToken(7).line_number != currentToken().line_number)
             ) {
         ICUnit block;
         block.setOpcode(currentToken().value);
@@ -529,7 +529,16 @@ bool Parser::parse_O_R_C_I_LP_R_RP() {
 }
 
 bool Parser::parse_O() {
-    return true;
+    if (peekToken(1).type == TokenType::EOF_ || peekToken(1).line_number != currentToken().line_number
+    ) {
+        ICUnit block;
+        block.setOpcode(currentToken().value);
+        nextToken(); // skip opcode
+        IntermediateCode.emplace_back(block, true);
+        instruction_index_++;
+        return true;
+    }
+    return false;
 }
 
 bool Parser::parse_pseudo() {
@@ -700,6 +709,7 @@ bool Parser::parse_pseudo() {
         skipCurrentLine();
         return true;
     }
+    return false;
 }
 
 
@@ -872,11 +882,13 @@ void Parser::parseTextDirective() {
                     }
 
                     case InstructionSet::SyntaxType::O: {
+                        valid_syntax = parse_O();
                         break;
                     }
 
                     case InstructionSet::SyntaxType::PSEUDO: {
                         valid_syntax = parse_pseudo();
+                        break;
                     }
 
                     default: {

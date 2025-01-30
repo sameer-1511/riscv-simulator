@@ -14,16 +14,16 @@
 int main() {
     AssembledProgram program;
     try {
-        program = assemble("/home/vis/Desk/assembler/examples/e1.s");
+        program = assemble("/home/vis/Desk/assembler/examples/test1.s");
     } catch (const std::runtime_error &e) {
         std::cerr << e.what() << '\n';
         return 0;
     }
 
-    // std::cout << "Program: " << program.filename << std::endl;
-    // for (const std::bitset<32> &instruction: program.instruction_buffer) {
-    //     std::cout << instruction << std::endl;
-    // }
+    std::cout << "Program: " << program.filename << std::endl;
+    for (const std::bitset<32> &instruction: program.instruction_buffer) {
+        std::cout << instruction << std::endl;
+    }
 
     // std::cout << "globals::config_file: " << globals::config_file << std::endl;
 

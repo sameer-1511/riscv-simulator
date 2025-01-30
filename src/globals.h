@@ -13,6 +13,9 @@ namespace globals {
     extern std::string errors_dump_file;
     //extern std::string output_file;
 
+
+    extern unsigned int data_section_start;
+
     void initGlobals();
 }
 

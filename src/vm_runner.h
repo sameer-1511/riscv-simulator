@@ -18,6 +18,8 @@ std::unique_ptr<VMBase> createVM(const std::string& vmType) {
     } else {
         throw std::invalid_argument("Unknown VM type: " + vmType);
     }
+
+    return nullptr;
 }
 
 class VMRunner {
@@ -27,6 +29,7 @@ public:
     ~VMRunner();
 
     void initialize(const std::string& configPath) {
+        (void)configPath;
         std::string vmType = "single_cycle";
         vm_ = createVM(vmType);
     }

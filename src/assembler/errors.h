@@ -71,13 +71,7 @@ struct SyntaxError {
         : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
           filename(std::move(filename)), line_number(line_number), column_number(column_number),
           line_text(std::move(line_text)) {}
-
-    /**
-     * @brief Overloads the output stream operator to print the error.
-     * @param os Output stream.
-     * @param error The SyntaxError to print.
-     * @return Modified output stream.
-     */
+          
     friend std::ostream &operator<<(std::ostream &os, const SyntaxError &error);
 };
 
