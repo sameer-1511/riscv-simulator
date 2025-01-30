@@ -169,7 +169,7 @@ std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_e
         {"lhu",   {0b0000011, 0b101}}, // O_R_C_I_LP_R_RP, O_R_C_DL
         {"lwu",   {0b0000011, 0b110}}, // O_R_C_I_LP_R_RP, O_R_C_DL
 
-        {"jalr",  {0b1100111, 0b000}}, // O_R_C_I
+        {"jalr",  {0b1100111, 0b000}}, // O_R_C_I, O_R_C_IL
 };
 
 std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map = {
@@ -195,12 +195,12 @@ std::unordered_map<std::string, STypeInstructionEncoding> S_type_instruction_enc
 };
 
 std::unordered_map<std::string, BTypeInstructionEncoding> B_type_instruction_encoding_map = {
-        {"beq",  {0b1100011, 0b000}}, // O_R_C_R_C_I
-        {"bne",  {0b1100011, 0b001}}, // O_R_C_R_C_I
-        {"blt",  {0b1100011, 0b100}}, // O_R_C_R_C_I
-        {"bge",  {0b1100011, 0b101}}, // O_R_C_R_C_I
-        {"bltu", {0b1100011, 0b110}}, // O_R_C_R_C_I
-        {"bgeu", {0b1100011, 0b111}}, // O_R_C_R_C_I
+        {"beq",  {0b1100011, 0b000}}, // O_R_C_R_C_I, O_R_C_R_C_IL
+        {"bne",  {0b1100011, 0b001}}, // O_R_C_R_C_I, O_R_C_R_C_IL
+        {"blt",  {0b1100011, 0b100}}, // O_R_C_R_C_I, O_R_C_R_C_IL
+        {"bge",  {0b1100011, 0b101}}, // O_R_C_R_C_I, O_R_C_R_C_IL
+        {"bltu", {0b1100011, 0b110}}, // O_R_C_R_C_I, O_R_C_R_C_IL
+        {"bgeu", {0b1100011, 0b111}}, // O_R_C_R_C_I, O_R_C_R_C_IL
 };
 
 std::unordered_map<std::string, UTypeInstructionEncoding> U_type_instruction_encoding_map = {
@@ -278,79 +278,6 @@ std::unordered_map<std::string, InstructionType> instruction_opcode_type_map = {
 };
 
 std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map = {
-
-//==RV64=======================================================================================
-
-        // R-Type
-        {"add",       {"0110011", "000", "0000000", ""}}, // O_R_C_R_C_R
-        {"sub",       {"0110011", "000", "0100000", ""}}, // O_R_C_R_C_R
-        {"xor",       {"0110011", "100", "0000000", ""}}, // O_R_C_R_C_R
-        {"or",        {"0110011", "110", "0000000", ""}}, // O_R_C_R_C_R
-        {"and",       {"0110011", "111", "0000000", ""}}, // O_R_C_R_C_R
-        {"sll",       {"0110011", "001", "0000000", ""}}, // O_R_C_R_C_R
-        {"srl",       {"0110011", "101", "0000000", ""}}, // O_R_C_R_C_R
-        {"sra",       {"0110011", "101", "0100000", ""}}, // O_R_C_R_C_R
-        {"slt",       {"0110011", "010", "0000000", ""}}, // O_R_C_R_C_R
-        {"sltu",      {"0110011", "011", "0000000", ""}}, // O_R_C_R_C_R
-
-        {"addw",      {"0111011", "000", "0000000", ""}}, // O_R_C_R_C_R
-        {"subw",      {"0111011", "000", "0100000", ""}}, // O_R_C_R_C_R
-        {"sllw",      {"0111011", "001", "0000000", ""}}, // O_R_C_R_C_R
-        {"srlw",      {"0111011", "101", "0000000", ""}}, // O_R_C_R_C_R
-        {"sraw",      {"0111011", "101", "0100000", ""}}, // O_R_C_R_C_R
-
-        // I-Type
-        {"addi",      {"0010011", "000", "",        ""}}, // O_R_C_R_C_I
-        {"xori",      {"0010011", "100", "",        ""}}, // O_R_C_R_C_I
-        {"ori",       {"0010011", "110", "",        ""}}, // O_R_C_R_C_I
-        {"andi",      {"0010011", "111", "",        ""}}, // O_R_C_R_C_I
-        {"slli",      {"0010011", "001", "",        "000000"}}, // O_R_C_R_C_I
-        {"sltiu",     {"0010011", "011", "",        ""}}, // O_R_C_R_C_I
-        {"srli",      {"0010011", "101", "",        "000000"}}, // O_R_C_R_C_I
-        {"srai",      {"0010011", "101", "",        "010000"}}, // O_R_C_R_C_I
-        {"slti",      {"0010011", "010", "",        ""}}, // O_R_C_R_C_I
-
-        {"sraiw",     {"0011011", "101", "",        "010000"}}, // O_R_C_R_C_I
-        {"addiw",     {"0011011", "000", "",        ""}}, // O_R_C_R_C_I
-        {"slliw",     {"0011011", "001", "",        "000000"}}, // O_R_C_R_C_I
-        {"srliw",     {"0011011", "101", "",        "000000"}}, // O_R_C_R_C_I
-
-        {"lh",        {"0000011", "001", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lw",        {"0000011", "010", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lb",        {"0000011", "000", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"ld",        {"0000011", "011", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lbu",       {"0000011", "100", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lhu",       {"0000011", "101", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-        {"lwu",       {"0000011", "110", "",        ""}}, // O_R_C_I_LP_R_RP, O_R_C_DL
-
-        // S-Type
-        {"sd",        {"0100011", "011", "",        ""}}, // O_R_C_I_LP_R_RP
-        {"sb",        {"0100011", "000", "",        ""}}, // O_R_C_I_LP_R_RP
-        {"sh",        {"0100011", "001", "",        ""}}, // O_R_C_I_LP_R_RP
-        {"sw",        {"0100011", "010", "",        ""}}, // O_R_C_I_LP_R_RP
-
-        // B-Type
-        {"beq",       {"1100011", "000", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-        {"bne",       {"1100011", "001", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-        {"blt",       {"1100011", "100", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-        {"bge",       {"1100011", "101", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-        {"bltu",      {"1100011", "110", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-        {"bgeu",      {"1100011", "111", "",        ""}}, // O_R_C_R_C_I, O_R_C_R_C_IL
-
-        // U-Type
-        {"lui",       {"0110111", "",    "",        ""}}, // O_R_C_I
-        {"auipc",     {"0010111", "",    "",        ""}}, // O_R_C_I
-
-        // J-Type
-        {"jal",       {"1101111", "",    "",        ""}}, // O_R_C_I, O_R_C_IL
-
-        // I-Type
-        {"jalr",      {"1100111", "000", "",        ""}}, // O_R_C_I_LP_R_RP
-
-        // environment instructions
-        {"ecall",     {"1110011", "000", "0000000", ""}}, // O
-        {"ebreak",    {"1110011", "000", "0000000", ""}}, // O
-
 //==RV64M======================================================================================
         // R-Type
         {"mul",       {"0110011", "000", "0000001", ""}}, // O_R_C_R_C_R
@@ -688,7 +615,7 @@ std::string getExpectedSyntaxes(const std::string &opcode) {
     }
 
     static const std::unordered_map<SyntaxType, std::string> syntaxTypeToString = {
-        {SyntaxType::O, "O"},
+        {SyntaxType::O, "<empty>"},
         {SyntaxType::O_R_C_R_C_R, "<reg>, <reg>, <reg>"},
         {SyntaxType::O_R_C_R_C_I, "<reg>, <reg>, <imm>"},
         {SyntaxType::O_R_C_R_C_IL, "<reg>, <reg>, <text label>"},
@@ -713,4 +640,5 @@ std::string getExpectedSyntaxes(const std::string &opcode) {
 
     return syntaxes;
 }
-}
+
+} // namespace InstructionSet

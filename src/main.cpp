@@ -21,8 +21,15 @@ int main() {
     }
 
     std::cout << "Program: " << program.filename << std::endl;
+    unsigned int count = 0;
     for (const std::bitset<32> &instruction: program.instruction_buffer) {
-        std::cout << instruction << std::endl;
+        std::cout << instruction 
+                  << " | " 
+                  << std::setw(8) << std::setfill('0') << std::hex << instruction.to_ulong() 
+                  << "  |  " 
+                  << std::setw(0) << count 
+                  << std::dec << std::endl;
+        count+=4;
     }
 
     // std::cout << "globals::config_file: " << globals::config_file << std::endl;

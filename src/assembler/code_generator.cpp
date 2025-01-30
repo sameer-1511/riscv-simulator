@@ -99,24 +99,59 @@ std::bitset<32> generateI3TypeMachineCode(const ICUnit &block) {
 std::bitset<32> generateSTypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::S_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
+    std::bitset<5> rs1 = std::bitset<5>(std::stoi(block.getRs1().substr(1)));
+    std::bitset<5> rs2 = std::bitset<5>(std::stoi(block.getRs2().substr(1)));
+    std::bitset<12> imm = std::bitset<12>(std::stoi(block.getImm()));
+    code |= encoding.opcode.to_ulong();
+    code |= (imm.to_ulong() & 0x1F) << 7; // imm[4:0]
+    code |= (imm.to_ulong() & 0xFE0) << 20; // imm[11:5]
+    code |= (rs2.to_ulong() << 20);
+    code |= (rs1.to_ulong() << 15);
+    code |= (encoding.funct3.to_ulong() << 12);
+
     return code;
 }
 
+// TODO: check this function
 std::bitset<32> generateBTypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::B_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
+    std::bitset<5> rs1 = std::bitset<5>(std::stoi(block.getRs1().substr(1)));
+    std::bitset<5> rs2 = std::bitset<5>(std::stoi(block.getRs2().substr(1)));
+    std::bitset<13> imm = std::bitset<13>(std::stoi(block.getImm()));
+    code |= encoding.opcode.to_ulong();
+    code |= ((imm.to_ulong() & 0x1E) << 7); // imm[4:1]
+    code |= ((imm.to_ulong() & 0x800) >> 4); // imm[11]
+    code |= ((imm.to_ulong() & 0x7E0) << 20); // imm[10:5]
+    code |= ((imm.to_ulong() & 0x1000) << 19); // imm[12]
+    code |= (rs2.to_ulong() << 20);
+    code |= (rs1.to_ulong() << 15);
+    code |= (encoding.funct3.to_ulong() << 12);
     return code;
 }
 
 std::bitset<32> generateUTypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::U_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
+    std::bitset<5> rd = std::bitset<5>(std::stoi(block.getRd().substr(1)));
+    std::bitset<20> imm = std::bitset<20>(std::stoi(block.getImm()));
+    code |= encoding.opcode.to_ulong();
+    code |= (imm.to_ulong() << 12);
+    code |= (rd.to_ulong() << 7);
     return code;
 }
 
 std::bitset<32> generateJTypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::J_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
+    std::bitset<5> rd = std::bitset<5>(std::stoi(block.getRd().substr(1)));
+    std::bitset<20> imm = std::bitset<20>(std::stoi(block.getImm()));
+    code |= encoding.opcode.to_ulong();
+    code |= ((imm.to_ulong() & 0xFF000) << 0); // imm[19:12]
+    code |= ((imm.to_ulong() & 0x800) << 9); // imm[11]
+    code |= ((imm.to_ulong() & 0x7FE) << 20); // imm[10:1]
+    code |= ((imm.to_ulong() & 0x80000) << 12); // imm[20]
+    code |= (rd.to_ulong() << 7);
     return code;
 }
 

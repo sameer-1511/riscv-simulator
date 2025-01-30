@@ -231,7 +231,7 @@ bool Parser::parse_O_R_C_I() {
             nextToken(); // skip comma
             int64_t imm = std::stoll(currentToken().value);
             if (-1048576 <= imm && imm <= 1048575) {
-                if (imm % 4 == 0) {
+                if (imm % 2 == 0) {
                     block.setImm(std::to_string(imm));
                 } else {
                     errors_.count++;

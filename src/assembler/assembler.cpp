@@ -14,8 +14,7 @@ AssembledProgram assemble(const std::string &filename) {
     std::unique_ptr<Lexer> lexer;
     try {
         lexer = std::make_unique<Lexer>(filename);
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << '\n';
+    } catch (const std::runtime_error& e) {
         throw std::runtime_error("Failed to open file: " + filename);
     }
 
