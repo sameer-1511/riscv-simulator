@@ -14,6 +14,11 @@
  * @brief Namespace for VM configuration management.
  */
 namespace vmConfig {
+    enum class vmTypes {
+        SINGLE_STAGE,
+        MULTI_STAGE
+    };
+
     /**
      * @brief Retrieves the value associated with a given key from the configuration.
      * 
@@ -52,6 +57,8 @@ namespace vmConfig {
         void set(const std::string& section, const std::string& key, const std::string& value);
 
     } // namespace INI
+
+    vmTypes getVMType();
 
 
 } // namespace vmConfig

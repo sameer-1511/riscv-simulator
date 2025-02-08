@@ -14,13 +14,25 @@
 int main() {
     AssembledProgram program;
     try {
-        program = assemble("/home/vis/Desk/assembler/examples/test1.s");
+        program = assemble("examples/e2.s");
     } catch (const std::runtime_error &e) {
         std::cerr << e.what() << '\n';
         return 0;
     }
 
     std::cout << "Program: " << program.filename << std::endl;
+
+    for (const auto &pair: program.instruction_number_line_number_mapping) {
+        std::cout << pair.first << " -> " << pair.second << '\n';
+    }
+    std::cout << std::endl;
+
+    for (const auto &pair: program.line_number_instruction_number_mapping) {
+        std::cout << pair.first << " -> " << pair.second << '\n';
+    }
+
+
+
     unsigned int count = 0;
     for (const std::bitset<32> &instruction: program.instruction_buffer) {
         std::cout << instruction 

@@ -90,6 +90,7 @@ bool Parser::parse_O_R_C_R_C_R() {
             nextToken(); // skip register
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -182,6 +183,7 @@ bool Parser::parse_O_R_C_R_C_I() {
             nextToken();
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -262,6 +264,7 @@ bool Parser::parse_O_R_C_I() {
             nextToken(); // skip immediate
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -320,12 +323,14 @@ bool Parser::parse_O_R_C_R_C_IL() {
                 backPatch.push_back(instruction_index_);
                 block.setImm(currentToken().value);
                 IntermediateCode.emplace_back(block, false);
+                instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
                 instruction_index_++;
                 nextToken();
                 return true;
             }
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -378,12 +383,14 @@ bool Parser::parse_O_R_C_IL() {
                 backPatch.push_back(instruction_index_);
                 block.setImm(currentToken().value);
                 IntermediateCode.emplace_back(block, false);
+                instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
                 instruction_index_++;
                 return true;
             }
             nextToken();
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -433,12 +440,14 @@ bool Parser::parse_O_R_C_DL() {
                 backPatch.push_back(instruction_index_);
                 block.setImm(currentToken().value);
                 IntermediateCode.emplace_back(block, false);
+                instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
                 instruction_index_++;
                 nextToken();
                 return true;
             }
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -522,6 +531,7 @@ bool Parser::parse_O_R_C_I_LP_R_RP() {
             nextToken(); // skip rparen
         }
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -535,6 +545,7 @@ bool Parser::parse_O() {
         block.setOpcode(currentToken().value);
         nextToken(); // skip opcode
         IntermediateCode.emplace_back(block, true);
+        instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
         instruction_index_++;
         return true;
     }
@@ -560,6 +571,7 @@ bool Parser::parse_pseudo() {
             block.setRs2("x0");
             block.setImm("0");
             IntermediateCode.emplace_back(block, true);
+            instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
             instruction_index_++;
             nextToken();
             return true;
@@ -587,6 +599,7 @@ bool Parser::parse_pseudo() {
                 block.setRs1("x0");
                 block.setImm(peekToken(3).value);
                 IntermediateCode.emplace_back(block, true);
+                instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
                 instruction_index_++;
                 nextToken(); // skip li
                 nextToken(); // skip register
@@ -604,6 +617,7 @@ bool Parser::parse_pseudo() {
                 luiBlock.setRd(reg);
                 luiBlock.setImm(std::to_string(upper));
                 IntermediateCode.emplace_back(luiBlock, true);
+                instruction_number_line_number_mapping[instruction_index_] = luiBlock.getLineNumber();
                 instruction_index_++;
 
                 // Emit addi instruction (if lower part is non-zero)
@@ -615,6 +629,7 @@ bool Parser::parse_pseudo() {
                     addiBlock.setRs1(reg);
                     addiBlock.setImm(std::to_string(lower));
                     IntermediateCode.emplace_back(addiBlock, true);
+                    instruction_number_line_number_mapping[instruction_index_] = addiBlock.getLineNumber();
                     instruction_index_++;
                 }
 
@@ -661,6 +676,7 @@ bool Parser::parse_pseudo() {
             block.setRs1(reg);
             block.setRs2("x0");
             IntermediateCode.emplace_back(block, true);
+            instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
             instruction_index_++;
             nextToken(); // skip mv
             nextToken(); // skip register
@@ -689,6 +705,7 @@ bool Parser::parse_pseudo() {
             block.setRs1(reg);
             block.setImm("-1");
             IntermediateCode.emplace_back(block, true);
+            instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
             instruction_index_++;
             nextToken(); // skip not
             nextToken(); // skip register
@@ -1146,6 +1163,11 @@ void Parser::printIntermediateCode() const {
 const std::vector<std::pair<ICUnit, bool>> &Parser::getIntermediateCode() const {
     return IntermediateCode;
 }
+
+const std::map<unsigned int, unsigned int> &Parser::getInstructionNumberLineNumberMapping() const {
+    return instruction_number_line_number_mapping;
+}
+
 
 
 

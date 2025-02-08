@@ -11,18 +11,6 @@
 
 
 
-// TODO: Implement the assembleProgram function
-// Right now it just returns a mock AssembledProgram
-AssembledProgram VMBase::assembleProgram(const std::string &filename) {
-    AssembledProgram program;
-    program.filename = filename;
-    program.instruction_buffer = {
-            std::bitset<32>(0b00000000000000000000000000110011),
-            std::bitset<32>(0b00000000000000000000000000110011),
-    };
-    return program;
-}
-
 void VMBase::loadProgram(const AssembledProgram &program) {
     unsigned int counter = 0;
     for (const auto &instruction: program.instruction_buffer) {
@@ -75,6 +63,8 @@ void VMBase::removeBreakpoint(uint64_t address) {
 bool VMBase::checkBreakpoint(uint64_t address) {
     return std::find(breakpoints_.begin(), breakpoints_.end(), address) != breakpoints_.end();
 }
+
+
 
 
 // void VMBase::run() {

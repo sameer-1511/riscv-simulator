@@ -11,12 +11,11 @@
 
 #include "vm/vm_base.h"
 //#include "vm/rvss/rvss_vm.h"
+#include "config.h"
 
-std::unique_ptr<VMBase> createVM(const std::string& vmType) {
-    if (vmType == "single_cycle") {
+std::unique_ptr<VMBase> createVM(vmConfig::vmTypes vmType) {
+    if (vmType == vmConfig::vmTypes::SINGLE_STAGE) {
         // return std::make_unique<RVSSVM>();
-    } else {
-        throw std::invalid_argument("Unknown VM type: " + vmType);
     }
 
     return nullptr;
@@ -28,20 +27,19 @@ public:
     VMRunner();
     ~VMRunner();
 
-    void initialize(const std::string& configPath) {
-        (void)configPath;
-        std::string vmType = "single_cycle";
+    void initialize() {
+        vmConfig::vmTypes vmType = vmConfig::getVMType();
         vm_ = createVM(vmType);
     }
 
-    void run() {
-        //if (auto vmInstance = dynamic_cast<RVSSVM*>(vm.get())) {
-        //    vmInstance->printType();
-        //} else {
-        //    throw std::runtime_error("VM not initialized.");
-        //}
-        
-    }
+    // void run() {
+    //     if (auto vmInstance = dynamic_cast<RVSSVM*>(vm.get())) {
+    //         vmInstance->printType();
+    //     } else {
+    //         throw std::runtime_error("VM not initialized.");
+    //     }
+    //     
+    // }
  
 
 

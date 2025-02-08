@@ -37,7 +37,6 @@ std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUni
     return ICList;
 }
 
-// TODO: Implement the following functions, CORRECTLY!
 std::bitset<32> generateRTypeMachineCode(const ICUnit &block) {
     InstructionSet::RTypeInstructionEncoding encoding = InstructionSet::R_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;

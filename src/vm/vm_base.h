@@ -10,6 +10,7 @@
 
 #include "registers.h"
 #include "memory_controller.h"
+#include "alu.h"
 
 #include "../vm_asm_mw.h"
 
@@ -20,17 +21,21 @@ public:
 
     std::vector<uint64_t> breakpoints_;
 
+    uint32_t current_instruction_;
     uint64_t program_counter_ = 0;
     
     unsigned int cycle_s = 0;
     unsigned int instructions_retired_ = 0;
     float cpi_ = 0.0;
     float ipc_ = 0.0;
+    unsigned int stall_cycles_ = 0;
+    unsigned int branch_mispredictions_ = 0;
+
+
 
     MemoryController memory_controller_;
     RegisterFile registers_;
-
-    AssembledProgram assembleProgram(const std::string &filename);
+    ALU::ALU alu_;
 
     void loadProgram(const AssembledProgram &program);
 
@@ -41,12 +46,16 @@ public:
     void removeBreakpoint(uint64_t address);
     bool checkBreakpoint(uint64_t address);
 
+    // void fetchInstruction();
+    // void decodeInstruction();
+    // void executeInstruction();
+    // void memoryAccess();
+    // void writeback();
 
-    virtual void run();
-    virtual void step();
+    virtual void run() = 0;
+    virtual void step() = 0;
     virtual void reset();
     virtual void dumpState(const std::string &filename);
-
 
 };
 

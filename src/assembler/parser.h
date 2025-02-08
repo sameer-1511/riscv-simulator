@@ -75,6 +75,9 @@ private:
     std::vector<unsigned int> backPatch; ///< List of instructions requiring backpatching.
     std::vector<std::pair<ICUnit, bool>> IntermediateCode; ///< The generated intermediate code.
 
+    std::map<unsigned int, unsigned int> instruction_number_line_number_mapping; ///< Maps instruction numbers to line numbers.
+    std::unordered_map<std::string, unsigned int> symbol_table; ///< The symbol table mapping symbol names to their data.
+
     /**
      * @brief Returns the previous token in the token list.
      * @return The previous token.
@@ -178,6 +181,10 @@ public:
      * @return A const reference to the intermediate code vector.
      */
     [[nodiscard]] const std::vector<std::pair<ICUnit, bool>> &getIntermediateCode() const;
+
+    [[nodiscard]] const std::map<unsigned int, unsigned int> &getInstructionNumberLineNumberMapping() const;
+
+    [[nodiscard]] const std::unordered_map<std::string, unsigned int> &getSymbolTable() const;
 
     /**
      * @brief Prints the list of errors to the console.

@@ -7,10 +7,7 @@ gg: .string "Hello, World!\n"
 .text
 
 #lw x0, aa
-lw x10, aa
-ld x11, bb
 
-lw x12, gg
 nop
 
 add x0, x1, x2
@@ -33,7 +30,7 @@ llll:
 
 main: 
 
-fadd.s s0, s1, s2
+# fadd.s s0, s1, s2
 
 addi x0, x1, 1
 xori x0, x1, 1

@@ -10,6 +10,12 @@
 #include "pch.h"
 
 struct AssembledProgram {
+    std::map<unsigned int, unsigned int> line_number_instruction_number_mapping;
+    std::map<unsigned int, unsigned int> instruction_number_line_number_mapping;
+
+    //TODO: add symbol table
+    std::unordered_map<std::string, unsigned int> symbol_table;
+
     std::string filename;
     std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string>> data_buffer;
     std::vector<std::bitset<32>> instruction_buffer;

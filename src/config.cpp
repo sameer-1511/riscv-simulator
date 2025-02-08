@@ -124,3 +124,13 @@ void vmConfig::INI::set(const std::string& section, const std::string& key, cons
 }
 
 
+vmConfig::vmTypes vmConfig::getVMType() {
+    std::string vmType = INI::get("Execution", "processor_type");
+    if (vmType == "single_cycle") {
+        return vmTypes::SINGLE_STAGE;
+    } else if (vmType == "multi_cycle") {
+        return vmTypes::MULTI_STAGE;
+    } else {
+        throw std::invalid_argument("Unknown VM type: " + vmType);
+    }
+}
