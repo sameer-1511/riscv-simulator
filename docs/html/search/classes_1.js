@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['btypeinstructionencoding_223',['BTypeInstructionEncoding',['../structBTypeInstructionEncoding.html',1,'']]]
+  ['btypeinstructionencoding_427',['BTypeInstructionEncoding',['../structInstructionSet_1_1BTypeInstructionEncoding.html',1,'InstructionSet']]]
 ];

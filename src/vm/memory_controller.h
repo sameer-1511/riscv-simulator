@@ -61,7 +61,6 @@ public:
     uint64_t readDoubleWord(uint64_t address) {
         return memory_.readDoubleWord(address);
     }
-    
 
 };
 

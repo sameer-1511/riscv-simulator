@@ -1,6 +1,16 @@
-<map id="src/registers.h" name="src/registers.h">
-<area shape="rect" id="node1" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="239,5,354,32"/>
-<area shape="rect" id="node2" href="$lexer_8cpp.html" title=" " alt="" coords="5,80,180,107"/>
-<area shape="rect" id="node3" href="$parser_8cpp.html" title=" " alt="" coords="205,80,389,107"/>
-<area shape="rect" id="node4" href="$registers_8cpp.html" title="Contains the implementation of the RegisterFile class and related." alt="" coords="413,80,543,107"/>
+<map id="src/vm/registers.h" name="src/vm/registers.h">
+<area shape="rect" id="node1" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="417,5,555,32"/>
+<area shape="rect" id="node2" href="$lexer_8cpp.html" title="Contains the implementation of the Lexer class for tokenizing source code." alt="" coords="5,87,180,114"/>
+<area shape="rect" id="node3" href="$parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="205,87,389,114"/>
+<area shape="rect" id="node4" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="413,80,559,121"/>
+<area shape="rect" id="node10" href="$registers_8cpp.html" title="Contains the implementation of the RegisterFile class and related." alt="" coords="583,87,738,114"/>
+<area shape="rect" id="node11" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="762,87,903,114"/>
+<area shape="rect" id="node5" href="$rvss__control__unit_8h.html" title="RVSS Control Unit." alt="" coords="412,169,592,211"/>
+<area shape="rect" id="node6" href="$rvss__control__unit_8cpp.html" title="RVSS Control Unit implementation." alt="" coords="412,259,592,300"/>
+<area shape="rect" id="node7" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="625,266,793,293"/>
+<area shape="rect" id="node8" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="524,348,707,375"/>
+<area shape="rect" id="node9" href="$test__main_8cpp.html" title=" " alt="" coords="731,348,873,375"/>
+<area shape="rect" id="node12" href="$vm__base_8cpp.html" title="File containing the base class for the virtual machine." alt="" coords="752,177,908,203"/>
+<area shape="rect" id="node13" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="932,177,1059,203"/>
+<area shape="rect" id="node14" href="$vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="925,266,1066,293"/>
 </map>

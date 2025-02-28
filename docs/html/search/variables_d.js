@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['u_5ftype_5finstruction_5fencoding_5fmap_413',['U_type_instruction_encoding_map',['../instructions_8cpp.html#afeb75044c22da976d65e09f23c763ff0',1,'instructions.cpp']]]
+  ['s_5ftype_5finstruction_5fencoding_5fmap_766',['S_type_instruction_encoding_map',['../namespaceInstructionSet.html#a294d6a66b2cce53ae8b86d3af98ab21c',1,'InstructionSet']]],
+  ['stall_5fcycles_5f_767',['stall_cycles_',['../classVMBase.html#a54dd79d5da23967e1006417af67c5d33',1,'VMBase']]],
+  ['sub_5fmessage_768',['sub_message',['../structErrors_1_1SyntaxError.html#aa1135053ec9e0f12c9f6cb32035699f6',1,'Errors::SyntaxError::sub_message()'],['../structErrors_1_1ImmediateOutOfRangeError.html#af5f74e77e318b494fddb969f00f046ed',1,'Errors::ImmediateOutOfRangeError::sub_message()'],['../structErrors_1_1MisalignedImmediateError.html#adcb860cb7a0d33cd119f53bb6cd36e16',1,'Errors::MisalignedImmediateError::sub_message()'],['../structErrors_1_1UnexpectedOperandError.html#aa657a22fb82b1933b38eb67d8da84f19',1,'Errors::UnexpectedOperandError::sub_message()'],['../structErrors_1_1InvalidLabelRefError.html#aa5a29deda7e77c91a6f4232104d3917c',1,'Errors::InvalidLabelRefError::sub_message()'],['../structErrors_1_1LabelRedefinitionError.html#aa0b8bece145f26d3447c7056cd28ac36',1,'Errors::LabelRedefinitionError::sub_message()'],['../structErrors_1_1InvalidRegisterError.html#a624e2ba3c4f7b487537566814152361c',1,'Errors::InvalidRegisterError::sub_message()']]],
+  ['symbol_5ftable_769',['symbol_table',['../structAssembledProgram.html#a6c174fa14a8ddffc0931a27ff4ad83ba',1,'AssembledProgram']]]
 ];

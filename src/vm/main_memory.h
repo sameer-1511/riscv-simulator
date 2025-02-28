@@ -34,7 +34,7 @@ private:
     std::unordered_map<uint64_t, MemoryBlock> blocks_; ///< A map storing memory blocks, indexed by block index.
     static constexpr int block_size_ = 1024; ///< The size of each memory block in bytes.
     uint64_t memory_size_ = vmConfig::INI::get("Memory", "memory_size").empty() 
-                            ? 0xffffffffffffffff : std::stoi(vmConfig::INI::get("Memory", "memory_size")); ///< The total memory size in bytes.
+                            ? 0xffffffffffffffff : std::stoull(vmConfig::INI::get("Memory", "memory_size").substr(2), nullptr, 16); ///< The total memory size in bytes.
 
     /**
      * @brief Gets the block index for a given memory address.
@@ -134,6 +134,10 @@ public:
      */
     uint64_t readDoubleWord(uint64_t address);
 
+    float readFloat(uint64_t address);
+
+    double readDouble(uint64_t address);
+
     /**
      * @brief Writes a single byte to the given memory address.
      * @param address The memory address to write to.
@@ -161,6 +165,10 @@ public:
      * @param value The 64-bit value to write.
      */
     void writeDoubleWord(uint64_t address, uint64_t value);
+
+    void writeFloat(uint64_t address, float value);
+
+    void writeDouble(uint64_t address, double value);
 
     /**
      * @brief Prints the current memory usage to the console.

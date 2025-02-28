@@ -63,17 +63,46 @@ $(function() {
 <div class="contents">
 &#160;
 
+<h3><a id="index_a"></a>- a -</h3><ul>
+<li>addBreakpoint()
+: <a class="el" href="classVMBase.html#aed76e5c5951a1ef9ad176548aee51b8a">VMBase</a>
+</li>
+<li>ALU()
+: <a class="el" href="classALU_1_1ALU.html#a88f78717c9e84775b753f2937e8a0a84">ALU::ALU</a>
+</li>
+</ul>
+
+
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>BTypeInstructionEncoding()
-: <a class="el" href="structBTypeInstructionEncoding.html#a5685abb1b0c317d80339106dadb8af92">BTypeInstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1BTypeInstructionEncoding.html#a88a8cc7afc857d9ac75b150b7a609b6c">InstructionSet::BTypeInstructionEncoding</a>
+</li>
+</ul>
+
+
+<h3><a id="index_c"></a>- c -</h3><ul>
+<li>checkBreakpoint()
+: <a class="el" href="classVMBase.html#af2f35f57b60c7e5d71795df3f940634f">VMBase</a>
+</li>
+</ul>
+
+
+<h3><a id="index_d"></a>- d -</h3><ul>
+<li>dumpState()
+: <a class="el" href="classRVSSVM.html#a3cba58e3f8571759507c623ec816dc4e">RVSSVM</a>
+, <a class="el" href="classVMBase.html#afb840ad16d3af2b88d81a960d2036bd8">VMBase</a>
+</li>
+</ul>
+
+
+<h3><a id="index_e"></a>- e -</h3><ul>
+<li>execute()
+: <a class="el" href="classALU_1_1ALU.html#af5bf187db686489b0165cff3619e036f">ALU::ALU</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
-<li>FExtensionInstructionEncoding()
-: <a class="el" href="structFExtensionInstructionEncoding.html#a80bf651da01f9456781063fad83de68f">FExtensionInstructionEncoding</a>
-</li>
 <li>fprToString()
 : <a class="el" href="classRegisterFile.html#a452ac7f7e1bc5af54875d0deb082f6ca">RegisterFile</a>
 </li>
@@ -81,8 +110,23 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getALUOp()
+: <a class="el" href="classControlUnit.html#a18be75eab97fc09fd6642ba4878d4f4b">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#af3deeffb7f72a1f11569f86506ebacbc">RVSSControlUnit</a>
+</li>
+<li>getALUSrc()
+: <a class="el" href="classControlUnit.html#a10911b7fecdd5d6c5058563a5c9945c6">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#a301caaf70fc7665723749d9c8241fca4">RVSSControlUnit</a>
+</li>
+<li>getBranch()
+: <a class="el" href="classControlUnit.html#a35052836dfd1822c2d169ae5a1442c6b">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#aa74f6c502d89da33a3a631444b6a9de4">RVSSControlUnit</a>
+</li>
 <li>getDataBuffer()
 : <a class="el" href="classParser.html#a3b9bb743ae7cb2c32871abc494509bcf">Parser</a>
+</li>
+<li>getErrorCount()
+: <a class="el" href="classParser.html#a77be2d371758afe4ce067b3bd73f5693">Parser</a>
 </li>
 <li>getErrors()
 : <a class="el" href="classParser.html#a3013f3bc6bb73bffe54413d7d6e24d3c">Parser</a>
@@ -105,6 +149,9 @@ $(function() {
 <li>getImm()
 : <a class="el" href="structICUnit.html#a6c90684f9efa240a24612c7e73166acb">ICUnit</a>
 </li>
+<li>getInstructionNumberLineNumberMapping()
+: <a class="el" href="classParser.html#ab87f4b382a805319397f0dc334cb6846">Parser</a>
+</li>
 <li>getIntermediateCode()
 : <a class="el" href="classParser.html#ab107a7fe36c012612760c415b45ce30d">Parser</a>
 </li>
@@ -114,8 +161,23 @@ $(function() {
 <li>getLineNumber()
 : <a class="el" href="structICUnit.html#aa90e09cadd85f9e91d0f365b9d991a49">ICUnit</a>
 </li>
+<li>getMemRead()
+: <a class="el" href="classControlUnit.html#a390891c52583989da1a9dac1ba2a1738">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#ac28403402feee03b1f6247e28d4d8301">RVSSControlUnit</a>
+</li>
+<li>getMemToReg()
+: <a class="el" href="classControlUnit.html#a02cba7c3491256a512f4623fb49e6882">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#af6b9c7464b5613527749b05806b9cb27">RVSSControlUnit</a>
+</li>
+<li>getMemWrite()
+: <a class="el" href="classControlUnit.html#abbff3dc8c16fcc5041c124cc71c17f33">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#abe17f9e21a12054c6663e1a76e223b7c">RVSSControlUnit</a>
+</li>
 <li>getOpcode()
 : <a class="el" href="structICUnit.html#adb5ed326c13be41d0ed272878ee7f261">ICUnit</a>
+</li>
+<li>getProgramCounter()
+: <a class="el" href="classVMBase.html#a6168ed83153abff37678f5e5230ef314">VMBase</a>
 </li>
 <li>getRd()
 : <a class="el" href="structICUnit.html#a21974b7d3094b23d555327a06106320f">ICUnit</a>
@@ -123,11 +185,21 @@ $(function() {
 <li>getRegisterCount()
 : <a class="el" href="classRegisterFile.html#a8acd3cd77b43326f2563ef7f735883a6">RegisterFile</a>
 </li>
+<li>getRegWrite()
+: <a class="el" href="classControlUnit.html#aa513a25dfb2c65dfac773bc6587566b1">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#ac7451b83c27b6c73bd3b6306f390c68f">RVSSControlUnit</a>
+</li>
 <li>getRs1()
 : <a class="el" href="structICUnit.html#aca70c5bd0f84b5a76f4b8ea54d8a5142">ICUnit</a>
 </li>
 <li>getRs2()
 : <a class="el" href="structICUnit.html#af81c7a33972a78b4c84e5f87a002f519">ICUnit</a>
+</li>
+<li>getRs3()
+: <a class="el" href="structICUnit.html#acd6d068cf95577e4a2b13fc5c15f5912">ICUnit</a>
+</li>
+<li>getSymbolTable()
+: <a class="el" href="classParser.html#ad97c9329e0f9a0444aa7739e60850a7f">Parser</a>
 </li>
 <li>getTokenList()
 : <a class="el" href="classLexer.html#ad66eb14085f3fe976763c53f9bbaf3e8">Lexer</a>
@@ -145,37 +217,55 @@ $(function() {
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
+<li>I1TypeInstructionEncoding()
+: <a class="el" href="structInstructionSet_1_1I1TypeInstructionEncoding.html#ad0c4ab77ad017e73d19f8a8d054fcca4">InstructionSet::I1TypeInstructionEncoding</a>
+</li>
+<li>I2TypeInstructionEncoding()
+: <a class="el" href="structInstructionSet_1_1I2TypeInstructionEncoding.html#a83cf637efdb8f96f839b13a6f489c892">InstructionSet::I2TypeInstructionEncoding</a>
+</li>
+<li>I3TypeInstructionEncoding()
+: <a class="el" href="structInstructionSet_1_1I3TypeInstructionEncoding.html#a52376c8a3ac0d7347860de31dd2b7e65">InstructionSet::I3TypeInstructionEncoding</a>
+</li>
 <li>ICUnit()
 : <a class="el" href="structICUnit.html#a4d709ebd2a3d1a0611f26b2ae8f7aae7">ICUnit</a>
 </li>
+<li>imm_generator()
+: <a class="el" href="classVMBase.html#afafa70c35c2911ebac0df3e981d6b385">VMBase</a>
+</li>
 <li>ImmediateOutOfRangeError()
-: <a class="el" href="structImmediateOutOfRangeError.html#a7ab1ef764c6fdd07d821ec98685ea784">ImmediateOutOfRangeError</a>
+: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#a693cae22be960687603e7bea4f59d50c">Errors::ImmediateOutOfRangeError</a>
+</li>
+<li>initialize()
+: <a class="el" href="classVMRunner.html#a4897708121e9f2805a07eea9d6f7b2a9">VMRunner</a>
 </li>
 <li>InstructionEncoding()
-: <a class="el" href="structInstructionEncoding.html#a09b0ac844e353b047ce6724df774dea4">InstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1InstructionEncoding.html#a7ea99b4804404ee8f9cffe896d52e34a">InstructionSet::InstructionEncoding</a>
 </li>
 <li>InvalidLabelRefError()
-: <a class="el" href="structInvalidLabelRefError.html#a8021512a425775c391e38af2370d82e9">InvalidLabelRefError</a>
+: <a class="el" href="structErrors_1_1InvalidLabelRefError.html#a524085bc5b2e9fbbec42771835728e00">Errors::InvalidLabelRefError</a>
 </li>
-<li>ITypeInstructionEncoding()
-: <a class="el" href="structITypeInstructionEncoding.html#af37d2e080612f4919dcf5b5ee63d09e1">ITypeInstructionEncoding</a>
+<li>InvalidRegisterError()
+: <a class="el" href="structErrors_1_1InvalidRegisterError.html#af5dd0f70144c2407d7652c40d6669a8c">Errors::InvalidRegisterError</a>
 </li>
 </ul>
 
 
 <h3><a id="index_j"></a>- j -</h3><ul>
 <li>JTypeInstructionEncoding()
-: <a class="el" href="structJTypeInstructionEncoding.html#a8de6a68bcd4df97d8ecf34b3598b86cb">JTypeInstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1JTypeInstructionEncoding.html#a0172c647093de9b38dabd99725224fb7">InstructionSet::JTypeInstructionEncoding</a>
 </li>
 </ul>
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>LabelRedefinitionError()
-: <a class="el" href="structLabelRedefinitionError.html#a880fec3f0b6ba196f6e078b554febe3a">LabelRedefinitionError</a>
+: <a class="el" href="structErrors_1_1LabelRedefinitionError.html#a522ca44a14a0a9627b35ae8a47d72358">Errors::LabelRedefinitionError</a>
 </li>
 <li>Lexer()
 : <a class="el" href="classLexer.html#a34795506b1a97fc3776fcd6fcd9264cd">Lexer</a>
+</li>
+<li>loadProgram()
+: <a class="el" href="classVMBase.html#a34df62c52d9d0e023c03340cdb7b9b2a">VMBase</a>
 </li>
 </ul>
 
@@ -187,11 +277,11 @@ $(function() {
 <li>MemoryBlock()
 : <a class="el" href="structMemoryBlock.html#a734af8678e5b969cfc2b10e3395c101a">MemoryBlock</a>
 </li>
-<li>MExtensionInstructionEncoding()
-: <a class="el" href="structMExtensionInstructionEncoding.html#a9052a4b68f710aa5e9c2ac5e39395332">MExtensionInstructionEncoding</a>
+<li>MemoryController()
+: <a class="el" href="classMemoryController.html#a0c055d1bda8ede9928fd8a3b08b86d41">MemoryController</a>
 </li>
 <li>MisalignedImmediateError()
-: <a class="el" href="structMisalignedImmediateError.html#a7fe9131a8822a9bbc092d08acc9afb31">MisalignedImmediateError</a>
+: <a class="el" href="structErrors_1_1MisalignedImmediateError.html#ae3b631d8f4b4414402d808e4717a089d">Errors::MisalignedImmediateError</a>
 </li>
 </ul>
 
@@ -205,6 +295,9 @@ $(function() {
 </li>
 <li>Parser()
 : <a class="el" href="classParser.html#a2fddcdc8f806352ee222499aacc0fd35">Parser</a>
+</li>
+<li>printCacheStatus()
+: <a class="el" href="classMemoryController.html#a89b534fa1dcb5d49d381c04c912f877f">MemoryController</a>
 </li>
 <li>printDataBuffers()
 : <a class="el" href="classParser.html#a7162a9d0b66118b676ab3b7a47b3b385">Parser</a>
@@ -221,18 +314,26 @@ $(function() {
 <li>printSymbolTable()
 : <a class="el" href="classParser.html#a0a98612e5aaa33a123ad4e6dc41ef615">Parser</a>
 </li>
+<li>printType()
+: <a class="el" href="classRVSSVM.html#a0f502a38582acbe95a33ea25e71871eb">RVSSVM</a>
+</li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>R4TypeInstructionEncoding()
+: <a class="el" href="structInstructionSet_1_1R4TypeInstructionEncoding.html#a8ffe2bdec9b0e852dcc81d8700b6bb8b">InstructionSet::R4TypeInstructionEncoding</a>
+</li>
 <li>read()
 : <a class="el" href="classMemory.html#af6da51b92a4f9af3c0c02b16e239b9ab">Memory</a>
 </li>
 <li>readByte()
 : <a class="el" href="classMemory.html#a68c4ae8119f147e2f0eb016f64deee62">Memory</a>
+, <a class="el" href="classMemoryController.html#a886999fbf08a34654249bf79c60cfad9">MemoryController</a>
 </li>
 <li>readDoubleWord()
 : <a class="el" href="classMemory.html#acef0869cc61471f006f8eb857f486ba1">Memory</a>
+, <a class="el" href="classMemoryController.html#a3586f816869e6de5eb97f67b2a82e419">MemoryController</a>
 </li>
 <li>readFPR()
 : <a class="el" href="classRegisterFile.html#a74313db51e7d097ea8111faacc9749a9">RegisterFile</a>
@@ -242,32 +343,44 @@ $(function() {
 </li>
 <li>readHalfWord()
 : <a class="el" href="classMemory.html#acc9da0ef6cc9e35d77c8c6d3dbb756fe">Memory</a>
+, <a class="el" href="classMemoryController.html#a1f22080d40b83bdab4008f5a86aebf64">MemoryController</a>
 </li>
 <li>readVR()
 : <a class="el" href="classRegisterFile.html#af0cb09169f595393286ba5d24e88efb3">RegisterFile</a>
 </li>
 <li>readWord()
 : <a class="el" href="classMemory.html#a8f21815efc9f437a8011f163aad7f260">Memory</a>
+, <a class="el" href="classMemoryController.html#a414582e95c2ff4158fae6cd46abda2e4">MemoryController</a>
 </li>
 <li>RegisterFile()
 : <a class="el" href="classRegisterFile.html#a9513989ee395d14943de66f99ec8014a">RegisterFile</a>
 </li>
+<li>removeBreakpoint()
+: <a class="el" href="classVMBase.html#a644c66cbcfde66e70738d769bd4928f7">VMBase</a>
+</li>
 <li>reset()
 : <a class="el" href="classRegisterFile.html#ade4452e0848c042e2a1615de4ea63e0a">RegisterFile</a>
+, <a class="el" href="classRVSSVM.html#ac16622085dc5b4f987744bb26836a975">RVSSVM</a>
+, <a class="el" href="classVMBase.html#a9c6d2a78389474c82c8c00d87d3114b7">VMBase</a>
 </li>
 <li>RTypeInstructionEncoding()
-: <a class="el" href="structRTypeInstructionEncoding.html#aabe18374d8e7b3f9cca1f615d18a9a80">RTypeInstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1RTypeInstructionEncoding.html#ae786b28c136fc610ae4369aa6d131098">InstructionSet::RTypeInstructionEncoding</a>
 </li>
 <li>run()
-: <a class="el" href="classrvss__vm.html#a87b6e9a15c5380e52b4193e0f6e0eda3">rvss_vm</a>
+: <a class="el" href="classRVSSVM.html#a0ae8fcf554127b3f478f814eb515618f">RVSSVM</a>
+, <a class="el" href="classVMBase.html#aba3136fa19210d26fc93f1d14addee92">VMBase</a>
 </li>
-<li>rvss_vm()
-: <a class="el" href="classrvss__vm.html#a3a9d9050b8dae274ac2ae0cefd694e6e">rvss_vm</a>
+<li>RVSSVM()
+: <a class="el" href="classRVSSVM.html#a25a6b5b3cd17447bfe4e88819ff55c48">RVSSVM</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>setControlSignals()
+: <a class="el" href="classControlUnit.html#ac0068a7c8ca5832e8f917e38fea3dac7">ControlUnit</a>
+, <a class="el" href="classRVSSControlUnit.html#a62a8e29e31822eeb1a9743b5a23e872f">RVSSControlUnit</a>
+</li>
 <li>setImm()
 : <a class="el" href="structICUnit.html#a1691a21f18ee3fedcf460a67f82a3099">ICUnit</a>
 </li>
@@ -289,11 +402,18 @@ $(function() {
 <li>setRs2()
 : <a class="el" href="structICUnit.html#a8bf533e866d8cf995a41530052598883">ICUnit</a>
 </li>
+<li>setRs3()
+: <a class="el" href="structICUnit.html#a4161046a12e2d38b90b88ecc19be8896">ICUnit</a>
+</li>
+<li>step()
+: <a class="el" href="classRVSSVM.html#af0144c812d7e41f744f451f089d59a57">RVSSVM</a>
+, <a class="el" href="classVMBase.html#a34243ba15bc18d340ff573c806068bd2">VMBase</a>
+</li>
 <li>STypeInstructionEncoding()
-: <a class="el" href="structSTypeInstructionEncoding.html#a0bfbf0dfab3db01bfe3ce7d02a8b978a">STypeInstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1STypeInstructionEncoding.html#a47a786845a9767f44806c9915eaf6363">InstructionSet::STypeInstructionEncoding</a>
 </li>
 <li>SyntaxError()
-: <a class="el" href="structSyntaxError.html#a1590e29e4c9b073229df9f05c916d552">SyntaxError</a>
+: <a class="el" href="structErrors_1_1SyntaxError.html#a281879f936baed4c53d8f3058b113dff">Errors::SyntaxError</a>
 </li>
 </ul>
 
@@ -307,18 +427,27 @@ $(function() {
 
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>UnexpectedOperandError()
-: <a class="el" href="structUnexpectedOperandError.html#adebc057a3f55800a8c4c5a5ce9669070">UnexpectedOperandError</a>
+: <a class="el" href="structErrors_1_1UnexpectedOperandError.html#aa99d9b39a9234055ee5c87d6c389ad2b">Errors::UnexpectedOperandError</a>
 </li>
 <li>UnexpectedTokenError()
-: <a class="el" href="structUnexpectedTokenError.html#a01981e62215aa1a3c8fe6af61eb23d22">UnexpectedTokenError</a>
+: <a class="el" href="structErrors_1_1UnexpectedTokenError.html#a53dcabdadf88b59c36174ed5a3b03091">Errors::UnexpectedTokenError</a>
+</li>
+<li>updateProgramCounter()
+: <a class="el" href="classVMBase.html#ab32a590b667b9f9416da0c4727ef73d8">VMBase</a>
 </li>
 <li>UTypeInstructionEncoding()
-: <a class="el" href="structUTypeInstructionEncoding.html#ac23c2740d7317a65dd40d1e01bacce5a">UTypeInstructionEncoding</a>
+: <a class="el" href="structInstructionSet_1_1UTypeInstructionEncoding.html#a73d77e6e12ade2a17295fa8c01ec5905">InstructionSet::UTypeInstructionEncoding</a>
 </li>
 </ul>
 
 
 <h3><a id="index_v"></a>- v -</h3><ul>
+<li>VMBase()
+: <a class="el" href="classVMBase.html#a75269a8612472521bf5b79d00b48d872">VMBase</a>
+</li>
+<li>VMRunner()
+: <a class="el" href="classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c">VMRunner</a>
+</li>
 <li>vrToString()
 : <a class="el" href="classRegisterFile.html#a28749e3b715ebd11ad2814d735cfb5b1">RegisterFile</a>
 </li>
@@ -331,9 +460,11 @@ $(function() {
 </li>
 <li>writeByte()
 : <a class="el" href="classMemory.html#a0cf67c6c6f6cc68f639a631b630c2f1e">Memory</a>
+, <a class="el" href="classMemoryController.html#a71ea31b46a1bf12b8b9c6c33fc378583">MemoryController</a>
 </li>
 <li>writeDoubleWord()
 : <a class="el" href="classMemory.html#a6646b6581734228cf3e5efec556c7eb1">Memory</a>
+, <a class="el" href="classMemoryController.html#a35571cf2eb12c196fd381c2bc65ae0ca">MemoryController</a>
 </li>
 <li>writeFPR()
 : <a class="el" href="classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa">RegisterFile</a>
@@ -343,17 +474,25 @@ $(function() {
 </li>
 <li>writeHalfWord()
 : <a class="el" href="classMemory.html#af566a2a9b918da9b517265f0a9f3d9de">Memory</a>
+, <a class="el" href="classMemoryController.html#ab80344171123f7c7f292b56d4ffdb753">MemoryController</a>
 </li>
 <li>writeVR()
 : <a class="el" href="classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81">RegisterFile</a>
 </li>
 <li>writeWord()
 : <a class="el" href="classMemory.html#af597f709d0d312cdf49b4ab959ba8cdd">Memory</a>
+, <a class="el" href="classMemoryController.html#a2a9dc25c2368c26ea587a71da8e1ce5a">MemoryController</a>
 </li>
 </ul>
 
 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
+<li>~ALU()
+: <a class="el" href="classALU_1_1ALU.html#a1b4656ada86660efa5812d26651387fc">ALU::ALU</a>
+</li>
+<li>~ControlUnit()
+: <a class="el" href="classControlUnit.html#ae22f4411723f65396af44292cf4f2309">ControlUnit</a>
+</li>
 <li>~Lexer()
 : <a class="el" href="classLexer.html#ad26a84af23d8d303723e36e83fc4e556">Lexer</a>
 </li>
@@ -363,8 +502,14 @@ $(function() {
 <li>~Parser()
 : <a class="el" href="classParser.html#a3e658b5917a93a3ef648050d060e3a93">Parser</a>
 </li>
-<li>~rvss_vm()
-: <a class="el" href="classrvss__vm.html#ac9f47691c66ecfb4b5f3408311a9280c">rvss_vm</a>
+<li>~RVSSVM()
+: <a class="el" href="classRVSSVM.html#a487d782e0576c027531150b39560208f">RVSSVM</a>
+</li>
+<li>~VMBase()
+: <a class="el" href="classVMBase.html#af43164984da77e0ea193d61b3a290c7b">VMBase</a>
+</li>
+<li>~VMRunner()
+: <a class="el" href="classVMRunner.html#ad34445b2551bafe3b0b98ffdc4162703">VMRunner</a>
 </li>
 </ul>
 </div><!-- contents -->

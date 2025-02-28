@@ -12,10 +12,13 @@ Represents a register file containing integer, floating-\/point, and vector regi
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum class \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230}{Register\+Type}} \{ \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230accc0377a8afbf50e7094f5c23a8af223}{INVALID}}
+enum class \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230}{Register\+Type}} \{ \newline
+\mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230accc0377a8afbf50e7094f5c23a8af223}{INVALID}}
 , \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a5d5cd46919fa987731fb2edefe0f2a0c}{INTEGER}}
 , \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a30ccd51223e55d0a8ce2bd253733f579}{FLOATING\+\_\+\+POINT}}
 , \mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e}{VECTOR}}
+, \newline
+\mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a9dbebbc8de3ea0e81606b05de0fff36d}{CSR}}
  \}
 \begin{DoxyCompactList}\small\item\em Enum representing the type of a register. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -91,6 +94,10 @@ FLOATING\+\_\+\+POINT&Floating-\/point register. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{VECTOR@{VECTOR}!RegisterFile@{RegisterFile}}\index{RegisterFile@{RegisterFile}!VECTOR@{VECTOR}}}\mbox{\Hypertarget{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e}\label{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e}} 
 VECTOR&Vector register. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CSR@{CSR}!RegisterFile@{RegisterFile}}\index{RegisterFile@{RegisterFile}!CSR@{CSR}}}\mbox{\Hypertarget{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a9dbebbc8de3ea0e81606b05de0fff36d}\label{classRegisterFile_ad20885f84b337c67fd63b230e11ba230a9dbebbc8de3ea0e81606b05de0fff36d}} 
+CSR&Control and Status Register (CSR). \\
 \hline
 
 \end{DoxyEnumFields}
@@ -379,5 +386,5 @@ Writes a value to a Vector Register (VR).
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\mbox{\hyperlink{registers_8h}{registers.\+h}}\item 
-src/\mbox{\hyperlink{registers_8cpp}{registers.\+cpp}}\end{DoxyCompactItemize}
+src/vm/\mbox{\hyperlink{registers_8h}{registers.\+h}}\item 
+src/vm/\mbox{\hyperlink{registers_8cpp}{registers.\+cpp}}\end{DoxyCompactItemize}

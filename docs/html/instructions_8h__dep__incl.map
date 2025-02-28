@@ -1,7 +1,7 @@
 <map id="src/assembler/instructions.h" name="src/assembler/instructions.h">
 <area shape="rect" id="node1" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="295,5,501,32"/>
-<area shape="rect" id="node2" href="$code__generator_8cpp.html" title=" " alt="" coords="5,80,153,121"/>
+<area shape="rect" id="node2" href="$code__generator_8cpp.html" title="Contains the implementation of functions for generating machine code from intermediate code." alt="" coords="5,80,153,121"/>
 <area shape="rect" id="node3" href="$instructions_8cpp.html" title=" " alt="" coords="177,87,397,114"/>
-<area shape="rect" id="node4" href="$lexer_8cpp.html" title=" " alt="" coords="421,87,596,114"/>
-<area shape="rect" id="node5" href="$parser_8cpp.html" title=" " alt="" coords="621,87,805,114"/>
+<area shape="rect" id="node4" href="$lexer_8cpp.html" title="Contains the implementation of the Lexer class for tokenizing source code." alt="" coords="421,87,596,114"/>
+<area shape="rect" id="node5" href="$parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="621,87,805,114"/>
 </map>

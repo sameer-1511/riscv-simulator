@@ -24,7 +24,7 @@ struct InstructionEncoding {
     std::string funct6;   ///< The funct6 part of the instruction.
 
     InstructionEncoding(std::string opcode, std::string funct3, std::string funct7, std::string funct6)
-            : opcode(std::move(opcode)), funct3(std::move(funct3)), funct7(std::move(funct7)), funct6(std::move(funct6)) {}
+        : opcode(std::move(opcode)), funct3(std::move(funct3)), funct7(std::move(funct7)), funct6(std::move(funct6)) {}
 };
 
 struct RTypeInstructionEncoding {
@@ -33,7 +33,16 @@ struct RTypeInstructionEncoding {
     std::bitset<7> funct7;
 
     RTypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct7)
-            : opcode(opcode), funct3(funct3), funct7(funct7) {}
+        : opcode(opcode), funct3(funct3), funct7(funct7) {}
+};
+
+struct R4TypeInstructionEncoding {
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+    std::bitset<2> func2;
+
+    R4TypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int func2)
+        : opcode(opcode), funct3(funct3), func2(func2) {}
 };
 
 struct I1TypeInstructionEncoding {
@@ -41,7 +50,7 @@ struct I1TypeInstructionEncoding {
     std::bitset<3> funct3;
 
     I1TypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
-            : opcode(opcode), funct3(funct3){}
+        : opcode(opcode), funct3(funct3) {}
 };
 
 struct I2TypeInstructionEncoding {
@@ -50,7 +59,7 @@ struct I2TypeInstructionEncoding {
     std::bitset<6> funct6;
 
     I2TypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct6)
-            : opcode(opcode), funct3(funct3), funct6(funct6) {}
+        : opcode(opcode), funct3(funct3), funct6(funct6) {}
 };
 
 struct I3TypeInstructionEncoding {
@@ -59,7 +68,7 @@ struct I3TypeInstructionEncoding {
     std::bitset<7> funct7;
 
     I3TypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct7)
-            : opcode(opcode), funct3(funct3), funct7(funct7) {}
+        : opcode(opcode), funct3(funct3), funct7(funct7) {}
 };
 
 struct STypeInstructionEncoding {
@@ -67,7 +76,7 @@ struct STypeInstructionEncoding {
     std::bitset<3> funct3;
 
     STypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
-            : opcode(opcode), funct3(funct3) {}
+        : opcode(opcode), funct3(funct3) {}
 };
 
 struct BTypeInstructionEncoding {
@@ -75,38 +84,48 @@ struct BTypeInstructionEncoding {
     std::bitset<3> funct3;
 
     BTypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
-            : opcode(opcode), funct3(funct3) {}
+        : opcode(opcode), funct3(funct3) {}
 };
 
 struct UTypeInstructionEncoding {
     std::bitset<7> opcode;
 
     UTypeInstructionEncoding(unsigned int opcode)
-            : opcode(opcode) {}
+        : opcode(opcode) {}
 };
 
 struct JTypeInstructionEncoding {
     std::bitset<7> opcode;
 
     JTypeInstructionEncoding(unsigned int opcode)
-            : opcode(opcode) {}
+        : opcode(opcode) {}
 };
+
 
 
 /**
  * @brief Enum that represents different syntax types for instructions.
  */
 enum class SyntaxType {
-    O_R_C_R_C_R,        ///< Opcode register , register , register
-    O_R_C_R_C_I,        ///< Opcode register , register , immediate
-    O_R_C_I,            ///< Opcode register , immediate
-    O_R_C_R_C_IL,       ///< Opcode register , register , immediate , instruction_label
-    O_R_C_R_C_DL,       ///< Opcode register , register , immediate , data_label
-    O_R_C_IL,           ///< Opcode register , instruction_label
-    O_R_C_DL,           ///< Opcode register , data_label
-    O_R_C_I_LP_R_RP,    ///< Opcode register , immediate , lparen , register , rparen
+    O_GPR_C_GPR_C_GPR,       ///< Opcode general-register , general-register , register
+    O_GPR_C_GPR_C_I,        ///< Opcode general-register , general-register , immediate
+    O_GPR_C_I,            ///< Opcode general-register , immediate
+    O_GPR_C_GPR_C_IL,       ///< Opcode general-register , general-register , immediate , instruction_label
+    O_GPR_C_GPR_C_DL,       ///< Opcode register , register , immediate , data_label
+    O_GPR_C_IL,           ///< Opcode register , instruction_label
+    O_GPR_C_DL,           ///< Opcode register , data_label
+    O_GPR_C_I_LP_GPR_RP,    ///< Opcode register , immediate , lparen ( register )rparen
     O,                  ///< Opcode
-    PSEUDO              ///< Pseudo instruction
+    PSEUDO,              ///< Pseudo instruction
+
+    O_FPR_C_FPR_C_FPR_C_FPR,    ///< Opcode floating-point-register , floating-point-register , floating-point-register , floating-point-register
+    O_FPR_C_FPR_C_FPR,        ///< Opcode floating-point-register , floating-point-register , floating-point-register
+    O_FPR_C_FPR,            ///< Opcode floating-point-register , floating-point-register
+
+    O_FPR_C_GPR,            ///< Opcode floating-point-register , general-register
+    O_GPR_C_FPR,           ///< Opcode general-register , floating-point-register
+    O_GPR_C_FPR_C_FPR,       ///< Opcode general-register , floating-point-register , floating-point-register
+    O_FPR_C_I_LP_GPR_RP,    ///< Opcode floating-point-register , immediate , lparen ( general-register ) rparen
 };
 
 /**
@@ -114,6 +133,7 @@ enum class SyntaxType {
  */
 enum class InstructionType {
     R,      ///< R-type instruction
+    R4,     ///< R4-type instruction
     I1,     ///< I-type instruction with 12-bit immediate
     I2,     ///< I-type instruction with 6-bit immediate and a funct6 field
     I3,     ///< I-type instruction of ecall and ebreak
@@ -125,7 +145,6 @@ enum class InstructionType {
     F       ///< F-extension instruction
 };
 
-
 extern std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map;
@@ -134,7 +153,6 @@ extern std::unordered_map<std::string, STypeInstructionEncoding> S_type_instruct
 extern std::unordered_map<std::string, BTypeInstructionEncoding> B_type_instruction_encoding_map;
 extern std::unordered_map<std::string, UTypeInstructionEncoding> U_type_instruction_encoding_map;
 extern std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_encoding_map;
-
 
 /**
  * @brief A map that associates instruction names with their corresponding opcode type.
@@ -244,6 +262,16 @@ bool isValidJTypeInstruction(const std::string &instruction);
  * @return True if the pseudo-instruction is valid, false otherwise.
  */
 bool isValidPseudoInstruction(const std::string &instruction);
+
+bool isValidBaseExtensionInstruction(const std::string &instruction);
+
+/**
+ * @brief Validates if a given F-extension instruction is valid.
+ * 
+ * @param instruction The F-extension instruction string to validate.
+ * @return True if the instruction is valid, false otherwise.
+ */
+bool isValidFExtensionInstruction(const std::string &instruction);
 
 /**
  * @brief Retrieves the expected syntax for a given opcode.

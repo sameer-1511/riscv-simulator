@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -75,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Contains the declarations for the <a class="el" href="structInstructionEncoding.html" title="Encodes the components of an instruction.">InstructionEncoding</a> struct and related functions.  
+<p>Contains the declarations for the InstructionEncoding struct and related functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="pch_8h_source.html">../pch.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -112,10 +113,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="instructions_8h__dep__incl.png" border="0" usemap="#asrc_2assembler_2instructions_8hdep" alt=""/></div>
 <map name="asrc_2assembler_2instructions_8hdep" id="asrc_2assembler_2instructions_8hdep">
 <area shape="rect" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="295,5,501,32"/>
-<area shape="rect" href="code__generator_8cpp.html" title=" " alt="" coords="5,80,153,121"/>
+<area shape="rect" href="code__generator_8cpp.html" title="Contains the implementation of functions for generating machine code from intermediate code." alt="" coords="5,80,153,121"/>
 <area shape="rect" href="instructions_8cpp.html" title=" " alt="" coords="177,87,397,114"/>
-<area shape="rect" href="lexer_8cpp.html" title=" " alt="" coords="421,87,596,114"/>
-<area shape="rect" href="parser_8cpp.html" title=" " alt="" coords="621,87,805,114"/>
+<area shape="rect" href="lexer_8cpp.html" title="Contains the implementation of the Lexer class for tokenizing source code." alt="" coords="421,87,596,114"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="621,87,805,114"/>
 </map>
 </div>
 </div>
@@ -123,398 +124,134 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionEncoding.html">InstructionEncoding</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes the components of an instruction.  <a href="structInstructionEncoding.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1InstructionEncoding.html">InstructionSet::InstructionEncoding</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes the components of an instruction.  <a href="structInstructionSet_1_1InstructionEncoding.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRTypeInstructionEncoding.html">RTypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1RTypeInstructionEncoding.html">InstructionSet::RTypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structITypeInstructionEncoding.html">ITypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1R4TypeInstructionEncoding.html">InstructionSet::R4TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSTypeInstructionEncoding.html">STypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1I1TypeInstructionEncoding.html">InstructionSet::I1TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBTypeInstructionEncoding.html">BTypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1I2TypeInstructionEncoding.html">InstructionSet::I2TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUTypeInstructionEncoding.html">UTypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1I3TypeInstructionEncoding.html">InstructionSet::I3TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structJTypeInstructionEncoding.html">JTypeInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1STypeInstructionEncoding.html">InstructionSet::STypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMExtensionInstructionEncoding.html">MExtensionInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1BTypeInstructionEncoding.html">InstructionSet::BTypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFExtensionInstructionEncoding.html">FExtensionInstructionEncoding</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1UTypeInstructionEncoding.html">InstructionSet::UTypeInstructionEncoding</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstructionSet_1_1JTypeInstructionEncoding.html">InstructionSet::JTypeInstructionEncoding</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceInstructionSet"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html">InstructionSet</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a5384e121bfc969afb98083be9f7bcc12"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12">SyntaxType</a> { <br />
-&#160;&#160;<a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12ae445b2f6b36163cd053217f0512d368a">O_R_C_R_C_R</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a4bba3da1fe90b2d0dcea61ce7a229001">O_R_C_R_C_I</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a6838e1305b98ae9ec076334bcbafd36a">O_R_C_I</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a5518cb0a824d1408bf60e64030177799">O_R_C_R_C_IL</a>
+<tr class="memitem:a74997ed397636956578bef7bf8e9a74e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74e">InstructionSet::SyntaxType</a> { <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea41dbb99a6896d9e96d14138265da5221">InstructionSet::O_GPR_C_GPR_C_GPR</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea6928cbdc3a5078e1dc0ad9ca43016922">InstructionSet::O_GPR_C_GPR_C_I</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea54fc6e8c9d10a97ed4a5e7d0ab9553eb">InstructionSet::O_GPR_C_I</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea364880ae1f94f6bc2994640139c45f40">InstructionSet::O_GPR_C_GPR_C_IL</a>
 , <br />
-&#160;&#160;<a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a861c63e74b264868c2be87bd08ab6ad0">O_R_C_R_C_DL</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12adef2da0d681fd47ec2bc7d9f12b09ffd">O_R_C_IL</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a6192351854bdcfa829f2efbd18aab905">O_R_C_DL</a>
-, <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12a817f4e87331959174e251a38d4b185d9">O_R_C_I_LP_R_RP</a>
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaf6223c5677027b1fc3b40e9cc9c10cd9">InstructionSet::O_GPR_C_GPR_C_DL</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ead0b5df5218c775d236e94b953634aaca">InstructionSet::O_GPR_C_IL</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eac4900375e3b89f5e09e1f06464fa79b9">InstructionSet::O_GPR_C_DL</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ead8a1a972ad133831dff5a091d86767c6">InstructionSet::O_GPR_C_I_LP_GPR_RP</a>
 , <br />
-&#160;&#160;<a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12af186217753c37b9b9f958d906208506e">O</a>
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaf186217753c37b9b9f958d906208506e">InstructionSet::O</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eabbd7b8a2e3f2db9d4a03e9f243e8c9bb">InstructionSet::PSEUDO</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaa9a5f4479bf2405b3bf315c47b0cf3b0">InstructionSet::O_FPR_C_FPR_C_FPR_C_FPR</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea35456c8df1be6e0369b59d2dcc5b5e6d">InstructionSet::O_FPR_C_FPR_C_FPR</a>
+, <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea26c0ed632be719d001499f10cf5b8a16">InstructionSet::O_FPR_C_FPR</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaccff7c0457276e403b2fa1a4e941c155">InstructionSet::O_FPR_C_GPR</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea7c56ceaf0b4fd799a397e31225ad2067">InstructionSet::O_GPR_C_FPR</a>
+, <a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea4acbd7a3820c4fe37725ec992ebe084a">InstructionSet::O_GPR_C_FPR_C_FPR</a>
+, <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea4b80d7d1223745bdf966288df20f1fa3">InstructionSet::O_FPR_C_I_LP_GPR_RP</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a5384e121bfc969afb98083be9f7bcc12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum that represents different syntax types for instructions.  <a href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12">More...</a><br /></td></tr>
-<tr class="separator:a5384e121bfc969afb98083be9f7bcc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a74997ed397636956578bef7bf8e9a74e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum that represents different syntax types for instructions.  <a href="namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74e">More...</a><br /></td></tr>
+<tr class="separator:a74997ed397636956578bef7bf8e9a74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c93a7456b1b677ae5037dea762ffd6a"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6a">InstructionSet::InstructionType</a> { <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aae1e1d3d40573127e9ee0480caf1283d6">InstructionSet::R</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa8717ce4dfdc86a4b576d9e983ab9fb29">InstructionSet::R4</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aaa18c217c4f2a811afcaaf5052945e31b">InstructionSet::I1</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa8213a4c2934a732d4ab7d75e9d3e32f4">InstructionSet::I2</a>
+, <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aaf4a3f9ad212c5f18078484d1b535ea95">InstructionSet::I3</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa5dbc98dcc983a70728bd082d1a47546e">InstructionSet::S</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa9d5ed678fe57bcca610140957afab571">InstructionSet::B</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa4c614360da93c0a041b22e537de151eb">InstructionSet::U</a>
+, <br />
+&#160;&#160;<a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aaff44570aca8241914870afbc310cdb85">InstructionSet::J</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa69691c7bdcc3ce6d5d8a1361f22d04ac">InstructionSet::M</a>
+, <a class="el" href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa800618943025315f869e4e1f09471012">InstructionSet::F</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a6c93a7456b1b677ae5037dea762ffd6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum that represents different types of opcodes.  <a href="namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6a">More...</a><br /></td></tr>
+<tr class="separator:a6c93a7456b1b677ae5037dea762ffd6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a08ec7110d476316c78a3bdc71b14b37c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a08ec7110d476316c78a3bdc71b14b37c">isValidInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:a08ec7110d476316c78a3bdc71b14b37c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given instruction is valid.  <a href="instructions_8h.html#a08ec7110d476316c78a3bdc71b14b37c">More...</a><br /></td></tr>
-<tr class="separator:a08ec7110d476316c78a3bdc71b14b37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35d8c74d790957ff351f6008f1c13d71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a35d8c74d790957ff351f6008f1c13d71">isValidRTypeInstruction</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a35d8c74d790957ff351f6008f1c13d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given R-type instruction is valid.  <a href="instructions_8h.html#a35d8c74d790957ff351f6008f1c13d71">More...</a><br /></td></tr>
-<tr class="separator:a35d8c74d790957ff351f6008f1c13d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6859e1c433fcca09321cd1cfca53e213"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a6859e1c433fcca09321cd1cfca53e213">isValidITypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:a6859e1c433fcca09321cd1cfca53e213"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given I-type instruction is valid.  <a href="instructions_8h.html#a6859e1c433fcca09321cd1cfca53e213">More...</a><br /></td></tr>
-<tr class="separator:a6859e1c433fcca09321cd1cfca53e213"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af554c1c77849256be3d135e43b7062b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#af554c1c77849256be3d135e43b7062b6">isValidSTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:af554c1c77849256be3d135e43b7062b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given S-type instruction is valid.  <a href="instructions_8h.html#af554c1c77849256be3d135e43b7062b6">More...</a><br /></td></tr>
-<tr class="separator:af554c1c77849256be3d135e43b7062b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01c5e465f1e1febdafb011d5746abfdb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a01c5e465f1e1febdafb011d5746abfdb">isValidBTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:a01c5e465f1e1febdafb011d5746abfdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given B-type instruction is valid.  <a href="instructions_8h.html#a01c5e465f1e1febdafb011d5746abfdb">More...</a><br /></td></tr>
-<tr class="separator:a01c5e465f1e1febdafb011d5746abfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7729cbfdf142ccc0b7ff80253c49aac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#ae7729cbfdf142ccc0b7ff80253c49aac">isValidUTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:ae7729cbfdf142ccc0b7ff80253c49aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given U-type instruction is valid.  <a href="instructions_8h.html#ae7729cbfdf142ccc0b7ff80253c49aac">More...</a><br /></td></tr>
-<tr class="separator:ae7729cbfdf142ccc0b7ff80253c49aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54a7c24fad2402344fd60a8178396510"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a54a7c24fad2402344fd60a8178396510">isValidJTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="memdesc:a54a7c24fad2402344fd60a8178396510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given J-type instruction is valid.  <a href="instructions_8h.html#a54a7c24fad2402344fd60a8178396510">More...</a><br /></td></tr>
-<tr class="separator:a54a7c24fad2402344fd60a8178396510"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb96d63320633597bde5c5f9ac3e75ec"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#afb96d63320633597bde5c5f9ac3e75ec">getExpectedSyntaxes</a> (const std::string &amp;opcode)</td></tr>
-<tr class="memdesc:afb96d63320633597bde5c5f9ac3e75ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the expected syntax for a given opcode.  <a href="instructions_8h.html#afb96d63320633597bde5c5f9ac3e75ec">More...</a><br /></td></tr>
-<tr class="separator:afb96d63320633597bde5c5f9ac3e75ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7085645b7bb3314188c20e48438539d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#ab7085645b7bb3314188c20e48438539d">InstructionSet::isValidInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:ab7085645b7bb3314188c20e48438539d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given instruction is valid.  <a href="namespaceInstructionSet.html#ab7085645b7bb3314188c20e48438539d">More...</a><br /></td></tr>
+<tr class="separator:ab7085645b7bb3314188c20e48438539d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1291b519a0e372cfea8af74d5ad968f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a1291b519a0e372cfea8af74d5ad968f6">InstructionSet::isValidRTypeInstruction</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a1291b519a0e372cfea8af74d5ad968f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given R-type instruction is valid.  <a href="namespaceInstructionSet.html#a1291b519a0e372cfea8af74d5ad968f6">More...</a><br /></td></tr>
+<tr class="separator:a1291b519a0e372cfea8af74d5ad968f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a216f3848e3443dbd9a34b6b10774e492"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a216f3848e3443dbd9a34b6b10774e492">InstructionSet::isValidITypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a216f3848e3443dbd9a34b6b10774e492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given I-type instruction is valid.  <a href="namespaceInstructionSet.html#a216f3848e3443dbd9a34b6b10774e492">More...</a><br /></td></tr>
+<tr class="separator:a216f3848e3443dbd9a34b6b10774e492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89767baa1194ca14a558e6ea6410b636"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a89767baa1194ca14a558e6ea6410b636">InstructionSet::isValidI1TypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a89767baa1194ca14a558e6ea6410b636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given I1-type instruction is valid.  <a href="namespaceInstructionSet.html#a89767baa1194ca14a558e6ea6410b636">More...</a><br /></td></tr>
+<tr class="separator:a89767baa1194ca14a558e6ea6410b636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b54bc81e6f67c37e45ce8633d5a1e6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a6b54bc81e6f67c37e45ce8633d5a1e6d">InstructionSet::isValidI2TypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a6b54bc81e6f67c37e45ce8633d5a1e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given I2-type instruction is valid.  <a href="namespaceInstructionSet.html#a6b54bc81e6f67c37e45ce8633d5a1e6d">More...</a><br /></td></tr>
+<tr class="separator:a6b54bc81e6f67c37e45ce8633d5a1e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc96d6aeda2090825bf34886bceb3a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#abc96d6aeda2090825bf34886bceb3a35">InstructionSet::isValidI3TypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:abc96d6aeda2090825bf34886bceb3a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given I3-type instruction is valid.  <a href="namespaceInstructionSet.html#abc96d6aeda2090825bf34886bceb3a35">More...</a><br /></td></tr>
+<tr class="separator:abc96d6aeda2090825bf34886bceb3a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5029a32183f9bb9c5a7b4a51cd1a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a7c5029a32183f9bb9c5a7b4a51cd1a35">InstructionSet::isValidSTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a7c5029a32183f9bb9c5a7b4a51cd1a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given S-type instruction is valid.  <a href="namespaceInstructionSet.html#a7c5029a32183f9bb9c5a7b4a51cd1a35">More...</a><br /></td></tr>
+<tr class="separator:a7c5029a32183f9bb9c5a7b4a51cd1a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3034cdaf7d375f55edb8fa02c85d536e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a3034cdaf7d375f55edb8fa02c85d536e">InstructionSet::isValidBTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a3034cdaf7d375f55edb8fa02c85d536e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given B-type instruction is valid.  <a href="namespaceInstructionSet.html#a3034cdaf7d375f55edb8fa02c85d536e">More...</a><br /></td></tr>
+<tr class="separator:a3034cdaf7d375f55edb8fa02c85d536e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986d514da055dec69ad815691685a74a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a986d514da055dec69ad815691685a74a">InstructionSet::isValidUTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:a986d514da055dec69ad815691685a74a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given U-type instruction is valid.  <a href="namespaceInstructionSet.html#a986d514da055dec69ad815691685a74a">More...</a><br /></td></tr>
+<tr class="separator:a986d514da055dec69ad815691685a74a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5efefc2871fd9684541e8f360757b13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#ad5efefc2871fd9684541e8f360757b13">InstructionSet::isValidJTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:ad5efefc2871fd9684541e8f360757b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given J-type instruction is valid.  <a href="namespaceInstructionSet.html#ad5efefc2871fd9684541e8f360757b13">More...</a><br /></td></tr>
+<tr class="separator:ad5efefc2871fd9684541e8f360757b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5026d6952e647862be336a37cd826e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#aae5026d6952e647862be336a37cd826e">InstructionSet::isValidPseudoInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:aae5026d6952e647862be336a37cd826e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given pseudo-instruction is valid.  <a href="namespaceInstructionSet.html#aae5026d6952e647862be336a37cd826e">More...</a><br /></td></tr>
+<tr class="separator:aae5026d6952e647862be336a37cd826e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e374826fc21f673cfd43781ff6af0bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a2e374826fc21f673cfd43781ff6af0bb">InstructionSet::isValidBaseExtensionInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="separator:a2e374826fc21f673cfd43781ff6af0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf5058e78421c8ff66a9a4d9d8fffc70"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#adf5058e78421c8ff66a9a4d9d8fffc70">InstructionSet::isValidFExtensionInstruction</a> (const std::string &amp;instruction)</td></tr>
+<tr class="memdesc:adf5058e78421c8ff66a9a4d9d8fffc70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates if a given F-extension instruction is valid.  <a href="namespaceInstructionSet.html#adf5058e78421c8ff66a9a4d9d8fffc70">More...</a><br /></td></tr>
+<tr class="separator:adf5058e78421c8ff66a9a4d9d8fffc70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c193a0447aa84d2a9f87a41a359b91"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#a55c193a0447aa84d2a9f87a41a359b91">InstructionSet::getExpectedSyntaxes</a> (const std::string &amp;opcode)</td></tr>
+<tr class="memdesc:a55c193a0447aa84d2a9f87a41a359b91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the expected syntax for a given opcode.  <a href="namespaceInstructionSet.html#a55c193a0447aa84d2a9f87a41a359b91">More...</a><br /></td></tr>
+<tr class="separator:a55c193a0447aa84d2a9f87a41a359b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a1cf7ac5cb234065b6d840a8904ff0281"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="structInstructionEncoding.html">InstructionEncoding</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a1cf7ac5cb234065b6d840a8904ff0281">instruction_encoding_map</a></td></tr>
-<tr class="memdesc:a1cf7ac5cb234065b6d840a8904ff0281"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map that associates instruction names with their corresponding encoding.  <a href="instructions_8h.html#a1cf7ac5cb234065b6d840a8904ff0281">More...</a><br /></td></tr>
-<tr class="separator:a1cf7ac5cb234065b6d840a8904ff0281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e401697b6859c168afc4ed643ac238c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::vector&lt; <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12">SyntaxType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instructions_8h.html#a8e401697b6859c168afc4ed643ac238c">instruction_syntax_map</a></td></tr>
-<tr class="memdesc:a8e401697b6859c168afc4ed643ac238c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map that associates instruction names with their expected syntax.  <a href="instructions_8h.html#a8e401697b6859c168afc4ed643ac238c">More...</a><br /></td></tr>
-<tr class="separator:a8e401697b6859c168afc4ed643ac238c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab046b55c7adf74913cf06c27f1f4c778"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, InstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInstructionSet.html#ab046b55c7adf74913cf06c27f1f4c778">InstructionSet::instruction_encoding_map</a></td></tr>
+<tr class="memdesc:ab046b55c7adf74913cf06c27f1f4c778"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map that associates instruction names with their corresponding encoding.  <a href="namespaceInstructionSet.html#ab046b55c7adf74913cf06c27f1f4c778">More...</a><br /></td></tr>
+<tr class="separator:ab046b55c7adf74913cf06c27f1f4c778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains the declarations for the <a class="el" href="structInstructionEncoding.html" title="Encodes the components of an instruction.">InstructionEncoding</a> struct and related functions. </p>
+<div class="textblock"><p>Contains the declarations for the InstructionEncoding struct and related functions. </p>
 <dl class="section author"><dt>Author</dt><dd>Vishank Singh, <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a5384e121bfc969afb98083be9f7bcc12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5384e121bfc969afb98083be9f7bcc12">&#9670;&nbsp;</a></span>SyntaxType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12">SyntaxType</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Enum that represents different syntax types for instructions. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12ae445b2f6b36163cd053217f0512d368a"></a>O_R_C_R_C_R&#160;</td><td class="fielddoc"><p>Opcode register , register , register. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a4bba3da1fe90b2d0dcea61ce7a229001"></a>O_R_C_R_C_I&#160;</td><td class="fielddoc"><p>Opcode register , register , immediate. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a6838e1305b98ae9ec076334bcbafd36a"></a>O_R_C_I&#160;</td><td class="fielddoc"><p>Opcode register , immediate. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a5518cb0a824d1408bf60e64030177799"></a>O_R_C_R_C_IL&#160;</td><td class="fielddoc"><p>Opcode register , register , immediate , instruction_label. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a861c63e74b264868c2be87bd08ab6ad0"></a>O_R_C_R_C_DL&#160;</td><td class="fielddoc"><p>Opcode register , register , immediate , data_label. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12adef2da0d681fd47ec2bc7d9f12b09ffd"></a>O_R_C_IL&#160;</td><td class="fielddoc"><p>Opcode register , instruction_label. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a6192351854bdcfa829f2efbd18aab905"></a>O_R_C_DL&#160;</td><td class="fielddoc"><p>Opcode register , data_label. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12a817f4e87331959174e251a38d4b185d9"></a>O_R_C_I_LP_R_RP&#160;</td><td class="fielddoc"><p>Opcode register , immediate , lparen , register , rparen. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5384e121bfc969afb98083be9f7bcc12af186217753c37b9b9f958d906208506e"></a>O&#160;</td><td class="fielddoc"><p>Opcode. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="afb96d63320633597bde5c5f9ac3e75ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb96d63320633597bde5c5f9ac3e75ec">&#9670;&nbsp;</a></span>getExpectedSyntaxes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string getExpectedSyntaxes </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>opcode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Retrieves the expected syntax for a given opcode. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">opcode</td><td>The opcode of the instruction. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representing the expected syntax of the instruction. </dd></dl>
-
-</div>
-</div>
-<a id="a01c5e465f1e1febdafb011d5746abfdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01c5e465f1e1febdafb011d5746abfdb">&#9670;&nbsp;</a></span>isValidBTypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidBTypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given B-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The B-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a08ec7110d476316c78a3bdc71b14b37c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08ec7110d476316c78a3bdc71b14b37c">&#9670;&nbsp;</a></span>isValidInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a6859e1c433fcca09321cd1cfca53e213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6859e1c433fcca09321cd1cfca53e213">&#9670;&nbsp;</a></span>isValidITypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidITypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given I-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The I-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a54a7c24fad2402344fd60a8178396510"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54a7c24fad2402344fd60a8178396510">&#9670;&nbsp;</a></span>isValidJTypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidJTypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given J-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The J-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="a35d8c74d790957ff351f6008f1c13d71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35d8c74d790957ff351f6008f1c13d71">&#9670;&nbsp;</a></span>isValidRTypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidRTypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given R-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The R-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="af554c1c77849256be3d135e43b7062b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af554c1c77849256be3d135e43b7062b6">&#9670;&nbsp;</a></span>isValidSTypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidSTypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given S-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The S-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ae7729cbfdf142ccc0b7ff80253c49aac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7729cbfdf142ccc0b7ff80253c49aac">&#9670;&nbsp;</a></span>isValidUTypeInstruction()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool isValidUTypeInstruction </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>instruction</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Validates if a given U-type instruction is valid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instruction</td><td>The U-type instruction string to validate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the instruction is valid, false otherwise. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a1cf7ac5cb234065b6d840a8904ff0281"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cf7ac5cb234065b6d840a8904ff0281">&#9670;&nbsp;</a></span>instruction_encoding_map</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="structInstructionEncoding.html">InstructionEncoding</a>&gt; instruction_encoding_map</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A map that associates instruction names with their corresponding encoding. </p>
-<p>This map stores the encoding details for various instructions, indexed by their names. </p>
-
-</div>
-</div>
-<a id="a8e401697b6859c168afc4ed643ac238c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e401697b6859c168afc4ed643ac238c">&#9670;&nbsp;</a></span>instruction_syntax_map</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unordered_map&lt;std::string, std::vector&lt;<a class="el" href="instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12">SyntaxType</a>&gt; &gt; instruction_syntax_map</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A map that associates instruction names with their expected syntax. </p>
-<p>This map stores the expected syntax for various instructions, indexed by their names. </p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

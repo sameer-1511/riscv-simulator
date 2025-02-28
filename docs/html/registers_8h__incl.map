@@ -1,6 +1,6 @@
-<map id="src/registers.h" name="src/registers.h">
-<area shape="rect" id="node1" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="808,5,923,32"/>
-<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="837,80,894,107"/>
+<map id="src/vm/registers.h" name="src/vm/registers.h">
+<area shape="rect" id="node1" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="796,5,935,32"/>
+<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="831,80,900,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,85,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="110,155,173,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="197,155,256,181"/>

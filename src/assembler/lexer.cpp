@@ -61,23 +61,22 @@ void Lexer::skipLine() {
     }
 }
 
-
 // TODO: make this better
 Token Lexer::identifier() {
     size_t start_pos = pos_;
     unsigned int start_column = column_number_;
     while (pos_ < current_line_.size() &&
-           (std::isalnum(current_line_[pos_]) 
-           || current_line_[pos_] == '_' 
-           || current_line_[pos_] == '.' 
-           // || current_line_[pos_] == ':'
-           
-           )) {
+        (std::isalnum(current_line_[pos_])
+            || current_line_[pos_] == '_'
+            || current_line_[pos_] == '.'
+            // || current_line_[pos_] == ':'
+
+        )) {
         ++pos_;
         ++column_number_;
     }
     std::string value = current_line_.substr(start_pos, pos_ - start_pos);
-    
+
     std::regex label_regex("^[a-zA-Z][a-zA-Z0-9_]*:$");
 
     if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
@@ -91,13 +90,15 @@ Token Lexer::identifier() {
         return {TokenType::LABEL, value, line_number_, start_column};
     }
 
-
     if (InstructionSet::isValidInstruction(value)) {
         return {TokenType::OPCODE, value, line_number_, start_column};
     } 
-    if (isValidRegister(value)) {
-        return {TokenType::REGISTER, value, line_number_, start_column};
+    if (isValidGeneralPurposeRegister(value)) {
+        return {TokenType::GP_REGISTER, value, line_number_, start_column};
     } 
+    if (isValidFloatingPointRegister(value)) {
+        return {TokenType::FP_REGISTER, value, line_number_, start_column};
+    }
     if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
         return {TokenType::LABEL, value, line_number_, start_column};
     } 
@@ -111,20 +112,19 @@ Token Lexer::identifier() {
     return {TokenType::INVALID, value, line_number_, start_column};
 }
 
-// TODO: add support for floating point numbers
 Token Lexer::number() {
     unsigned int start_pos = pos_;
     unsigned int start_column = column_number_;
 
     while (pos_ < current_line_.size()
-           && (std::isdigit(current_line_[pos_])
-               || current_line_[pos_] == '-'
-               || current_line_[pos_] == 'x'
-               || current_line_[pos_] == 'X'
-               || current_line_[pos_] == 'o'
-               || current_line_[pos_] == 'O'
-               || current_line_[pos_] == 'b'
-               || current_line_[pos_] == 'B')) {
+        && (std::isdigit(current_line_[pos_])
+            || current_line_[pos_] == '-'
+            || current_line_[pos_] == 'x'
+            || current_line_[pos_] == 'X'
+            || current_line_[pos_] == 'o'
+            || current_line_[pos_] == 'O'
+            || current_line_[pos_] == 'b'
+            || current_line_[pos_] == 'B')) {
         ++pos_;
         ++column_number_;
     }
@@ -135,23 +135,23 @@ Token Lexer::number() {
     std::regex binary_regex("^-?0[bB][01]+$");
     std::regex octal_regex("^-?0[oO][0-7]+$");
     std::regex decimal_regex("^-?[0-9]+$");
-
+    std::regex float_regex("^-?[0-9]+\\.[0-9]+$");
 
     int64_t num = 0;
 
     if (std::regex_match(value, hex_regex)) {
-        num = std::stoll(value, nullptr, 16);
+        return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 16)), line_number_, start_column};
     } else if (std::regex_match(value, binary_regex)) {
-        num = std::stoll(value, nullptr, 2);
+        return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 2)), line_number_, start_column};
     } else if (std::regex_match(value, octal_regex)) {
-        num = std::stoll(value, nullptr, 8);
+        return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 8)), line_number_, start_column};
     } else if (std::regex_match(value, decimal_regex)) {
-        num = std::stoll(value);
-    } else {
-        return {TokenType::INVALID, value, line_number_, start_column};
+        return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 10)), line_number_, start_column};
+    } else if (std::regex_match(value, float_regex)) {
+        return {TokenType::FLOAT, value, line_number_, start_column};
     }
 
-    return {TokenType::NUM, std::to_string(num), line_number_, start_column};
+    return {TokenType::INVALID, "Invalid", line_number_, start_column};
 
     /*
         The below code is for character by character parsing of numbers.
@@ -325,7 +325,7 @@ std::vector<Token> Lexer::getTokenList() {
         while (pos_ < current_line_.size()) {
             Token token = getNextToken();
             if (token.type == TokenType::INVALID) {
-               // std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
+                // std::cerr << "Error: Invalid token at line " << line_number_ << std::endl;
             }
             if (/* token.type != TokenType::INVALID && */ token.type != TokenType::EOF_) {
                 tokens_.push_back(token);

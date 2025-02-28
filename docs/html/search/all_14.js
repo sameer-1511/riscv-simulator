@@ -1,7 +1,25 @@
 var searchData=
 [
-  ['_7elexer_218',['~Lexer',['../classLexer.html#ad26a84af23d8d303723e36e83fc4e556',1,'Lexer']]],
-  ['_7ememory_219',['~Memory',['../classMemory.html#a2b517b46ae4b070d9f6a7b6d9efeb7a1',1,'Memory']]],
-  ['_7eparser_220',['~Parser',['../classParser.html#a3e658b5917a93a3ef648050d060e3a93',1,'Parser']]],
-  ['_7ervss_5fvm_221',['~rvss_vm',['../classrvss__vm.html#ac9f47691c66ecfb4b5f3408311a9280c',1,'rvss_vm']]]
+  ['ini_386',['INI',['../namespacevmConfig_1_1INI.html',1,'vmConfig']]],
+  ['valid_5ffloating_5fpoint_5fregisters_387',['valid_floating_point_registers',['../registers_8cpp.html#ac416af250858196829ea943e606823b7',1,'valid_floating_point_registers():&#160;registers.cpp'],['../registers_8h.html#ac416af250858196829ea943e606823b7',1,'valid_floating_point_registers():&#160;registers.cpp']]],
+  ['valid_5fgeneral_5fpurpose_5fregisters_388',['valid_general_purpose_registers',['../registers_8cpp.html#a0528a55c986b4b9e8717e14eeebeb7df',1,'valid_general_purpose_registers():&#160;registers.cpp'],['../registers_8h.html#a0528a55c986b4b9e8717e14eeebeb7df',1,'valid_general_purpose_registers():&#160;registers.cpp']]],
+  ['valid_5fregisters_389',['valid_registers',['../registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp'],['../registers_8cpp.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp']]],
+  ['valid_5fvector_5fregisters_390',['valid_vector_registers',['../registers_8cpp.html#a7468977bddf28dfd8109ea3b8583c49d',1,'valid_vector_registers():&#160;registers.cpp'],['../registers_8h.html#a7468977bddf28dfd8109ea3b8583c49d',1,'valid_vector_registers():&#160;registers.cpp']]],
+  ['value_391',['value',['../structToken.html#a4b7142147b8598f8e24c404928d9263b',1,'Token']]],
+  ['vec_5fregister_392',['VEC_REGISTER',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f',1,'tokens.h']]],
+  ['vector_393',['VECTOR',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e',1,'RegisterFile']]],
+  ['vm_5fasm_5fmw_2ecpp_394',['vm_asm_mw.cpp',['../vm__asm__mw_8cpp.html',1,'']]],
+  ['vm_5fasm_5fmw_2ecpp_2eo_2ed_395',['vm_asm_mw.cpp.o.d',['../tests_8dir_2src_2vm__asm__mw_8cpp_8o_8d.html',1,'(Global Namespace)'],['../RiscV__Siumlator_8dir_2src_2vm__asm__mw_8cpp_8o_8d.html',1,'(Global Namespace)']]],
+  ['vm_5fasm_5fmw_2eh_396',['vm_asm_mw.h',['../vm__asm__mw_8h.html',1,'']]],
+  ['vm_5fbase_2ecpp_397',['vm_base.cpp',['../vm__base_8cpp.html',1,'']]],
+  ['vm_5fbase_2ecpp_2eo_2ed_398',['vm_base.cpp.o.d',['../tests_8dir_2src_2vm_2vm__base_8cpp_8o_8d.html',1,'(Global Namespace)'],['../RiscV__Siumlator_8dir_2src_2vm_2vm__base_8cpp_8o_8d.html',1,'(Global Namespace)']]],
+  ['vm_5fbase_2eh_399',['vm_base.h',['../vm__base_8h.html',1,'']]],
+  ['vm_5frunner_2ecpp_400',['vm_runner.cpp',['../vm__runner_8cpp.html',1,'']]],
+  ['vm_5frunner_2ecpp_2eo_2ed_401',['vm_runner.cpp.o.d',['../tests_8dir_2src_2vm__runner_8cpp_8o_8d.html',1,'(Global Namespace)'],['../RiscV__Siumlator_8dir_2src_2vm__runner_8cpp_8o_8d.html',1,'(Global Namespace)']]],
+  ['vm_5frunner_2eh_402',['vm_runner.h',['../vm__runner_8h.html',1,'']]],
+  ['vmbase_403',['VMBase',['../classVMBase.html#a75269a8612472521bf5b79d00b48d872',1,'VMBase::VMBase()'],['../classVMBase.html',1,'VMBase']]],
+  ['vmconfig_404',['vmConfig',['../namespacevmConfig.html',1,'']]],
+  ['vmrunner_405',['VMRunner',['../classVMRunner.html',1,'VMRunner'],['../classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c',1,'VMRunner::VMRunner()']]],
+  ['vmtypes_406',['vmTypes',['../namespacevmConfig.html#acd2237b74f39c5118b58dc1186186339',1,'vmConfig']]],
+  ['vrtostring_407',['vrToString',['../classRegisterFile.html#a28749e3b715ebd11ad2814d735cfb5b1',1,'RegisterFile']]]
 ];

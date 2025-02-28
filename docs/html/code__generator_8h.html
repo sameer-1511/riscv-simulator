@@ -109,13 +109,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="code__generator_8h__dep__incl.png" border="0" usemap="#asrc_2assembler_2code__generator_8hdep" alt=""/></div>
 <map name="asrc_2assembler_2code__generator_8hdep" id="asrc_2assembler_2code__generator_8hdep">
-<area shape="rect" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="323,5,471,47"/>
-<area shape="rect" href="assembler_8h.html" title=" " alt="" coords="13,102,209,129"/>
-<area shape="rect" href="code__generator_8cpp.html" title=" " alt="" coords="233,95,381,136"/>
-<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="405,102,574,129"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="559,184,665,211"/>
-<area shape="rect" href="assembler_8cpp.html" title=" " alt="" coords="5,184,216,211"/>
-<area shape="rect" href="parser_8cpp.html" title=" " alt="" coords="351,184,535,211"/>
+<area shape="rect" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="189,5,337,47"/>
+<area shape="rect" href="assembler_8h.html" title=" " alt="" coords="101,184,297,211"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,259,111,285"/>
+<area shape="rect" href="code__generator_8cpp.html" title="Contains the implementation of functions for generating machine code from intermediate code." alt="" coords="440,95,588,136"/>
+<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="247,102,416,129"/>
+<area shape="rect" href="assembler_8cpp.html" title=" " alt="" coords="134,259,345,285"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="493,259,677,285"/>
+<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="374,184,459,211"/>
+<area shape="rect" href="utils_8cpp.html" title="Contains utility functions for the VM." alt="" coords="368,259,468,285"/>
 </map>
 </div>
 </div>
@@ -132,40 +134,46 @@ Functions</h2></td></tr>
 <tr class="memitem:add0059bcf4bc90896326c8d058d08237"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#add0059bcf4bc90896326c8d058d08237">printIntermediateCode</a> (const std::vector&lt; std::pair&lt; <a class="el" href="structICUnit.html">ICUnit</a>, bool &gt;&gt; &amp;IntermediateCode)</td></tr>
 <tr class="memdesc:add0059bcf4bc90896326c8d058d08237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the intermediate code to a vector of strings.  <a href="code__generator_8h.html#add0059bcf4bc90896326c8d058d08237">More...</a><br /></td></tr>
 <tr class="separator:add0059bcf4bc90896326c8d058d08237"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26885a8328028146f574ce756b46cd9f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a26885a8328028146f574ce756b46cd9f">generateRTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:a26885a8328028146f574ce756b46cd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an R-type instruction.  <a href="code__generator_8h.html#a26885a8328028146f574ce756b46cd9f">More...</a><br /></td></tr>
-<tr class="separator:a26885a8328028146f574ce756b46cd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af01bb3bf179fa4cf9e4269e5ac71036b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#af01bb3bf179fa4cf9e4269e5ac71036b">generateITypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:af01bb3bf179fa4cf9e4269e5ac71036b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an I-type instruction.  <a href="code__generator_8h.html#af01bb3bf179fa4cf9e4269e5ac71036b">More...</a><br /></td></tr>
-<tr class="separator:af01bb3bf179fa4cf9e4269e5ac71036b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4434c5d31ea2c24db78c811b8b6cb2b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#ad4434c5d31ea2c24db78c811b8b6cb2b">generateSTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:ad4434c5d31ea2c24db78c811b8b6cb2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an S-type instruction.  <a href="code__generator_8h.html#ad4434c5d31ea2c24db78c811b8b6cb2b">More...</a><br /></td></tr>
-<tr class="separator:ad4434c5d31ea2c24db78c811b8b6cb2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc28203a9f6906f1e6b6406e2f7b637"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a2dc28203a9f6906f1e6b6406e2f7b637">generateBTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:a2dc28203a9f6906f1e6b6406e2f7b637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a B-type instruction.  <a href="code__generator_8h.html#a2dc28203a9f6906f1e6b6406e2f7b637">More...</a><br /></td></tr>
-<tr class="separator:a2dc28203a9f6906f1e6b6406e2f7b637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6596bd8906b00ddbffeb49faa4016b5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#ad6596bd8906b00ddbffeb49faa4016b5">generateUTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:ad6596bd8906b00ddbffeb49faa4016b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a U-type instruction.  <a href="code__generator_8h.html#ad6596bd8906b00ddbffeb49faa4016b5">More...</a><br /></td></tr>
-<tr class="separator:ad6596bd8906b00ddbffeb49faa4016b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d83ed0d7311f94961ea578a9cab49a3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a4d83ed0d7311f94961ea578a9cab49a3">generateJTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
-<tr class="memdesc:a4d83ed0d7311f94961ea578a9cab49a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a J-type instruction.  <a href="code__generator_8h.html#a4d83ed0d7311f94961ea578a9cab49a3">More...</a><br /></td></tr>
-<tr class="separator:a4d83ed0d7311f94961ea578a9cab49a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f7749a29a7a4e5ada5a22470884be96"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a6f7749a29a7a4e5ada5a22470884be96">generateMachineCode</a> (const std::vector&lt; std::pair&lt; <a class="el" href="structICUnit.html">ICUnit</a>, bool &gt;&gt; &amp;IntermediateCode)</td></tr>
-<tr class="memdesc:a6f7749a29a7a4e5ada5a22470884be96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code from a vector of intermediate code blocks.  <a href="code__generator_8h.html#a6f7749a29a7a4e5ada5a22470884be96">More...</a><br /></td></tr>
-<tr class="separator:a6f7749a29a7a4e5ada5a22470884be96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa777a0da9306e32f350d1fa95c6fd708"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#aa777a0da9306e32f350d1fa95c6fd708">generateRTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:aa777a0da9306e32f350d1fa95c6fd708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an R-type instruction.  <a href="code__generator_8h.html#aa777a0da9306e32f350d1fa95c6fd708">More...</a><br /></td></tr>
+<tr class="separator:aa777a0da9306e32f350d1fa95c6fd708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3fc4496dc255085105d93442057bf06"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#ab3fc4496dc255085105d93442057bf06">generateI1TypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:ab3fc4496dc255085105d93442057bf06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an I1-type instruction.  <a href="code__generator_8h.html#ab3fc4496dc255085105d93442057bf06">More...</a><br /></td></tr>
+<tr class="separator:ab3fc4496dc255085105d93442057bf06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d03cac1f818da350654bfdfb173d3c"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#aa7d03cac1f818da350654bfdfb173d3c">generateI2TypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:aa7d03cac1f818da350654bfdfb173d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an I2-type instruction.  <a href="code__generator_8h.html#aa7d03cac1f818da350654bfdfb173d3c">More...</a><br /></td></tr>
+<tr class="separator:aa7d03cac1f818da350654bfdfb173d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61b08962223c9111d877eb09c888be32"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a61b08962223c9111d877eb09c888be32">generateI3TypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:a61b08962223c9111d877eb09c888be32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an I3-type instruction.  <a href="code__generator_8h.html#a61b08962223c9111d877eb09c888be32">More...</a><br /></td></tr>
+<tr class="separator:a61b08962223c9111d877eb09c888be32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7f9780597c42ca19af7d42666d93b6"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#abd7f9780597c42ca19af7d42666d93b6">generateSTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:abd7f9780597c42ca19af7d42666d93b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for an S-type instruction.  <a href="code__generator_8h.html#abd7f9780597c42ca19af7d42666d93b6">More...</a><br /></td></tr>
+<tr class="separator:abd7f9780597c42ca19af7d42666d93b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60679b8c79d77afbdad1a3436db5dd2f"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a60679b8c79d77afbdad1a3436db5dd2f">generateBTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:a60679b8c79d77afbdad1a3436db5dd2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a B-type instruction.  <a href="code__generator_8h.html#a60679b8c79d77afbdad1a3436db5dd2f">More...</a><br /></td></tr>
+<tr class="separator:a60679b8c79d77afbdad1a3436db5dd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed18989d704fcf5163313fe16f5819e6"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#aed18989d704fcf5163313fe16f5819e6">generateUTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:aed18989d704fcf5163313fe16f5819e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a U-type instruction.  <a href="code__generator_8h.html#aed18989d704fcf5163313fe16f5819e6">More...</a><br /></td></tr>
+<tr class="separator:aed18989d704fcf5163313fe16f5819e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8db9012a787890181badcd8490ccbbe"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; 32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#ab8db9012a787890181badcd8490ccbbe">generateJTypeMachineCode</a> (const <a class="el" href="structICUnit.html">ICUnit</a> &amp;block)</td></tr>
+<tr class="memdesc:ab8db9012a787890181badcd8490ccbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code for a J-type instruction.  <a href="code__generator_8h.html#ab8db9012a787890181badcd8490ccbbe">More...</a><br /></td></tr>
+<tr class="separator:ab8db9012a787890181badcd8490ccbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8145e6cebeb244e18d00df93ca54657c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::bitset&lt; 32 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="code__generator_8h.html#a8145e6cebeb244e18d00df93ca54657c">generateMachineCode</a> (const std::vector&lt; std::pair&lt; <a class="el" href="structICUnit.html">ICUnit</a>, bool &gt;&gt; &amp;IntermediateCode)</td></tr>
+<tr class="memdesc:a8145e6cebeb244e18d00df93ca54657c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates machine code from a vector of intermediate code blocks.  <a href="code__generator_8h.html#a8145e6cebeb244e18d00df93ca54657c">More...</a><br /></td></tr>
+<tr class="separator:a8145e6cebeb244e18d00df93ca54657c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains the definition of the <a class="el" href="structICUnit.html" title="Represents a unit of intermediate code used for generating machine code.">ICUnit</a> struct and functions for generating machine code. </p>
 <dl class="section author"><dt>Author</dt><dd>Vishank Singh, <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a2dc28203a9f6906f1e6b6406e2f7b637"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dc28203a9f6906f1e6b6406e2f7b637">&#9670;&nbsp;</a></span>generateBTypeMachineCode()</h2>
+<a id="a60679b8c79d77afbdad1a3436db5dd2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60679b8c79d77afbdad1a3436db5dd2f">&#9670;&nbsp;</a></span>generateBTypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateBTypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateBTypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -181,18 +189,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>
-<a id="af01bb3bf179fa4cf9e4269e5ac71036b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af01bb3bf179fa4cf9e4269e5ac71036b">&#9670;&nbsp;</a></span>generateITypeMachineCode()</h2>
+<a id="ab3fc4496dc255085105d93442057bf06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3fc4496dc255085105d93442057bf06">&#9670;&nbsp;</a></span>generateI1TypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateITypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateI1TypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -201,25 +209,79 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generates machine code for an I-type instruction. </p>
+<p>Generates machine code for an I1-type instruction. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">block</td><td>The <a class="el" href="structICUnit.html" title="Represents a unit of intermediate code used for generating machine code.">ICUnit</a> representing the instruction. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>
-<a id="a4d83ed0d7311f94961ea578a9cab49a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d83ed0d7311f94961ea578a9cab49a3">&#9670;&nbsp;</a></span>generateJTypeMachineCode()</h2>
+<a id="aa7d03cac1f818da350654bfdfb173d3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d03cac1f818da350654bfdfb173d3c">&#9670;&nbsp;</a></span>generateI2TypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateJTypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateI2TypeMachineCode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
+          <td class="paramname"><em>block</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates machine code for an I2-type instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>The <a class="el" href="structICUnit.html" title="Represents a unit of intermediate code used for generating machine code.">ICUnit</a> representing the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
+
+</div>
+</div>
+<a id="a61b08962223c9111d877eb09c888be32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61b08962223c9111d877eb09c888be32">&#9670;&nbsp;</a></span>generateI3TypeMachineCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::bitset&lt;32&gt; generateI3TypeMachineCode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
+          <td class="paramname"><em>block</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates machine code for an I3-type instruction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">block</td><td>The <a class="el" href="structICUnit.html" title="Represents a unit of intermediate code used for generating machine code.">ICUnit</a> representing the instruction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
+
+</div>
+</div>
+<a id="ab8db9012a787890181badcd8490ccbbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8db9012a787890181badcd8490ccbbe">&#9670;&nbsp;</a></span>generateJTypeMachineCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::bitset&lt;32&gt; generateJTypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -235,18 +297,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>
-<a id="a6f7749a29a7a4e5ada5a22470884be96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7749a29a7a4e5ada5a22470884be96">&#9670;&nbsp;</a></span>generateMachineCode()</h2>
+<a id="a8145e6cebeb244e18d00df93ca54657c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8145e6cebeb244e18d00df93ca54657c">&#9670;&nbsp;</a></span>generateMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::string&gt; generateMachineCode </td>
+          <td class="memname">std::vector&lt;std::bitset&lt;32&gt; &gt; generateMachineCode </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; std::pair&lt; <a class="el" href="structICUnit.html">ICUnit</a>, bool &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>IntermediateCode</em></td><td>)</td>
@@ -262,18 +324,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of strings representing the machine code. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of bitset&lt;32&gt; representing the machine code. </dd></dl>
 
 </div>
 </div>
-<a id="a26885a8328028146f574ce756b46cd9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26885a8328028146f574ce756b46cd9f">&#9670;&nbsp;</a></span>generateRTypeMachineCode()</h2>
+<a id="aa777a0da9306e32f350d1fa95c6fd708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa777a0da9306e32f350d1fa95c6fd708">&#9670;&nbsp;</a></span>generateRTypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateRTypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateRTypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -289,18 +351,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>
-<a id="ad4434c5d31ea2c24db78c811b8b6cb2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4434c5d31ea2c24db78c811b8b6cb2b">&#9670;&nbsp;</a></span>generateSTypeMachineCode()</h2>
+<a id="abd7f9780597c42ca19af7d42666d93b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd7f9780597c42ca19af7d42666d93b6">&#9670;&nbsp;</a></span>generateSTypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateSTypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateSTypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -316,18 +378,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>
-<a id="ad6596bd8906b00ddbffeb49faa4016b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6596bd8906b00ddbffeb49faa4016b5">&#9670;&nbsp;</a></span>generateUTypeMachineCode()</h2>
+<a id="aed18989d704fcf5163313fe16f5819e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed18989d704fcf5163313fe16f5819e6">&#9670;&nbsp;</a></span>generateUTypeMachineCode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string generateUTypeMachineCode </td>
+          <td class="memname">std::bitset&lt;32&gt; generateUTypeMachineCode </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structICUnit.html">ICUnit</a> &amp;&#160;</td>
           <td class="paramname"><em>block</em></td><td>)</td>
@@ -343,7 +405,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The machine code string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The machine code bitset&lt;32&gt;. </dd></dl>
 
 </div>
 </div>

@@ -16,12 +16,20 @@ The \mbox{\hyperlink{classParser}{Parser}} class is responsible for parsing toke
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classParser}{Parser}} instance. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classParser_a3e658b5917a93a3ef648050d060e3a93}{$\sim$\+Parser}} ()
 \begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classParser}{Parser}} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParser_ad941a297e9f6abb39271090806a6be33}{parse}} ()
+\begin{DoxyCompactList}\small\item\em Parses the tokens to generate intermediate code and symbol tables. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classParser_a77be2d371758afe4ce067b3bd73f5693}{get\+Error\+Count}} () const
+\item 
 const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \& \mbox{\hyperlink{classParser_a3013f3bc6bb73bffe54413d7d6e24d3c}{get\+Errors}} () const
 \begin{DoxyCompactList}\small\item\em Returns the list of parse errors. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::variant$<$ uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string $>$ $>$ \& \mbox{\hyperlink{classParser_a3b9bb743ae7cb2c32871abc494509bcf}{get\+Data\+Buffer}} ()
 \begin{DoxyCompactList}\small\item\em Returns the data buffer. \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{structICUnit}{ICUnit}}, bool $>$ $>$ \& \mbox{\hyperlink{classParser_ab107a7fe36c012612760c415b45ce30d}{get\+Intermediate\+Code}} () const
 \begin{DoxyCompactList}\small\item\em Returns the generated intermediate code. \end{DoxyCompactList}\item 
+const std\+::map$<$ unsigned int, unsigned int $>$ \& \mbox{\hyperlink{classParser_ab87f4b382a805319397f0dc334cb6846}{get\+Instruction\+Number\+Line\+Number\+Mapping}} () const
+\item 
+const std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ \& \mbox{\hyperlink{classParser_ad97c9329e0f9a0444aa7739e60850a7f}{get\+Symbol\+Table}} () const
+\item 
 void \mbox{\hyperlink{classParser_a1ffb6b698c06e6f28ebebcbb84c3d839}{print\+Errors}} () const
 \begin{DoxyCompactList}\small\item\em Prints the list of errors to the console. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classParser_a0a98612e5aaa33a123ad4e6dc41ef615}{print\+Symbol\+Table}} () const
@@ -29,9 +37,7 @@ void \mbox{\hyperlink{classParser_a0a98612e5aaa33a123ad4e6dc41ef615}{print\+Symb
 void \mbox{\hyperlink{classParser_a7162a9d0b66118b676ab3b7a47b3b385}{print\+Data\+Buffers}} () const
 \begin{DoxyCompactList}\small\item\em Prints the data buffers to the console. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classParser_aca38c04f09c91ee2323f9da27f06126d}{print\+Intermediate\+Code}} () const
-\begin{DoxyCompactList}\small\item\em Prints the intermediate code to the console. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classParser_ad941a297e9f6abb39271090806a6be33}{parse}} ()
-\begin{DoxyCompactList}\small\item\em Parses the tokens to generate intermediate code and symbol tables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the intermediate code to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -81,6 +87,12 @@ Returns the data buffer.
 \begin{DoxyReturn}{Returns}
 A reference to the data buffer. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classParser_a77be2d371758afe4ce067b3bd73f5693}\label{classParser_a77be2d371758afe4ce067b3bd73f5693}} 
+\index{Parser@{Parser}!getErrorCount@{getErrorCount}}
+\index{getErrorCount@{getErrorCount}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{getErrorCount()}{getErrorCount()}}
+{\footnotesize\ttfamily unsigned int Parser\+::get\+Error\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classParser_a3013f3bc6bb73bffe54413d7d6e24d3c}\label{classParser_a3013f3bc6bb73bffe54413d7d6e24d3c}} 
 \index{Parser@{Parser}!getErrors@{getErrors}}
 \index{getErrors@{getErrors}!Parser@{Parser}}
@@ -94,6 +106,12 @@ Returns the list of parse errors.
 \begin{DoxyReturn}{Returns}
 A const reference to the vector of parse errors. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classParser_ab87f4b382a805319397f0dc334cb6846}\label{classParser_ab87f4b382a805319397f0dc334cb6846}} 
+\index{Parser@{Parser}!getInstructionNumberLineNumberMapping@{getInstructionNumberLineNumberMapping}}
+\index{getInstructionNumberLineNumberMapping@{getInstructionNumberLineNumberMapping}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{getInstructionNumberLineNumberMapping()}{getInstructionNumberLineNumberMapping()}}
+{\footnotesize\ttfamily const std\+::map$<$ unsigned int, unsigned int $>$ \& Parser\+::get\+Instruction\+Number\+Line\+Number\+Mapping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classParser_ab107a7fe36c012612760c415b45ce30d}\label{classParser_ab107a7fe36c012612760c415b45ce30d}} 
 \index{Parser@{Parser}!getIntermediateCode@{getIntermediateCode}}
 \index{getIntermediateCode@{getIntermediateCode}!Parser@{Parser}}
@@ -107,6 +125,12 @@ Returns the generated intermediate code.
 \begin{DoxyReturn}{Returns}
 A const reference to the intermediate code vector. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classParser_ad97c9329e0f9a0444aa7739e60850a7f}\label{classParser_ad97c9329e0f9a0444aa7739e60850a7f}} 
+\index{Parser@{Parser}!getSymbolTable@{getSymbolTable}}
+\index{getSymbolTable@{getSymbolTable}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{getSymbolTable()}{getSymbolTable()}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$std\+::string, unsigned int$>$\& Parser\+::get\+Symbol\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classParser_ad941a297e9f6abb39271090806a6be33}\label{classParser_ad941a297e9f6abb39271090806a6be33}} 
 \index{Parser@{Parser}!parse@{parse}}
 \index{parse@{parse}!Parser@{Parser}}

@@ -1,4 +1,21 @@
 var searchData=
 [
-  ['vector_467',['VECTOR',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e',1,'RegisterFile']]]
+  ['o_831',['O',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaf186217753c37b9b9f958d906208506e',1,'InstructionSet']]],
+  ['o_5ffpr_5fc_5ffpr_832',['O_FPR_C_FPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea26c0ed632be719d001499f10cf5b8a16',1,'InstructionSet']]],
+  ['o_5ffpr_5fc_5ffpr_5fc_5ffpr_833',['O_FPR_C_FPR_C_FPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea35456c8df1be6e0369b59d2dcc5b5e6d',1,'InstructionSet']]],
+  ['o_5ffpr_5fc_5ffpr_5fc_5ffpr_5fc_5ffpr_834',['O_FPR_C_FPR_C_FPR_C_FPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaa9a5f4479bf2405b3bf315c47b0cf3b0',1,'InstructionSet']]],
+  ['o_5ffpr_5fc_5fgpr_835',['O_FPR_C_GPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaccff7c0457276e403b2fa1a4e941c155',1,'InstructionSet']]],
+  ['o_5ffpr_5fc_5fi_5flp_5fgpr_5frp_836',['O_FPR_C_I_LP_GPR_RP',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea4b80d7d1223745bdf966288df20f1fa3',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fdl_837',['O_GPR_C_DL',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eac4900375e3b89f5e09e1f06464fa79b9',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5ffpr_838',['O_GPR_C_FPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea7c56ceaf0b4fd799a397e31225ad2067',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5ffpr_5fc_5ffpr_839',['O_GPR_C_FPR_C_FPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea4acbd7a3820c4fe37725ec992ebe084a',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fgpr_5fc_5fdl_840',['O_GPR_C_GPR_C_DL',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74eaf6223c5677027b1fc3b40e9cc9c10cd9',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fgpr_5fc_5fgpr_841',['O_GPR_C_GPR_C_GPR',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea41dbb99a6896d9e96d14138265da5221',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fgpr_5fc_5fi_842',['O_GPR_C_GPR_C_I',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea6928cbdc3a5078e1dc0ad9ca43016922',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fgpr_5fc_5fil_843',['O_GPR_C_GPR_C_IL',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea364880ae1f94f6bc2994640139c45f40',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fi_844',['O_GPR_C_I',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ea54fc6e8c9d10a97ed4a5e7d0ab9553eb',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fi_5flp_5fgpr_5frp_845',['O_GPR_C_I_LP_GPR_RP',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ead8a1a972ad133831dff5a091d86767c6',1,'InstructionSet']]],
+  ['o_5fgpr_5fc_5fil_846',['O_GPR_C_IL',['../namespaceInstructionSet.html#a74997ed397636956578bef7bf8e9a74ead0b5df5218c775d236e94b953634aaca',1,'InstructionSet']]],
+  ['opcode_847',['OPCODE',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a11bdee9fdefbd8d33a25257557bddbef',1,'tokens.h']]],
+  ['or_848',['OR',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616',1,'ALU']]]
 ];

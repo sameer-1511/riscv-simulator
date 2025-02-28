@@ -28,16 +28,18 @@ enum class \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a31e340aa5b97f6d91317dff3a239cc5e}{DIRECTIVE}}
 , \newline
 \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a11bdee9fdefbd8d33a25257557bddbef}{OPCODE}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921ad17455cfcb88a53f1603fb817e09c2d6}{REGISTER}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}{NUM}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a1d60368c2a139a81b67353e844cc5ad7}{GP\+\_\+\+REGISTER}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564}{FP\+\_\+\+REGISTER}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f}{VEC\+\_\+\+REGISTER}}
+, \newline
+\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}{NUM}}
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb}{LABEL}}
-, \newline
-\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c}{LABEL\+\_\+\+REF}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c}{LABEL\+\_\+\+REF}}
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a4d9b3e9fc12849d060371eb65154c751}{COMMA}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286}{LPAREN}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1}{RPAREN}}
 , \newline
-\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}{STRING}}
+\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286}{LPAREN}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1}{RPAREN}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}{STRING}}
  \}
 \begin{DoxyCompactList}\small\item\em Enum class representing the type of a token. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -87,8 +89,16 @@ DIRECTIVE&Assembly directive. \\
 OPCODE&Opcode in an instruction. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{REGISTER@{REGISTER}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!REGISTER@{REGISTER}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921ad17455cfcb88a53f1603fb817e09c2d6}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921ad17455cfcb88a53f1603fb817e09c2d6}} 
-REGISTER&Register in an instruction. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GP\_REGISTER@{GP\_REGISTER}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!GP\_REGISTER@{GP\_REGISTER}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a1d60368c2a139a81b67353e844cc5ad7}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a1d60368c2a139a81b67353e844cc5ad7}} 
+GP\+\_\+\+REGISTER&General-\/purpose register. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FP\_REGISTER@{FP\_REGISTER}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!FP\_REGISTER@{FP\_REGISTER}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564}} 
+FP\+\_\+\+REGISTER&Floating-\/point register. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VEC\_REGISTER@{VEC\_REGISTER}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!VEC\_REGISTER@{VEC\_REGISTER}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f}} 
+VEC\+\_\+\+REGISTER&Vector register. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NUM@{NUM}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!NUM@{NUM}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}} 

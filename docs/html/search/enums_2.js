@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['syntaxtype_418',['SyntaxType',['../instructions_8h.html#a5384e121bfc969afb98083be9f7bcc12',1,'instructions.h']]]
+  ['instructiontype_779',['InstructionType',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6a',1,'InstructionSet']]]
 ];

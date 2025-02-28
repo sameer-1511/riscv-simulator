@@ -28,7 +28,7 @@ int64_t countLines(const std::string &filename);
  * @throws std::out_of_range If the lineNumber is invalid.
  * @throws std::ios_base::failure If the file cannot be opened.
  */
-std::string getLineFromFile(const std::string& fileName, unsigned int lineNumber);
+std::string getLineFromFile(const std::string &fileName, unsigned int lineNumber);
 
 /**
  * @brief Parses a string containing escaped characters into its unescaped form.
@@ -40,5 +40,6 @@ std::string parseEscapedString(const std::string &input);
 
 void dumpErrors(const std::string &filename, const std::vector<ParseError> &errors);
 
+void dumpNoErrors(const std::string &filename);
 
 #endif // UTILS_H

@@ -73,7 +73,7 @@ $(function() {
 <p>Represents a memory block containing 1 KB of memory.  
  <a href="structMemoryBlock.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="main__memory_8h_source.html">main_memory.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -86,6 +86,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMemoryBlock.html#a0cd70c89ef3b4b7ebfd25aa48b2db04f">data</a></td></tr>
 <tr class="memdesc:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector representing the memory block data.  <a href="structMemoryBlock.html#a0cd70c89ef3b4b7ebfd25aa48b2db04f">More...</a><br /></td></tr>
 <tr class="separator:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc9655625b9d635d1c0458e5d096373"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">block_size</a></td></tr>
+<tr class="memdesc:a4fc9655625b9d635d1c0458e5d096373"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the memory block in bytes.  <a href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">More...</a><br /></td></tr>
+<tr class="separator:a4fc9655625b9d635d1c0458e5d096373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a memory block containing 1 KB of memory. </p>
@@ -118,6 +121,25 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4fc9655625b9d635d1c0458e5d096373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc9655625b9d635d1c0458e5d096373">&#9670;&nbsp;</a></span>block_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int MemoryBlock::block_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacevmConfig_1_1INI.html#a0982b63f0594859dad4548b671faaef2">vmConfig::INI::get</a>(<span class="stringliteral">&quot;Memory&quot;</span>, <span class="stringliteral">&quot;block_size&quot;</span>).empty() </div>
+<div class="line">                            ? 1024 : std::stoi(<a class="code" href="namespacevmConfig_1_1INI.html#a0982b63f0594859dad4548b671faaef2">vmConfig::INI::get</a>(<span class="stringliteral">&quot;Memory&quot;</span>, <span class="stringliteral">&quot;block_size&quot;</span>))</div>
+<div class="ttc" id="anamespacevmConfig_1_1INI_html_a0982b63f0594859dad4548b671faaef2"><div class="ttname"><a href="namespacevmConfig_1_1INI.html#a0982b63f0594859dad4548b671faaef2">vmConfig::INI::get</a></div><div class="ttdeci">std::string get(const std::string &amp;section, const std::string &amp;key)</div><div class="ttdoc">Retrieves the value associated with a given section and key.</div><div class="ttdef"><b>Definition:</b> config.cpp:35</div></div>
+</div><!-- fragment -->
+<p>The size of the memory block in bytes. </p>
+
+</div>
+</div>
 <a id="a0cd70c89ef3b4b7ebfd25aa48b2db04f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0cd70c89ef3b4b7ebfd25aa48b2db04f">&#9670;&nbsp;</a></span>data</h2>
 
@@ -135,7 +157,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="memory_8h_source.html">memory.h</a></li>
+<li>src/vm/<a class="el" href="main__memory_8h_source.html">main_memory.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

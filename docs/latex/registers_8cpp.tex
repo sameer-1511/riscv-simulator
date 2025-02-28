@@ -1,12 +1,12 @@
-\hypertarget{registers_8cpp}{}\doxysection{src/registers.cpp File Reference}
-\label{registers_8cpp}\index{src/registers.cpp@{src/registers.cpp}}
+\hypertarget{registers_8cpp}{}\doxysection{src/vm/registers.cpp File Reference}
+\label{registers_8cpp}\index{src/vm/registers.cpp@{src/vm/registers.cpp}}
 
 
 Contains the implementation of the \mbox{\hyperlink{classRegisterFile}{Register\+File}} class and related.  
 
 
 {\ttfamily \#include \char`\"{}registers.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
 Include dependency graph for registers.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -19,12 +19,24 @@ Include dependency graph for registers.\+cpp\+:
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{registers_8cpp_acc5c38a9f53a883c61a1214fd6b765eb}{is\+Valid\+Register}} (const std\+::string \&reg)
-\begin{DoxyCompactList}\small\item\em Checks whether a given register name is valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks whether a given register name is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{registers_8cpp_a1d7613312792f85b3571d0c93a058541}{is\+Valid\+General\+Purpose\+Register}} (const std\+::string \&reg)
+\item 
+bool \mbox{\hyperlink{registers_8cpp_a961b5d197401316d7c6a3ac4f87b1acd}{is\+Valid\+Floating\+Point\+Register}} (const std\+::string \&reg)
+\item 
+bool \mbox{\hyperlink{registers_8cpp_ad62a3359928c8b8d89600050b85a1c36}{is\+Valid\+Vector\+Register}} (const std\+::string \&reg)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8cpp_ad6f8d6e2d5386980756f012d74ff5412}{valid\+\_\+registers}}
 \begin{DoxyCompactList}\small\item\em Set of valid register names for validation. \end{DoxyCompactList}\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8cpp_a0528a55c986b4b9e8717e14eeebeb7df}{valid\+\_\+general\+\_\+purpose\+\_\+registers}}
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8cpp_ac416af250858196829ea943e606823b7}{valid\+\_\+floating\+\_\+point\+\_\+registers}}
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8cpp_a7468977bddf28dfd8109ea3b8583c49d}{valid\+\_\+vector\+\_\+registers}}
+\item 
 const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{registers_8cpp_af4ede5aac2f7597ad13f0a67cb8b13b5}{reg\+\_\+alias\+\_\+to\+\_\+name}}
 \begin{DoxyCompactList}\small\item\em Map of register aliases to their actual names. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -38,6 +50,18 @@ Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{registers_8cpp_a961b5d197401316d7c6a3ac4f87b1acd}\label{registers_8cpp_a961b5d197401316d7c6a3ac4f87b1acd}} 
+\index{registers.cpp@{registers.cpp}!isValidFloatingPointRegister@{isValidFloatingPointRegister}}
+\index{isValidFloatingPointRegister@{isValidFloatingPointRegister}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidFloatingPointRegister()}{isValidFloatingPointRegister()}}
+{\footnotesize\ttfamily bool is\+Valid\+Floating\+Point\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{registers_8cpp_a1d7613312792f85b3571d0c93a058541}\label{registers_8cpp_a1d7613312792f85b3571d0c93a058541}} 
+\index{registers.cpp@{registers.cpp}!isValidGeneralPurposeRegister@{isValidGeneralPurposeRegister}}
+\index{isValidGeneralPurposeRegister@{isValidGeneralPurposeRegister}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidGeneralPurposeRegister()}{isValidGeneralPurposeRegister()}}
+{\footnotesize\ttfamily bool is\+Valid\+General\+Purpose\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{registers_8cpp_acc5c38a9f53a883c61a1214fd6b765eb}\label{registers_8cpp_acc5c38a9f53a883c61a1214fd6b765eb}} 
 \index{registers.cpp@{registers.cpp}!isValidRegister@{isValidRegister}}
 \index{isValidRegister@{isValidRegister}!registers.cpp@{registers.cpp}}
@@ -56,6 +80,12 @@ Checks whether a given register name is valid.
 \begin{DoxyReturn}{Returns}
 True if the register name is valid, false otherwise. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{registers_8cpp_ad62a3359928c8b8d89600050b85a1c36}\label{registers_8cpp_ad62a3359928c8b8d89600050b85a1c36}} 
+\index{registers.cpp@{registers.cpp}!isValidVectorRegister@{isValidVectorRegister}}
+\index{isValidVectorRegister@{isValidVectorRegister}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidVectorRegister()}{isValidVectorRegister()}}
+{\footnotesize\ttfamily bool is\+Valid\+Vector\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Variable Documentation}
@@ -69,6 +99,52 @@ True if the register name is valid, false otherwise.
 
 Map of register aliases to their actual names. 
 
+\mbox{\Hypertarget{registers_8cpp_ac416af250858196829ea943e606823b7}\label{registers_8cpp_ac416af250858196829ea943e606823b7}} 
+\index{registers.cpp@{registers.cpp}!valid\_floating\_point\_registers@{valid\_floating\_point\_registers}}
+\index{valid\_floating\_point\_registers@{valid\_floating\_point\_registers}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{valid\_floating\_point\_registers}{valid\_floating\_point\_registers}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+floating\+\_\+point\+\_\+registers}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f0"{}}, \textcolor{stringliteral}{"{}f1"{}}, \textcolor{stringliteral}{"{}f2"{}}, \textcolor{stringliteral}{"{}f3"{}}, \textcolor{stringliteral}{"{}f4"{}}, \textcolor{stringliteral}{"{}f5"{}}, \textcolor{stringliteral}{"{}f6"{}}, \textcolor{stringliteral}{"{}f7"{}}, \textcolor{stringliteral}{"{}f8"{}}, \textcolor{stringliteral}{"{}f9"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f10"{}}, \textcolor{stringliteral}{"{}f11"{}}, \textcolor{stringliteral}{"{}f12"{}}, \textcolor{stringliteral}{"{}f13"{}}, \textcolor{stringliteral}{"{}f14"{}}, \textcolor{stringliteral}{"{}f15"{}}, \textcolor{stringliteral}{"{}f16"{}}, \textcolor{stringliteral}{"{}f17"{}}, \textcolor{stringliteral}{"{}f18"{}}, \textcolor{stringliteral}{"{}f19"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f20"{}}, \textcolor{stringliteral}{"{}f21"{}}, \textcolor{stringliteral}{"{}f22"{}}, \textcolor{stringliteral}{"{}f23"{}}, \textcolor{stringliteral}{"{}f24"{}}, \textcolor{stringliteral}{"{}f25"{}}, \textcolor{stringliteral}{"{}f26"{}}, \textcolor{stringliteral}{"{}f27"{}}, \textcolor{stringliteral}{"{}f28"{}}, \textcolor{stringliteral}{"{}f29"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f30"{}}, \textcolor{stringliteral}{"{}f31"{}},}
+\DoxyCodeLine{        }
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}ft0"{}}, \textcolor{stringliteral}{"{}ft1"{}}, \textcolor{stringliteral}{"{}ft2"{}}, \textcolor{stringliteral}{"{}ft3"{}}, \textcolor{stringliteral}{"{}ft4"{}}, \textcolor{stringliteral}{"{}ft5"{}}, \textcolor{stringliteral}{"{}ft6"{}}, \textcolor{stringliteral}{"{}ft7"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}fs0"{}}, \textcolor{stringliteral}{"{}fs1"{}}, \textcolor{stringliteral}{"{}fa0"{}}, \textcolor{stringliteral}{"{}fa1"{}}, \textcolor{stringliteral}{"{}fa2"{}}, \textcolor{stringliteral}{"{}fa3"{}}, \textcolor{stringliteral}{"{}fa4"{}}, \textcolor{stringliteral}{"{}fa5"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}fa6"{}}, \textcolor{stringliteral}{"{}fa7"{}}, \textcolor{stringliteral}{"{}fs2"{}}, \textcolor{stringliteral}{"{}fs3"{}}, \textcolor{stringliteral}{"{}fs4"{}}, \textcolor{stringliteral}{"{}fs5"{}}, \textcolor{stringliteral}{"{}fs6"{}}, \textcolor{stringliteral}{"{}fs7"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}fs8"{}}, \textcolor{stringliteral}{"{}fs9"{}}, \textcolor{stringliteral}{"{}fs10"{}}, \textcolor{stringliteral}{"{}fs11"{}}, \textcolor{stringliteral}{"{}ft8"{}}, \textcolor{stringliteral}{"{}ft9"{}}, \textcolor{stringliteral}{"{}ft10"{}}, \textcolor{stringliteral}{"{}ft11"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}ft12"{}}, \textcolor{stringliteral}{"{}ft13"{}}, \textcolor{stringliteral}{"{}ft14"{}}, \textcolor{stringliteral}{"{}ft15"{}}, \textcolor{stringliteral}{"{}ft16"{}}, \textcolor{stringliteral}{"{}ft17"{}}, \textcolor{stringliteral}{"{}ft18"{}}, \textcolor{stringliteral}{"{}ft19"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}ft20"{}}, \textcolor{stringliteral}{"{}ft21"{}}, \textcolor{stringliteral}{"{}ft22"{}}, \textcolor{stringliteral}{"{}ft23"{}}, \textcolor{stringliteral}{"{}ft24"{}}, \textcolor{stringliteral}{"{}ft25"{}}, \textcolor{stringliteral}{"{}ft26"{}}, \textcolor{stringliteral}{"{}ft27"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}ft28"{}}, \textcolor{stringliteral}{"{}ft29"{}}, \textcolor{stringliteral}{"{}ft30"{}}, \textcolor{stringliteral}{"{}ft31"{}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{registers_8cpp_a0528a55c986b4b9e8717e14eeebeb7df}\label{registers_8cpp_a0528a55c986b4b9e8717e14eeebeb7df}} 
+\index{registers.cpp@{registers.cpp}!valid\_general\_purpose\_registers@{valid\_general\_purpose\_registers}}
+\index{valid\_general\_purpose\_registers@{valid\_general\_purpose\_registers}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{valid\_general\_purpose\_registers}{valid\_general\_purpose\_registers}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+general\+\_\+purpose\+\_\+registers}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}x0"{}}, \textcolor{stringliteral}{"{}x1"{}}, \textcolor{stringliteral}{"{}x2"{}}, \textcolor{stringliteral}{"{}x3"{}}, \textcolor{stringliteral}{"{}x4"{}}, \textcolor{stringliteral}{"{}x5"{}}, \textcolor{stringliteral}{"{}x6"{}}, \textcolor{stringliteral}{"{}x7"{}}, \textcolor{stringliteral}{"{}x8"{}}, \textcolor{stringliteral}{"{}x9"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}x10"{}}, \textcolor{stringliteral}{"{}x11"{}}, \textcolor{stringliteral}{"{}x12"{}}, \textcolor{stringliteral}{"{}x13"{}}, \textcolor{stringliteral}{"{}x14"{}}, \textcolor{stringliteral}{"{}x15"{}}, \textcolor{stringliteral}{"{}x16"{}}, \textcolor{stringliteral}{"{}x17"{}}, \textcolor{stringliteral}{"{}x18"{}}, \textcolor{stringliteral}{"{}x19"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}x20"{}}, \textcolor{stringliteral}{"{}x21"{}}, \textcolor{stringliteral}{"{}x22"{}}, \textcolor{stringliteral}{"{}x23"{}}, \textcolor{stringliteral}{"{}x24"{}}, \textcolor{stringliteral}{"{}x25"{}}, \textcolor{stringliteral}{"{}x26"{}}, \textcolor{stringliteral}{"{}x27"{}}, \textcolor{stringliteral}{"{}x28"{}}, \textcolor{stringliteral}{"{}x29"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}x30"{}}, \textcolor{stringliteral}{"{}x31"{}},}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}zero"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}ra"{}}, \textcolor{stringliteral}{"{}sp"{}}, \textcolor{stringliteral}{"{}gp"{}}, \textcolor{stringliteral}{"{}tp"{}}, \textcolor{stringliteral}{"{}t0"{}}, \textcolor{stringliteral}{"{}t1"{}}, \textcolor{stringliteral}{"{}t2"{}}, \textcolor{stringliteral}{"{}s0"{}}, \textcolor{stringliteral}{"{}s1"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}a0"{}}, \textcolor{stringliteral}{"{}a1"{}}, \textcolor{stringliteral}{"{}a2"{}}, \textcolor{stringliteral}{"{}a3"{}}, \textcolor{stringliteral}{"{}a4"{}}, \textcolor{stringliteral}{"{}a5"{}}, \textcolor{stringliteral}{"{}a6"{}}, \textcolor{stringliteral}{"{}a7"{}}, \textcolor{stringliteral}{"{}s2"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}s3"{}}, \textcolor{stringliteral}{"{}s4"{}}, \textcolor{stringliteral}{"{}s5"{}}, \textcolor{stringliteral}{"{}s6"{}}, \textcolor{stringliteral}{"{}s7"{}}, \textcolor{stringliteral}{"{}s8"{}}, \textcolor{stringliteral}{"{}s9"{}}, \textcolor{stringliteral}{"{}s10"{}}, \textcolor{stringliteral}{"{}s11"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}t3"{}}, \textcolor{stringliteral}{"{}t4"{}}, \textcolor{stringliteral}{"{}t5"{}}, \textcolor{stringliteral}{"{}t6"{}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{registers_8cpp_ad6f8d6e2d5386980756f012d74ff5412}\label{registers_8cpp_ad6f8d6e2d5386980756f012d74ff5412}} 
 \index{registers.cpp@{registers.cpp}!valid\_registers@{valid\_registers}}
 \index{valid\_registers@{valid\_registers}!registers.cpp@{registers.cpp}}
@@ -89,6 +165,11 @@ Map of register aliases to their actual names.
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}s3"{}}, \textcolor{stringliteral}{"{}s4"{}}, \textcolor{stringliteral}{"{}s5"{}}, \textcolor{stringliteral}{"{}s6"{}}, \textcolor{stringliteral}{"{}s7"{}}, \textcolor{stringliteral}{"{}s8"{}}, \textcolor{stringliteral}{"{}s9"{}}, \textcolor{stringliteral}{"{}s10"{}}, \textcolor{stringliteral}{"{}s11"{}},}
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}t3"{}}, \textcolor{stringliteral}{"{}t4"{}}, \textcolor{stringliteral}{"{}t5"{}}, \textcolor{stringliteral}{"{}t6"{}},}
 \DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f0"{}}, \textcolor{stringliteral}{"{}f1"{}}, \textcolor{stringliteral}{"{}f2"{}}, \textcolor{stringliteral}{"{}f3"{}}, \textcolor{stringliteral}{"{}f4"{}}, \textcolor{stringliteral}{"{}f5"{}}, \textcolor{stringliteral}{"{}f6"{}}, \textcolor{stringliteral}{"{}f7"{}}, \textcolor{stringliteral}{"{}f8"{}}, \textcolor{stringliteral}{"{}f9"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f10"{}}, \textcolor{stringliteral}{"{}f11"{}}, \textcolor{stringliteral}{"{}f12"{}}, \textcolor{stringliteral}{"{}f13"{}}, \textcolor{stringliteral}{"{}f14"{}}, \textcolor{stringliteral}{"{}f15"{}}, \textcolor{stringliteral}{"{}f16"{}}, \textcolor{stringliteral}{"{}f17"{}}, \textcolor{stringliteral}{"{}f18"{}}, \textcolor{stringliteral}{"{}f19"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f20"{}}, \textcolor{stringliteral}{"{}f21"{}}, \textcolor{stringliteral}{"{}f22"{}}, \textcolor{stringliteral}{"{}f23"{}}, \textcolor{stringliteral}{"{}f24"{}}, \textcolor{stringliteral}{"{}f25"{}}, \textcolor{stringliteral}{"{}f26"{}}, \textcolor{stringliteral}{"{}f27"{}}, \textcolor{stringliteral}{"{}f28"{}}, \textcolor{stringliteral}{"{}f29"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}f30"{}}, \textcolor{stringliteral}{"{}f31"{}},}
+\DoxyCodeLine{        }
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}ft0"{}}, \textcolor{stringliteral}{"{}ft1"{}}, \textcolor{stringliteral}{"{}ft2"{}}, \textcolor{stringliteral}{"{}ft3"{}}, \textcolor{stringliteral}{"{}ft4"{}}, \textcolor{stringliteral}{"{}ft5"{}}, \textcolor{stringliteral}{"{}ft6"{}}, \textcolor{stringliteral}{"{}ft7"{}},}
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}fs0"{}}, \textcolor{stringliteral}{"{}fs1"{}}, \textcolor{stringliteral}{"{}fa0"{}}, \textcolor{stringliteral}{"{}fa1"{}}, \textcolor{stringliteral}{"{}fa2"{}}, \textcolor{stringliteral}{"{}fa3"{}}, \textcolor{stringliteral}{"{}fa4"{}}, \textcolor{stringliteral}{"{}fa5"{}},}
 \DoxyCodeLine{        \textcolor{stringliteral}{"{}fa6"{}}, \textcolor{stringliteral}{"{}fa7"{}}, \textcolor{stringliteral}{"{}fs2"{}}, \textcolor{stringliteral}{"{}fs3"{}}, \textcolor{stringliteral}{"{}fs4"{}}, \textcolor{stringliteral}{"{}fs5"{}}, \textcolor{stringliteral}{"{}fs6"{}}, \textcolor{stringliteral}{"{}fs7"{}},}
@@ -108,3 +189,19 @@ Map of register aliases to their actual names.
 
 Set of valid register names for validation. 
 
+\mbox{\Hypertarget{registers_8cpp_a7468977bddf28dfd8109ea3b8583c49d}\label{registers_8cpp_a7468977bddf28dfd8109ea3b8583c49d}} 
+\index{registers.cpp@{registers.cpp}!valid\_vector\_registers@{valid\_vector\_registers}}
+\index{valid\_vector\_registers@{valid\_vector\_registers}!registers.cpp@{registers.cpp}}
+\doxysubsubsection{\texorpdfstring{valid\_vector\_registers}{valid\_vector\_registers}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+vector\+\_\+registers}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}v0"{}}, \textcolor{stringliteral}{"{}v1"{}}, \textcolor{stringliteral}{"{}v2"{}}, \textcolor{stringliteral}{"{}v3"{}}, \textcolor{stringliteral}{"{}v4"{}}, \textcolor{stringliteral}{"{}v5"{}}, \textcolor{stringliteral}{"{}v6"{}}, \textcolor{stringliteral}{"{}v7"{}}, \textcolor{stringliteral}{"{}v8"{}}, \textcolor{stringliteral}{"{}v9"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}v10"{}}, \textcolor{stringliteral}{"{}v11"{}}, \textcolor{stringliteral}{"{}v12"{}}, \textcolor{stringliteral}{"{}v13"{}}, \textcolor{stringliteral}{"{}v14"{}}, \textcolor{stringliteral}{"{}v15"{}}, \textcolor{stringliteral}{"{}v16"{}}, \textcolor{stringliteral}{"{}v17"{}}, \textcolor{stringliteral}{"{}v18"{}}, \textcolor{stringliteral}{"{}v19"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}v20"{}}, \textcolor{stringliteral}{"{}v21"{}}, \textcolor{stringliteral}{"{}v22"{}}, \textcolor{stringliteral}{"{}v23"{}}, \textcolor{stringliteral}{"{}v24"{}}, \textcolor{stringliteral}{"{}v25"{}}, \textcolor{stringliteral}{"{}v26"{}}, \textcolor{stringliteral}{"{}v27"{}}, \textcolor{stringliteral}{"{}v28"{}}, \textcolor{stringliteral}{"{}v29"{}},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"{}v30"{}}, \textcolor{stringliteral}{"{}v31"{}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

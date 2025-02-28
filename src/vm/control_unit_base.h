@@ -19,27 +19,25 @@ public:
 
     // Sets control signals based on the opcode or instruction
     virtual void setControlSignals(uint32_t instruction) = 0;
+    virtual ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) = 0;
 
     // Retrieves control signals (used by other components like ALU, memory)
-    virtual void decode(uint32_t instruction) = 0;
-    virtual bool getRegWrite() const = 0;
-    virtual bool getMemRead() const = 0;
-    virtual bool getMemWrite() const = 0;
-    virtual bool getALUSrc() const = 0;
-    virtual ALU::ALUOp getALUOp() const = 0;
-
+    [[nodiscard]] virtual bool getALUSrc() const = 0;
+    [[nodiscard]] virtual bool getMemToReg() const = 0;
+    [[nodiscard]] virtual bool getRegWrite() const = 0;
+    [[nodiscard]] virtual bool getMemRead() const = 0;
+    [[nodiscard]] virtual bool getMemWrite() const = 0;
+    [[nodiscard]] virtual bool getALUOp() const = 0;
 
 protected:
     // Common control signals
-    bool RegDst = false;
-    bool ALUSrc = false;
-    bool MemToReg = false;
     bool RegWrite = false;
+    bool ALUSrc = false;
+    bool PCSrc = false;
     bool MemRead = false;
     bool MemWrite = false;
-    bool Branch = false;
-    ALU::ALUOp ALUOp = ALU::ALUOp::NONE;
+    bool MemToReg = false;
+    bool ALUOp = false;
 };
-
 
 #endif // CONTROL_UNIT_BASE_H

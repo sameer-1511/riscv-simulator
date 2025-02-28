@@ -1,7 +1,7 @@
 /**
- * File Name: rvss_vm.h
- * Author: Vishank Singh
- * Github: https://github.com/VishankSingh
+ * @file rvss_vm.h
+ * @brief RVSS VM definition
+ * @author Vishank Singh, https://github.com/VishankSingh
  */
 #ifndef RVSS_VM_H
 #define RVSS_VM_H
@@ -16,12 +16,25 @@ class RVSSVM : public VMBase {
 private:
     RVSSControlUnit controlUnit;
 
-    std::unordered_map<std::string, int> controlSignals;
 
-    void fetchInstruction();
-    void decodeInstruction();
-    void executeInstruction();
-    void memoryAccess();
+    // intermediate variables
+    int64_t execution_result_ = 0;
+    int64_t memory_result_ = 0;
+    int64_t memory_address_ = 0;
+    int64_t memory_data_ = 0;
+    
+    double fexecution_result_ = 0.0;
+    double fmemory_result_ = 0.0;
+    // same as memory_address_
+    double fmemory_data_ = 0.0;
+
+
+    void fetch();
+    void decode();
+    void execute();
+    void executeFloat();
+    void executeVector();
+    void memory();
     void writeback();
 
     void printControlSignals();
@@ -31,8 +44,10 @@ public:
     ~RVSSVM();
 
     void run() override;
+    void debugRun() override;
     void step() override;
     void reset() override;
+    void dumpState(const std::string &filename) override;
 
     void printType() {
         std::cout << "rvssvm" << std::endl;

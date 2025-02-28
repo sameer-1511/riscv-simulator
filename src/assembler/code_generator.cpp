@@ -10,7 +10,7 @@
 
 std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::string> ICList;
-    for (const auto &pair: IntermediateCode) {
+    for (const auto &pair : IntermediateCode) {
         const ICUnit &block = pair.first;
         std::string code;
 
@@ -22,7 +22,7 @@ std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUni
             code = block.getOpcode() + " " + block.getRs2() + " " + block.getImm() + "(" + block.getRs1() + ")";
         } else if (InstructionSet::isValidBTypeInstruction(block.getOpcode())) {
             code = block.getOpcode() + " " + block.getRs1() + " " + block.getRs2() + " " + block.getImm() + " <" +
-                   block.getLabel() + ">";
+                block.getLabel() + ">";
         } else if (InstructionSet::isValidUTypeInstruction(block.getOpcode())) {
             code = block.getOpcode() + " " + block.getRd() + " " + block.getImm();
         } else if (InstructionSet::isValidJTypeInstruction(block.getOpcode())) {
@@ -31,14 +31,14 @@ std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUni
             code = block.getOpcode() + " " + block.getImm();
         }
 
-
         ICList.push_back(code);
     }
     return ICList;
 }
 
 std::bitset<32> generateRTypeMachineCode(const ICUnit &block) {
-    InstructionSet::RTypeInstructionEncoding encoding = InstructionSet::R_type_instruction_encoding_map.at(block.getOpcode());
+    InstructionSet::RTypeInstructionEncoding
+        encoding = InstructionSet::R_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
     std::bitset<5> rd = std::bitset<5>(std::stoi(block.getRd().substr(1)));
     std::bitset<5> rs1 = std::bitset<5>(std::stoi(block.getRs1().substr(1)));
@@ -84,9 +84,9 @@ std::bitset<32> generateI2TypeMachineCode(const ICUnit &block) {
 std::bitset<32> generateI3TypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::I3_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
-    std::bitset<5> rd = std::bitset<5>(0);
-    std::bitset<5> rs1 = std::bitset<5>(0);
-    std::bitset<12> imm = std::bitset<12>(0);
+    auto rd = std::bitset<5>(0);
+    auto rs1 = std::bitset<5>(0);
+    auto imm = std::bitset<12>(0);
     code |= encoding.opcode.to_ulong();
     code |= (imm.to_ulong() << 20);
     code |= (rs1.to_ulong() << 15);
@@ -111,7 +111,6 @@ std::bitset<32> generateSTypeMachineCode(const ICUnit &block) {
     return code;
 }
 
-// TODO: check this function
 std::bitset<32> generateBTypeMachineCode(const ICUnit &block) {
     auto encoding = InstructionSet::B_type_instruction_encoding_map.at(block.getOpcode());
     std::bitset<32> code;
@@ -154,34 +153,26 @@ std::bitset<32> generateJTypeMachineCode(const ICUnit &block) {
     return code;
 }
 
-
 std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::bitset<32>> machine_code;
-    for (const auto &pair: IntermediateCode) {
+    for (const auto &pair : IntermediateCode) {
         const ICUnit &block = pair.first;
         std::bitset<32> code;
         if (InstructionSet::isValidRTypeInstruction(block.getOpcode())) {
             code = generateRTypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidI1TypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidI1TypeInstruction(block.getOpcode())) {
             code = generateI1TypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidI2TypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidI2TypeInstruction(block.getOpcode())) {
             code = generateI2TypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidI3TypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidI3TypeInstruction(block.getOpcode())) {
             code = generateI3TypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidSTypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidSTypeInstruction(block.getOpcode())) {
             code = generateSTypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidBTypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidBTypeInstruction(block.getOpcode())) {
             code = generateBTypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidUTypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidUTypeInstruction(block.getOpcode())) {
             code = generateUTypeMachineCode(block);
-        } 
-        else if (InstructionSet::isValidJTypeInstruction(block.getOpcode())) {
+        } else if (InstructionSet::isValidJTypeInstruction(block.getOpcode())) {
             code = generateJTypeMachineCode(block);
         }
         machine_code.push_back(code);

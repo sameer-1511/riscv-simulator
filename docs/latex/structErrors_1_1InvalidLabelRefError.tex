@@ -1,0 +1,125 @@
+\hypertarget{structErrors_1_1InvalidLabelRefError}{}\doxysection{Errors\+::Invalid\+Label\+Ref\+Error Struct Reference}
+\label{structErrors_1_1InvalidLabelRefError}\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+
+
+Represents an error caused by referencing an invalid or undefined label.  
+
+
+
+
+{\ttfamily \#include $<$errors.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a524085bc5b2e9fbbec42771835728e00}{Invalid\+Label\+Ref\+Error}} (std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a47623e026c6eed445d63a2343605f48d}{main\+\_\+message}}, std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_aa5a29deda7e77c91a6f4232104d3917c}{sub\+\_\+message}}, std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_ac53f3f63028b8c379c32725ff9d3e7cf}{filename}}, unsigned int \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_aa86bedcd01721242a9f8bc4dbcaf8223}{line\+\_\+number}}, unsigned int \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a07655c68fdf91692828ab29c3636daad}{column\+\_\+number}}, std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_afc3c1d9daa2d5edfe04970b5e5d402df}{line\+\_\+text}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a47623e026c6eed445d63a2343605f48d}{main\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em Main error message. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_aa5a29deda7e77c91a6f4232104d3917c}{sub\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em Sub error message with additional details. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_ac53f3f63028b8c379c32725ff9d3e7cf}{filename}}
+\begin{DoxyCompactList}\small\item\em Filename where the error occurred. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_aa86bedcd01721242a9f8bc4dbcaf8223}{line\+\_\+number}}
+\begin{DoxyCompactList}\small\item\em Line number where the error occurred. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a07655c68fdf91692828ab29c3636daad}{column\+\_\+number}}
+\begin{DoxyCompactList}\small\item\em Column number where the error occurred. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_afc3c1d9daa2d5edfe04970b5e5d402df}{line\+\_\+text}}
+\begin{DoxyCompactList}\small\item\em Text of the line where the error occurred. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError_a2652b803229e5331c3fbc2815cd73e2e}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError}{Invalid\+Label\+Ref\+Error}} \&error)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an error caused by referencing an invalid or undefined label. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_a524085bc5b2e9fbbec42771835728e00}\label{structErrors_1_1InvalidLabelRefError_a524085bc5b2e9fbbec42771835728e00}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!InvalidLabelRefError@{InvalidLabelRefError}}
+\index{InvalidLabelRefError@{InvalidLabelRefError}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{InvalidLabelRefError()}{InvalidLabelRefError()}}
+{\footnotesize\ttfamily Errors\+::\+Invalid\+Label\+Ref\+Error\+::\+Invalid\+Label\+Ref\+Error (\begin{DoxyParamCaption}\item[{std\+::string}]{main\+\_\+message,  }\item[{std\+::string}]{sub\+\_\+message,  }\item[{std\+::string}]{filename,  }\item[{unsigned int}]{line\+\_\+number,  }\item[{unsigned int}]{column\+\_\+number,  }\item[{std\+::string}]{line\+\_\+text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_a2652b803229e5331c3fbc2815cd73e2e}\label{structErrors_1_1InvalidLabelRefError_a2652b803229e5331c3fbc2815cd73e2e}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError}{Invalid\+Label\+Ref\+Error}} \&}]{error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_a07655c68fdf91692828ab29c3636daad}\label{structErrors_1_1InvalidLabelRefError_a07655c68fdf91692828ab29c3636daad}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!column\_number@{column\_number}}
+\index{column\_number@{column\_number}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{column\_number}{column\_number}}
+{\footnotesize\ttfamily unsigned int Errors\+::\+Invalid\+Label\+Ref\+Error\+::column\+\_\+number}
+
+
+
+Column number where the error occurred. 
+
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_ac53f3f63028b8c379c32725ff9d3e7cf}\label{structErrors_1_1InvalidLabelRefError_ac53f3f63028b8c379c32725ff9d3e7cf}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!filename@{filename}}
+\index{filename@{filename}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily std\+::string Errors\+::\+Invalid\+Label\+Ref\+Error\+::filename}
+
+
+
+Filename where the error occurred. 
+
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_aa86bedcd01721242a9f8bc4dbcaf8223}\label{structErrors_1_1InvalidLabelRefError_aa86bedcd01721242a9f8bc4dbcaf8223}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!line\_number@{line\_number}}
+\index{line\_number@{line\_number}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{line\_number}{line\_number}}
+{\footnotesize\ttfamily unsigned int Errors\+::\+Invalid\+Label\+Ref\+Error\+::line\+\_\+number}
+
+
+
+Line number where the error occurred. 
+
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_afc3c1d9daa2d5edfe04970b5e5d402df}\label{structErrors_1_1InvalidLabelRefError_afc3c1d9daa2d5edfe04970b5e5d402df}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!line\_text@{line\_text}}
+\index{line\_text@{line\_text}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{line\_text}{line\_text}}
+{\footnotesize\ttfamily std\+::string Errors\+::\+Invalid\+Label\+Ref\+Error\+::line\+\_\+text}
+
+
+
+Text of the line where the error occurred. 
+
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_a47623e026c6eed445d63a2343605f48d}\label{structErrors_1_1InvalidLabelRefError_a47623e026c6eed445d63a2343605f48d}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!main\_message@{main\_message}}
+\index{main\_message@{main\_message}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{main\_message}{main\_message}}
+{\footnotesize\ttfamily std\+::string Errors\+::\+Invalid\+Label\+Ref\+Error\+::main\+\_\+message}
+
+
+
+Main error message. 
+
+\mbox{\Hypertarget{structErrors_1_1InvalidLabelRefError_aa5a29deda7e77c91a6f4232104d3917c}\label{structErrors_1_1InvalidLabelRefError_aa5a29deda7e77c91a6f4232104d3917c}} 
+\index{Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}!sub\_message@{sub\_message}}
+\index{sub\_message@{sub\_message}!Errors::InvalidLabelRefError@{Errors::InvalidLabelRefError}}
+\doxysubsubsection{\texorpdfstring{sub\_message}{sub\_message}}
+{\footnotesize\ttfamily std\+::string Errors\+::\+Invalid\+Label\+Ref\+Error\+::sub\+\_\+message}
+
+
+
+Sub error message with additional details. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/assembler/\mbox{\hyperlink{errors_8h}{errors.\+h}}\end{DoxyCompactItemize}

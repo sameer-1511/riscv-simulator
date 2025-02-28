@@ -24,7 +24,7 @@ int64_t countLines(const std::string &filename) {
     return lines;
 }
 
-std::string getLineFromFile(const std::string& fileName, unsigned int lineNumber) {
+std::string getLineFromFile(const std::string &fileName, unsigned int lineNumber) {
     std::ifstream file(fileName);
     if (!file.is_open()) {
         throw std::ios_base::failure("Could not open the file.");
@@ -47,11 +47,22 @@ std::string parseEscapedString(const std::string &input) {
     for (size_t i = 0; i < input.size(); ++i) {
         if (input[i] == '\\' && i + 1 < input.size()) {
             switch (input[i + 1]) {
-                case 'n': oss.put('\n'); ++i; break; // Newline
-                case 't': oss.put('\t'); ++i; break; // Tab
-                case '\\': oss.put('\\'); ++i; break; // Backslash
-                case '"': oss.put('"'); ++i; break; // Double quote
-                default: oss.put('\\'); oss.put(input[i + 1]); ++i; break; // Unhandled escape
+                case 'n': oss.put('\n');
+                    ++i;
+                    break; // Newline
+                case 't': oss.put('\t');
+                    ++i;
+                    break; // Tab
+                case '\\': oss.put('\\');
+                    ++i;
+                    break; // Backslash
+                case '"': oss.put('"');
+                    ++i;
+                    break; // Double quote
+                default: oss.put('\\');
+                    oss.put(input[i + 1]);
+                    ++i;
+                    break; // Unhandled escape
             }
         } else {
             oss.put(input[i]);
@@ -88,3 +99,16 @@ void dumpErrors(const std::string &filename, const std::vector<ParseError> &erro
     file.close();
 }
 
+void dumpNoErrors(const std::string &filename) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Unable to open file: " + filename);
+    }
+
+    file << "{\n";
+    file << "    \"errorCode\": 0,\n";
+    file << "    \"errors\": []\n";
+    file << "}\n";
+
+    file.close();
+}

@@ -18,6 +18,9 @@ void VMBase::loadProgram(const AssembledProgram &program) {
         counter += 4;
     }
 
+    program_size_ = counter;
+    addBreakpoint(program_size_);
+
     unsigned int data_counter = 0;
     for (const auto& data : program.data_buffer) {
         std::visit([&](auto&& value) {
@@ -42,6 +45,8 @@ void VMBase::loadProgram(const AssembledProgram &program) {
             }
         }, data);
     }
+
+
 }
 
 uint64_t VMBase::getProgramCounter() const {
@@ -51,6 +56,98 @@ uint64_t VMBase::getProgramCounter() const {
 void VMBase::updateProgramCounter(int64_t value) {
     program_counter_ += value;
 }
+
+static int32_t sign_extend(uint32_t imm, int32_t bits) {
+    if (imm & (1 << (bits - 1))) {
+        imm |= 0xFFFFFFFF << bits;
+    }
+    return imm;
+}
+
+int64_t VMBase::imm_generator(uint32_t instruction) {
+    int64_t imm = 0;
+    uint8_t opcode = instruction & 0b1111111;
+
+    switch (opcode) {
+        /*** I-TYPE (Load, ALU Immediate, JALR, FPU Loads) ***/
+        case 0b0010011: // ALU Immediate (ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI)
+        case 0b0000011: // Load (LB, LH, LW, LD, LBU, LHU, LWU)
+        case 0b1100111: // JALR
+        case 0b0001111: // FENCE
+        case 0b0000111: // FLW, FLD (Floating-point load)
+            imm = (instruction >> 20) & 0xFFF;
+            if (imm & 0x800) {
+                imm |= 0xFFFFF000;
+            }
+            break;
+
+        /*** S-TYPE (Store, Floating-Point Store) ***/
+        case 0b0100011: // Store (SB, SH, SW, SD)
+        case 0b0100111: // FSW, FSD (Floating-point store)
+            imm = ((instruction >> 7) & 0x1F) | ((instruction >> 25) & 0x7F) << 5;
+            if (imm & 0x800) {
+                imm |= 0xFFFFF000;
+            }
+            break;
+
+        /*** SB-TYPE (Branch Instructions) ***/
+        case 0b1100011: // Branch (BEQ, BNE, BLT, BGE, BLTU, BGEU)
+            imm = ((instruction >> 8) & 0xF) // Bits 11:8
+                  | ((instruction >> 25) & 0x3F) << 4 // Bits 10:5
+                  | ((instruction >> 7) & 0x1) << 10 // Bit 4
+                  | ((instruction >> 31) & 0x1) << 11; // Bit 12
+            imm <<= 1;
+            if (imm & 0x1000) {
+                imm |= 0xFFFFE000;
+            }
+            break;
+
+        /*** U-TYPE (LUI, AUIPC) ***/
+        case 0b0110111: // LUI
+        case 0b0010111: // AUIPC
+            imm = (instruction & 0xFFFFF000) >> 12;  // Upper 20 bits
+            
+            break;
+
+        /*** J-TYPE (JAL) ***/
+        case 0b1101111: // JAL
+            imm = ((instruction >> 21) & 0x3FF)  // Bits 10:1
+                | ((instruction >> 20) & 0x1) << 10  // Bit 11
+                | ((instruction >> 12) & 0xFF) << 11  // Bits 19:12
+                | ((instruction >> 31) & 0x1) << 19;  // Bit 20
+            imm <<= 1;  // Shift left by 1
+            if (imm & 0x1000) {
+                imm |= 0xFFFFE000;
+            }
+            break;
+
+        /*** M-EXTENSION (Multiplication, Division) - R-TYPE ***/
+        case 0b0110011: // MUL, MULH, MULHU, MULHSU, DIV, DIVU, REM, REMU
+            // R-Type (no immediate needed)
+            imm = 0;
+            break;
+
+        /*** F-EXTENSION (Floating Point Operations) - R-TYPE ***/
+        case 0b1010011: // Floating-point (FADD, FSUB, FMUL, FDIV, FSQRT, etc.)
+            // R-Type (no immediate needed)
+            imm = 0;
+            break;
+
+        /*** D-EXTENSION (Double-Precision Floating Point) ***/
+        case 0b1000011: // FLD (Double floating-point load)
+//        case 0b1100011: // FSD (Double floating-point store)
+            imm = (instruction >> 20) & 0xFFF;
+            imm = sign_extend(imm, 12);
+            break;
+
+        default:
+            imm = 0;
+            break;
+    }
+
+    return imm;
+}
+
 
 void VMBase::addBreakpoint(uint64_t address) {
     breakpoints_.emplace_back(address);

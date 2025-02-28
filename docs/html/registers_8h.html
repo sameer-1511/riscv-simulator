@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RISC-V Simulator: src/registers.h File Reference</title>
+<title>RISC-V Simulator: src/vm/registers.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f56a3a135a8a10a38ba6cf6e5eb74c45.html">vm</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -76,14 +76,14 @@ $(function() {
 
 <p>Contains the definition of the <a class="el" href="classRegisterFile.html" title="Represents a register file containing integer, floating-point, and vector registers.">RegisterFile</a> class for managing registers in the simulator.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="pch_8h_source.html">pch.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="pch_8h_source.html">../pch.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for registers.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="registers_8h__incl.png" border="0" usemap="#asrc_2registers_8h" alt=""/></div>
-<map name="asrc_2registers_8h" id="asrc_2registers_8h">
-<area shape="rect" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="808,5,923,32"/>
-<area shape="rect" href="pch_8h.html" title=" " alt="" coords="837,80,894,107"/>
+<div class="center"><img src="registers_8h__incl.png" border="0" usemap="#asrc_2vm_2registers_8h" alt=""/></div>
+<map name="asrc_2vm_2registers_8h" id="asrc_2vm_2registers_8h">
+<area shape="rect" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="796,5,935,32"/>
+<area shape="rect" href="pch_8h.html" title=" " alt="" coords="831,80,900,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,85,181"/>
 <area shape="rect" title=" " alt="" coords="110,155,173,181"/>
 <area shape="rect" title=" " alt="" coords="197,155,256,181"/>
@@ -108,12 +108,22 @@ Include dependency graph for registers.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="registers_8h__dep__incl.png" border="0" usemap="#asrc_2registers_8hdep" alt=""/></div>
-<map name="asrc_2registers_8hdep" id="asrc_2registers_8hdep">
-<area shape="rect" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="239,5,354,32"/>
-<area shape="rect" href="lexer_8cpp.html" title=" " alt="" coords="5,80,180,107"/>
-<area shape="rect" href="parser_8cpp.html" title=" " alt="" coords="205,80,389,107"/>
-<area shape="rect" href="registers_8cpp.html" title="Contains the implementation of the RegisterFile class and related." alt="" coords="413,80,543,107"/>
+<div class="center"><img src="registers_8h__dep__incl.png" border="0" usemap="#asrc_2vm_2registers_8hdep" alt=""/></div>
+<map name="asrc_2vm_2registers_8hdep" id="asrc_2vm_2registers_8hdep">
+<area shape="rect" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="417,5,555,32"/>
+<area shape="rect" href="lexer_8cpp.html" title="Contains the implementation of the Lexer class for tokenizing source code." alt="" coords="5,87,180,114"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="205,87,389,114"/>
+<area shape="rect" href="control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="413,80,559,121"/>
+<area shape="rect" href="registers_8cpp.html" title="Contains the implementation of the RegisterFile class and related." alt="" coords="583,87,738,114"/>
+<area shape="rect" href="vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="762,87,903,114"/>
+<area shape="rect" href="rvss__control__unit_8h.html" title="RVSS Control Unit." alt="" coords="412,169,592,211"/>
+<area shape="rect" href="rvss__control__unit_8cpp.html" title="RVSS Control Unit implementation." alt="" coords="412,259,592,300"/>
+<area shape="rect" href="rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="625,266,793,293"/>
+<area shape="rect" href="rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="524,348,707,375"/>
+<area shape="rect" href="test__main_8cpp.html" title=" " alt="" coords="731,348,873,375"/>
+<area shape="rect" href="vm__base_8cpp.html" title="File containing the base class for the virtual machine." alt="" coords="752,177,908,203"/>
+<area shape="rect" href="vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="932,177,1059,203"/>
+<area shape="rect" href="vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="925,266,1066,293"/>
 </map>
 </div>
 </div>
@@ -130,12 +140,24 @@ Functions</h2></td></tr>
 <tr class="memitem:acc5c38a9f53a883c61a1214fd6b765eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#acc5c38a9f53a883c61a1214fd6b765eb">isValidRegister</a> (const std::string &amp;reg)</td></tr>
 <tr class="memdesc:acc5c38a9f53a883c61a1214fd6b765eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a given register name is valid.  <a href="registers_8h.html#acc5c38a9f53a883c61a1214fd6b765eb">More...</a><br /></td></tr>
 <tr class="separator:acc5c38a9f53a883c61a1214fd6b765eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d7613312792f85b3571d0c93a058541"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#a1d7613312792f85b3571d0c93a058541">isValidGeneralPurposeRegister</a> (const std::string &amp;reg)</td></tr>
+<tr class="separator:a1d7613312792f85b3571d0c93a058541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961b5d197401316d7c6a3ac4f87b1acd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#a961b5d197401316d7c6a3ac4f87b1acd">isValidFloatingPointRegister</a> (const std::string &amp;reg)</td></tr>
+<tr class="separator:a961b5d197401316d7c6a3ac4f87b1acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad62a3359928c8b8d89600050b85a1c36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#ad62a3359928c8b8d89600050b85a1c36">isValidVectorRegister</a> (const std::string &amp;reg)</td></tr>
+<tr class="separator:ad62a3359928c8b8d89600050b85a1c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ad6f8d6e2d5386980756f012d74ff5412"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412">valid_registers</a></td></tr>
 <tr class="memdesc:ad6f8d6e2d5386980756f012d74ff5412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of valid register names for validation.  <a href="registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412">More...</a><br /></td></tr>
 <tr class="separator:ad6f8d6e2d5386980756f012d74ff5412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0528a55c986b4b9e8717e14eeebeb7df"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#a0528a55c986b4b9e8717e14eeebeb7df">valid_general_purpose_registers</a></td></tr>
+<tr class="separator:a0528a55c986b4b9e8717e14eeebeb7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac416af250858196829ea943e606823b7"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#ac416af250858196829ea943e606823b7">valid_floating_point_registers</a></td></tr>
+<tr class="separator:ac416af250858196829ea943e606823b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7468977bddf28dfd8109ea3b8583c49d"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#a7468977bddf28dfd8109ea3b8583c49d">valid_vector_registers</a></td></tr>
+<tr class="separator:a7468977bddf28dfd8109ea3b8583c49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ede5aac2f7597ad13f0a67cb8b13b5"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="registers_8h.html#af4ede5aac2f7597ad13f0a67cb8b13b5">reg_alias_to_name</a></td></tr>
 <tr class="memdesc:af4ede5aac2f7597ad13f0a67cb8b13b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of register aliases to their actual names.  <a href="registers_8h.html#af4ede5aac2f7597ad13f0a67cb8b13b5">More...</a><br /></td></tr>
 <tr class="separator:af4ede5aac2f7597ad13f0a67cb8b13b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,6 +166,42 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Contains the definition of the <a class="el" href="classRegisterFile.html" title="Represents a register file containing integer, floating-point, and vector registers.">RegisterFile</a> class for managing registers in the simulator. </p>
 <dl class="section author"><dt>Author</dt><dd>Vishank Singh, <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a961b5d197401316d7c6a3ac4f87b1acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961b5d197401316d7c6a3ac4f87b1acd">&#9670;&nbsp;</a></span>isValidFloatingPointRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isValidFloatingPointRegister </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d7613312792f85b3571d0c93a058541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7613312792f85b3571d0c93a058541">&#9670;&nbsp;</a></span>isValidGeneralPurposeRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isValidGeneralPurposeRegister </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acc5c38a9f53a883c61a1214fd6b765eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc5c38a9f53a883c61a1214fd6b765eb">&#9670;&nbsp;</a></span>isValidRegister()</h2>
 
@@ -168,6 +226,24 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the register name is valid, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ad62a3359928c8b8d89600050b85a1c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad62a3359928c8b8d89600050b85a1c36">&#9670;&nbsp;</a></span>isValidVectorRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isValidVectorRegister </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -196,6 +272,50 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ac416af250858196829ea943e606823b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac416af250858196829ea943e606823b7">&#9670;&nbsp;</a></span>valid_floating_point_registers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt;std::string&gt; valid_floating_point_registers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0528a55c986b4b9e8717e14eeebeb7df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0528a55c986b4b9e8717e14eeebeb7df">&#9670;&nbsp;</a></span>valid_general_purpose_registers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt;std::string&gt; valid_general_purpose_registers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad6f8d6e2d5386980756f012d74ff5412"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6f8d6e2d5386980756f012d74ff5412">&#9670;&nbsp;</a></span>valid_registers</h2>
 
@@ -217,6 +337,28 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set of valid register names for validation. </p>
+
+</div>
+</div>
+<a id="a7468977bddf28dfd8109ea3b8583c49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7468977bddf28dfd8109ea3b8583c49d">&#9670;&nbsp;</a></span>valid_vector_registers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt;std::string&gt; valid_vector_registers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

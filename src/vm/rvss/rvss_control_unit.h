@@ -14,12 +14,15 @@ class RVSSControlUnit : public ControlUnit {
 public:
     void setControlSignals(uint32_t instruction) override;
 
-    void decode(uint32_t instruction) override;
-    bool getRegWrite() const override;
-    bool getMemRead() const override;
-    bool getMemWrite() const override;
-    bool getALUSrc() const override;
-    ALU::ALUOp getALUOp() const override;
+    ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) override;
+
+    
+    [[nodiscard]] bool getALUSrc() const override;
+    [[nodiscard]] bool getMemToReg() const override;
+    [[nodiscard]] bool getRegWrite() const override;
+    [[nodiscard]] bool getMemRead() const override;
+    [[nodiscard]] bool getMemWrite() const override;
+    [[nodiscard]] bool getALUOp() const override;
 
 };
 

@@ -37,10 +37,14 @@ public:
     RegisterFile registers_;
     ALU::ALU alu_;
 
+
     void loadProgram(const AssembledProgram &program);
+    uint64_t program_size_ = 0;
 
     uint64_t getProgramCounter() const;
     void updateProgramCounter(int64_t value);
+    
+    int64_t imm_generator(uint32_t instruction);
 
     void addBreakpoint(uint64_t address);
     void removeBreakpoint(uint64_t address);
@@ -53,9 +57,10 @@ public:
     // void writeback();
 
     virtual void run() = 0;
+    virtual void debugRun() = 0;
     virtual void step() = 0;
-    virtual void reset();
-    virtual void dumpState(const std::string &filename);
+    virtual void reset() = 0;
+    virtual void dumpState(const std::string &filename) = 0;
 
 };
 

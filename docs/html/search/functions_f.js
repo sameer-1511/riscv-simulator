@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['write_370',['write',['../classMemory.html#a23e394228e46d803d654abf75a5ba7c0',1,'Memory']]],
-  ['writebyte_371',['writeByte',['../classMemory.html#a0cf67c6c6f6cc68f639a631b630c2f1e',1,'Memory']]],
-  ['writedoubleword_372',['writeDoubleWord',['../classMemory.html#a6646b6581734228cf3e5efec556c7eb1',1,'Memory']]],
-  ['writefpr_373',['writeFPR',['../classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa',1,'RegisterFile']]],
-  ['writegpr_374',['writeGPR',['../classRegisterFile.html#a7fa96f56b6224e42d27c2f199ce39cf3',1,'RegisterFile']]],
-  ['writehalfword_375',['writeHalfWord',['../classMemory.html#af566a2a9b918da9b517265f0a9f3d9de',1,'Memory']]],
-  ['writevr_376',['writeVR',['../classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81',1,'RegisterFile']]],
-  ['writeword_377',['writeWord',['../classMemory.html#af597f709d0d312cdf49b4ab959ba8cdd',1,'Memory']]]
+  ['test_676',['TEST',['../test__config_8cpp.html#a1f39af168d548b15ebeef538ac099d0e',1,'TEST(ConfigTest, GetKeyValueTest):&#160;test_config.cpp'],['../test__config_8cpp.html#a409db77124378869e5474f45ac38bce2',1,'TEST(ConfigTest, SetKeyValueTest):&#160;test_config.cpp'],['../test__config_8cpp.html#a06c8282384966f9a8444a90c2df2e7fd',1,'TEST(ConfigTest, InvalidKeyValueTest):&#160;test_config.cpp'],['../test__main_8cpp.html#a8c13b016b9d184dbbd6b742b883586a2',1,'TEST(VmTest, ImmGenTest1):&#160;test_main.cpp'],['../test__memory_8cpp.html#a67c433b9eb540ea04b66fec15fb0c645',1,'TEST(MemoryTest, ReadWriteTest):&#160;test_memory.cpp'],['../test__memory_8cpp.html#a3bf34fc405439eacceeb92fca1cac1cf',1,'TEST(MemoryTest, ReadWriteByteTest):&#160;test_memory.cpp'],['../test__memory_8cpp.html#ad5efcafd3035dabb9441d82676e8b98e',1,'TEST(MemoryTest, ReadWriteHalfWordTest):&#160;test_memory.cpp']]],
+  ['token_677',['Token',['../structToken.html#a8adae101b1aa7c9d409e8b2d707fb861',1,'Token']]],
+  ['tokentypetostring_678',['tokenTypeToString',['../tokens_8cpp.html#adcf4232d1b543f396684ab4b9d3d4bc5',1,'tokenTypeToString(TokenType type):&#160;tokens.cpp'],['../tokens_8h.html#adcf4232d1b543f396684ab4b9d3d4bc5',1,'tokenTypeToString(TokenType type):&#160;tokens.cpp']]],
+  ['trim_679',['trim',['../namespacevmConfig_1_1INI.html#a44ae63dad24de0d3ac97155a500cbbca',1,'vmConfig::INI']]]
 ];

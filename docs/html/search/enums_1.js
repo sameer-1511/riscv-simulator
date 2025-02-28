@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registertype_417',['RegisterType',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230',1,'RegisterFile']]]
+  ['errortype_778',['ErrorType',['../namespaceErrors.html#a22124df3884d912a0113de503897588d',1,'Errors']]]
 ];

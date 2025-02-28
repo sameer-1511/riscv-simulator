@@ -7,7 +7,7 @@ Represents a memory block containing 1 KB of memory.
 
 
 
-{\ttfamily \#include $<$memory.\+h$>$}
+{\ttfamily \#include $<$main\+\_\+memory.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -18,7 +18,9 @@ Represents a memory block containing 1 KB of memory.
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{structMemoryBlock_a0cd70c89ef3b4b7ebfd25aa48b2db04f}{data}}
-\begin{DoxyCompactList}\small\item\em A vector representing the memory block data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A vector representing the memory block data. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structMemoryBlock_a4fc9655625b9d635d1c0458e5d096373}{block\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em The size of the memory block in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -38,6 +40,22 @@ Constructs a \mbox{\hyperlink{structMemoryBlock}{Memory\+Block}} with a size of 
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structMemoryBlock_a4fc9655625b9d635d1c0458e5d096373}\label{structMemoryBlock_a4fc9655625b9d635d1c0458e5d096373}} 
+\index{MemoryBlock@{MemoryBlock}!block\_size@{block\_size}}
+\index{block\_size@{block\_size}!MemoryBlock@{MemoryBlock}}
+\doxysubsubsection{\texorpdfstring{block\_size}{block\_size}}
+{\footnotesize\ttfamily unsigned int Memory\+Block\+::block\+\_\+size}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \mbox{\hyperlink{namespacevmConfig_1_1INI_a0982b63f0594859dad4548b671faaef2}{vmConfig::INI::get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}).empty() }
+\DoxyCodeLine{                            ? 1024 : std::stoi(\mbox{\hyperlink{namespacevmConfig_1_1INI_a0982b63f0594859dad4548b671faaef2}{vmConfig::INI::get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}))}
+
+\end{DoxyCode}
+
+
+The size of the memory block in bytes. 
+
 \mbox{\Hypertarget{structMemoryBlock_a0cd70c89ef3b4b7ebfd25aa48b2db04f}\label{structMemoryBlock_a0cd70c89ef3b4b7ebfd25aa48b2db04f}} 
 \index{MemoryBlock@{MemoryBlock}!data@{data}}
 \index{data@{data}!MemoryBlock@{MemoryBlock}}
@@ -52,4 +70,4 @@ A vector representing the memory block data.
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\mbox{\hyperlink{memory_8h}{memory.\+h}}\end{DoxyCompactItemize}
+src/vm/\mbox{\hyperlink{main__memory_8h}{main\+\_\+memory.\+h}}\end{DoxyCompactItemize}

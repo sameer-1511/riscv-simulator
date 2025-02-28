@@ -1,0 +1,74 @@
+\hypertarget{classALU_1_1ALU}{}\doxysection{ALU\+::ALU Class Reference}
+\label{classALU_1_1ALU}\index{ALU::ALU@{ALU::ALU}}
+
+
+The \mbox{\hyperlink{classALU_1_1ALU}{ALU}} class is responsible for performing arithmetic and logic operations.  
+
+
+
+
+{\ttfamily \#include $<$alu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classALU_1_1ALU_a88f78717c9e84775b753f2937e8a0a84}{ALU}} ()=default
+\item 
+\mbox{\hyperlink{classALU_1_1ALU_a1b4656ada86660efa5812d26651387fc}{$\sim$\+ALU}} ()=default
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr std\+::pair$<$ T, bool $>$ \mbox{\hyperlink{classALU_1_1ALU_af5bf187db686489b0165cff3619e036f}{execute}} (\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALUOp}} op, T a, T b) const
+\begin{DoxyCompactList}\small\item\em Executes the given \mbox{\hyperlink{classALU_1_1ALU}{ALU}} operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classALU_1_1ALU}{ALU}} class is responsible for performing arithmetic and logic operations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classALU_1_1ALU_a88f78717c9e84775b753f2937e8a0a84}\label{classALU_1_1ALU_a88f78717c9e84775b753f2937e8a0a84}} 
+\index{ALU::ALU@{ALU::ALU}!ALU@{ALU}}
+\index{ALU@{ALU}!ALU::ALU@{ALU::ALU}}
+\doxysubsubsection{\texorpdfstring{ALU()}{ALU()}}
+{\footnotesize\ttfamily ALU\+::\+ALU\+::\+ALU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classALU_1_1ALU_a1b4656ada86660efa5812d26651387fc}\label{classALU_1_1ALU_a1b4656ada86660efa5812d26651387fc}} 
+\index{ALU::ALU@{ALU::ALU}!````~ALU@{$\sim$ALU}}
+\index{````~ALU@{$\sim$ALU}!ALU::ALU@{ALU::ALU}}
+\doxysubsubsection{\texorpdfstring{$\sim$ALU()}{~ALU()}}
+{\footnotesize\ttfamily ALU\+::\+ALU\+::$\sim$\+ALU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classALU_1_1ALU_af5bf187db686489b0165cff3619e036f}\label{classALU_1_1ALU_af5bf187db686489b0165cff3619e036f}} 
+\index{ALU::ALU@{ALU::ALU}!execute@{execute}}
+\index{execute@{execute}!ALU::ALU@{ALU::ALU}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr std\+::pair$<$T, bool$>$ ALU\+::\+ALU\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALUOp}}}]{op,  }\item[{T}]{a,  }\item[{T}]{b }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Executes the given \mbox{\hyperlink{classALU_1_1ALU}{ALU}} operation. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Integer type (int32\+\_\+t, uint32\+\_\+t, etc.). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em op} & The \mbox{\hyperlink{classALU_1_1ALU}{ALU}} operation. \\
+\hline
+{\em a} & First operand. \\
+\hline
+{\em b} & Second operand. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair (result, overflow\+\_\+flag). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/vm/\mbox{\hyperlink{alu_8h}{alu.\+h}}\end{DoxyCompactItemize}

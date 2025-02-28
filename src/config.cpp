@@ -26,13 +26,13 @@ std::string vmConfig::getKeyValue(const std::string &key) {
     return "";
 }
 
-void vmConfig::INI::trim(std::string& str) {
+void vmConfig::INI::trim(std::string &str) {
     size_t start = str.find_first_not_of(" \t");
     size_t end = str.find_last_not_of(" \t");
     str = (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1);
 }
 
-std::string vmConfig::INI::get(const std::string& section, const std::string& key) {
+std::string vmConfig::INI::get(const std::string &section, const std::string &key) {
     std::ifstream file(globals::config_file);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open config file: " + globals::config_file);
@@ -45,7 +45,7 @@ std::string vmConfig::INI::get(const std::string& section, const std::string& ke
         if (line.empty() || line[0] == ';' || line[0] == '#') {
             continue;
         }
-    
+
         if (line[0] == '[' && line.back() == ']') {
             current_section = line.substr(1, line.size() - 2);
             trim(current_section);
@@ -73,7 +73,7 @@ std::string vmConfig::INI::get(const std::string& section, const std::string& ke
 
 }
 
-void vmConfig::INI::set(const std::string& section, const std::string& key, const std::string& value) {
+void vmConfig::INI::set(const std::string &section, const std::string &key, const std::string &value) {
     std::ifstream file(globals::config_file);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open config file: " + globals::config_file);
@@ -122,7 +122,6 @@ void vmConfig::INI::set(const std::string& section, const std::string& key, cons
     }
     out_file << buffer.str();
 }
-
 
 vmConfig::vmTypes vmConfig::getVMType() {
     std::string vmType = INI::get("Execution", "processor_type");

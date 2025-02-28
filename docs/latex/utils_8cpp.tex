@@ -6,6 +6,7 @@ Contains utility functions for the VM.
 
 
 {\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
 Include dependency graph for utils.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -22,7 +23,11 @@ int64\+\_\+t \mbox{\hyperlink{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}{coun
 std\+::string \mbox{\hyperlink{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}{get\+Line\+From\+File}} (const std\+::string \&file\+Name, unsigned int line\+Number)
 \begin{DoxyCompactList}\small\item\em Retrieves a specific line from a file. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}{parse\+Escaped\+String}} (const std\+::string \&input)
-\begin{DoxyCompactList}\small\item\em Parses a string containing escaped characters into its unescaped form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parses a string containing escaped characters into its unescaped form. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}{dump\+Errors}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&errors)
+\item 
+void \mbox{\hyperlink{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}{dump\+No\+Errors}} (const std\+::string \&filename)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -57,6 +62,18 @@ The number of lines in the file.
 {\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}\label{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}} 
+\index{utils.cpp@{utils.cpp}!dumpErrors@{dumpErrors}}
+\index{dumpErrors@{dumpErrors}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpErrors()}{dumpErrors()}}
+{\footnotesize\ttfamily void dump\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&}]{errors }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}\label{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}} 
+\index{utils.cpp@{utils.cpp}!dumpNoErrors@{dumpNoErrors}}
+\index{dumpNoErrors@{dumpNoErrors}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpNoErrors()}{dumpNoErrors()}}
+{\footnotesize\ttfamily void dump\+No\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}\label{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}} 
 \index{utils.cpp@{utils.cpp}!getLineFromFile@{getLineFromFile}}
 \index{getLineFromFile@{getLineFromFile}!utils.cpp@{utils.cpp}}

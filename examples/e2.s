@@ -5,6 +5,8 @@ fdsff:
 lol:
 jal x1, 12
 
+mul x1, x0, x10
+
 #
 #lb x0, 0(x1)
 #lh x0, 0(x1)

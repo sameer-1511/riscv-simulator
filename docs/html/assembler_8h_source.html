@@ -75,24 +75,20 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../pch.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="code__generator_8h.html">code_generator.h</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lexer_8h.html">./lexer.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="parser_8h.html">./parser.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structassembled__code.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structassembled__code.html">assembled_code</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structassembled__code.html#a45d3c857d62411aedfa6f46f6d53b8e7">   20</a></span>&#160;    std::vector&lt;ICUnit&gt; <a class="code" href="structassembled__code.html#a45d3c857d62411aedfa6f46f6d53b8e7">code</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ASSEMBLER_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="code__generator_8h.html">code_generator.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../vm_asm_mw.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="structAssembledProgram.html">AssembledProgram</a> <a class="code" href="assembler_8h.html#a8e37bfd2b778ed2eb6c17c251aac6120">assemble</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ASSEMBLER_H</span></div>
+<div class="ttc" id="aassembler_8h_html_a8e37bfd2b778ed2eb6c17c251aac6120"><div class="ttname"><a href="assembler_8h.html#a8e37bfd2b778ed2eb6c17c251aac6120">assemble</a></div><div class="ttdeci">AssembledProgram assemble(const std::string &amp;filename)</div><div class="ttdoc">Assembles the intermediate code into machine code.</div><div class="ttdef"><b>Definition:</b> assembler.cpp:13</div></div>
 <div class="ttc" id="acode__generator_8h_html"><div class="ttname"><a href="code__generator_8h.html">code_generator.h</a></div><div class="ttdoc">Contains the definition of the ICUnit struct and functions for generating machine code.</div></div>
-<div class="ttc" id="astructassembled__code_html"><div class="ttname"><a href="structassembled__code.html">assembled_code</a></div><div class="ttdef"><b>Definition:</b> assembler.h:19</div></div>
-<div class="ttc" id="astructassembled__code_html_a45d3c857d62411aedfa6f46f6d53b8e7"><div class="ttname"><a href="structassembled__code.html#a45d3c857d62411aedfa6f46f6d53b8e7">assembled_code::code</a></div><div class="ttdeci">std::vector&lt; ICUnit &gt; code</div><div class="ttdef"><b>Definition:</b> assembler.h:20</div></div>
+<div class="ttc" id="alexer_8h_html"><div class="ttname"><a href="lexer_8h.html">lexer.h</a></div><div class="ttdoc">Contains the definition of the Lexer class.</div></div>
+<div class="ttc" id="aparser_8h_html"><div class="ttname"><a href="parser_8h.html">parser.h</a></div><div class="ttdoc">Contains the definition of the Parser class for parsing tokens and generating intermediate code.</div></div>
+<div class="ttc" id="astructAssembledProgram_html"><div class="ttname"><a href="structAssembledProgram.html">AssembledProgram</a></div><div class="ttdef"><b>Definition:</b> vm_asm_mw.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

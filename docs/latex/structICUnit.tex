@@ -13,7 +13,7 @@ Represents a unit of intermediate code used for generating machine code.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structICUnit_a4d709ebd2a3d1a0611f26b2ae8f7aae7}{ICUnit}} ()
-\begin{DoxyCompactList}\small\item\em Default constructor initializing all members to default values. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{structICUnit_a422db7dc5ec05859dff23f857db9032c}{set\+Line\+Number}} (unsigned int value)
 \begin{DoxyCompactList}\small\item\em Sets the line number for the intermediate code block. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structICUnit_ad0edc47ffa9a7197a588ec02f01bf7c0}{set\+Opcode}} (const std\+::string \&value)
@@ -24,6 +24,8 @@ void \mbox{\hyperlink{structICUnit_ac084bccd7290a3ba7990b90b91b149f7}{set\+Rs1}}
 \begin{DoxyCompactList}\small\item\em Sets the source register 1 (rs1). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structICUnit_a8bf533e866d8cf995a41530052598883}{set\+Rs2}} (const std\+::string \&value)
 \begin{DoxyCompactList}\small\item\em Sets the source register 2 (rs2). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structICUnit_a4161046a12e2d38b90b88ecc19be8896}{set\+Rs3}} (const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Sets the source register 3 (rs3). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structICUnit_a1691a21f18ee3fedcf460a67f82a3099}{set\+Imm}} (const std\+::string \&value)
 \begin{DoxyCompactList}\small\item\em Sets the immediate value for the intermediate code block. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{structICUnit_a91d304043cc6b35beba02b90704101dc}{set\+Label}} (const std\+::string \&value)
@@ -38,6 +40,8 @@ std\+::string \mbox{\hyperlink{structICUnit_aca70c5bd0f84b5a76f4b8ea54d8a5142}{g
 \begin{DoxyCompactList}\small\item\em Gets the source register 1 (rs1). \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{structICUnit_af81c7a33972a78b4c84e5f87a002f519}{get\+Rs2}} () const
 \begin{DoxyCompactList}\small\item\em Gets the source register 2 (rs2). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structICUnit_acd6d068cf95577e4a2b13fc5c15f5912}{get\+Rs3}} () const
+\begin{DoxyCompactList}\small\item\em Gets the source register 3 (rs3). \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{structICUnit_a6c90684f9efa240a24612c7e73166acb}{get\+Imm}} () const
 \begin{DoxyCompactList}\small\item\em Gets the immediate value for the intermediate code block. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{structICUnit_a48541c71a4005599181fa9ec022551f4}{get\+Label}} () const
@@ -49,12 +53,14 @@ unsigned int \mbox{\hyperlink{structICUnit_a6d0abe84de5612ca74dc7ec11352a190}{li
 \begin{DoxyCompactList}\small\item\em Line number in the source code corresponding to this block. \end{DoxyCompactList}\item 
 std\+::array$<$ char, 21 $>$ \mbox{\hyperlink{structICUnit_a713091fe83a24ddea9df6b0a8b0fdbda}{opcode}}
 \begin{DoxyCompactList}\small\item\em Opcode string (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
-std\+::array$<$ char, 21 $>$ \mbox{\hyperlink{structICUnit_af75780644a57c1e020aa8f078f6146b6}{rd}}
+std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_aa9aa05995849c6ac8cbe1d127d1f922e}{rd}}
 \begin{DoxyCompactList}\small\item\em Destination register name (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
-std\+::array$<$ char, 21 $>$ \mbox{\hyperlink{structICUnit_a0947022dbae029010b185b472ecc5cda}{rs1}}
+std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_a5cc64dcce86bb9c70403503ddd1e6978}{rs1}}
 \begin{DoxyCompactList}\small\item\em Source register 1 name (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
-std\+::array$<$ char, 21 $>$ \mbox{\hyperlink{structICUnit_ab296c54a4a476cee851afa50c0db21a0}{rs2}}
+std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_a65f2bf2a14c45bb210439ed02862232c}{rs2}}
 \begin{DoxyCompactList}\small\item\em Source register 2 name (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
+std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_a4fa54a29e2374eeb6204d4d36c3a198d}{rs3}}
+\begin{DoxyCompactList}\small\item\em Immediate value (up to 32 characters, null-\/terminated). \end{DoxyCompactList}\item 
 std\+::array$<$ char, 33 $>$ \mbox{\hyperlink{structICUnit_af49f5da98a756c635f14a0201dee9076}{imm}}
 \begin{DoxyCompactList}\small\item\em Immediate value (up to 32 characters, null-\/terminated). \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{structICUnit_a921f316aff42a88dd124f88c1c9b0c4d}{label}}
@@ -63,7 +69,7 @@ std\+::string \mbox{\hyperlink{structICUnit_a921f316aff42a88dd124f88c1c9b0c4d}{l
 \begin{DoxyCompactItemize}
 \item 
 std\+::ostream \& \mbox{\hyperlink{structICUnit_afa259d536220d9ac38bb21faeff17973}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structICUnit}{ICUnit}} \&unit)
-\begin{DoxyCompactList}\small\item\em Overloaded stream insertion operator for displaying the \mbox{\hyperlink{structICUnit}{ICUnit}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,10 +83,6 @@ This struct stores the details of an intermediate code block, including the line
 \index{ICUnit@{ICUnit}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{ICUnit()}{ICUnit()}}
 {\footnotesize\ttfamily ICUnit\+::\+ICUnit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Default constructor initializing all members to default values. 
 
 
 
@@ -175,6 +177,19 @@ Gets the source register 2 (rs2).
 
 \begin{DoxyReturn}{Returns}
 The source register 2 string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structICUnit_acd6d068cf95577e4a2b13fc5c15f5912}\label{structICUnit_acd6d068cf95577e4a2b13fc5c15f5912}} 
+\index{ICUnit@{ICUnit}!getRs3@{getRs3}}
+\index{getRs3@{getRs3}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{getRs3()}{getRs3()}}
+{\footnotesize\ttfamily std\+::string ICUnit\+::get\+Rs3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the source register 3 (rs3). 
+
+\begin{DoxyReturn}{Returns}
+The source register 3 string. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structICUnit_a1691a21f18ee3fedcf460a67f82a3099}\label{structICUnit_a1691a21f18ee3fedcf460a67f82a3099}} 
 \index{ICUnit@{ICUnit}!setImm@{setImm}}
@@ -281,6 +296,21 @@ Sets the source register 2 (rs2).
 {\em value} & The source register 2 string (up to 20 characters). \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{structICUnit_a4161046a12e2d38b90b88ecc19be8896}\label{structICUnit_a4161046a12e2d38b90b88ecc19be8896}} 
+\index{ICUnit@{ICUnit}!setRs3@{setRs3}}
+\index{setRs3@{setRs3}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{setRs3()}{setRs3()}}
+{\footnotesize\ttfamily void ICUnit\+::set\+Rs3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the source register 3 (rs3). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The source register 3 string (up to 20 characters). \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Friends And Related Function Documentation}
@@ -290,20 +320,6 @@ Sets the source register 2 (rs2).
 \doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
 {\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structICUnit}{ICUnit}} \&}]{unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
-
-
-Overloaded stream insertion operator for displaying the \mbox{\hyperlink{structICUnit}{ICUnit}}. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em os} & The output stream. \\
-\hline
-{\em unit} & The \mbox{\hyperlink{structICUnit}{ICUnit}} to display. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The modified output stream. 
-\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}
@@ -347,35 +363,45 @@ Line number in the source code corresponding to this block.
 
 Opcode string (up to 20 characters, null-\/terminated). 
 
-\mbox{\Hypertarget{structICUnit_af75780644a57c1e020aa8f078f6146b6}\label{structICUnit_af75780644a57c1e020aa8f078f6146b6}} 
+\mbox{\Hypertarget{structICUnit_aa9aa05995849c6ac8cbe1d127d1f922e}\label{structICUnit_aa9aa05995849c6ac8cbe1d127d1f922e}} 
 \index{ICUnit@{ICUnit}!rd@{rd}}
 \index{rd@{rd}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{rd}{rd}}
-{\footnotesize\ttfamily std\+::array$<$char, 21$>$ ICUnit\+::rd}
+{\footnotesize\ttfamily std\+::array$<$char, 6$>$ ICUnit\+::rd}
 
 
 
 Destination register name (up to 20 characters, null-\/terminated). 
 
-\mbox{\Hypertarget{structICUnit_a0947022dbae029010b185b472ecc5cda}\label{structICUnit_a0947022dbae029010b185b472ecc5cda}} 
+\mbox{\Hypertarget{structICUnit_a5cc64dcce86bb9c70403503ddd1e6978}\label{structICUnit_a5cc64dcce86bb9c70403503ddd1e6978}} 
 \index{ICUnit@{ICUnit}!rs1@{rs1}}
 \index{rs1@{rs1}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{rs1}{rs1}}
-{\footnotesize\ttfamily std\+::array$<$char, 21$>$ ICUnit\+::rs1}
+{\footnotesize\ttfamily std\+::array$<$char, 6$>$ ICUnit\+::rs1}
 
 
 
 Source register 1 name (up to 20 characters, null-\/terminated). 
 
-\mbox{\Hypertarget{structICUnit_ab296c54a4a476cee851afa50c0db21a0}\label{structICUnit_ab296c54a4a476cee851afa50c0db21a0}} 
+\mbox{\Hypertarget{structICUnit_a65f2bf2a14c45bb210439ed02862232c}\label{structICUnit_a65f2bf2a14c45bb210439ed02862232c}} 
 \index{ICUnit@{ICUnit}!rs2@{rs2}}
 \index{rs2@{rs2}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{rs2}{rs2}}
-{\footnotesize\ttfamily std\+::array$<$char, 21$>$ ICUnit\+::rs2}
+{\footnotesize\ttfamily std\+::array$<$char, 6$>$ ICUnit\+::rs2}
 
 
 
 Source register 2 name (up to 20 characters, null-\/terminated). 
+
+\mbox{\Hypertarget{structICUnit_a4fa54a29e2374eeb6204d4d36c3a198d}\label{structICUnit_a4fa54a29e2374eeb6204d4d36c3a198d}} 
+\index{ICUnit@{ICUnit}!rs3@{rs3}}
+\index{rs3@{rs3}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{rs3}{rs3}}
+{\footnotesize\ttfamily std\+::array$<$char, 6$>$ ICUnit\+::rs3}
+
+
+
+Immediate value (up to 32 characters, null-\/terminated). 
 
 
 

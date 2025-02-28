@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['eof_5f_422',['EOF_',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4eaad20bdd2e68cb1a4410478488cb8d',1,'tokens.h']]],
-  ['expected_5fimmediate_423',['EXPECTED_IMMEDIATE',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa48c66164b43ae205b4ea29e666d88692',1,'errors.h']]],
-  ['expected_5flabel_424',['EXPECTED_LABEL',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aae95902890e301eff1b3f021b9371c377',1,'errors.h']]],
-  ['expected_5fregister_425',['EXPECTED_REGISTER',['../errors_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aabb0e54b9dc15fe61b5aaf3cb0ef0867d',1,'errors.h']]]
+  ['comma_787',['COMMA',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4d9b3e9fc12849d060371eb65154c751',1,'tokens.h']]],
+  ['csr_788',['CSR',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a9dbebbc8de3ea0e81606b05de0fff36d',1,'RegisterFile']]]
 ];

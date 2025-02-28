@@ -32,6 +32,8 @@ main:
 
 # fadd.s s0, s1, s2
 
+jal x10, 0x132
+
 addi x0, x1, 1
 xori x0, x1, 1
 ori x0, x1, 1
@@ -42,6 +44,7 @@ srai x0, x1, 1
 slti x0, x1, 1
 sltiu x0, x1, 1
 
+mul x0, x0, x0
 
 fdsff:
 lol:
@@ -51,7 +54,7 @@ jal x1, 12
 #lb x0, 0(x1)
 #lh x0, 0(x1)
 #lw x0, 0(x1)
-#ld x0, 0(x1)
+ld x0, 0(x1)
 #lbu x0, 0(x1)
 #lhu x0, 0(x1)
 #lwu x0, 0(x1)
@@ -69,7 +72,7 @@ beq x0, x0, lol
 #bltu x0, x1, 0
 #bgeu x0, x1, 0
 #
-#jal x0, 0
+jal x0, 0
 #jalr x0, 0(x1)
 #
 #lui x0, 0x12345

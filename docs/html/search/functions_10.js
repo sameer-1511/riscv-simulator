@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['_7elexer_378',['~Lexer',['../classLexer.html#ad26a84af23d8d303723e36e83fc4e556',1,'Lexer']]],
-  ['_7ememory_379',['~Memory',['../classMemory.html#a2b517b46ae4b070d9f6a7b6d9efeb7a1',1,'Memory']]],
-  ['_7eparser_380',['~Parser',['../classParser.html#a3e658b5917a93a3ef648050d060e3a93',1,'Parser']]],
-  ['_7ervss_5fvm_381',['~rvss_vm',['../classrvss__vm.html#ac9f47691c66ecfb4b5f3408311a9280c',1,'rvss_vm']]]
+  ['unexpectedoperanderror_680',['UnexpectedOperandError',['../structErrors_1_1UnexpectedOperandError.html#aa99d9b39a9234055ee5c87d6c389ad2b',1,'Errors::UnexpectedOperandError']]],
+  ['unexpectedtokenerror_681',['UnexpectedTokenError',['../structErrors_1_1UnexpectedTokenError.html#a53dcabdadf88b59c36174ed5a3b03091',1,'Errors::UnexpectedTokenError']]],
+  ['updateprogramcounter_682',['updateProgramCounter',['../classVMBase.html#ab32a590b667b9f9416da0c4727ef73d8',1,'VMBase']]],
+  ['utypeinstructionencoding_683',['UTypeInstructionEncoding',['../structInstructionSet_1_1UTypeInstructionEncoding.html#a73d77e6e12ade2a17295fa8c01ec5905',1,'InstructionSet::UTypeInstructionEncoding']]]
 ];

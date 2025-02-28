@@ -1,0 +1,212 @@
+\hypertarget{classControlUnit}{}\doxysection{Control\+Unit Class Reference}
+\label{classControlUnit}\index{ControlUnit@{ControlUnit}}
+
+
+The \mbox{\hyperlink{classControlUnit}{Control\+Unit}} class is the base class for the control unit of the CPU.  
+
+
+
+
+{\ttfamily \#include $<$control\+\_\+unit\+\_\+base.\+h$>$}
+
+
+
+Inheritance diagram for Control\+Unit\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classControlUnit__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classControlUnit_ae22f4411723f65396af44292cf4f2309}{$\sim$\+Control\+Unit}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classControlUnit_ac0068a7c8ca5832e8f917e38fea3dac7}{set\+Control\+Signals}} (uint32\+\_\+t instruction)=0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_a10911b7fecdd5d6c5058563a5c9945c6}{get\+ALUSrc}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_a02cba7c3491256a512f4623fb49e6882}{get\+Mem\+To\+Reg}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_aa513a25dfb2c65dfac773bc6587566b1}{get\+Reg\+Write}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_a390891c52583989da1a9dac1ba2a1738}{get\+Mem\+Read}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_abbff3dc8c16fcc5041c124cc71c17f33}{get\+Mem\+Write}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classControlUnit_a35052836dfd1822c2d169ae5a1442c6b}{get\+Branch}} () const =0
+\item 
+virtual \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALU\+::\+ALUOp}} \mbox{\hyperlink{classControlUnit_a18be75eab97fc09fd6642ba4878d4f4b}{get\+ALUOp}} () const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classControlUnit_a2ffe1212f7d634525a84bef669a3453f}{Reg\+Dst}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_a184ce2f97a131b71e51035480cd67fc5}{ALUSrc}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_a944fd5cd6e0e560cad09533bdc99329b}{Mem\+To\+Reg}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_aa258b6839f2661b66150ca6bb1316e4b}{Reg\+Write}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_ae0f1a0a0349290771cc404691ec9f2b5}{Mem\+Read}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_a48062dd4f12645f8259209f1b5445d8f}{Mem\+Write}} = false
+\item 
+bool \mbox{\hyperlink{classControlUnit_a7ff1ebecee68ada12ce9b30cf4d4d68e}{Branch}} = false
+\item 
+\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALU\+::\+ALUOp}} \mbox{\hyperlink{classControlUnit_a64dbe0015571ad29cdd6309312036520}{ALUOp}} = \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}{ALU\+::\+ALUOp\+::\+NONE}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classControlUnit}{Control\+Unit}} class is the base class for the control unit of the CPU. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classControlUnit_ae22f4411723f65396af44292cf4f2309}\label{classControlUnit_ae22f4411723f65396af44292cf4f2309}} 
+\index{ControlUnit@{ControlUnit}!````~ControlUnit@{$\sim$ControlUnit}}
+\index{````~ControlUnit@{$\sim$ControlUnit}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{$\sim$ControlUnit()}{~ControlUnit()}}
+{\footnotesize\ttfamily virtual Control\+Unit\+::$\sim$\+Control\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classControlUnit_a18be75eab97fc09fd6642ba4878d4f4b}\label{classControlUnit_a18be75eab97fc09fd6642ba4878d4f4b}} 
+\index{ControlUnit@{ControlUnit}!getALUOp@{getALUOp}}
+\index{getALUOp@{getALUOp}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getALUOp()}{getALUOp()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALU\+::\+ALUOp}} Control\+Unit\+::get\+ALUOp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_af3deeffb7f72a1f11569f86506ebacbc}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_a10911b7fecdd5d6c5058563a5c9945c6}\label{classControlUnit_a10911b7fecdd5d6c5058563a5c9945c6}} 
+\index{ControlUnit@{ControlUnit}!getALUSrc@{getALUSrc}}
+\index{getALUSrc@{getALUSrc}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getALUSrc()}{getALUSrc()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+ALUSrc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_a301caaf70fc7665723749d9c8241fca4}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_a35052836dfd1822c2d169ae5a1442c6b}\label{classControlUnit_a35052836dfd1822c2d169ae5a1442c6b}} 
+\index{ControlUnit@{ControlUnit}!getBranch@{getBranch}}
+\index{getBranch@{getBranch}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getBranch()}{getBranch()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+Branch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_aa74f6c502d89da33a3a631444b6a9de4}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_a390891c52583989da1a9dac1ba2a1738}\label{classControlUnit_a390891c52583989da1a9dac1ba2a1738}} 
+\index{ControlUnit@{ControlUnit}!getMemRead@{getMemRead}}
+\index{getMemRead@{getMemRead}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getMemRead()}{getMemRead()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+Mem\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_ac28403402feee03b1f6247e28d4d8301}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_a02cba7c3491256a512f4623fb49e6882}\label{classControlUnit_a02cba7c3491256a512f4623fb49e6882}} 
+\index{ControlUnit@{ControlUnit}!getMemToReg@{getMemToReg}}
+\index{getMemToReg@{getMemToReg}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getMemToReg()}{getMemToReg()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+Mem\+To\+Reg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_af6b9c7464b5613527749b05806b9cb27}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_abbff3dc8c16fcc5041c124cc71c17f33}\label{classControlUnit_abbff3dc8c16fcc5041c124cc71c17f33}} 
+\index{ControlUnit@{ControlUnit}!getMemWrite@{getMemWrite}}
+\index{getMemWrite@{getMemWrite}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getMemWrite()}{getMemWrite()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+Mem\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_abe17f9e21a12054c6663e1a76e223b7c}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_aa513a25dfb2c65dfac773bc6587566b1}\label{classControlUnit_aa513a25dfb2c65dfac773bc6587566b1}} 
+\index{ControlUnit@{ControlUnit}!getRegWrite@{getRegWrite}}
+\index{getRegWrite@{getRegWrite}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{getRegWrite()}{getRegWrite()}}
+{\footnotesize\ttfamily virtual bool Control\+Unit\+::get\+Reg\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_ac7451b83c27b6c73bd3b6306f390c68f}{RVSSControl\+Unit}}.
+
+\mbox{\Hypertarget{classControlUnit_ac0068a7c8ca5832e8f917e38fea3dac7}\label{classControlUnit_ac0068a7c8ca5832e8f917e38fea3dac7}} 
+\index{ControlUnit@{ControlUnit}!setControlSignals@{setControlSignals}}
+\index{setControlSignals@{setControlSignals}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{setControlSignals()}{setControlSignals()}}
+{\footnotesize\ttfamily virtual void Control\+Unit\+::set\+Control\+Signals (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{instruction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRVSSControlUnit_a62a8e29e31822eeb1a9743b5a23e872f}{RVSSControl\+Unit}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classControlUnit_a64dbe0015571ad29cdd6309312036520}\label{classControlUnit_a64dbe0015571ad29cdd6309312036520}} 
+\index{ControlUnit@{ControlUnit}!ALUOp@{ALUOp}}
+\index{ALUOp@{ALUOp}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{ALUOp}{ALUOp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALU\+::\+ALUOp}} Control\+Unit\+::\+ALUOp = \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}{ALU\+::\+ALUOp\+::\+NONE}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_a184ce2f97a131b71e51035480cd67fc5}\label{classControlUnit_a184ce2f97a131b71e51035480cd67fc5}} 
+\index{ControlUnit@{ControlUnit}!ALUSrc@{ALUSrc}}
+\index{ALUSrc@{ALUSrc}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{ALUSrc}{ALUSrc}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+ALUSrc = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_a7ff1ebecee68ada12ce9b30cf4d4d68e}\label{classControlUnit_a7ff1ebecee68ada12ce9b30cf4d4d68e}} 
+\index{ControlUnit@{ControlUnit}!Branch@{Branch}}
+\index{Branch@{Branch}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{Branch}{Branch}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Branch = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_ae0f1a0a0349290771cc404691ec9f2b5}\label{classControlUnit_ae0f1a0a0349290771cc404691ec9f2b5}} 
+\index{ControlUnit@{ControlUnit}!MemRead@{MemRead}}
+\index{MemRead@{MemRead}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{MemRead}{MemRead}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Mem\+Read = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_a944fd5cd6e0e560cad09533bdc99329b}\label{classControlUnit_a944fd5cd6e0e560cad09533bdc99329b}} 
+\index{ControlUnit@{ControlUnit}!MemToReg@{MemToReg}}
+\index{MemToReg@{MemToReg}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{MemToReg}{MemToReg}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Mem\+To\+Reg = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_a48062dd4f12645f8259209f1b5445d8f}\label{classControlUnit_a48062dd4f12645f8259209f1b5445d8f}} 
+\index{ControlUnit@{ControlUnit}!MemWrite@{MemWrite}}
+\index{MemWrite@{MemWrite}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{MemWrite}{MemWrite}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Mem\+Write = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_a2ffe1212f7d634525a84bef669a3453f}\label{classControlUnit_a2ffe1212f7d634525a84bef669a3453f}} 
+\index{ControlUnit@{ControlUnit}!RegDst@{RegDst}}
+\index{RegDst@{RegDst}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{RegDst}{RegDst}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Reg\+Dst = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classControlUnit_aa258b6839f2661b66150ca6bb1316e4b}\label{classControlUnit_aa258b6839f2661b66150ca6bb1316e4b}} 
+\index{ControlUnit@{ControlUnit}!RegWrite@{RegWrite}}
+\index{RegWrite@{RegWrite}!ControlUnit@{ControlUnit}}
+\doxysubsubsection{\texorpdfstring{RegWrite}{RegWrite}}
+{\footnotesize\ttfamily bool Control\+Unit\+::\+Reg\+Write = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/vm/\mbox{\hyperlink{control__unit__base_8h}{control\+\_\+unit\+\_\+base.\+h}}\end{DoxyCompactItemize}

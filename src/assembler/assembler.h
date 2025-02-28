@@ -30,5 +30,4 @@
  */
 AssembledProgram assemble(const std::string &filename);
 
-
 #endif // ASSEMBLER_H

@@ -1,4 +1,19 @@
 var searchData=
 [
-  ['num_449',['NUM',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac',1,'tokens.h']]]
+  ['i1_800',['I1',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aaa18c217c4f2a811afcaaf5052945e31b',1,'InstructionSet']]],
+  ['i2_801',['I2',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa8213a4c2934a732d4ab7d75e9d3e32f4',1,'InstructionSet']]],
+  ['i3_802',['I3',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aaf4a3f9ad212c5f18078484d1b535ea95',1,'InstructionSet']]],
+  ['identifier_803',['IDENTIFIER',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a6fcc416051346daca31c571646af127a',1,'tokens.h']]],
+  ['immediate_5fout_5fof_5frange_804',['IMMEDIATE_OUT_OF_RANGE',['../namespaceErrors.html#a22124df3884d912a0113de503897588da1a90c26e5e0d02b67ccd5eeb0437752a',1,'Errors']]],
+  ['integer_805',['INTEGER',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a5d5cd46919fa987731fb2edefe0f2a0c',1,'RegisterFile']]],
+  ['invalid_806',['INVALID',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230accc0377a8afbf50e7094f5c23a8af223',1,'RegisterFile::INVALID()'],['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921accc0377a8afbf50e7094f5c23a8af223',1,'INVALID():&#160;tokens.h']]],
+  ['invalid_5fdirective_807',['INVALID_DIRECTIVE',['../namespaceErrors.html#a22124df3884d912a0113de503897588dac9a9219dfe74bd3ad1c359a2f1082822',1,'Errors']]],
+  ['invalid_5fimmediate_808',['INVALID_IMMEDIATE',['../namespaceErrors.html#a22124df3884d912a0113de503897588dae1b0ba36bd640cb2081a4b665a8765bf',1,'Errors']]],
+  ['invalid_5finstruction_809',['INVALID_INSTRUCTION',['../namespaceErrors.html#a22124df3884d912a0113de503897588da2e28fa293e2ca8aca645d85ad05096c3',1,'Errors']]],
+  ['invalid_5flabel_810',['INVALID_LABEL',['../namespaceErrors.html#a22124df3884d912a0113de503897588dab3d145c731fec2adf80f7632dd981b47',1,'Errors']]],
+  ['invalid_5flabel_5fref_811',['INVALID_LABEL_REF',['../namespaceErrors.html#a22124df3884d912a0113de503897588dac4b6dda0a90cf1815860d0860989623d',1,'Errors']]],
+  ['invalid_5foperand_812',['INVALID_OPERAND',['../namespaceErrors.html#a22124df3884d912a0113de503897588da6bf179afa8f7fba18cf39bc0ca6fe043',1,'Errors']]],
+  ['invalid_5fregister_813',['INVALID_REGISTER',['../namespaceErrors.html#a22124df3884d912a0113de503897588da7277cc675779f41d6cd80f43a8ec702f',1,'Errors']]],
+  ['invalid_5fsyntax_814',['INVALID_SYNTAX',['../namespaceErrors.html#a22124df3884d912a0113de503897588da3fba68b9108afef4ec5c2eb304dd63ff',1,'Errors']]],
+  ['invalid_5ftoken_815',['INVALID_TOKEN',['../namespaceErrors.html#a22124df3884d912a0113de503897588da506556a229186f5b45f364032625ff5b',1,'Errors']]]
 ];

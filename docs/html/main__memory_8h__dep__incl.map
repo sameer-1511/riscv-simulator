@@ -1,0 +1,15 @@
+<map id="src/vm/main_memory.h" name="src/vm/main_memory.h">
+<area shape="rect" id="node1" title="Contains the definition of the MemoryBlock and Memory classes." alt="" coords="236,5,411,32"/>
+<area shape="rect" id="node2" href="$main__memory_8cpp.html" title="Contains the implementation of the Memory class." alt="" coords="5,80,196,107"/>
+<area shape="rect" id="node3" href="$memory__controller_8h.html" title="Contains the declaration of the MemoryController class for managing memory in the VM." alt="" coords="221,80,426,107"/>
+<area shape="rect" id="node13" href="$test__memory_8cpp.html" title=" " alt="" coords="450,80,613,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="84,155,189,181"/>
+<area shape="rect" id="node5" href="$memory__controller_8cpp.html" title="Contains the implementation of the MemoryController class for managing memory in the VM." alt="" coords="213,155,433,181"/>
+<area shape="rect" id="node6" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="458,155,599,181"/>
+<area shape="rect" id="node7" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="258,229,426,256"/>
+<area shape="rect" id="node10" href="$vm__base_8cpp.html" title="File containing the base class for the virtual machine." alt="" coords="451,229,607,256"/>
+<area shape="rect" id="node11" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="631,229,757,256"/>
+<area shape="rect" id="node8" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="157,304,340,331"/>
+<area shape="rect" id="node9" href="$test__main_8cpp.html" title=" " alt="" coords="364,304,507,331"/>
+<area shape="rect" id="node12" href="$vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="623,304,765,331"/>
+</map>

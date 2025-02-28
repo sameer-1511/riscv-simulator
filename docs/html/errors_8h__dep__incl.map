@@ -1,7 +1,11 @@
 <map id="src/assembler/errors.h" name="src/assembler/errors.h">
-<area shape="rect" id="node1" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="113,5,280,32"/>
-<area shape="rect" id="node2" href="$errors_8cpp.html" title=" " alt="" coords="5,80,188,107"/>
-<area shape="rect" id="node3" href="$parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="212,80,381,107"/>
-<area shape="rect" id="node4" href="$parser_8cpp.html" title=" " alt="" coords="119,155,303,181"/>
-<area shape="rect" id="node5" href="$main_8cpp.html" title=" " alt="" coords="328,155,433,181"/>
+<area shape="rect" id="node1" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="141,5,308,32"/>
+<area shape="rect" id="node2" href="$errors_8cpp.html" title=" " alt="" coords="33,80,216,107"/>
+<area shape="rect" id="node3" href="$parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="240,80,409,107"/>
+<area shape="rect" id="node4" href="$assembler_8h.html" title=" " alt="" coords="141,155,337,181"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="5,229,111,256"/>
+<area shape="rect" id="node7" href="$parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="493,229,677,256"/>
+<area shape="rect" id="node8" href="$utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="369,155,454,181"/>
+<area shape="rect" id="node5" href="$assembler_8cpp.html" title=" " alt="" coords="134,229,345,256"/>
+<area shape="rect" id="node9" href="$utils_8cpp.html" title="Contains utility functions for the VM." alt="" coords="368,229,468,256"/>
 </map>

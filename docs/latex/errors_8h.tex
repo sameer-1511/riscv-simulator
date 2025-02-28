@@ -6,8 +6,7 @@ Defines error handling structures and error types for syntax and semantic errors
 
 
 {\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
-Include dependency graph for errors.\+h\+:
-\nopagebreak
+Include dependency graph for errors.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,60 +24,67 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structSyntaxError}{Syntax\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1SyntaxError}{Errors\+::\+Syntax\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents a generic syntax error in the assembler. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structUnexpectedTokenError}{Unexpected\+Token\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1UnexpectedTokenError}{Errors\+::\+Unexpected\+Token\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents an error caused by an unexpected token in the input. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structImmediateOutOfRangeError}{Immediate\+Out\+Of\+Range\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1ImmediateOutOfRangeError}{Errors\+::\+Immediate\+Out\+Of\+Range\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents an error caused by an immediate value being outside the valid range. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structMisalignedImmediateError}{Misaligned\+Immediate\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1MisalignedImmediateError}{Errors\+::\+Misaligned\+Immediate\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents an error caused by an immediate value being misaligned. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structUnexpectedOperandError}{Unexpected\+Operand\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1UnexpectedOperandError}{Errors\+::\+Unexpected\+Operand\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents an error caused by encountering an unexpected operand. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structInvalidLabelRefError}{Invalid\+Label\+Ref\+Error}}
+struct \mbox{\hyperlink{structErrors_1_1InvalidLabelRefError}{Errors\+::\+Invalid\+Label\+Ref\+Error}}
 \begin{DoxyCompactList}\small\item\em Represents an error caused by referencing an invalid or undefined label. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structLabelRedefinitionError}{Label\+Redefinition\+Error}}
-\begin{DoxyCompactList}\small\item\em Represents an error caused by redefining a previously defined label. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct \mbox{\hyperlink{structErrors_1_1LabelRedefinitionError}{Errors\+::\+Label\+Redefinition\+Error}}
+\begin{DoxyCompactList}\small\item\em Represents an error caused by redefining a previously defined label. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structErrors_1_1InvalidRegisterError}{Errors\+::\+Invalid\+Register\+Error}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceErrors}{Errors}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum class \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}{Error\+Type}} \{ \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8015f208e97eb87d4077cf0c5d5aeb83}{UNEXPECTED\+\_\+\+TOKEN}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad7822fa0763e672131324accbcf830d0}{UNEXPECTED\+\_\+\+EOF}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa4598db2cfeef2078a4c652100cfe25c7}{UNEXPECTED\+\_\+\+OPERAND}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2dee638c1209e59a0584ec345d2469b5}{MISSING\+\_\+\+OPERAND}}
+enum class \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588d}{Errors\+::\+Error\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da8015f208e97eb87d4077cf0c5d5aeb83}{Errors\+::\+UNEXPECTED\+\_\+\+TOKEN}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dad7822fa0763e672131324accbcf830d0}{Errors\+::\+UNEXPECTED\+\_\+\+EOF}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da4598db2cfeef2078a4c652100cfe25c7}{Errors\+::\+UNEXPECTED\+\_\+\+OPERAND}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da2dee638c1209e59a0584ec345d2469b5}{Errors\+::\+MISSING\+\_\+\+OPERAND}}
 , \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad747dec1e9ebdda3b5eba6ab9f3450d8}{MISSING\+\_\+\+COMMA}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae7feccc35303a919358574bb9873ec6d}{MISSING\+\_\+\+LPAREN}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8cb50830806d95b68fe452830a94d51e}{MISSING\+\_\+\+RPAREN}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aabb0e54b9dc15fe61b5aaf3cb0ef0867d}{EXPECTED\+\_\+\+REGISTER}}
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dad747dec1e9ebdda3b5eba6ab9f3450d8}{Errors\+::\+MISSING\+\_\+\+COMMA}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dae7feccc35303a919358574bb9873ec6d}{Errors\+::\+MISSING\+\_\+\+LPAREN}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da8cb50830806d95b68fe452830a94d51e}{Errors\+::\+MISSING\+\_\+\+RPAREN}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dabb0e54b9dc15fe61b5aaf3cb0ef0867d}{Errors\+::\+EXPECTED\+\_\+\+REGISTER}}
 , \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa48c66164b43ae205b4ea29e666d88692}{EXPECTED\+\_\+\+IMMEDIATE}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae95902890e301eff1b3f021b9371c377}{EXPECTED\+\_\+\+LABEL}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa6bf179afa8f7fba18cf39bc0ca6fe043}{INVALID\+\_\+\+OPERAND}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac9a9219dfe74bd3ad1c359a2f1082822}{INVALID\+\_\+\+DIRECTIVE}}
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da48c66164b43ae205b4ea29e666d88692}{Errors\+::\+EXPECTED\+\_\+\+IMMEDIATE}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dae95902890e301eff1b3f021b9371c377}{Errors\+::\+EXPECTED\+\_\+\+LABEL}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da6bf179afa8f7fba18cf39bc0ca6fe043}{Errors\+::\+INVALID\+\_\+\+OPERAND}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dac9a9219dfe74bd3ad1c359a2f1082822}{Errors\+::\+INVALID\+\_\+\+DIRECTIVE}}
 , \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2e28fa293e2ca8aca645d85ad05096c3}{INVALID\+\_\+\+INSTRUCTION}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa7277cc675779f41d6cd80f43a8ec702f}{INVALID\+\_\+\+REGISTER}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae1b0ba36bd640cb2081a4b665a8765bf}{INVALID\+\_\+\+IMMEDIATE}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aab3d145c731fec2adf80f7632dd981b47}{INVALID\+\_\+\+LABEL}}
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da2e28fa293e2ca8aca645d85ad05096c3}{Errors\+::\+INVALID\+\_\+\+INSTRUCTION}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da7277cc675779f41d6cd80f43a8ec702f}{Errors\+::\+INVALID\+\_\+\+REGISTER}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dae1b0ba36bd640cb2081a4b665a8765bf}{Errors\+::\+INVALID\+\_\+\+IMMEDIATE}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dab3d145c731fec2adf80f7632dd981b47}{Errors\+::\+INVALID\+\_\+\+LABEL}}
 , \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac4b6dda0a90cf1815860d0860989623d}{INVALID\+\_\+\+LABEL\+\_\+\+REF}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa506556a229186f5b45f364032625ff5b}{INVALID\+\_\+\+TOKEN}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa3fba68b9108afef4ec5c2eb304dd63ff}{INVALID\+\_\+\+SYNTAX}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa71b8e49b5ac60a6d3468de1fa2b67932}{MISALIGNED\+\_\+\+IMMEDIATE}}
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dac4b6dda0a90cf1815860d0860989623d}{Errors\+::\+INVALID\+\_\+\+LABEL\+\_\+\+REF}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da506556a229186f5b45f364032625ff5b}{Errors\+::\+INVALID\+\_\+\+TOKEN}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da3fba68b9108afef4ec5c2eb304dd63ff}{Errors\+::\+INVALID\+\_\+\+SYNTAX}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da71b8e49b5ac60a6d3468de1fa2b67932}{Errors\+::\+MISALIGNED\+\_\+\+IMMEDIATE}}
 , \newline
-\mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae654793b308eb6923f12cf695d6fb902}{MISALIGNED\+\_\+\+LABEL}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa1a90c26e5e0d02b67ccd5eeb0437752a}{IMMEDIATE\+\_\+\+OUT\+\_\+\+OF\+\_\+\+RANGE}}
-, \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa9a10f345b0f755d461a8673a5e9ef6b4}{UNKNOWN\+\_\+\+ERROR}}
+\mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588dae654793b308eb6923f12cf695d6fb902}{Errors\+::\+MISALIGNED\+\_\+\+LABEL}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da1a90c26e5e0d02b67ccd5eeb0437752a}{Errors\+::\+IMMEDIATE\+\_\+\+OUT\+\_\+\+OF\+\_\+\+RANGE}}
+, \mbox{\hyperlink{namespaceErrors_a22124df3884d912a0113de503897588da9a10f345b0f755d461a8673a5e9ef6b4}{Errors\+::\+UNKNOWN\+\_\+\+ERROR}}
  \}
 \begin{DoxyCompactList}\small\item\em Enumerates various types of errors that can occur during assembly. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const std\+::string \mbox{\hyperlink{errors_8h_af3d27415febea6c352ee2e86248788a1}{ANSI\+\_\+code\+\_\+red}} = \char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceErrors_a4e889a6ffc4a749982b885b7ebb8df6a}{Errors\+::\+ANSI\+\_\+code\+\_\+red}} = \char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}
 \begin{DoxyCompactList}\small\item\em ANSI code for red-\/colored text. \end{DoxyCompactList}\item 
-const std\+::string \mbox{\hyperlink{errors_8h_a44fad77c02d501db9b9c24c3df32d850}{ANSI\+\_\+code\+\_\+reset}} = \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceErrors_a8efcac48f0bbeaa7a935b070b974533b}{Errors\+::\+ANSI\+\_\+code\+\_\+reset}} = \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
 \begin{DoxyCompactList}\small\item\em ANSI code to reset text formatting. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -88,133 +94,3 @@ Defines error handling structures and error types for syntax and semantic errors
 \begin{DoxyAuthor}{Author}
 Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
 \end{DoxyAuthor}
-
-
-\doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}} 
-\index{errors.h@{errors.h}!ErrorType@{ErrorType}}
-\index{ErrorType@{ErrorType}!errors.h@{errors.h}}
-\doxysubsubsection{\texorpdfstring{ErrorType}{ErrorType}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}{Error\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
-
-
-
-Enumerates various types of errors that can occur during assembly. 
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{UNEXPECTED\_TOKEN@{UNEXPECTED\_TOKEN}!errors.h@{errors.h}}\index{errors.h@{errors.h}!UNEXPECTED\_TOKEN@{UNEXPECTED\_TOKEN}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8015f208e97eb87d4077cf0c5d5aeb83}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8015f208e97eb87d4077cf0c5d5aeb83}} 
-UNEXPECTED\+\_\+\+TOKEN&An unexpected token was encountered. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{UNEXPECTED\_EOF@{UNEXPECTED\_EOF}!errors.h@{errors.h}}\index{errors.h@{errors.h}!UNEXPECTED\_EOF@{UNEXPECTED\_EOF}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad7822fa0763e672131324accbcf830d0}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad7822fa0763e672131324accbcf830d0}} 
-UNEXPECTED\+\_\+\+EOF&Unexpected end of file. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{UNEXPECTED\_OPERAND@{UNEXPECTED\_OPERAND}!errors.h@{errors.h}}\index{errors.h@{errors.h}!UNEXPECTED\_OPERAND@{UNEXPECTED\_OPERAND}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa4598db2cfeef2078a4c652100cfe25c7}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa4598db2cfeef2078a4c652100cfe25c7}} 
-UNEXPECTED\+\_\+\+OPERAND&Unexpected operand in the instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSING\_OPERAND@{MISSING\_OPERAND}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISSING\_OPERAND@{MISSING\_OPERAND}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2dee638c1209e59a0584ec345d2469b5}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2dee638c1209e59a0584ec345d2469b5}} 
-MISSING\+\_\+\+OPERAND&Missing operand in the instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSING\_COMMA@{MISSING\_COMMA}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISSING\_COMMA@{MISSING\_COMMA}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad747dec1e9ebdda3b5eba6ab9f3450d8}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aad747dec1e9ebdda3b5eba6ab9f3450d8}} 
-MISSING\+\_\+\+COMMA&Missing comma in the instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSING\_LPAREN@{MISSING\_LPAREN}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISSING\_LPAREN@{MISSING\_LPAREN}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae7feccc35303a919358574bb9873ec6d}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae7feccc35303a919358574bb9873ec6d}} 
-MISSING\+\_\+\+LPAREN&Missing left parenthesis. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSING\_RPAREN@{MISSING\_RPAREN}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISSING\_RPAREN@{MISSING\_RPAREN}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8cb50830806d95b68fe452830a94d51e}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa8cb50830806d95b68fe452830a94d51e}} 
-MISSING\+\_\+\+RPAREN&Missing right parenthesis. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPECTED\_REGISTER@{EXPECTED\_REGISTER}!errors.h@{errors.h}}\index{errors.h@{errors.h}!EXPECTED\_REGISTER@{EXPECTED\_REGISTER}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aabb0e54b9dc15fe61b5aaf3cb0ef0867d}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aabb0e54b9dc15fe61b5aaf3cb0ef0867d}} 
-EXPECTED\+\_\+\+REGISTER&Expected a register but found something else. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPECTED\_IMMEDIATE@{EXPECTED\_IMMEDIATE}!errors.h@{errors.h}}\index{errors.h@{errors.h}!EXPECTED\_IMMEDIATE@{EXPECTED\_IMMEDIATE}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa48c66164b43ae205b4ea29e666d88692}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa48c66164b43ae205b4ea29e666d88692}} 
-EXPECTED\+\_\+\+IMMEDIATE&Expected an immediate value. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPECTED\_LABEL@{EXPECTED\_LABEL}!errors.h@{errors.h}}\index{errors.h@{errors.h}!EXPECTED\_LABEL@{EXPECTED\_LABEL}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae95902890e301eff1b3f021b9371c377}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae95902890e301eff1b3f021b9371c377}} 
-EXPECTED\+\_\+\+LABEL&Expected a label. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_OPERAND@{INVALID\_OPERAND}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_OPERAND@{INVALID\_OPERAND}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa6bf179afa8f7fba18cf39bc0ca6fe043}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa6bf179afa8f7fba18cf39bc0ca6fe043}} 
-INVALID\+\_\+\+OPERAND&Operand is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_DIRECTIVE@{INVALID\_DIRECTIVE}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_DIRECTIVE@{INVALID\_DIRECTIVE}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac9a9219dfe74bd3ad1c359a2f1082822}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac9a9219dfe74bd3ad1c359a2f1082822}} 
-INVALID\+\_\+\+DIRECTIVE&Directive is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_INSTRUCTION@{INVALID\_INSTRUCTION}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_INSTRUCTION@{INVALID\_INSTRUCTION}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2e28fa293e2ca8aca645d85ad05096c3}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa2e28fa293e2ca8aca645d85ad05096c3}} 
-INVALID\+\_\+\+INSTRUCTION&Instruction is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_REGISTER@{INVALID\_REGISTER}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_REGISTER@{INVALID\_REGISTER}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa7277cc675779f41d6cd80f43a8ec702f}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa7277cc675779f41d6cd80f43a8ec702f}} 
-INVALID\+\_\+\+REGISTER&Register name is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_IMMEDIATE@{INVALID\_IMMEDIATE}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_IMMEDIATE@{INVALID\_IMMEDIATE}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae1b0ba36bd640cb2081a4b665a8765bf}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae1b0ba36bd640cb2081a4b665a8765bf}} 
-INVALID\+\_\+\+IMMEDIATE&Immediate value is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_LABEL@{INVALID\_LABEL}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_LABEL@{INVALID\_LABEL}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aab3d145c731fec2adf80f7632dd981b47}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aab3d145c731fec2adf80f7632dd981b47}} 
-INVALID\+\_\+\+LABEL&Label is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_LABEL\_REF@{INVALID\_LABEL\_REF}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_LABEL\_REF@{INVALID\_LABEL\_REF}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac4b6dda0a90cf1815860d0860989623d}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aac4b6dda0a90cf1815860d0860989623d}} 
-INVALID\+\_\+\+LABEL\+\_\+\+REF&Label reference is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_TOKEN@{INVALID\_TOKEN}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_TOKEN@{INVALID\_TOKEN}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa506556a229186f5b45f364032625ff5b}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa506556a229186f5b45f364032625ff5b}} 
-INVALID\+\_\+\+TOKEN&\mbox{\hyperlink{structToken}{Token}} is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_SYNTAX@{INVALID\_SYNTAX}!errors.h@{errors.h}}\index{errors.h@{errors.h}!INVALID\_SYNTAX@{INVALID\_SYNTAX}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa3fba68b9108afef4ec5c2eb304dd63ff}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa3fba68b9108afef4ec5c2eb304dd63ff}} 
-INVALID\+\_\+\+SYNTAX&Syntax is invalid. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISALIGNED\_IMMEDIATE@{MISALIGNED\_IMMEDIATE}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISALIGNED\_IMMEDIATE@{MISALIGNED\_IMMEDIATE}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa71b8e49b5ac60a6d3468de1fa2b67932}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa71b8e49b5ac60a6d3468de1fa2b67932}} 
-MISALIGNED\+\_\+\+IMMEDIATE&Immediate value is misaligned. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MISALIGNED\_LABEL@{MISALIGNED\_LABEL}!errors.h@{errors.h}}\index{errors.h@{errors.h}!MISALIGNED\_LABEL@{MISALIGNED\_LABEL}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae654793b308eb6923f12cf695d6fb902}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aae654793b308eb6923f12cf695d6fb902}} 
-MISALIGNED\+\_\+\+LABEL&Label is misaligned. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{IMMEDIATE\_OUT\_OF\_RANGE@{IMMEDIATE\_OUT\_OF\_RANGE}!errors.h@{errors.h}}\index{errors.h@{errors.h}!IMMEDIATE\_OUT\_OF\_RANGE@{IMMEDIATE\_OUT\_OF\_RANGE}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa1a90c26e5e0d02b67ccd5eeb0437752a}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa1a90c26e5e0d02b67ccd5eeb0437752a}} 
-IMMEDIATE\+\_\+\+OUT\+\_\+\+OF\+\_\+\+RANGE&Immediate value is out of range. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN\_ERROR@{UNKNOWN\_ERROR}!errors.h@{errors.h}}\index{errors.h@{errors.h}!UNKNOWN\_ERROR@{UNKNOWN\_ERROR}}}\mbox{\Hypertarget{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa9a10f345b0f755d461a8673a5e9ef6b4}\label{errors_8h_ab0df38968e4f03a3f1f6d6df0f31f45aa9a10f345b0f755d461a8673a5e9ef6b4}} 
-UNKNOWN\+\_\+\+ERROR&An unknown error occurred. \\
-\hline
-
-\end{DoxyEnumFields}
-
-
-\doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{errors_8h_af3d27415febea6c352ee2e86248788a1}\label{errors_8h_af3d27415febea6c352ee2e86248788a1}} 
-\index{errors.h@{errors.h}!ANSI\_code\_red@{ANSI\_code\_red}}
-\index{ANSI\_code\_red@{ANSI\_code\_red}!errors.h@{errors.h}}
-\doxysubsubsection{\texorpdfstring{ANSI\_code\_red}{ANSI\_code\_red}}
-{\footnotesize\ttfamily const std\+::string ANSI\+\_\+code\+\_\+red = \char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}}
-
-
-
-ANSI code for red-\/colored text. 
-
-\mbox{\Hypertarget{errors_8h_a44fad77c02d501db9b9c24c3df32d850}\label{errors_8h_a44fad77c02d501db9b9c24c3df32d850}} 
-\index{errors.h@{errors.h}!ANSI\_code\_reset@{ANSI\_code\_reset}}
-\index{ANSI\_code\_reset@{ANSI\_code\_reset}!errors.h@{errors.h}}
-\doxysubsubsection{\texorpdfstring{ANSI\_code\_reset}{ANSI\_code\_reset}}
-{\footnotesize\ttfamily const std\+::string ANSI\+\_\+code\+\_\+reset = \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
-
-
-
-ANSI code to reset text formatting. 
-

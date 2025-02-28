@@ -165,6 +165,12 @@ public:
  */
 extern const std::unordered_set<std::string> valid_registers;
 
+extern const std::unordered_set<std::string> valid_general_purpose_registers;
+
+extern const std::unordered_set<std::string> valid_floating_point_registers;
+
+extern const std::unordered_set<std::string> valid_vector_registers;
+
 /**
  * @brief Map of register aliases to their actual names.
  */
@@ -176,6 +182,12 @@ extern const std::unordered_map<std::string, std::string> reg_alias_to_name;
  * @return True if the register name is valid, false otherwise.
  */
 bool isValidRegister(const std::string &reg);
+
+bool isValidGeneralPurposeRegister(const std::string &reg);
+
+bool isValidFloatingPointRegister(const std::string &reg);
+
+bool isValidVectorRegister(const std::string &reg);
 
 
 #endif // REGISTERS_H

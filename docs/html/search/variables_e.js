@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['valid_5fregisters_414',['valid_registers',['../registers_8cpp.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp'],['../registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp']]],
-  ['value_415',['value',['../structToken.html#a4b7142147b8598f8e24c404928d9263b',1,'Token']]]
+  ['type_770',['type',['../structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a',1,'Token']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unexpectedoperanderror_245',['UnexpectedOperandError',['../structUnexpectedOperandError.html',1,'']]],
-  ['unexpectedtokenerror_246',['UnexpectedTokenError',['../structUnexpectedTokenError.html',1,'']]],
-  ['utypeinstructionencoding_247',['UTypeInstructionEncoding',['../structUTypeInstructionEncoding.html',1,'']]]
+  ['unexpectedoperanderror_454',['UnexpectedOperandError',['../structErrors_1_1UnexpectedOperandError.html',1,'Errors']]],
+  ['unexpectedtokenerror_455',['UnexpectedTokenError',['../structErrors_1_1UnexpectedTokenError.html',1,'Errors']]],
+  ['utypeinstructionencoding_456',['UTypeInstructionEncoding',['../structInstructionSet_1_1UTypeInstructionEncoding.html',1,'InstructionSet']]]
 ];

@@ -19,20 +19,22 @@
 struct ICUnit {
     unsigned int line_number; ///< Line number in the source code corresponding to this block.
     std::array<char, 21> opcode;  ///< Opcode string (up to 20 characters, null-terminated).
-    std::array<char, 21> rd;      ///< Destination register name (up to 20 characters, null-terminated).
-    std::array<char, 21> rs1;     ///< Source register 1 name (up to 20 characters, null-terminated).
-    std::array<char, 21> rs2;     ///< Source register 2 name (up to 20 characters, null-terminated).
+    std::array<char, 6> rd;      ///< Destination register name (up to 20 characters, null-terminated).
+    std::array<char, 6> rs1;     ///< Source register 1 name (up to 20 characters, null-terminated).
+    std::array<char, 6> rs2;     ///< Source register 2 name (up to 20 characters, null-terminated).
+    std::array<char, 6> rs3;     ///< Immediate value (up to 32 characters, null-terminated).
     std::array<char, 33> imm;     ///< Immediate value (up to 32 characters, null-terminated).
     std::string label;            ///< Label associated with this code block, if any.
 
-    ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, imm{}, label{} {}
+    ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, rs3{}, imm{}, label{} {}
 
     friend std::ostream &operator<<(std::ostream &os, const ICUnit &unit) {
-        os << unit.opcode.data() << " "
-           << unit.rd.data() << " "
-           << unit.rs1.data() << " "
-           << unit.rs2.data() << " "
-           << unit.imm.data() << " "
+        os << unit.opcode.data() << "|"
+           << unit.rd.data() << "|"
+           << unit.rs1.data() << "|"
+           << unit.rs2.data() << "|"
+           << unit.rs3.data() << "|"
+           << unit.imm.data() << "|"
            << unit.label;
         return os;
     }
@@ -62,8 +64,8 @@ struct ICUnit {
      * @param value The destination register string (up to 20 characters).
      */
     void setRd(const std::string &value) {
-        strncpy(rd.data(), value.c_str(), 20);
-        rd[20] = '\0';
+        strncpy(rd.data(), value.c_str(), 5);
+        rd[5] = '\0';
     }
 
     /**
@@ -72,8 +74,8 @@ struct ICUnit {
      * @param value The source register 1 string (up to 20 characters).
      */
     void setRs1(const std::string &value) {
-        strncpy(rs1.data(), value.c_str(), 20);
-        rs1[20] = '\0';
+        strncpy(rs1.data(), value.c_str(), 5);
+        rs1[5] = '\0';
     }
 
     /**
@@ -82,8 +84,18 @@ struct ICUnit {
      * @param value The source register 2 string (up to 20 characters).
      */
     void setRs2(const std::string &value) {
-        strncpy(rs2.data(), value.c_str(), 20);
-        rs2[20] = '\0';
+        strncpy(rs2.data(), value.c_str(), 5);
+        rs2[5] = '\0';
+    }
+
+    /**
+     * @brief Sets the source register 3 (rs3).
+     * 
+     * @param value The source register 3 string (up to 20 characters).
+     */
+    void setRs3(const std::string &value) {
+        strncpy(rs3.data(), value.c_str(), 5);
+        rs3[5] = '\0';
     }
 
     /**
@@ -148,6 +160,15 @@ struct ICUnit {
      */
     [[nodiscard]] std::string getRs2() const {
         return rs2.data();
+    }
+
+    /**
+     * @brief Gets the source register 3 (rs3).
+     * 
+     * @return The source register 3 string.
+     */
+    [[nodiscard]] std::string getRs3() const {
+        return rs3.data();
     }
 
     /**
@@ -248,6 +269,5 @@ std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
  * @return A vector of bitset<32> representing the machine code.
  */
 std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode);
-
 
 #endif // CODE_GENERATOR_H

@@ -81,13 +81,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="tokens_8h__dep__incl.png" border="0" usemap="#asrc_2assembler_2tokens_8hdep" alt=""/></div>
 <map name="asrc_2assembler_2tokens_8hdep" id="asrc_2assembler_2tokens_8hdep">
-<area shape="rect" title="Contains the definition of the TokenType enum and the Token struct." alt="" coords="232,5,404,32"/>
-<area shape="rect" href="lexer_8h.html" title="Contains the definition of the Lexer class." alt="" coords="59,80,219,107"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="204,155,309,181"/>
-<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="295,80,464,107"/>
-<area shape="rect" href="tokens_8cpp.html" title=" " alt="" coords="489,80,675,107"/>
-<area shape="rect" href="lexer_8cpp.html" title=" " alt="" coords="5,155,180,181"/>
-<area shape="rect" href="parser_8cpp.html" title=" " alt="" coords="334,155,518,181"/>
+<area shape="rect" title="Contains the definition of the TokenType enum and the Token struct." alt="" coords="267,5,439,32"/>
+<area shape="rect" href="lexer_8h.html" title="Contains the definition of the Lexer class." alt="" coords="178,80,338,107"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="177,229,283,256"/>
+<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="404,80,573,107"/>
+<area shape="rect" href="tokens_8cpp.html" title=" " alt="" coords="598,80,785,107"/>
+<area shape="rect" href="assembler_8h.html" title=" " alt="" coords="276,155,472,181"/>
+<area shape="rect" href="lexer_8cpp.html" title="Contains the implementation of the Lexer class for tokenizing source code." alt="" coords="25,155,200,181"/>
+<area shape="rect" href="assembler_8cpp.html" title=" " alt="" coords="306,229,517,256"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="665,229,849,256"/>
+<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="547,155,633,181"/>
+<area shape="rect" href="utils_8cpp.html" title="Contains utility functions for the VM." alt="" coords="540,229,640,256"/>
 </map>
 </div>
 </div>
@@ -108,16 +112,18 @@ Enumerations</h2></td></tr>
 , <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a31e340aa5b97f6d91317dff3a239cc5e">DIRECTIVE</a>
 , <br />
 &#160;&#160;<a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a11bdee9fdefbd8d33a25257557bddbef">OPCODE</a>
-, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921ad17455cfcb88a53f1603fb817e09c2d6">REGISTER</a>
-, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac">NUM</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a1d60368c2a139a81b67353e844cc5ad7">GP_REGISTER</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564">FP_REGISTER</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f">VEC_REGISTER</a>
+, <br />
+&#160;&#160;<a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac">NUM</a>
 , <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb">LABEL</a>
-, <br />
-&#160;&#160;<a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c">LABEL_REF</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c">LABEL_REF</a>
 , <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4d9b3e9fc12849d060371eb65154c751">COMMA</a>
-, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286">LPAREN</a>
-, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1">RPAREN</a>
 , <br />
-&#160;&#160;<a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949">STRING</a>
+&#160;&#160;<a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286">LPAREN</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1">RPAREN</a>
+, <a class="el" href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949">STRING</a>
 <br />
  }</td></tr>
 <tr class="memdesc:aa520fbf142ba1e7e659590c07da31921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum class representing the type of a token.  <a href="tokens_8h.html#aa520fbf142ba1e7e659590c07da31921">More...</a><br /></td></tr>
@@ -166,7 +172,11 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a11bdee9fdefbd8d33a25257557bddbef"></a>OPCODE&#160;</td><td class="fielddoc"><p>Opcode in an instruction. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ad17455cfcb88a53f1603fb817e09c2d6"></a>REGISTER&#160;</td><td class="fielddoc"><p>Register in an instruction. </p>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a1d60368c2a139a81b67353e844cc5ad7"></a>GP_REGISTER&#160;</td><td class="fielddoc"><p>General-purpose register. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564"></a>FP_REGISTER&#160;</td><td class="fielddoc"><p>Floating-point register. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f"></a>VEC_REGISTER&#160;</td><td class="fielddoc"><p>Vector register. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac"></a>NUM&#160;</td><td class="fielddoc"><p>Numeric value. </p>
 </td></tr>

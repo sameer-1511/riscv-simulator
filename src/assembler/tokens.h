@@ -18,8 +18,11 @@ enum class TokenType {
     IDENTIFIER,      ///< Variable or function name
     DIRECTIVE,       ///< Assembly directive
     OPCODE,          ///< Opcode in an instruction
-    REGISTER,        ///< Register in an instruction
+    GP_REGISTER,        ///< General-purpose register
+    FP_REGISTER,        ///< Floating-point register
+    VEC_REGISTER,       ///< Vector register
     NUM,             ///< Numeric value
+    FLOAT,           ///< Floating-point value
     LABEL,           ///< Label in assembly code
     LABEL_REF,       ///< Reference to a label
     COMMA,           ///< Comma (separator) in assembly
@@ -49,8 +52,11 @@ struct Token {
      * @param line The line number of the token (default is 0).
      * @param column The column number of the token (default is 0).
      */
-    Token(TokenType type = TokenType::INVALID, const std::string &value = "", unsigned int line = 0, unsigned int column = 0)
-            : type(type), value(value), line_number(line), column_number(column) {}
+    Token(TokenType type = TokenType::INVALID,
+          const std::string &value = "",
+          unsigned int line = 0,
+          unsigned int column = 0)
+        : type(type), value(value), line_number(line), column_number(column) {}
 
     /**
      * @brief Outputs the token as a string.
@@ -71,6 +77,5 @@ struct Token {
  * @return A string representing the TokenType.
  */
 inline std::string tokenTypeToString(TokenType type);
-
 
 #endif // TOKENS_H

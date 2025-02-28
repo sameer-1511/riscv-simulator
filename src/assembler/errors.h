@@ -71,7 +71,7 @@ struct SyntaxError {
         : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
           filename(std::move(filename)), line_number(line_number), column_number(column_number),
           line_text(std::move(line_text)) {}
-          
+
     friend std::ostream &operator<<(std::ostream &os, const SyntaxError &error);
 };
 
@@ -89,10 +89,13 @@ struct UnexpectedTokenError {
     std::string line_text;      ///< The text of the line where the error occurred.
 
 
-    UnexpectedTokenError(std::string message, std::string filename, unsigned int line_number, unsigned int column_number,
+    UnexpectedTokenError(std::string message,
+                         std::string filename,
+                         unsigned int line_number,
+                         unsigned int column_number,
                          std::string line_text)
-            : message(std::move(message)), filename(std::move(filename)), line_number(line_number),
-              column_number(column_number), line_text(std::move(line_text)) {}
+        : message(std::move(message)), filename(std::move(filename)), line_number(line_number),
+          column_number(column_number), line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const UnexpectedTokenError &error);
 };
@@ -109,11 +112,15 @@ struct ImmediateOutOfRangeError {
     unsigned int column_number;          ///< Column number where the error occurred.
     std::string line_text;      ///< Text of the line where the error occurred.
 
-    ImmediateOutOfRangeError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
-                             unsigned int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    ImmediateOutOfRangeError(std::string main_message,
+                             std::string sub_message,
+                             std::string filename,
+                             unsigned int line_number,
+                             unsigned int column_number,
+                             std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const ImmediateOutOfRangeError &error);
 };
@@ -130,11 +137,15 @@ struct MisalignedImmediateError {
     unsigned int column_number;          ///< Column number where the error occurred.
     std::string line_text;      ///< Text of the line where the error occurred.
 
-    MisalignedImmediateError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
-                              unsigned int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    MisalignedImmediateError(std::string main_message,
+                             std::string sub_message,
+                             std::string filename,
+                             unsigned int line_number,
+                             unsigned int column_number,
+                             std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const MisalignedImmediateError &error);
 };
@@ -151,11 +162,15 @@ struct UnexpectedOperandError {
     unsigned int column_number;          ///< Column number where the error occurred.
     std::string line_text;      ///< Text of the line where the error occurred.
 
-    UnexpectedOperandError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
-                           unsigned int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    UnexpectedOperandError(std::string main_message,
+                           std::string sub_message,
+                           std::string filename,
+                           unsigned int line_number,
+                           unsigned int column_number,
+                           std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const UnexpectedOperandError &error);
 };
@@ -172,11 +187,15 @@ struct InvalidLabelRefError {
     unsigned int column_number;          ///< Column number where the error occurred.
     std::string line_text;      ///< Text of the line where the error occurred.
 
-    InvalidLabelRefError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
-                         unsigned int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    InvalidLabelRefError(std::string main_message,
+                         std::string sub_message,
+                         std::string filename,
+                         unsigned int line_number,
+                         unsigned int column_number,
+                         std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const InvalidLabelRefError &error);
 };
@@ -193,13 +212,38 @@ struct LabelRedefinitionError {
     unsigned int column_number;          ///< Column number where the error occurred.
     std::string line_text;      ///< Text of the line where the error occurred.
 
-    LabelRedefinitionError(std::string main_message, std::string sub_message, std::string filename, unsigned int line_number,
-                           unsigned int column_number, std::string line_text)
-            : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
-              filename(std::move(filename)), line_number(line_number), column_number(column_number),
-              line_text(std::move(line_text)) {}
+    LabelRedefinitionError(std::string main_message,
+                           std::string sub_message,
+                           std::string filename,
+                           unsigned int line_number,
+                           unsigned int column_number,
+                           std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
 
     friend std::ostream &operator<<(std::ostream &os, const LabelRedefinitionError &error);
+};
+
+struct InvalidRegisterError {
+    std::string main_message;   ///< Main error message.
+    std::string sub_message;    ///< Sub error message with additional details.
+    std::string filename;       ///< Filename where the error occurred.
+    unsigned int line_number;            ///< Line number where the error occurred.
+    unsigned int column_number;          ///< Column number where the error occurred.
+    std::string line_text;      ///< Text of the line where the error occurred.
+
+    InvalidRegisterError(std::string main_message,
+                         std::string sub_message,
+                         std::string filename,
+                         unsigned int line_number,
+                         unsigned int column_number,
+                         std::string line_text)
+        : main_message(std::move(main_message)), sub_message(std::move(sub_message)),
+          filename(std::move(filename)), line_number(line_number), column_number(column_number),
+          line_text(std::move(line_text)) {}
+
+    friend std::ostream &operator<<(std::ostream &os, const InvalidRegisterError &error);
 };
 
 } // namespace Errors

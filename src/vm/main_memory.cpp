@@ -46,7 +46,7 @@ void Memory::ensureBlockExists(uint64_t block_index) {
     }
 }
 
-template <typename T>
+template<typename T>
 T Memory::readGeneric(uint64_t address) {
     T value = 0;
     for (size_t i = 0; i < sizeof(T); ++i) {
@@ -55,7 +55,7 @@ T Memory::readGeneric(uint64_t address) {
     return value;
 }
 
-template <typename T>
+template<typename T>
 void Memory::writeGeneric(uint64_t address, T value) {
     for (size_t i = 0; i < sizeof(T); ++i) {
         write(address + i, static_cast<uint8_t>(value >> (8 * i)));
@@ -90,6 +90,29 @@ uint64_t Memory::readDoubleWord(uint64_t address) {
     return readGeneric<uint64_t>(address);
 }
 
+float Memory::readFloat(uint64_t address) {
+    if (address >= memory_size_ - 3) {
+        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    }
+    uint32_t value = 0;
+//     for (size_t i = 0; i < 4; ++i) {
+//         value |= static_cast<uint32_t>(read(address + i)) << (8 * i);
+//     }
+//     return *reinterpret_cast<float *>(&value);
+}
+
+double Memory::readDouble(uint64_t address) {
+    if (address >= memory_size_ - 7) {
+        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    }
+ //   uint64_t value = 0;
+ //   for (size_t i = 0; i < 8; ++i) {
+ //       value |= static_cast<uint64_t>(read(address + i)) << (8 * i);
+ //   }
+ //   return *reinterpret_cast<double *>(&value);
+}
+
+
 void Memory::writeByte(uint64_t address, uint8_t value) {
     if (address >= memory_size_) {
         throw std::out_of_range("Memory address out of range: " + std::to_string(address));
@@ -118,18 +141,31 @@ void Memory::writeDoubleWord(uint64_t address, uint64_t value) {
     writeGeneric<uint64_t>(address, value);
 }
 
+void Memory::writeFloat(uint64_t address, float value) {
+    if (address >= memory_size_ - 3) {
+        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    }
+    
+}
+
+void Memory::writeDouble(uint64_t address, double value) {
+    if (address >= memory_size_ - 7) {
+        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    }
+}
+
 void Memory::printMemoryUsage() const {
     std::cout << "Memory Usage Report:\n";
-        std::cout << "---------------------\n";
-        std::cout << "Block Count: " << blocks_.size() << "\n";
-        for (const auto& [block_index, block] : blocks_) {
-            size_t used_bytes = std::count_if(block.data.begin(), block.data.end(),
-                                              [](uint8_t byte) { return byte != 0; });
-            if (used_bytes > 0) {
-                std::cout << "Block " << block_index << ": " << used_bytes
-                          << " / " << block_size_ << " bytes used\n";
-            }
+    std::cout << "---------------------\n";
+    std::cout << "Block Count: " << blocks_.size() << "\n";
+    for (const auto &[block_index, block] : blocks_) {
+        size_t used_bytes = std::count_if(block.data.begin(), block.data.end(),
+                                          [](uint8_t byte) { return byte != 0; });
+        if (used_bytes > 0) {
+            std::cout << "Block " << block_index << ": " << used_bytes
+                      << " / " << block_size_ << " bytes used\n";
         }
+    }
 
 }
 

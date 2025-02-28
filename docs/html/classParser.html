@@ -83,6 +83,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e658b5917a93a3ef648050d060e3a93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a3e658b5917a93a3ef648050d060e3a93">~Parser</a> ()</td></tr>
 <tr class="memdesc:a3e658b5917a93a3ef648050d060e3a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classParser.html" title="The Parser class is responsible for parsing tokens and generating intermediate code and symbol tables...">Parser</a> instance.  <a href="classParser.html#a3e658b5917a93a3ef648050d060e3a93">More...</a><br /></td></tr>
 <tr class="separator:a3e658b5917a93a3ef648050d060e3a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad941a297e9f6abb39271090806a6be33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad941a297e9f6abb39271090806a6be33">parse</a> ()</td></tr>
+<tr class="memdesc:ad941a297e9f6abb39271090806a6be33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the tokens to generate intermediate code and symbol tables.  <a href="classParser.html#ad941a297e9f6abb39271090806a6be33">More...</a><br /></td></tr>
+<tr class="separator:ad941a297e9f6abb39271090806a6be33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77be2d371758afe4ce067b3bd73f5693"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a77be2d371758afe4ce067b3bd73f5693">getErrorCount</a> () const</td></tr>
+<tr class="separator:a77be2d371758afe4ce067b3bd73f5693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3013f3bc6bb73bffe54413d7d6e24d3c"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structParseError.html">ParseError</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a3013f3bc6bb73bffe54413d7d6e24d3c">getErrors</a> () const</td></tr>
 <tr class="memdesc:a3013f3bc6bb73bffe54413d7d6e24d3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of parse errors.  <a href="classParser.html#a3013f3bc6bb73bffe54413d7d6e24d3c">More...</a><br /></td></tr>
 <tr class="separator:a3013f3bc6bb73bffe54413d7d6e24d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,6 +97,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab107a7fe36c012612760c415b45ce30d"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::pair&lt; <a class="el" href="structICUnit.html">ICUnit</a>, bool &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ab107a7fe36c012612760c415b45ce30d">getIntermediateCode</a> () const</td></tr>
 <tr class="memdesc:ab107a7fe36c012612760c415b45ce30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the generated intermediate code.  <a href="classParser.html#ab107a7fe36c012612760c415b45ce30d">More...</a><br /></td></tr>
 <tr class="separator:ab107a7fe36c012612760c415b45ce30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87f4b382a805319397f0dc334cb6846"><td class="memItemLeft" align="right" valign="top">const std::map&lt; unsigned int, unsigned int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ab87f4b382a805319397f0dc334cb6846">getInstructionNumberLineNumberMapping</a> () const</td></tr>
+<tr class="separator:ab87f4b382a805319397f0dc334cb6846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97c9329e0f9a0444aa7739e60850a7f"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; std::string, unsigned int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad97c9329e0f9a0444aa7739e60850a7f">getSymbolTable</a> () const</td></tr>
+<tr class="separator:ad97c9329e0f9a0444aa7739e60850a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ffb6b698c06e6f28ebebcbb84c3d839"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a1ffb6b698c06e6f28ebebcbb84c3d839">printErrors</a> () const</td></tr>
 <tr class="memdesc:a1ffb6b698c06e6f28ebebcbb84c3d839"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the list of errors to the console.  <a href="classParser.html#a1ffb6b698c06e6f28ebebcbb84c3d839">More...</a><br /></td></tr>
 <tr class="separator:a1ffb6b698c06e6f28ebebcbb84c3d839"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,9 +113,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aca38c04f09c91ee2323f9da27f06126d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#aca38c04f09c91ee2323f9da27f06126d">printIntermediateCode</a> () const</td></tr>
 <tr class="memdesc:aca38c04f09c91ee2323f9da27f06126d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the intermediate code to the console.  <a href="classParser.html#aca38c04f09c91ee2323f9da27f06126d">More...</a><br /></td></tr>
 <tr class="separator:aca38c04f09c91ee2323f9da27f06126d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad941a297e9f6abb39271090806a6be33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad941a297e9f6abb39271090806a6be33">parse</a> ()</td></tr>
-<tr class="memdesc:ad941a297e9f6abb39271090806a6be33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the tokens to generate intermediate code and symbol tables.  <a href="classParser.html#ad941a297e9f6abb39271090806a6be33">More...</a><br /></td></tr>
-<tr class="separator:ad941a297e9f6abb39271090806a6be33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classParser.html" title="The Parser class is responsible for parsing tokens and generating intermediate code and symbol tables...">Parser</a> class is responsible for parsing tokens and generating intermediate code and symbol tables. </p>
@@ -188,6 +194,23 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a77be2d371758afe4ce067b3bd73f5693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77be2d371758afe4ce067b3bd73f5693">&#9670;&nbsp;</a></span>getErrorCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Parser::getErrorCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3013f3bc6bb73bffe54413d7d6e24d3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3013f3bc6bb73bffe54413d7d6e24d3c">&#9670;&nbsp;</a></span>getErrors()</h2>
 
@@ -208,6 +231,23 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab87f4b382a805319397f0dc334cb6846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87f4b382a805319397f0dc334cb6846">&#9670;&nbsp;</a></span>getInstructionNumberLineNumberMapping()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt; unsigned int, unsigned int &gt; &amp; Parser::getInstructionNumberLineNumberMapping </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab107a7fe36c012612760c415b45ce30d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab107a7fe36c012612760c415b45ce30d">&#9670;&nbsp;</a></span>getIntermediateCode()</h2>
 
@@ -225,6 +265,23 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the generated intermediate code. </p>
 <dl class="section return"><dt>Returns</dt><dd>A const reference to the intermediate code vector. </dd></dl>
+
+</div>
+</div>
+<a id="ad97c9329e0f9a0444aa7739e60850a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97c9329e0f9a0444aa7739e60850a7f">&#9670;&nbsp;</a></span>getSymbolTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_map&lt;std::string, unsigned int&gt;&amp; Parser::getSymbolTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
