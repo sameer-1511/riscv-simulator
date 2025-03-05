@@ -13,7 +13,7 @@
 
 void VMBase::loadProgram(const AssembledProgram &program) {
     unsigned int counter = 0;
-    for (const auto &instruction: program.instruction_buffer) {
+    for (const auto &instruction: program.text_buffer) {
         memory_controller_.writeWord(counter, static_cast<uint32_t>(instruction.to_ulong()));
         counter += 4;
     }

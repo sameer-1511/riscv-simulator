@@ -11,6 +11,9 @@
 namespace globals {
 extern std::string config_file;
 extern std::string errors_dump_file;
+extern std::string registers_dump_file;
+extern std::string memory_dump_file;
+extern std::string cache_dump_file;
 //extern std::string output_file;
 
 

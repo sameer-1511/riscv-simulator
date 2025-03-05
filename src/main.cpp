@@ -10,6 +10,10 @@
 
 #include "./vm/memory_controller.h"
 
+#include "./assembler/elf_util.h"
+#include "utils.h"
+#include "globals.h"
+
 int main() {
     AssembledProgram program;
     try {
@@ -32,21 +36,32 @@ int main() {
 
 
     unsigned int count = 0;
-    for (const std::bitset<32> &instruction : program.instruction_buffer) {
+    for (const std::bitset<32> &instruction : program.text_buffer) {
         std::cout << instruction
                   << " | "
                   << std::setw(8) << std::setfill('0') << std::hex << instruction.to_ulong()
-                  << "  |  "
+                  << " | "
                   << std::setw(0) << count
                   << std::dec << "\n";
         count += 4;
     }
+
+    // generateElfFile(program, "/home/vis/Desk/codes/assembler/examples/e1.elf");
 
     // std::cout << "globals::config_file: " << globals::config_file << std::endl;
 
 
     // MemoryController memoryController;
     // memoryController.printCacheStatus();
+
+    std::array<uint64_t, 32> registers;
+    for (int i = 0; i < 32; i++) {
+        registers[i] = i;
+    }
+
+    dumpRegisters(globals::registers_dump_file, registers);
+
+    
 
 
 

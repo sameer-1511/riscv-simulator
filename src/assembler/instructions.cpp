@@ -610,7 +610,7 @@ std::string getExpectedSyntaxes(const std::string &opcode) {
 
     static const std::unordered_map<SyntaxType, std::string> syntaxTypeToString = {
         {SyntaxType::O, "<empty>"},
-        {SyntaxType::O_GPR_C_GPR_C_GPR, "<gp-reg>, <gp-reg>, <rgp-eg>"},
+        {SyntaxType::O_GPR_C_GPR_C_GPR, "<gp-reg>, <gp-reg>, <gp-reg>"},
         {SyntaxType::O_GPR_C_GPR_C_I, "<gp-reg>, <gp-reg>, <imm>"},
         {SyntaxType::O_GPR_C_GPR_C_IL, "<gp-reg>, <gp-reg>, <text-label>"},
         {SyntaxType::O_GPR_C_GPR_C_DL, "<gp-reg>, <gp-reg>, <data-label>"},

@@ -22,7 +22,6 @@ slt x0, x1, x2
 sltu x0, x1, x2
 
 nop 
-add x0,x0,x0
 
 llll:
 

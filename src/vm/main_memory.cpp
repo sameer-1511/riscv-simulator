@@ -20,7 +20,7 @@ uint8_t Memory::read(uint64_t address) {
 
 void Memory::write(uint64_t address, uint8_t value) {
     if (address >= memory_size_) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     uint64_t block_index = getBlockIndex(address);
     uint64_t offset = getBlockOffset(address);
@@ -64,93 +64,106 @@ void Memory::writeGeneric(uint64_t address, T value) {
 
 uint8_t Memory::readByte(uint64_t address) {
     if (address >= memory_size_) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     return read(address);
 }
 
 uint16_t Memory::readHalfWord(uint64_t address) {
     if (address >= memory_size_ - 1) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     return readGeneric<uint16_t>(address);
 }
 
 uint32_t Memory::readWord(uint64_t address) {
     if (address >= memory_size_ - 3) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     return readGeneric<uint32_t>(address);
 }
 
 uint64_t Memory::readDoubleWord(uint64_t address) {
     if (address >= memory_size_ - 7) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     return readGeneric<uint64_t>(address);
 }
 
 float Memory::readFloat(uint64_t address) {
-    if (address >= memory_size_ - 3) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    if (address >= memory_size_ - (sizeof(float) - 1)) {
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));;
     }
     uint32_t value = 0;
-//     for (size_t i = 0; i < 4; ++i) {
-//         value |= static_cast<uint32_t>(read(address + i)) << (8 * i);
-//     }
-//     return *reinterpret_cast<float *>(&value);
+    for (size_t i = 0; i < sizeof(float); ++i) {
+        value |= static_cast<uint32_t>(read(address + i)) << (8 * i);
+    }
+    float result;
+    std::memcpy(&result, &value, sizeof(float));
+    return result;
 }
 
 double Memory::readDouble(uint64_t address) {
-    if (address >= memory_size_ - 7) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    if (address >= memory_size_ - (sizeof(double) - 1)) {
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
- //   uint64_t value = 0;
- //   for (size_t i = 0; i < 8; ++i) {
- //       value |= static_cast<uint64_t>(read(address + i)) << (8 * i);
- //   }
- //   return *reinterpret_cast<double *>(&value);
+   uint64_t value = 0;
+   for (size_t i = 0; i < sizeof(double); ++i) {
+       value |= static_cast<uint64_t>(read(address + i)) << (8 * i);
+    }
+    double result;
+    std::memcpy(&result, &value, sizeof(double));
+    return result;
 }
 
 
 void Memory::writeByte(uint64_t address, uint8_t value) {
     if (address >= memory_size_) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     write(address, value);
 }
 
 void Memory::writeHalfWord(uint64_t address, uint16_t value) {
     if (address >= memory_size_ - 1) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     writeGeneric<uint16_t>(address, value);
 }
 
 void Memory::writeWord(uint64_t address, uint32_t value) {
     if (address >= memory_size_ - 3) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     writeGeneric<uint32_t>(address, value);
 }
 
 void Memory::writeDoubleWord(uint64_t address, uint64_t value) {
     if (address >= memory_size_ - 7) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
     writeGeneric<uint64_t>(address, value);
 }
 
 void Memory::writeFloat(uint64_t address, float value) {
-    if (address >= memory_size_ - 3) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    if (address >= memory_size_ - (sizeof(float) - 1)) {
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
     }
-    
+    uint32_t value_bits;
+    std::memcpy(&value_bits, &value, sizeof(float));
+    for (size_t i = 0; i < sizeof(float); ++i) {
+        write(address + i, static_cast<uint8_t>((value_bits >> (8 * i)) & 0xFF));
+    }
 }
 
 void Memory::writeDouble(uint64_t address, double value) {
-    if (address >= memory_size_ - 7) {
-        throw std::out_of_range("Memory address out of range: " + std::to_string(address));
+    if (address >= memory_size_ - (sizeof(double) - 1)) {
+        throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
+    }
+    uint64_t value_bits;
+    std::memcpy(&value_bits, &value, sizeof(double));
+    for (size_t i = 0; i < sizeof(double); ++i) {
+        write(address + i, static_cast<uint8_t>((value_bits >> (8 * i)) & 0xFF));
     }
 }
 

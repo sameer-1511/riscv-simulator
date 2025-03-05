@@ -30,9 +30,10 @@ struct MemoryBlock {
  * @brief Represents a memory management system with dynamic memory block allocation.
  */
 class Memory {
-private:
+// TODO: change to private after testing
+public:
     std::unordered_map<uint64_t, MemoryBlock> blocks_; ///< A map storing memory blocks, indexed by block index.
-    static constexpr int block_size_ = 1024; ///< The size of each memory block in bytes.
+    unsigned int block_size_; ///< The size of each memory block in bytes.
     uint64_t memory_size_ = vmConfig::INI::get("Memory", "memory_size").empty() 
                             ? 0xffffffffffffffff : std::stoull(vmConfig::INI::get("Memory", "memory_size").substr(2), nullptr, 16); ///< The total memory size in bytes.
 
@@ -85,8 +86,10 @@ public:
     /**
      * @brief Constructs a Memory object.
      */
-    Memory() = default;
-
+    Memory() {
+        block_size_ = vmConfig::INI::get("Memory", "block_size").empty() 
+                    ? 1024 : std::stoi(vmConfig::INI::get("Memory", "block_size"));
+    }
     /**
      * @brief Destroys the Memory object.
      */
@@ -170,9 +173,6 @@ public:
 
     void writeDouble(uint64_t address, double value);
 
-    /**
-     * @brief Prints the current memory usage to the console.
-     */
     void printMemoryUsage() const;
 };
 

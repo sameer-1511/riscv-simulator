@@ -52,7 +52,7 @@ AssembledProgram assemble(const std::string &filename) {
         std::vector<std::bitset<32>> machine_code_bits = generateMachineCode(parser.getIntermediateCode());
 
         program.data_buffer = parser.getDataBuffer();
-        program.instruction_buffer = machine_code_bits;
+        program.text_buffer = machine_code_bits;
         program.instruction_number_line_number_mapping = parser.getInstructionNumberLineNumberMapping();
 
         program.line_number_instruction_number_mapping = [&]() {

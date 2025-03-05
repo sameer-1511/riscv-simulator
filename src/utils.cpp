@@ -112,3 +112,28 @@ void dumpNoErrors(const std::string &filename) {
 
     file.close();
 }
+
+void dumpRegisters(const std::string &filename, const std::array<uint64_t, 32> &registers) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Unable to open file: " + filename);
+    }
+
+    file << "{\n";
+    file << "    \"registers\": {\n";
+    
+    for (size_t i = 0; i < registers.size(); ++i) {
+        file << "        \"x" << i << "\": \"0x"
+             << std::hex << std::setw(16) << std::setfill('0') << registers[i] << std::setw(0) << std::dec << "\"";
+        if (i != registers.size() - 1) {
+            file << ",";
+        }
+        file << "\n";
+    }
+    
+    file << "    }\n";
+    file << "}\n";
+    
+
+    file.close();
+}

@@ -18,7 +18,7 @@ private:
     static constexpr size_t NUM_FPR = 32; ///< Number of Floating-Point Registers (FPR).
     static constexpr size_t NUM_VR = 32;  ///< Number of Vector Registers (VR).
 
-    std::array<int64_t, NUM_GPR> gpr_ = {}; ///< Array for storing GPR values.
+    std::array<uint64_t, NUM_GPR> gpr_ = {}; ///< Array for storing GPR values.
     std::array<double, NUM_FPR> fpr_ = {}; ///< Array for storing FPR values.
     std::vector<std::array<uint64_t, 8>> vr_ = 
         std::vector<std::array<uint64_t, 8>>(NUM_VR); ///< Vector of arrays for VR values.
@@ -44,14 +44,8 @@ public:
         CSR              ///< Control and Status Register (CSR).
     };
 
-    /**
-     * @brief Constructs a RegisterFile object and initializes the registers.
-     */
     RegisterFile();
 
-    /**
-     * @brief Resets all registers to their default values.
-     */
     void reset();
 
     /**
