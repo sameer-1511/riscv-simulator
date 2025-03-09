@@ -17,7 +17,7 @@
 int main() {
     AssembledProgram program;
     try {
-        program = assemble("/home/vis/Desk/codes/assembler/examples/e1.s");
+        program = assemble("/home/vis/Desk/codes/assembler/examples/load_store_test.s");
     } catch (const std::runtime_error &e) {
         std::cerr << e.what() << '\n';
         return 0;

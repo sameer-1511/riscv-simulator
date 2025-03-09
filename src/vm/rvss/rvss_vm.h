@@ -14,6 +14,7 @@
 
 class RVSSVM : public VMBase {
 private:
+public: // TODO: take public down
     RVSSControlUnit controlUnit;
 
 
@@ -28,18 +29,27 @@ private:
     // same as memory_address_
     double fmemory_data_ = 0.0;
 
+    bool branch_flag_ = false;
+
 
     void fetch();
+
     void decode();
+
     void execute();
     void executeFloat();
     void executeVector();
+
     void memory();
-    void writeback();
+    void memoryFloat();
+    void memoryVector();
+
+    void writeBack();
+    void writeBackFloat();
+    void writeBackVector();
 
     void printControlSignals();
-    
-public:
+    // TODO: bring public here
     RVSSVM();
     ~RVSSVM();
 

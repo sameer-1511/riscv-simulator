@@ -137,7 +137,6 @@ Token Lexer::number() {
     std::regex decimal_regex("^-?[0-9]+$");
     std::regex float_regex("^-?[0-9]+\\.[0-9]+$");
 
-    int64_t num = 0;
 
     if (std::regex_match(value, hex_regex)) {
         return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 16)), line_number_, start_column};

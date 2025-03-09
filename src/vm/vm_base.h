@@ -44,7 +44,7 @@ public:
     uint64_t getProgramCounter() const;
     void updateProgramCounter(int64_t value);
     
-    int64_t imm_generator(uint32_t instruction);
+    int32_t imm_generator(uint32_t instruction);
 
     void addBreakpoint(uint64_t address);
     void removeBreakpoint(uint64_t address);

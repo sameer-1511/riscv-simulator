@@ -53,14 +53,14 @@ public:
      * @param reg The index of the GPR to read.
      * @return The value of the GPR at the specified index.
      */
-    [[nodiscard]] int64_t readGPR(size_t reg) const;
+    [[nodiscard]] uint64_t readGPR(size_t reg) const;
 
     /**
      * @brief Writes a value to a General-Purpose Register (GPR).
      * @param reg The index of the GPR to write.
      * @param value The value to write.
      */
-    void writeGPR(size_t reg, int64_t value);
+    void writeGPR(size_t reg, uint64_t value);
 
     /**
      * @brief Reads the value of a Floating-Point Register (FPR).

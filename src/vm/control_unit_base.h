@@ -22,22 +22,25 @@ public:
     virtual ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) = 0;
 
     // Retrieves control signals (used by other components like ALU, memory)
-    [[nodiscard]] virtual bool getALUSrc() const = 0;
-    [[nodiscard]] virtual bool getMemToReg() const = 0;
-    [[nodiscard]] virtual bool getRegWrite() const = 0;
-    [[nodiscard]] virtual bool getMemRead() const = 0;
-    [[nodiscard]] virtual bool getMemWrite() const = 0;
-    [[nodiscard]] virtual bool getALUOp() const = 0;
+    [[nodiscard]] bool getALUSrc() const;
+    [[nodiscard]] bool getMemToReg() const;
+    [[nodiscard]] bool getRegWrite() const;
+    [[nodiscard]] bool getMemRead() const;
+    [[nodiscard]] bool getMemWrite() const;
+    [[nodiscard]] uint8_t getALUOp() const;
+    [[nodiscard]] bool getBranch() const;
 
 protected:
     // Common control signals
     bool RegWrite = false;
+    bool Branch = false;
     bool ALUSrc = false;
-    bool PCSrc = false;
     bool MemRead = false;
     bool MemWrite = false;
     bool MemToReg = false;
-    bool ALUOp = false;
+    bool PCSrc = false;
+
+    uint8_t ALUOp = 0;
 };
 
 #endif // CONTROL_UNIT_BASE_H

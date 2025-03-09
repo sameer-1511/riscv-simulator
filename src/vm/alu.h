@@ -28,6 +28,28 @@ enum class ALUOp {
     SLTU, ///< Unsigned set less than operation.
 };
 
+inline std::ostream& operator<<(std::ostream& os, const ALUOp& op) {
+    switch (op) {
+        case ALUOp::NONE: os << "NONE"; break;
+        case ALUOp::ADD: os << "ADD"; break;
+        case ALUOp::SUB: os << "SUB"; break;
+        case ALUOp::MUL: os << "MUL"; break;
+        case ALUOp::DIV: os << "DIV"; break;
+        case ALUOp::DIVU: os << "DIVU"; break;
+        case ALUOp::REM: os << "REM"; break;
+        case ALUOp::REMU: os << "REMU"; break;
+        case ALUOp::AND: os << "AND"; break;
+        case ALUOp::OR: os << "OR"; break;
+        case ALUOp::XOR: os << "XOR"; break;
+        case ALUOp::SLL: os << "SLL"; break;
+        case ALUOp::SRL: os << "SRL"; break;
+        case ALUOp::SRA: os << "SRA"; break;
+        case ALUOp::SLT: os << "SLT"; break;
+        case ALUOp::SLTU: os << "SLTU"; break;
+        default: os << "UNKNOWN"; break;
+    }
+    return os;
+}
 /**
  * @brief The ALU class is responsible for performing arithmetic and logic operations.
  */
@@ -64,7 +86,7 @@ public:
             case ALUOp::XOR: return {static_cast<T>(a ^ b), false};
             case ALUOp::SLL: return {static_cast<T>(a << (b & (sizeof(T) * 8 - 1))), false};
             case ALUOp::SRL: return {static_cast<T>(static_cast<std::make_unsigned_t<T>>(a) >> (b & (sizeof(T) * 8 - 1))), false};
-            case ALUOp::SRA: return {static_cast<T>(a >> (b & (sizeof(T) * 8 - 1))), false};
+            case ALUOp::SRA: return {static_cast<T>(static_cast<std::make_signed_t<T>>(a) >> (b & (sizeof(T) * 8 - 1))), false};
             case ALUOp::SLT: return {static_cast<T>(a < b), false};
             case ALUOp::SLTU:return {static_cast<T>(static_cast<std::make_unsigned_t<T>>(a) < static_cast<std::make_unsigned_t<T>>(b)), false};
             default: return {0, false};  // Undefined behavior

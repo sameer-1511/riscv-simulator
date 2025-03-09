@@ -17,13 +17,6 @@ public:
     ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) override;
 
     
-    [[nodiscard]] bool getALUSrc() const override;
-    [[nodiscard]] bool getMemToReg() const override;
-    [[nodiscard]] bool getRegWrite() const override;
-    [[nodiscard]] bool getMemRead() const override;
-    [[nodiscard]] bool getMemWrite() const override;
-    [[nodiscard]] bool getALUOp() const override;
-
 };
 
 

@@ -15,13 +15,15 @@ void RegisterFile::reset() {
     for (auto& vec : vr_) vec.fill(0);
 }
 
-int64_t RegisterFile::readGPR(size_t reg) const {
+uint64_t RegisterFile::readGPR(size_t reg) const {
     if (reg >= NUM_GPR) throw std::out_of_range("Invalid GPR index");
+    if (reg == 0) return 0;
     return gpr_[reg];
 }
 
-void RegisterFile::writeGPR(size_t reg, int64_t value) {
+void RegisterFile::writeGPR(size_t reg, uint64_t value) {
     if (reg >= NUM_GPR) throw std::out_of_range("Invalid GPR index");
+    if (reg == 0) return;
     gpr_[reg] = value;
 }
 

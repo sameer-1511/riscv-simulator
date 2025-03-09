@@ -6,6 +6,9 @@
 
 #include "rvss_vm.h"
 
+#include "../../utils.h"
+#include "../../globals.h"
+
 RVSSVM::RVSSVM() : VMBase() {
     // Initialize control signals
 }
@@ -24,8 +27,10 @@ void RVSSVM::decode() {
 
 void RVSSVM::execute() {
     uint8_t opcode = current_instruction_ & 0b1111111;
-    // uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
     // uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
+    // uint8_t funct2 = (current_instruction_ >> 25) & 0b11;
+    // uint8_t funct6 = (current_instruction_ >> 26) & 0b111111;
 
     if (opcode == 0x53) { // RV32F & RV64F
         executeFloat();
@@ -34,35 +39,151 @@ void RVSSVM::execute() {
 
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
-    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
 
     int32_t imm = imm_generator(current_instruction_);
 
-    int32_t reg1 = registers_.readGPR(rs1);
-    int32_t reg2 = registers_.readGPR(rs2);
+    uint64_t reg1_value = registers_.readGPR(rs1);
+    uint64_t reg2_value = registers_.readGPR(rs2);
+    
 
-    int64_t result = 0;
+    // int64_t result = 0;
     bool overflow = false;
 
     
     if (controlUnit.getALUSrc()) {
-        reg2 = imm;
+        reg2_value = imm;
     }
 
-    ALU::ALUOp aluOp = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
-    std::tie(execution_result_, overflow) = alu_.execute<int64_t>(aluOp, reg1, reg2);
 
+    ALU::ALUOp aluOperation = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
+    std::tie(execution_result_, overflow) = alu_.execute<int64_t>(aluOperation, reg1_value, reg2_value);
     
-    // START HERE
-    memory_address_ = execution_result_;
 
-    if (controlUnit.getMemRead() || controlUnit.getMemWrite()) {
-        memory_address_ = execution_result_;
-    } else {
-        if (controlUnit.getRegWrite()) {
-            registers_.writeGPR(rd, execution_result_);
+    if (controlUnit.getBranch()) {
+        switch (funct3)
+        {
+        case 0x0: // BEQ
+            branch_flag_ = (execution_result_ == 0);
+            break;
+        case 0x1: // BNE
+            branch_flag_ = (execution_result_ != 0);
+            break;
+        case 0x4: // BLT
+            branch_flag_ = (execution_result_ == 1);
+            break;
+        case 0x5: // BGE
+            branch_flag_ = (execution_result_ == 0);
+            break;
+        case 0x6: // BLTU
+            branch_flag_ = (execution_result_ == 1);
+            break;
+        case 0x7: // BGEU
+            branch_flag_ = (execution_result_ == 0);
+            break;
+        default:
+            break;
         }
     }
+
+    if (controlUnit.getBranch() && branch_flag_) {
+        updateProgramCounter(-4);
+        updateProgramCounter(imm);
+    }
+
+    
+    // // START HERE
+    // memory_address_ = execution_result_;
+
+
+    // switch (opcode)
+    // {
+    // case 0b0110011: {// R-Type
+    //     switch (funct3)
+    //     {
+    //     case 0x0: // ADD
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::ADD, reg1, reg2);
+    //         break;
+    //     case 0x1: // SLL
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLL, reg1, reg2);
+    //         break;
+    //     case 0x2: // SLT
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLT, reg1, reg2);
+    //         break;
+    //     case 0x3: // SLTU
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLTU, reg1, reg2);
+    //         break;
+    //     case 0x4: // XOR
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::XOR, reg1, reg2);
+    //         break;
+    //     case 0x5: // SRL & SRA
+    //         switch (funct6)
+    //         {
+    //         case 0x00: // SRL
+    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRL, reg1, reg2);
+    //             test_str = std::to_string(execution_result_);
+    //             break;
+    //         case 0x10: // SRA
+    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRA, reg1, reg2);
+    //             break;
+    //         }
+    //         break;
+    //     case 0x6: // OR
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::OR, reg1, reg2);
+    //         break;
+    //     case 0x7: // AND
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::AND, reg1, reg2);
+    //         break;
+    //     default:
+    //         break;
+    //     }
+    //     break;
+    // }
+    // case 0b0010011: {
+    //     switch (funct3)
+    //     {
+    //     case 0x0: // ADDI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::ADD, reg1, imm);
+    //         break;
+    //     case 0x1: // SLLI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLL, reg1, imm);
+    //         break;
+    //     case 0x2: // SLTI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLT, reg1, imm);
+    //         break;
+    //     case 0x3: // SLTIU
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLTU, reg1, imm);
+    //         break;
+    //     case 0x4: // XORI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::XOR, reg1, imm);
+    //         break;
+    //     case 0x5: // SRLI & SRAI
+    //         switch (funct6)
+    //         {
+    //         case 0x00: // SRLI
+    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRL, reg1, imm);
+    //             break;
+    //         case 0x10: // SRAI
+    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRA, reg1, imm);
+    //             break;
+    //         }
+    //         break;
+    //     case 0x6: // ORI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::OR, reg1, imm);
+    //         break;
+    //     case 0x7: // ANDI
+    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::AND, reg1, imm);
+    //         break;
+    //     default:
+    //         break;
+    //     }
+    //     break;
+    // }
+    // default:
+    //     break;
+    // }
+
+    
 
 }
 
@@ -80,45 +201,111 @@ void RVSSVM::executeVector() {
 }
 
 void RVSSVM::memory() {
-    // if (controlUnit.getMemRead()) {
-    //     memory_result_ = memory_controller_.readWord(memory_address_);
-    // }
-    // if (controlUnit.getMemWrite()) {
-    //     memory_controller_.writeWord(memory_address_, memory_data_);
-    // }
-
-    uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
+    // uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
-    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
     if (controlUnit.getMemRead()) {
-        registers_.writeGPR(rd, memory_controller_.readWord(execution_result_));
+        // registers_.writeGPR(rd, memory_controller_.readWord(execution_result_));
+        // switch for ld, lw, lb, lbu, lh, lhu
+        switch (funct3) {
+        case 0x0: // LB
+            memory_result_ = static_cast<int8_t>(memory_controller_.readByte(execution_result_));
+            break;
+        case 0x1: // LH
+            memory_result_ = static_cast<int16_t>(memory_controller_.readHalfWord(execution_result_));
+            break;
+        case 0x2: // LW
+            memory_result_ = static_cast<int32_t>(memory_controller_.readWord(execution_result_));
+            break;
+        case 0x3: // LD
+            memory_result_ = memory_controller_.readDoubleWord(execution_result_);
+            break;
+        case 0x4: // LBU
+            memory_result_ = static_cast<uint8_t>(memory_controller_.readByte(execution_result_));
+            break;
+        case 0x5: // LHU
+            memory_result_ = static_cast<uint16_t>(memory_controller_.readHalfWord(execution_result_));
+            break;
+        case 0x6: // LWU
+            memory_result_ = static_cast<uint32_t>(memory_controller_.readWord(execution_result_));
+            break;
+        default:
+            break;
+        }
+
+        // memory_result_ = memory_controller_.readWord(execution_result_);
     } 
     if (controlUnit.getMemWrite()) {
-        memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
+        switch (funct3)
+        {
+        case 0x0: // SB
+            memory_controller_.writeByte(execution_result_, registers_.readGPR(rs2));
+            break;
+        case 0x1: // SH
+            memory_controller_.writeHalfWord(execution_result_, registers_.readGPR(rs2));
+            break;
+        case 0x2: // SW
+            memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
+            break;
+        case 0x3: // SD
+            memory_controller_.writeDoubleWord(execution_result_, registers_.readGPR(rs2));
+            break;
+        default:
+            break;
+        }
+        // memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
     }
 
 }
 
-void RVSSVM::writeback() {
+void RVSSVM::writeBack() {
     uint8_t opcode = current_instruction_ & 0b1111111;
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
-    uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
+    // uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     int32_t imm = imm_generator(current_instruction_);
 
     // TODO: Implement floating point support
 
     if (controlUnit.getRegWrite() && rd != 0) { // Avoid writing to x0
-        registers_.writeGPR(rd, execution_result_);
+        switch (opcode)
+        {
+        case 0b0110011: // R-Type
+            registers_.writeGPR(rd, execution_result_);
+            break;
+        case 0b0010011: // I-Type
+            registers_.writeGPR(rd, execution_result_);
+            break;
+        case 0b1100011: // B-Type
+            break;
+        case 0b0000011: // Load
+            registers_.writeGPR(rd, memory_result_);
+            break;
+        case 0b0100011: // Store
+            break;
+        case 0b1100111: // JALR
+            registers_.writeGPR(rd, program_counter_ + 4);
+            break;
+        case 0b1101111: // JAL
+            registers_.writeGPR(rd, program_counter_ + 4);
+            break;
+        case 0b0110111: // LUI
+            registers_.writeGPR(rd, imm);
+            break;
+        case 0b0010111: // AUIPC
+            registers_.writeGPR(rd, program_counter_ + imm);
+            break;
+        default:
+            break;
+        }
     }
 
     if (opcode == 0x6F) { // JAL
-        registers_.writeGPR(rd, program_counter_ + 4);
         updateProgramCounter(imm - 4);
     }
     if (opcode == 0x67) { // JALR
-        registers_.writeGPR(rd, program_counter_ + 4);
         updateProgramCounter((rs1 + imm) & ~1); // Ensure LSB is 0
     }
 
@@ -133,8 +320,9 @@ void RVSSVM::run() {
         decode();
         execute();
         memory();
-        writeback();
+        writeBack();
     }
+    // dumpRegisters(globals::registers_dump_file, registers_.getRegisters());
 }
 
 void RVSSVM::debugRun() {
@@ -144,7 +332,7 @@ void RVSSVM::debugRun() {
             decode();
             execute();
             memory();
-            writeback();
+            writeBack();
         } else {
             // TODO:: handle breakpoints
             break;
@@ -157,7 +345,7 @@ void RVSSVM::step() {
     decode();
     execute();
     memory();
-    writeback();
+    writeBack();
 }
 
 void RVSSVM::reset() {
