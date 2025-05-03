@@ -54,7 +54,7 @@ uint64_t VMBase::getProgramCounter() const {
 }
 
 void VMBase::updateProgramCounter(int64_t value) {
-    program_counter_ += value;
+    program_counter_ = static_cast<uint64_t>(static_cast<int64_t>(program_counter_) + value);
 }
 
 auto sign_extend = [](uint32_t value, unsigned int bits) -> int32_t {
@@ -145,6 +145,13 @@ int32_t VMBase::imm_generator(uint32_t instruction) {
 
 void VMBase::addBreakpoint(uint64_t address) {
     breakpoints_.emplace_back(address);
+    std::cout << "Breakpoint added at address: " << std::hex << address << std::dec << std::endl;
+    std::cout << "Breakpoints: ";
+    for (const auto &bp : breakpoints_) {
+        std::cout << std::hex << bp << " ";
+    }
+    std::cout << std::dec << std::endl;
+    std::cout << "Program Counter: " << std::hex << program_counter_ << std::dec << std::endl;
 }
 
 void VMBase::removeBreakpoint(uint64_t address) {
@@ -155,26 +162,7 @@ bool VMBase::checkBreakpoint(uint64_t address) {
     return std::find(breakpoints_.begin(), breakpoints_.end(), address) != breakpoints_.end();
 }
 
+void handleSyscall() {
+}
 
 
-
-// void VMBase::run() {
-//     while (true) {
-//         step();
-//     }
-// }
-
-// void VMBase::step() {
-//     if (checkBreakpoint(program_counter_)) {
-//         dumpState("breakpoint_dump.txt");
-//         return;
-//     }
-// 
-//     uint32_t instruction = memory_controller_.readWord(program_counter_);
-//     std::bitset<32> instruction_bits(instruction);
-//     std::cout << "Executing instruction: " << instruction_bits << std::endl;
-// 
-// 
-//     updateProgramCounter(4);
-//     instructions_retired_++;
-// }

@@ -452,6 +452,7 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 
     {"nop",         {SyntaxType::PSEUDO}},
     {"li",          {SyntaxType::PSEUDO}},
+    {"la",          {SyntaxType::PSEUDO}},
     {"mv",          {SyntaxType::PSEUDO}},
     {"not",         {SyntaxType::PSEUDO}},
     {"neg",         {SyntaxType::PSEUDO}},

@@ -47,7 +47,7 @@ void RegisterFile::writeVR(size_t reg, const std::array<uint64_t, 8>& value) {
     vr_[reg] = value;
 }
 
-std::vector<int64_t> RegisterFile::getGPRValues() const {
+std::vector<uint64_t> RegisterFile::getGPRValues() const {
     return {gpr_.begin(), gpr_.end()};
 }
 

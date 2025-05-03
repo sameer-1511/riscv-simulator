@@ -10,12 +10,13 @@
 #include "pch.h"
 
 #include "vm/vm_base.h"
-//#include "vm/rvss/rvss_vm.h"
+#include "vm/rvss/rvss_vm.h"
 #include "config.h"
+#include "vm_asm_mw.h"
 
-std::unique_ptr<VMBase> createVM(vmConfig::vmTypes vmType) {
+inline std::unique_ptr<VMBase> createVM(vmConfig::vmTypes vmType) {
     if (vmType == vmConfig::vmTypes::SINGLE_STAGE) {
-        // return std::make_unique<RVSSVM>();
+        return std::make_unique<RVSSVM>();
     }
 
     return nullptr;
@@ -24,22 +25,28 @@ std::unique_ptr<VMBase> createVM(vmConfig::vmTypes vmType) {
 class VMRunner {
     std::unique_ptr<VMBase> vm_;
 public:
-    VMRunner();
-    ~VMRunner();
-
-    void initialize() {
+    VMRunner() {
         vmConfig::vmTypes vmType = vmConfig::getVMType();
         vm_ = createVM(vmType);
     }
+    
+    ~VMRunner() = default;
 
-    // void run() {
-    //     if (auto vmInstance = dynamic_cast<RVSSVM*>(vm.get())) {
-    //         vmInstance->printType();
-    //     } else {
-    //         throw std::runtime_error("VM not initialized.");
-    //     }
-    //     
-    // }
+    void loadProgram(const AssembledProgram &program) {
+        vm_->loadProgram(program);
+    }
+
+    void custom() {
+        if (auto vmInstance = dynamic_cast<RVSSVM*>(vm_.get())) {
+            vmInstance->printType();
+        } else {
+            throw std::runtime_error("VM not initialized.");
+        }
+    }
+
+    void step() {
+        vm_->step();
+    }
 
 
 

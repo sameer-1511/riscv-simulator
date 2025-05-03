@@ -94,7 +94,7 @@ public:
      * @brief Retrieves the values of all General-Purpose Registers (GPR).
      * @return A vector containing the values of all GPRs.
      */
-    [[nodiscard]] std::vector<int64_t> getGPRValues() const;
+    [[nodiscard]] std::vector<uint64_t> getGPRValues() const;
 
     /**
      * @brief Retrieves the values of all Floating-Point Registers (FPR).

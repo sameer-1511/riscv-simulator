@@ -11,6 +11,7 @@
 
 RVSSVM::RVSSVM() : VMBase() {
     // Initialize control signals
+    dumpRegisters(globals::registers_dump_file, registers_.getGPRValues());
 }
 
 RVSSVM::~RVSSVM() = default;
@@ -46,8 +47,6 @@ void RVSSVM::execute() {
     uint64_t reg1_value = registers_.readGPR(rs1);
     uint64_t reg2_value = registers_.readGPR(rs2);
     
-
-    // int64_t result = 0;
     bool overflow = false;
 
     
@@ -58,7 +57,6 @@ void RVSSVM::execute() {
 
     ALU::ALUOp aluOperation = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
     std::tie(execution_result_, overflow) = alu_.execute<int64_t>(aluOperation, reg1_value, reg2_value);
-    
 
     if (controlUnit.getBranch()) {
         switch (funct3)
@@ -86,105 +84,16 @@ void RVSSVM::execute() {
         }
     }
 
-    if (controlUnit.getBranch() && branch_flag_) {
+    if (controlUnit.getBranch() && branch_flag_) { // JAL, JALR
+        next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in fetch()
         updateProgramCounter(-4);
         updateProgramCounter(imm);
     }
 
-    
-    // // START HERE
-    // memory_address_ = execution_result_;
+    if (opcode == 0b0010111) { // AUIPC
+        execution_result_ = static_cast<int64_t>(program_counter_) - 4 + (imm << 12);
 
-
-    // switch (opcode)
-    // {
-    // case 0b0110011: {// R-Type
-    //     switch (funct3)
-    //     {
-    //     case 0x0: // ADD
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::ADD, reg1, reg2);
-    //         break;
-    //     case 0x1: // SLL
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLL, reg1, reg2);
-    //         break;
-    //     case 0x2: // SLT
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLT, reg1, reg2);
-    //         break;
-    //     case 0x3: // SLTU
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLTU, reg1, reg2);
-    //         break;
-    //     case 0x4: // XOR
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::XOR, reg1, reg2);
-    //         break;
-    //     case 0x5: // SRL & SRA
-    //         switch (funct6)
-    //         {
-    //         case 0x00: // SRL
-    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRL, reg1, reg2);
-    //             test_str = std::to_string(execution_result_);
-    //             break;
-    //         case 0x10: // SRA
-    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRA, reg1, reg2);
-    //             break;
-    //         }
-    //         break;
-    //     case 0x6: // OR
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::OR, reg1, reg2);
-    //         break;
-    //     case 0x7: // AND
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::AND, reg1, reg2);
-    //         break;
-    //     default:
-    //         break;
-    //     }
-    //     break;
-    // }
-    // case 0b0010011: {
-    //     switch (funct3)
-    //     {
-    //     case 0x0: // ADDI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::ADD, reg1, imm);
-    //         break;
-    //     case 0x1: // SLLI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLL, reg1, imm);
-    //         break;
-    //     case 0x2: // SLTI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLT, reg1, imm);
-    //         break;
-    //     case 0x3: // SLTIU
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SLTU, reg1, imm);
-    //         break;
-    //     case 0x4: // XORI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::XOR, reg1, imm);
-    //         break;
-    //     case 0x5: // SRLI & SRAI
-    //         switch (funct6)
-    //         {
-    //         case 0x00: // SRLI
-    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRL, reg1, imm);
-    //             break;
-    //         case 0x10: // SRAI
-    //             std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::SRA, reg1, imm);
-    //             break;
-    //         }
-    //         break;
-    //     case 0x6: // ORI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::OR, reg1, imm);
-    //         break;
-    //     case 0x7: // ANDI
-    //         std::tie(execution_result_, overflow) = alu_.execute<int64_t>(ALU::ALUOp::AND, reg1, imm);
-    //         break;
-    //     default:
-    //         break;
-    //     }
-    //     break;
-    // }
-    // default:
-    //     break;
-    // }
-
-    
-
+    }
 }
 
 void RVSSVM::executeFloat() {
@@ -286,16 +195,16 @@ void RVSSVM::writeBack() {
         case 0b0100011: // Store
             break;
         case 0b1100111: // JALR
-            registers_.writeGPR(rd, program_counter_ + 4);
+            registers_.writeGPR(rd, next_pc_);
             break;
         case 0b1101111: // JAL
-            registers_.writeGPR(rd, program_counter_ + 4);
+            registers_.writeGPR(rd, next_pc_);
             break;
         case 0b0110111: // LUI
-            registers_.writeGPR(rd, imm);
+            registers_.writeGPR(rd, (imm << 12));
             break;
         case 0b0010111: // AUIPC
-            registers_.writeGPR(rd, program_counter_ + imm);
+            registers_.writeGPR(rd, execution_result_);
             break;
         default:
             break;
@@ -303,7 +212,7 @@ void RVSSVM::writeBack() {
     }
 
     if (opcode == 0x6F) { // JAL
-        updateProgramCounter(imm - 4);
+        // Updated in execute()
     }
     if (opcode == 0x67) { // JALR
         updateProgramCounter((rs1 + imm) & ~1); // Ensure LSB is 0
@@ -321,6 +230,8 @@ void RVSSVM::run() {
         execute();
         memory();
         writeBack();
+        instructions_retired_++;
+        cycle_s++;
     }
     // dumpRegisters(globals::registers_dump_file, registers_.getRegisters());
 }
@@ -333,9 +244,11 @@ void RVSSVM::debugRun() {
             execute();
             memory();
             writeBack();
+            instructions_retired_++;
+            cycle_s++;
         } else {
-            // TODO:: handle breakpoints
-            break;
+            std::cout << "Breakpoint hit at address: " << program_counter_ << std::endl;
+            break;  
         }
     }
 }
@@ -346,6 +259,9 @@ void RVSSVM::step() {
     execute();
     memory();
     writeBack();
+    instructions_retired_++;
+    cycle_s++;
+    dumpRegisters(globals::registers_dump_file, registers_.getGPRValues());
 }
 
 void RVSSVM::reset() {

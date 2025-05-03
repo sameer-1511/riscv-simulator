@@ -62,21 +62,13 @@ TEST(VmTest, ExecutionTest1) {
     vm.registers_.writeGPR(11, 20);
     // uint32_t add_instruction = 0x00b50633;
     // vm.current_instruction_ = add_instruction;
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     int64_t result = vm.registers_.readGPR(12);
     ASSERT_EQ(result, 30);
     ASSERT_EQ(vm.execution_result_, 30);
     vm.registers_.writeGPR(10, 0b1101);
     vm.registers_.writeGPR(11, 2);
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     int64_t result2 = vm.registers_.readGPR(12);
     ASSERT_EQ(result2, 3);
     ASSERT_EQ(vm.execution_result_, 3);
@@ -91,11 +83,7 @@ TEST(VmTest, ExecutionTest2) {
     vm.loadProgram(program);
     vm.registers_.writeGPR(10, 0b1101);
     vm.registers_.writeGPR(11, 2);
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     int64_t result = vm.registers_.readGPR(12);
     ASSERT_EQ(result, 3);
     ASSERT_EQ(vm.execution_result_, 3);
@@ -107,19 +95,11 @@ TEST(VmTest, ExecutionTest3) {
     program.text_buffer.push_back(0x01700513);
     program.text_buffer.push_back(0x01b50513);
     vm.loadProgram(program);
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     int64_t result = vm.registers_.readGPR(10);
     ASSERT_EQ(result, 23);
     ASSERT_EQ(vm.execution_result_, 23);
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     int64_t result2 = vm.registers_.readGPR(10);
     ASSERT_EQ(result2, 50);
     ASSERT_EQ(vm.execution_result_, 50);
@@ -162,11 +142,7 @@ TEST(VmTest, ExecutionTest6) {
     AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/load_store_test_1.s");
     RVSSVM vm;
     vm.loadProgram(program);
-    vm.fetch();
-    vm.decode();
-    vm.execute();
-    vm.memory();
-    vm.writeBack();
+    vm.step();
     ASSERT_EQ(vm.registers_.readGPR(10), 0x1000059300003503);
     vm.step();
     ASSERT_EQ(vm.registers_.readGPR(11), 0x0000000000000100);
@@ -202,4 +178,40 @@ TEST(VmTest, ExecutionTest8) {
     vm.registers_.writeGPR(3, 0x10000000); // set the data section address
     vm.step();
     ASSERT_EQ(vm.registers_.readGPR(10), 121);
+}
+
+
+TEST(VmTest, ExecutionTest9) {
+    AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/branch_test.s");
+    RVSSVM vm;
+    vm.loadProgram(program);
+
+    for (int i = 1; i < 5; i++) {
+        vm.step();
+        vm.step();
+        vm.step();
+        ASSERT_EQ(vm.registers_.readGPR(10), 50 * i);
+    }
+}
+
+TEST(VmTest, ExecutionTest10) {
+    AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
+    RVSSVM vm;
+    vm.loadProgram(program);
+    vm.registers_.writeGPR(3, 0x10000000); // set the data section address
+    vm.step();
+    vm.step();
+    vm.step();
+    ASSERT_EQ(vm.program_counter_, 0x0);
+    ASSERT_EQ(vm.registers_.readGPR(1), 0xc);
+}
+
+TEST(VmTest, ExecutionTest11) {
+    AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/lui_auipc_test.s");
+    RVSSVM vm;
+    vm.loadProgram(program);
+    vm.step();
+    ASSERT_EQ(vm.registers_.readGPR(3), 0x0000000000100000);
+    vm.step();
+    ASSERT_EQ(vm.registers_.readGPR(4), 0x0000000000100004);
 }

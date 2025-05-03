@@ -69,6 +69,11 @@ void RVSSControlUnit::setControlSignals(uint32_t instruction) {
             Branch = true;
             break;
 
+        case 0b0000001: // MUL
+            RegWrite = true;
+            ALUOp = true;
+            break;
+
         default:
             // Invalid or unimplemented opcode, keep all control signals disabled
             break;
@@ -221,6 +226,63 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
     }
     case 0b0010111: {// AUIPC
         return ALU::ALUOp::ADD;
+        break;
+    }
+
+    case 0b0000001: {// MUL
+        switch(funct7) {
+            case 0b0110011: {
+                switch(funct3) {
+                    case 0b000: // MUL
+                        return ALU::ALUOp::MUL;
+                        break;
+                    // case 0b001: // MULH
+                    //     return ALU::ALUOp::MULH;
+                    //     break;
+                    // case 0b010: // MULHSU
+                    //     return ALU::ALUOp::MULHSU;
+                    //     break;
+                    // case 0b011: // MULHU
+                    //     return ALU::ALUOp::MULHU;
+                    //     break;
+                    case 0b100: // DIV
+                        return ALU::ALUOp::DIV;
+                        break;
+                    case 0b101: // DIVU
+                        return ALU::ALUOp::DIVU;
+                        break;
+                    case 0b110: // REM
+                        return ALU::ALUOp::REM;
+                        break;
+                    case 0b111: // REMU
+                        return ALU::ALUOp::REMU;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            case 0b0111011: {
+                switch(funct3) {
+                    // case 0b000: // MULW
+                    //     return ALU::ALUOp::MULW;
+                    //     break;
+                    // case 0b001: // DIVW
+                    //     return ALU::ALUOp::DIVW;
+                    //     break;
+                    // case 0b101: // DIVUW
+                    //     return ALU::ALUOp::DIVUW;
+                    //     break;
+                    // case 0b110: // REMW
+                    //     return ALU::ALUOp::REMW;
+                    //     break;
+                    // case 0b111: // REMUW
+                    //     return ALU::ALUOp::REMUW;
+                    //     break;
+                    default:
+                        break;
+                }
+            }
+        }
         break;
     }
 

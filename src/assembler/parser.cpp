@@ -494,8 +494,24 @@ bool Parser::parse_O() {
 
 bool Parser::parse_pseudo() {
     if (currentToken().value == "la") {
-        skipCurrentLine();
-        return true;
+        if (peekToken(1).line_number == currentToken().line_number
+        && peekToken(1).type == TokenType::GP_REGISTER
+        && peekToken(2).line_number == currentToken().line_number
+        && peekToken(2).type == TokenType::COMMA
+        && peekToken(3).line_number == currentToken().line_number
+        && peekToken(3).type == TokenType::LABEL_REF
+        && (peekToken(4).type == TokenType::EOF_ || peekToken(4).line_number != currentToken().line_number)
+        ) {
+            if (symbol_table_.find(peekToken(3).value) != symbol_table_.end()
+                && symbol_table_[peekToken(3).value].isData) {
+                    std::cout << "Found label" << std::endl;
+                    // TODO: Implement la pseudo instruction
+            }
+            skipCurrentLine();
+            instruction_index_++;
+            return true;
+        }
+        return false;
     }
 
         // nop

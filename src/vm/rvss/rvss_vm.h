@@ -30,6 +30,7 @@ public: // TODO: take public down
     double fmemory_data_ = 0.0;
 
     bool branch_flag_ = false;
+    int64_t next_pc_ = 0; // for jal, jalr, 
 
 
     void fetch();

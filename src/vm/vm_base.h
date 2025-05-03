@@ -19,6 +19,8 @@ public:
     VMBase() = default;
     ~VMBase() = default;
 
+    // AssembledProgram program_;
+
     std::vector<uint64_t> breakpoints_;
 
     uint32_t current_instruction_;
@@ -55,6 +57,8 @@ public:
     // void executeInstruction();
     // void memoryAccess();
     // void writeback();
+
+    void handleSyscall();
 
     virtual void run() = 0;
     virtual void debugRun() = 0;

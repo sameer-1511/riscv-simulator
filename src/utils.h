@@ -42,6 +42,6 @@ void dumpErrors(const std::string &filename, const std::vector<ParseError> &erro
 
 void dumpNoErrors(const std::string &filename);
 
-void dumpRegisters(const std::string &filename, const std::array<uint64_t, 32> &registers);
+void dumpRegisters(const std::string &filename, const std::vector<uint64_t> &registers);
 
 #endif // UTILS_H
