@@ -32,6 +32,13 @@ public: // TODO: take public down
     bool branch_flag_ = false;
     int64_t next_pc_ = 0; // for jal, jalr, 
 
+    uint16_t csr_target_address_;
+    uint64_t csr_old_value_;
+    uint64_t csr_write_val_;
+    uint8_t csr_write_type_;
+    uint8_t csr_uimm_;
+
+
 
     void fetch();
 
@@ -40,19 +47,23 @@ public: // TODO: take public down
     void execute();
     void executeFloat();
     void executeVector();
+    void executeCSR();
 
     void memory();
     void memoryFloat();
     void memoryVector();
 
+
     void writeBack();
     void writeBackFloat();
     void writeBackVector();
+    void writeBackCSR();
 
     void printControlSignals();
     // TODO: bring public here
     RVSSVM();
     ~RVSSVM();
+
 
     void run() override;
     void debugRun() override;

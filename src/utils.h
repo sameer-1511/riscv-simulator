@@ -9,6 +9,7 @@
 
 #include "pch.h"
 #include "./assembler/parser.h"
+#include "vm/registers.h"
 
 /**
  * @brief Counts the number of lines in a given file.
@@ -42,6 +43,6 @@ void dumpErrors(const std::string &filename, const std::vector<ParseError> &erro
 
 void dumpNoErrors(const std::string &filename);
 
-void dumpRegisters(const std::string &filename, const std::vector<uint64_t> &registers);
+void dumpRegisters(const std::string &filename, RegisterFile &register_file);
 
 #endif // UTILS_H

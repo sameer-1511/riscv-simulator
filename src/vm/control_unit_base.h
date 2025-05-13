@@ -17,6 +17,16 @@ class ControlUnit {
 public:
     virtual ~ControlUnit() = default;
 
+    void reset() {
+        ALUSrc = false;
+        MemToReg = false;
+        RegWrite = false;
+        MemRead = false;
+        MemWrite = false;
+        Branch = false;
+        ALUOp = 0;
+    }
+
     // Sets control signals based on the opcode or instruction
     virtual void setControlSignals(uint32_t instruction) = 0;
     virtual ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) = 0;

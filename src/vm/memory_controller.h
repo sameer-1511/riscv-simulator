@@ -23,6 +23,10 @@ public:
      */
     MemoryController() = default;
 
+    void reset() {
+        memory_.reset();
+    }
+
     void printCacheStatus() const {
 
         std::string cacheEnabled = vmConfig::INI::get("Cache", "cache_enabled");
@@ -60,6 +64,14 @@ public:
 
     uint64_t readDoubleWord(uint64_t address) {
         return memory_.readDoubleWord(address);
+    }
+
+    void printMemory(const uint64_t address, uint rows) {
+        memory_.printMemory(address, rows);
+    }
+
+    void dumpMemory(const uint64_t address, uint rows) {
+        memory_.dumpMemory(address, rows);
     }
 
 };

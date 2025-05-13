@@ -153,6 +153,34 @@ std::bitset<32> generateJTypeMachineCode(const ICUnit &block) {
     return code;
 }
 
+std::bitset<32> genarateCSRRTypeMachineCode(const ICUnit &block) {
+    auto encoding = InstructionSet::CSR_R_type_instruction_encoding_map.at(block.getOpcode());
+    std::bitset<32> code;
+    std::bitset<5> rd = std::bitset<5>(std::stoi(block.getRd().substr(1)));
+    std::bitset<5> rs1 = std::bitset<5>(std::stoi(block.getRs1().substr(1)));
+    std::bitset<12> csr = std::bitset<12>(block.getCsr() & 0xFFF);
+    code |= encoding.opcode.to_ulong();
+    code |= (rs1.to_ulong() << 15);
+    code |= (csr.to_ulong() << 20);
+    code |= (encoding.funct3.to_ulong() << 12);
+    code |= (rd.to_ulong() << 7);
+    return code;
+}
+
+std::bitset<32> genarateCSRITypeMachineCode(const ICUnit &block) {
+    auto encoding = InstructionSet::CSR_I_type_instruction_encoding_map.at(block.getOpcode());
+    std::bitset<32> code;
+    std::bitset<5> rd = std::bitset<5>(std::stoi(block.getRd().substr(1)));
+    std::bitset<3> imm = std::bitset<3>(std::stoi(block.getImm()));
+    std::bitset<12> csr = std::bitset<12>(block.getCsr() & 0xFFF);
+    code |= encoding.opcode.to_ulong();
+    code |= (imm.to_ulong() << 15);
+    code |= (csr.to_ulong() << 20);
+    code |= (encoding.funct3.to_ulong() << 12);
+    code |= (rd.to_ulong() << 7);
+    return code;
+}
+
 std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::bitset<32>> machine_code;
     for (const auto &pair : IntermediateCode) {
@@ -174,6 +202,12 @@ std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICU
             code = generateUTypeMachineCode(block);
         } else if (InstructionSet::isValidJTypeInstruction(block.getOpcode())) {
             code = generateJTypeMachineCode(block);
+        } else if (InstructionSet::isValidCSRRTypeInstruction(block.getOpcode())) {
+            code = genarateCSRRTypeMachineCode(block);
+        } else if (InstructionSet::isValidCSRITypeInstruction(block.getOpcode())) {
+            code = genarateCSRITypeMachineCode(block);
+        } else {
+            throw std::runtime_error("Invalid instruction type");
         }
         machine_code.push_back(code);
     }

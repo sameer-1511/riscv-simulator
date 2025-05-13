@@ -23,6 +23,10 @@ private:
     std::vector<std::array<uint64_t, 8>> vr_ = 
         std::vector<std::array<uint64_t, 8>>(NUM_VR); ///< Vector of arrays for VR values.
 
+    static constexpr size_t NUM_CSR = 4096; ///< Number of Control and Status Registers (CSR).
+
+    std::array<uint64_t, NUM_CSR> csr_ = {}; ///< Array for storing CSR values.
+
     /**
      * @brief Formats the values of registers as a string for display.
      * @tparam T The type of the register values.
@@ -89,6 +93,10 @@ public:
      * @param value The array representing the value to write.
      */
     void writeVR(size_t reg, const std::array<uint64_t, 8>& value);
+
+    uint64_t readCSR(size_t reg) const;
+
+    void writeCSR(size_t reg, uint64_t value);
 
     /**
      * @brief Retrieves the values of all General-Purpose Registers (GPR).
@@ -165,6 +173,10 @@ extern const std::unordered_set<std::string> valid_floating_point_registers;
 
 extern const std::unordered_set<std::string> valid_vector_registers;
 
+extern const std::unordered_set<std::string> valid_csr_registers;
+
+extern const std::unordered_map<std::string, int> csr_to_address;
+
 /**
  * @brief Map of register aliases to their actual names.
  */
@@ -182,6 +194,15 @@ bool isValidGeneralPurposeRegister(const std::string &reg);
 bool isValidFloatingPointRegister(const std::string &reg);
 
 bool isValidVectorRegister(const std::string &reg);
+
+/**
+ * @brief Checks whether a given register name is a valid CSR.
+ * @param reg The register name to check.
+ * @return True if the register name is a valid CSR, false otherwise.
+ */
+bool isValidCSR(const std::string &reg);
+
+
 
 
 #endif // REGISTERS_H

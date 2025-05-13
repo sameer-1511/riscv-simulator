@@ -1,23 +1,23 @@
 /**
- * File Name: command_parser.h
+ * File Name: command_handler.h
  * Author: Vishank Singh
  * Github: https://github.com/VishankSingh
  */
 #include "pch.h"
 
-#ifndef COMMAND_PARSER_H
-#define COMMAND_PARSER_H
+#ifndef COMMAND_HANDLER_H
+#define COMMAND_HANDLER_H
 
-namespace CommandParser {
-    
+namespace CommandHandler {
     enum class CommandType {
         INVALID,
-        START,
+        LOAD,
         RUN,
         DEBUG,
         STEP,
         RESET,
         DUMP_MEMORY,
+        PRINT_MEMORY,
         DUMP_CACHE,
         ADD_BREAKPOINT,
         REMOVE_BREAKPOINT,
@@ -43,6 +43,8 @@ namespace CommandParser {
     };
 
     Command parseCommand(const std::string &input);
+
+    void executeCommand(Command command);
     
 
 
@@ -52,4 +54,4 @@ namespace CommandParser {
 
 
 
-#endif // COMMAND_PARSER_H
+#endif // COMMAND_HANDLER_H

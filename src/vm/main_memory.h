@@ -95,6 +95,10 @@ public:
      */
     ~Memory() = default;
 
+    void reset() {
+        blocks_.clear();
+    }
+
     /**
      * @brief Reads a single byte from the given memory address.
      * @param address The memory address to read from.
@@ -172,6 +176,10 @@ public:
     void writeFloat(uint64_t address, float value);
 
     void writeDouble(uint64_t address, double value);
+
+    void printMemory(const uint64_t address, uint rows);
+
+    void dumpMemory(const uint64_t address, uint rows);
 
     void printMemoryUsage() const;
 };

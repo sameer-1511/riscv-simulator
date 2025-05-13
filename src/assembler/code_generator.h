@@ -23,6 +23,7 @@ struct ICUnit {
     std::array<char, 6> rs1;     ///< Source register 1 name (up to 20 characters, null-terminated).
     std::array<char, 6> rs2;     ///< Source register 2 name (up to 20 characters, null-terminated).
     std::array<char, 6> rs3;     ///< Immediate value (up to 32 characters, null-terminated).
+    uint32_t csr;           ///< Control and Status Register (CSR) value.    
     std::array<char, 33> imm;     ///< Immediate value (up to 32 characters, null-terminated).
     std::string label;            ///< Label associated with this code block, if any.
 
@@ -99,6 +100,15 @@ struct ICUnit {
     }
 
     /**
+     * @brief Sets the control and status register (CSR) value.
+     * 
+     * @param value The CSR value.
+     */
+    void setCsr(uint32_t value) {
+        csr = value;
+    }
+
+    /**
      * @brief Sets the immediate value for the intermediate code block.
      * 
      * @param value The immediate value string (up to 32 characters).
@@ -169,6 +179,15 @@ struct ICUnit {
      */
     [[nodiscard]] std::string getRs3() const {
         return rs3.data();
+    }
+
+    /**
+     * @brief Gets the control and status register (CSR) value.
+     * 
+     * @return The CSR value.
+     */
+    [[nodiscard]] uint32_t getCsr() const {
+        return csr;
     }
 
     /**
@@ -261,6 +280,9 @@ std::bitset<32> generateUTypeMachineCode(const ICUnit &block);
  * @return The machine code bitset<32>.
  */
 std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
+
+std::bitset<32> genarateCSRRTypeMachineCode(const ICUnit &block);
+std::bitset<32> genarateCSRITypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code from a vector of intermediate code blocks.

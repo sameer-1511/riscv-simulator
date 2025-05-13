@@ -21,6 +21,8 @@ static const std::unordered_set<std::string> valid_instructions = {
     "jal", "jalr",
     "ecall", "ebreak",
 
+    "csrrw", "csrrs", "csrrc", "csrrwi", "csrrsi", "csrrci",
+
     "la", "nop", "li", "mv", "not", "neg", "negw",
     "sext.w", "seqz", "snez", "sltz", "sgtz",
     "beqz", "bnez", "blez", "bgez", "bltz", "bgtz",
@@ -63,6 +65,8 @@ static const std::unordered_set<std::string> RTypeInstructions = {
     "feq.s", "flt.s", "fle.s",
     "fclass.s", "fcvt.s.w", "fcvt.s.wu", "fmv.w.x",
     "fcvt.l.s", "fcvt.lu.s", "fcvt.s.l", "fcvt.s.lu",
+
+
 
 };
 
@@ -126,6 +130,18 @@ static const std::unordered_set<std::string> BaseExtensionInstructions = {
     "ecall", "ebreak",
 };
 
+static const std::unordered_set<std::string> CSRRInstructions = {
+    "csrrw", "csrrs", "csrrc"
+};
+
+static const std::unordered_set<std::string> CSRIInstructions = {
+    "csrrwi", "csrrsi", "csrrci"
+};
+
+static const std::unordered_set<std::string> CSRInstructions = {
+    "csrrw", "csrrs", "csrrc", "csrrwi", "csrrsi", "csrrci"
+};
+
 static const std::unordered_set<std::string> MExtensionInstructions = {
     "mul", "mulh", "mulhsu", "mulhu", "div", "divu", "rem", "remu",
     "mulw", "divw", "divuw", "remw", "remuw"
@@ -186,6 +202,45 @@ std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_enc
     {"divuw",   {0b0111011, 0b101, 0b0000001}}, // O_GPR_C_GPR_C_GPR
     {"remw",    {0b0111011, 0b110, 0b0000001}}, // O_GPR_C_GPR_C_GPR
     {"remuw",   {0b0111011, 0b111, 0b0000001}}, // O_GPR_C_GPR_C_GPR
+
+
+//==RV64F=======================================================================================
+    {"fmadd.s", {0b1010011, 0b000, 0b0000000}}, // O_FPR_C_FPR_C_FPR
+    {"fmsub.s", {0b1010011, 0b001, 0b0000000}}, // O_FPR_C_FPR_C_FPR
+    {"fnmsub.s",{0b1010011, 0b010, 0b0000000}}, // O_FPR_C_FPR_C_FPR
+    {"fnmadd.s",{0b1010011, 0b011, 0b0000000}}, // O_FPR_C_FPR_C_FPR
+
+    {"fadd.s",  {0b1010011, 0b000, 0b0000001}}, // O_FPR_C_FPR_C_FPR
+    {"fsub.s",  {0b1010011, 0b001, 0b0000001}}, // O_FPR_C_FPR_C_FPR
+    {"fmul.s",  {0b1010011, 0b010, 0b0000001}}, // O_FPR_C_FPR_C_FPR
+    {"fdiv.s",  {0b1010011, 0b011, 0b0000001}}, // O_FPR_C_FPR_C_FPR
+    {"fsqrt.s", {0b1010011, 0b100, 0b0000001}}, // O_FPR_C_FPR
+
+    {"fsgnj.s", {0b1010011, 0b101, 0x00}},      // O_FPR_C_GPR
+    {"fsgnjn.s",{0b1010011, 0x01, 0x00}},       // O_GPR_C_GPR
+    {"fsgnjx.s",{0b1010011, 0x02, 0x00}},       // O_GPR_C_GPR
+
+    {"fmin.s",  {0b1010011, 0x05, 0x00}},       // O_GPR_C_GPR
+    {"fmax.s",  {0b1010011, 0x06, 0x00}},       // O_GPR_C_GPR
+
+    {"fcvt.w.s",{0b1010011, 0x07, 0x00}},       // O_GPR_C_GPR
+    {"fcvt.wu.s",{0b1010011, 0x08, 0x00}},      // O_GPR_C_GPR
+    {"fmv.x.w", {0b1010011, 0x09, 0x00}},       // O_GPR_C_FPR
+
+    {"feq.s",   {0b1010011, 0x0A, 0x00}},       // O_FPR_C_FPR
+    {"flt.s",   {0b1010011, 0x0B, 0x00}},       // O_FPR_C_FPR
+    {"fle.s",   {0b1010011, 0x0C, 0x00}},       // O_FPR_C_FPR
+
+    {"fclass.s",{0b1010011, 0x10, 0x00}},        // O_FPR_C_FPR
+    {"fcvt.s.w",{0b1010011, 0x11, 0x00}},        // O_FPR_C_GPR
+    {"fcvt.s.wu",{0b1010011, 0x12, 0x00}},       // O_FPR_C_GPR
+    {"fmv.w.x", {0b1010011, 0x13, 0x00}},       // O_GPR_C_FPR
+
+    {"fcvt.l.s",{0b1010011, 0x14, 0x00}},        // O_GPR_C_GPR
+    {"fcvt.lu.s",{0b1010011, 0x15, 0x00}},       // O_GPR_C_GPR
+    {"fcvt.s.l", {0b1010011, 0x16, 0x00}},       // O_FPR_C_FPR
+    {"fcvt.s.lu",{0b1010011, 0x17, 0x00}}        // O_FPR_C_FPR
+
 };
 
 std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map = {
@@ -249,6 +304,19 @@ std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_enc
     {"jal",     {0b1101111}}, // O_GPR_C_IL
 };
 
+std::unordered_map<std::string, CSR_RTypeInstructionEncoding> CSR_R_type_instruction_encoding_map {
+    {"csrrw",   {0b1110011, 0b001}}, // O_GPR_C_CSR_C_GPR
+    {"csrrs",   {0b1110011, 0b010}}, // O_GPR_C_CSR_C_GPR
+    {"csrrc",   {0b1110011, 0b011}}, // O_GPR_C_CSR_C_GPR
+};
+
+std::unordered_map<std::string, CSR_ITypeInstructionEncoding> CSR_I_type_instruction_encoding_map {
+    {"csrrwi",  {0b1110011, 0b101}}, // O_GPR_C_CSR_C_I
+    {"csrrsi",  {0b1110011, 0b110}}, // O_GPR_C_CSR_C_I
+    {"csrrci",  {0b1110011, 0b111}}, // O_GPR_C_CSR_C_I
+};
+
+
 std::unordered_map<std::string, InstructionType> instruction_opcode_type_map = {
     {"add",         InstructionType::R},
     {"sub",         InstructionType::R},
@@ -311,6 +379,14 @@ std::unordered_map<std::string, InstructionType> instruction_opcode_type_map = {
 
     {"ecall",       InstructionType::I3},
     {"ebreak",      InstructionType::I3},
+
+//==CSR=========================================================================================
+    {"csrrw",       InstructionType::CSR_R},
+    {"csrrs",       InstructionType::CSR_R},
+    {"csrrc",       InstructionType::CSR_R},
+    {"csrrwi",      InstructionType::CSR_I},
+    {"csrrsi",      InstructionType::CSR_I},
+    {"csrrci",      InstructionType::CSR_I},
 
 //==RV64M======================================================================================
     {"mul",         InstructionType::R},
@@ -450,6 +526,18 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 
 //////////////////////////////////////////////////////////////////////////////
 
+    {"csrrw",       {SyntaxType::O_GPR_C_CSR_C_GPR}},
+    {"csrrs",       {SyntaxType::O_GPR_C_CSR_C_GPR}},
+    {"csrrc",       {SyntaxType::O_GPR_C_CSR_C_GPR}},
+    {"csrrwi",      {SyntaxType::O_GPR_C_CSR_C_I}},
+    {"csrrsi",      {SyntaxType::O_GPR_C_CSR_C_I}},
+    {"csrrci",      {SyntaxType::O_GPR_C_CSR_C_I}},
+
+    {"fence",       {SyntaxType::O}},
+    {"fence_i",     {SyntaxType::O}},
+
+//////////////////////////////////////////////////////////////////////////////
+
     {"nop",         {SyntaxType::PSEUDO}},
     {"li",          {SyntaxType::PSEUDO}},
     {"la",          {SyntaxType::PSEUDO}},
@@ -575,6 +663,20 @@ bool isValidBaseExtensionInstruction(const std::string &instruction) {
     return BaseExtensionInstructions.find(instruction) != BaseExtensionInstructions.end();
 }
 
+bool isValidCSRRTypeInstruction(const std::string &instruction) {
+    return CSRRInstructions.find(instruction) != CSRRInstructions.end();
+}
+
+bool isValidCSRITypeInstruction(const std::string &instruction) {
+    return CSRIInstructions.find(instruction) != CSRIInstructions.end();
+}
+
+bool isValidCSR_Instruction(const std::string &instruction) {
+    return (CSRRInstructions.find(instruction) != CSRRInstructions.end()) ||
+        (CSRIInstructions.find(instruction) != CSRIInstructions.end());
+}
+
+
 bool isValidFExtensionInstruction(const std::string &instruction) {
     return FExtensionInstructions.find(instruction) != FExtensionInstructions.end();
 }
@@ -619,6 +721,8 @@ std::string getExpectedSyntaxes(const std::string &opcode) {
         {SyntaxType::O_GPR_C_I, "<gp-reg>, <imm>"},
         {SyntaxType::O_GPR_C_IL, "<gp-reg>, <text-label>"},
         {SyntaxType::O_GPR_C_DL, "<gp-reg>, <data-label>"},
+        {SyntaxType::O_GPR_C_CSR_C_GPR, "<gp-reg>, <csr>, <gp-reg>"},
+        {SyntaxType::O_GPR_C_CSR_C_I, "<gp-reg>, <csr>, <uimm>"},
         {SyntaxType::O_FPR_C_FPR_C_FPR_C_FPR, "<fp-reg>, <fp-reg>, <fp-reg>, <fp-reg>"},
         {SyntaxType::O_FPR_C_FPR_C_FPR, "<fp-reg>, <fp-reg>, <fp-reg>"},
         {SyntaxType::O_FPR_C_FPR, "<fp-reg>, <fp-reg>"},

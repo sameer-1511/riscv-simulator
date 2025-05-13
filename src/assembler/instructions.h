@@ -11,22 +11,6 @@
 
 namespace InstructionSet {
 
-/**
- * @brief Encodes the components of an instruction.
- * 
- * This struct holds the encoding for the opcode, funct3, funct7, and funct6 fields
- * of an instruction, which are used for representing the instruction in machine code.
- */
-struct InstructionEncoding {
-    std::string opcode;   ///< The opcode part of the instruction.
-    std::string funct3;   ///< The funct3 part of the instruction.
-    std::string funct7;   ///< The funct7 part of the instruction.
-    std::string funct6;   ///< The funct6 part of the instruction.
-
-    InstructionEncoding(std::string opcode, std::string funct3, std::string funct7, std::string funct6)
-        : opcode(std::move(opcode)), funct3(std::move(funct3)), funct7(std::move(funct7)), funct6(std::move(funct6)) {}
-};
-
 struct RTypeInstructionEncoding {
     std::bitset<7> opcode;
     std::bitset<3> funct3;
@@ -101,6 +85,21 @@ struct JTypeInstructionEncoding {
         : opcode(opcode) {}
 };
 
+struct CSR_RTypeInstructionEncoding {
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+
+    CSR_RTypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
+        : opcode(opcode), funct3(funct3) {}
+};
+
+struct CSR_ITypeInstructionEncoding {
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+
+    CSR_ITypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
+        : opcode(opcode), funct3(funct3) {}
+};
 
 
 /**
@@ -117,6 +116,9 @@ enum class SyntaxType {
     O_GPR_C_I_LP_GPR_RP,    ///< Opcode register , immediate , lparen ( register )rparen
     O,                  ///< Opcode
     PSEUDO,              ///< Pseudo instruction
+
+    O_GPR_C_CSR_C_GPR,       ///< Opcode general-register , csr , general-register
+    O_GPR_C_CSR_C_I,        ///< Opcode general-register , csr , immediate
 
     O_FPR_C_FPR_C_FPR_C_FPR,    ///< Opcode floating-point-register , floating-point-register , floating-point-register , floating-point-register
     O_FPR_C_FPR_C_FPR,        ///< Opcode floating-point-register , floating-point-register , floating-point-register
@@ -141,11 +143,14 @@ enum class InstructionType {
     B,      ///< B-type instruction
     U,      ///< U-type instruction
     J,      ///< J-type instruction
+    CSR_R,   ///< CSR R-type instruction
+    CSR_I,   ///< CSR I-type instruction
     M,      ///< M-extension instruction
     F       ///< F-extension instruction
 };
 
 extern std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map;
+extern std::unordered_map<std::string, R4TypeInstructionEncoding> R4_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map;
@@ -153,6 +158,8 @@ extern std::unordered_map<std::string, STypeInstructionEncoding> S_type_instruct
 extern std::unordered_map<std::string, BTypeInstructionEncoding> B_type_instruction_encoding_map;
 extern std::unordered_map<std::string, UTypeInstructionEncoding> U_type_instruction_encoding_map;
 extern std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_encoding_map;
+extern std::unordered_map<std::string, CSR_RTypeInstructionEncoding> CSR_R_type_instruction_encoding_map;
+extern std::unordered_map<std::string, CSR_ITypeInstructionEncoding> CSR_I_type_instruction_encoding_map;
 
 /**
  * @brief A map that associates instruction names with their corresponding opcode type.
@@ -160,13 +167,6 @@ extern std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruct
  * This map stores the opcode type for various instructions, indexed by their names.
  */
 extern std::unordered_map<std::string, InstructionType> instruction_opcode_type_map;
-
-/**
- * @brief A map that associates instruction names with their corresponding encoding.
- * 
- * This map stores the encoding details for various instructions, indexed by their names.
- */
-extern std::unordered_map<std::string, InstructionEncoding> instruction_encoding_map;
 
 /**
  * @brief A map that associates instruction names with their expected syntax.
@@ -264,6 +264,10 @@ bool isValidJTypeInstruction(const std::string &instruction);
 bool isValidPseudoInstruction(const std::string &instruction);
 
 bool isValidBaseExtensionInstruction(const std::string &instruction);
+
+bool isValidCSRRTypeInstruction(const std::string &instruction);
+bool isValidCSRITypeInstruction(const std::string &instruction);
+bool isValidCSR_Instruction(const std::string &instruction);
 
 /**
  * @brief Validates if a given F-extension instruction is valid.

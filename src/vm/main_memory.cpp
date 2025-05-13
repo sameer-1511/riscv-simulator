@@ -5,6 +5,7 @@
  */
 
 #include "main_memory.h"
+#include "../globals.h"
 
 uint8_t Memory::read(uint64_t address) {
     if (address >= memory_size_) {
@@ -165,6 +166,35 @@ void Memory::writeDouble(uint64_t address, double value) {
     for (size_t i = 0; i < sizeof(double); ++i) {
         write(address + i, static_cast<uint8_t>((value_bits >> (8 * i)) & 0xFF));
     }
+}
+
+void Memory::printMemory(const uint64_t address, uint rows) {
+    constexpr size_t bytes_per_row = 8; // One row equals 64 bytes
+    std::cout << "Memory Dump at Address: " << address << "\n";
+    std::cout << "-----------------------------------------------------------------\n";
+    for (uint64_t i = 0; i < rows; ++i) {
+        uint64_t current_address = address + (i * bytes_per_row);
+        if (current_address >= memory_size_) {
+            break;
+        }
+        std::cout << "0x" << std::hex << std::setw(16) << std::setfill('0') << current_address << " | ";
+        for (size_t j = 0; j < bytes_per_row; ++j) {
+            if (current_address + j >= memory_size_) {
+                break;
+            }
+            std::cout << std::hex << std::setw(2) << std::setfill('0') 
+                      << static_cast<int>(read(current_address + j)) << " ";
+        }
+        std::cout << "| 0x" << std::hex << std::setw(16) << std::setfill('0') << static_cast<int64_t>(readDoubleWord(current_address));
+        std::cout << std::dec << "\n";
+    }
+    std::cout << "-----------------------------------------------------------------\n";
+}
+
+void dumpMemory(const uint64_t address, uint rows) {
+    (void)address;
+    (void)rows;
+    // TODO: do this
 }
 
 void Memory::printMemoryUsage() const {

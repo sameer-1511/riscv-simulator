@@ -11,7 +11,7 @@
 
 RVSSVM::RVSSVM() : VMBase() {
     // Initialize control signals
-    dumpRegisters(globals::registers_dump_file, registers_.getGPRValues());
+    dumpRegisters(globals::registers_dump_file, registers_);
 }
 
 RVSSVM::~RVSSVM() = default;
@@ -33,10 +33,19 @@ void RVSSVM::execute() {
     // uint8_t funct2 = (current_instruction_ >> 25) & 0b11;
     // uint8_t funct6 = (current_instruction_ >> 26) & 0b111111;
 
-    if (opcode == 0x53) { // RV32F & RV64F
+    if (opcode == 0b1010011 
+     || opcode == 0b0100111 
+     || opcode == 0b1000011 
+     || opcode == 0b1000111 
+     || opcode == 0b1001011 
+     || opcode == 0b1001111 
+     ) { // RV64 F
         executeFloat();
         return;
-    } // TODO: add vector support
+    } else if (opcode == 0b1110011) {
+        executeCSR();
+        return;
+    }
 
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
@@ -51,34 +60,40 @@ void RVSSVM::execute() {
 
     
     if (controlUnit.getALUSrc()) {
-        reg2_value = imm;
+        reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
     }
 
 
     ALU::ALUOp aluOperation = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
-    std::tie(execution_result_, overflow) = alu_.execute<int64_t>(aluOperation, reg1_value, reg2_value);
+    std::tie(execution_result_, overflow) = alu_.execute(aluOperation, reg1_value, reg2_value);
 
     if (controlUnit.getBranch()) {
         switch (funct3)
         {
-        case 0x0: // BEQ
+        case 0b000: {// BEQ
             branch_flag_ = (execution_result_ == 0);
             break;
-        case 0x1: // BNE
+        }
+        case 0b001: {// BNE
             branch_flag_ = (execution_result_ != 0);
             break;
-        case 0x4: // BLT
+        }
+        case 0b100: {// BLT
             branch_flag_ = (execution_result_ == 1);
             break;
-        case 0x5: // BGE
+        }
+        case 0b101: {// BGE
             branch_flag_ = (execution_result_ == 0);
             break;
-        case 0x6: // BLTU
+        }
+        case 0b110: {// BLTU
             branch_flag_ = (execution_result_ == 1);
             break;
-        case 0x7: // BGEU
+        }
+        case 0b111: {// BGEU
             branch_flag_ = (execution_result_ == 0);
             break;
+        }
         default:
             break;
         }
@@ -108,6 +123,55 @@ void RVSSVM::executeFloat() {
 void RVSSVM::executeVector() {
     return;
 }
+
+void RVSSVM::executeCSR() {
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+    uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
+    uint8_t uimm = rs1; // Same bits used for uimm
+    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    uint16_t csr = (current_instruction_ >> 20) & 0xFFF;
+
+    uint64_t csr_val = registers_.readCSR(csr);
+    uint64_t write_val = 0;
+
+    switch (funct3) {
+        case 0b001: { // CSRRW
+            write_val = registers_.readGPR(rs1);
+            registers_.writeGPR(rd, csr_val);
+            registers_.writeCSR(csr, write_val);
+            break;
+        }
+        case 0b010: { // CSRRS
+            write_val = registers_.readGPR(rs1);
+            registers_.writeGPR(rd, csr_val);
+            if (rs1 != 0b00000) registers_.writeCSR(csr, csr_val | write_val);
+            break;
+        }
+        case 0b011: { // CSRRC
+            write_val = registers_.readGPR(rs1);
+            registers_.writeGPR(rd, csr_val);
+            if (rs1 != 0b00000) registers_.writeCSR(csr, csr_val & ~write_val);
+            break;
+        }
+        case 0b101: { // CSRRWI
+        std::cout << "CSRRWI" << std::endl;
+            registers_.writeGPR(rd, csr_val);
+            registers_.writeCSR(csr, uimm);
+            break;
+        }
+        case 0b110: { // CSRRSI
+            registers_.writeGPR(rd, csr_val);
+            if (uimm != 0) registers_.writeCSR(csr, csr_val | uimm);
+            break;
+        }
+        case 0b111: { // CSRRCI
+            registers_.writeGPR(rd, csr_val);
+            if (uimm != 0) registers_.writeCSR(csr, csr_val & ~uimm);
+            break;
+        }
+    }
+}
+
 
 void RVSSVM::memory() {
     // uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
@@ -181,32 +245,38 @@ void RVSSVM::writeBack() {
     if (controlUnit.getRegWrite() && rd != 0) { // Avoid writing to x0
         switch (opcode)
         {
-        case 0b0110011: // R-Type
+        case 0b0110011: {// R-Type
             registers_.writeGPR(rd, execution_result_);
             break;
-        case 0b0010011: // I-Type
+        }
+        case 0b0010011: {// I-Type
             registers_.writeGPR(rd, execution_result_);
             break;
+        }
         case 0b1100011: // B-Type
             break;
-        case 0b0000011: // Load
+        case 0b0000011: {// Load
             registers_.writeGPR(rd, memory_result_);
             break;
+        }
         case 0b0100011: // Store
             break;
-        case 0b1100111: // JALR
+        case 0b1100111: {// JALR
             registers_.writeGPR(rd, next_pc_);
             break;
-        case 0b1101111: // JAL
+        }
+        case 0b1101111: {// JAL
             registers_.writeGPR(rd, next_pc_);
             break;
-        case 0b0110111: // LUI
+        }
+        case 0b0110111: {// LUI
             registers_.writeGPR(rd, (imm << 12));
             break;
-        case 0b0010111: // AUIPC
+        }
+        case 0b0010111: {// AUIPC
             registers_.writeGPR(rd, execution_result_);
             break;
-        default:
+        }
             break;
         }
     }
@@ -220,6 +290,9 @@ void RVSSVM::writeBack() {
 
 }
 
+void RVSSVM::writeBackCSR() {
+    
+}
 
 
 
@@ -261,10 +334,23 @@ void RVSSVM::step() {
     writeBack();
     instructions_retired_++;
     cycle_s++;
-    dumpRegisters(globals::registers_dump_file, registers_.getGPRValues());
+    dumpRegisters(globals::registers_dump_file, registers_);
+    std::cout << "Program Counter: " << program_counter_ << std::endl;
 }
 
 void RVSSVM::reset() {
+    program_counter_ = 0;
+    instructions_retired_ = 0;
+    cycle_s = 0;
+    registers_.reset();
+    memory_controller_.reset();
+    controlUnit.reset();
+    branch_flag_ = false;
+    next_pc_ = 0;
+    execution_result_ = 0;
+    memory_result_ = 0;
+    memory_address_ = 0;
+    memory_data_ = 0;
     
 }
 void RVSSVM::dumpState(const std::string &filename) {

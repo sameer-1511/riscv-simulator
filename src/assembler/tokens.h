@@ -7,6 +7,8 @@
 #ifndef TOKENS_H
 #define TOKENS_H
 
+#include "../pch.h"
+
 /**
  * @brief Enum class representing the type of a token.
  * 
@@ -21,6 +23,7 @@ enum class TokenType {
     GP_REGISTER,        ///< General-purpose register
     FP_REGISTER,        ///< Floating-point register
     VEC_REGISTER,       ///< Vector register
+    CSR_REGISTER,       ///< Control and Status Register
     NUM,             ///< Numeric value
     FLOAT,           ///< Floating-point value
     LABEL,           ///< Label in assembly code

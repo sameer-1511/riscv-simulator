@@ -99,6 +99,9 @@ Token Lexer::identifier() {
     if (isValidFloatingPointRegister(value)) {
         return {TokenType::FP_REGISTER, value, line_number_, start_column};
     }
+    if (isValidCSR(value)) {
+        return {TokenType::CSR_REGISTER, value, line_number_, start_column};
+    }
     if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
         return {TokenType::LABEL, value, line_number_, start_column};
     } 

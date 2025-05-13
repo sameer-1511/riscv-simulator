@@ -13,6 +13,8 @@ void RegisterFile::reset() {
     gpr_.fill(0);
     fpr_.fill(0.0);
     for (auto& vec : vr_) vec.fill(0);
+    csr_.fill(0);
+    csr_[0x002] = 0b000; // Default: RNE (IEEE 754)
 }
 
 uint64_t RegisterFile::readGPR(size_t reg) const {
@@ -45,6 +47,16 @@ std::array<uint64_t, 8> RegisterFile::readVR(size_t reg) const {
 void RegisterFile::writeVR(size_t reg, const std::array<uint64_t, 8>& value) {
     if (reg >= NUM_VR) throw std::out_of_range("Invalid VR index");
     vr_[reg] = value;
+}
+
+uint64_t RegisterFile::readCSR(size_t reg) const {
+    if (reg >= NUM_CSR) throw std::out_of_range("Invalid CSR index");
+    return csr_[reg];
+}
+
+void RegisterFile::writeCSR(size_t reg, uint64_t value) {
+    if (reg >= NUM_CSR) throw std::out_of_range("Invalid CSR index");
+    csr_[reg] = value;
 }
 
 std::vector<uint64_t> RegisterFile::getGPRValues() const {
@@ -190,6 +202,15 @@ const std::unordered_set<std::string> valid_vector_registers = {
         "v10", "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19",
         "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29",
         "v30", "v31",
+};
+
+const std::unordered_set<std::string> valid_csr_registers = {
+        "frm", "fcsr"
+};
+
+const std::unordered_map<std::string, int> csr_to_address {
+        {"frm", 0x002},
+        {"fcsr", 0x003},
 };
 
 const std::unordered_map<std::string, std::string> reg_alias_to_name = {
@@ -344,4 +365,8 @@ bool isValidFloatingPointRegister(const std::string &reg) {
 
 bool isValidVectorRegister(const std::string &reg) {
     return valid_vector_registers.find(reg) != valid_vector_registers.end();
+}
+
+bool isValidCSR(const std::string &reg) {
+    return valid_csr_registers.find(reg) != valid_csr_registers.end();
 }

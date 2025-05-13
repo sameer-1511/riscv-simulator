@@ -37,6 +37,7 @@ public:
 
     MemoryController memory_controller_;
     RegisterFile registers_;
+    
     ALU::ALU alu_;
 
 

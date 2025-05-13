@@ -27,6 +27,7 @@ std::string tokenTypeToString(TokenType type) {
         case TokenType::GP_REGISTER:return "GP_REGISTER    ";
         case TokenType::FP_REGISTER:return "FP_REGISTER    ";
         case TokenType::VEC_REGISTER:return "VEC_REGISTER   ";
+        case TokenType::CSR_REGISTER:return "CSR_REGISTER   ";
         case TokenType::NUM:return "NUM         ";
         case TokenType::LABEL:return "LABEL       ";
         case TokenType::LABEL_REF:return "LABEL_REF   ";
