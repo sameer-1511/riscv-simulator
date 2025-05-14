@@ -115,25 +115,6 @@ private:
      */
     void recordError(const ParseError &error);
 
-    /**
-     * @brief Checks if a register is valid and advances the parser position.
-     * @param block The intermediate code unit to update.
-     * @return True if the register is valid, false otherwise.
-     */
-    bool checkAndPassRegister(ICUnit block);
-
-    /**
-     * @brief Checks if a general register is valid and advances the parser position.
-     * @return True if the general register is valid, false otherwise.
-     */
-    bool checkGeneralRegister();
-
-    /**
-     * @brief Checks if a floating-point register is valid and advances the parser position.
-     * @return True if the floating-point register is valid, false otherwise.
-     */
-    bool checkFloatingPointRegister();
-
     bool parse_O_GPR_C_GPR_C_GPR();
     bool parse_O_GPR_C_GPR_C_I();
     bool parse_O_GPR_C_I();
@@ -145,17 +126,23 @@ private:
     bool parse_O();
     bool parse_pseudo();
 
+    bool parse_O_GPR_C_CSR_C_GPR();
+    bool parse_O_GPR_C_CSR_C_I();
+
     bool parse_O_FPR_C_FPR_C_FPR_C_FPR();
+    bool parse_O_FPR_C_FPR_C_FPR_C_FPR_C_RM();
     bool parse_O_FPR_C_FPR_C_FPR();
+    bool parse_O_FPR_C_FPR_C_FPR_C_RM();
     bool parse_O_FPR_C_FPR();
+    bool parse_O_FPR_C_FPR_C_RM();
 
     bool parse_O_FPR_C_GPR();
+    bool parse_O_FPR_C_GPR_C_RM();
     bool parse_O_GPR_C_FPR();
+    bool parse_O_GPR_C_FPR_C_RM();
     bool parse_O_GPR_C_FPR_C_FPR();
     bool parse_O_FPR_C_I_LP_GPR_RP();
 
-    bool parse_O_GPR_C_CSR_C_GPR();
-    bool parse_O_GPR_C_CSR_C_I();
 
     /**
      * @brief Parses a data directive.

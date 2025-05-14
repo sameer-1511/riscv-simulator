@@ -119,7 +119,6 @@ public:
                 int64_t sb = static_cast<int64_t>(b);
                 int64_t result = sa * sb;
                 bool overflow = __builtin_mul_overflow(sa, sb, &result);
-                std::cout << "MUL: " << result << std::endl;
                 return {static_cast<uint64_t>(result), overflow};
             }
             case ALUOp::MULH: {

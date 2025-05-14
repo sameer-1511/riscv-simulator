@@ -101,6 +101,72 @@ struct CSR_ITypeInstructionEncoding {
         : opcode(opcode), funct3(funct3) {}
 };
 
+// Fextension instructions===========================================================================
+
+struct FDRTypeInstructionEncoding { // fsgnj
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+    std::bitset<7> funct7;
+
+    FDRTypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct7)
+        : opcode(opcode), funct3(funct3), funct7(funct7) {}
+};
+
+struct FDR1TypeInstructionEncoding { // fadd, fsub, fmul
+    std::bitset<7> opcode;
+    std::bitset<7> funct7;
+
+    FDR1TypeInstructionEncoding(unsigned int opcode, unsigned int funct7)
+        : opcode(opcode), funct7(funct7) {}
+};
+
+struct FDR2TypeInstructionEncoding { //fsqrt, have funct5 instead of rs2
+    std::bitset<7> opcode;
+    std::bitset<5> funct5;
+    std::bitset<7> funct7;
+
+    FDR2TypeInstructionEncoding(unsigned int opcode, unsigned int funct5, unsigned int funct7)
+        : opcode(opcode), funct5(funct5), funct7(funct7) {}
+};
+
+struct FDR3TypeInstructionEncoding { //fcvt
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+    std::bitset<5> funct5;
+    std::bitset<7> funct7;
+
+    FDR3TypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int funct5, unsigned int funct7)
+        : opcode(opcode), funct3(funct3), funct5(funct5), funct7(funct7) {}
+    
+};
+
+
+struct FDR4TypeInstructionEncoding { //fmadd
+    std::bitset<7> opcode;
+    std::bitset<2> funct2;
+
+    FDR4TypeInstructionEncoding(unsigned int opcode, unsigned int funct2)
+        : opcode(opcode), funct2(funct2) {}
+};
+
+
+struct FDITypeInstructionEncoding {
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+
+    FDITypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
+        : opcode(opcode), funct3(funct3) {}
+};
+
+struct FDSTypeInstructionEncoding {
+    std::bitset<7> opcode;
+    std::bitset<3> funct3;
+
+    FDSTypeInstructionEncoding(unsigned int opcode, unsigned int funct3)
+        : opcode(opcode), funct3(funct3) {}
+};
+
+
 
 /**
  * @brief Enum that represents different syntax types for instructions.
@@ -121,11 +187,16 @@ enum class SyntaxType {
     O_GPR_C_CSR_C_I,        ///< Opcode general-register , csr , immediate
 
     O_FPR_C_FPR_C_FPR_C_FPR,    ///< Opcode floating-point-register , floating-point-register , floating-point-register , floating-point-register
+    O_FPR_C_FPR_C_FPR_C_FPR_C_RM,    ///< Opcode floating-point-register , floating-point-register , floating-point-register , rounding_mode
     O_FPR_C_FPR_C_FPR,        ///< Opcode floating-point-register , floating-point-register , floating-point-register
+    O_FPR_C_FPR_C_FPR_C_RM,    ///< Opcode floating-point-register , floating-point-register , floating-point-register , rounding_mode
     O_FPR_C_FPR,            ///< Opcode floating-point-register , floating-point-register
+    O_FPR_C_FPR_C_RM,           ///< Opcode floating-point-register , floating-point-register , rounding_mode
 
     O_FPR_C_GPR,            ///< Opcode floating-point-register , general-register
+    O_FPR_C_GPR_C_RM,           ///< Opcode floating-point-register , general-register , rounding_mode
     O_GPR_C_FPR,           ///< Opcode general-register , floating-point-register
+    O_GPR_C_FPR_C_RM,       ///< Opcode general-register , floating-point-register , rounding_mode
     O_GPR_C_FPR_C_FPR,       ///< Opcode general-register , floating-point-register , floating-point-register
     O_FPR_C_I_LP_GPR_RP,    ///< Opcode floating-point-register , immediate , lparen ( general-register ) rparen
 };
@@ -161,6 +232,15 @@ extern std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruct
 extern std::unordered_map<std::string, CSR_RTypeInstructionEncoding> CSR_R_type_instruction_encoding_map;
 extern std::unordered_map<std::string, CSR_ITypeInstructionEncoding> CSR_I_type_instruction_encoding_map;
 
+extern std::unordered_map<std::string, FDRTypeInstructionEncoding> F_D_R_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDR1TypeInstructionEncoding> F_D_R1_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDR2TypeInstructionEncoding> F_D_R2_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDR3TypeInstructionEncoding> F_D_R3_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDR4TypeInstructionEncoding> F_D_R4_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDITypeInstructionEncoding> F_D_I_type_instruction_encoding_map;
+extern std::unordered_map<std::string, FDSTypeInstructionEncoding> F_D_S_type_instruction_encoding_map;
+
+
 /**
  * @brief A map that associates instruction names with their corresponding opcode type.
  * 
@@ -175,92 +255,26 @@ extern std::unordered_map<std::string, InstructionType> instruction_opcode_type_
  */
 extern std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map;
 
-/**
- * @brief Validates if a given instruction is valid.
- * 
- * @param instruction The instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given R-type instruction is valid.
- * 
- * @param instruction The R-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidRTypeInstruction(const std::string &name);
 
-/**
- * @brief Validates if a given I-type instruction is valid.
- * 
- * @param instruction The I-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidITypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given I1-type instruction is valid.
- * 
- * @param instruction The I1-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidI1TypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given I2-type instruction is valid.
- * 
- * @param instruction The I2-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidI2TypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given I3-type instruction is valid.
- * 
- * @param instruction The I3-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidI3TypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given S-type instruction is valid.
- * 
- * @param instruction The S-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidSTypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given B-type instruction is valid.
- * 
- * @param instruction The B-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidBTypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given U-type instruction is valid.
- * 
- * @param instruction The U-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidUTypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given J-type instruction is valid.
- * 
- * @param instruction The J-type instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
 bool isValidJTypeInstruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given pseudo-instruction is valid.
- * 
- * @param instruction The pseudo-instruction string to validate.
- * @return True if the pseudo-instruction is valid, false otherwise.
- */
 bool isValidPseudoInstruction(const std::string &instruction);
 
 bool isValidBaseExtensionInstruction(const std::string &instruction);
@@ -269,20 +283,16 @@ bool isValidCSRRTypeInstruction(const std::string &instruction);
 bool isValidCSRITypeInstruction(const std::string &instruction);
 bool isValidCSR_Instruction(const std::string &instruction);
 
-/**
- * @brief Validates if a given F-extension instruction is valid.
- * 
- * @param instruction The F-extension instruction string to validate.
- * @return True if the instruction is valid, false otherwise.
- */
+bool isValidFDRTypeInstruction(const std::string &instruction);
+bool isValidFDR1TypeInstruction(const std::string &instruction);
+bool isValidFDR2TypeInstruction(const std::string &instruction);
+bool isValidFDR3TypeInstruction(const std::string &instruction);
+bool isValidFDR4TypeInstruction(const std::string &instruction);
+bool isValidFDITypeInstruction(const std::string &instruction);
+bool isValidFDSTypeInstruction(const std::string &instruction);
+
 bool isValidFExtensionInstruction(const std::string &instruction);
 
-/**
- * @brief Retrieves the expected syntax for a given opcode.
- * 
- * @param opcode The opcode of the instruction.
- * @return A string representing the expected syntax of the instruction.
- */
 std::string getExpectedSyntaxes(const std::string &opcode);
 
 } // namespace InstructionSet

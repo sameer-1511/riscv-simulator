@@ -4,6 +4,6 @@
 build/
 test/test.txt
 test/testex
-vm_state/
 Jsons/
 TODO.md
+ss.py

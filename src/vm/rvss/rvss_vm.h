@@ -13,16 +13,16 @@
 #include "rvss_control_unit.h"
 
 class RVSSVM : public VMBase {
-private:
-public: // TODO: take public down
+public: 
     RVSSControlUnit controlUnit;
 
 
     // intermediate variables
     int64_t execution_result_ = 0;
     int64_t memory_result_ = 0;
-    int64_t memory_address_ = 0;
-    int64_t memory_data_ = 0;
+    // int64_t memory_address_ = 0;
+    // int64_t memory_data_ = 0;
+    uint64_t return_address_ = 0;
     
     double fexecution_result_ = 0.0;
     double fmemory_result_ = 0.0;
@@ -32,6 +32,7 @@ public: // TODO: take public down
     bool branch_flag_ = false;
     int64_t next_pc_ = 0; // for jal, jalr, 
 
+    // CSR intermediate variables
     uint16_t csr_target_address_;
     uint64_t csr_old_value_;
     uint64_t csr_write_val_;
@@ -60,7 +61,6 @@ public: // TODO: take public down
     void writeBackCSR();
 
     void printControlSignals();
-    // TODO: bring public here
     RVSSVM();
     ~RVSSVM();
 

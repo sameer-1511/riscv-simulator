@@ -182,11 +182,6 @@ extern const std::unordered_map<std::string, int> csr_to_address;
  */
 extern const std::unordered_map<std::string, std::string> reg_alias_to_name;
 
-/**
- * @brief Checks whether a given register name is valid.
- * @param reg The register name to check.
- * @return True if the register name is valid, false otherwise.
- */
 bool isValidRegister(const std::string &reg);
 
 bool isValidGeneralPurposeRegister(const std::string &reg);
@@ -195,11 +190,6 @@ bool isValidFloatingPointRegister(const std::string &reg);
 
 bool isValidVectorRegister(const std::string &reg);
 
-/**
- * @brief Checks whether a given register name is a valid CSR.
- * @param reg The register name to check.
- * @return True if the register name is a valid CSR, false otherwise.
- */
 bool isValidCSR(const std::string &reg);
 
 

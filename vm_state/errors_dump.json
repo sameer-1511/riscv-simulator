@@ -1,0 +1,9 @@
+{
+    "errorCode": 1,
+    "errors": [
+        {
+            "line": 6,
+            "message": "Invalid syntax: Expected: addi <gp-reg>, <gp-reg>, <imm>"
+        }
+    ]
+}

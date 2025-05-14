@@ -30,8 +30,7 @@ struct MemoryBlock {
  * @brief Represents a memory management system with dynamic memory block allocation.
  */
 class Memory {
-// TODO: change to private after testing
-public:
+private:
     std::unordered_map<uint64_t, MemoryBlock> blocks_; ///< A map storing memory blocks, indexed by block index.
     unsigned int block_size_; ///< The size of each memory block in bytes.
     uint64_t memory_size_ = vmConfig::INI::get("Memory", "memory_size").empty() 

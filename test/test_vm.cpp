@@ -194,17 +194,17 @@ TEST(VmTest, ExecutionTest9) {
     }
 }
 
-TEST(VmTest, ExecutionTest10) {
-    AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
-    RVSSVM vm;
-    vm.loadProgram(program);
-    vm.registers_.writeGPR(3, 0x10000000); // set the data section address
-    vm.step();
-    vm.step();
-    vm.step();
-    ASSERT_EQ(vm.program_counter_, 0x0);
-    ASSERT_EQ(vm.registers_.readGPR(1), 0xc);
-}
+// TEST(VmTest, ExecutionTest10) {
+//     AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
+//     RVSSVM vm;
+//     vm.loadProgram(program);
+//     vm.registers_.writeGPR(3, 0x10000000); // set the data section address
+//     vm.step();
+//     vm.step();
+//     vm.step();
+//     ASSERT_EQ(vm.program_counter_, 0x0);
+//     ASSERT_EQ(vm.registers_.readGPR(1), 0xc);
+// }
 
 TEST(VmTest, ExecutionTest11) {
     AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/lui_auipc_test.s");

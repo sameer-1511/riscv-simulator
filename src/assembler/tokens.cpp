@@ -35,6 +35,7 @@ std::string tokenTypeToString(TokenType type) {
         case TokenType::LPAREN:return "LPAREN      ";
         case TokenType::RPAREN:return "RPAREN      ";
         case TokenType::STRING:return "STRING      ";
+        case TokenType::RM:return "RM          ";
         default:return "UNKNOWN     ";
     }
 }

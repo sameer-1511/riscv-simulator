@@ -126,7 +126,6 @@ void dumpRegisters(const std::string &filename, RegisterFile &register_file) {
     file << "{\n";
 
     file << "    \"control and status registers\": {\n";
-
     if (!csr_to_address.empty()) {
         auto it = csr_to_address.begin();
         auto end = csr_to_address.end();
@@ -148,10 +147,7 @@ void dumpRegisters(const std::string &filename, RegisterFile &register_file) {
             if (it == end) break;
         }
     }
-
     file << "    },\n";
-
-
 
     file << "    \"gp_registers\": {\n";
     for (size_t i = 0; i < gp_registers.size(); ++i) {

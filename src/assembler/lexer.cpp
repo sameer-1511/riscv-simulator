@@ -9,6 +9,7 @@
 #include "lexer.h"
 #include "instructions.h"
 #include "../vm/registers.h"
+#include"../common/rounding_modes.h"
 
 Lexer::Lexer(const std::string &filename) : filename_(filename), line_number_(0), column_number_(0), pos_(0) {
     input_.open(filename_);
@@ -102,6 +103,13 @@ Token Lexer::identifier() {
     if (isValidCSR(value)) {
         return {TokenType::CSR_REGISTER, value, line_number_, start_column};
     }
+
+
+    if (isValidRoundingMode(value)) {
+        return {TokenType::RM, value, line_number_, start_column};
+    }
+
+
     if (pos_ < current_line_.size() && current_line_[pos_] == ':') {
         return {TokenType::LABEL, value, line_number_, start_column};
     } 

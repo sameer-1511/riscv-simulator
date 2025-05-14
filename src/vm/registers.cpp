@@ -205,10 +205,11 @@ const std::unordered_set<std::string> valid_vector_registers = {
 };
 
 const std::unordered_set<std::string> valid_csr_registers = {
-        "frm", "fcsr"
+        "fflags", "frm", "fcsr"
 };
 
 const std::unordered_map<std::string, int> csr_to_address {
+        {"fflags", 0x001},
         {"frm", 0x002},
         {"fcsr", 0x003},
 };

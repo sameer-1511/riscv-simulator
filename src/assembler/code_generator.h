@@ -26,8 +26,16 @@ struct ICUnit {
     uint32_t csr;           ///< Control and Status Register (CSR) value.    
     std::array<char, 33> imm;     ///< Immediate value (up to 32 characters, null-terminated).
     std::string label;            ///< Label associated with this code block, if any.
+    uint8_t rm;       ///< Rounding mode (up to 4 characters, null-terminated).
 
-    ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, rs3{}, imm{}, label{} {}
+    ICUnit() : line_number{}, opcode{}, rd{}, rs1{}, rs2{}, rs3{}, csr{}, imm{}, label{}, rm{} {
+        opcode.fill('\0');
+        rd.fill('\0');
+        rs1.fill('\0');
+        rs2.fill('\0');
+        rs3.fill('\0');
+        imm.fill('\0');
+    }
 
     friend std::ostream &operator<<(std::ostream &os, const ICUnit &unit) {
         os << unit.opcode.data() << "|"
@@ -40,172 +48,90 @@ struct ICUnit {
         return os;
     }
 
-    /**
-     * @brief Sets the line number for the intermediate code block.
-     * 
-     * @param value The line number to set.
-     */
     void setLineNumber(unsigned int value) {
         line_number = value;
     }
 
-    /**
-     * @brief Sets the opcode for the intermediate code block.
-     * 
-     * @param value The opcode string (up to 20 characters).
-     */
     void setOpcode(const std::string &value) {
         strncpy(opcode.data(), value.c_str(), 20);
-        opcode[20] = '\0';  // Null-terminate to ensure no overflow
+        opcode[20] = '\0';  
     }
 
-    /**
-     * @brief Sets the destination register (rd).
-     * 
-     * @param value The destination register string (up to 20 characters).
-     */
     void setRd(const std::string &value) {
         strncpy(rd.data(), value.c_str(), 5);
         rd[5] = '\0';
     }
 
-    /**
-     * @brief Sets the source register 1 (rs1).
-     * 
-     * @param value The source register 1 string (up to 20 characters).
-     */
     void setRs1(const std::string &value) {
         strncpy(rs1.data(), value.c_str(), 5);
         rs1[5] = '\0';
     }
 
-    /**
-     * @brief Sets the source register 2 (rs2).
-     * 
-     * @param value The source register 2 string (up to 20 characters).
-     */
     void setRs2(const std::string &value) {
         strncpy(rs2.data(), value.c_str(), 5);
         rs2[5] = '\0';
     }
 
-    /**
-     * @brief Sets the source register 3 (rs3).
-     * 
-     * @param value The source register 3 string (up to 20 characters).
-     */
     void setRs3(const std::string &value) {
         strncpy(rs3.data(), value.c_str(), 5);
         rs3[5] = '\0';
     }
 
-    /**
-     * @brief Sets the control and status register (CSR) value.
-     * 
-     * @param value The CSR value.
-     */
     void setCsr(uint32_t value) {
         csr = value;
     }
 
-    /**
-     * @brief Sets the immediate value for the intermediate code block.
-     * 
-     * @param value The immediate value string (up to 32 characters).
-     */
     void setImm(const std::string &value) {
         strncpy(imm.data(), value.c_str(), 32);
         imm[32] = '\0';
     }
 
-    /**
-     * @brief Sets the label for the intermediate code block.
-     * 
-     * @param value The label string.
-     */
     void setLabel(const std::string &value) {
         label = value;
     }
 
-    /**
-     * @brief Gets the line number for the intermediate code block.
-     * 
-     * @return The line number.
-     */
+    void setRm(uint8_t value) {
+        rm = value;
+    }
+
     [[nodiscard]] unsigned int getLineNumber() const {
         return line_number;
     }
 
-    /**
-     * @brief Gets the opcode for the intermediate code block.
-     * 
-     * @return The opcode string.
-     */
     [[nodiscard]] std::string getOpcode() const {
         return opcode.data();
     }
 
-    /**
-     * @brief Gets the destination register (rd).
-     * 
-     * @return The destination register string.
-     */
     [[nodiscard]] std::string getRd() const {
         return rd.data();
     }
 
-    /**
-     * @brief Gets the source register 1 (rs1).
-     * 
-     * @return The source register 1 string.
-     */
     [[nodiscard]] std::string getRs1() const {
         return rs1.data();
     }
 
-    /**
-     * @brief Gets the source register 2 (rs2).
-     * 
-     * @return The source register 2 string.
-     */
     [[nodiscard]] std::string getRs2() const {
         return rs2.data();
     }
 
-    /**
-     * @brief Gets the source register 3 (rs3).
-     * 
-     * @return The source register 3 string.
-     */
     [[nodiscard]] std::string getRs3() const {
         return rs3.data();
     }
 
-    /**
-     * @brief Gets the control and status register (CSR) value.
-     * 
-     * @return The CSR value.
-     */
     [[nodiscard]] uint32_t getCsr() const {
         return csr;
     }
 
-    /**
-     * @brief Gets the immediate value for the intermediate code block.
-     * 
-     * @return The immediate value string.
-     */
     [[nodiscard]] std::string getImm() const {
         return imm.data();
     }
 
-    /**
-     * @brief Gets the label for the intermediate code block.
-     * 
-     * @return The label string.
-     */
     [[nodiscard]] std::string getLabel() const {
         return label;
+    }
+
+    [[nodiscard]] uint8_t getRm() const {
+        return rm;
     }
 };
 
@@ -283,6 +209,16 @@ std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
 
 std::bitset<32> genarateCSRRTypeMachineCode(const ICUnit &block);
 std::bitset<32> genarateCSRITypeMachineCode(const ICUnit &block);
+
+std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDR2TypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDR3TypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDR4TypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDITypeMachineCode(const ICUnit &block);
+std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block);
+
+
 
 /**
  * @brief Generates machine code from a vector of intermediate code blocks.

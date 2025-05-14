@@ -102,7 +102,12 @@ void RVSSVM::execute() {
     if (controlUnit.getBranch() && branch_flag_) { // JAL, JALR
         next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in fetch()
         updateProgramCounter(-4);
-        updateProgramCounter(imm);
+        return_address_ = program_counter_ + 4;
+        if (opcode == 0b1100111) { // JALR
+            updateProgramCounter((execution_result_ & ~1) - program_counter_);
+        } else { // JAL
+            updateProgramCounter(imm);
+        }
     }
 
     if (opcode == 0b0010111) { // AUIPC
@@ -127,49 +132,18 @@ void RVSSVM::executeVector() {
 void RVSSVM::executeCSR() {
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
-    uint8_t uimm = rs1; // Same bits used for uimm
-    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    // uint8_t uimm = rs1; // Same bits used for uimm
+    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     uint16_t csr = (current_instruction_ >> 20) & 0xFFF;
 
     uint64_t csr_val = registers_.readCSR(csr);
-    uint64_t write_val = 0;
+    // uint64_t write_val = 0;
 
-    switch (funct3) {
-        case 0b001: { // CSRRW
-            write_val = registers_.readGPR(rs1);
-            registers_.writeGPR(rd, csr_val);
-            registers_.writeCSR(csr, write_val);
-            break;
-        }
-        case 0b010: { // CSRRS
-            write_val = registers_.readGPR(rs1);
-            registers_.writeGPR(rd, csr_val);
-            if (rs1 != 0b00000) registers_.writeCSR(csr, csr_val | write_val);
-            break;
-        }
-        case 0b011: { // CSRRC
-            write_val = registers_.readGPR(rs1);
-            registers_.writeGPR(rd, csr_val);
-            if (rs1 != 0b00000) registers_.writeCSR(csr, csr_val & ~write_val);
-            break;
-        }
-        case 0b101: { // CSRRWI
-        std::cout << "CSRRWI" << std::endl;
-            registers_.writeGPR(rd, csr_val);
-            registers_.writeCSR(csr, uimm);
-            break;
-        }
-        case 0b110: { // CSRRSI
-            registers_.writeGPR(rd, csr_val);
-            if (uimm != 0) registers_.writeCSR(csr, csr_val | uimm);
-            break;
-        }
-        case 0b111: { // CSRRCI
-            registers_.writeGPR(rd, csr_val);
-            if (uimm != 0) registers_.writeCSR(csr, csr_val & ~uimm);
-            break;
-        }
-    }
+    csr_target_address_ = csr;
+    csr_old_value_ = csr_val;
+    csr_write_type_ = funct3;
+    csr_write_val_ = registers_.readGPR(rs1);
+    csr_uimm_ = rs1; // used for immediate-type CSRs
 }
 
 
@@ -180,67 +154,77 @@ void RVSSVM::memory() {
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
     if (controlUnit.getMemRead()) {
-        // registers_.writeGPR(rd, memory_controller_.readWord(execution_result_));
-        // switch for ld, lw, lb, lbu, lh, lhu
         switch (funct3) {
-        case 0x0: // LB
+        case 0b000: {// LB
             memory_result_ = static_cast<int8_t>(memory_controller_.readByte(execution_result_));
             break;
-        case 0x1: // LH
+        }
+        case 0b001: {// LH
             memory_result_ = static_cast<int16_t>(memory_controller_.readHalfWord(execution_result_));
             break;
-        case 0x2: // LW
+        }
+        case 0b010: {// LW
             memory_result_ = static_cast<int32_t>(memory_controller_.readWord(execution_result_));
             break;
-        case 0x3: // LD
+        }
+        case 0b011: {// LD
             memory_result_ = memory_controller_.readDoubleWord(execution_result_);
             break;
-        case 0x4: // LBU
+        }
+        case 0b100: {// LBU
             memory_result_ = static_cast<uint8_t>(memory_controller_.readByte(execution_result_));
             break;
-        case 0x5: // LHU
+        }
+        case 0b101: {// LHU
             memory_result_ = static_cast<uint16_t>(memory_controller_.readHalfWord(execution_result_));
             break;
-        case 0x6: // LWU
+        }
+        case 0b110: {// LWU
             memory_result_ = static_cast<uint32_t>(memory_controller_.readWord(execution_result_));
             break;
+        }
         default:
             break;
         }
-
-        // memory_result_ = memory_controller_.readWord(execution_result_);
     } 
     if (controlUnit.getMemWrite()) {
         switch (funct3)
         {
-        case 0x0: // SB
+        case 0b000: {// SB
             memory_controller_.writeByte(execution_result_, registers_.readGPR(rs2));
             break;
-        case 0x1: // SH
+        }
+        case 0b001: {// SH
             memory_controller_.writeHalfWord(execution_result_, registers_.readGPR(rs2));
             break;
-        case 0x2: // SW
+        }
+        case 0b010: {// SW
             memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
             break;
-        case 0x3: // SD
+        }
+        case 0b011: {// SD
             memory_controller_.writeDoubleWord(execution_result_, registers_.readGPR(rs2));
             break;
+        }
         default:
             break;
         }
-        // memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
     }
 
 }
 
 void RVSSVM::writeBack() {
     uint8_t opcode = current_instruction_ & 0b1111111;
-    uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
+    // uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     // uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     int32_t imm = imm_generator(current_instruction_);
 
     // TODO: Implement floating point support
+    if (opcode == 0b1110011) { // CSR opcode
+        writeBackCSR();
+        return;
+    } 
 
     if (controlUnit.getRegWrite() && rd != 0) { // Avoid writing to x0
         switch (opcode)
@@ -277,7 +261,6 @@ void RVSSVM::writeBack() {
             registers_.writeGPR(rd, execution_result_);
             break;
         }
-            break;
         }
     }
 
@@ -285,13 +268,56 @@ void RVSSVM::writeBack() {
         // Updated in execute()
     }
     if (opcode == 0x67) { // JALR
-        updateProgramCounter((rs1 + imm) & ~1); // Ensure LSB is 0
+        registers_.writeGPR(rd, return_address_); // Write back to rs1
+        // Updated in execute()
     }
 
 }
 
 void RVSSVM::writeBackCSR() {
-    
+    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+
+    switch (csr_write_type_) {
+        case 0b001: { // CSRRW
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            registers_.writeCSR(csr_target_address_, csr_write_val_);
+            break;
+        }
+        case 0b010: { // CSRRS
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            if (csr_write_val_ != 0) {
+                registers_.writeCSR(csr_target_address_, csr_old_value_ | csr_write_val_);
+            }
+            break;
+        }
+        case 0b011: { // CSRRC
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            if (csr_write_val_ != 0) {
+                registers_.writeCSR(csr_target_address_, csr_old_value_ & ~csr_write_val_);
+            }
+            break;
+        }
+        case 0b101: { // CSRRWI
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            registers_.writeCSR(csr_target_address_, csr_uimm_);
+            break;
+        }
+        case 0b110: { // CSRRSI
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            if (csr_uimm_ != 0) {
+                registers_.writeCSR(csr_target_address_, csr_old_value_ | csr_uimm_);
+            }
+            break;
+        }
+        case 0b111: { // CSRRCI
+            if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
+            if (csr_uimm_ != 0) {
+                registers_.writeCSR(csr_target_address_, csr_old_value_ & ~csr_uimm_);
+            }
+            break;
+        }
+    }
+
 }
 
 
@@ -349,8 +375,6 @@ void RVSSVM::reset() {
     next_pc_ = 0;
     execution_result_ = 0;
     memory_result_ = 0;
-    memory_address_ = 0;
-    memory_data_ = 0;
     
 }
 void RVSSVM::dumpState(const std::string &filename) {

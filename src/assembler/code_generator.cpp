@@ -181,6 +181,36 @@ std::bitset<32> genarateCSRITypeMachineCode(const ICUnit &block) {
     return code;
 }
 
+// TODO: START HERE
+std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDR2TypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDR3TypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDR4TypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDITypeMachineCode(const ICUnit &block) {
+
+}
+
+std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block) {
+
+}
+
+
 std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::bitset<32>> machine_code;
     for (const auto &pair : IntermediateCode) {
@@ -206,7 +236,29 @@ std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICU
             code = genarateCSRRTypeMachineCode(block);
         } else if (InstructionSet::isValidCSRITypeInstruction(block.getOpcode())) {
             code = genarateCSRITypeMachineCode(block);
-        } else {
+        } else if (InstructionSet::isValidFDRTypeInstruction(block.getOpcode())) {
+            code = generateFDRTypeMachineCode(block);
+        } else if (InstructionSet::isValidFDR1TypeInstruction(block.getOpcode())) {
+            code = generateFDR1TypeMachineCode(block);
+        } else if (InstructionSet::isValidFDR2TypeInstruction(block.getOpcode())) {
+            code = generateFDR2TypeMachineCode(block);
+        } else if (InstructionSet::isValidFDR3TypeInstruction(block.getOpcode())) {
+            code = generateFDR3TypeMachineCode(block);
+        } else if (InstructionSet::isValidFDR4TypeInstruction(block.getOpcode())) {
+            code = generateFDR4TypeMachineCode(block);
+        } else if (InstructionSet::isValidFDITypeInstruction(block.getOpcode())) {
+            code = generateFDITypeMachineCode(block);
+        } else if (InstructionSet::isValidFDSTypeInstruction(block.getOpcode())) {
+            code = generateFDSTypeMachineCode(block);
+        }
+        
+        
+        
+        
+        
+        
+        
+        else {
             throw std::runtime_error("Invalid instruction type");
         }
         machine_code.push_back(code);
