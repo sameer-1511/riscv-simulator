@@ -129,7 +129,7 @@ struct FDR2TypeInstructionEncoding { //fsqrt, have funct5 instead of rs2
         : opcode(opcode), funct5(funct5), funct7(funct7) {}
 };
 
-struct FDR3TypeInstructionEncoding { //fcvt
+struct FDR3TypeInstructionEncoding { 
     std::bitset<7> opcode;
     std::bitset<3> funct3;
     std::bitset<5> funct5;
@@ -281,7 +281,7 @@ bool isValidBaseExtensionInstruction(const std::string &instruction);
 
 bool isValidCSRRTypeInstruction(const std::string &instruction);
 bool isValidCSRITypeInstruction(const std::string &instruction);
-bool isValidCSR_Instruction(const std::string &instruction);
+bool isValidCSRInstruction(const std::string &instruction);
 
 bool isValidFDRTypeInstruction(const std::string &instruction);
 bool isValidFDR1TypeInstruction(const std::string &instruction);

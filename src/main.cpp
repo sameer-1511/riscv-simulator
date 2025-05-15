@@ -7,6 +7,7 @@
 #include "./assembler/code_generator.h"
 
 #include "./assembler/assembler.h"
+#include "./assembler/instructions.h"
 
 #include "./vm/memory_controller.h"
 
@@ -43,6 +44,7 @@ int main() {
         count += 4;
     }
 
+
     // AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/branch_test.s");
     
     // VMRunner vmRunner;
@@ -56,7 +58,7 @@ int main() {
     // AssembledProgram program;
     // RVSSVM vm;
     // try{
-    //     program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
+    //     program = assemble("/home/vis/Desk/codes/assembler/examples/f_d_test.s");
     // } catch(const std::runtime_error& e) {
     //     std::cerr << e.what() << '\n';
     //     return 0;

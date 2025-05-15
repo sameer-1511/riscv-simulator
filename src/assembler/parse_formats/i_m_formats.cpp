@@ -68,15 +68,31 @@ bool Parser::parse_O_GPR_C_GPR_C_I() {
             reg = reg_alias_to_name.at(peekToken(3).value);
             block.setRs1(reg);
             int64_t imm = std::stoll(peekToken(5).value);
-            if (-2048 <= imm && imm <= 2047) {
-                block.setImm(std::to_string(imm));
+
+            if (InstructionSet::isValidI2TypeInstruction(block.getOpcode())) {
+                if (0 <= imm && imm <= 31) {
+                    block.setImm(std::to_string(imm));
+                } else {
+                    errors_.count++;
+                    recordError(ParseError(peekToken(5).line_number, "Immediate value out of range"));
+                    errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: 0 <= imm <= 31", filename_, peekToken(5).line_number, peekToken(5).column_number, getLineFromFile(filename_, peekToken(5).line_number)));
+                    skipCurrentLine();
+                    return true;
+                }
             } else {
-                errors_.count++;
-                recordError(ParseError(peekToken(5).line_number, "Immediate value out of range"));
-                errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: -2048 <= imm <= 2047", filename_, peekToken(5).line_number, peekToken(5).column_number, getLineFromFile(filename_, peekToken(5).line_number)));
-                skipCurrentLine();
-                return true;
+                if (-2048 <= imm && imm <= 2047) {
+                    block.setImm(std::to_string(imm));
+                } else {
+                    errors_.count++;
+                    recordError(ParseError(peekToken(5).line_number, "Immediate value out of range"));
+                    errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: -2048 <= imm <= 2047", filename_, peekToken(5).line_number, peekToken(5).column_number, getLineFromFile(filename_, peekToken(5).line_number)));
+                    skipCurrentLine();
+                    return true;
+                }
             }
+
+
+            
         } else if (InstructionSet::isValidBTypeInstruction(block.getOpcode())) {
             reg = reg_alias_to_name.at(peekToken(1).value);
             block.setRs1(reg);
@@ -265,6 +281,7 @@ bool Parser::parse_O_GPR_C_IL() {
                 IntermediateCode.emplace_back(block, false);
                 instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();
                 instruction_index_++;
+                skipCurrentLine();
                 return true;
             }
         }

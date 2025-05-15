@@ -409,20 +409,39 @@ bool Parser::parse_O_FPR_C_I_LP_GPR_RP() {
         block.setOpcode(currentToken().value);
         block.setLineNumber(currentToken().line_number);
         std::string reg;
-        reg = reg_alias_to_name.at(peekToken(1).value);
-        block.setRd(reg);
-        int64_t imm = std::stoll(peekToken(3).value);
-        if (-2048 <= imm && imm <= 2047) {
-            block.setImm(std::to_string(imm));
-        } else {
-            errors_.count++;
-            recordError(ParseError(peekToken(3).line_number, "Immediate value out of range"));
-            errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: -2048 <= imm <= 2047", filename_, peekToken(3).line_number, peekToken(3).column_number, getLineFromFile(filename_, peekToken(3).line_number)));
-            skipCurrentLine();
-            return true;
+
+        if (InstructionSet::isValidFDITypeInstruction(block.getOpcode())) {
+            reg = reg_alias_to_name.at(peekToken(1).value);
+            block.setRd(reg);
+            int64_t imm = std::stoll(peekToken(3).value);
+            if (-2048 <= imm && imm <= 2047) {
+                block.setImm(std::to_string(imm));
+            } else {
+                errors_.count++;
+                recordError(ParseError(peekToken(3).line_number, "Immediate value out of range"));
+                errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: -2048 <= imm <= 2047", filename_, peekToken(3).line_number, peekToken(3).column_number, getLineFromFile(filename_, peekToken(3).line_number)));
+                skipCurrentLine();
+                return true;
+            }
+            reg = reg_alias_to_name.at(peekToken(5).value);
+            block.setRs1(reg);
+        } else if (InstructionSet::isValidFDSTypeInstruction(block.getOpcode())) {
+            reg = reg_alias_to_name.at(peekToken(1).value);
+            block.setRs2(reg);
+            int64_t imm = std::stoll(peekToken(3).value);
+            if (-2048 <= imm && imm <= 2047) {
+                block.setImm(std::to_string(imm));
+            } else {
+                errors_.count++;
+                recordError(ParseError(peekToken(3).line_number, "Immediate value out of range"));
+                errors_.all_errors.emplace_back(Errors::ImmediateOutOfRangeError("Immediate value out of range", "Expected: -2048 <= imm <= 2047", filename_, peekToken(3).line_number, peekToken(3).column_number, getLineFromFile(filename_, peekToken(3).line_number)));
+                skipCurrentLine();
+                return true;
+            }
+            reg = reg_alias_to_name.at(peekToken(5).value);
+            block.setRs1(reg);
         }
-        reg = reg_alias_to_name.at(peekToken(5).value);
-        block.setRs1(reg);
+
         skipCurrentLine();
         IntermediateCode.emplace_back(block, true);
         instruction_number_line_number_mapping[instruction_index_] = block.getLineNumber();

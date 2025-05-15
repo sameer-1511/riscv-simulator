@@ -207,8 +207,8 @@ std::bitset<32> generateUTypeMachineCode(const ICUnit &block);
  */
 std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
 
-std::bitset<32> genarateCSRRTypeMachineCode(const ICUnit &block);
-std::bitset<32> genarateCSRITypeMachineCode(const ICUnit &block);
+std::bitset<32> generateCSRRTypeMachineCode(const ICUnit &block);
+std::bitset<32> generateCSRITypeMachineCode(const ICUnit &block);
 
 std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block);
 std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block);

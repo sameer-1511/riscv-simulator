@@ -333,6 +333,14 @@ std::unordered_map<std::string, FDRTypeInstructionEncoding> F_D_R_type_instructi
     {"fmin.s",      {0b1010011, 0b000, 0b0010100}}, // O_FPR_C_FPR_C_FPR
     {"fmax.s",      {0b1010011, 0b001, 0b0010100}}, // O_FPR_C_FPR_C_FPR
 
+    {"feq.s",      {0b1010011, 0b010, 0b1010000}}, // O_FPR_C_FPR_C_FPR
+    {"flt.s",      {0b1010011, 0b001, 0b1010000}}, // O_FPR_C_FPR_C_FPR
+    {"fle.s",      {0b1010011, 0b000, 0b1010000}}, // O_FPR_C_FPR_C_FPR
+
+    {"feq.d",      {0b1010011, 0b010, 0b1010001}}, // O_FPR_C_FPR_C_FPR
+    {"flt.d",      {0b1010011, 0b001, 0b1010001}}, // O_FPR_C_FPR_C_FPR
+    {"fle.d",      {0b1010011, 0b000, 0b1010001}}, // O_FPR_C_FPR_C_FPR
+
     {"fsgnj.d",     {0b1010011, 0b000, 0b0010001}}, // O_FPR_C_FPR_C_FPR
     {"fsgnjn.d",    {0b1010011, 0b001, 0b0010001}}, // O_FPR_C_FPR_C_FPR
     {"fsgnjx.d",    {0b1010011, 0b010, 0b0010001}}, // O_FPR_C_FPR_C_FPR
@@ -421,134 +429,6 @@ std::unordered_map<std::string, FDSTypeInstructionEncoding> F_D_S_type_instructi
     {"fsd",         {0b0100111, 0b011}}, // O_FPR_C_GPR_C_I
 };
 
-
-std::unordered_map<std::string, InstructionType> instruction_opcode_type_map = {
-    {"add",         InstructionType::R},
-    {"sub",         InstructionType::R},
-    {"xor",         InstructionType::R},
-    {"or",          InstructionType::R},
-    {"and",         InstructionType::R},
-    {"sll",         InstructionType::R},
-    {"srl",         InstructionType::R},
-    {"sra",         InstructionType::R},
-    {"slt",         InstructionType::R},
-    {"sltu",        InstructionType::R},
-
-    {"addw",        InstructionType::R},
-    {"subw",        InstructionType::R},
-    {"sllw",        InstructionType::R},
-    {"srlw",        InstructionType::R},
-    {"sraw",        InstructionType::R},
-
-    {"addi",        InstructionType::I1},
-    {"xori",        InstructionType::I1},
-    {"ori",         InstructionType::I1},
-    {"andi",        InstructionType::I1},
-    {"slli",        InstructionType::I2},
-    {"srli",        InstructionType::I2},
-    {"srai",        InstructionType::I2},
-    {"slti",        InstructionType::I1},
-    {"sltiu",       InstructionType::I1},
-
-    {"addiw",       InstructionType::I1},
-    {"slliw",       InstructionType::I2},
-    {"srliw",       InstructionType::I2},
-    {"sraiw",       InstructionType::I2},
-
-    {"lb",          InstructionType::I1},
-    {"lh",          InstructionType::I1},
-    {"lw",          InstructionType::I1},
-    {"ld",          InstructionType::I1},
-    {"lbu",         InstructionType::I1},
-    {"lhu",         InstructionType::I1},
-    {"lwu",         InstructionType::I1},
-
-    {"jalr",        InstructionType::I1},
-
-    {"sb",          InstructionType::S},
-    {"sh",          InstructionType::S},
-    {"sw",          InstructionType::S},
-    {"sd",          InstructionType::S},
-
-    {"beq",         InstructionType::B},
-    {"bne",         InstructionType::B},
-    {"blt",         InstructionType::B},
-    {"bge",         InstructionType::B},
-    {"bltu",        InstructionType::B},
-    {"bgeu",        InstructionType::B},
-
-    {"lui",         InstructionType::U},
-    {"auipc",       InstructionType::U},
-
-    {"jal",         InstructionType::J},
-
-    {"ecall",       InstructionType::I3},
-    {"ebreak",      InstructionType::I3},
-
-//==CSR=========================================================================================
-    {"csrrw",       InstructionType::CSR_R},
-    {"csrrs",       InstructionType::CSR_R},
-    {"csrrc",       InstructionType::CSR_R},
-    {"csrrwi",      InstructionType::CSR_I},
-    {"csrrsi",      InstructionType::CSR_I},
-    {"csrrci",      InstructionType::CSR_I},
-
-//==RV64M======================================================================================
-    {"mul",         InstructionType::R},
-    {"mulh",        InstructionType::R},
-    {"mulhsu",      InstructionType::R},
-    {"mulhu",       InstructionType::R},
-    {"div",         InstructionType::R},
-    {"divu",        InstructionType::R},
-    {"rem",         InstructionType::R},
-    {"remu",        InstructionType::R},
-
-    {"mulw",        InstructionType::R},
-    {"divw",        InstructionType::R},
-    {"divuw",       InstructionType::R},
-    {"remw",        InstructionType::R},
-    {"remuw",       InstructionType::R},
-
-//==RV64F======================================================================================
-    {"flw",         InstructionType::I1},
-    {"fsw",         InstructionType::S},
-
-    {"fmadd.s",     InstructionType::R4},
-    {"fmsub.s",     InstructionType::R4},
-    {"fnmsub.s",    InstructionType::R4},
-    {"fnmadd.s",    InstructionType::R4},
-
-    {"fadd.s",      InstructionType::R},
-    {"fsub.s",      InstructionType::R},
-    {"fmul.s",      InstructionType::R},
-    {"fdiv.s",      InstructionType::R},
-    {"fsqrt.s",     InstructionType::R},
-    {"fsgnj.s",     InstructionType::R},
-    {"fsgnjn.s",    InstructionType::R},
-    {"fsgnjx.s",    InstructionType::R},
-    {"fmin.s",      InstructionType::R},
-    {"fmax.s",      InstructionType::R},
-    {"feq.s",       InstructionType::R},
-    {"flt.s",       InstructionType::R},
-    {"fle.s",       InstructionType::R},
-
-    {"fcvt.w.s",    InstructionType::R},
-    {"fcvt.wu.s",   InstructionType::R},
-    {"fcvt.s.w",    InstructionType::R},
-    {"fcvt.s.wu",   InstructionType::R},
-
-    {"fcvt.l.s",    InstructionType::R},
-    {"fcvt.lu.s",   InstructionType::R},
-    {"fcvt.s.l",    InstructionType::R},
-    {"fcvt.s.lu",   InstructionType::R},
-
-    {"fclass.s",    InstructionType::R},
-
-
-    {"fmv.x.w",     InstructionType::R},
-    {"fmv.w.x",     InstructionType::R},
-
-};
 
 /*
    O_GPR_C_GPR_C_GPR,       ///< Opcode general-register , general-register , register
@@ -844,7 +724,7 @@ bool isValidCSRITypeInstruction(const std::string &instruction) {
     return CSRIInstructions.find(instruction) != CSRIInstructions.end();
 }
 
-bool isValidCSR_Instruction(const std::string &instruction) {
+bool isValidCSRInstruction(const std::string &instruction) {
     return (CSRRInstructions.find(instruction) != CSRRInstructions.end()) ||
         (CSRIInstructions.find(instruction) != CSRIInstructions.end());
 }
