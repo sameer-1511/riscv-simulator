@@ -258,21 +258,13 @@ extern std::unordered_map<std::string, std::vector<SyntaxType>> instruction_synt
 bool isValidInstruction(const std::string &instruction);
 
 bool isValidRTypeInstruction(const std::string &name);
-
 bool isValidITypeInstruction(const std::string &instruction);
-
 bool isValidI1TypeInstruction(const std::string &instruction);
-
 bool isValidI2TypeInstruction(const std::string &instruction);
-
 bool isValidI3TypeInstruction(const std::string &instruction);
-
 bool isValidSTypeInstruction(const std::string &instruction);
-
 bool isValidBTypeInstruction(const std::string &instruction);
-
 bool isValidUTypeInstruction(const std::string &instruction);
-
 bool isValidJTypeInstruction(const std::string &instruction);
 
 bool isValidPseudoInstruction(const std::string &instruction);
@@ -291,7 +283,11 @@ bool isValidFDR4TypeInstruction(const std::string &instruction);
 bool isValidFDITypeInstruction(const std::string &instruction);
 bool isValidFDSTypeInstruction(const std::string &instruction);
 
-bool isValidFExtensionInstruction(const std::string &instruction);
+
+
+
+bool isFInstruction(const uint32_t &instruction);
+bool isDInstruction(const uint32_t &instruction);
 
 std::string getExpectedSyntaxes(const std::string &opcode);
 

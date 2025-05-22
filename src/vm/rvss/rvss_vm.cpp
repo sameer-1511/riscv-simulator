@@ -8,14 +8,15 @@
 
 #include "../../utils.h"
 #include "../../globals.h"
+#include "../../common/instructions.h"
+
+#include <cctype>
 
 RVSSVM::RVSSVM() : VMBase() {
-    // Initialize control signals
     dumpRegisters(globals::registers_dump_file, registers_);
 }
 
 RVSSVM::~RVSSVM() = default;
-
 
 void RVSSVM::fetch() {
     current_instruction_ = memory_controller_.readWord(program_counter_);
@@ -29,18 +30,12 @@ void RVSSVM::decode() {
 void RVSSVM::execute() {
     uint8_t opcode = current_instruction_ & 0b1111111;
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
-    // uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
-    // uint8_t funct2 = (current_instruction_ >> 25) & 0b11;
-    // uint8_t funct6 = (current_instruction_ >> 26) & 0b111111;
 
-    if (opcode == 0b1010011 
-     || opcode == 0b0100111 
-     || opcode == 0b1000011 
-     || opcode == 0b1000111 
-     || opcode == 0b1001011 
-     || opcode == 0b1001111 
-     ) { // RV64 F
+    if (InstructionSet::isFInstruction(current_instruction_)) { // RV64 F
         executeFloat();
+        return;
+    } else if (InstructionSet::isDInstruction(current_instruction_)) {
+        executeDouble();
         return;
     } else if (opcode == 0b1110011) {
         executeCSR();
@@ -49,27 +44,23 @@ void RVSSVM::execute() {
 
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
-    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
 
     int32_t imm = imm_generator(current_instruction_);
 
     uint64_t reg1_value = registers_.readGPR(rs1);
     uint64_t reg2_value = registers_.readGPR(rs2);
-    
+
     bool overflow = false;
 
-    
     if (controlUnit.getALUSrc()) {
         reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
     }
-
 
     ALU::ALUOp aluOperation = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
     std::tie(execution_result_, overflow) = alu_.execute(aluOperation, reg1_value, reg2_value);
 
     if (controlUnit.getBranch()) {
-        switch (funct3)
-        {
+        switch (funct3) {
         case 0b000: {// BEQ
             branch_flag_ = (execution_result_ == 0);
             break;
@@ -94,8 +85,6 @@ void RVSSVM::execute() {
             branch_flag_ = (execution_result_ == 0);
             break;
         }
-        default:
-            break;
         }
     }
 
@@ -117,12 +106,43 @@ void RVSSVM::execute() {
 }
 
 void RVSSVM::executeFloat() {
-    // if (controlUnit.getALUSrc()) {
-    //     freg2 = imm;
-    // }
+    uint8_t opcode = current_instruction_ & 0b1111111;
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+    uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
+    uint8_t rm = funct3;
+    uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
+    uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
+    uint8_t rs3 = (current_instruction_ >> 27) & 0b11111;
 
-    // ALU::ALUOp aluOp = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
-    // std::tie(fexecution_result_, overflow) = alu_.execute<_Float32>(aluOp, freg1, freg2);
+    uint8_t fcsr_status = 0;
+
+    int32_t imm = imm_generator(current_instruction_);
+
+    if (rm == 0b111) {
+        rm = registers_.readCSR(0x002);
+    }
+
+    uint64_t reg1_value = registers_.readFPR(rs1);
+    uint64_t reg2_value = registers_.readFPR(rs2);
+    uint64_t reg3_value = registers_.readFPR(rs3);
+    
+    if (funct7 == 0b1101000 || funct7 == 0b1111000 || opcode == 0b0000111 || opcode == 0b0100111) {
+        reg1_value = registers_.readGPR(rs1);
+    }
+
+    if (controlUnit.getALUSrc()) {
+        reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
+    }
+
+    ALU::ALUOp aluOperation = controlUnit.getALUSignal(current_instruction_, controlUnit.getALUOp());
+    std::tie(execution_result_, fcsr_status) = alu_.fpexecute(aluOperation, reg1_value, reg2_value, reg3_value, rm);
+
+    registers_.writeCSR(0x003, fcsr_status); 
+}
+
+void RVSSVM::executeDouble() {
+    // fexecution_result_ = 1.234; // TODO: Implement double floating point operations
+    return;
 }
 
 void RVSSVM::executeVector() {
@@ -130,28 +150,30 @@ void RVSSVM::executeVector() {
 }
 
 void RVSSVM::executeCSR() {
-    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
     uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
-    // uint8_t uimm = rs1; // Same bits used for uimm
-    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     uint16_t csr = (current_instruction_ >> 20) & 0xFFF;
-
     uint64_t csr_val = registers_.readCSR(csr);
-    // uint64_t write_val = 0;
 
     csr_target_address_ = csr;
     csr_old_value_ = csr_val;
-    csr_write_type_ = funct3;
     csr_write_val_ = registers_.readGPR(rs1);
-    csr_uimm_ = rs1; // used for immediate-type CSRs
+    csr_uimm_ = rs1; 
 }
-
 
 void RVSSVM::memory() {
     // uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
     // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+
+    if (InstructionSet::isFInstruction(current_instruction_)) { // RV64 F
+        memoryFloat();
+        return;
+    } else if (InstructionSet::isDInstruction(current_instruction_)) {
+        memoryDouble();
+        return;
+    } 
+
 
     if (controlUnit.getMemRead()) {
         switch (funct3) {
@@ -183,8 +205,6 @@ void RVSSVM::memory() {
             memory_result_ = static_cast<uint32_t>(memory_controller_.readWord(execution_result_));
             break;
         }
-        default:
-            break;
         }
     } 
     if (controlUnit.getMemWrite()) {
@@ -206,12 +226,44 @@ void RVSSVM::memory() {
             memory_controller_.writeDoubleWord(execution_result_, registers_.readGPR(rs2));
             break;
         }
-        default:
-            break;
         }
     }
 
 }
+
+void RVSSVM::memoryFloat() {
+    uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+
+    if (controlUnit.getMemRead()) {
+        switch (funct3) {
+        case 0b010: {// FLW
+            memory_result_ = memory_controller_.readWord(execution_result_);
+            break;
+        }
+        }
+    }
+
+    if (controlUnit.getMemWrite()) {
+        switch (funct3)
+        {
+        case 0b010: {// FSW
+            memory_controller_.writeWord(execution_result_, registers_.readFPR(rs2));
+            break;
+        }
+        }
+    }
+    return;
+}
+
+void RVSSVM::memoryDouble() {
+    return;
+}
+
+void RVSSVM::memoryVector() {
+    return;
+}
+
 
 void RVSSVM::writeBack() {
     uint8_t opcode = current_instruction_ & 0b1111111;
@@ -220,8 +272,13 @@ void RVSSVM::writeBack() {
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     int32_t imm = imm_generator(current_instruction_);
 
-    // TODO: Implement floating point support
-    if (opcode == 0b1110011) { // CSR opcode
+    if (InstructionSet::isFInstruction(current_instruction_)) { // RV64 F
+        writeBackFloat();
+        return;
+    } else if (InstructionSet::isDInstruction(current_instruction_)) {
+        writeBackDouble();
+        return;
+    } else if (opcode == 0b1110011) { // CSR opcode
         writeBackCSR();
         return;
     } 
@@ -274,10 +331,42 @@ void RVSSVM::writeBack() {
 
 }
 
+void RVSSVM::writeBackFloat() {
+    uint8_t opcode = current_instruction_ & 0b1111111;
+    uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
+    uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    
+    if (controlUnit.getRegWrite() && rd != 0){
+        // write to GPR
+        if (funct7 == 0b1010000
+        || funct7 == 0b1100000
+        || funct7 == 0b1110000) { // f(eq|lt|le).s, fcvt.(w|wu|l|lu).s
+            registers_.writeGPR(rd, execution_result_);
+        } 
+        // write to FPR
+        else if (opcode == 0b0000111) {
+            registers_.writeFPR(rd, memory_result_);
+        } else {
+            registers_.writeFPR(rd, execution_result_);
+        }
+    }
+    return;
+}
+
+void RVSSVM::writeBackDouble() {
+    return;
+}
+
+void RVSSVM::writeBackVector() {
+    return;
+}
+
+
 void RVSSVM::writeBackCSR() {
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+    uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
-    switch (csr_write_type_) {
+    switch (funct3) {
         case 0b001: { // CSRRW
             if (rd != 0) registers_.writeGPR(rd, csr_old_value_);
             registers_.writeCSR(csr_target_address_, csr_write_val_);
@@ -320,8 +409,6 @@ void RVSSVM::writeBackCSR() {
 
 }
 
-
-
 void RVSSVM::run() {
     while(program_counter_ < program_size_) {
         fetch();
@@ -353,15 +440,22 @@ void RVSSVM::debugRun() {
 }
 
 void RVSSVM::step() {
-    fetch();
-    decode();
-    execute();
-    memory();
-    writeBack();
-    instructions_retired_++;
-    cycle_s++;
-    dumpRegisters(globals::registers_dump_file, registers_);
-    std::cout << "Program Counter: " << program_counter_ << std::endl;
+    if (program_counter_ < program_size_) {
+        fetch();
+        decode();
+        execute();
+        memory();
+        writeBack();
+        instructions_retired_++;
+        cycle_s++;
+        dumpRegisters(globals::registers_dump_file, registers_);
+        std::cout << "Program Counter: " << program_counter_ << std::endl;
+    } else if (program_counter_ == program_size_) {
+        std::cout << "Program Counter reached end of program: " << program_counter_ << std::endl;
+    } else {
+        std::cout << "Program Counter out of bounds: " << program_counter_ << std::endl;
+        std::cout << "Program size: " << program_size_ << std::endl;
+    }
 }
 
 void RVSSVM::reset() {
@@ -375,11 +469,10 @@ void RVSSVM::reset() {
     next_pc_ = 0;
     execution_result_ = 0;
     memory_result_ = 0;
-    
 }
+    
 void RVSSVM::dumpState(const std::string &filename) {
     (void)filename;
-
 }
 
 

@@ -117,6 +117,7 @@ void dumpNoErrors(const std::string &filename) {
 void dumpRegisters(const std::string &filename, RegisterFile &register_file) {
 
     std::vector<uint64_t> gp_registers = register_file.getGPRValues();
+    std::vector<uint64_t> fp_registers = register_file.getFPRValues();
 
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -151,8 +152,12 @@ void dumpRegisters(const std::string &filename, RegisterFile &register_file) {
 
     file << "    \"gp_registers\": {\n";
     for (size_t i = 0; i < gp_registers.size(); ++i) {
-        file << "        \"x" << i << "\": \"0x"
-             << std::hex << std::setw(16) << std::setfill('0') << gp_registers[i] << std::setw(0) << std::dec << "\"";
+        file << "        \"x" << i << "\"" ;
+        file << std::string((i >= 10 ? 0 : 1), ' ');
+        file  << ": \"0x";
+        file << std::hex << std::setw(16) << std::setfill('0') 
+             << gp_registers[i] 
+             << std::setw(0) << std::dec << "\"";
         if (i != gp_registers.size() - 1) {
             file << ",";
         }
@@ -161,26 +166,32 @@ void dumpRegisters(const std::string &filename, RegisterFile &register_file) {
     file << "    },\n";
 
     file << "    \"fp_registers\": {\n";
-    for (size_t i = 0; i < gp_registers.size(); ++i) {
-        file << "        \"x" << i << "\": \"0x"
-             << std::hex << std::setw(16) << std::setfill('0') << gp_registers[i] << std::setw(0) << std::dec << "\"";
-        if (i != gp_registers.size() - 1) {
-            file << ",";
-        }
-        file << "\n";
-    }
-    file << "    },\n";
+    for (size_t i = 0; i < fp_registers.size(); ++i) {
+        file << "        \"x" << i << "\"" ;
+        file << std::string((i >= 10 ? 0 : 1), ' ');
+        file  << ": \"0x";
+        file << std::hex << std::setw(16) << std::setfill('0') 
+             << fp_registers[i] 
+             << std::setw(0) << std::dec << "\"";
 
-    file << "    \"vec_registers\": {\n";
-    for (size_t i = 0; i < gp_registers.size(); ++i) {
-        file << "        \"x" << i << "\": \"0x"
-             << std::hex << std::setw(16) << std::setfill('0') << gp_registers[i] << std::setw(0) << std::dec << "\"";
-        if (i != gp_registers.size() - 1) {
+        if (i != fp_registers.size() - 1) {
             file << ",";
         }
         file << "\n";
     }
     file << "    }\n";
+    // file << "    },\n";
+
+    // file << "    \"vec_registers\": {\n";
+    // for (size_t i = 0; i < gp_registers.size(); ++i) {
+    //     file << "        \"x" << i << "\": \"0x"
+    //          << std::hex << std::setw(16) << std::setfill('0') << gp_registers[i] << std::setw(0) << std::dec << "\"";
+    //     if (i != gp_registers.size() - 1) {
+    //         file << ",";
+    //     }
+    //     file << "\n";
+    // }
+    // file << "    }\n";
 
     file << "}\n";
     

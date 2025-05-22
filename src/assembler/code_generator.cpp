@@ -6,7 +6,7 @@
 
 #include "code_generator.h"
 #include "../pch.h"
-#include "instructions.h"
+#include "../common/instructions.h"
 
 std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
     std::vector<std::string> ICList;

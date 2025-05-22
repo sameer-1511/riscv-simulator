@@ -5,7 +5,7 @@
  */
 
 #include "../parser.h"
-#include "../instructions.h"
+#include "../../common/instructions.h"
 #include "../../vm/registers.h"
 #include "../../utils.h"
 #include "../../common/rounding_modes.h"

@@ -333,13 +333,13 @@ std::unordered_map<std::string, FDRTypeInstructionEncoding> F_D_R_type_instructi
     {"fmin.s",      {0b1010011, 0b000, 0b0010100}}, // O_FPR_C_FPR_C_FPR
     {"fmax.s",      {0b1010011, 0b001, 0b0010100}}, // O_FPR_C_FPR_C_FPR
 
-    {"feq.s",      {0b1010011, 0b010, 0b1010000}}, // O_FPR_C_FPR_C_FPR
-    {"flt.s",      {0b1010011, 0b001, 0b1010000}}, // O_FPR_C_FPR_C_FPR
-    {"fle.s",      {0b1010011, 0b000, 0b1010000}}, // O_FPR_C_FPR_C_FPR
+    {"feq.s",       {0b1010011, 0b010, 0b1010000}}, // O_GPR_C_FPR_C_FPR
+    {"flt.s",       {0b1010011, 0b001, 0b1010000}}, // O_GPR_C_FPR_C_FPR
+    {"fle.s",       {0b1010011, 0b000, 0b1010000}}, // O_GPR_C_FPR_C_FPR
 
-    {"feq.d",      {0b1010011, 0b010, 0b1010001}}, // O_FPR_C_FPR_C_FPR
-    {"flt.d",      {0b1010011, 0b001, 0b1010001}}, // O_FPR_C_FPR_C_FPR
-    {"fle.d",      {0b1010011, 0b000, 0b1010001}}, // O_FPR_C_FPR_C_FPR
+    {"feq.d",       {0b1010011, 0b010, 0b1010001}}, // O_GPR_C_FPR_C_FPR
+    {"flt.d",       {0b1010011, 0b001, 0b1010001}}, // O_GPR_C_FPR_C_FPR
+    {"fle.d",       {0b1010011, 0b000, 0b1010001}}, // O_GPR_C_FPR_C_FPR
 
     {"fsgnj.d",     {0b1010011, 0b000, 0b0010001}}, // O_FPR_C_FPR_C_FPR
     {"fsgnjn.d",    {0b1010011, 0b001, 0b0010001}}, // O_FPR_C_FPR_C_FPR
@@ -364,31 +364,28 @@ std::unordered_map<std::string, FDR1TypeInstructionEncoding> F_D_R1_type_instruc
 std::unordered_map<std::string, FDR2TypeInstructionEncoding> F_D_R2_type_instruction_encoding_map = {
     {"fsqrt.s",     {0b1010011, 0b00000, 0b0101100}}, // O_FPR_C_FPR
 
-    {"fcvt.w.s",    {0b1010011, 0b00000, 0b1100000}}, // O_FPR_C_FPR
-    {"fcvt.wu.s",   {0b1010011, 0b00001, 0b1100000}}, // O_FPR_C_FPR
+    {"fcvt.w.s",    {0b1010011, 0b00000, 0b1100000}}, // O_GPR_C_FPR
+    {"fcvt.wu.s",   {0b1010011, 0b00001, 0b1100000}}, // O_GPR_C_FPR
+    {"fcvt.l.s",    {0b1010011, 0b00010, 0b1100000}}, // O_GPR_C_FPR
+    {"fcvt.lu.s",   {0b1010011, 0b00011, 0b1100000}}, // O_GPR_C_FPR
 
-    {"fcvt.s.w",    {0b1010011, 0b00000, 0b1101000}}, // O_FPR_C_FPR
-    {"fcvt.s.wu",   {0b1010011, 0b00001, 0b1101000}}, // O_FPR_C_FPR
+    {"fcvt.s.w",    {0b1010011, 0b00000, 0b1101000}}, // O_FPR_C_GPR
+    {"fcvt.s.wu",   {0b1010011, 0b00001, 0b1101000}}, // O_FPR_C_GPR
+    {"fcvt.s.l",    {0b1010011, 0b00010, 0b1101000}}, // O_FPR_C_GPR
+    {"fcvt.s.lu",   {0b1010011, 0b00011, 0b1101000}}, // O_FPR_C_GPR
 
-    {"fcvt.l.s",    {0b1010011, 0b00010, 0b1100000}}, // O_FPR_C_FPR
-    {"fcvt.lu.s",   {0b1010011, 0b00011, 0b1100000}}, // O_FPR_C_FPR
-
-    {"fcvt.s.l",    {0b1010011, 0b00010, 0b1101000}}, // O_FPR_C_FPR
-    {"fcvt.s.lu",   {0b1010011, 0b00011, 0b1101000}}, // O_FPR_C_FPR
 
     {"fsqrt.d",     {0b1010011, 0b00000, 0b0101101}}, // O_FPR_C_FPR
 
-    {"fcvt.w.d",    {0b1010011, 0b00000, 0b1100001}}, // O_FPR_C_FPR
-    {"fcvt.wu.d",   {0b1010011, 0b00001, 0b1100001}}, // O_FPR_C_FPR
+    {"fcvt.w.d",    {0b1010011, 0b00000, 0b1100001}}, // O_GPR_C_FPR
+    {"fcvt.wu.d",   {0b1010011, 0b00001, 0b1100001}}, // O_GPR_C_FPR
+    {"fcvt.l.d",    {0b1010011, 0b00010, 0b1100001}}, // O_GPR_C_FPR
+    {"fcvt.lu.d",   {0b1010011, 0b00011, 0b1100001}}, // O_GPR_C_FPR
 
-    {"fcvt.d.w",    {0b1010011, 0b00000, 0b1101001}}, // O_FPR_C_FPR
-    {"fcvt.d.wu",   {0b1010011, 0b00001, 0b1101001}}, // O_FPR_C_FPR
-
-    {"fcvt.l.d",    {0b1010011, 0b00010, 0b1100001}}, // O_FPR_C_FPR
-    {"fcvt.lu.d",   {0b1010011, 0b00011, 0b1100001}}, // O_FPR_C_FPR
-
-    {"fcvt.d.l",    {0b1010011, 0b00010, 0b1101001}}, // O_FPR_C_FPR
-    {"fcvt.d.lu",   {0b1010011, 0b00011, 0b1101001}}, // O_FPR_C_FPR
+    {"fcvt.d.w",    {0b1010011, 0b00000, 0b1101001}}, // O_FPR_C_GPR
+    {"fcvt.d.wu",   {0b1010011, 0b00001, 0b1101001}}, // O_FPR_C_GPR
+    {"fcvt.d.l",    {0b1010011, 0b00010, 0b1101001}}, // O_FPR_C_GPR
+    {"fcvt.d.lu",   {0b1010011, 0b00011, 0b1101001}}, // O_FPR_C_GPR
 
 
     {"fcvt.s.d",    {0b1010011, 0b00001, 0b0100000}}, // O_FPR_C_FPR
@@ -397,26 +394,25 @@ std::unordered_map<std::string, FDR2TypeInstructionEncoding> F_D_R2_type_instruc
 };
 
 std::unordered_map<std::string, FDR3TypeInstructionEncoding> F_D_R3_type_instruction_encoding_map = {
-    {"fmv.x.w",     {0b1010011, 0b000, 0b00000, 0b1110000}}, 
-    {"fmv.w.x",     {0b1010011, 0b000, 0b00000, 0b1111000}}, 
+    {"fmv.w.x",     {0b1010011, 0b000, 0b00000, 0b1111000}}, // O_FPR_C_GPR
+    {"fmv.x.w",     {0b1010011, 0b000, 0b00000, 0b1110000}}, // O_GPR_C_FPR
+    {"fclass.s",    {0b1010011, 0b001, 0b00000, 0b1110000}}, // O_GPR_C_FPR
 
-    {"fclass.s",    {0b1010011, 0b001, 0b00000, 0b1110000}}, 
-    {"fclass.d",    {0b1010011, 0b001, 0b00000, 0b1110001}}, 
-
-    {"fmv.x.d",     {0b1010011, 0b000, 0b00000, 0b1110001}},
-    {"fmv.d.x",     {0b1010011, 0b000, 0b00000, 0b1111001}}, 
+    {"fmv.d.x",     {0b1010011, 0b000, 0b00000, 0b1111001}}, // O_FPR_C_GPR
+    {"fmv.x.d",     {0b1010011, 0b000, 0b00000, 0b1110001}}, // O_GPR_C_FPR
+    {"fclass.d",    {0b1010011, 0b001, 0b00000, 0b1110001}}, // O_GPR_C_FPR
 };
 
 std::unordered_map<std::string, FDR4TypeInstructionEncoding> F_D_R4_type_instruction_encoding_map = {
-    {"fmadd.s",     {0b1000011, 0b00}}, // O_FPR_C_FPR_C_FPR
-    {"fmsub.s",     {0b1000111, 0b00}}, // O_FPR_C_FPR_C_FPR
-    {"fnmsub.s",    {0b1001011, 0b00}}, // O_FPR_C_FPR_C_FPR
-    {"fnmadd.s",    {0b1001111, 0b00}}, // O_FPR_C_FPR_C_FPR
+    {"fmadd.s",     {0b1000011, 0b00}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fmsub.s",     {0b1000111, 0b00}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fnmsub.s",    {0b1001011, 0b00}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fnmadd.s",    {0b1001111, 0b00}}, // O_FPR_C_FPR_C_FPR_C_FPR
 
-    {"fmadd.d",     {0b1000011, 0b01}}, // O_FPR_C_FPR_C_FPR
-    {"fmsub.d",     {0b1000111, 0b01}}, // O_FPR_C_FPR_C_FPR
-    {"fnmsub.d",    {0b1001011, 0b01}}, // O_FPR_C_FPR_C_FPR
-    {"fnmadd.d",    {0b1001111, 0b01}}, // O_FPR_C_FPR_C_FPR
+    {"fmadd.d",     {0b1000011, 0b01}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fmsub.d",     {0b1000111, 0b01}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fnmsub.d",    {0b1001011, 0b01}}, // O_FPR_C_FPR_C_FPR_C_FPR
+    {"fnmadd.d",    {0b1001111, 0b01}}, // O_FPR_C_FPR_C_FPR_C_FPR
 };
 
 std::unordered_map<std::string, FDITypeInstructionEncoding> F_D_I_type_instruction_encoding_map = {
@@ -425,8 +421,8 @@ std::unordered_map<std::string, FDITypeInstructionEncoding> F_D_I_type_instructi
 };
 
 std::unordered_map<std::string, FDSTypeInstructionEncoding> F_D_S_type_instruction_encoding_map = {
-    {"fsw",         {0b0100111, 0b010}}, // O_FPR_C_GPR_C_I
-    {"fsd",         {0b0100111, 0b011}}, // O_FPR_C_GPR_C_I
+    {"fsw",         {0b0100111, 0b010}}, // O_FPR_C_I_LP_GPR_RP
+    {"fsd",         {0b0100111, 0b011}}, // O_FPR_C_I_LP_GPR_RP
 };
 
 
@@ -526,7 +522,7 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"fence",       {SyntaxType::O}},
     {"fence_i",     {SyntaxType::O}},
 
-//////////////////////////////////////////////////////////////////////////////-----
+///////////////////////////////////////////////////////////////////////////////////
 
     {"nop",         {SyntaxType::PSEUDO}},
     {"li",          {SyntaxType::PSEUDO}},
@@ -603,8 +599,8 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     
     {"fclass.s",    {SyntaxType::O_GPR_C_FPR}},
     
-    {"fmv.x.w",     {SyntaxType::O_GPR_C_FPR}},
-    {"fmv.w.x",     {SyntaxType::O_FPR_C_GPR}},
+    {"fmv.x.w",     {SyntaxType::O_GPR_C_FPR}}, // x[n][0:31] to f[m][0:31], 32-bit floating-point value from an f (floating-point) register into an x (integer) register without conversion
+    {"fmv.w.x",     {SyntaxType::O_FPR_C_GPR}}, // f[n][0:31] to x[m][0:31], 
     
     {"fcvt.w.s",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->int32
     {"fcvt.l.s",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->int64
@@ -646,20 +642,20 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 
     {"fclass.d",    {SyntaxType::O_GPR_C_FPR}},
 
-    {"fcvt.w.d",    {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int32, sign extends
-    {"fcvt.l.d",    {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int64
+    {"fcvt.w.d",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int32, sign extends
+    {"fcvt.l.d",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int64
 
-    {"fcvt.d.w",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // int32->f64
+    {"fcvt.d.w",    {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // int32->f64
     {"fcvt.d.l",    {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // int64->f64
 
-    {"fcvt.wu.d",   {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint32, sign extends
-    {"fcvt.lu.d",   {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint64
-    {"fcvt.d.wu",   {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // uint32->f64
+    {"fcvt.wu.d",   {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint32, sign extends
+    {"fcvt.lu.d",   {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint64
+    {"fcvt.d.wu",   {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // uint32->f64
     {"fcvt.d.lu",   {SyntaxType::O_FPR_C_GPR,             SyntaxType::O_FPR_C_GPR_C_RM}}, // uint64->f64
 
 
-    {"fcvt.s.d",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f64->f32
-    {"fcvt.d.s",    {SyntaxType::O_GPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->f64
+    {"fcvt.s.d",    {SyntaxType::O_FPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f64->f32
+    {"fcvt.d.s",    {SyntaxType::O_FPR_C_FPR,             SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->f64
     
     {"fmv.x.d",     {SyntaxType::O_GPR_C_FPR}},
     {"fmv.d.x",     {SyntaxType::O_FPR_C_GPR}},
@@ -757,16 +753,66 @@ bool isValidFDSTypeInstruction(const std::string &instruction) {
     return (FDExtensionSTypeInstructions.find(instruction) != FDExtensionSTypeInstructions.end());
 }
 
+bool isFInstruction(const uint32_t &instruction) {
+    uint8_t opcode = (instruction & 0b1111111);
+    uint8_t funct3 = (instruction >> 12) & 0b111;
+    uint8_t funct5 = (instruction >> 20) & 0b11111;
+    uint8_t funct7 = (instruction >> 25) & 0b1111111;
 
+    switch (opcode) {
+        case 0b0000111: {
+            if (funct3 == 0b010) {
+                return true; // flw
+            }
+            break;
+        }   
+        case 0b0100111: {
+            if (funct3 == 0b010) {
+                return true; // fsw
+            }
+            break;
+        }
+        case 0b1010011: {
+            if (!(funct7 & 0b1)) {
+                if (funct5 == 0b00001) {
+                    return false; // fcvt.s.d
+                }
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
-bool isValidFExtensionInstruction(const std::string &instruction) {
-    return (FDExtensionRTypeInstructions.find(instruction) != FDExtensionRTypeInstructions.end()) ||
-        (FDExtensionR1TypeInstructions.find(instruction) != FDExtensionR1TypeInstructions.end()) ||
-        (FDExtensionR2TypeInstructions.find(instruction) != FDExtensionR2TypeInstructions.end()) ||
-        (FDExtensionR3TypeInstructions.find(instruction) != FDExtensionR3TypeInstructions.end()) ||
-        (FDExtensionR4TypeInstructions.find(instruction) != FDExtensionR4TypeInstructions.end()) ||
-        (FDExtensionITypeInstructions.find(instruction) != FDExtensionITypeInstructions.end()) ||
-        (FDExtensionSTypeInstructions.find(instruction) != FDExtensionSTypeInstructions.end());
+bool isDInstruction(const uint32_t &instruction) {
+    uint8_t opcode = (instruction & 0b1111111);
+    uint8_t funct3 = (instruction >> 12) & 0b111;
+    uint8_t funct5 = (instruction >> 20) & 0b11111;
+    uint8_t funct7 = (instruction >> 25) & 0b1111111;
+
+    switch (opcode) {
+        case 0b0000111: {
+            if (funct3 == 0b011) {
+                return true; // fld
+            }
+            break;
+        }   
+        case 0b0100111: {
+            if (funct3 == 0b011) {
+                return true; // fsd
+            }
+            break;
+        }
+        case 0b1010011: {
+            if (!(funct7 & 0b1)) {
+                if (funct5 == 0b00001) {
+                    return false; // fcvt.d.s
+                }
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 std::string getExpectedSyntaxes(const std::string &opcode) {

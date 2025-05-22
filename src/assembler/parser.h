@@ -67,7 +67,7 @@ private:
 
     ErrorTracker errors_; ///< The error tracker instance.
 
-    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string>> data_buffer_; ///< The buffer for data directives.
+    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double>> data_buffer_; ///< The buffer for data directives.
 
     uint64_t data_index_ = 0; ///< The current index for data allocation.
 
@@ -184,7 +184,7 @@ public:
      * @brief Returns the data buffer.
      * @return A reference to the data buffer.
      */
-    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string>> &getDataBuffer();
+    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double>> &getDataBuffer();
 
     /**
      * @brief Returns the generated intermediate code.

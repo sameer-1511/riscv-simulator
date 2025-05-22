@@ -18,5 +18,7 @@
 #include <optional>
 #include <utility>
 #include <regex>
+#include <cmath>
+#include <cstdint>
 
 // g++ -x c++-header pch.h -o pch.h.gch

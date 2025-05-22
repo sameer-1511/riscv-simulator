@@ -37,6 +37,16 @@ void VMBase::loadProgram(const AssembledProgram &program) {
             } else if constexpr (std::is_same_v<T, uint64_t>) {
                 memory_controller_.writeDoubleWord(base_data_address + data_counter, value);  // Write a double word (64 bits)
                 data_counter += 8;
+            } else if constexpr (std::is_same_v<T, float>) {
+                uint32_t float_as_int;
+                std::memcpy(&float_as_int, &value, sizeof(float));
+                memory_controller_.writeWord(base_data_address + data_counter, float_as_int);  // Write the float as a word
+                data_counter += 4;
+            } else if constexpr (std::is_same_v<T, double>) {
+                uint64_t double_as_int;
+                std::memcpy(&double_as_int, &value, sizeof(double));
+                memory_controller_.writeDoubleWord(base_data_address + data_counter, double_as_int);  // Write the double as a double word
+                data_counter += 8;
             } else if constexpr (std::is_same_v<T, std::string>) {
                 for (size_t i = 0; i < value.size(); i++) {
                     memory_controller_.writeByte(base_data_address + data_counter, static_cast<uint8_t>(value[i]));  // Write each byte of the string
@@ -127,12 +137,6 @@ int32_t VMBase::imm_generator(uint32_t instruction) {
             imm = 0;
             break;
 
-        /*** D-EXTENSION (Double-Precision Floating Point) ***/
-        case 0b1000011: // FLD (Double floating-point load)
-//        case 0b1100011: // FSD (Double floating-point store)
-            imm = (instruction >> 20) & 0xFFF;
-            imm = sign_extend(imm, 12);
-            break;
 
         default:
             imm = 0;

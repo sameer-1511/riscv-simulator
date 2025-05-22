@@ -29,12 +29,12 @@ void RegisterFile::writeGPR(size_t reg, uint64_t value) {
     gpr_[reg] = value;
 }
 
-double RegisterFile::readFPR(size_t reg) const {
+uint64_t RegisterFile::readFPR(size_t reg) const {
     if (reg >= NUM_FPR) throw std::out_of_range("Invalid FPR index");
     return fpr_[reg];
 }
 
-void RegisterFile::writeFPR(size_t reg, double value) {
+void RegisterFile::writeFPR(size_t reg, uint64_t value) {
     if (reg >= NUM_FPR) throw std::out_of_range("Invalid FPR index");
     fpr_[reg] = value;
 }
@@ -63,7 +63,7 @@ std::vector<uint64_t> RegisterFile::getGPRValues() const {
     return {gpr_.begin(), gpr_.end()};
 }
 
-std::vector<double> RegisterFile::getFPRValues() const {
+std::vector<uint64_t> RegisterFile::getFPRValues() const {
     return {fpr_.begin(), fpr_.end()};
 }
 

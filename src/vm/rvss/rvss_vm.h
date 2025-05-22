@@ -16,7 +16,6 @@ class RVSSVM : public VMBase {
 public: 
     RVSSControlUnit controlUnit;
 
-
     // intermediate variables
     int64_t execution_result_ = 0;
     int64_t memory_result_ = 0;
@@ -24,11 +23,6 @@ public:
     // int64_t memory_data_ = 0;
     uint64_t return_address_ = 0;
     
-    double fexecution_result_ = 0.0;
-    double fmemory_result_ = 0.0;
-    // same as memory_address_
-    double fmemory_data_ = 0.0;
-
     bool branch_flag_ = false;
     int64_t next_pc_ = 0; // for jal, jalr, 
 
@@ -36,10 +30,7 @@ public:
     uint16_t csr_target_address_;
     uint64_t csr_old_value_;
     uint64_t csr_write_val_;
-    uint8_t csr_write_type_;
     uint8_t csr_uimm_;
-
-
 
     void fetch();
 
@@ -47,23 +38,23 @@ public:
 
     void execute();
     void executeFloat();
+    void executeDouble();
     void executeVector();
     void executeCSR();
 
     void memory();
     void memoryFloat();
+    void memoryDouble();
     void memoryVector();
-
 
     void writeBack();
     void writeBackFloat();
+    void writeBackDouble();
     void writeBackVector();
     void writeBackCSR();
 
-    void printControlSignals();
     RVSSVM();
     ~RVSSVM();
-
 
     void run() override;
     void debugRun() override;
@@ -74,7 +65,6 @@ public:
     void printType() {
         std::cout << "rvssvm" << std::endl;
     }
-
 };
 
 

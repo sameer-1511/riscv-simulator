@@ -17,7 +17,7 @@ struct AssembledProgram {
     std::unordered_map<std::string, unsigned int> symbol_table;
 
     std::string filename;
-    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string>> data_buffer;
+    std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double>> data_buffer;
     std::vector<std::bitset<32>> text_buffer;
 };
 

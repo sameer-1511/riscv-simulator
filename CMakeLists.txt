@@ -21,7 +21,7 @@ add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 include_directories(${INCLUDE_DIR})
 
-add_compile_options(-Wall -Wextra -pedantic -g -O3)
+add_compile_options(-Wall -Wextra -pedantic -frounding-math -ffloat-store -g -O3)
 
 target_link_libraries(${PROJECT_NAME} m)
 

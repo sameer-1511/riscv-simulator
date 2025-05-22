@@ -7,7 +7,7 @@
 #include "../pch.h"
 
 #include "lexer.h"
-#include "instructions.h"
+#include "../common/instructions.h"
 #include "../vm/registers.h"
 #include"../common/rounding_modes.h"
 
@@ -135,7 +135,11 @@ Token Lexer::number() {
             || current_line_[pos_] == 'o'
             || current_line_[pos_] == 'O'
             || current_line_[pos_] == 'b'
-            || current_line_[pos_] == 'B')) {
+            || current_line_[pos_] == 'B'
+            || current_line_[pos_] == '.'
+            || current_line_[pos_] == 'e'
+            || current_line_[pos_] == 'E'
+            || current_line_[pos_] == '+')) {
         ++pos_;
         ++column_number_;
     }
@@ -146,7 +150,7 @@ Token Lexer::number() {
     std::regex binary_regex("^-?0[bB][01]+$");
     std::regex octal_regex("^-?0[oO][0-7]+$");
     std::regex decimal_regex("^-?[0-9]+$");
-    std::regex float_regex("^-?[0-9]+\\.[0-9]+$");
+    std::regex float_regex("^-?[0-9]*\\.[0-9]+([eE][-+]?[0-9]+)?$|^-?[0-9]+[eE][-+]?[0-9]+$");
 
 
     if (std::regex_match(value, hex_regex)) {
@@ -164,7 +168,8 @@ Token Lexer::number() {
     } else if (std::regex_match(value, decimal_regex)) {
         return {TokenType::NUM, std::to_string(std::stoll(value, nullptr, 10)), line_number_, start_column};
     } else if (std::regex_match(value, float_regex)) {
-        return {TokenType::FLOAT, value, line_number_, start_column};
+
+        return {TokenType::FLOAT, std::to_string(std::stod(value)), line_number_, start_column};
     }
 
     return {TokenType::INVALID, "Invalid", line_number_, start_column};

@@ -6,7 +6,7 @@
 
 #include "parser.h"
 
-#include "instructions.h"
+#include "../common/instructions.h"
 #include "../vm/registers.h"
 #include "../utils.h"
 #include "../common/rounding_modes.h"
@@ -260,7 +260,6 @@ void Parser::parseDataDirective() {
             continue;
         }
 
-        // TODO: complete error handling
 
         if (currentToken().value == "dword") {
             nextToken();
@@ -311,7 +310,41 @@ void Parser::parseDataDirective() {
                 data_index_ += 1;
                 nextToken();
             }
-        } else if (currentToken().value == "string") {
+        } else if (currentToken().value == "float") {
+            nextToken();
+            while (currentToken().type != TokenType::EOF_
+                && (currentToken().type == TokenType::FLOAT
+                    || currentToken().type == TokenType::COMMA)) {
+
+                if (currentToken().type == TokenType::FLOAT) {
+                    data_buffer_.emplace_back(static_cast<float>(std::stof(currentToken().value)));
+                }
+                data_index_ += 4;
+                nextToken();
+            }
+        } else if (currentToken().value == "double") {
+            nextToken();
+            while (currentToken().type != TokenType::EOF_
+                && (currentToken().type == TokenType::FLOAT
+                    || currentToken().type == TokenType::COMMA)) {
+
+                if (currentToken().type == TokenType::FLOAT) {
+                    data_buffer_.emplace_back(static_cast<double>(std::stod(currentToken().value)));
+                }
+                data_index_ += 8;
+                nextToken();
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        else if (currentToken().value == "string") {
             nextToken();
             while (currentToken().type != TokenType::EOF_
                 && (currentToken().type == TokenType::STRING
@@ -341,8 +374,6 @@ void Parser::parseDataDirective() {
 }
 
 
-// TODO: complete error handling
-// TODO: do testing
 
 void Parser::parseTextDirective() {
 
@@ -688,7 +719,7 @@ void Parser::printSymbolTable() const {
     }
 }
 
-std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string>> &Parser::getDataBuffer() {
+std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double>> &Parser::getDataBuffer() {
     return data_buffer_;
 }
 

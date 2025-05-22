@@ -19,7 +19,7 @@ private:
     static constexpr size_t NUM_VR = 32;  ///< Number of Vector Registers (VR).
 
     std::array<uint64_t, NUM_GPR> gpr_ = {}; ///< Array for storing GPR values.
-    std::array<double, NUM_FPR> fpr_ = {}; ///< Array for storing FPR values.
+    std::array<uint64_t, NUM_FPR> fpr_ = {}; ///< Array for storing FPR values.
     std::vector<std::array<uint64_t, 8>> vr_ = 
         std::vector<std::array<uint64_t, 8>>(NUM_VR); ///< Vector of arrays for VR values.
 
@@ -71,14 +71,14 @@ public:
      * @param reg The index of the FPR to read.
      * @return The value of the FPR at the specified index.
      */
-    [[nodiscard]] double readFPR(size_t reg) const;
+    [[nodiscard]] uint64_t readFPR(size_t reg) const;
 
     /**
      * @brief Writes a value to a Floating-Point Register (FPR).
      * @param reg The index of the FPR to write.
      * @param value The value to write.
      */
-    void writeFPR(size_t reg, double value);
+    void writeFPR(size_t reg, uint64_t value);
 
     /**
      * @brief Reads the value of a Vector Register (VR).
@@ -108,7 +108,7 @@ public:
      * @brief Retrieves the values of all Floating-Point Registers (FPR).
      * @return A vector containing the values of all FPRs.
      */
-    [[nodiscard]] std::vector<double> getFPRValues() const;
+    [[nodiscard]] std::vector<uint64_t> getFPRValues() const;
     
     /**
      * @brief Retrieves the values of all Vector Registers (VR).

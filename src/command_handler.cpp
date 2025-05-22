@@ -32,7 +32,7 @@ CommandHandler::Command CommandHandler::parseCommand(const std::string &input) {
         command_type = CommandHandler::CommandType::ADD_BREAKPOINT;
     } else if (command_str == "remove_breakpoint") {
         command_type = CommandHandler::CommandType::REMOVE_BREAKPOINT;
-    } else if (command_str == "exit") {
+    } else if (command_str == "exit" || command_str == "quit" || command_str == "q") {
         command_type = CommandHandler::CommandType::EXIT;
     }
 
