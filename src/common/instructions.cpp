@@ -333,9 +333,9 @@ std::unordered_map<std::string, FDRTypeInstructionEncoding> F_D_R_type_instructi
     {"fmin.s",      {0b1010011, 0b000, 0b0010100}}, // O_FPR_C_FPR_C_FPR
     {"fmax.s",      {0b1010011, 0b001, 0b0010100}}, // O_FPR_C_FPR_C_FPR
 
-    {"feq.s",       {0b1010011, 0b010, 0b1010000}}, // O_GPR_C_FPR_C_FPR
-    {"flt.s",       {0b1010011, 0b001, 0b1010000}}, // O_GPR_C_FPR_C_FPR
-    {"fle.s",       {0b1010011, 0b000, 0b1010000}}, // O_GPR_C_FPR_C_FPR
+    {"feq.s",       {0b1010011, 0b010, 0b1010000}}, // O_GPR_C_FPR_C_FPR // affect all
+    {"flt.s",       {0b1010011, 0b001, 0b1010000}}, // O_GPR_C_FPR_C_FPR // affect all
+    {"fle.s",       {0b1010011, 0b000, 0b1010000}}, // O_GPR_C_FPR_C_FPR // affect all
 
     {"feq.d",       {0b1010011, 0b010, 0b1010001}}, // O_GPR_C_FPR_C_FPR
     {"flt.d",       {0b1010011, 0b001, 0b1010001}}, // O_GPR_C_FPR_C_FPR
@@ -364,10 +364,10 @@ std::unordered_map<std::string, FDR1TypeInstructionEncoding> F_D_R1_type_instruc
 std::unordered_map<std::string, FDR2TypeInstructionEncoding> F_D_R2_type_instruction_encoding_map = {
     {"fsqrt.s",     {0b1010011, 0b00000, 0b0101100}}, // O_FPR_C_FPR
 
-    {"fcvt.w.s",    {0b1010011, 0b00000, 0b1100000}}, // O_GPR_C_FPR
-    {"fcvt.wu.s",   {0b1010011, 0b00001, 0b1100000}}, // O_GPR_C_FPR
-    {"fcvt.l.s",    {0b1010011, 0b00010, 0b1100000}}, // O_GPR_C_FPR
-    {"fcvt.lu.s",   {0b1010011, 0b00011, 0b1100000}}, // O_GPR_C_FPR
+    {"fcvt.w.s",    {0b1010011, 0b00000, 0b1100000}}, // O_GPR_C_FPR // affect all
+    {"fcvt.wu.s",   {0b1010011, 0b00001, 0b1100000}}, // O_GPR_C_FPR // affect all
+    {"fcvt.l.s",    {0b1010011, 0b00010, 0b1100000}}, // O_GPR_C_FPR // affect all
+    {"fcvt.lu.s",   {0b1010011, 0b00011, 0b1100000}}, // O_GPR_C_FPR // affect all
 
     {"fcvt.s.w",    {0b1010011, 0b00000, 0b1101000}}, // O_FPR_C_GPR
     {"fcvt.s.wu",   {0b1010011, 0b00001, 0b1101000}}, // O_FPR_C_GPR
@@ -395,8 +395,8 @@ std::unordered_map<std::string, FDR2TypeInstructionEncoding> F_D_R2_type_instruc
 
 std::unordered_map<std::string, FDR3TypeInstructionEncoding> F_D_R3_type_instruction_encoding_map = {
     {"fmv.w.x",     {0b1010011, 0b000, 0b00000, 0b1111000}}, // O_FPR_C_GPR
-    {"fmv.x.w",     {0b1010011, 0b000, 0b00000, 0b1110000}}, // O_GPR_C_FPR
-    {"fclass.s",    {0b1010011, 0b001, 0b00000, 0b1110000}}, // O_GPR_C_FPR
+    {"fmv.x.w",     {0b1010011, 0b000, 0b00000, 0b1110000}}, // O_GPR_C_FPR // affect all
+    {"fclass.s",    {0b1010011, 0b001, 0b00000, 0b1110000}}, // O_GPR_C_FPR // affect all 
 
     {"fmv.d.x",     {0b1010011, 0b000, 0b00000, 0b1111001}}, // O_FPR_C_GPR
     {"fmv.x.d",     {0b1010011, 0b000, 0b00000, 0b1110001}}, // O_GPR_C_FPR
@@ -758,6 +758,7 @@ bool isFInstruction(const uint32_t &instruction) {
     uint8_t funct3 = (instruction >> 12) & 0b111;
     uint8_t funct5 = (instruction >> 20) & 0b11111;
     uint8_t funct7 = (instruction >> 25) & 0b1111111;
+    
 
     switch (opcode) {
         case 0b0000111: {
@@ -774,13 +775,16 @@ bool isFInstruction(const uint32_t &instruction) {
         }
         case 0b1010011: {
             if (!(funct7 & 0b1)) {
-                if (funct5 == 0b00001) {
+                if (funct7 == 0b0100000) {
                     return false; // fcvt.s.d
                 }
                 return true;
             }
         }
     }
+
+
+
     return false;
 }
 
@@ -805,7 +809,7 @@ bool isDInstruction(const uint32_t &instruction) {
         }
         case 0b1010011: {
             if (!(funct7 & 0b1)) {
-                if (funct5 == 0b00001) {
+                if (funct7 == 0b0100001) {
                     return false; // fcvt.d.s
                 }
                 return true;

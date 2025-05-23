@@ -23,28 +23,6 @@
 
 
 int main() {
-    // AssembledProgram program;
-    // try {
-    //     program = assemble("/home/vis/Desk/codes/assembler/examples/f_d_test.s");
-    // } catch (const std::runtime_error &e) {
-    //     std::cerr << e.what() << '\n';
-    //     return 0;
-    // }
-
-    // std::cout << "Program: " << program.filename << std::endl;
-
-    // unsigned int count = 0;
-    // for (const std::bitset<32> &instruction : program.text_buffer) {
-    //     std::cout << instruction
-    //               << " | "
-    //               << std::setw(8) << std::setfill('0') << std::hex << instruction.to_ulong()
-    //               << " | "
-    //               << std::setw(0) << count
-    //               << std::dec << "\n";
-    //     count += 4;
-    // }
-
-
     // AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/f_d_test.s");
     
     // VMRunner vmRunner;
@@ -63,6 +41,19 @@ int main() {
         std::cerr << e.what() << '\n';
         return 0;
     }
+
+    // std::cout << "Program: " << program.filename << std::endl;
+
+    // unsigned int count = 0;
+    // for (const std::bitset<32> &instruction : program.text_buffer) {
+    //     std::cout << instruction
+    //               << " | "
+    //               << std::setw(8) << std::setfill('0') << std::hex << instruction.to_ulong()
+    //               << " | "
+    //               << std::setw(0) << count
+    //               << std::dec << "\n";
+    //     count += 4;
+    // }
     
     vm.loadProgram(program);
 

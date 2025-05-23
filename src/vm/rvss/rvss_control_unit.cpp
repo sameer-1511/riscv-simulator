@@ -74,7 +74,7 @@ void RVSSControlUnit::setControlSignals(uint32_t instruction) {
         }
 
 
-        // F extension
+        // F extension + D extension
         case 0b0000111: {// F-Type Load instructions (FLW, FLD)
             ALUSrc = true;
             MemToReg = true;
@@ -95,6 +95,8 @@ void RVSSControlUnit::setControlSignals(uint32_t instruction) {
         }
 
 
+
+
         default:
             break;
     }
@@ -112,7 +114,7 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
     uint8_t funct3 = (instruction >> 12) & 0b111;
     uint8_t funct7 = (instruction >> 25) & 0b1111111;
     uint8_t funct5 = (instruction >> 20) & 0b11111;
-    // uint8_t funct2 = (instruction >> 25) & 0b11;
+    uint8_t funct2 = (instruction >> 25) & 0b11;
     // uint8_t funct6 = (instruction >> 26) & 0b111111;
 
     switch (opcode)
@@ -464,7 +466,7 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
         break;
     }
     
-    // F extension
+    // F extension + D extension
     // TODO: correct this
 
     case 0b1000011: {
@@ -473,20 +475,35 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
 
     case 0b1010011: {
         switch (funct7) {
-            case 0b0000000: {// FADD
+            case 0b0000000: {// FADD_S
                 return ALU::ALUOp::FADD_S;
             }
-            case 0b0000100: {// FSUB
+            case 0b0000001: {// FADD_D
+                return ALU::ALUOp::FADD_D;
+            }
+            case 0b0000100: {// FSUB_S
                 return ALU::ALUOp::FSUB_S;
             }
-            case 0b0001000: {// FMUL
+            case 0b0000101: {// FSUB_D
+                return ALU::ALUOp::FSUB_D;
+            }
+            case 0b0001000: {// FMUL_S
                 return ALU::ALUOp::FMUL_S;
             }
-            case 0b0001100: {// FDIV
+            case 0b0001001: {// FMUL_D
+                return ALU::ALUOp::FMUL_D;
+            }
+            case 0b0001100: {// FDIV_S
                 return ALU::ALUOp::FDIV_S;
             }
-            case 0b0101100: {// FSQRT
+            case 0b0001101: {// FDIV_D
+                return ALU::ALUOp::FDIV_D;
+            }
+            case 0b0101100: {// FSQRT_S
                 return ALU::ALUOp::FSQRT_S;
+            }
+            case 0b0101101: {// FSQRT_D
+                return ALU::ALUOp::FSQRT_D;
             }
             case 0b1100000: { // FCVT.(W|WU|L|LU).S
                 switch (funct5) {
@@ -501,6 +518,23 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                     }
                     case 0b00011: {// FCVT_LU_S
                         return ALU::ALUOp::FCVT_LU_S;
+                    }
+                }
+                break;
+            }
+            case 0b1100001: { // FCVT.(W|WU|L|LU).D
+                switch (funct5) {
+                    case 0b00000: {// FCVT_W_D
+                        return ALU::ALUOp::FCVT_W_D;
+                    }
+                    case 0b00001: {// FCVT_WU_D
+                        return ALU::ALUOp::FCVT_WU_D;
+                    }
+                    case 0b00010: {// FCVT_L_D
+                        return ALU::ALUOp::FCVT_L_D;
+                    }
+                    case 0b00011: {// FCVT_LU_D
+                        return ALU::ALUOp::FCVT_LU_D;
                     }
                 }
                 break;
@@ -522,6 +556,23 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                 }
                 break;
             }
+            case 0b1101001: { // FCVT.D.(W|WU|L|LU)
+                switch (funct5) {
+                    case 0b00000: {// FCVT_D_W
+                        return ALU::ALUOp::FCVT_D_W;
+                    }
+                    case 0b00001: {// FCVT_D_WU
+                        return ALU::ALUOp::FCVT_D_WU;
+                    }
+                    case 0b00010: {// FCVT_D_L
+                        return ALU::ALUOp::FCVT_D_L;
+                    }
+                    case 0b00011: {// FCVT_D_LU
+                        return ALU::ALUOp::FCVT_D_LU;
+                    }
+                }
+                break;
+            }
             case 0b0010000: { // FSGNJ(N|X).S
                 switch (funct3) {
                     case 0b000: {// FSGNJ
@@ -536,6 +587,20 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                 }
                 break;
             }
+            case 0b0010001: { // FSGNJ(N|X).D
+                switch (funct3) {
+                    case 0b000: {// FSGNJ
+                        return ALU::ALUOp::FSGNJ_D;
+                    }
+                    case 0b001: {// FSGNJN
+                        return ALU::ALUOp::FSGNJN_D;
+                    }
+                    case 0b010: {// FSGNJX
+                        return ALU::ALUOp::FSGNJX_D;
+                    }
+                }
+                break;
+            }
             case 0b0010100: { // F(MIN|MAX).S
                 switch (funct3) {
                     case 0b000: {// FMIN
@@ -546,7 +611,18 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                     }
                 }
                 break;
-            }        
+            }
+            case 0b0010101: { // F(MIN|MAX).D
+                switch (funct3) {
+                    case 0b000: {// FMIN
+                        return ALU::ALUOp::FMIN_D;
+                    }
+                    case 0b001: {// FMAX
+                        return ALU::ALUOp::FMAX_D;
+                    }
+                }
+                break;
+            }
             case 0b1010000: { // F(EQ|LT|LE).S
                 switch (funct3) {
                     case 0b010: {// FEQ
@@ -561,8 +637,25 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                 }
                 break;
             }
+            case 0b1010001: { // F(EQ|LT|LE).D
+                switch (funct3) {
+                    case 0b010: {// FEQ
+                        return ALU::ALUOp::FEQ_D;
+                    }
+                    case 0b001: {// FLT
+                        return ALU::ALUOp::FLT_D;
+                    }
+                    case 0b000: {// FLE
+                        return ALU::ALUOp::FLE_D;
+                    }
+                }
+                break;
+            }
             case 0b1111000: { // FMV.W.X
                 return ALU::ALUOp::FMV_W_X;
+            }
+            case 0b1111001: { //FMV.D.X
+                return ALU::ALUOp::FMV_D_X;
             }
             case 0b1110000: { // FMV.X.W, FCLASS.S
                 switch (funct3) {
@@ -575,17 +668,60 @@ ALU::ALUOp RVSSControlUnit::getALUSignal(uint32_t instruction, bool ALUOp) {
                 }
                 break;
             }
-            case 0b1000011: {
-                return ALU::ALUOp::FMADD_S;
+            case 0b1110001: { // FMV.X.D, FCLASS.D
+                switch (funct3) {
+                    case 0b000: {
+                        return ALU::ALUOp::FMV_X_D;
+                    }
+                    case 0b001: {
+                        return ALU::ALUOp::FCLASS_D;
+                    }
+                }
+                break;
             }
-            case 0b1000111: {
-                return ALU::ALUOp::FMSUB_S;
+            case 0b1000011: { // FMADD.S, FMADD.D
+                switch (funct2) {
+                    case 0b00: {// FMADD.S
+                        return ALU::ALUOp::FMADD_S;
+                    }
+                    case 0b01: {// FMADD.D
+                        return ALU::ALUOp::FMADD_D;
+                    }
+                }
+                break;
             }
-            case 0b1001011: {
-                return ALU::ALUOp::FNMADD_S;
+            case 0b1000111: { // FMSUB.S, FMSUB.D
+                switch (funct2) {
+                    case 0b00: {// FMSUB.S
+                        return ALU::ALUOp::FMSUB_S;
+                    }
+                    case 0b01: {// FMSUB.D
+                        return ALU::ALUOp::FMSUB_D;
+                    }
+                }
+                break;
             }
-            case 0b1001111: {
-                return ALU::ALUOp::FNMSUB_S;
+            case 0b1001011: { // FNMADD.S, FNMADD.D
+                switch (funct2) {
+                    case 0b00: {// FNMADD.S
+                        return ALU::ALUOp::FNMADD_S;
+                    }
+                    case 0b01: {// FNMADD.D
+                        return ALU::ALUOp::FNMADD_D;
+                    }
+                }
+                break;
+            }
+            case 0b1001111: { // FNMSUB.S, FNMSUB.D
+                switch (funct2) {
+                    case 0b00: {// FNMSUB.S
+                        return ALU::ALUOp::FNMSUB_S;
+                    }
+                    case 0b01: {// FNMSUB.D
+                        return ALU::ALUOp::FNMSUB_D;
+                    }
+                }
+                break;
             }
         }
         break;
