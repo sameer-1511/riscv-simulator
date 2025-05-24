@@ -25,7 +25,6 @@ void RVSSVM::fetch() {
 
 void RVSSVM::decode() {
     controlUnit.setControlSignals(current_instruction_);
-    // current_delta.old_pc = program_counter_ - 4;
 }
 
 
@@ -202,9 +201,7 @@ void RVSSVM::executeCSR() {
 
 
 void RVSSVM::memory() {
-    // uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
-    // uint8_t rd = (current_instruction_ >> 7) & 0b11111;
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
     if (InstructionSet::isFInstruction(current_instruction_)) { // RV64 F
@@ -214,7 +211,6 @@ void RVSSVM::memory() {
         memoryDouble();
         return;
     } 
-
 
     if (controlUnit.getMemRead()) {
         switch (funct3) {
@@ -248,78 +244,85 @@ void RVSSVM::memory() {
         }
         }
     } 
+    
+    uint64_t addr = execution_result_;
+    uint64_t old_mem = memory_controller_.readDoubleWord(addr);
+
     if (controlUnit.getMemWrite()) {
-        switch (funct3)
-        {
+        switch (funct3) {
         case 0b000: {// SB
-            memory_controller_.writeByte(execution_result_, registers_.readGPR(rs2));
+            memory_controller_.writeByte(execution_result_, registers_.readGPR(rs2) & 0xFF);
             break;
         }
         case 0b001: {// SH
-            memory_controller_.writeHalfWord(execution_result_, registers_.readGPR(rs2));
+            memory_controller_.writeHalfWord(execution_result_, registers_.readGPR(rs2) & 0xFFFF);
             break;
         }
         case 0b010: {// SW
-            memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2));
+            memory_controller_.writeWord(execution_result_, registers_.readGPR(rs2) & 0xFFFFFFFF);
             break;
         }
         case 0b011: {// SD
-            memory_controller_.writeDoubleWord(execution_result_, registers_.readGPR(rs2));
+            memory_controller_.writeDoubleWord(execution_result_, registers_.readGPR(rs2) & 0xFFFFFFFFFFFFFFFF);
             break;
         }
         }
     }
 
+    uint64_t new_mem = memory_controller_.readDoubleWord(addr);
+    if (old_mem != new_mem) {
+        current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+    }
 }
 
 void RVSSVM::memoryFloat() {
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
-    if (controlUnit.getMemRead()) {
-        switch (funct3) {
-        case 0b010: {// FLW
-            memory_result_ = memory_controller_.readWord(execution_result_);
-            break;
-        }
-        }
+    if (controlUnit.getMemRead()) { // FLW
+        memory_result_ = memory_controller_.readWord(execution_result_);
     }
 
-    if (controlUnit.getMemWrite()) {
-        switch (funct3)
-        {
-        case 0b010: {// FSW
-            uint32_t val = registers_.readFPR(rs2) & 0xFFFFFFFF;
-            memory_controller_.writeWord(execution_result_, val);
-            break;
-        }
-        }
+    uint64_t addr = 0;
+    uint64_t old_mem = 0;
+    uint64_t new_mem = 0;
+
+    if (controlUnit.getMemWrite()) { // FSW
+        addr = execution_result_;
+        old_mem = memory_controller_.readDoubleWord(addr);
+        uint32_t val = registers_.readFPR(rs2) & 0xFFFFFFFF;
+        memory_controller_.writeWord(execution_result_, val);
+        new_mem = memory_controller_.readDoubleWord(addr);
     }
-    return;
+
+    if (old_mem != new_mem) {
+        current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+    }
 }
 
 void RVSSVM::memoryDouble() {
     uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
     uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
-    if (controlUnit.getMemRead()) {
-        switch (funct3) {
-        case 0b011: {// FLD
-            memory_result_ = memory_controller_.readDoubleWord(execution_result_);
-            break;
-        }
-        }
+    if (controlUnit.getMemRead()) {// FLD
+        memory_result_ = memory_controller_.readDoubleWord(execution_result_);
     }
 
-    if (controlUnit.getMemWrite()) {
-        switch (funct3)
-        {
-        case 0b011: {// FSD
-            memory_controller_.writeWord(execution_result_, registers_.readFPR(rs2));
-            break;
-        }
-        }
+    uint64_t addr = 0;
+    uint64_t old_mem = 0;
+    uint64_t new_mem = 0;
+
+    if (controlUnit.getMemWrite()) {// FSD
+        addr = execution_result_;
+        old_mem = memory_controller_.readDoubleWord(addr);
+        memory_controller_.writeDoubleWord(execution_result_, registers_.readFPR(rs2));
+        new_mem = memory_controller_.readDoubleWord(addr);
     }
+
+    if (old_mem != new_mem) {
+        current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+    }
+
     return;
 }
 
@@ -343,6 +346,11 @@ void RVSSVM::writeBack() {
         writeBackCSR();
         return;
     } 
+
+    uint64_t old_reg = registers_.readGPR(rd);
+    unsigned int reg_index = rd;
+    unsigned int reg_type = 0; // 0 for GPR, 1 for CSR, 2 for FPR
+
 
     if (controlUnit.getRegWrite() && rd != 0) { // Avoid writing to x0
         switch (opcode)
@@ -377,28 +385,53 @@ void RVSSVM::writeBack() {
         // Updated in execute()
     }
 
+    uint64_t new_reg = registers_.readGPR(rd);
+    if (old_reg != new_reg) {
+        current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
+    }
+
+
 }
 
 void RVSSVM::writeBackFloat() {
     uint8_t opcode = current_instruction_ & 0b1111111;
     uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+
+    uint64_t old_reg = 0;
+    unsigned int reg_index = rd;
+    unsigned int reg_type = 2; // 0 for GPR, 1 for CSR, 2 for FPR
+    uint64_t new_reg = 0;
     
     if (controlUnit.getRegWrite() && rd != 0){
         // write to GPR
         if (funct7 == 0b1010000
         || funct7 == 0b1100000
         || funct7 == 0b1110000) { // f(eq|lt|le).s, fcvt.(w|wu|l|lu).s
+            old_reg = registers_.readGPR(rd);
             registers_.writeGPR(rd, execution_result_);
+            new_reg = execution_result_;
+            reg_type = 0; // GPR
 
         } 
         // write to FPR
         else if (opcode == 0b0000111) {
+            old_reg = registers_.readFPR(rd);
             registers_.writeFPR(rd, memory_result_);
+            new_reg = memory_result_;
+            reg_type = 2; // FPR
         } else {
+            old_reg = registers_.readFPR(rd);
             registers_.writeFPR(rd, execution_result_);
+            new_reg = execution_result_;
+            reg_type = 2; // FPR
         }
     }
+
+    if (old_reg != new_reg) {
+        current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
+    }
+
     return;
 }
 
@@ -406,22 +439,40 @@ void RVSSVM::writeBackDouble() {
     uint8_t opcode = current_instruction_ & 0b1111111;
     uint8_t funct7 = (current_instruction_ >> 25) & 0b1111111;
     uint8_t rd = (current_instruction_ >> 7) & 0b11111;
+
+    uint64_t old_reg = 0;
+    unsigned int reg_index = rd;
+    unsigned int reg_type = 2; // 0 for GPR, 1 for CSR, 2 for FPR
+    uint64_t new_reg = 0;
     
     if (controlUnit.getRegWrite() && rd != 0){
         // write to GPR
         if (funct7 == 0b1010001
         || funct7 == 0b1100001
         || funct7 == 0b1110001) { // f(eq|lt|le).d, fcvt.(w|wu|l|lu).d
+            old_reg = registers_.readGPR(rd);
             registers_.writeGPR(rd, execution_result_);
-
+            new_reg = execution_result_;
+            reg_type = 0; // GPR
         } 
         // write to FPR
         else if (opcode == 0b0000111) {
+            old_reg = registers_.readFPR(rd);
             registers_.writeFPR(rd, memory_result_);
+            new_reg = memory_result_;
+            reg_type = 2; // FPR
         } else {
+            old_reg = registers_.readFPR(rd);
             registers_.writeFPR(rd, execution_result_);
+            new_reg = execution_result_;
+            reg_type = 2; // FPR
         }
     }
+
+    if (old_reg != new_reg) {
+        current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
+    }
+
     return;
 }
 
@@ -508,11 +559,7 @@ void RVSSVM::debugRun() {
 }
 
 void RVSSVM::step() {
-    StepDelta current_delta;
-    current_delta.old_pc = program_counter_;
-
-
-
+    current_delta_.old_pc = program_counter_;
     if (program_counter_ < program_size_) {
         fetch();
         decode();
@@ -523,12 +570,120 @@ void RVSSVM::step() {
         cycle_s++;
         dumpRegisters(globals::registers_dump_file, registers_);
         std::cout << "Program Counter: " << program_counter_ << std::endl;
+
+        current_delta_.new_pc = program_counter_;
+        undo_stack_.push(current_delta_);
+        while (!redo_stack_.empty()) {
+            redo_stack_.pop();
+        }
+
+        current_delta_.register_changes.clear();
+        current_delta_.memory_changes.clear();
+        current_delta_.old_pc = 0;
+        current_delta_.new_pc = 0;
     } else if (program_counter_ == program_size_) {
         std::cout << "Program Counter reached end of program: " << program_counter_ << std::endl;
     } else {
         std::cout << "Program Counter out of bounds: " << program_counter_ << std::endl;
         std::cout << "Program size: " << program_size_ << std::endl;
     }
+}
+
+void RVSSVM::undo() {
+    if (undo_stack_.empty()) {
+        std::cout << "No more undo steps available." << std::endl;
+        return;
+    }
+
+    StepDelta last = undo_stack_.top();
+    undo_stack_.pop();
+    for (const auto& change: last.register_changes) {
+        switch (change.reg_type) {
+            case 0: { // GPR
+                registers_.writeGPR(change.reg_index, change.old_value);
+                break;
+            }
+            case 1: { // CSR
+                registers_.writeCSR(change.reg_index, change.old_value);
+                break;
+            }
+            case 2: { // FPR
+                registers_.writeFPR(change.reg_index, change.old_value);
+                break;
+            }
+            default:
+                std::cerr << "Invalid register type: " << change.reg_type << std::endl;
+                break;
+        }
+    }
+
+    for (const auto& change: last.memory_changes) {
+        memory_controller_.writeDoubleWord(change.address, change.old_bytes);
+    }
+
+    program_counter_ = last.old_pc;
+    instructions_retired_--;
+    cycle_s--;
+    dumpRegisters(globals::registers_dump_file, registers_);
+    std::cout << "Program Counter: " << program_counter_ << std::endl;
+
+    redo_stack_.push(last);
+    // current_delta_.register_changes.clear();
+    // current_delta_.memory_changes.clear();
+    // current_delta_.old_pc = 0;
+    // current_delta_.new_pc = 0;
+
+
+
+}
+
+void RVSSVM::redo() {
+    if (redo_stack_.empty()) {
+        std::cout << "No more redo steps available." << std::endl;
+        return;
+    }
+
+    StepDelta next = redo_stack_.top();
+    redo_stack_.pop();
+
+    for (const auto& change: next.register_changes) {
+        switch (change.reg_type) {
+            case 0: { // GPR
+                registers_.writeGPR(change.reg_index, change.new_value);
+                break;
+            }
+            case 1: { // CSR
+                registers_.writeCSR(change.reg_index, change.new_value);
+                break;
+            }
+            case 2: { // FPR
+                registers_.writeFPR(change.reg_index, change.new_value);
+                break;
+            }
+            default:
+                std::cerr << "Invalid register type: " << change.reg_type << std::endl;
+                break;
+        }
+    }
+
+    for (const auto& change: next.memory_changes) {
+        memory_controller_.writeDoubleWord(change.address, change.new_bytes);
+    }
+
+    program_counter_ = next.new_pc;
+    instructions_retired_++;
+    cycle_s++;
+    dumpRegisters(globals::registers_dump_file, registers_);
+    std::cout << "Program Counter: " << program_counter_ << std::endl;
+    undo_stack_.push(next);
+    // current_delta_.register_changes.clear();
+    // current_delta_.memory_changes.clear();
+    // current_delta_.old_pc = 0;
+    // current_delta_.new_pc = 0;
+    // std::cout << "Redo step completed." << std::endl;
+
+
+
 }
 
 void RVSSVM::reset() {
@@ -542,6 +697,19 @@ void RVSSVM::reset() {
     next_pc_ = 0;
     execution_result_ = 0;
     memory_result_ = 0;
+
+    return_address_ = 0;
+    csr_target_address_ = 0;
+    csr_old_value_ = 0;
+    csr_write_val_ = 0;
+    csr_uimm_ = 0;
+    current_delta_.register_changes.clear();
+    current_delta_.memory_changes.clear();
+    current_delta_.old_pc = 0;
+    current_delta_.new_pc = 0;
+    undo_stack_ = std::stack<StepDelta>();
+    redo_stack_ = std::stack<StepDelta>();
+
 }
     
 void RVSSVM::dumpState(const std::string &filename) {

@@ -13,16 +13,16 @@
 #include "rvss_control_unit.h"
 
 struct RegisterChange {
-    int reg_index;
-    int reg_type; // 0 for GPR, 1 for CSR, 2 for FPR
+    unsigned int reg_index;
+    unsigned int reg_type; // 0 for GPR, 1 for CSR, 2 for FPR
     uint64_t old_value;
     uint64_t new_value;
 };
 
 struct MemoryChange {
     uint64_t address;
-    std::vector<uint8_t> old_bytes;
-    std::vector<uint8_t> new_bytes;
+    uint64_t old_bytes;
+    uint64_t new_bytes;
 };
 
 struct StepDelta {
@@ -36,8 +36,9 @@ class RVSSVM : public VMBase {
 public: 
     RVSSControlUnit controlUnit;
 
-    std::vector<StepDelta> undo_stack;
-    std::vector<StepDelta> redo_stack;
+    std::stack<StepDelta> undo_stack_;
+    std::stack<StepDelta> redo_stack_;
+    StepDelta current_delta_;
 
 
     // intermediate variables
@@ -83,6 +84,8 @@ public:
     void run() override;
     void debugRun() override;
     void step() override;
+    void undo() override;
+    void redo() override;
     void reset() override;
     void dumpState(const std::string &filename) override;
 

@@ -8,6 +8,9 @@ gg: .string "Hello, World!\n"
 
 #lw x0, aa
 
+add a0, x4, x11
+
+
 nop
 
 add x0, x1, x2

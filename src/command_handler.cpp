@@ -20,7 +20,16 @@ CommandHandler::Command CommandHandler::parseCommand(const std::string &input) {
         command_type = CommandHandler::CommandType::DEBUG;
     } else if (command_str == "step" || command_str == "s") {
         command_type = CommandHandler::CommandType::STEP;
-    } else if (command_str == "reset") {
+    } else if (command_str == "undo" || command_str == "u") {
+        command_type = CommandHandler::CommandType::UNDO;
+    } else if (command_str == "redo" || command_str == "r") {
+        command_type = CommandHandler::CommandType::REDO;
+    }
+    
+    
+    
+    
+    else if (command_str == "reset") {
         command_type = CommandHandler::CommandType::RESET;
     } else if (command_str == "dump_mem") {
         command_type = CommandHandler::CommandType::DUMP_MEMORY;

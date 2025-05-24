@@ -64,6 +64,8 @@ public:
     virtual void run() = 0;
     virtual void debugRun() = 0;
     virtual void step() = 0;
+    virtual void undo() = 0;
+    virtual void redo() = 0;
     virtual void reset() = 0;
     virtual void dumpState(const std::string &filename) = 0;
 

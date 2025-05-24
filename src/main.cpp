@@ -75,7 +75,18 @@ int main() {
         } else if (command.type == CommandHandler::CommandType::STEP) {
             vm.step();
             std::cout << "Stepping..." << std::endl;
-        } else if (command.type == CommandHandler::CommandType::RESET) {
+        } else if (command.type == CommandHandler::CommandType::UNDO) {
+            vm.undo();
+            std::cout << "Undoing..." << std::endl;
+        } else if (command.type == CommandHandler::CommandType::REDO) {
+            vm.redo();
+            std::cout << "Redoing..." << std::endl;
+        }
+        
+        
+        
+        
+        else if (command.type == CommandHandler::CommandType::RESET) {
             vm.reset();
             std::cout << "VM reset." << std::endl;
         } else if (command.type == CommandHandler::CommandType::EXIT) {

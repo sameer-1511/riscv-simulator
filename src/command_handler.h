@@ -15,6 +15,8 @@ namespace CommandHandler {
         RUN,
         DEBUG,
         STEP,
+        UNDO,
+        REDO,
         RESET,
         DUMP_MEMORY,
         PRINT_MEMORY,
