@@ -88,41 +88,45 @@ Inheritance diagram for ControlUnit:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae22f4411723f65396af44292cf4f2309"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#ae22f4411723f65396af44292cf4f2309">~ControlUnit</a> ()=default</td></tr>
 <tr class="separator:ae22f4411723f65396af44292cf4f2309"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0068a7c8ca5832e8f917e38fea3dac7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#ac0068a7c8ca5832e8f917e38fea3dac7">setControlSignals</a> (uint32_t instruction)=0</td></tr>
-<tr class="separator:ac0068a7c8ca5832e8f917e38fea3dac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10911b7fecdd5d6c5058563a5c9945c6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a10911b7fecdd5d6c5058563a5c9945c6">getALUSrc</a> () const =0</td></tr>
-<tr class="separator:a10911b7fecdd5d6c5058563a5c9945c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02cba7c3491256a512f4623fb49e6882"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a02cba7c3491256a512f4623fb49e6882">getMemToReg</a> () const =0</td></tr>
-<tr class="separator:a02cba7c3491256a512f4623fb49e6882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa513a25dfb2c65dfac773bc6587566b1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#aa513a25dfb2c65dfac773bc6587566b1">getRegWrite</a> () const =0</td></tr>
-<tr class="separator:aa513a25dfb2c65dfac773bc6587566b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390891c52583989da1a9dac1ba2a1738"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a390891c52583989da1a9dac1ba2a1738">getMemRead</a> () const =0</td></tr>
-<tr class="separator:a390891c52583989da1a9dac1ba2a1738"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbff3dc8c16fcc5041c124cc71c17f33"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#abbff3dc8c16fcc5041c124cc71c17f33">getMemWrite</a> () const =0</td></tr>
-<tr class="separator:abbff3dc8c16fcc5041c124cc71c17f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35052836dfd1822c2d169ae5a1442c6b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a35052836dfd1822c2d169ae5a1442c6b">getBranch</a> () const =0</td></tr>
-<tr class="separator:a35052836dfd1822c2d169ae5a1442c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18be75eab97fc09fd6642ba4878d4f4b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119">ALU::ALUOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a18be75eab97fc09fd6642ba4878d4f4b">getALUOp</a> () const =0</td></tr>
-<tr class="separator:a18be75eab97fc09fd6642ba4878d4f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fedc1442f71ebdb9b19ff4d5a7d9210"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a9fedc1442f71ebdb9b19ff4d5a7d9210">Reset</a> ()</td></tr>
+<tr class="separator:a9fedc1442f71ebdb9b19ff4d5a7d9210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f833e38023892becb4e17884e6bf25f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a0f833e38023892becb4e17884e6bf25f">SetControlSignals</a> (uint32_t instruction)=0</td></tr>
+<tr class="separator:a0f833e38023892becb4e17884e6bf25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afc2ad8d7fbf319ad99c0e6ea79f5be"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacealu.html#a168383e119a615fcfa97506988a23985">alu::AluOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a1afc2ad8d7fbf319ad99c0e6ea79f5be">GetAluSignal</a> (uint32_t instruction, bool ALUOp)=0</td></tr>
+<tr class="separator:a1afc2ad8d7fbf319ad99c0e6ea79f5be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd431538d9150b789bfc7bc9a2f472ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#acd431538d9150b789bfc7bc9a2f472ff">GetAluSrc</a> () const</td></tr>
+<tr class="separator:acd431538d9150b789bfc7bc9a2f472ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b4db62cc16d6b84dcd4e151e833827"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#ad9b4db62cc16d6b84dcd4e151e833827">GetMemToReg</a> () const</td></tr>
+<tr class="separator:ad9b4db62cc16d6b84dcd4e151e833827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a227e2639cc27b79d0d6b75b56484bce4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a227e2639cc27b79d0d6b75b56484bce4">GetRegWrite</a> () const</td></tr>
+<tr class="separator:a227e2639cc27b79d0d6b75b56484bce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b4ea7f72df18dd6f131d3df78b53bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a80b4ea7f72df18dd6f131d3df78b53bc">GetMemRead</a> () const</td></tr>
+<tr class="separator:a80b4ea7f72df18dd6f131d3df78b53bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7acd531c64f7437878c58405e3c9dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#aba7acd531c64f7437878c58405e3c9dc">GetMemWrite</a> () const</td></tr>
+<tr class="separator:aba7acd531c64f7437878c58405e3c9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565e160c83b2eb0df2b1d3dea39bd020"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a565e160c83b2eb0df2b1d3dea39bd020">GetAluOp</a> () const</td></tr>
+<tr class="separator:a565e160c83b2eb0df2b1d3dea39bd020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a26bf58d120d77849b9e6eeb0bdeec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a04a26bf58d120d77849b9e6eeb0bdeec">GetBranch</a> () const</td></tr>
+<tr class="separator:a04a26bf58d120d77849b9e6eeb0bdeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a2ffe1212f7d634525a84bef669a3453f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a2ffe1212f7d634525a84bef669a3453f">RegDst</a> = false</td></tr>
-<tr class="separator:a2ffe1212f7d634525a84bef669a3453f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a184ce2f97a131b71e51035480cd67fc5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a184ce2f97a131b71e51035480cd67fc5">ALUSrc</a> = false</td></tr>
-<tr class="separator:a184ce2f97a131b71e51035480cd67fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a944fd5cd6e0e560cad09533bdc99329b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a944fd5cd6e0e560cad09533bdc99329b">MemToReg</a> = false</td></tr>
-<tr class="separator:a944fd5cd6e0e560cad09533bdc99329b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa258b6839f2661b66150ca6bb1316e4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#aa258b6839f2661b66150ca6bb1316e4b">RegWrite</a> = false</td></tr>
-<tr class="separator:aa258b6839f2661b66150ca6bb1316e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0f1a0a0349290771cc404691ec9f2b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#ae0f1a0a0349290771cc404691ec9f2b5">MemRead</a> = false</td></tr>
-<tr class="separator:ae0f1a0a0349290771cc404691ec9f2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48062dd4f12645f8259209f1b5445d8f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a48062dd4f12645f8259209f1b5445d8f">MemWrite</a> = false</td></tr>
-<tr class="separator:a48062dd4f12645f8259209f1b5445d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ff1ebecee68ada12ce9b30cf4d4d68e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a7ff1ebecee68ada12ce9b30cf4d4d68e">Branch</a> = false</td></tr>
-<tr class="separator:a7ff1ebecee68ada12ce9b30cf4d4d68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64dbe0015571ad29cdd6309312036520"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119">ALU::ALUOp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a64dbe0015571ad29cdd6309312036520">ALUOp</a> = <a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693">ALU::ALUOp::NONE</a></td></tr>
-<tr class="separator:a64dbe0015571ad29cdd6309312036520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b002e22ea0e96d2d2ce24daf74a1e8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a5b002e22ea0e96d2d2ce24daf74a1e8b">reg_write_</a> = false</td></tr>
+<tr class="separator:a5b002e22ea0e96d2d2ce24daf74a1e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c5d30456a87d6b4454772d35770145"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#aa6c5d30456a87d6b4454772d35770145">branch_</a> = false</td></tr>
+<tr class="separator:aa6c5d30456a87d6b4454772d35770145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e4ce45d89331b1c262236d22ebc489"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a16e4ce45d89331b1c262236d22ebc489">alu_src_</a> = false</td></tr>
+<tr class="separator:a16e4ce45d89331b1c262236d22ebc489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1d34ad63bc2e32c483f81bdba4e769"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a6d1d34ad63bc2e32c483f81bdba4e769">mem_read_</a> = false</td></tr>
+<tr class="separator:a6d1d34ad63bc2e32c483f81bdba4e769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ef5caa495fc8f3b03c4149c7fb2809"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#ad4ef5caa495fc8f3b03c4149c7fb2809">mem_write_</a> = false</td></tr>
+<tr class="separator:ad4ef5caa495fc8f3b03c4149c7fb2809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80bef90d076351b9740b4f0fa0325ab0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a80bef90d076351b9740b4f0fa0325ab0">mem_to_reg_</a> = false</td></tr>
+<tr class="separator:a80bef90d076351b9740b4f0fa0325ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53da51422d76b66d1dee86fd80e4ae28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a53da51422d76b66d1dee86fd80e4ae28">pc_src_</a> = false</td></tr>
+<tr class="separator:a53da51422d76b66d1dee86fd80e4ae28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01a24f57f9f0513287383d400d6a4824"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classControlUnit.html#a01a24f57f9f0513287383d400d6a4824">alu_op_</a> {}</td></tr>
+<tr class="separator:a01a24f57f9f0513287383d400d6a4824"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classControlUnit.html" title="The ControlUnit class is the base class for the control unit of the CPU.">ControlUnit</a> class is the base class for the control unit of the CPU. </p>
@@ -153,8 +157,25 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a18be75eab97fc09fd6642ba4878d4f4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18be75eab97fc09fd6642ba4878d4f4b">&#9670;&nbsp;</a></span>getALUOp()</h2>
+<a id="a565e160c83b2eb0df2b1d3dea39bd020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565e160c83b2eb0df2b1d3dea39bd020">&#9670;&nbsp;</a></span>GetAluOp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ControlUnit::GetAluOp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1afc2ad8d7fbf319ad99c0e6ea79f5be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1afc2ad8d7fbf319ad99c0e6ea79f5be">&#9670;&nbsp;</a></span>GetAluSignal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,10 +184,21 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119">ALU::ALUOp</a> ControlUnit::getALUOp </td>
+          <td class="memname">virtual <a class="el" href="namespacealu.html#a168383e119a615fcfa97506988a23985">alu::AluOp</a> ControlUnit::GetAluSignal </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>instruction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ALUOp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -176,174 +208,114 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#af3deeffb7f72a1f11569f86506ebacbc">RVSSControlUnit</a>.</p>
+<p>Implemented in <a class="el" href="classRVSSControlUnit.html#a779395276e46b48b9a7865fc34ae9833">RVSSControlUnit</a>.</p>
 
 </div>
 </div>
-<a id="a10911b7fecdd5d6c5058563a5c9945c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10911b7fecdd5d6c5058563a5c9945c6">&#9670;&nbsp;</a></span>getALUSrc()</h2>
+<a id="acd431538d9150b789bfc7bc9a2f472ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd431538d9150b789bfc7bc9a2f472ff">&#9670;&nbsp;</a></span>GetAluSrc()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getALUSrc </td>
+          <td class="memname">bool ControlUnit::GetAluSrc </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#a301caaf70fc7665723749d9c8241fca4">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="a35052836dfd1822c2d169ae5a1442c6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35052836dfd1822c2d169ae5a1442c6b">&#9670;&nbsp;</a></span>getBranch()</h2>
+<a id="a04a26bf58d120d77849b9e6eeb0bdeec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a26bf58d120d77849b9e6eeb0bdeec">&#9670;&nbsp;</a></span>GetBranch()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getBranch </td>
+          <td class="memname">bool ControlUnit::GetBranch </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#aa74f6c502d89da33a3a631444b6a9de4">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="a390891c52583989da1a9dac1ba2a1738"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a390891c52583989da1a9dac1ba2a1738">&#9670;&nbsp;</a></span>getMemRead()</h2>
+<a id="a80b4ea7f72df18dd6f131d3df78b53bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80b4ea7f72df18dd6f131d3df78b53bc">&#9670;&nbsp;</a></span>GetMemRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getMemRead </td>
+          <td class="memname">bool ControlUnit::GetMemRead </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#ac28403402feee03b1f6247e28d4d8301">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="a02cba7c3491256a512f4623fb49e6882"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02cba7c3491256a512f4623fb49e6882">&#9670;&nbsp;</a></span>getMemToReg()</h2>
+<a id="ad9b4db62cc16d6b84dcd4e151e833827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9b4db62cc16d6b84dcd4e151e833827">&#9670;&nbsp;</a></span>GetMemToReg()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getMemToReg </td>
+          <td class="memname">bool ControlUnit::GetMemToReg </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#af6b9c7464b5613527749b05806b9cb27">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="abbff3dc8c16fcc5041c124cc71c17f33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbff3dc8c16fcc5041c124cc71c17f33">&#9670;&nbsp;</a></span>getMemWrite()</h2>
+<a id="aba7acd531c64f7437878c58405e3c9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba7acd531c64f7437878c58405e3c9dc">&#9670;&nbsp;</a></span>GetMemWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getMemWrite </td>
+          <td class="memname">bool ControlUnit::GetMemWrite </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#abe17f9e21a12054c6663e1a76e223b7c">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="aa513a25dfb2c65dfac773bc6587566b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa513a25dfb2c65dfac773bc6587566b1">&#9670;&nbsp;</a></span>getRegWrite()</h2>
+<a id="a227e2639cc27b79d0d6b75b56484bce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a227e2639cc27b79d0d6b75b56484bce4">&#9670;&nbsp;</a></span>GetRegWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool ControlUnit::getRegWrite </td>
+          <td class="memname">bool ControlUnit::GetRegWrite </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#ac7451b83c27b6c73bd3b6306f390c68f">RVSSControlUnit</a>.</p>
-
 </div>
 </div>
-<a id="ac0068a7c8ca5832e8f917e38fea3dac7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0068a7c8ca5832e8f917e38fea3dac7">&#9670;&nbsp;</a></span>setControlSignals()</h2>
+<a id="a9fedc1442f71ebdb9b19ff4d5a7d9210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fedc1442f71ebdb9b19ff4d5a7d9210">&#9670;&nbsp;</a></span>Reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -352,7 +324,32 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ControlUnit::setControlSignals </td>
+          <td class="memname">void ControlUnit::Reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f833e38023892becb4e17884e6bf25f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f833e38023892becb4e17884e6bf25f">&#9670;&nbsp;</a></span>SetControlSignals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ControlUnit::SetControlSignals </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>instruction</em></td><td>)</td>
@@ -366,13 +363,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classRVSSControlUnit.html#a62a8e29e31822eeb1a9743b5a23e872f">RVSSControlUnit</a>.</p>
+<p>Implemented in <a class="el" href="classRVSSControlUnit.html#adf26df59ddd8b4e69e94ed8b881127bc">RVSSControlUnit</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a64dbe0015571ad29cdd6309312036520"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64dbe0015571ad29cdd6309312036520">&#9670;&nbsp;</a></span>ALUOp</h2>
+<a id="a01a24f57f9f0513287383d400d6a4824"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01a24f57f9f0513287383d400d6a4824">&#9670;&nbsp;</a></span>alu_op_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,7 +378,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119">ALU::ALUOp</a> ControlUnit::ALUOp = <a class="el" href="namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693">ALU::ALUOp::NONE</a></td>
+          <td class="memname">uint8_t ControlUnit::alu_op_ {}</td>
         </tr>
       </table>
   </td>
@@ -393,8 +390,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a184ce2f97a131b71e51035480cd67fc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a184ce2f97a131b71e51035480cd67fc5">&#9670;&nbsp;</a></span>ALUSrc</h2>
+<a id="a16e4ce45d89331b1c262236d22ebc489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e4ce45d89331b1c262236d22ebc489">&#9670;&nbsp;</a></span>alu_src_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,7 +400,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::ALUSrc = false</td>
+          <td class="memname">bool ControlUnit::alu_src_ = false</td>
         </tr>
       </table>
   </td>
@@ -415,8 +412,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ff1ebecee68ada12ce9b30cf4d4d68e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ff1ebecee68ada12ce9b30cf4d4d68e">&#9670;&nbsp;</a></span>Branch</h2>
+<a id="aa6c5d30456a87d6b4454772d35770145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c5d30456a87d6b4454772d35770145">&#9670;&nbsp;</a></span>branch_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -425,7 +422,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::Branch = false</td>
+          <td class="memname">bool ControlUnit::branch_ = false</td>
         </tr>
       </table>
   </td>
@@ -437,8 +434,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae0f1a0a0349290771cc404691ec9f2b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0f1a0a0349290771cc404691ec9f2b5">&#9670;&nbsp;</a></span>MemRead</h2>
+<a id="a6d1d34ad63bc2e32c483f81bdba4e769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d1d34ad63bc2e32c483f81bdba4e769">&#9670;&nbsp;</a></span>mem_read_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -447,7 +444,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::MemRead = false</td>
+          <td class="memname">bool ControlUnit::mem_read_ = false</td>
         </tr>
       </table>
   </td>
@@ -459,8 +456,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a944fd5cd6e0e560cad09533bdc99329b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a944fd5cd6e0e560cad09533bdc99329b">&#9670;&nbsp;</a></span>MemToReg</h2>
+<a id="a80bef90d076351b9740b4f0fa0325ab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80bef90d076351b9740b4f0fa0325ab0">&#9670;&nbsp;</a></span>mem_to_reg_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +466,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::MemToReg = false</td>
+          <td class="memname">bool ControlUnit::mem_to_reg_ = false</td>
         </tr>
       </table>
   </td>
@@ -481,8 +478,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a48062dd4f12645f8259209f1b5445d8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48062dd4f12645f8259209f1b5445d8f">&#9670;&nbsp;</a></span>MemWrite</h2>
+<a id="ad4ef5caa495fc8f3b03c4149c7fb2809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ef5caa495fc8f3b03c4149c7fb2809">&#9670;&nbsp;</a></span>mem_write_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -491,7 +488,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::MemWrite = false</td>
+          <td class="memname">bool ControlUnit::mem_write_ = false</td>
         </tr>
       </table>
   </td>
@@ -503,8 +500,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2ffe1212f7d634525a84bef669a3453f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ffe1212f7d634525a84bef669a3453f">&#9670;&nbsp;</a></span>RegDst</h2>
+<a id="a53da51422d76b66d1dee86fd80e4ae28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53da51422d76b66d1dee86fd80e4ae28">&#9670;&nbsp;</a></span>pc_src_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -513,7 +510,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::RegDst = false</td>
+          <td class="memname">bool ControlUnit::pc_src_ = false</td>
         </tr>
       </table>
   </td>
@@ -525,8 +522,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa258b6839f2661b66150ca6bb1316e4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa258b6839f2661b66150ca6bb1316e4b">&#9670;&nbsp;</a></span>RegWrite</h2>
+<a id="a5b002e22ea0e96d2d2ce24daf74a1e8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b002e22ea0e96d2d2ce24daf74a1e8b">&#9670;&nbsp;</a></span>reg_write_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -535,7 +532,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ControlUnit::RegWrite = false</td>
+          <td class="memname">bool ControlUnit::reg_write_ = false</td>
         </tr>
       </table>
   </td>
@@ -547,8 +544,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/vm/<a class="el" href="control__unit__base_8h_source.html">control_unit_base.h</a></li>
+<li>src/vm/<a class="el" href="control__unit__base_8cpp.html">control_unit_base.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

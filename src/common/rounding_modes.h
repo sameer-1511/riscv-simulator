@@ -9,12 +9,12 @@
 #include "../pch.h"
 
 enum class RoundingMode {
-    RNE,  // Round to Nearest, ties to Even
-    RTZ,  // Round towards Zero
-    RDN,  // Round Down (towards -∞)
-    RUP,  // Round Up (towards +∞)
-    RMM,  // Round to Nearest, ties to Max Magnitude
-    DYN   // Dynamic rounding mode (in rm field, means use frm CSR)
+  RNE,  // Round to Nearest, ties to Even
+  RTZ,  // Round towards Zero
+  RDN,  // Round Down (towards -∞)
+  RUP,  // Round Up (towards +∞)
+  RMM,  // Round to Nearest, ties to Max Magnitude
+  DYN   // Dynamic rounding mode (in rm field, means use frm CSR)
 };
 
 // For assembler/parser to map strings to enum
@@ -38,15 +38,14 @@ inline const std::unordered_map<RoundingMode, int> roundingModeEncoding = {
 };
 
 inline bool isValidRoundingMode(const std::string &mode) {
-    return stringToRoundingMode.find(mode) != stringToRoundingMode.end();
+  return stringToRoundingMode.find(mode)!=stringToRoundingMode.end();
 }
 
 inline int getRoundingModeEncoding(const std::string &mode) {
-    if (isValidRoundingMode(mode)) {
-        return roundingModeEncoding.at(stringToRoundingMode.at(mode));
-    }
-    throw std::invalid_argument("Invalid rounding mode: " + mode);
+  if (isValidRoundingMode(mode)) {
+    return roundingModeEncoding.at(stringToRoundingMode.at(mode));
+  }
+  throw std::invalid_argument("Invalid rounding mode: " + mode);
 }
-
 
 #endif // ROUNDING_MODES_H

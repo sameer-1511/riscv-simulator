@@ -64,14 +64,20 @@ $(function() {
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
+<li>address
+: <a class="el" href="structMemoryChange.html#aa62639348e51e54b205b2b1fa22f3887">MemoryChange</a>
+</li>
 <li>alu_
-: <a class="el" href="classVMBase.html#a6356b9c808eedae8c7dfc1bde24f1d29">VMBase</a>
+: <a class="el" href="classVmBase.html#ae3030c966af171bb3a504c55bc53520c">VmBase</a>
 </li>
-<li>ALUOp
-: <a class="el" href="classControlUnit.html#a64dbe0015571ad29cdd6309312036520">ControlUnit</a>
+<li>alu_op_
+: <a class="el" href="classControlUnit.html#a01a24f57f9f0513287383d400d6a4824">ControlUnit</a>
 </li>
-<li>ALUSrc
-: <a class="el" href="classControlUnit.html#a184ce2f97a131b71e51035480cd67fc5">ControlUnit</a>
+<li>alu_src_
+: <a class="el" href="classControlUnit.html#a16e4ce45d89331b1c262236d22ebc489">ControlUnit</a>
+</li>
+<li>args
+: <a class="el" href="structcommand__handler_1_1Command.html#a466fdb94f87f97969ddd24c88b1324e7">command_handler::Command</a>
 </li>
 </ul>
 
@@ -80,38 +86,65 @@ $(function() {
 <li>block_size
 : <a class="el" href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">MemoryBlock</a>
 </li>
-<li>Branch
-: <a class="el" href="classControlUnit.html#a7ff1ebecee68ada12ce9b30cf4d4d68e">ControlUnit</a>
+<li>branch_
+: <a class="el" href="classControlUnit.html#aa6c5d30456a87d6b4454772d35770145">ControlUnit</a>
+</li>
+<li>branch_flag_
+: <a class="el" href="classRVSSVM.html#adac1aa09fc07850d4f5446a9321bcee3">RVSSVM</a>
 </li>
 <li>branch_mispredictions_
-: <a class="el" href="classVMBase.html#a75f6d7d72500ca13939281e88a5e6b7d">VMBase</a>
+: <a class="el" href="classVmBase.html#a13c51d85a826a7bea080d8a9ead0913b">VmBase</a>
 </li>
 <li>breakpoints_
-: <a class="el" href="classVMBase.html#a45b2ed92f4c06786e3b87ae12e19a215">VMBase</a>
+: <a class="el" href="classVmBase.html#a1ab317e9659f20f6edddad20ec241f98">VmBase</a>
 </li>
 </ul>
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>carry_
+: <a class="el" href="classalu_1_1Alu.html#a7ec7aef26212e3f4fe92edd4e32e934a">alu::Alu</a>
+</li>
 <li>column_number
-: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#aba8d33c8d563eb5ccf748263addca315">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#a07655c68fdf91692828ab29c3636daad">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#af90a21dfe205fce53bb32bbf8a022e17">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#a8d518b24625a749741320fbe25c164d6">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#a1101f818eb477a7d29243af32517e5b0">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#a6a93faaefa1911008b2623e5c9d3d832">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#af51f92d7ea28df341117cbdcc745186c">Errors::UnexpectedOperandError</a>
-, <a class="el" href="structErrors_1_1UnexpectedTokenError.html#a3e6d429267377519bfd7179c566a69aa">Errors::UnexpectedTokenError</a>
+: <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#ace2ca5fbf33f39436ff83eae2500318f">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#a58842b5cd5dfa23d6d0255a81fac5129">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#aa66e552137bf7c48a96fdb02bb0536e3">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a9dad3c7f197f4b8e6a457461b12eaf2c">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#a5573d93096bd3aea618d3c0402a2a664">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#ac4f7181c49752102124518a68e799769">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#acd4c50f270f96e81d7c0d316a041e405">errors::UnexpectedOperandError</a>
+, <a class="el" href="structerrors_1_1UnexpectedTokenError.html#a57d706a08372554d0bac11a5de313cf1">errors::UnexpectedTokenError</a>
 , <a class="el" href="structToken.html#a034f266d450595b90655caecc1cb42df">Token</a>
 </li>
+<li>control_unit_
+: <a class="el" href="classRVSSVM.html#af791e8846fc4e92787827da00a5bc809">RVSSVM</a>
+</li>
 <li>cpi_
-: <a class="el" href="classVMBase.html#aabe5f277c9f4c9dad3d7da4c56677f2a">VMBase</a>
+: <a class="el" href="classVmBase.html#afceab6c7108d84224f14c3c0b52c2fe2">VmBase</a>
+</li>
+<li>csr
+: <a class="el" href="structICUnit.html#a0986ffbffc86ca1181658c030b070d2e">ICUnit</a>
+</li>
+<li>csr_old_value_
+: <a class="el" href="classRVSSVM.html#a26f749a09117cb8c313ab423c2ebf9a3">RVSSVM</a>
+</li>
+<li>csr_target_address_
+: <a class="el" href="classRVSSVM.html#a6fc6edc37b35e69343f6ecf2cedd6caf">RVSSVM</a>
+</li>
+<li>csr_uimm_
+: <a class="el" href="classRVSSVM.html#a7951fd1c543faff83b8aee97427c01a2">RVSSVM</a>
+</li>
+<li>csr_write_val_
+: <a class="el" href="classRVSSVM.html#ae57223b65ada3f5f5dfecf6c16ce1409">RVSSVM</a>
+</li>
+<li>current_delta_
+: <a class="el" href="classRVSSVM.html#ae6c5c56d7a856783a6ab9e4c3a6688ca">RVSSVM</a>
 </li>
 <li>current_instruction_
-: <a class="el" href="classVMBase.html#ac62491479088ac4bba0c70a5018f9416">VMBase</a>
+: <a class="el" href="classVmBase.html#a6367cbbce3f5eeb50eb88f38531f5ca0">VmBase</a>
 </li>
-<li>cycle_s
-: <a class="el" href="classVMBase.html#a5dce495b8c5dbb1cede4c364845a0a19">VMBase</a>
+<li>cycle_s_
+: <a class="el" href="classVmBase.html#a649f1a05c9804dc8b32c42d0a26bfa67">VmBase</a>
 </li>
 </ul>
 
@@ -121,7 +154,56 @@ $(function() {
 : <a class="el" href="structMemoryBlock.html#a0cd70c89ef3b4b7ebfd25aa48b2db04f">MemoryBlock</a>
 </li>
 <li>data_buffer
-: <a class="el" href="structAssembledProgram.html#a2010e60b74c7eda0ade12cb69ee2dd4d">AssembledProgram</a>
+: <a class="el" href="structAssembledProgram.html#abd827684cbf41302559a6b82ac8c2f0e">AssembledProgram</a>
+</li>
+</ul>
+
+
+<h3><a id="index_e"></a>- e -</h3><ul>
+<li>e_ehsize
+: <a class="el" href="structElfHeader.html#a1b3180882685618f86dee1e90a257c7c">ElfHeader</a>
+</li>
+<li>e_entry
+: <a class="el" href="structElfHeader.html#a8d3a755b249b682cacb47e2c5f702d37">ElfHeader</a>
+</li>
+<li>e_flags
+: <a class="el" href="structElfHeader.html#aef4b3cce285534bbea3f0a932fa11cad">ElfHeader</a>
+</li>
+<li>e_ident
+: <a class="el" href="structElfHeader.html#a650dc60b3a73789b8997c62a9d21e3a5">ElfHeader</a>
+</li>
+<li>e_machine
+: <a class="el" href="structElfHeader.html#a723805c1a7c167ed9003f40a81ff831c">ElfHeader</a>
+</li>
+<li>e_phentsize
+: <a class="el" href="structElfHeader.html#a771b9fed63ef520138f0147b307d7663">ElfHeader</a>
+</li>
+<li>e_phnum
+: <a class="el" href="structElfHeader.html#a1c8a3de19f30fd90ff4a050473545191">ElfHeader</a>
+</li>
+<li>e_phoff
+: <a class="el" href="structElfHeader.html#a789b2a155fe63966c1fe15aaedb36e5e">ElfHeader</a>
+</li>
+<li>e_shentsize
+: <a class="el" href="structElfHeader.html#a1f5b0217dadf345c8cc3dab065f78f9d">ElfHeader</a>
+</li>
+<li>e_shnum
+: <a class="el" href="structElfHeader.html#a157caa2141ae7e83d2e074c7a2e3ee50">ElfHeader</a>
+</li>
+<li>e_shoff
+: <a class="el" href="structElfHeader.html#abc9abac95d85371adbab2d108aba7616">ElfHeader</a>
+</li>
+<li>e_shstrndx
+: <a class="el" href="structElfHeader.html#a0ab5fe75ba257ff7454175f8ba8617ef">ElfHeader</a>
+</li>
+<li>e_type
+: <a class="el" href="structElfHeader.html#a58f491270901b46727aff3e315071423">ElfHeader</a>
+</li>
+<li>e_version
+: <a class="el" href="structElfHeader.html#a78d14c167a3d013acceca6d996b10e16">ElfHeader</a>
+</li>
+<li>execution_result_
+: <a class="el" href="classRVSSVM.html#a8d68bf6e4b85df7b3b40431479a10a65">RVSSVM</a>
 </li>
 </ul>
 
@@ -129,36 +211,50 @@ $(function() {
 <h3><a id="index_f"></a>- f -</h3><ul>
 <li>filename
 : <a class="el" href="structAssembledProgram.html#afe8761d1f655b60e13b565f1fec54e76">AssembledProgram</a>
-, <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#ae56dd11ad82b8127e4e61e4e6f4989a7">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#ac53f3f63028b8c379c32725ff9d3e7cf">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#aae3f7a8a8f666a5f95e999cfb518b130">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#a15165c11b7523cfc561ac444facfb74b">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#a664d002c826b23558c17084e6b3f51f9">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#a5b6e81a48fcbd995c3e285acccabb073">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#ab90f47e72b1e63446ab58a6b1656024b">Errors::UnexpectedOperandError</a>
-, <a class="el" href="structErrors_1_1UnexpectedTokenError.html#a8d55fca5f9488d4a78e126ffecf0b609">Errors::UnexpectedTokenError</a>
+, <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#a64603c66382f555a83c2427579315031">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#ab6d2587974dace37ac17572ea6f4ab38">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#afeeb98d590525ec9e6e01e36d3c34c98">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a07c0ca45c5a48bb8ce5488865e13586e">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#a570796f68e60fe299f829224d5decf39">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#a04e7f71bb0937d5a66ff50e314a62bfa">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#ad4b1bbdce58a125123430a1b632a64a6">errors::UnexpectedOperandError</a>
+, <a class="el" href="structerrors_1_1UnexpectedTokenError.html#af0a2d62001318244e7f2e5d75a858436">errors::UnexpectedTokenError</a>
 </li>
 <li>func2
-: <a class="el" href="structInstructionSet_1_1R4TypeInstructionEncoding.html#a947e9d68bd310669ac2a49f13b1d9c4a">InstructionSet::R4TypeInstructionEncoding</a>
+: <a class="el" href="structinstruction__set_1_1R4TypeInstructionEncoding.html#a4275825525a3cdf9bd312cdb52d7e3f2">instruction_set::R4TypeInstructionEncoding</a>
+</li>
+<li>funct2
+: <a class="el" href="structinstruction__set_1_1FDR4TypeInstructionEncoding.html#a3a455291d676b40cda5f23e93bf821c1">instruction_set::FDR4TypeInstructionEncoding</a>
 </li>
 <li>funct3
-: <a class="el" href="structInstructionSet_1_1BTypeInstructionEncoding.html#a028124f17dd17190869ffaf26444230f">InstructionSet::BTypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I1TypeInstructionEncoding.html#a68db6a2e40ccd68b1b4e37f885e67ec2">InstructionSet::I1TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I2TypeInstructionEncoding.html#a4eb8e0428f8543135946d79f7a2bd4ef">InstructionSet::I2TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I3TypeInstructionEncoding.html#a83c4ea223e50a73b437375e4d2febbf7">InstructionSet::I3TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1InstructionEncoding.html#a7188da3a0325d1121e3b32ffb6129bf2">InstructionSet::InstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1R4TypeInstructionEncoding.html#ad0170f388083af262c908d9564bf0966">InstructionSet::R4TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1RTypeInstructionEncoding.html#ab909e6d048f2693f1e531c4a4af286d3">InstructionSet::RTypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1STypeInstructionEncoding.html#a74c4da8a1665bb4e378b0e105dba362c">InstructionSet::STypeInstructionEncoding</a>
+: <a class="el" href="structinstruction__set_1_1BTypeInstructionEncoding.html#a985dff63e46234327fc3d81a337e9d6c">instruction_set::BTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1CSR__ITypeInstructionEncoding.html#a3c5b7a9c03e9eeca47da3d536a0a9678">instruction_set::CSR_ITypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1CSR__RTypeInstructionEncoding.html#a7335a3a72d68e420e858add414a3e64b">instruction_set::CSR_RTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDITypeInstructionEncoding.html#aa93e447bb29391176472f39583050cec">instruction_set::FDITypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR3TypeInstructionEncoding.html#aa18c0044ad4d05c3d99c69281b76c672">instruction_set::FDR3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDRTypeInstructionEncoding.html#a18f69a8d2bdc35a7d66506c0cc5d4d70">instruction_set::FDRTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDSTypeInstructionEncoding.html#a4b1e290f4cb54d19ee03fbbff869244e">instruction_set::FDSTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I1TypeInstructionEncoding.html#a460bd8c66be953e3b6ebe2c6326186f4">instruction_set::I1TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I2TypeInstructionEncoding.html#a4c3a771e638deb2a9fecc8295d882580">instruction_set::I2TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I3TypeInstructionEncoding.html#a8519056dfaae40eddcb40eb3b6b8e6bf">instruction_set::I3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1R4TypeInstructionEncoding.html#a3bf589391de160d51c750b964d45caf8">instruction_set::R4TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1RTypeInstructionEncoding.html#a4e43f9ea5f70379a613129b5bdd4fda5">instruction_set::RTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1STypeInstructionEncoding.html#a6f211efd16df18f66a993f5d5b1a8e8a">instruction_set::STypeInstructionEncoding</a>
+</li>
+<li>funct5
+: <a class="el" href="structinstruction__set_1_1FDR2TypeInstructionEncoding.html#a5653f0285514063bd5501e08039ddd9f">instruction_set::FDR2TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR3TypeInstructionEncoding.html#a8823e88dc7b661a9598c1ae9167b8ac0">instruction_set::FDR3TypeInstructionEncoding</a>
 </li>
 <li>funct6
-: <a class="el" href="structInstructionSet_1_1I2TypeInstructionEncoding.html#a45c34224c1f5cc3c179f8f17a10aee0b">InstructionSet::I2TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1InstructionEncoding.html#af8891d684c7f215338fe73d22bd62c62">InstructionSet::InstructionEncoding</a>
+: <a class="el" href="structinstruction__set_1_1I2TypeInstructionEncoding.html#a552de44fd98aaefc6746378d0576e78d">instruction_set::I2TypeInstructionEncoding</a>
 </li>
 <li>funct7
-: <a class="el" href="structInstructionSet_1_1I3TypeInstructionEncoding.html#a76eb0ae8b7b0f96c297f7a7a3b7a1c71">InstructionSet::I3TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1InstructionEncoding.html#a1baea81d2049f6bf21cfc303075801f9">InstructionSet::InstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1RTypeInstructionEncoding.html#afb32e8d54eed899a8f491d6df6a6538d">InstructionSet::RTypeInstructionEncoding</a>
+: <a class="el" href="structinstruction__set_1_1FDR1TypeInstructionEncoding.html#a0379667c273cf707d36212084ac6d0a9">instruction_set::FDR1TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR2TypeInstructionEncoding.html#aa72b2415274ff2657c4c59ce8c2b177b">instruction_set::FDR2TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR3TypeInstructionEncoding.html#a761f544a9c0c7d693ada88232393249d">instruction_set::FDR3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDRTypeInstructionEncoding.html#aed1e74714139717252495123c588c3f5">instruction_set::FDRTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I3TypeInstructionEncoding.html#a0c6468b965c8a3cc9e5a686fd72b4ee9">instruction_set::I3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1RTypeInstructionEncoding.html#a6942b880848d4bb2b88e14ab9f33f702">instruction_set::RTypeInstructionEncoding</a>
 </li>
 </ul>
 
@@ -167,17 +263,14 @@ $(function() {
 <li>imm
 : <a class="el" href="structICUnit.html#af49f5da98a756c635f14a0201dee9076">ICUnit</a>
 </li>
-<li>instruction_buffer
-: <a class="el" href="structAssembledProgram.html#a9a8d7e3e5fd0a7d7741cc0f200d9ebd1">AssembledProgram</a>
-</li>
 <li>instruction_number_line_number_mapping
 : <a class="el" href="structAssembledProgram.html#ade3312b57abb948a18eee54e64cb4203">AssembledProgram</a>
 </li>
 <li>instructions_retired_
-: <a class="el" href="classVMBase.html#a0d10e1f1fd78b1b51ad7ef2d4c8f59ac">VMBase</a>
+: <a class="el" href="classVmBase.html#a7c2b1c72a3420353a658128abfbb5a68">VmBase</a>
 </li>
 <li>ipc_
-: <a class="el" href="classVMBase.html#a0bcde79df09ed64ee6194e0c6669d539">VMBase</a>
+: <a class="el" href="classVmBase.html#aaf1754c3ace71973679ec2f9a212d737">VmBase</a>
 </li>
 </ul>
 
@@ -190,14 +283,14 @@ $(function() {
 : <a class="el" href="structParseError.html#a555bb159e539823c3a02804d1e5cbc6a">ParseError</a>
 </li>
 <li>line_number
-: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#a77e394042db6bb96d8af902fd398b427">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#aa86bedcd01721242a9f8bc4dbcaf8223">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#a57246d5d436881083068cd3e401cde9b">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#acb8640beadcbe2735bfc54cc2631cd4a">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#a3594976b34f5511334ee21469577f88b">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#af6c7e0c112010a2fa0383ab96faeb57a">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#aa25c8a6d777173d552acb461d7915e44">Errors::UnexpectedOperandError</a>
-, <a class="el" href="structErrors_1_1UnexpectedTokenError.html#aa083024b87bb82510bfd2494c1f35ae0">Errors::UnexpectedTokenError</a>
+: <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#a3027cdf85adc8b4d8990be560598a905">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#aeaa1a268ba90e009f6a9b6adba343a7b">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#a08dff8f17d2c507822009e5e966d9a33">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a93199b6bc9add4632d27a912c0e7aedd">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#acce88d95994c59809e9d643ce7223730">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#a4a7e34267dfbf67c6f26d85959716642">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#ac2bc6788c9c82f45df76b4f83e00b8ba">errors::UnexpectedOperandError</a>
+, <a class="el" href="structerrors_1_1UnexpectedTokenError.html#a12d6a80139a31c9802395d3c7ac398c7">errors::UnexpectedTokenError</a>
 , <a class="el" href="structICUnit.html#a6d0abe84de5612ca74dc7ec11352a190">ICUnit</a>
 , <a class="el" href="structToken.html#ad06cb77d13e3a90614657da0eb7586d5">Token</a>
 </li>
@@ -205,67 +298,118 @@ $(function() {
 : <a class="el" href="structAssembledProgram.html#a2edb6ebd25416825340a18079828d667">AssembledProgram</a>
 </li>
 <li>line_text
-: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#a0a0dfb1a031e7593e7ad4043a44dff9f">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#afc3c1d9daa2d5edfe04970b5e5d402df">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#adbe01c18b3a8479d4fd257b1da96c3ca">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#a6e3459c1279466bb46ca80326a5112d5">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#af929aa911e5c0bd18ebf7ae4dbcd2623">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#a8bf5ff6cd9e6fd7e94e8f36bdcf9a629">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#a3498a1e5841265591756533a6e0251b1">Errors::UnexpectedOperandError</a>
-, <a class="el" href="structErrors_1_1UnexpectedTokenError.html#a9ba62e92330b78f6b07be5c3a7fe0219">Errors::UnexpectedTokenError</a>
+: <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#af506355ac4741133febc240882c152af">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#a4109326c3e2b1c48310e9f1dff3db31a">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#a3bb22f79f4b7a386b8c40f109a29c556">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a7739f47853359e829cb1f2aaaeb0a699">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#a11500f951e2895a3e673d7696d92e2aa">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#a15d5696860d43fd0cffb062fe47eaf32">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#aaf1cc0b17ff638487a236b5a934c26e7">errors::UnexpectedOperandError</a>
+, <a class="el" href="structerrors_1_1UnexpectedTokenError.html#afa4dc97a94158b02f8c1cb5a88860e14">errors::UnexpectedTokenError</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>main_message
-: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#ae5f67501676c45da8bec2bd28934ff37">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#a47623e026c6eed445d63a2343605f48d">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#aedf1effe1c869f68931a9e5a8496c7d0">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#a1dbdbed9dc0a07a2b1c1bab83285a58e">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#af5f7d47867edea77943143e5c0e2a4a3">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#a272f9f5a0621f2f5e82aee12e7624356">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#ad0cea2025da47c93616d4ce826fe3f04">Errors::UnexpectedOperandError</a>
+: <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#ab0bf19e6ecb16454f77aaed350d8df34">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#a2bf36a30fcbabea5115651a66e0db599">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#a302b0428803fe17b30787f20786b7e64">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a01295352c86d3ec213ac08ebdec38573">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#a2469fbf61a6f093b937e328013e4bfe0">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#abf04b1cdd09d79b68375727925376034">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#af5cb6c145d2ef72b1c0b4cb792652463">errors::UnexpectedOperandError</a>
+</li>
+<li>mem_read_
+: <a class="el" href="classControlUnit.html#a6d1d34ad63bc2e32c483f81bdba4e769">ControlUnit</a>
+</li>
+<li>mem_to_reg_
+: <a class="el" href="classControlUnit.html#a80bef90d076351b9740b4f0fa0325ab0">ControlUnit</a>
+</li>
+<li>mem_write_
+: <a class="el" href="classControlUnit.html#ad4ef5caa495fc8f3b03c4149c7fb2809">ControlUnit</a>
+</li>
+<li>memory_changes
+: <a class="el" href="structStepDelta.html#ad9c107c2528c8bafe55504a42ea29751">StepDelta</a>
 </li>
 <li>memory_controller_
-: <a class="el" href="classVMBase.html#a9ed9a281a3ad558575ef228e40a1bd8a">VMBase</a>
+: <a class="el" href="classVmBase.html#a54b7f11e76ff40b5fa08757fffe0a714">VmBase</a>
 </li>
-<li>MemRead
-: <a class="el" href="classControlUnit.html#ae0f1a0a0349290771cc404691ec9f2b5">ControlUnit</a>
-</li>
-<li>MemToReg
-: <a class="el" href="classControlUnit.html#a944fd5cd6e0e560cad09533bdc99329b">ControlUnit</a>
-</li>
-<li>MemWrite
-: <a class="el" href="classControlUnit.html#a48062dd4f12645f8259209f1b5445d8f">ControlUnit</a>
+<li>memory_result_
+: <a class="el" href="classRVSSVM.html#a81fccd4c10106e7aced1160d68119bbb">RVSSVM</a>
 </li>
 <li>message
-: <a class="el" href="structErrors_1_1UnexpectedTokenError.html#a4ca1c6c2154bb22e4336ec4321da8f20">Errors::UnexpectedTokenError</a>
+: <a class="el" href="structerrors_1_1UnexpectedTokenError.html#a605bee63b349493f2da6ca0e6cdcf478">errors::UnexpectedTokenError</a>
 , <a class="el" href="structParseError.html#afe0253424394e0b21fa5c46562d3e2a5">ParseError</a>
 </li>
 </ul>
 
 
+<h3><a id="index_n"></a>- n -</h3><ul>
+<li>negative_
+: <a class="el" href="classalu_1_1Alu.html#aaaa90d3ed3bdadb61ba92da792e37dd2">alu::Alu</a>
+</li>
+<li>new_bytes
+: <a class="el" href="structMemoryChange.html#a941ad106a6d37205cb644330bd165576">MemoryChange</a>
+</li>
+<li>new_pc
+: <a class="el" href="structStepDelta.html#ad998e8d8c6628d2d3e6775f4a2d913af">StepDelta</a>
+</li>
+<li>new_value
+: <a class="el" href="structRegisterChange.html#a71b0edf6999c870445e9a6ae2307c6b3">RegisterChange</a>
+</li>
+<li>next_pc_
+: <a class="el" href="classRVSSVM.html#a4aa14ea6a3d63291eb637edee36c117e">RVSSVM</a>
+</li>
+</ul>
+
+
 <h3><a id="index_o"></a>- o -</h3><ul>
+<li>old_bytes
+: <a class="el" href="structMemoryChange.html#a7dc45bb5ed4fa2838f787cf8104c0cea">MemoryChange</a>
+</li>
+<li>old_pc
+: <a class="el" href="structStepDelta.html#a609fe423c9a6ce11dfd3cb505b1c650c">StepDelta</a>
+</li>
+<li>old_value
+: <a class="el" href="structRegisterChange.html#a02b4d1f86400bc9cf2735ed8e72917fe">RegisterChange</a>
+</li>
 <li>opcode
 : <a class="el" href="structICUnit.html#a713091fe83a24ddea9df6b0a8b0fdbda">ICUnit</a>
-, <a class="el" href="structInstructionSet_1_1BTypeInstructionEncoding.html#a8c94aeb170ba5fb7710478b2e97c6344">InstructionSet::BTypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I1TypeInstructionEncoding.html#a88f41259f10acef4fcf24cd47f00cbd2">InstructionSet::I1TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I2TypeInstructionEncoding.html#aae68fa241be5cef99c7731e83c2b46ea">InstructionSet::I2TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1I3TypeInstructionEncoding.html#ae44d3e9b701b0e2958b10fca21358d6f">InstructionSet::I3TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1InstructionEncoding.html#a19fa7e8ebca90ade360fabe2e7a3c722">InstructionSet::InstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1JTypeInstructionEncoding.html#a14a0f9d5380fc5ad86d5198173e369ed">InstructionSet::JTypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1R4TypeInstructionEncoding.html#ac1a494cd8d56f06b2308a156286ece39">InstructionSet::R4TypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1RTypeInstructionEncoding.html#aa71df1690b9a24bc8bfdeab4050b7b2a">InstructionSet::RTypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1STypeInstructionEncoding.html#a8a48890bbfcbf0b05335d28422c114d1">InstructionSet::STypeInstructionEncoding</a>
-, <a class="el" href="structInstructionSet_1_1UTypeInstructionEncoding.html#a3ebc0c8812c2182f4a1f2b10f38bf889">InstructionSet::UTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1BTypeInstructionEncoding.html#af4b1bd37af321aa1400f932a041bb8b0">instruction_set::BTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1CSR__ITypeInstructionEncoding.html#ae5b1af7c7ce3e861af2bc4cc7a8c15c5">instruction_set::CSR_ITypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1CSR__RTypeInstructionEncoding.html#aa198ecd9e04bf1aa59d51194c6a1c613">instruction_set::CSR_RTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDITypeInstructionEncoding.html#a8ebf7f6486faa52cc6cfd3ded775dd4e">instruction_set::FDITypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR1TypeInstructionEncoding.html#aa2810931143f576fab3d8ce7ebb7d398">instruction_set::FDR1TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR2TypeInstructionEncoding.html#a301252b406ce5c9659619ccb600b9b5e">instruction_set::FDR2TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR3TypeInstructionEncoding.html#a81afe3aab89671ac5fb58c16d5d82e1d">instruction_set::FDR3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDR4TypeInstructionEncoding.html#ac3fa45d915dbbdae00d9960f5bc0e2de">instruction_set::FDR4TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDRTypeInstructionEncoding.html#a40c6b321a1d1ebf5c22fdffc1dcaf123">instruction_set::FDRTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1FDSTypeInstructionEncoding.html#a20ceaede7498b6c901064a6b2d39db04">instruction_set::FDSTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I1TypeInstructionEncoding.html#a67b1c46e3427792c05c4361101264ab7">instruction_set::I1TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I2TypeInstructionEncoding.html#adab5ebe50913686d13fb6a2708c8aac5">instruction_set::I2TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1I3TypeInstructionEncoding.html#ab160bea4e6440a3725bbb55401768ed8">instruction_set::I3TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1JTypeInstructionEncoding.html#abdd1ef1fc33bd74c62fb2cc61ed6d76e">instruction_set::JTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1R4TypeInstructionEncoding.html#ac28a5c99c4016bfe09c21d6a123ce75c">instruction_set::R4TypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1RTypeInstructionEncoding.html#ac3ab4f1b73d792ad4f08f50c7857eaf0">instruction_set::RTypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1STypeInstructionEncoding.html#aa3d4b5e2cf6c1a65c00b109ba0ea1afc">instruction_set::STypeInstructionEncoding</a>
+, <a class="el" href="structinstruction__set_1_1UTypeInstructionEncoding.html#a4ed9b701fa0784581c38b761bb50d90f">instruction_set::UTypeInstructionEncoding</a>
+</li>
+<li>overflow_
+: <a class="el" href="classalu_1_1Alu.html#ac6f7ae77babe5d74f8061cfff9b2dbfd">alu::Alu</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>pc_src_
+: <a class="el" href="classControlUnit.html#a53da51422d76b66d1dee86fd80e4ae28">ControlUnit</a>
+</li>
 <li>program_counter_
-: <a class="el" href="classVMBase.html#a8df40e7ac3dc168534686e841297afdc">VMBase</a>
+: <a class="el" href="classVmBase.html#a786aa9116a8240f3c80a478fa2c7bed9">VmBase</a>
+</li>
+<li>program_size_
+: <a class="el" href="classVmBase.html#a95d14315496f42dd5be394f0ab950539">VmBase</a>
 </li>
 </ul>
 
@@ -274,14 +418,29 @@ $(function() {
 <li>rd
 : <a class="el" href="structICUnit.html#aa9aa05995849c6ac8cbe1d127d1f922e">ICUnit</a>
 </li>
-<li>RegDst
-: <a class="el" href="classControlUnit.html#a2ffe1212f7d634525a84bef669a3453f">ControlUnit</a>
+<li>redo_stack_
+: <a class="el" href="classRVSSVM.html#ab108a22ac8ca3f2634b8cd2322736f1d">RVSSVM</a>
+</li>
+<li>reg_index
+: <a class="el" href="structRegisterChange.html#afb16485a17aff6acb690782da5dcb713">RegisterChange</a>
+</li>
+<li>reg_type
+: <a class="el" href="structRegisterChange.html#ac04acbfc8d09357500d12c1d9acc7f8c">RegisterChange</a>
+</li>
+<li>reg_write_
+: <a class="el" href="classControlUnit.html#a5b002e22ea0e96d2d2ce24daf74a1e8b">ControlUnit</a>
+</li>
+<li>register_changes
+: <a class="el" href="structStepDelta.html#a3e41fab118a0d4425af18a7dac832086">StepDelta</a>
 </li>
 <li>registers_
-: <a class="el" href="classVMBase.html#a170e94409bf86a213649499c3fd063b8">VMBase</a>
+: <a class="el" href="classVmBase.html#a3edc0e9c3765ae9720874b361c58e947">VmBase</a>
 </li>
-<li>RegWrite
-: <a class="el" href="classControlUnit.html#aa258b6839f2661b66150ca6bb1316e4b">ControlUnit</a>
+<li>return_address_
+: <a class="el" href="classRVSSVM.html#a22bbb0ff1567f0a6483f74f4327b606a">RVSSVM</a>
+</li>
+<li>rm
+: <a class="el" href="structICUnit.html#a1862ec48ba599365d6f38c5e0f69f84c">ICUnit</a>
 </li>
 <li>rs1
 : <a class="el" href="structICUnit.html#a5cc64dcce86bb9c70403503ddd1e6978">ICUnit</a>
@@ -296,17 +455,47 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>sh_addr
+: <a class="el" href="structElfSectionHeader.html#ad5d88153c5f6bf428f925f5aafb285e7">ElfSectionHeader</a>
+</li>
+<li>sh_addralign
+: <a class="el" href="structElfSectionHeader.html#aa3aefd99c8400c4e08dbe9e45e981ca4">ElfSectionHeader</a>
+</li>
+<li>sh_entsize
+: <a class="el" href="structElfSectionHeader.html#a1e6e43a4f102b2702f69a4db18c38fd4">ElfSectionHeader</a>
+</li>
+<li>sh_flags
+: <a class="el" href="structElfSectionHeader.html#ab7a1e6c118c1ce0752120ba9d0449f3c">ElfSectionHeader</a>
+</li>
+<li>sh_info
+: <a class="el" href="structElfSectionHeader.html#a9c689202b2e4c96175764ba0ae8967f7">ElfSectionHeader</a>
+</li>
+<li>sh_link
+: <a class="el" href="structElfSectionHeader.html#afebe046f2258be1385e3ea6ff7f7d0a2">ElfSectionHeader</a>
+</li>
+<li>sh_name
+: <a class="el" href="structElfSectionHeader.html#aba858bec97a385159f47ed421e3f2a0a">ElfSectionHeader</a>
+</li>
+<li>sh_offset
+: <a class="el" href="structElfSectionHeader.html#a55220a72daa59c1a4f6115da600c0246">ElfSectionHeader</a>
+</li>
+<li>sh_size
+: <a class="el" href="structElfSectionHeader.html#ae596297e82c312af2840926abc58462c">ElfSectionHeader</a>
+</li>
+<li>sh_type
+: <a class="el" href="structElfSectionHeader.html#a2d37c2c6240268f26236410233a31247">ElfSectionHeader</a>
+</li>
 <li>stall_cycles_
-: <a class="el" href="classVMBase.html#a54dd79d5da23967e1006417af67c5d33">VMBase</a>
+: <a class="el" href="classVmBase.html#a38693d7be1698897816ea448231f12b9">VmBase</a>
 </li>
 <li>sub_message
-: <a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html#af5f74e77e318b494fddb969f00f046ed">Errors::ImmediateOutOfRangeError</a>
-, <a class="el" href="structErrors_1_1InvalidLabelRefError.html#aa5a29deda7e77c91a6f4232104d3917c">Errors::InvalidLabelRefError</a>
-, <a class="el" href="structErrors_1_1InvalidRegisterError.html#a624e2ba3c4f7b487537566814152361c">Errors::InvalidRegisterError</a>
-, <a class="el" href="structErrors_1_1LabelRedefinitionError.html#aa0b8bece145f26d3447c7056cd28ac36">Errors::LabelRedefinitionError</a>
-, <a class="el" href="structErrors_1_1MisalignedImmediateError.html#adcb860cb7a0d33cd119f53bb6cd36e16">Errors::MisalignedImmediateError</a>
-, <a class="el" href="structErrors_1_1SyntaxError.html#aa1135053ec9e0f12c9f6cb32035699f6">Errors::SyntaxError</a>
-, <a class="el" href="structErrors_1_1UnexpectedOperandError.html#aa657a22fb82b1933b38eb67d8da84f19">Errors::UnexpectedOperandError</a>
+: <a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html#ae1c6388e9f6c86c66c302d6f0d4d828b">errors::ImmediateOutOfRangeError</a>
+, <a class="el" href="structerrors_1_1InvalidLabelRefError.html#aa4ce4accdf817e88c8c44a707b756c08">errors::InvalidLabelRefError</a>
+, <a class="el" href="structerrors_1_1InvalidRegisterError.html#a5eb3cbe91e6104dead298ba2554f3bf7">errors::InvalidRegisterError</a>
+, <a class="el" href="structerrors_1_1LabelRedefinitionError.html#a8ae466157b682b998a0b3e710cda2010">errors::LabelRedefinitionError</a>
+, <a class="el" href="structerrors_1_1MisalignedImmediateError.html#abd40d834d9c7e0d46742b86ce62367d9">errors::MisalignedImmediateError</a>
+, <a class="el" href="structerrors_1_1SyntaxError.html#a27cd10228b6ede09fafd6206898bf6bd">errors::SyntaxError</a>
+, <a class="el" href="structerrors_1_1UnexpectedOperandError.html#aa7eb42aa30e8a33ce97a8fa67e652969">errors::UnexpectedOperandError</a>
 </li>
 <li>symbol_table
 : <a class="el" href="structAssembledProgram.html#a6c174fa14a8ddffc0931a27ff4ad83ba">AssembledProgram</a>
@@ -315,8 +504,19 @@ $(function() {
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
+<li>text_buffer
+: <a class="el" href="structAssembledProgram.html#aa86a747236787eb97373a6aa06f34277">AssembledProgram</a>
+</li>
 <li>type
-: <a class="el" href="structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a">Token</a>
+: <a class="el" href="structcommand__handler_1_1Command.html#a9943fb3e6408d427d0f9424db7c99178">command_handler::Command</a>
+, <a class="el" href="structToken.html#a67919af9f3a80dc0b28a0ab1e6d5bf8a">Token</a>
+</li>
+</ul>
+
+
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>undo_stack_
+: <a class="el" href="classRVSSVM.html#a731a113960710ba745841a7f97678430">RVSSVM</a>
 </li>
 </ul>
 
@@ -324,6 +524,13 @@ $(function() {
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>value
 : <a class="el" href="structToken.html#a4b7142147b8598f8e24c404928d9263b">Token</a>
+</li>
+</ul>
+
+
+<h3><a id="index_z"></a>- z -</h3><ul>
+<li>zero_
+: <a class="el" href="classalu_1_1Alu.html#a4c2f6bd6ce4f7988c5c5af12c2fa69db">alu::Alu</a>
 </li>
 </ul>
 </div><!-- contents -->

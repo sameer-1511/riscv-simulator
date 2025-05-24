@@ -1,8 +1,12 @@
 <map id="src/vm/control_unit_base.h" name="src/vm/control_unit_base.h">
-<area shape="rect" id="node1" title="Control unit base class definition." alt="" coords="121,5,267,47"/>
-<area shape="rect" id="node2" href="$rvss__control__unit_8h.html" title="RVSS Control Unit." alt="" coords="104,95,284,136"/>
-<area shape="rect" id="node3" href="$rvss__control__unit_8cpp.html" title="RVSS Control Unit implementation." alt="" coords="5,184,185,225"/>
-<area shape="rect" id="node4" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="210,191,378,218"/>
-<area shape="rect" id="node5" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="109,273,292,300"/>
-<area shape="rect" id="node6" href="$test__main_8cpp.html" title=" " alt="" coords="316,273,459,300"/>
+<area shape="rect" id="node1" title="Control unit base class definition." alt="" coords="99,5,245,47"/>
+<area shape="rect" id="node2" href="$control__unit__base_8cpp.html" title="Control unit base class implementation." alt="" coords="5,95,152,136"/>
+<area shape="rect" id="node3" href="$rvss__control__unit_8h.html" title="RVSS Control Unit." alt="" coords="177,95,357,136"/>
+<area shape="rect" id="node4" href="$rvss__control__unit_8cpp.html" title="RVSS Control Unit implementation." alt="" coords="78,184,258,225"/>
+<area shape="rect" id="node5" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="283,191,451,218"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="177,348,282,375"/>
+<area shape="rect" id="node7" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="186,273,369,300"/>
+<area shape="rect" id="node8" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="393,273,519,300"/>
+<area shape="rect" id="node10" href="$test__vm_8cpp.html" title=" " alt="" coords="544,273,675,300"/>
+<area shape="rect" id="node9" href="$vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="385,348,527,375"/>
 </map>

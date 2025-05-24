@@ -48,8 +48,9 @@ Constructs a \mbox{\hyperlink{structMemoryBlock}{Memory\+Block}} with a size of 
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{= \mbox{\hyperlink{namespacevmConfig_1_1INI_a0982b63f0594859dad4548b671faaef2}{vmConfig::INI::get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}).empty() }
-\DoxyCodeLine{                            ? 1024 : std::stoi(\mbox{\hyperlink{namespacevmConfig_1_1INI_a0982b63f0594859dad4548b671faaef2}{vmConfig::INI::get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}))}
+\DoxyCodeLine{= \mbox{\hyperlink{namespacevm__config_1_1ini_a178e6d2759e8c73c2c2295cb5dba1339}{vm\_config::ini::Get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}).empty()}
+\DoxyCodeLine{                            ? 1024 : std::stoi(\mbox{\hyperlink{namespacevm__config_1_1ini_a178e6d2759e8c73c2c2295cb5dba1339}{vm\_config::ini::Get}}(\textcolor{stringliteral}{"{}Memory"{}},}
+\DoxyCodeLine{                                                                   \textcolor{stringliteral}{"{}block\_size"{}}))}
 
 \end{DoxyCode}
 

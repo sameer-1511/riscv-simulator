@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['s_855',['S',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa5dbc98dcc983a70728bd082d1a47546e',1,'InstructionSet']]],
-  ['single_5fstage_856',['SINGLE_STAGE',['../namespacevmConfig.html#acd2237b74f39c5118b58dc1186186339a2c4a0af0ffe5afecf34ef3401408722c',1,'vmConfig']]],
-  ['sll_857',['SLL',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9',1,'ALU']]],
-  ['slt_858',['SLT',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e',1,'ALU']]],
-  ['sltu_859',['SLTU',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d',1,'ALU']]],
-  ['sra_860',['SRA',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3',1,'ALU']]],
-  ['srl_861',['SRL',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463',1,'ALU']]],
-  ['string_862',['STRING',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949',1,'tokens.h']]],
-  ['sub_863',['SUB',['../namespaceALU.html#a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb',1,'ALU']]]
+  ['r_1386',['R',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6',1,'instruction_set']]],
+  ['r4_1387',['R4',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29',1,'instruction_set']]],
+  ['rdn_1388',['RDN',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a099ecf1e2eedcbbb36750f8ad7fc7f81',1,'rounding_modes.h']]],
+  ['redo_1389',['REDO',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f',1,'command_handler']]],
+  ['register_1390',['REGISTER',['../namespacecommand__handler.html#a44c251e1711cea6749a00f36fcb08cf4ad17455cfcb88a53f1603fb817e09c2d6',1,'command_handler']]],
+  ['remove_5fbreakpoint_1391',['REMOVE_BREAKPOINT',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15',1,'command_handler']]],
+  ['reset_1392',['RESET',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1',1,'command_handler']]],
+  ['rm_1393',['RM',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a2622e9b348f05f74e3e4bb9b7d213dc8',1,'tokens.h']]],
+  ['rmm_1394',['RMM',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a595b30b7583a6cd50bdc591e4420034b',1,'rounding_modes.h']]],
+  ['rne_1395',['RNE',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101abbbffe540e9df36d8c8f847b529e3282',1,'rounding_modes.h']]],
+  ['rparen_1396',['RPAREN',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1',1,'tokens.h']]],
+  ['rtz_1397',['RTZ',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a529a841dde2e78d144c1814e3fc5ac60',1,'rounding_modes.h']]],
+  ['run_1398',['RUN',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a855520d2a5b0b1a64b939e7e30889e2a',1,'command_handler']]],
+  ['rup_1399',['RUP',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a5ba30c5a3edeca6b0b2fd1050ecf3370',1,'rounding_modes.h']]]
 ];

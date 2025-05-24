@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registertype_780',['RegisterType',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230',1,'RegisterFile']]]
+  ['instructiontype_1212',['InstructionType',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240',1,'instruction_set']]]
 ];

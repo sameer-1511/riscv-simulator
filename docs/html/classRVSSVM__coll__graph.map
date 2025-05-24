@@ -1,7 +1,10 @@
 <map id="RVSSVM" name="RVSSVM">
-<area shape="rect" id="node1" title=" " alt="" coords="131,171,208,197"/>
-<area shape="rect" id="node2" href="$classVMBase.html" title=" " alt="" coords="132,95,207,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="359,184,436,211"/>
+<area shape="rect" id="node2" href="$classVmBase.html" title=" " alt="" coords="187,95,263,121"/>
 <area shape="rect" id="node3" href="$classRegisterFile.html" title="Represents a register file containing integer, floating&#45;point, and vector registers." alt="" coords="5,5,104,32"/>
-<area shape="rect" id="node4" href="$classALU_1_1ALU.html" title="The ALU class is responsible for performing arithmetic and logic operations." alt="" coords="128,5,211,32"/>
-<area shape="rect" id="node5" href="$classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="235,5,375,32"/>
+<area shape="rect" id="node4" href="$classalu_1_1Alu.html" title="The alu class is responsible for performing arithmetic and logic operations." alt="" coords="129,5,199,32"/>
+<area shape="rect" id="node5" href="$classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="223,5,363,32"/>
+<area shape="rect" id="node6" href="$classRVSSControlUnit.html" title=" " alt="" coords="332,95,463,121"/>
+<area shape="rect" id="node7" href="$classControlUnit.html" title="The ControlUnit class is the base class for the control unit of the CPU." alt="" coords="395,5,491,32"/>
+<area shape="rect" id="node8" href="$structStepDelta.html" title=" " alt="" coords="487,95,574,121"/>
 </map>

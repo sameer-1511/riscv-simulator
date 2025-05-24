@@ -1,14 +1,17 @@
 <map id="src/vm_asm_mw.h" name="src/vm_asm_mw.h">
-<area shape="rect" id="node1" title="Contains functions to handle assembler input for the VM." alt="" coords="491,5,634,32"/>
-<area shape="rect" id="node2" href="$assembler_8h.html" title=" " alt="" coords="194,80,390,107"/>
-<area shape="rect" id="node5" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="492,80,633,107"/>
-<area shape="rect" id="node12" href="$vm__asm__mw_8cpp.html" title="Contains functions to handle assembler input for the VM." alt="" coords="658,80,817,107"/>
-<area shape="rect" id="node3" href="$assembler_8cpp.html" title=" " alt="" coords="5,155,216,181"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="239,155,345,181"/>
-<area shape="rect" id="node6" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="369,155,537,181"/>
-<area shape="rect" id="node9" href="$vm__base_8cpp.html" title="File containing the base class for the virtual machine." alt="" coords="562,155,718,181"/>
-<area shape="rect" id="node10" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="742,155,869,181"/>
-<area shape="rect" id="node7" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="269,229,451,256"/>
-<area shape="rect" id="node8" href="$test__main_8cpp.html" title=" " alt="" coords="475,229,618,256"/>
-<area shape="rect" id="node11" href="$vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="735,229,876,256"/>
+<area shape="rect" id="node1" title="Contains functions to handle assembler input for the VM." alt="" coords="832,5,975,32"/>
+<area shape="rect" id="node2" href="$assembler_8h.html" title=" " alt="" coords="419,155,615,181"/>
+<area shape="rect" id="node6" href="$elf__util_8h.html" title=" " alt="" coords="115,80,289,107"/>
+<area shape="rect" id="node9" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="833,80,974,107"/>
+<area shape="rect" id="node12" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="989,229,1116,256"/>
+<area shape="rect" id="node15" href="$vm__asm__mw_8cpp.html" title="Contains functions to handle assembler input for the VM." alt="" coords="1113,80,1272,107"/>
+<area shape="rect" id="node3" href="$assembler_8cpp.html" title=" " alt="" coords="291,229,502,256"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="589,304,695,331"/>
+<area shape="rect" id="node5" href="$test__vm_8cpp.html" title=" " alt="" coords="577,229,707,256"/>
+<area shape="rect" id="node7" href="$elf__util_8cpp.html" title=" " alt="" coords="205,155,394,181"/>
+<area shape="rect" id="node8" href="$test__elf__util_8cpp.html" title=" " alt="" coords="26,155,181,181"/>
+<area shape="rect" id="node10" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="819,155,987,181"/>
+<area shape="rect" id="node14" href="$vm__base_8cpp.html" title="File containing the base class for the virtual machine." alt="" coords="639,155,795,181"/>
+<area shape="rect" id="node11" href="$rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="783,229,965,256"/>
+<area shape="rect" id="node13" href="$vm__runner_8cpp.html" title="This file contains the implementation of the VMRunner class." alt="" coords="982,304,1123,331"/>
 </map>

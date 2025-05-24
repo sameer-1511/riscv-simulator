@@ -1,7 +1,20 @@
 var searchData=
 [
-  ['s_5ftype_5finstruction_5fencoding_5fmap_766',['S_type_instruction_encoding_map',['../namespaceInstructionSet.html#a294d6a66b2cce53ae8b86d3af98ab21c',1,'InstructionSet']]],
-  ['stall_5fcycles_5f_767',['stall_cycles_',['../classVMBase.html#a54dd79d5da23967e1006417af67c5d33',1,'VMBase']]],
-  ['sub_5fmessage_768',['sub_message',['../structErrors_1_1SyntaxError.html#aa1135053ec9e0f12c9f6cb32035699f6',1,'Errors::SyntaxError::sub_message()'],['../structErrors_1_1ImmediateOutOfRangeError.html#af5f74e77e318b494fddb969f00f046ed',1,'Errors::ImmediateOutOfRangeError::sub_message()'],['../structErrors_1_1MisalignedImmediateError.html#adcb860cb7a0d33cd119f53bb6cd36e16',1,'Errors::MisalignedImmediateError::sub_message()'],['../structErrors_1_1UnexpectedOperandError.html#aa657a22fb82b1933b38eb67d8da84f19',1,'Errors::UnexpectedOperandError::sub_message()'],['../structErrors_1_1InvalidLabelRefError.html#aa5a29deda7e77c91a6f4232104d3917c',1,'Errors::InvalidLabelRefError::sub_message()'],['../structErrors_1_1LabelRedefinitionError.html#aa0b8bece145f26d3447c7056cd28ac36',1,'Errors::LabelRedefinitionError::sub_message()'],['../structErrors_1_1InvalidRegisterError.html#a624e2ba3c4f7b487537566814152361c',1,'Errors::InvalidRegisterError::sub_message()']]],
-  ['symbol_5ftable_769',['symbol_table',['../structAssembledProgram.html#a6c174fa14a8ddffc0931a27ff4ad83ba',1,'AssembledProgram']]]
+  ['r4_5ftype_5finstruction_5fencoding_5fmap_1164',['R4_type_instruction_encoding_map',['../namespaceinstruction__set.html#a1afd240cbdbda8e426147b77461f2f8c',1,'instruction_set']]],
+  ['r_5ftype_5finstruction_5fencoding_5fmap_1165',['R_type_instruction_encoding_map',['../namespaceinstruction__set.html#a859191af4ff841c4c7486a6a19c7fa7a',1,'instruction_set']]],
+  ['rd_1166',['rd',['../structICUnit.html#aa9aa05995849c6ac8cbe1d127d1f922e',1,'ICUnit']]],
+  ['redo_5fstack_5f_1167',['redo_stack_',['../classRVSSVM.html#ab108a22ac8ca3f2634b8cd2322736f1d',1,'RVSSVM']]],
+  ['reg_5falias_5fto_5fname_1168',['reg_alias_to_name',['../registers_8h.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp'],['../registers_8cpp.html#af4ede5aac2f7597ad13f0a67cb8b13b5',1,'reg_alias_to_name():&#160;registers.cpp']]],
+  ['reg_5findex_1169',['reg_index',['../structRegisterChange.html#afb16485a17aff6acb690782da5dcb713',1,'RegisterChange']]],
+  ['reg_5ftype_1170',['reg_type',['../structRegisterChange.html#ac04acbfc8d09357500d12c1d9acc7f8c',1,'RegisterChange']]],
+  ['reg_5fwrite_5f_1171',['reg_write_',['../classControlUnit.html#a5b002e22ea0e96d2d2ce24daf74a1e8b',1,'ControlUnit']]],
+  ['register_5fchanges_1172',['register_changes',['../structStepDelta.html#a3e41fab118a0d4425af18a7dac832086',1,'StepDelta']]],
+  ['registers_5f_1173',['registers_',['../classVmBase.html#a3edc0e9c3765ae9720874b361c58e947',1,'VmBase']]],
+  ['registers_5fdump_5ffile_1174',['registers_dump_file',['../namespaceglobals.html#a48c42feb736508606c7a8243bfb4bfd5',1,'globals']]],
+  ['return_5faddress_5f_1175',['return_address_',['../classRVSSVM.html#a22bbb0ff1567f0a6483f74f4327b606a',1,'RVSSVM']]],
+  ['rm_1176',['rm',['../structICUnit.html#a1862ec48ba599365d6f38c5e0f69f84c',1,'ICUnit']]],
+  ['roundingmodeencoding_1177',['roundingModeEncoding',['../rounding__modes_8h.html#a0f5fc322fb6db7cb06e5a912be28bf20',1,'rounding_modes.h']]],
+  ['rs1_1178',['rs1',['../structICUnit.html#a5cc64dcce86bb9c70403503ddd1e6978',1,'ICUnit']]],
+  ['rs2_1179',['rs2',['../structICUnit.html#a65f2bf2a14c45bb210439ed02862232c',1,'ICUnit']]],
+  ['rs3_1180',['rs3',['../structICUnit.html#a4fa54a29e2374eeb6204d4d36c3a198d',1,'ICUnit']]]
 ];

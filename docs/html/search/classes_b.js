@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unexpectedoperanderror_454',['UnexpectedOperandError',['../structErrors_1_1UnexpectedOperandError.html',1,'Errors']]],
-  ['unexpectedtokenerror_455',['UnexpectedTokenError',['../structErrors_1_1UnexpectedTokenError.html',1,'Errors']]],
-  ['utypeinstructionencoding_456',['UTypeInstructionEncoding',['../structInstructionSet_1_1UTypeInstructionEncoding.html',1,'InstructionSet']]]
+  ['stepdelta_737',['StepDelta',['../structStepDelta.html',1,'']]],
+  ['stypeinstructionencoding_738',['STypeInstructionEncoding',['../structinstruction__set_1_1STypeInstructionEncoding.html',1,'instruction_set']]],
+  ['syntaxerror_739',['SyntaxError',['../structerrors_1_1SyntaxError.html',1,'errors']]]
 ];

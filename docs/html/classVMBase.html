@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RISC-V Simulator: VMBase Class Reference</title>
+<title>RISC-V Simulator: VmBase Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,13 +66,13 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classVMBase-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">VMBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">VmBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="vm__base_8h_source.html">vm_base.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for VMBase:</div>
+Inheritance diagram for VmBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classVMBase__inherit__graph.png" border="0" usemap="#aVMBase_inherit__map" alt="Inheritance graph"/></div>
 <map name="aVMBase_inherit__map" id="aVMBase_inherit__map">
@@ -81,44 +81,44 @@ Inheritance diagram for VMBase:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for VMBase:</div>
+Collaboration diagram for VmBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classVMBase__coll__graph.png" border="0" usemap="#aVMBase_coll__map" alt="Collaboration graph"/></div>
 <map name="aVMBase_coll__map" id="aVMBase_coll__map">
 <area shape="rect" title=" " alt="" coords="132,95,207,121"/>
 <area shape="rect" href="classRegisterFile.html" title="Represents a register file containing integer, floating&#45;point, and vector registers." alt="" coords="5,5,104,32"/>
-<area shape="rect" href="classALU_1_1ALU.html" title="The ALU class is responsible for performing arithmetic and logic operations." alt="" coords="128,5,211,32"/>
+<area shape="rect" href="classALU_1_1ALU.html" title="The alu class is responsible for performing arithmetic and logic operations." alt="" coords="128,5,211,32"/>
 <area shape="rect" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="235,5,375,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a75269a8612472521bf5b79d00b48d872"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a75269a8612472521bf5b79d00b48d872">VMBase</a> ()=default</td></tr>
+<tr class="memitem:a75269a8612472521bf5b79d00b48d872"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a75269a8612472521bf5b79d00b48d872">VmBase</a> ()=default</td></tr>
 <tr class="separator:a75269a8612472521bf5b79d00b48d872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af43164984da77e0ea193d61b3a290c7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af43164984da77e0ea193d61b3a290c7b">~VMBase</a> ()=default</td></tr>
+<tr class="memitem:af43164984da77e0ea193d61b3a290c7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af43164984da77e0ea193d61b3a290c7b">VmBase</a> ()=default</td></tr>
 <tr class="separator:af43164984da77e0ea193d61b3a290c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34df62c52d9d0e023c03340cdb7b9b2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a34df62c52d9d0e023c03340cdb7b9b2a">loadProgram</a> (const <a class="el" href="structAssembledProgram.html">AssembledProgram</a> &amp;program)</td></tr>
+<tr class="memitem:a34df62c52d9d0e023c03340cdb7b9b2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a34df62c52d9d0e023c03340cdb7b9b2a">LoadProgram</a> (const <a class="el" href="structAssembledProgram.html">AssembledProgram</a> &amp;program)</td></tr>
 <tr class="separator:a34df62c52d9d0e023c03340cdb7b9b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6168ed83153abff37678f5e5230ef314"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6168ed83153abff37678f5e5230ef314">getProgramCounter</a> () const</td></tr>
+<tr class="memitem:a6168ed83153abff37678f5e5230ef314"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6168ed83153abff37678f5e5230ef314">GetProgramCounter</a> () const</td></tr>
 <tr class="separator:a6168ed83153abff37678f5e5230ef314"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab32a590b667b9f9416da0c4727ef73d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#ab32a590b667b9f9416da0c4727ef73d8">updateProgramCounter</a> (int64_t value)</td></tr>
+<tr class="memitem:ab32a590b667b9f9416da0c4727ef73d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#ab32a590b667b9f9416da0c4727ef73d8">UpdateProgramCounter</a> (int64_t value)</td></tr>
 <tr class="separator:ab32a590b667b9f9416da0c4727ef73d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafa70c35c2911ebac0df3e981d6b385"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#afafa70c35c2911ebac0df3e981d6b385">imm_generator</a> (uint32_t instruction)</td></tr>
+<tr class="memitem:afafa70c35c2911ebac0df3e981d6b385"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#afafa70c35c2911ebac0df3e981d6b385">ImmGenerator</a> (uint32_t instruction)</td></tr>
 <tr class="separator:afafa70c35c2911ebac0df3e981d6b385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed76e5c5951a1ef9ad176548aee51b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aed76e5c5951a1ef9ad176548aee51b8a">addBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="memitem:aed76e5c5951a1ef9ad176548aee51b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aed76e5c5951a1ef9ad176548aee51b8a">AddBreakpoint</a> (uint64_t address)</td></tr>
 <tr class="separator:aed76e5c5951a1ef9ad176548aee51b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a644c66cbcfde66e70738d769bd4928f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a644c66cbcfde66e70738d769bd4928f7">removeBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="memitem:a644c66cbcfde66e70738d769bd4928f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a644c66cbcfde66e70738d769bd4928f7">RemoveBreakpoint</a> (uint64_t address)</td></tr>
 <tr class="separator:a644c66cbcfde66e70738d769bd4928f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2f35f57b60c7e5d71795df3f940634f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af2f35f57b60c7e5d71795df3f940634f">checkBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="memitem:af2f35f57b60c7e5d71795df3f940634f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af2f35f57b60c7e5d71795df3f940634f">CheckBreakpoint</a> (uint64_t address)</td></tr>
 <tr class="separator:af2f35f57b60c7e5d71795df3f940634f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba3136fa19210d26fc93f1d14addee92"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aba3136fa19210d26fc93f1d14addee92">run</a> ()=0</td></tr>
+<tr class="memitem:aba3136fa19210d26fc93f1d14addee92"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aba3136fa19210d26fc93f1d14addee92">Run</a> ()=0</td></tr>
 <tr class="separator:aba3136fa19210d26fc93f1d14addee92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34243ba15bc18d340ff573c806068bd2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a34243ba15bc18d340ff573c806068bd2">step</a> ()=0</td></tr>
+<tr class="memitem:a34243ba15bc18d340ff573c806068bd2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a34243ba15bc18d340ff573c806068bd2">Step</a> ()=0</td></tr>
 <tr class="separator:a34243ba15bc18d340ff573c806068bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c6d2a78389474c82c8c00d87d3114b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a9c6d2a78389474c82c8c00d87d3114b7">reset</a> ()=0</td></tr>
+<tr class="memitem:a9c6d2a78389474c82c8c00d87d3114b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a9c6d2a78389474c82c8c00d87d3114b7">Reset</a> ()=0</td></tr>
 <tr class="separator:a9c6d2a78389474c82c8c00d87d3114b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb840ad16d3af2b88d81a960d2036bd8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#afb840ad16d3af2b88d81a960d2036bd8">dumpState</a> (const std::string &amp;filename)=0</td></tr>
+<tr class="memitem:afb840ad16d3af2b88d81a960d2036bd8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#afb840ad16d3af2b88d81a960d2036bd8">DumpState</a> (const std::string &amp;filename)=0</td></tr>
 <tr class="separator:afb840ad16d3af2b88d81a960d2036bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -129,7 +129,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ac62491479088ac4bba0c70a5018f9416"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8df40e7ac3dc168534686e841297afdc"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a8df40e7ac3dc168534686e841297afdc">program_counter_</a> = 0</td></tr>
 <tr class="separator:a8df40e7ac3dc168534686e841297afdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dce495b8c5dbb1cede4c364845a0a19"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a5dce495b8c5dbb1cede4c364845a0a19">cycle_s</a> = 0</td></tr>
+<tr class="memitem:a5dce495b8c5dbb1cede4c364845a0a19"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a5dce495b8c5dbb1cede4c364845a0a19">cycle_s_</a> = 0</td></tr>
 <tr class="separator:a5dce495b8c5dbb1cede4c364845a0a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d10e1f1fd78b1b51ad7ef2d4c8f59ac"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a0d10e1f1fd78b1b51ad7ef2d4c8f59ac">instructions_retired_</a> = 0</td></tr>
 <tr class="separator:a0d10e1f1fd78b1b51ad7ef2d4c8f59ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,12 +145,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9ed9a281a3ad558575ef228e40a1bd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a170e94409bf86a213649499c3fd063b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRegisterFile.html">RegisterFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a170e94409bf86a213649499c3fd063b8">registers_</a></td></tr>
 <tr class="separator:a170e94409bf86a213649499c3fd063b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6356b9c808eedae8c7dfc1bde24f1d29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classALU_1_1ALU.html">ALU::ALU</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6356b9c808eedae8c7dfc1bde24f1d29">alu_</a></td></tr>
+<tr class="memitem:a6356b9c808eedae8c7dfc1bde24f1d29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classALU_1_1ALU.html">alu::alu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6356b9c808eedae8c7dfc1bde24f1d29">alu_</a></td></tr>
 <tr class="separator:a6356b9c808eedae8c7dfc1bde24f1d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a75269a8612472521bf5b79d00b48d872"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75269a8612472521bf5b79d00b48d872">&#9670;&nbsp;</a></span>VMBase()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a75269a8612472521bf5b79d00b48d872">&#9670;&nbsp;</a></span>VmBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +159,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VMBase::VMBase </td>
+          <td class="memname">VmBase::VmBase </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -175,7 +175,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="af43164984da77e0ea193d61b3a290c7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af43164984da77e0ea193d61b3a290c7b">&#9670;&nbsp;</a></span>~VMBase()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af43164984da77e0ea193d61b3a290c7b">&#9670;&nbsp;</a></span>VmBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +184,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VMBase::~VMBase </td>
+          <td class="memname">VmBase::VmBase </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -201,13 +201,13 @@ Public Attributes</h2></td></tr>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aed76e5c5951a1ef9ad176548aee51b8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed76e5c5951a1ef9ad176548aee51b8a">&#9670;&nbsp;</a></span>addBreakpoint()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aed76e5c5951a1ef9ad176548aee51b8a">&#9670;&nbsp;</a></span>AddBreakpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VMBase::addBreakpoint </td>
+          <td class="memname">void VmBase::AddBreakpoint </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>address</em></td><td>)</td>
@@ -219,13 +219,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="af2f35f57b60c7e5d71795df3f940634f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2f35f57b60c7e5d71795df3f940634f">&#9670;&nbsp;</a></span>checkBreakpoint()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f35f57b60c7e5d71795df3f940634f">&#9670;&nbsp;</a></span>CheckBreakpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool VMBase::checkBreakpoint </td>
+          <td class="memname">bool VmBase::CheckBreakpoint </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>address</em></td><td>)</td>
@@ -237,7 +237,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="afb840ad16d3af2b88d81a960d2036bd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb840ad16d3af2b88d81a960d2036bd8">&#9670;&nbsp;</a></span>dumpState()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb840ad16d3af2b88d81a960d2036bd8">&#9670;&nbsp;</a></span>DumpState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +246,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void VMBase::dumpState </td>
+          <td class="memname">virtual void VmBase::DumpState </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
@@ -265,13 +265,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a6168ed83153abff37678f5e5230ef314"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6168ed83153abff37678f5e5230ef314">&#9670;&nbsp;</a></span>getProgramCounter()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6168ed83153abff37678f5e5230ef314">&#9670;&nbsp;</a></span>GetProgramCounter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t VMBase::getProgramCounter </td>
+          <td class="memname">uint64_t VmBase::GetProgramCounter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -282,13 +282,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="afafa70c35c2911ebac0df3e981d6b385"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afafa70c35c2911ebac0df3e981d6b385">&#9670;&nbsp;</a></span>imm_generator()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afafa70c35c2911ebac0df3e981d6b385">&#9670;&nbsp;</a></span>ImmGenerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t VMBase::imm_generator </td>
+          <td class="memname">int64_t VmBase::ImmGenerator </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>instruction</em></td><td>)</td>
@@ -300,13 +300,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a34df62c52d9d0e023c03340cdb7b9b2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34df62c52d9d0e023c03340cdb7b9b2a">&#9670;&nbsp;</a></span>loadProgram()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a34df62c52d9d0e023c03340cdb7b9b2a">&#9670;&nbsp;</a></span>LoadProgram()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VMBase::loadProgram </td>
+          <td class="memname">void VmBase::LoadProgram </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structAssembledProgram.html">AssembledProgram</a> &amp;&#160;</td>
           <td class="paramname"><em>program</em></td><td>)</td>
@@ -318,13 +318,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a644c66cbcfde66e70738d769bd4928f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644c66cbcfde66e70738d769bd4928f7">&#9670;&nbsp;</a></span>removeBreakpoint()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a644c66cbcfde66e70738d769bd4928f7">&#9670;&nbsp;</a></span>RemoveBreakpoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VMBase::removeBreakpoint </td>
+          <td class="memname">void VmBase::RemoveBreakpoint </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>address</em></td><td>)</td>
@@ -336,7 +336,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a9c6d2a78389474c82c8c00d87d3114b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c6d2a78389474c82c8c00d87d3114b7">&#9670;&nbsp;</a></span>reset()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6d2a78389474c82c8c00d87d3114b7">&#9670;&nbsp;</a></span>Reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,7 +345,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void VMBase::reset </td>
+          <td class="memname">virtual void VmBase::Reset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -363,7 +363,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="aba3136fa19210d26fc93f1d14addee92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba3136fa19210d26fc93f1d14addee92">&#9670;&nbsp;</a></span>run()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aba3136fa19210d26fc93f1d14addee92">&#9670;&nbsp;</a></span>Run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -372,7 +372,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void VMBase::run </td>
+          <td class="memname">virtual void VmBase::Run </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -390,7 +390,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a34243ba15bc18d340ff573c806068bd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34243ba15bc18d340ff573c806068bd2">&#9670;&nbsp;</a></span>step()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a34243ba15bc18d340ff573c806068bd2">&#9670;&nbsp;</a></span>Step()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -399,7 +399,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void VMBase::step </td>
+          <td class="memname">virtual void VmBase::Step </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -417,13 +417,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="ab32a590b667b9f9416da0c4727ef73d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab32a590b667b9f9416da0c4727ef73d8">&#9670;&nbsp;</a></span>updateProgramCounter()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab32a590b667b9f9416da0c4727ef73d8">&#9670;&nbsp;</a></span>UpdateProgramCounter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VMBase::updateProgramCounter </td>
+          <td class="memname">void VmBase::UpdateProgramCounter </td>
           <td>(</td>
           <td class="paramtype">int64_t&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -442,7 +442,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classALU_1_1ALU.html">ALU::ALU</a> VMBase::alu_</td>
+          <td class="memname"><a class="el" href="classALU_1_1ALU.html">alu::alu</a> VmBase::alu_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -456,7 +456,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int VMBase::branch_mispredictions_ = 0</td>
+          <td class="memname">unsigned int VmBase::branch_mispredictions_ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -470,7 +470,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;uint64_t&gt; VMBase::breakpoints_</td>
+          <td class="memname">std::vector&lt;uint64_t&gt; VmBase::breakpoints_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -484,7 +484,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float VMBase::cpi_ = 0.0</td>
+          <td class="memname">float VmBase::cpi_ = 0.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -498,7 +498,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t VMBase::current_instruction_</td>
+          <td class="memname">uint32_t VmBase::current_instruction_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -506,13 +506,13 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a5dce495b8c5dbb1cede4c364845a0a19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dce495b8c5dbb1cede4c364845a0a19">&#9670;&nbsp;</a></span>cycle_s</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dce495b8c5dbb1cede4c364845a0a19">&#9670;&nbsp;</a></span>cycle_s_</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int VMBase::cycle_s = 0</td>
+          <td class="memname">unsigned int VmBase::cycle_s_ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -526,7 +526,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int VMBase::instructions_retired_ = 0</td>
+          <td class="memname">unsigned int VmBase::instructions_retired_ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -540,7 +540,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float VMBase::ipc_ = 0.0</td>
+          <td class="memname">float VmBase::ipc_ = 0.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -554,7 +554,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMemoryController.html">MemoryController</a> VMBase::memory_controller_</td>
+          <td class="memname"><a class="el" href="classMemoryController.html">MemoryController</a> VmBase::memory_controller_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -568,7 +568,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t VMBase::program_counter_ = 0</td>
+          <td class="memname">uint64_t VmBase::program_counter_ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -582,7 +582,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classRegisterFile.html">RegisterFile</a> VMBase::registers_</td>
+          <td class="memname"><a class="el" href="classRegisterFile.html">RegisterFile</a> VmBase::registers_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -596,7 +596,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int VMBase::stall_cycles_ = 0</td>
+          <td class="memname">unsigned int VmBase::stall_cycles_ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

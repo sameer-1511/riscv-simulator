@@ -1,7 +1,19 @@
 var searchData=
 [
-  ['test_676',['TEST',['../test__config_8cpp.html#a1f39af168d548b15ebeef538ac099d0e',1,'TEST(ConfigTest, GetKeyValueTest):&#160;test_config.cpp'],['../test__config_8cpp.html#a409db77124378869e5474f45ac38bce2',1,'TEST(ConfigTest, SetKeyValueTest):&#160;test_config.cpp'],['../test__config_8cpp.html#a06c8282384966f9a8444a90c2df2e7fd',1,'TEST(ConfigTest, InvalidKeyValueTest):&#160;test_config.cpp'],['../test__main_8cpp.html#a8c13b016b9d184dbbd6b742b883586a2',1,'TEST(VmTest, ImmGenTest1):&#160;test_main.cpp'],['../test__memory_8cpp.html#a67c433b9eb540ea04b66fec15fb0c645',1,'TEST(MemoryTest, ReadWriteTest):&#160;test_memory.cpp'],['../test__memory_8cpp.html#a3bf34fc405439eacceeb92fca1cac1cf',1,'TEST(MemoryTest, ReadWriteByteTest):&#160;test_memory.cpp'],['../test__memory_8cpp.html#ad5efcafd3035dabb9441d82676e8b98e',1,'TEST(MemoryTest, ReadWriteHalfWordTest):&#160;test_memory.cpp']]],
-  ['token_677',['Token',['../structToken.html#a8adae101b1aa7c9d409e8b2d707fb861',1,'Token']]],
-  ['tokentypetostring_678',['tokenTypeToString',['../tokens_8cpp.html#adcf4232d1b543f396684ab4b9d3d4bc5',1,'tokenTypeToString(TokenType type):&#160;tokens.cpp'],['../tokens_8h.html#adcf4232d1b543f396684ab4b9d3d4bc5',1,'tokenTypeToString(TokenType type):&#160;tokens.cpp']]],
-  ['trim_679',['trim',['../namespacevmConfig_1_1INI.html#a44ae63dad24de0d3ac97155a500cbbca',1,'vmConfig::INI']]]
+  ['set_1002',['Set',['../namespacevm__config_1_1ini.html#a1b4b63f6f7ac80efd5503d276c30f5ff',1,'vm_config::ini']]],
+  ['setcontrolsignals_1003',['SetControlSignals',['../classRVSSControlUnit.html#adf26df59ddd8b4e69e94ed8b881127bc',1,'RVSSControlUnit::SetControlSignals()'],['../classControlUnit.html#a0f833e38023892becb4e17884e6bf25f',1,'ControlUnit::SetControlSignals()']]],
+  ['setcsr_1004',['setCsr',['../structICUnit.html#a1eafc9c926a02caeb618a9114f551f0b',1,'ICUnit']]],
+  ['setflags_1005',['setFlags',['../classalu_1_1Alu.html#a37bb2aac9cb2c8ae05ceee0d6404e5cc',1,'alu::Alu']]],
+  ['setimm_1006',['setImm',['../structICUnit.html#a1691a21f18ee3fedcf460a67f82a3099',1,'ICUnit']]],
+  ['setlabel_1007',['setLabel',['../structICUnit.html#a91d304043cc6b35beba02b90704101dc',1,'ICUnit']]],
+  ['setlinenumber_1008',['setLineNumber',['../structICUnit.html#a422db7dc5ec05859dff23f857db9032c',1,'ICUnit']]],
+  ['setopcode_1009',['setOpcode',['../structICUnit.html#ad0edc47ffa9a7197a588ec02f01bf7c0',1,'ICUnit']]],
+  ['setrd_1010',['setRd',['../structICUnit.html#a566ba9cecb196f02a2ca1b03236f3c13',1,'ICUnit']]],
+  ['setrm_1011',['setRm',['../structICUnit.html#a964fe26dccc9c4088774a66a2de5ec05',1,'ICUnit']]],
+  ['setrs1_1012',['setRs1',['../structICUnit.html#ac084bccd7290a3ba7990b90b91b149f7',1,'ICUnit']]],
+  ['setrs2_1013',['setRs2',['../structICUnit.html#a8bf533e866d8cf995a41530052598883',1,'ICUnit']]],
+  ['setrs3_1014',['setRs3',['../structICUnit.html#a4161046a12e2d38b90b88ecc19be8896',1,'ICUnit']]],
+  ['step_1015',['Step',['../classRVSSVM.html#a5547766e7446048242849d2510e3b2ef',1,'RVSSVM::Step()'],['../classVmBase.html#a78fa2e4cc76ab45ca84e164b7b0af119',1,'VmBase::Step()'],['../classVMRunner.html#acc0ab2db4728281bb40797766b92a714',1,'VMRunner::Step()']]],
+  ['stypeinstructionencoding_1016',['STypeInstructionEncoding',['../structinstruction__set_1_1STypeInstructionEncoding.html#a4c9cdc1bd9e71aecfe7ed1137791570e',1,'instruction_set::STypeInstructionEncoding']]],
+  ['syntaxerror_1017',['SyntaxError',['../structerrors_1_1SyntaxError.html#ae116ac1e776cddc9d31436700ea66769',1,'errors::SyntaxError']]]
 ];

@@ -14,43 +14,40 @@
  * @brief The ControlUnit class is the base class for the control unit of the CPU.
  */
 class ControlUnit {
-public:
-    virtual ~ControlUnit() = default;
+ public:
+  virtual ~ControlUnit() = default;
 
-    void reset() {
-        ALUSrc = false;
-        MemToReg = false;
-        RegWrite = false;
-        MemRead = false;
-        MemWrite = false;
-        Branch = false;
-        ALUOp = 0;
-    }
+  void Reset() {
+    alu_src_ = false;
+    mem_to_reg_ = false;
+    reg_write_ = false;
+    mem_read_ = false;
+    mem_write_ = false;
+    branch_ = false;
+    alu_op_ = 0;
+  }
 
-    // Sets control signals based on the opcode or instruction
-    virtual void setControlSignals(uint32_t instruction) = 0;
-    virtual ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) = 0;
+  virtual void SetControlSignals(uint32_t instruction) = 0;
+  virtual alu::AluOp GetAluSignal(uint32_t instruction, bool ALUOp) = 0;
 
-    // Retrieves control signals (used by other components like ALU, memory)
-    [[nodiscard]] bool getALUSrc() const;
-    [[nodiscard]] bool getMemToReg() const;
-    [[nodiscard]] bool getRegWrite() const;
-    [[nodiscard]] bool getMemRead() const;
-    [[nodiscard]] bool getMemWrite() const;
-    [[nodiscard]] uint8_t getALUOp() const;
-    [[nodiscard]] bool getBranch() const;
+  [[nodiscard]] bool GetAluSrc() const;
+  [[nodiscard]] bool GetMemToReg() const;
+  [[nodiscard]] bool GetRegWrite() const;
+  [[nodiscard]] bool GetMemRead() const;
+  [[nodiscard]] bool GetMemWrite() const;
+  [[nodiscard]] uint8_t GetAluOp() const;
+  [[nodiscard]] bool GetBranch() const;
 
-protected:
-    // Common control signals
-    bool RegWrite = false;
-    bool Branch = false;
-    bool ALUSrc = false;
-    bool MemRead = false;
-    bool MemWrite = false;
-    bool MemToReg = false;
-    bool PCSrc = false;
+ protected:
+  bool reg_write_ = false;
+  bool branch_ = false;
+  bool alu_src_ = false;
+  bool mem_read_ = false;
+  bool mem_write_ = false;
+  bool mem_to_reg_ = false;
+  bool pc_src_ = false;
 
-    uint8_t ALUOp = 0;
+  uint8_t alu_op_{};
 };
 
 #endif // CONTROL_UNIT_BASE_H

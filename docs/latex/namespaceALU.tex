@@ -1,107 +1,107 @@
-\hypertarget{namespaceALU}{}\doxysection{ALU Namespace Reference}
-\label{namespaceALU}\index{ALU@{ALU}}
+\hypertarget{namespaceALU}{}\doxysection{alu Namespace Reference}
+\label{namespaceALU}\index{alu@{alu}}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classALU_1_1ALU}{ALU}}
-\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classALU_1_1ALU}{ALU}} class is responsible for performing arithmetic and logic operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \mbox{\hyperlink{classALU_1_1ALU}{alu}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classALU_1_1ALU}{alu}} class is responsible for performing arithmetic and logic operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum class \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALUOp}} \{ \newline
-\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}{NONE}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}{ADD}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}{SUB}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}{MUL}}
+enum class \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{AluOp}} \{ \newline
+\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}{kNone}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}{kAdd}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}{kSub}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}{kMul}}
 , \newline
-\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}{DIV}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}{DIVU}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}{REM}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}{REMU}}
+\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}{kDiv}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}{kDivu}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}{kRem}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}{kRemu}}
 , \newline
-\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}{AND}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}{OR}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}{XOR}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}{SLL}}
+\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}{kAnd}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}{kOr}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}{kXor}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}{kSll}}
 , \newline
-\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}{SRL}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}{SRA}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}{SLT}}
-, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}{SLTU}}
+\mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}{kSrl}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}{kSra}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}{kSlt}}
+, \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}{kSltu}}
  \}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}} 
-\index{ALU@{ALU}!ALUOp@{ALUOp}}
-\index{ALUOp@{ALUOp}!ALU@{ALU}}
-\doxysubsubsection{\texorpdfstring{ALUOp}{ALUOp}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{ALU\+::\+ALUOp}}\hspace{0.3cm}{\ttfamily [strong]}}
+\index{alu@{alu}!AluOp@{AluOp}}
+\index{AluOp@{AluOp}!alu@{alu}}
+\doxysubsubsection{\texorpdfstring{AluOp}{AluOp}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceALU_a92e727ac8b6977ab7108be9fe861f119}{alu\+::\+AluOp}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!ALU@{ALU}}\index{ALU@{ALU}!NONE@{NONE}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}} 
-NONE&No operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kNone@{kNone}!alu@{alu}}\index{alu@{alu}!kNone@{kNone}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ab50339a10e1de285ac99d4c3990b8693}}
+kNone&No operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ADD@{ADD}!ALU@{ALU}}\index{ALU@{ALU}!ADD@{ADD}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}} 
-ADD&Addition operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kAdd@{kAdd}!alu@{alu}}\index{alu@{alu}!kAdd@{kAdd}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9eeb52badb613229884838847294b90d}}
+kAdd&Addition operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SUB@{SUB}!ALU@{ALU}}\index{ALU@{ALU}!SUB@{SUB}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}} 
-SUB&Subtraction operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSub@{kSub}!alu@{alu}}\index{alu@{alu}!kSub@{kSub}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a241dd841abade20fcb27b8a9f494e1eb}}
+kSub&Subtraction operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{MUL@{MUL}!ALU@{ALU}}\index{ALU@{ALU}!MUL@{MUL}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}} 
-MUL&Multiplication operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kMul@{kMul}!alu@{alu}}\index{alu@{alu}!kMul@{kMul}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a2cdf52a55876063ec93b7d18bc741f6c}}
+kMul&Multiplication operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DIV@{DIV}!ALU@{ALU}}\index{ALU@{ALU}!DIV@{DIV}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}} 
-DIV&Division operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kDiv@{kDiv}!alu@{alu}}\index{alu@{alu}!kDiv@{kDiv}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a29bbf66f7f8529ec47e394fb5a36c646}}
+kDiv&Division operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DIVU@{DIVU}!ALU@{ALU}}\index{ALU@{ALU}!DIVU@{DIVU}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}} 
-DIVU&Unsigned division operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kDivu@{kDivu}!alu@{alu}}\index{alu@{alu}!kDivu@{kDivu}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a8c629acb10e8fd70ee1b4c966ec76c36}}
+kDivu&Unsigned division operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{REM@{REM}!ALU@{ALU}}\index{ALU@{ALU}!REM@{REM}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}} 
-REM&Remainder operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kRem@{kRem}!alu@{alu}}\index{alu@{alu}!kRem@{kRem}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119af5b7d8538da68fa55ace6e8f83a2378c}}
+kRem&Remainder operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{REMU@{REMU}!ALU@{ALU}}\index{ALU@{ALU}!REMU@{REMU}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}} 
-REMU&Unsigned remainder operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kRemu@{kRemu}!alu@{alu}}\index{alu@{alu}!kRemu@{kRemu}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119abc4402413138d0e1daac58067426544f}}
+kRemu&Unsigned remainder operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{AND@{AND}!ALU@{ALU}}\index{ALU@{ALU}!AND@{AND}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}} 
-AND&Bitwise AND operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kAnd@{kAnd}!alu@{alu}}\index{alu@{alu}!kAnd@{kAnd}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a558ffc8f5770d8e4f95f51d822685532}}
+kAnd&Bitwise kAnd operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{OR@{OR}!ALU@{ALU}}\index{ALU@{ALU}!OR@{OR}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}} 
-OR&Bitwise OR operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kOr@{kOr}!alu@{alu}}\index{alu@{alu}!kOr@{kOr}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a1d00e7dce692e8dc3f6877f035e3a616}}
+kOr&Bitwise kOr operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{XOR@{XOR}!ALU@{ALU}}\index{ALU@{ALU}!XOR@{XOR}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}} 
-XOR&Bitwise XOR operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kXor@{kXor}!alu@{alu}}\index{alu@{alu}!kXor@{kXor}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a97675eb3f268048604dc5155511a2a4d}}
+kXor&Bitwise kXor operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SLL@{SLL}!ALU@{ALU}}\index{ALU@{ALU}!SLL@{SLL}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}} 
-SLL&Shift left logical operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSll@{kSll}!alu@{alu}}\index{alu@{alu}!kSll@{kSll}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119aae2ecfbd95d475ddf08876080d57e3d9}}
+kSll&Shift left logical operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SRL@{SRL}!ALU@{ALU}}\index{ALU@{ALU}!SRL@{SRL}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}} 
-SRL&Shift right logical operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSrl@{kSrl}!alu@{alu}}\index{alu@{alu}!kSrl@{kSrl}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a524c29e44088703133bf9aa2fe34c463}}
+kSrl&Shift right logical operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SRA@{SRA}!ALU@{ALU}}\index{ALU@{ALU}!SRA@{SRA}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}} 
-SRA&Shift right arithmetic operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSra@{kSra}!alu@{alu}}\index{alu@{alu}!kSra@{kSra}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a406292f3c5b20715e348f48fa5e6d6e3}}
+kSra&Shift right arithmetic operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SLT@{SLT}!ALU@{ALU}}\index{ALU@{ALU}!SLT@{SLT}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}} 
-SLT&Set less than operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSlt@{kSlt}!alu@{alu}}\index{alu@{alu}!kSlt@{kSlt}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119ac71563c4ae48cc1bbd2e7913366cdf7e}}
+kSlt&Set less than operation. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{SLTU@{SLTU}!ALU@{ALU}}\index{ALU@{ALU}!SLTU@{SLTU}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}} 
-SLTU&Unsigned set less than operation. \\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kSltu@{kSltu}!alu@{alu}}\index{alu@{alu}!kSltu@{kSltu}}}\mbox{\Hypertarget{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}\label{namespaceALU_a92e727ac8b6977ab7108be9fe861f119a9160358381d811e98950c5229403ed1d}}
+kSltu&Unsigned set less than operation. \\
 \hline
 
 \end{DoxyEnumFields}

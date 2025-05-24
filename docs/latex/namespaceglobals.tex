@@ -8,9 +8,15 @@ void \mbox{\hyperlink{namespaceglobals_aa11e5b4f00b5bec36fe4cf155707e56b}{init\+
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \mbox{\hyperlink{namespaceglobals_a2af08ca6008d8e6e7001d9fa2fce0168}{config\+\_\+file}} = \char`\"{}/home/vis/Desk/projects/assembler/vm\+\_\+state/config.\+ini\char`\"{}
+std\+::string \mbox{\hyperlink{namespaceglobals_a2af08ca6008d8e6e7001d9fa2fce0168}{config\+\_\+file}} = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}config.\+ini\char`\"{}).string()
 \item 
-std\+::string \mbox{\hyperlink{namespaceglobals_a6eec5b1737e561a26b7553f75a37d52c}{errors\+\_\+dump\+\_\+file}} = \char`\"{}/home/vis/Desk/projects/assembler/vm\+\_\+state/errors\+\_\+dump.\+json\char`\"{}
+std\+::string \mbox{\hyperlink{namespaceglobals_a6eec5b1737e561a26b7553f75a37d52c}{errors\+\_\+dump\+\_\+file}} = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}errors\+\_\+dump.\+json\char`\"{}).string()
+\item 
+std\+::string \mbox{\hyperlink{namespaceglobals_a48c42feb736508606c7a8243bfb4bfd5}{registers\+\_\+dump\+\_\+file}} = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}registers\+\_\+dump.\+json\char`\"{}).string()
+\item 
+std\+::string \mbox{\hyperlink{namespaceglobals_a11770452d2a238421e03507983d7fda0}{memory\+\_\+dump\+\_\+file}} = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}memory\+\_\+dump.\+json\char`\"{}).string()
+\item 
+std\+::string \mbox{\hyperlink{namespaceglobals_a4228b13ee8d461ea734ea64c80f88374}{cache\+\_\+dump\+\_\+file}} = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}cache\+\_\+dump.\+json\char`\"{}).string()
 \item 
 unsigned int \mbox{\hyperlink{namespaceglobals_ae569afb99e3b6782cc92c0545417ffab}{data\+\_\+section\+\_\+start}} = 0x10000000
 \end{DoxyCompactItemize}
@@ -26,11 +32,17 @@ unsigned int \mbox{\hyperlink{namespaceglobals_ae569afb99e3b6782cc92c0545417ffab
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceglobals_a4228b13ee8d461ea734ea64c80f88374}\label{namespaceglobals_a4228b13ee8d461ea734ea64c80f88374}} 
+\index{globals@{globals}!cache\_dump\_file@{cache\_dump\_file}}
+\index{cache\_dump\_file@{cache\_dump\_file}!globals@{globals}}
+\doxysubsubsection{\texorpdfstring{cache\_dump\_file}{cache\_dump\_file}}
+{\footnotesize\ttfamily std\+::string globals\+::cache\+\_\+dump\+\_\+file = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}cache\+\_\+dump.\+json\char`\"{}).string()\hspace{0.3cm}{\ttfamily [extern]}}
+
 \mbox{\Hypertarget{namespaceglobals_a2af08ca6008d8e6e7001d9fa2fce0168}\label{namespaceglobals_a2af08ca6008d8e6e7001d9fa2fce0168}} 
 \index{globals@{globals}!config\_file@{config\_file}}
 \index{config\_file@{config\_file}!globals@{globals}}
 \doxysubsubsection{\texorpdfstring{config\_file}{config\_file}}
-{\footnotesize\ttfamily std\+::string globals\+::config\+\_\+file = \char`\"{}/home/vis/Desk/projects/assembler/vm\+\_\+state/config.\+ini\char`\"{}\hspace{0.3cm}{\ttfamily [extern]}}
+{\footnotesize\ttfamily std\+::string globals\+::config\+\_\+file = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}config.\+ini\char`\"{}).string()\hspace{0.3cm}{\ttfamily [extern]}}
 
 \mbox{\Hypertarget{namespaceglobals_ae569afb99e3b6782cc92c0545417ffab}\label{namespaceglobals_ae569afb99e3b6782cc92c0545417ffab}} 
 \index{globals@{globals}!data\_section\_start@{data\_section\_start}}
@@ -42,5 +54,17 @@ unsigned int \mbox{\hyperlink{namespaceglobals_ae569afb99e3b6782cc92c0545417ffab
 \index{globals@{globals}!errors\_dump\_file@{errors\_dump\_file}}
 \index{errors\_dump\_file@{errors\_dump\_file}!globals@{globals}}
 \doxysubsubsection{\texorpdfstring{errors\_dump\_file}{errors\_dump\_file}}
-{\footnotesize\ttfamily std\+::string globals\+::errors\+\_\+dump\+\_\+file = \char`\"{}/home/vis/Desk/projects/assembler/vm\+\_\+state/errors\+\_\+dump.\+json\char`\"{}\hspace{0.3cm}{\ttfamily [extern]}}
+{\footnotesize\ttfamily std\+::string globals\+::errors\+\_\+dump\+\_\+file = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}errors\+\_\+dump.\+json\char`\"{}).string()\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{namespaceglobals_a11770452d2a238421e03507983d7fda0}\label{namespaceglobals_a11770452d2a238421e03507983d7fda0}} 
+\index{globals@{globals}!memory\_dump\_file@{memory\_dump\_file}}
+\index{memory\_dump\_file@{memory\_dump\_file}!globals@{globals}}
+\doxysubsubsection{\texorpdfstring{memory\_dump\_file}{memory\_dump\_file}}
+{\footnotesize\ttfamily std\+::string globals\+::memory\+\_\+dump\+\_\+file = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}memory\+\_\+dump.\+json\char`\"{}).string()\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{namespaceglobals_a48c42feb736508606c7a8243bfb4bfd5}\label{namespaceglobals_a48c42feb736508606c7a8243bfb4bfd5}} 
+\index{globals@{globals}!registers\_dump\_file@{registers\_dump\_file}}
+\index{registers\_dump\_file@{registers\_dump\_file}!globals@{globals}}
+\doxysubsubsection{\texorpdfstring{registers\_dump\_file}{registers\_dump\_file}}
+{\footnotesize\ttfamily std\+::string globals\+::registers\+\_\+dump\+\_\+file = (std\+::filesystem\+::path(\char`\"{}..\char`\"{})/\char`\"{}vm\+\_\+state\char`\"{}/\char`\"{}registers\+\_\+dump.\+json\char`\"{}).string()\hspace{0.3cm}{\ttfamily [extern]}}
 

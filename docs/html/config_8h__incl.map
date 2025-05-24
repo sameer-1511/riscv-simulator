@@ -1,7 +1,7 @@
 <map id="src/config.h" name="src/config.h">
-<area shape="rect" id="node1" title="Contains configuration options for the assembler." alt="" coords="817,5,913,32"/>
-<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="837,155,894,181"/>
-<area shape="rect" id="node22" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="865,80,946,107"/>
+<area shape="rect" id="node1" title="Contains configuration options for the assembler." alt="" coords="917,5,1013,32"/>
+<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="937,155,994,181"/>
+<area shape="rect" id="node24" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="965,80,1046,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,229,85,256"/>
 <area shape="rect" id="node4" title=" " alt="" coords="110,229,173,256"/>
 <area shape="rect" id="node5" title=" " alt="" coords="197,229,256,256"/>
@@ -21,4 +21,6 @@
 <area shape="rect" id="node19" title=" " alt="" coords="1588,229,1647,256"/>
 <area shape="rect" id="node20" title=" " alt="" coords="1671,229,1731,256"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1756,229,1815,256"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1839,229,1902,256"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1927,229,1993,256"/>
 </map>

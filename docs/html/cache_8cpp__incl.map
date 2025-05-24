@@ -1,7 +1,7 @@
 <map id="src/vm/cache/cache.cpp" name="src/vm/cache/cache.cpp">
-<area shape="rect" id="node1" title="File containing the implementation of the cache class for the virtual machine." alt="" coords="777,5,954,32"/>
-<area shape="rect" id="node2" href="$cache_8h.html" title="File containing the cache class for the virtual machine." alt="" coords="829,80,901,107"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="825,155,906,181"/>
+<area shape="rect" id="node1" title="File containing the implementation of the cache class for the virtual machine." alt="" coords="877,5,1054,32"/>
+<area shape="rect" id="node2" href="$cache_8h.html" title="File containing the cache class for the virtual machine." alt="" coords="929,80,1001,107"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="925,155,1006,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="5,229,85,256"/>
 <area shape="rect" id="node5" title=" " alt="" coords="110,229,173,256"/>
 <area shape="rect" id="node6" title=" " alt="" coords="197,229,256,256"/>
@@ -21,4 +21,6 @@
 <area shape="rect" id="node20" title=" " alt="" coords="1588,229,1647,256"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1671,229,1731,256"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1756,229,1815,256"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1839,229,1902,256"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1927,229,1993,256"/>
 </map>

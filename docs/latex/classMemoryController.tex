@@ -14,23 +14,29 @@ The \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} class is respon
 \item 
 \mbox{\hyperlink{classMemoryController_a0c055d1bda8ede9928fd8a3b08b86d41}{Memory\+Controller}} ()=default
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classMemoryController_a89b534fa1dcb5d49d381c04c912f877f}{print\+Cache\+Status}} () const
+void \mbox{\hyperlink{classMemoryController_af0d58cab4e7fcda0a1c767c68e383826}{Reset}} ()
 \item 
-void \mbox{\hyperlink{classMemoryController_a71ea31b46a1bf12b8b9c6c33fc378583}{write\+Byte}} (uint64\+\_\+t address, uint8\+\_\+t value)
+void \mbox{\hyperlink{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}{Print\+Cache\+Status}} () const
 \item 
-void \mbox{\hyperlink{classMemoryController_ab80344171123f7c7f292b56d4ffdb753}{write\+Half\+Word}} (uint64\+\_\+t address, uint16\+\_\+t value)
+void \mbox{\hyperlink{classMemoryController_a20fc033bb20a0a4db0069610137ff69b}{Write\+Byte}} (uint64\+\_\+t address, uint8\+\_\+t value)
 \item 
-void \mbox{\hyperlink{classMemoryController_a2a9dc25c2368c26ea587a71da8e1ce5a}{write\+Word}} (uint64\+\_\+t address, uint32\+\_\+t value)
+void \mbox{\hyperlink{classMemoryController_a4854cd0badc3700b40b3c548f90902b3}{Write\+Half\+Word}} (uint64\+\_\+t address, uint16\+\_\+t value)
 \item 
-void \mbox{\hyperlink{classMemoryController_a35571cf2eb12c196fd381c2bc65ae0ca}{write\+Double\+Word}} (uint64\+\_\+t address, uint64\+\_\+t value)
+void \mbox{\hyperlink{classMemoryController_a8f3dadab192aca15da29fc45f39ea999}{Write\+Word}} (uint64\+\_\+t address, uint32\+\_\+t value)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{classMemoryController_a886999fbf08a34654249bf79c60cfad9}{read\+Byte}} (uint64\+\_\+t address)
+void \mbox{\hyperlink{classMemoryController_a52809e94f0e1c8c2c713c464856ab40e}{Write\+Double\+Word}} (uint64\+\_\+t address, uint64\+\_\+t value)
 \item 
-uint16\+\_\+t \mbox{\hyperlink{classMemoryController_a1f22080d40b83bdab4008f5a86aebf64}{read\+Half\+Word}} (uint64\+\_\+t address)
+uint8\+\_\+t \mbox{\hyperlink{classMemoryController_ac0a504cb9ae8065ebc91cbce203dacf0}{Read\+Byte}} (uint64\+\_\+t address)
 \item 
-uint32\+\_\+t \mbox{\hyperlink{classMemoryController_a414582e95c2ff4158fae6cd46abda2e4}{read\+Word}} (uint64\+\_\+t address)
+uint16\+\_\+t \mbox{\hyperlink{classMemoryController_a62594f53e0fccbe647db3fdf5a0027dc}{Read\+Half\+Word}} (uint64\+\_\+t address)
 \item 
-uint64\+\_\+t \mbox{\hyperlink{classMemoryController_a3586f816869e6de5eb97f67b2a82e419}{read\+Double\+Word}} (uint64\+\_\+t address)
+uint32\+\_\+t \mbox{\hyperlink{classMemoryController_addf77851cb24edf69828e751a22d6850}{Read\+Word}} (uint64\+\_\+t address)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classMemoryController_a56739a684cfb225821f97705375d0f5e}{Read\+Double\+Word}} (uint64\+\_\+t address)
+\item 
+void \mbox{\hyperlink{classMemoryController_a75439359d472f770f07c2d58013ae94e}{Print\+Memory}} (const uint64\+\_\+t address, uint rows)
+\item 
+void \mbox{\hyperlink{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}{Dump\+Memory}} (const uint64\+\_\+t address, uint rows)
 \end{DoxyCompactItemize}
 
 
@@ -51,59 +57,77 @@ Constructs a \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} object
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classMemoryController_a89b534fa1dcb5d49d381c04c912f877f}\label{classMemoryController_a89b534fa1dcb5d49d381c04c912f877f}} 
-\index{MemoryController@{MemoryController}!printCacheStatus@{printCacheStatus}}
-\index{printCacheStatus@{printCacheStatus}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{printCacheStatus()}{printCacheStatus()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::print\+Cache\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}\label{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}} 
+\index{MemoryController@{MemoryController}!DumpMemory@{DumpMemory}}
+\index{DumpMemory@{DumpMemory}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{DumpMemory()}{DumpMemory()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Dump\+Memory (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{address,  }\item[{uint}]{rows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a886999fbf08a34654249bf79c60cfad9}\label{classMemoryController_a886999fbf08a34654249bf79c60cfad9}} 
-\index{MemoryController@{MemoryController}!readByte@{readByte}}
-\index{readByte@{readByte}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{readByte()}{readByte()}}
-{\footnotesize\ttfamily uint8\+\_\+t Memory\+Controller\+::read\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}\label{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}} 
+\index{MemoryController@{MemoryController}!PrintCacheStatus@{PrintCacheStatus}}
+\index{PrintCacheStatus@{PrintCacheStatus}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{PrintCacheStatus()}{PrintCacheStatus()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Print\+Cache\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a3586f816869e6de5eb97f67b2a82e419}\label{classMemoryController_a3586f816869e6de5eb97f67b2a82e419}} 
-\index{MemoryController@{MemoryController}!readDoubleWord@{readDoubleWord}}
-\index{readDoubleWord@{readDoubleWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{readDoubleWord()}{readDoubleWord()}}
-{\footnotesize\ttfamily uint64\+\_\+t Memory\+Controller\+::read\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_a75439359d472f770f07c2d58013ae94e}\label{classMemoryController_a75439359d472f770f07c2d58013ae94e}} 
+\index{MemoryController@{MemoryController}!PrintMemory@{PrintMemory}}
+\index{PrintMemory@{PrintMemory}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{PrintMemory()}{PrintMemory()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Print\+Memory (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{address,  }\item[{uint}]{rows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a1f22080d40b83bdab4008f5a86aebf64}\label{classMemoryController_a1f22080d40b83bdab4008f5a86aebf64}} 
-\index{MemoryController@{MemoryController}!readHalfWord@{readHalfWord}}
-\index{readHalfWord@{readHalfWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{readHalfWord()}{readHalfWord()}}
-{\footnotesize\ttfamily uint16\+\_\+t Memory\+Controller\+::read\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_ac0a504cb9ae8065ebc91cbce203dacf0}\label{classMemoryController_ac0a504cb9ae8065ebc91cbce203dacf0}} 
+\index{MemoryController@{MemoryController}!ReadByte@{ReadByte}}
+\index{ReadByte@{ReadByte}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{ReadByte()}{ReadByte()}}
+{\footnotesize\ttfamily uint8\+\_\+t Memory\+Controller\+::\+Read\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a414582e95c2ff4158fae6cd46abda2e4}\label{classMemoryController_a414582e95c2ff4158fae6cd46abda2e4}} 
-\index{MemoryController@{MemoryController}!readWord@{readWord}}
-\index{readWord@{readWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{readWord()}{readWord()}}
-{\footnotesize\ttfamily uint32\+\_\+t Memory\+Controller\+::read\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_a56739a684cfb225821f97705375d0f5e}\label{classMemoryController_a56739a684cfb225821f97705375d0f5e}} 
+\index{MemoryController@{MemoryController}!ReadDoubleWord@{ReadDoubleWord}}
+\index{ReadDoubleWord@{ReadDoubleWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{ReadDoubleWord()}{ReadDoubleWord()}}
+{\footnotesize\ttfamily uint64\+\_\+t Memory\+Controller\+::\+Read\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a71ea31b46a1bf12b8b9c6c33fc378583}\label{classMemoryController_a71ea31b46a1bf12b8b9c6c33fc378583}} 
-\index{MemoryController@{MemoryController}!writeByte@{writeByte}}
-\index{writeByte@{writeByte}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{writeByte()}{writeByte()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::write\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_a62594f53e0fccbe647db3fdf5a0027dc}\label{classMemoryController_a62594f53e0fccbe647db3fdf5a0027dc}} 
+\index{MemoryController@{MemoryController}!ReadHalfWord@{ReadHalfWord}}
+\index{ReadHalfWord@{ReadHalfWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{ReadHalfWord()}{ReadHalfWord()}}
+{\footnotesize\ttfamily uint16\+\_\+t Memory\+Controller\+::\+Read\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a35571cf2eb12c196fd381c2bc65ae0ca}\label{classMemoryController_a35571cf2eb12c196fd381c2bc65ae0ca}} 
-\index{MemoryController@{MemoryController}!writeDoubleWord@{writeDoubleWord}}
-\index{writeDoubleWord@{writeDoubleWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{writeDoubleWord()}{writeDoubleWord()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::write\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint64\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_addf77851cb24edf69828e751a22d6850}\label{classMemoryController_addf77851cb24edf69828e751a22d6850}} 
+\index{MemoryController@{MemoryController}!ReadWord@{ReadWord}}
+\index{ReadWord@{ReadWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{ReadWord()}{ReadWord()}}
+{\footnotesize\ttfamily uint32\+\_\+t Memory\+Controller\+::\+Read\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_ab80344171123f7c7f292b56d4ffdb753}\label{classMemoryController_ab80344171123f7c7f292b56d4ffdb753}} 
-\index{MemoryController@{MemoryController}!writeHalfWord@{writeHalfWord}}
-\index{writeHalfWord@{writeHalfWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{writeHalfWord()}{writeHalfWord()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::write\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_af0d58cab4e7fcda0a1c767c68e383826}\label{classMemoryController_af0d58cab4e7fcda0a1c767c68e383826}} 
+\index{MemoryController@{MemoryController}!Reset@{Reset}}
+\index{Reset@{Reset}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\mbox{\Hypertarget{classMemoryController_a2a9dc25c2368c26ea587a71da8e1ce5a}\label{classMemoryController_a2a9dc25c2368c26ea587a71da8e1ce5a}} 
-\index{MemoryController@{MemoryController}!writeWord@{writeWord}}
-\index{writeWord@{writeWord}!MemoryController@{MemoryController}}
-\doxysubsubsection{\texorpdfstring{writeWord()}{writeWord()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::write\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classMemoryController_a20fc033bb20a0a4db0069610137ff69b}\label{classMemoryController_a20fc033bb20a0a4db0069610137ff69b}} 
+\index{MemoryController@{MemoryController}!WriteByte@{WriteByte}}
+\index{WriteByte@{WriteByte}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{WriteByte()}{WriteByte()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Write\+Byte (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMemoryController_a52809e94f0e1c8c2c713c464856ab40e}\label{classMemoryController_a52809e94f0e1c8c2c713c464856ab40e}} 
+\index{MemoryController@{MemoryController}!WriteDoubleWord@{WriteDoubleWord}}
+\index{WriteDoubleWord@{WriteDoubleWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{WriteDoubleWord()}{WriteDoubleWord()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Write\+Double\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint64\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMemoryController_a4854cd0badc3700b40b3c548f90902b3}\label{classMemoryController_a4854cd0badc3700b40b3c548f90902b3}} 
+\index{MemoryController@{MemoryController}!WriteHalfWord@{WriteHalfWord}}
+\index{WriteHalfWord@{WriteHalfWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{WriteHalfWord()}{WriteHalfWord()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Write\+Half\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMemoryController_a8f3dadab192aca15da29fc45f39ea999}\label{classMemoryController_a8f3dadab192aca15da29fc45f39ea999}} 
+\index{MemoryController@{MemoryController}!WriteWord@{WriteWord}}
+\index{WriteWord@{WriteWord}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{WriteWord()}{WriteWord()}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Write\+Word (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

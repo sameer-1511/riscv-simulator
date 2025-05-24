@@ -7,6 +7,7 @@ Contains utility functions for the VM.
 
 {\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vm/registers.\+h\char`\"{}}\newline
 Include dependency graph for utils.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -18,15 +19,17 @@ Include dependency graph for utils.\+cpp\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int64\+\_\+t \mbox{\hyperlink{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}{count\+Lines}} (const std\+::string \&filename)
+int64\+\_\+t \mbox{\hyperlink{utils_8cpp_a9f1db91cc23a2bfbba2379c15eb75d05}{Count\+Lines}} (const std\+::string \&filename)
 \begin{DoxyCompactList}\small\item\em Counts the number of lines in a given file. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}{get\+Line\+From\+File}} (const std\+::string \&file\+Name, unsigned int line\+Number)
+std\+::string \mbox{\hyperlink{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}{Get\+Line\+From\+File}} (const std\+::string \&file\+Name, unsigned int line\+Number)
 \begin{DoxyCompactList}\small\item\em Retrieves a specific line from a file. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}{parse\+Escaped\+String}} (const std\+::string \&input)
+std\+::string \mbox{\hyperlink{utils_8cpp_ac175dbe8421725a466a026a8eecf9b11}{Parse\+Escaped\+String}} (const std\+::string \&input)
 \begin{DoxyCompactList}\small\item\em Parses a string containing escaped characters into its unescaped form. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}{dump\+Errors}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&errors)
+void \mbox{\hyperlink{utils_8cpp_a213bff0cf89805230de1b52efeed770c}{Dump\+Errors}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&errors)
 \item 
-void \mbox{\hyperlink{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}{dump\+No\+Errors}} (const std\+::string \&filename)
+void \mbox{\hyperlink{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}{Dump\+No\+Errors}} (const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}{Dump\+Registers}} (const std\+::string \&filename, \mbox{\hyperlink{classRegisterFile}{Register\+File}} \&register\+\_\+file)
 \end{DoxyCompactItemize}
 
 
@@ -39,11 +42,11 @@ Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}\label{utils_8cpp_a6179b35e5cda001308f2f674e2f63024}} 
-\index{utils.cpp@{utils.cpp}!countLines@{countLines}}
-\index{countLines@{countLines}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{countLines()}{countLines()}}
-{\footnotesize\ttfamily int64\+\_\+t count\+Lines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{utils_8cpp_a9f1db91cc23a2bfbba2379c15eb75d05}\label{utils_8cpp_a9f1db91cc23a2bfbba2379c15eb75d05}} 
+\index{utils.cpp@{utils.cpp}!CountLines@{CountLines}}
+\index{CountLines@{CountLines}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{CountLines()}{CountLines()}}
+{\footnotesize\ttfamily int64\+\_\+t Count\+Lines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
 
 
 
@@ -62,23 +65,29 @@ The number of lines in the file.
 {\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}\label{utils_8cpp_a4018521cb03000aae5da3f04d2a9921e}} 
-\index{utils.cpp@{utils.cpp}!dumpErrors@{dumpErrors}}
-\index{dumpErrors@{dumpErrors}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{dumpErrors()}{dumpErrors()}}
-{\footnotesize\ttfamily void dump\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&}]{errors }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{utils_8cpp_a213bff0cf89805230de1b52efeed770c}\label{utils_8cpp_a213bff0cf89805230de1b52efeed770c}} 
+\index{utils.cpp@{utils.cpp}!DumpErrors@{DumpErrors}}
+\index{DumpErrors@{DumpErrors}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{DumpErrors()}{DumpErrors()}}
+{\footnotesize\ttfamily void Dump\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&}]{errors }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}\label{utils_8cpp_a74f180d3e5519e592af7080d44a8fe8b}} 
-\index{utils.cpp@{utils.cpp}!dumpNoErrors@{dumpNoErrors}}
-\index{dumpNoErrors@{dumpNoErrors}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{dumpNoErrors()}{dumpNoErrors()}}
-{\footnotesize\ttfamily void dump\+No\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}\label{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}} 
+\index{utils.cpp@{utils.cpp}!DumpNoErrors@{DumpNoErrors}}
+\index{DumpNoErrors@{DumpNoErrors}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{DumpNoErrors()}{DumpNoErrors()}}
+{\footnotesize\ttfamily void Dump\+No\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}\label{utils_8cpp_a88c792e59824d0b46f5c47ca0dd12572}} 
-\index{utils.cpp@{utils.cpp}!getLineFromFile@{getLineFromFile}}
-\index{getLineFromFile@{getLineFromFile}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{getLineFromFile()}{getLineFromFile()}}
-{\footnotesize\ttfamily std\+::string get\+Line\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{unsigned int}]{line\+Number }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}\label{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}} 
+\index{utils.cpp@{utils.cpp}!DumpRegisters@{DumpRegisters}}
+\index{DumpRegisters@{DumpRegisters}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{DumpRegisters()}{DumpRegisters()}}
+{\footnotesize\ttfamily void Dump\+Registers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{classRegisterFile}{Register\+File}} \&}]{register\+\_\+file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}\label{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}} 
+\index{utils.cpp@{utils.cpp}!GetLineFromFile@{GetLineFromFile}}
+\index{GetLineFromFile@{GetLineFromFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{GetLineFromFile()}{GetLineFromFile()}}
+{\footnotesize\ttfamily std\+::string Get\+Line\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{unsigned int}]{line\+Number }\end{DoxyParamCaption})}
 
 
 
@@ -101,11 +110,11 @@ The content of the specified line as a string.
 {\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}\label{utils_8cpp_a6a318fd80779adfa70a90e74fc7a02d0}} 
-\index{utils.cpp@{utils.cpp}!parseEscapedString@{parseEscapedString}}
-\index{parseEscapedString@{parseEscapedString}!utils.cpp@{utils.cpp}}
-\doxysubsubsection{\texorpdfstring{parseEscapedString()}{parseEscapedString()}}
-{\footnotesize\ttfamily std\+::string parse\+Escaped\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{utils_8cpp_ac175dbe8421725a466a026a8eecf9b11}\label{utils_8cpp_ac175dbe8421725a466a026a8eecf9b11}} 
+\index{utils.cpp@{utils.cpp}!ParseEscapedString@{ParseEscapedString}}
+\index{ParseEscapedString@{ParseEscapedString}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{ParseEscapedString()}{ParseEscapedString()}}
+{\footnotesize\ttfamily std\+::string Parse\+Escaped\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})}
 
 
 

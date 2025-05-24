@@ -10,15 +10,15 @@
 
 
 
-void VMBase::loadProgram(const AssembledProgram &program) {
+void VmBase::LoadProgram(const AssembledProgram &program) {
     unsigned int counter = 0;
     for (const auto &instruction: program.text_buffer) {
-        memory_controller_.writeWord(counter, static_cast<uint32_t>(instruction.to_ulong()));
+      memory_controller_.WriteWord(counter, static_cast<uint32_t>(instruction.to_ulong()));
         counter += 4;
     }
 
     program_size_ = counter;
-    addBreakpoint(program_size_);
+  AddBreakpoint(program_size_);
 
     unsigned int data_counter = 0;
     uint64_t base_data_address = globals::data_section_start;
@@ -26,30 +26,30 @@ void VMBase::loadProgram(const AssembledProgram &program) {
         std::visit([&](auto&& value) {
             using T = std::decay_t<decltype(value)>;  // Deduce the type of the value
             if constexpr (std::is_same_v<T, uint8_t>) {
-                memory_controller_.writeByte(base_data_address + data_counter, value);  // Write a byte
+              memory_controller_.WriteByte(base_data_address + data_counter, value);  // Write a byte
                 data_counter += 1;
             } else if constexpr (std::is_same_v<T, uint16_t>) {
-                memory_controller_.writeHalfWord(base_data_address + data_counter, value);  // Write a halfword (16 bits)
+              memory_controller_.WriteHalfWord(base_data_address + data_counter, value);  // Write a halfword (16 bits)
                 data_counter += 2;
             } else if constexpr (std::is_same_v<T, uint32_t>) {
-                memory_controller_.writeWord(base_data_address + data_counter, value);  // Write a word (32 bits)
+              memory_controller_.WriteWord(base_data_address + data_counter, value);  // Write a word (32 bits)
                 data_counter += 4;
             } else if constexpr (std::is_same_v<T, uint64_t>) {
-                memory_controller_.writeDoubleWord(base_data_address + data_counter, value);  // Write a double word (64 bits)
+              memory_controller_.WriteDoubleWord(base_data_address + data_counter, value);  // Write a double word (64 bits)
                 data_counter += 8;
             } else if constexpr (std::is_same_v<T, float>) {
                 uint32_t float_as_int;
                 std::memcpy(&float_as_int, &value, sizeof(float));
-                memory_controller_.writeWord(base_data_address + data_counter, float_as_int);  // Write the float as a word
+              memory_controller_.WriteWord(base_data_address + data_counter, float_as_int);  // Write the float as a word
                 data_counter += 4;
             } else if constexpr (std::is_same_v<T, double>) {
                 uint64_t double_as_int;
                 std::memcpy(&double_as_int, &value, sizeof(double));
-                memory_controller_.writeDoubleWord(base_data_address + data_counter, double_as_int);  // Write the double as a double word
+              memory_controller_.WriteDoubleWord(base_data_address + data_counter, double_as_int);  // Write the double as a double word
                 data_counter += 8;
             } else if constexpr (std::is_same_v<T, std::string>) {
                 for (size_t i = 0; i < value.size(); i++) {
-                    memory_controller_.writeByte(base_data_address + data_counter, static_cast<uint8_t>(value[i]));  // Write each byte of the string
+                  memory_controller_.WriteByte(base_data_address + data_counter, static_cast<uint8_t>(value[i]));  // Write each byte of the string
                     data_counter += 1;
                 }
             }
@@ -59,11 +59,11 @@ void VMBase::loadProgram(const AssembledProgram &program) {
 
 }
 
-uint64_t VMBase::getProgramCounter() const {
+uint64_t VmBase::GetProgramCounter() const {
     return program_counter_;
 }
 
-void VMBase::updateProgramCounter(int64_t value) {
+void VmBase::UpdateProgramCounter(int64_t value) {
     program_counter_ = static_cast<uint64_t>(static_cast<int64_t>(program_counter_) + value);
 }
 
@@ -73,13 +73,13 @@ auto sign_extend = [](uint32_t value, unsigned int bits) -> int32_t {
 };
 
 
-int32_t VMBase::imm_generator(uint32_t instruction) {
+int32_t VmBase::ImmGenerator(uint32_t instruction) {
     int32_t imm = 0;
     uint8_t opcode = instruction & 0b1111111;
 
     switch (opcode) {
-        /*** I-TYPE (Load, ALU Immediate, JALR, FPU Loads) ***/
-        case 0b0010011: // ALU Immediate (ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI)
+        /*** I-TYPE (Load, alu Immediate, JALR, FPU Loads) ***/
+        case 0b0010011: // alu Immediate (ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRAI)
         case 0b0000011: // Load (LB, LH, LW, LD, LBU, LHU, LWU)
         case 0b1100111: // JALR
         case 0b0001111: // FENCE
@@ -95,8 +95,8 @@ int32_t VMBase::imm_generator(uint32_t instruction) {
             imm = sign_extend(imm, 12);
             break;
 
-        /*** SB-TYPE (Branch Instructions) ***/
-        case 0b1100011: // Branch (BEQ, BNE, BLT, BGE, BLTU, BGEU)
+        /*** SB-TYPE (branch_ Instructions) ***/
+        case 0b1100011: // branch_ (BEQ, BNE, BLT, BGE, BLTU, BGEU)
             imm = ((instruction >> 8) & 0xF) // Bits 11:8
                   | ((instruction >> 25) & 0x3F) << 4 // Bits 10:5
                   | ((instruction >> 7) & 0x1) << 10 // Bit 4
@@ -126,7 +126,7 @@ int32_t VMBase::imm_generator(uint32_t instruction) {
             break;
 
         /*** M-EXTENSION (Multiplication, Division) - R-TYPE ***/
-        case 0b0110011: // MUL, MULH, MULHU, MULHSU, DIV, DIVU, REM, REMU
+        case 0b0110011: // kMul, kMulh, kMulhu, kMulhsu, kDiv, kDivu, kRem, kRemu
             // R-Type (no immediate needed)
             imm = 0;
             break;
@@ -147,7 +147,7 @@ int32_t VMBase::imm_generator(uint32_t instruction) {
 }
 
 
-void VMBase::addBreakpoint(uint64_t address) {
+void VmBase::AddBreakpoint(uint64_t address) {
     breakpoints_.emplace_back(address);
     std::cout << "Breakpoint added at address: " << std::hex << address << std::dec << std::endl;
     std::cout << "Breakpoints: ";
@@ -158,11 +158,11 @@ void VMBase::addBreakpoint(uint64_t address) {
     std::cout << "Program Counter: " << std::hex << program_counter_ << std::dec << std::endl;
 }
 
-void VMBase::removeBreakpoint(uint64_t address) {
+void VmBase::RemoveBreakpoint(uint64_t address) {
     breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), address), breakpoints_.end());
 }
 
-bool VMBase::checkBreakpoint(uint64_t address) {
+bool VmBase::CheckBreakpoint(uint64_t address) {
     return std::find(breakpoints_.begin(), breakpoints_.end(), address) != breakpoints_.end();
 }
 

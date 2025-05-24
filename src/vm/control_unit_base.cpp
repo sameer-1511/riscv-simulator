@@ -6,30 +6,30 @@
 
 #include "control_unit_base.h"
 
-bool ControlUnit::getALUSrc() const {
-    return ALUSrc;
+bool ControlUnit::GetAluSrc() const {
+  return alu_src_;
 }
 
-bool ControlUnit::getMemToReg() const {
-    return MemToReg;
+bool ControlUnit::GetMemToReg() const {
+  return mem_to_reg_;
 }
 
-bool ControlUnit::getRegWrite() const {
-    return RegWrite;
+bool ControlUnit::GetRegWrite() const {
+  return reg_write_;
 }
 
-bool ControlUnit::getMemRead() const {
-    return MemRead;
+bool ControlUnit::GetMemRead() const {
+  return mem_read_;
 }
 
-bool ControlUnit::getMemWrite() const {
-    return MemWrite;
+bool ControlUnit::GetMemWrite() const {
+  return mem_write_;
 }
 
-uint8_t ControlUnit::getALUOp() const {
-    return ALUOp;
+uint8_t ControlUnit::GetAluOp() const {
+  return alu_op_;
 }
 
-bool ControlUnit::getBranch() const {
-    return Branch;
+bool ControlUnit::GetBranch() const {
+  return branch_;
 }

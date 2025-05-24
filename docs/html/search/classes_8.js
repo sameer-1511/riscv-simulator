@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['r4typeinstructionencoding_446',['R4TypeInstructionEncoding',['../structInstructionSet_1_1R4TypeInstructionEncoding.html',1,'InstructionSet']]],
-  ['registerfile_447',['RegisterFile',['../classRegisterFile.html',1,'']]],
-  ['rtypeinstructionencoding_448',['RTypeInstructionEncoding',['../structInstructionSet_1_1RTypeInstructionEncoding.html',1,'InstructionSet']]],
-  ['rvsscontrolunit_449',['RVSSControlUnit',['../classRVSSControlUnit.html',1,'']]],
-  ['rvssvm_450',['RVSSVM',['../classRVSSVM.html',1,'']]]
+  ['memory_724',['Memory',['../classMemory.html',1,'']]],
+  ['memoryblock_725',['MemoryBlock',['../structMemoryBlock.html',1,'']]],
+  ['memorychange_726',['MemoryChange',['../structMemoryChange.html',1,'']]],
+  ['memorycontroller_727',['MemoryController',['../classMemoryController.html',1,'']]],
+  ['misalignedimmediateerror_728',['MisalignedImmediateError',['../structerrors_1_1MisalignedImmediateError.html',1,'errors']]]
 ];

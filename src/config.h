@@ -10,13 +10,13 @@
 #include "globals.h"
 
 /**
- * @namespace vmConfig
+ * @namespace vm_config
  * @brief Namespace for VM configuration management.
  */
-namespace vmConfig {
-enum class vmTypes {
-    SINGLE_STAGE,
-    MULTI_STAGE
+namespace vm_config {
+enum class VmTypes {
+  SINGLE_STAGE,
+  MULTI_STAGE
 };
 
 /**
@@ -25,19 +25,19 @@ enum class vmTypes {
  * @param key The key whose value needs to be retrieved.
  * @return The value associated with the key as a string.
  */
-std::string getKeyValue(const std::string &key);
+std::string GetKeyValue(const std::string &key);
 
 /**
- * @namespace INI
- * @brief Namespace for handling INI file operations.
+ * @namespace ini
+ * @brief Namespace for handling ini file operations.
  */
-namespace INI {
+namespace ini {
 /**
  * @brief Trims leading and trailing whitespace from a string.
  *
  * @param str The string to be trimmed.
  */
-[[maybe_unused]] void trim(std::string &str);
+[[maybe_unused]] void Trim(std::string &str);
 
 /**
  * @brief Retrieves the value associated with a given section and key.
@@ -46,7 +46,7 @@ namespace INI {
  * @param key The key whose value needs to be retrieved.
  * @return The value associated with the key as a string.
  */
-std::string get(const std::string &section, const std::string &key);
+std::string Get(const std::string &section, const std::string &key);
 
 /**
  * @brief Sets the value for a given section and key.
@@ -55,13 +55,13 @@ std::string get(const std::string &section, const std::string &key);
  * @param key The key to be modified.
  * @param value The value to be set for the key.
  */
-void set(const std::string &section, const std::string &key, const std::string &value);
+void Set(const std::string &section, const std::string &key, const std::string &value);
 
-} // namespace INI
+} // namespace ini
 
-vmTypes getVMType();
+VmTypes GetVmType();
 
-} // namespace vmConfig
+} // namespace vm_config
 
 
 #endif // CONFIG_H

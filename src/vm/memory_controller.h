@@ -23,55 +23,55 @@ public:
      */
     MemoryController() = default;
 
-    void reset() {
-        memory_.reset();
+    void Reset() {
+        memory_.Reset();
     }
 
-    void printCacheStatus() const {
+    void PrintCacheStatus() const {
 
-        std::string cacheEnabled = vmConfig::INI::get("Cache", "cache_enabled");
+        std::string cacheEnabled = vm_config::ini::Get("Cache", "cache_enabled");
         std::cout << "Cache enabled: " << cacheEnabled << std::endl;
     }
 
-    void writeByte(uint64_t address, uint8_t value) {
-        memory_.writeByte(address, value);
+    void WriteByte(uint64_t address, uint8_t value) {
+      memory_.WriteByte(address, value);
     }
 
-    void writeHalfWord(uint64_t address, uint16_t value) {
-        memory_.writeHalfWord(address, value);
+    void WriteHalfWord(uint64_t address, uint16_t value) {
+      memory_.WriteHalfWord(address, value);
     }
 
-    void writeWord(uint64_t address, uint32_t value) {
-        memory_.writeWord(address, value);
+    void WriteWord(uint64_t address, uint32_t value) {
+      memory_.WriteWord(address, value);
     }
 
-    void writeDoubleWord(uint64_t address, uint64_t value) {
-        memory_.writeDoubleWord(address, value);
+    void WriteDoubleWord(uint64_t address, uint64_t value) {
+      memory_.WriteDoubleWord(address, value);
     }
 
-    uint8_t readByte(uint64_t address) {
-        return memory_.readByte(address);
+    uint8_t ReadByte(uint64_t address) {
+        return memory_.ReadByte(address);
     }
 
-    uint16_t readHalfWord(uint64_t address) {
-        return memory_.readHalfWord(address);
+    uint16_t ReadHalfWord(uint64_t address) {
+        return memory_.ReadHalfWord(address);
     }
 
-    uint32_t readWord(uint64_t address) {
-        return memory_.readWord(address);
+    uint32_t ReadWord(uint64_t address) {
+        return memory_.ReadWord(address);
 
     }
 
-    uint64_t readDoubleWord(uint64_t address) {
-        return memory_.readDoubleWord(address);
+    uint64_t ReadDoubleWord(uint64_t address) {
+        return memory_.ReadDoubleWord(address);
     }
 
-    void printMemory(const uint64_t address, uint rows) {
-        memory_.printMemory(address, rows);
+    void PrintMemory(const uint64_t address, uint rows) {
+      memory_.PrintMemory(address, rows);
     }
 
-    void dumpMemory(const uint64_t address, uint rows) {
-        memory_.dumpMemory(address, rows);
+    void DumpMemory(const uint64_t address, uint rows) {
+      memory_.DumpMemory(address, rows);
     }
 
 };

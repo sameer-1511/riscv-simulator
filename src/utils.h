@@ -18,7 +18,7 @@
  * @return The number of lines in the file.
  * @throws std::ios_base::failure If the file cannot be opened.
  */
-int64_t countLines(const std::string &filename);
+int64_t CountLines(const std::string &filename);
 
 /**
  * @brief Retrieves a specific line from a file.
@@ -29,7 +29,7 @@ int64_t countLines(const std::string &filename);
  * @throws std::out_of_range If the lineNumber is invalid.
  * @throws std::ios_base::failure If the file cannot be opened.
  */
-std::string getLineFromFile(const std::string &fileName, unsigned int lineNumber);
+std::string GetLineFromFile(const std::string &fileName, unsigned int lineNumber);
 
 /**
  * @brief Parses a string containing escaped characters into its unescaped form.
@@ -37,12 +37,12 @@ std::string getLineFromFile(const std::string &fileName, unsigned int lineNumber
  * @param input The input string with escaped characters.
  * @return The unescaped string.
  */
-std::string parseEscapedString(const std::string &input);
+std::string ParseEscapedString(const std::string &input);
 
-void dumpErrors(const std::string &filename, const std::vector<ParseError> &errors);
+void DumpErrors(const std::string &filename, const std::vector<ParseError> &errors);
 
-void dumpNoErrors(const std::string &filename);
+void DumpNoErrors(const std::string &filename);
 
-void dumpRegisters(const std::string &filename, RegisterFile &register_file);
+void DumpRegisters(const std::string &filename, RegisterFile &register_file);
 
 #endif // UTILS_H

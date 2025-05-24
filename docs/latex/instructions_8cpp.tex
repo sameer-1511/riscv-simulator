@@ -1,7 +1,8 @@
-\hypertarget{instructions_8cpp}{}\doxysection{src/assembler/instructions.cpp File Reference}
-\label{instructions_8cpp}\index{src/assembler/instructions.cpp@{src/assembler/instructions.cpp}}
+\hypertarget{instructions_8cpp}{}\doxysection{src/common/instructions.cpp File Reference}
+\label{instructions_8cpp}\index{src/common/instructions.cpp@{src/common/instructions.cpp}}
 {\ttfamily \#include \char`\"{}instructions.\+h\char`\"{}}\newline
-Include dependency graph for instructions.\+cpp\+:\nopagebreak
+Include dependency graph for instructions.\+cpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,59 +12,97 @@ Include dependency graph for instructions.\+cpp\+:\nopagebreak
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \mbox{\hyperlink{namespaceInstructionSet}{Instruction\+Set}}
+ \mbox{\hyperlink{namespaceinstruction__set}{instruction\+\_\+set}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{namespaceInstructionSet_ab7085645b7bb3314188c20e48438539d}{Instruction\+Set\+::is\+Valid\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a1291b519a0e372cfea8af74d5ad968f6}{Instruction\+Set\+::is\+Valid\+RType\+Instruction}} (const std\+::string \&name)
-\begin{DoxyCompactList}\small\item\em Validates if a given R-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a216f3848e3443dbd9a34b6b10774e492}{Instruction\+Set\+::is\+Valid\+IType\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given I-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a89767baa1194ca14a558e6ea6410b636}{Instruction\+Set\+::is\+Valid\+I1\+Type\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given I1-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a6b54bc81e6f67c37e45ce8633d5a1e6d}{Instruction\+Set\+::is\+Valid\+I2\+Type\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given I2-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_abc96d6aeda2090825bf34886bceb3a35}{Instruction\+Set\+::is\+Valid\+I3\+Type\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given I3-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a7c5029a32183f9bb9c5a7b4a51cd1a35}{Instruction\+Set\+::is\+Valid\+SType\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given S-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a3034cdaf7d375f55edb8fa02c85d536e}{Instruction\+Set\+::is\+Valid\+BType\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given B-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a986d514da055dec69ad815691685a74a}{Instruction\+Set\+::is\+Valid\+UType\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given U-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_ad5efefc2871fd9684541e8f360757b13}{Instruction\+Set\+::is\+Valid\+JType\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given J-\/type instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_aae5026d6952e647862be336a37cd826e}{Instruction\+Set\+::is\+Valid\+Pseudo\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given pseudo-\/instruction is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespaceInstructionSet_a2e374826fc21f673cfd43781ff6af0bb}{Instruction\+Set\+::is\+Valid\+Base\+Extension\+Instruction}} (const std\+::string \&instruction)
+bool \mbox{\hyperlink{namespaceinstruction__set_a684c8ea1bb0cd5f2fcdb698286ce49bd}{instruction\+\_\+set\+::is\+Valid\+Instruction}} (const std\+::string \&instruction)
 \item 
-bool \mbox{\hyperlink{namespaceInstructionSet_adf5058e78421c8ff66a9a4d9d8fffc70}{Instruction\+Set\+::is\+Valid\+FExtension\+Instruction}} (const std\+::string \&instruction)
-\begin{DoxyCompactList}\small\item\em Validates if a given F-\/extension instruction is valid. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{namespaceInstructionSet_a55c193a0447aa84d2a9f87a41a359b91}{Instruction\+Set\+::get\+Expected\+Syntaxes}} (const std\+::string \&opcode)
-\begin{DoxyCompactList}\small\item\em Retrieves the expected syntax for a given opcode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{namespaceinstruction__set_a668e9ecc710a59fcbb491271997d4100}{instruction\+\_\+set\+::is\+Valid\+RType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_ac10fca95259b7db81e9d64605dd6d7fd}{instruction\+\_\+set\+::is\+Valid\+IType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a2686c6cb47421100c0845826a00d6686}{instruction\+\_\+set\+::is\+Valid\+I1\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a1157d60c5ad00551432b62c74dce93ce}{instruction\+\_\+set\+::is\+Valid\+I2\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_ab009114befd859670c1b6a60a4d4a675}{instruction\+\_\+set\+::is\+Valid\+I3\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a402f2c32c5f3981e732c5a7bada97398}{instruction\+\_\+set\+::is\+Valid\+SType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a9f7fd6439b8f1fdf3fa6c4b846161a60}{instruction\+\_\+set\+::is\+Valid\+BType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a72120155b1b49e86de5a21a140757e0c}{instruction\+\_\+set\+::is\+Valid\+UType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a40834369e5972193df7c74fa8d3cd7c4}{instruction\+\_\+set\+::is\+Valid\+JType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_adf2c87a1fa7b27e0012e3eaf1f575538}{instruction\+\_\+set\+::is\+Valid\+Pseudo\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a3e26615428ea0891ded649073e440d88}{instruction\+\_\+set\+::is\+Valid\+Base\+Extension\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a390f2245d92958d7d6e67df52fdeab34}{instruction\+\_\+set\+::is\+Valid\+CSRRType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_ac19e70a283ee2e1b15125faad66ba23e}{instruction\+\_\+set\+::is\+Valid\+CSRIType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a200e08acd1cac12dc89b25fba97fa6ac}{instruction\+\_\+set\+::is\+Valid\+CSRInstruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a1dd7f86382bd6577c7b880367f5912fa}{instruction\+\_\+set\+::is\+Valid\+FDRType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a41eeac0550849ef37fa33ff84cf76a2f}{instruction\+\_\+set\+::is\+Valid\+FDR1\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a708f1663efb124992763e7df4a28345e}{instruction\+\_\+set\+::is\+Valid\+FDR2\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_ab0c4f49b586d5b40444c37be298aad10}{instruction\+\_\+set\+::is\+Valid\+FDR3\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a431026007ab52b5f443f62b0282a5632}{instruction\+\_\+set\+::is\+Valid\+FDR4\+Type\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_afafd6b6e78053bc61fb215a4e3134ca3}{instruction\+\_\+set\+::is\+Valid\+FDIType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_aab688f810da37e8780510aab2f2232a0}{instruction\+\_\+set\+::is\+Valid\+FDSType\+Instruction}} (const std\+::string \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_aa2718ca4cc03370f5c3d248ed59028b6}{instruction\+\_\+set\+::is\+FInstruction}} (const uint32\+\_\+t \&instruction)
+\item 
+bool \mbox{\hyperlink{namespaceinstruction__set_a5303fb0dd8dd34c268231c47f85a02fc}{instruction\+\_\+set\+::is\+DInstruction}} (const uint32\+\_\+t \&instruction)
+\item 
+std\+::string \mbox{\hyperlink{namespaceinstruction__set_a605befee774c8275dccbdf096ac5b66f}{instruction\+\_\+set\+::get\+Expected\+Syntaxes}} (const std\+::string \&opcode)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, RType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_ae7e15796bfc93498ee496411ac46b615}{Instruction\+Set\+::\+R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, RType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a859191af4ff841c4c7486a6a19c7fa7a}{instruction\+\_\+set\+::\+R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, I1\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_afb55f85173c5060cbe86a8b3b51c6eb2}{Instruction\+Set\+::\+I1\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, I1\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_ad362b1b3167d50a18c67c280b54012b3}{instruction\+\_\+set\+::\+I1\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, I3\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_a868d5bbf8dc7b8a7352a2cd9e7e66b20}{Instruction\+Set\+::\+I3\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, I3\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a1e1482a4d9c3475f9750286a89db56ac}{instruction\+\_\+set\+::\+I3\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, I2\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_a66fb47c53467dda663b33b1ae3bb119d}{Instruction\+Set\+::\+I2\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, I2\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a51290da536b0f0b8fad0e76c5d63300c}{instruction\+\_\+set\+::\+I2\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, SType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_a294d6a66b2cce53ae8b86d3af98ab21c}{Instruction\+Set\+::\+S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, SType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_ab50cca829f0e03ebbe8b71abc0145f8c}{instruction\+\_\+set\+::\+S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, BType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_a79b50b1d9b0459042392129c03e90065}{Instruction\+Set\+::\+B\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, BType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a3e35acfc82b9e41676104e2747733de6}{instruction\+\_\+set\+::\+B\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, UType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_aa87007facf76b1daab3bd188b77eab0f}{Instruction\+Set\+::\+U\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, UType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a8dc1d0372413156d015ff8f7e85a4efe}{instruction\+\_\+set\+::\+U\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, JType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceInstructionSet_abc35f0247eeb21642e14630816986377}{Instruction\+Set\+::\+J\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, JType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a374dcbb396c16fc22f77466bff4f7861}{instruction\+\_\+set\+::\+J\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, Instruction\+Type $>$ \mbox{\hyperlink{namespaceInstructionSet_ac47932d33ecbc839ace73301dc0214f2}{Instruction\+Set\+::instruction\+\_\+opcode\+\_\+type\+\_\+map}}
-\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their corresponding opcode type. \end{DoxyCompactList}\item 
-std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ Syntax\+Type $>$ $>$ \mbox{\hyperlink{namespaceInstructionSet_a997ac829bd6afd03b167561e37df5cf5}{Instruction\+Set\+::instruction\+\_\+syntax\+\_\+map}}
+std\+::unordered\+\_\+map$<$ std\+::string, CSR\+\_\+\+RType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_ae1beeefc4c920a816ef63d2cc2394b97}{instruction\+\_\+set\+::\+CSR\+\_\+\+R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, CSR\+\_\+\+IType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a4073c9c96c0ad7b56852d98859e1baa3}{instruction\+\_\+set\+::\+CSR\+\_\+\+I\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDRType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a5cf78416d8c2c005a6fd3c9caead1ff2}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+R\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDR1\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a4bc401050f099acc0422f451287d5da1}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+R1\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDR2\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a4ff8e79787a2060e8e8b53c20348cb66}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+R2\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDR3\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_add9dd2648cc982b1271c28b41c99e18b}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+R3\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDR4\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a430c1ddcd83a4d8f4f2d6686e4be53d5}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+R4\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDIType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_af5c5f93de8a03f2601cc9f734101d966}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+I\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, FDSType\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a5d37d30556dd68b58a56ac0e134aa17c}{instruction\+\_\+set\+::\+F\+\_\+\+D\+\_\+\+S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ Syntax\+Type $>$ $>$ \mbox{\hyperlink{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}{instruction\+\_\+set\+::instruction\+\_\+syntax\+\_\+map}}
 \begin{DoxyCompactList}\small\item\em A map that associates instruction names with their expected syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}

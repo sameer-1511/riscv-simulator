@@ -6,7 +6,7 @@
 
 #include "config.h"
 
-std::string vmConfig::getKeyValue(const std::string &key) {
+std::string vm_config::GetKeyValue(const std::string &key) {
     std::ifstream configFile(globals::config_file);
     if (!configFile.is_open()) {
         std::cerr << "Error: Could not open configuration file: " << globals::config_file << std::endl;
@@ -26,13 +26,13 @@ std::string vmConfig::getKeyValue(const std::string &key) {
     return "";
 }
 
-void vmConfig::INI::trim(std::string &str) {
+void vm_config::ini::Trim(std::string &str) {
     size_t start = str.find_first_not_of(" \t");
     size_t end = str.find_last_not_of(" \t");
     str = (start == std::string::npos || end == std::string::npos) ? "" : str.substr(start, end - start + 1);
 }
 
-std::string vmConfig::INI::get(const std::string &section, const std::string &key) {
+std::string vm_config::ini::Get(const std::string &section, const std::string &key) {
     std::ifstream file(globals::config_file);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open config file: " + globals::config_file);
@@ -40,7 +40,7 @@ std::string vmConfig::INI::get(const std::string &section, const std::string &ke
 
     std::string line, current_section;
     while (std::getline(file, line)) {
-        trim(line);
+      Trim(line);
 
         if (line.empty() || line[0] == ';' || line[0] == '#') {
             continue;
@@ -48,7 +48,7 @@ std::string vmConfig::INI::get(const std::string &section, const std::string &ke
 
         if (line[0] == '[' && line.back() == ']') {
             current_section = line.substr(1, line.size() - 2);
-            trim(current_section);
+          Trim(current_section);
             continue;
         }
 
@@ -59,11 +59,11 @@ std::string vmConfig::INI::get(const std::string &section, const std::string &ke
             }
 
             std::string k = line.substr(0, eq_pos);
-            trim(k);
+          Trim(k);
 
             if (k == key) {
                 std::string value = line.substr(eq_pos + 1);
-                trim(value);
+              Trim(value);
                 return value;
             }
         }
@@ -73,7 +73,7 @@ std::string vmConfig::INI::get(const std::string &section, const std::string &ke
 
 }
 
-void vmConfig::INI::set(const std::string &section, const std::string &key, const std::string &value) {
+void vm_config::ini::Set(const std::string &section, const std::string &key, const std::string &value) {
     std::ifstream file(globals::config_file);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open config file: " + globals::config_file);
@@ -84,10 +84,10 @@ void vmConfig::INI::set(const std::string &section, const std::string &key, cons
     bool key_found = false, section_found = false;
 
     while (std::getline(file, line)) {
-        trim(line);
+      Trim(line);
         if (line[0] == '[' && line.back() == ']') {
             current_section = line.substr(1, line.size() - 2);
-            trim(current_section);
+          Trim(current_section);
             if (current_section == section) {
                 section_found = true;
             }
@@ -96,7 +96,7 @@ void vmConfig::INI::set(const std::string &section, const std::string &key, cons
             size_t eq_pos = line.find('=');
             if (eq_pos != std::string::npos) {
                 std::string k = line.substr(0, eq_pos);
-                trim(k);
+              Trim(k);
 
                 if (k == key) {
                     line = key + "=" + value;
@@ -123,12 +123,12 @@ void vmConfig::INI::set(const std::string &section, const std::string &key, cons
     out_file << buffer.str();
 }
 
-vmConfig::vmTypes vmConfig::getVMType() {
-    std::string vmType = INI::get("Execution", "processor_type");
+vm_config::VmTypes vm_config::GetVmType() {
+    std::string vmType = ini::Get("Execution", "processor_type");
     if (vmType == "single_stage") {
-        return vmTypes::SINGLE_STAGE;
+        return VmTypes::SINGLE_STAGE;
     } else if (vmType == "multi_stage") {
-        return vmTypes::MULTI_STAGE;
+        return VmTypes::MULTI_STAGE;
     } else {
         throw std::invalid_argument("Unknown VM type: " + vmType);
     }

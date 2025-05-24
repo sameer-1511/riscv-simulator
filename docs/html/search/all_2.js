@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['b_19',['B',['../namespaceInstructionSet.html#a6c93a7456b1b677ae5037dea762ffd6aa9d5ed678fe57bcca610140957afab571',1,'InstructionSet']]],
-  ['b_5ftype_5finstruction_5fencoding_5fmap_20',['B_type_instruction_encoding_map',['../namespaceInstructionSet.html#a79b50b1d9b0459042392129c03e90065',1,'InstructionSet']]],
-  ['block_5fsize_21',['block_size',['../structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373',1,'MemoryBlock']]],
-  ['branch_22',['Branch',['../classControlUnit.html#a7ff1ebecee68ada12ce9b30cf4d4d68e',1,'ControlUnit']]],
-  ['branch_5fmispredictions_5f_23',['branch_mispredictions_',['../classVMBase.html#a75f6d7d72500ca13939281e88a5e6b7d',1,'VMBase']]],
-  ['breakpoints_5f_24',['breakpoints_',['../classVMBase.html#a45b2ed92f4c06786e3b87ae12e19a215',1,'VMBase']]],
-  ['btypeinstructionencoding_25',['BTypeInstructionEncoding',['../structInstructionSet_1_1BTypeInstructionEncoding.html#a88a8cc7afc857d9ac75b150b7a609b6c',1,'InstructionSet::BTypeInstructionEncoding::BTypeInstructionEncoding()'],['../structInstructionSet_1_1BTypeInstructionEncoding.html',1,'InstructionSet::BTypeInstructionEncoding']]]
+  ['b_21',['B',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571',1,'instruction_set']]],
+  ['b_5ftype_5finstruction_5fencoding_5fmap_22',['B_type_instruction_encoding_map',['../namespaceinstruction__set.html#a3e35acfc82b9e41676104e2747733de6',1,'instruction_set']]],
+  ['block_5fsize_23',['block_size',['../structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373',1,'MemoryBlock']]],
+  ['branch_5f_24',['branch_',['../classControlUnit.html#aa6c5d30456a87d6b4454772d35770145',1,'ControlUnit']]],
+  ['branch_5fflag_5f_25',['branch_flag_',['../classRVSSVM.html#adac1aa09fc07850d4f5446a9321bcee3',1,'RVSSVM']]],
+  ['branch_5fmispredictions_5f_26',['branch_mispredictions_',['../classVmBase.html#a13c51d85a826a7bea080d8a9ead0913b',1,'VmBase']]],
+  ['breakpoints_5f_27',['breakpoints_',['../classVmBase.html#a1ab317e9659f20f6edddad20ec241f98',1,'VmBase']]],
+  ['btypeinstructionencoding_28',['BTypeInstructionEncoding',['../structinstruction__set_1_1BTypeInstructionEncoding.html#a3ba23591ee77efa63baf872e304d32aa',1,'instruction_set::BTypeInstructionEncoding::BTypeInstructionEncoding()'],['../structinstruction__set_1_1BTypeInstructionEncoding.html',1,'instruction_set::BTypeInstructionEncoding']]]
 ];

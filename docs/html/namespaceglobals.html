@@ -76,10 +76,16 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2af08ca6008d8e6e7001d9fa2fce0168"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a2af08ca6008d8e6e7001d9fa2fce0168">config_file</a> = &quot;/home/vis/Desk/projects/assembler/vm_state/config.ini&quot;</td></tr>
+<tr class="memitem:a2af08ca6008d8e6e7001d9fa2fce0168"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a2af08ca6008d8e6e7001d9fa2fce0168">config_file</a> = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;config.ini&quot;).string()</td></tr>
 <tr class="separator:a2af08ca6008d8e6e7001d9fa2fce0168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eec5b1737e561a26b7553f75a37d52c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a6eec5b1737e561a26b7553f75a37d52c">errors_dump_file</a> = &quot;/home/vis/Desk/projects/assembler/vm_state/errors_dump.json&quot;</td></tr>
+<tr class="memitem:a6eec5b1737e561a26b7553f75a37d52c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a6eec5b1737e561a26b7553f75a37d52c">errors_dump_file</a> = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;errors_dump.json&quot;).string()</td></tr>
 <tr class="separator:a6eec5b1737e561a26b7553f75a37d52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c42feb736508606c7a8243bfb4bfd5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a48c42feb736508606c7a8243bfb4bfd5">registers_dump_file</a> = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;registers_dump.json&quot;).string()</td></tr>
+<tr class="separator:a48c42feb736508606c7a8243bfb4bfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11770452d2a238421e03507983d7fda0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a11770452d2a238421e03507983d7fda0">memory_dump_file</a> = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;memory_dump.json&quot;).string()</td></tr>
+<tr class="separator:a11770452d2a238421e03507983d7fda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4228b13ee8d461ea734ea64c80f88374"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a4228b13ee8d461ea734ea64c80f88374">cache_dump_file</a> = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;cache_dump.json&quot;).string()</td></tr>
+<tr class="separator:a4228b13ee8d461ea734ea64c80f88374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae569afb99e3b6782cc92c0545417ffab"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#ae569afb99e3b6782cc92c0545417ffab">data_section_start</a> = 0x10000000</td></tr>
 <tr class="separator:ae569afb99e3b6782cc92c0545417ffab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -102,6 +108,28 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a4228b13ee8d461ea734ea64c80f88374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4228b13ee8d461ea734ea64c80f88374">&#9670;&nbsp;</a></span>cache_dump_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string globals::cache_dump_file = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;cache_dump.json&quot;).string()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2af08ca6008d8e6e7001d9fa2fce0168"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2af08ca6008d8e6e7001d9fa2fce0168">&#9670;&nbsp;</a></span>config_file</h2>
 
@@ -112,7 +140,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string globals::config_file = &quot;/home/vis/Desk/projects/assembler/vm_state/config.ini&quot;</td>
+          <td class="memname">std::string globals::config_file = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;config.ini&quot;).string()</td>
         </tr>
       </table>
   </td>
@@ -156,7 +184,51 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string globals::errors_dump_file = &quot;/home/vis/Desk/projects/assembler/vm_state/errors_dump.json&quot;</td>
+          <td class="memname">std::string globals::errors_dump_file = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;errors_dump.json&quot;).string()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11770452d2a238421e03507983d7fda0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11770452d2a238421e03507983d7fda0">&#9670;&nbsp;</a></span>memory_dump_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string globals::memory_dump_file = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;memory_dump.json&quot;).string()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48c42feb736508606c7a8243bfb4bfd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c42feb736508606c7a8243bfb4bfd5">&#9670;&nbsp;</a></span>registers_dump_file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string globals::registers_dump_file = (std::filesystem::path(&quot;..&quot;)/&quot;vm_state&quot;/&quot;registers_dump.json&quot;).string()</td>
         </tr>
       </table>
   </td>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['errortype_778',['ErrorType',['../namespaceErrors.html#a22124df3884d912a0113de503897588d',1,'Errors']]]
+  ['commandargumenttype_1209',['CommandArgumentType',['../namespacecommand__handler.html#a44c251e1711cea6749a00f36fcb08cf4',1,'command_handler']]],
+  ['commandtype_1210',['CommandType',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681',1,'command_handler']]]
 ];

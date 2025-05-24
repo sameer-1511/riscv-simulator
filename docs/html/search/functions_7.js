@@ -1,31 +1,5 @@
 var searchData=
 [
-  ['i1typeinstructionencoding_599',['I1TypeInstructionEncoding',['../structInstructionSet_1_1I1TypeInstructionEncoding.html#ad0c4ab77ad017e73d19f8a8d054fcca4',1,'InstructionSet::I1TypeInstructionEncoding']]],
-  ['i2typeinstructionencoding_600',['I2TypeInstructionEncoding',['../structInstructionSet_1_1I2TypeInstructionEncoding.html#a83cf637efdb8f96f839b13a6f489c892',1,'InstructionSet::I2TypeInstructionEncoding']]],
-  ['i3typeinstructionencoding_601',['I3TypeInstructionEncoding',['../structInstructionSet_1_1I3TypeInstructionEncoding.html#a52376c8a3ac0d7347860de31dd2b7e65',1,'InstructionSet::I3TypeInstructionEncoding']]],
-  ['icunit_602',['ICUnit',['../structICUnit.html#a4d709ebd2a3d1a0611f26b2ae8f7aae7',1,'ICUnit']]],
-  ['imm_5fgenerator_603',['imm_generator',['../classVMBase.html#afafa70c35c2911ebac0df3e981d6b385',1,'VMBase']]],
-  ['immediateoutofrangeerror_604',['ImmediateOutOfRangeError',['../structErrors_1_1ImmediateOutOfRangeError.html#a693cae22be960687603e7bea4f59d50c',1,'Errors::ImmediateOutOfRangeError']]],
-  ['initglobals_605',['initGlobals',['../namespaceglobals.html#aa11e5b4f00b5bec36fe4cf155707e56b',1,'globals']]],
-  ['initialize_606',['initialize',['../classVMRunner.html#a4897708121e9f2805a07eea9d6f7b2a9',1,'VMRunner']]],
-  ['instructionencoding_607',['InstructionEncoding',['../structInstructionSet_1_1InstructionEncoding.html#a7ea99b4804404ee8f9cffe896d52e34a',1,'InstructionSet::InstructionEncoding']]],
-  ['invalidlabelreferror_608',['InvalidLabelRefError',['../structErrors_1_1InvalidLabelRefError.html#a524085bc5b2e9fbbec42771835728e00',1,'Errors::InvalidLabelRefError']]],
-  ['invalidregistererror_609',['InvalidRegisterError',['../structErrors_1_1InvalidRegisterError.html#af5dd0f70144c2407d7652c40d6669a8c',1,'Errors::InvalidRegisterError']]],
-  ['isvalidbaseextensioninstruction_610',['isValidBaseExtensionInstruction',['../namespaceInstructionSet.html#a2e374826fc21f673cfd43781ff6af0bb',1,'InstructionSet']]],
-  ['isvalidbtypeinstruction_611',['isValidBTypeInstruction',['../namespaceInstructionSet.html#a3034cdaf7d375f55edb8fa02c85d536e',1,'InstructionSet']]],
-  ['isvalidfextensioninstruction_612',['isValidFExtensionInstruction',['../namespaceInstructionSet.html#adf5058e78421c8ff66a9a4d9d8fffc70',1,'InstructionSet']]],
-  ['isvalidfloatingpointregister_613',['isValidFloatingPointRegister',['../registers_8cpp.html#a961b5d197401316d7c6a3ac4f87b1acd',1,'isValidFloatingPointRegister(const std::string &amp;reg):&#160;registers.cpp'],['../registers_8h.html#a961b5d197401316d7c6a3ac4f87b1acd',1,'isValidFloatingPointRegister(const std::string &amp;reg):&#160;registers.cpp']]],
-  ['isvalidgeneralpurposeregister_614',['isValidGeneralPurposeRegister',['../registers_8cpp.html#a1d7613312792f85b3571d0c93a058541',1,'isValidGeneralPurposeRegister(const std::string &amp;reg):&#160;registers.cpp'],['../registers_8h.html#a1d7613312792f85b3571d0c93a058541',1,'isValidGeneralPurposeRegister(const std::string &amp;reg):&#160;registers.cpp']]],
-  ['isvalidi1typeinstruction_615',['isValidI1TypeInstruction',['../namespaceInstructionSet.html#a89767baa1194ca14a558e6ea6410b636',1,'InstructionSet']]],
-  ['isvalidi2typeinstruction_616',['isValidI2TypeInstruction',['../namespaceInstructionSet.html#a6b54bc81e6f67c37e45ce8633d5a1e6d',1,'InstructionSet']]],
-  ['isvalidi3typeinstruction_617',['isValidI3TypeInstruction',['../namespaceInstructionSet.html#abc96d6aeda2090825bf34886bceb3a35',1,'InstructionSet']]],
-  ['isvalidinstruction_618',['isValidInstruction',['../namespaceInstructionSet.html#ab7085645b7bb3314188c20e48438539d',1,'InstructionSet']]],
-  ['isvaliditypeinstruction_619',['isValidITypeInstruction',['../namespaceInstructionSet.html#a216f3848e3443dbd9a34b6b10774e492',1,'InstructionSet']]],
-  ['isvalidjtypeinstruction_620',['isValidJTypeInstruction',['../namespaceInstructionSet.html#ad5efefc2871fd9684541e8f360757b13',1,'InstructionSet']]],
-  ['isvalidpseudoinstruction_621',['isValidPseudoInstruction',['../namespaceInstructionSet.html#aae5026d6952e647862be336a37cd826e',1,'InstructionSet']]],
-  ['isvalidregister_622',['isValidRegister',['../registers_8cpp.html#acc5c38a9f53a883c61a1214fd6b765eb',1,'isValidRegister(const std::string &amp;reg):&#160;registers.cpp'],['../registers_8h.html#acc5c38a9f53a883c61a1214fd6b765eb',1,'isValidRegister(const std::string &amp;reg):&#160;registers.cpp']]],
-  ['isvalidrtypeinstruction_623',['isValidRTypeInstruction',['../namespaceInstructionSet.html#a1291b519a0e372cfea8af74d5ad968f6',1,'InstructionSet']]],
-  ['isvalidstypeinstruction_624',['isValidSTypeInstruction',['../namespaceInstructionSet.html#a7c5029a32183f9bb9c5a7b4a51cd1a35',1,'InstructionSet']]],
-  ['isvalidutypeinstruction_625',['isValidUTypeInstruction',['../namespaceInstructionSet.html#a986d514da055dec69ad815691685a74a',1,'InstructionSet']]],
-  ['isvalidvectorregister_626',['isValidVectorRegister',['../registers_8cpp.html#ad62a3359928c8b8d89600050b85a1c36',1,'isValidVectorRegister(const std::string &amp;reg):&#160;registers.cpp'],['../registers_8h.html#ad62a3359928c8b8d89600050b85a1c36',1,'isValidVectorRegister(const std::string &amp;reg):&#160;registers.cpp']]]
+  ['handlesyscall_918',['HandleSyscall',['../classVmBase.html#a73496d85a521ce015f5bfac0cd5129d3',1,'VmBase']]],
+  ['handlesyscall_919',['handleSyscall',['../vm__base_8cpp.html#a5c3d28f691cdd9dba13981a11a335b7f',1,'vm_base.cpp']]]
 ];

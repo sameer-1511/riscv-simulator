@@ -1,32 +1,38 @@
 <map id="src/vm_runner.cpp" name="src/vm_runner.cpp">
-<area shape="rect" id="node1" title="This file contains the implementation of the VMRunner class." alt="" coords="539,5,680,32"/>
-<area shape="rect" id="node2" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="558,80,661,107"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="837,528,894,555"/>
-<area shape="rect" id="node23" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="889,155,1007,181"/>
-<area shape="rect" id="node26" href="$config_8h.html" title="Contains configuration options for the assembler." alt="" coords="695,379,780,405"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,603,85,629"/>
-<area shape="rect" id="node5" title=" " alt="" coords="110,603,173,629"/>
-<area shape="rect" id="node6" title=" " alt="" coords="197,603,256,629"/>
-<area shape="rect" id="node7" title=" " alt="" coords="280,603,365,629"/>
-<area shape="rect" id="node8" title=" " alt="" coords="390,603,463,629"/>
-<area shape="rect" id="node9" title=" " alt="" coords="488,603,563,629"/>
-<area shape="rect" id="node10" title=" " alt="" coords="587,603,661,629"/>
-<area shape="rect" id="node11" title=" " alt="" coords="685,603,736,629"/>
-<area shape="rect" id="node12" title=" " alt="" coords="760,603,803,629"/>
-<area shape="rect" id="node13" title=" " alt="" coords="827,603,904,629"/>
-<area shape="rect" id="node14" title=" " alt="" coords="928,603,1003,629"/>
-<area shape="rect" id="node15" title=" " alt="" coords="1027,603,1151,629"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1176,603,1291,629"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1315,603,1383,629"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1407,603,1473,629"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1497,603,1564,629"/>
-<area shape="rect" id="node20" title=" " alt="" coords="1588,603,1647,629"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1671,603,1731,629"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1756,603,1815,629"/>
-<area shape="rect" id="node24" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="1113,304,1204,331"/>
-<area shape="rect" id="node25" href="$memory__controller_8h.html" title="Contains the declaration of the MemoryController class for managing memory in the VM." alt="" coords="685,229,843,256"/>
-<area shape="rect" id="node29" href="$alu_8h.html" title="Contains the definition of the ALU class for performing arithmetic and logic operations." alt="" coords="954,379,1009,405"/>
-<area shape="rect" id="node30" href="$vm__asm__mw_8h.html" title="Contains functions to handle assembler input for the VM." alt="" coords="1005,453,1137,480"/>
-<area shape="rect" id="node28" href="$main__memory_8h.html" title="Contains the definition of the MemoryBlock and Memory classes." alt="" coords="751,304,878,331"/>
-<area shape="rect" id="node27" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="695,453,777,480"/>
+<area shape="rect" id="node1" title="This file contains the implementation of the VMRunner class." alt="" coords="1013,5,1154,32"/>
+<area shape="rect" id="node2" href="$vm__runner_8h.html" title="This file contains the declaration of the VMRunner class." alt="" coords="1032,80,1135,107"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1028,603,1085,629"/>
+<area shape="rect" id="node25" href="$vm__base_8h.html" title="File containing the base class for the virtual machine." alt="" coords="1024,229,1143,256"/>
+<area shape="rect" id="node28" href="$config_8h.html" title="Contains configuration options for the assembler." alt="" coords="733,453,818,480"/>
+<area shape="rect" id="node33" href="$vm__asm__mw_8h.html" title="Contains functions to handle assembler input for the VM." alt="" coords="903,304,1035,331"/>
+<area shape="rect" id="node34" href="$rvss__vm_8h.html" title="RVSS VM definition." alt="" coords="1132,155,1277,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1825,677,1905,704"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,677,68,704"/>
+<area shape="rect" id="node6" title=" " alt="" coords="93,677,151,704"/>
+<area shape="rect" id="node7" title=" " alt="" coords="175,677,261,704"/>
+<area shape="rect" id="node8" title=" " alt="" coords="285,677,359,704"/>
+<area shape="rect" id="node9" title=" " alt="" coords="383,677,458,704"/>
+<area shape="rect" id="node10" title=" " alt="" coords="482,677,557,704"/>
+<area shape="rect" id="node11" title=" " alt="" coords="581,677,631,704"/>
+<area shape="rect" id="node12" title=" " alt="" coords="655,677,698,704"/>
+<area shape="rect" id="node13" title=" " alt="" coords="722,677,799,704"/>
+<area shape="rect" id="node14" title=" " alt="" coords="823,677,898,704"/>
+<area shape="rect" id="node15" title=" " alt="" coords="923,677,1047,704"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1071,677,1186,704"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1211,677,1279,704"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1303,677,1368,704"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1393,677,1459,704"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1483,677,1542,704"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1567,677,1627,704"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1651,677,1710,704"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1929,677,1992,704"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1734,677,1801,704"/>
+<area shape="rect" id="node26" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="1145,528,1235,555"/>
+<area shape="rect" id="node27" href="$memory__controller_8h.html" title="Contains the declaration of the MemoryController class for managing memory in the VM." alt="" coords="721,304,878,331"/>
+<area shape="rect" id="node31" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1484,528,1539,555"/>
+<area shape="rect" id="node30" href="$main__memory_8h.html" title="Contains the definition of the MemoryBlock and Memory classes." alt="" coords="791,379,917,405"/>
+<area shape="rect" id="node29" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="735,528,816,555"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1482,603,1541,629"/>
+<area shape="rect" id="node35" href="$rvss__control__unit_8h.html" title="RVSS Control Unit." alt="" coords="1212,379,1357,405"/>
+<area shape="rect" id="node36" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="1196,453,1357,480"/>
 </map>

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
 
 project(RiscV_Siumlator LANGUAGES CXX)
 
@@ -10,30 +10,41 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
+option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
+
 set(SRC_DIR "src")
-set(INCLUDE_DIR "src/include")
+set(INCLUDE_DIR "include")
 set(TEST_DIR "test")
 
 file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
 file(GLOB_RECURSE TEST_FILES "${TEST_DIR}/*.cpp")
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -frounding-math -ffloat-store -g -O3)
+target_link_libraries(${PROJECT_NAME} PRIVATE m)
 
-include_directories(${INCLUDE_DIR})
-
-add_compile_options(-Wall -Wextra -pedantic -frounding-math -ffloat-store -g -O3)
-
-target_link_libraries(${PROJECT_NAME} m)
-
-option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 if(ENABLE_ASAN)
-    target_compile_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
-    target_link_libraries(${PROJECT_NAME} PRIVATE -fsanitize=address)
+    message(STATUS "ASAN enabled: Adding AddressSanitizer flags to main target")
+    target_compile_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer)
+    target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
+    set(ASAN_ENV "ASAN_OPTIONS=detect_leaks=1:leak_check_at_exit=1")
+    add_custom_target(run_asan
+        COMMAND ${CMAKE_COMMAND} -E env ${ASAN_ENV} ./${PROJECT_NAME}
+        DEPENDS ${PROJECT_NAME}
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        COMMENT "Running ${PROJECT_NAME} with ASAN"
+    )
 endif()
+
+
+# tests
+
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 list(REMOVE_ITEM SRC_FILES "${CMAKE_SOURCE_DIR}/src/main.cpp")
+
 add_executable(tests ${SRC_FILES} ${TEST_FILES})
 target_link_libraries(tests GTest::GTest GTest::Main pthread)
 
@@ -70,4 +81,4 @@ if(DOXYGEN_FOUND)
     )
 endif()
 
-message(STATUS "Project configured successfully! Run 'make' to build.")
+message(STATUS "Done")

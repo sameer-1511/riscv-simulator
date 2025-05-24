@@ -1,6 +1,6 @@
 <map id="src/assembler/code_generator.h" name="src/assembler/code_generator.h">
-<area shape="rect" id="node1" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="791,5,939,47"/>
-<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="831,95,900,121"/>
+<area shape="rect" id="node1" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="891,5,1039,47"/>
+<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="931,95,1000,121"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,169,85,196"/>
 <area shape="rect" id="node4" title=" " alt="" coords="110,169,173,196"/>
 <area shape="rect" id="node5" title=" " alt="" coords="197,169,256,196"/>
@@ -20,4 +20,6 @@
 <area shape="rect" id="node19" title=" " alt="" coords="1588,169,1647,196"/>
 <area shape="rect" id="node20" title=" " alt="" coords="1671,169,1731,196"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1756,169,1815,196"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1839,169,1902,196"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1927,169,1993,196"/>
 </map>

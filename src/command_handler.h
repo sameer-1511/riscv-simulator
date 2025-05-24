@@ -8,47 +8,44 @@
 #ifndef COMMAND_HANDLER_H
 #define COMMAND_HANDLER_H
 
-namespace CommandHandler {
-    enum class CommandType {
-        INVALID,
-        LOAD,
-        RUN,
-        DEBUG,
-        STEP,
-        UNDO,
-        REDO,
-        RESET,
-        DUMP_MEMORY,
-        PRINT_MEMORY,
-        DUMP_CACHE,
-        ADD_BREAKPOINT,
-        REMOVE_BREAKPOINT,
-        EXIT
-    };
+namespace command_handler {
+enum class CommandType {
+  INVALID,
+  LOAD,
+  RUN,
+  DEBUG,
+  STEP,
+  UNDO,
+  REDO,
+  RESET,
+  DUMP_MEMORY,
+  PRINT_MEMORY,
+  DUMP_CACHE,
+  ADD_BREAKPOINT,
+  REMOVE_BREAKPOINT,
+  EXIT
+};
 
-    enum class CommandArgumentType {
-        NONE,
-        FILE,
-        ADDRESS,
-        REGISTER,
-        VALUE
-    };
+enum class CommandArgumentType {
+  NONE,
+  FILE,
+  ADDRESS,
+  REGISTER,
+  VALUE
+};
 
-    struct Command {
-        CommandType type;
-        std::vector<std::string> args;
+struct Command {
+  CommandType type;
+  std::vector<std::string> args;
 
-        Command(CommandType type, const std::vector<std::string> &args)
-            : type(type), args(args) {}
+  Command(CommandType type, const std::vector<std::string> &args)
+      : type(type), args(args) {}
 
-        
-    };
+};
 
-    Command parseCommand(const std::string &input);
+Command ParseCommand(const std::string &input);
 
-    void executeCommand(Command command);
-    
-
+void ExecuteCommand(const Command& command);
 
 } // namespace CommandParser
 

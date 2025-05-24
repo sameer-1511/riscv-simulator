@@ -93,62 +93,64 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9513989ee395d14943de66f99ec8014a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a9513989ee395d14943de66f99ec8014a">RegisterFile</a> ()</td></tr>
-<tr class="memdesc:a9513989ee395d14943de66f99ec8014a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classRegisterFile.html" title="Represents a register file containing integer, floating-point, and vector registers.">RegisterFile</a> object and initializes the registers.  <a href="classRegisterFile.html#a9513989ee395d14943de66f99ec8014a">More...</a><br /></td></tr>
 <tr class="separator:a9513989ee395d14943de66f99ec8014a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade4452e0848c042e2a1615de4ea63e0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#ade4452e0848c042e2a1615de4ea63e0a">reset</a> ()</td></tr>
-<tr class="memdesc:ade4452e0848c042e2a1615de4ea63e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets all registers to their default values.  <a href="classRegisterFile.html#ade4452e0848c042e2a1615de4ea63e0a">More...</a><br /></td></tr>
-<tr class="separator:ade4452e0848c042e2a1615de4ea63e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acde864a5da23b018a35619edf757f669"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#acde864a5da23b018a35619edf757f669">readGPR</a> (size_t reg) const</td></tr>
-<tr class="memdesc:acde864a5da23b018a35619edf757f669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a General-Purpose Register (GPR).  <a href="classRegisterFile.html#acde864a5da23b018a35619edf757f669">More...</a><br /></td></tr>
-<tr class="separator:acde864a5da23b018a35619edf757f669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fa96f56b6224e42d27c2f199ce39cf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a7fa96f56b6224e42d27c2f199ce39cf3">writeGPR</a> (size_t reg, int64_t value)</td></tr>
-<tr class="memdesc:a7fa96f56b6224e42d27c2f199ce39cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a General-Purpose Register (GPR).  <a href="classRegisterFile.html#a7fa96f56b6224e42d27c2f199ce39cf3">More...</a><br /></td></tr>
-<tr class="separator:a7fa96f56b6224e42d27c2f199ce39cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74313db51e7d097ea8111faacc9749a9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a74313db51e7d097ea8111faacc9749a9">readFPR</a> (size_t reg) const</td></tr>
-<tr class="memdesc:a74313db51e7d097ea8111faacc9749a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a Floating-Point Register (FPR).  <a href="classRegisterFile.html#a74313db51e7d097ea8111faacc9749a9">More...</a><br /></td></tr>
-<tr class="separator:a74313db51e7d097ea8111faacc9749a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f3ad8f49160e20fce7d807de21feefa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa">writeFPR</a> (size_t reg, double value)</td></tr>
-<tr class="memdesc:a1f3ad8f49160e20fce7d807de21feefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a Floating-Point Register (FPR).  <a href="classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa">More...</a><br /></td></tr>
-<tr class="separator:a1f3ad8f49160e20fce7d807de21feefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0cb09169f595393286ba5d24e88efb3"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint64_t, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#af0cb09169f595393286ba5d24e88efb3">readVR</a> (size_t reg) const</td></tr>
-<tr class="memdesc:af0cb09169f595393286ba5d24e88efb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a Vector Register (VR).  <a href="classRegisterFile.html#af0cb09169f595393286ba5d24e88efb3">More...</a><br /></td></tr>
-<tr class="separator:af0cb09169f595393286ba5d24e88efb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a385e8b0b08c01901538d4dd6502fee81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81">writeVR</a> (size_t reg, const std::array&lt; uint64_t, 8 &gt; &amp;value)</td></tr>
-<tr class="memdesc:a385e8b0b08c01901538d4dd6502fee81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a Vector Register (VR).  <a href="classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81">More...</a><br /></td></tr>
-<tr class="separator:a385e8b0b08c01901538d4dd6502fee81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84eba1f55c6c7f45666a4f272b06b0aa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a84eba1f55c6c7f45666a4f272b06b0aa">getGPRValues</a> () const</td></tr>
-<tr class="memdesc:a84eba1f55c6c7f45666a4f272b06b0aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all General-Purpose Registers (GPR).  <a href="classRegisterFile.html#a84eba1f55c6c7f45666a4f272b06b0aa">More...</a><br /></td></tr>
-<tr class="separator:a84eba1f55c6c7f45666a4f272b06b0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaa9b0af7e2e49d6e7b445e0be8fd448"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#acaa9b0af7e2e49d6e7b445e0be8fd448">getFPRValues</a> () const</td></tr>
-<tr class="memdesc:acaa9b0af7e2e49d6e7b445e0be8fd448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all Floating-Point Registers (FPR).  <a href="classRegisterFile.html#acaa9b0af7e2e49d6e7b445e0be8fd448">More...</a><br /></td></tr>
-<tr class="separator:acaa9b0af7e2e49d6e7b445e0be8fd448"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78e44b2a24bd39b48664b5ac9d868a70"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; uint64_t, 8 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a78e44b2a24bd39b48664b5ac9d868a70">getVRValues</a> () const</td></tr>
-<tr class="memdesc:a78e44b2a24bd39b48664b5ac9d868a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all Vector Registers (VR).  <a href="classRegisterFile.html#a78e44b2a24bd39b48664b5ac9d868a70">More...</a><br /></td></tr>
-<tr class="separator:a78e44b2a24bd39b48664b5ac9d868a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c17bdfde32c9b3ee37e93b627dc2259"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a3c17bdfde32c9b3ee37e93b627dc2259">gprToString</a> () const</td></tr>
-<tr class="memdesc:a3c17bdfde32c9b3ee37e93b627dc2259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the General-Purpose Register (GPR) values to a string.  <a href="classRegisterFile.html#a3c17bdfde32c9b3ee37e93b627dc2259">More...</a><br /></td></tr>
-<tr class="separator:a3c17bdfde32c9b3ee37e93b627dc2259"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a452ac7f7e1bc5af54875d0deb082f6ca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a452ac7f7e1bc5af54875d0deb082f6ca">fprToString</a> () const</td></tr>
-<tr class="memdesc:a452ac7f7e1bc5af54875d0deb082f6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the Floating-Point Register (FPR) values to a string.  <a href="classRegisterFile.html#a452ac7f7e1bc5af54875d0deb082f6ca">More...</a><br /></td></tr>
-<tr class="separator:a452ac7f7e1bc5af54875d0deb082f6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28749e3b715ebd11ad2814d735cfb5b1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a28749e3b715ebd11ad2814d735cfb5b1">vrToString</a> () const</td></tr>
-<tr class="memdesc:a28749e3b715ebd11ad2814d735cfb5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the Vector Register (VR) values to a string.  <a href="classRegisterFile.html#a28749e3b715ebd11ad2814d735cfb5b1">More...</a><br /></td></tr>
-<tr class="separator:a28749e3b715ebd11ad2814d735cfb5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70bbec9de8daf3195bc7d1fc827c113c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a70bbec9de8daf3195bc7d1fc827c113c">Reset</a> ()</td></tr>
+<tr class="separator:a70bbec9de8daf3195bc7d1fc827c113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6704c638818fdc97fc5d432687c94459"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a6704c638818fdc97fc5d432687c94459">ReadGpr</a> (size_t reg) const</td></tr>
+<tr class="memdesc:a6704c638818fdc97fc5d432687c94459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a General-Purpose Register (GPR).  <a href="classRegisterFile.html#a6704c638818fdc97fc5d432687c94459">More...</a><br /></td></tr>
+<tr class="separator:a6704c638818fdc97fc5d432687c94459"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae02cb5fbd777469d1ec353e6b1ba6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a0ae02cb5fbd777469d1ec353e6b1ba6c">WriteGpr</a> (size_t reg, uint64_t value)</td></tr>
+<tr class="memdesc:a0ae02cb5fbd777469d1ec353e6b1ba6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a General-Purpose Register (GPR).  <a href="classRegisterFile.html#a0ae02cb5fbd777469d1ec353e6b1ba6c">More...</a><br /></td></tr>
+<tr class="separator:a0ae02cb5fbd777469d1ec353e6b1ba6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab208db6a17dac266e798394febce6c0b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#ab208db6a17dac266e798394febce6c0b">ReadFpr</a> (size_t reg) const</td></tr>
+<tr class="memdesc:ab208db6a17dac266e798394febce6c0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a Floating-Point Register (FPR).  <a href="classRegisterFile.html#ab208db6a17dac266e798394febce6c0b">More...</a><br /></td></tr>
+<tr class="separator:ab208db6a17dac266e798394febce6c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb99110e6c9be35cb02ada8bda4f846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a1eb99110e6c9be35cb02ada8bda4f846">WriteFpr</a> (size_t reg, uint64_t value)</td></tr>
+<tr class="memdesc:a1eb99110e6c9be35cb02ada8bda4f846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a Floating-Point Register (FPR).  <a href="classRegisterFile.html#a1eb99110e6c9be35cb02ada8bda4f846">More...</a><br /></td></tr>
+<tr class="separator:a1eb99110e6c9be35cb02ada8bda4f846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9abba352a9b89a7fcc90cdc2f11c0613"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint64_t, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a9abba352a9b89a7fcc90cdc2f11c0613">ReadVr</a> (size_t reg) const</td></tr>
+<tr class="memdesc:a9abba352a9b89a7fcc90cdc2f11c0613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value of a Vector Register (VR).  <a href="classRegisterFile.html#a9abba352a9b89a7fcc90cdc2f11c0613">More...</a><br /></td></tr>
+<tr class="separator:a9abba352a9b89a7fcc90cdc2f11c0613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9630b11fc83e74cd1bd6cc87202ef9b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a9630b11fc83e74cd1bd6cc87202ef9b5">WriteVr</a> (size_t reg, const std::array&lt; uint64_t, 8 &gt; &amp;value)</td></tr>
+<tr class="memdesc:a9630b11fc83e74cd1bd6cc87202ef9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a value to a Vector Register (VR).  <a href="classRegisterFile.html#a9630b11fc83e74cd1bd6cc87202ef9b5">More...</a><br /></td></tr>
+<tr class="separator:a9630b11fc83e74cd1bd6cc87202ef9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864f6e3b6ccc65796223c13c390a8d60"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a864f6e3b6ccc65796223c13c390a8d60">ReadCsr</a> (size_t reg) const</td></tr>
+<tr class="separator:a864f6e3b6ccc65796223c13c390a8d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad703c614dd37205dc11a43272045b6fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#ad703c614dd37205dc11a43272045b6fd">WriteCsr</a> (size_t reg, uint64_t value)</td></tr>
+<tr class="separator:ad703c614dd37205dc11a43272045b6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106a489cfac656e42303821efc8e1d8d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a106a489cfac656e42303821efc8e1d8d">GetGprValues</a> () const</td></tr>
+<tr class="memdesc:a106a489cfac656e42303821efc8e1d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all General-Purpose Registers (GPR).  <a href="classRegisterFile.html#a106a489cfac656e42303821efc8e1d8d">More...</a><br /></td></tr>
+<tr class="separator:a106a489cfac656e42303821efc8e1d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93f099cce5c1bb800d4a481d2424732c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a93f099cce5c1bb800d4a481d2424732c">GetFprValues</a> () const</td></tr>
+<tr class="memdesc:a93f099cce5c1bb800d4a481d2424732c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all Floating-Point Registers (FPR).  <a href="classRegisterFile.html#a93f099cce5c1bb800d4a481d2424732c">More...</a><br /></td></tr>
+<tr class="separator:a93f099cce5c1bb800d4a481d2424732c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda906b28f2951215f400949d2632f01"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; uint64_t, 8 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#adda906b28f2951215f400949d2632f01">GetVrValues</a> () const</td></tr>
+<tr class="memdesc:adda906b28f2951215f400949d2632f01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all Vector Registers (VR).  <a href="classRegisterFile.html#adda906b28f2951215f400949d2632f01">More...</a><br /></td></tr>
+<tr class="separator:adda906b28f2951215f400949d2632f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9216a2990ef50de54c6163ae01796809"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a9216a2990ef50de54c6163ae01796809">GprToString</a> () const</td></tr>
+<tr class="memdesc:a9216a2990ef50de54c6163ae01796809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the General-Purpose Register (GPR) values to a string.  <a href="classRegisterFile.html#a9216a2990ef50de54c6163ae01796809">More...</a><br /></td></tr>
+<tr class="separator:a9216a2990ef50de54c6163ae01796809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb0b85d72592741e36dcedc74bd4a549"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#adb0b85d72592741e36dcedc74bd4a549">FprToString</a> () const</td></tr>
+<tr class="memdesc:adb0b85d72592741e36dcedc74bd4a549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the Floating-Point Register (FPR) values to a string.  <a href="classRegisterFile.html#adb0b85d72592741e36dcedc74bd4a549">More...</a><br /></td></tr>
+<tr class="separator:adb0b85d72592741e36dcedc74bd4a549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bec19dedf171a13fb2c20a291c5438a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a0bec19dedf171a13fb2c20a291c5438a">VrToString</a> () const</td></tr>
+<tr class="memdesc:a0bec19dedf171a13fb2c20a291c5438a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the Vector Register (VR) values to a string.  <a href="classRegisterFile.html#a0bec19dedf171a13fb2c20a291c5438a">More...</a><br /></td></tr>
+<tr class="separator:a0bec19dedf171a13fb2c20a291c5438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a8acd3cd77b43326f2563ef7f735883a6"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a8acd3cd77b43326f2563ef7f735883a6">getRegisterCount</a> (<a class="el" href="classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230">RegisterType</a> type)</td></tr>
-<tr class="memdesc:a8acd3cd77b43326f2563ef7f735883a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the count of registers of a specific type.  <a href="classRegisterFile.html#a8acd3cd77b43326f2563ef7f735883a6">More...</a><br /></td></tr>
-<tr class="separator:a8acd3cd77b43326f2563ef7f735883a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88566e62e4df7fad0ebd75e09fe5d16f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a88566e62e4df7fad0ebd75e09fe5d16f">getGPRName</a> (size_t reg)</td></tr>
-<tr class="memdesc:a88566e62e4df7fad0ebd75e09fe5d16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a General-Purpose Register (GPR).  <a href="classRegisterFile.html#a88566e62e4df7fad0ebd75e09fe5d16f">More...</a><br /></td></tr>
-<tr class="separator:a88566e62e4df7fad0ebd75e09fe5d16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a071938b8514ef4ec12eb7f52df6b2757"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a071938b8514ef4ec12eb7f52df6b2757">getFPRName</a> (size_t reg)</td></tr>
-<tr class="memdesc:a071938b8514ef4ec12eb7f52df6b2757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a Floating-Point Register (FPR).  <a href="classRegisterFile.html#a071938b8514ef4ec12eb7f52df6b2757">More...</a><br /></td></tr>
-<tr class="separator:a071938b8514ef4ec12eb7f52df6b2757"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5deaa59b25d5110aa59da68288f14214"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a5deaa59b25d5110aa59da68288f14214">getVRName</a> (size_t reg)</td></tr>
-<tr class="memdesc:a5deaa59b25d5110aa59da68288f14214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a Vector Register (VR).  <a href="classRegisterFile.html#a5deaa59b25d5110aa59da68288f14214">More...</a><br /></td></tr>
-<tr class="separator:a5deaa59b25d5110aa59da68288f14214"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad591b57850a6b3bb1c1ad1456ff01f05"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#ad591b57850a6b3bb1c1ad1456ff01f05">GetRegisterCount</a> (<a class="el" href="classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230">RegisterType</a> type)</td></tr>
+<tr class="memdesc:ad591b57850a6b3bb1c1ad1456ff01f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the count of registers of a specific type.  <a href="classRegisterFile.html#ad591b57850a6b3bb1c1ad1456ff01f05">More...</a><br /></td></tr>
+<tr class="separator:ad591b57850a6b3bb1c1ad1456ff01f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf701427119448cf8122387dd284dca6"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#abf701427119448cf8122387dd284dca6">GetGprName</a> (size_t reg)</td></tr>
+<tr class="memdesc:abf701427119448cf8122387dd284dca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a General-Purpose Register (GPR).  <a href="classRegisterFile.html#abf701427119448cf8122387dd284dca6">More...</a><br /></td></tr>
+<tr class="separator:abf701427119448cf8122387dd284dca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157ed07e6780f7a0dc85ae109995963f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a157ed07e6780f7a0dc85ae109995963f">GetFprName</a> (size_t reg)</td></tr>
+<tr class="memdesc:a157ed07e6780f7a0dc85ae109995963f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a Floating-Point Register (FPR).  <a href="classRegisterFile.html#a157ed07e6780f7a0dc85ae109995963f">More...</a><br /></td></tr>
+<tr class="separator:a157ed07e6780f7a0dc85ae109995963f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2605e65ff29d48c22a5085e42a5ba272"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a2605e65ff29d48c22a5085e42a5ba272">GetVrName</a> (size_t reg)</td></tr>
+<tr class="memdesc:a2605e65ff29d48c22a5085e42a5ba272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of a Vector Register (VR).  <a href="classRegisterFile.html#a2605e65ff29d48c22a5085e42a5ba272">More...</a><br /></td></tr>
+<tr class="separator:a2605e65ff29d48c22a5085e42a5ba272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a register file containing integer, floating-point, and vector registers. </p>
@@ -213,19 +215,17 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classRegisterFile.html" title="Represents a register file containing integer, floating-point, and vector registers.">RegisterFile</a> object and initializes the registers. </p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a452ac7f7e1bc5af54875d0deb082f6ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a452ac7f7e1bc5af54875d0deb082f6ca">&#9670;&nbsp;</a></span>fprToString()</h2>
+<a id="adb0b85d72592741e36dcedc74bd4a549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb0b85d72592741e36dcedc74bd4a549">&#9670;&nbsp;</a></span>FprToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::fprToString </td>
+          <td class="memname">std::string RegisterFile::FprToString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -238,8 +238,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a071938b8514ef4ec12eb7f52df6b2757"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a071938b8514ef4ec12eb7f52df6b2757">&#9670;&nbsp;</a></span>getFPRName()</h2>
+<a id="a157ed07e6780f7a0dc85ae109995963f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157ed07e6780f7a0dc85ae109995963f">&#9670;&nbsp;</a></span>GetFprName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +248,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::getFPRName </td>
+          <td class="memname">std::string RegisterFile::GetFprName </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -273,14 +273,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acaa9b0af7e2e49d6e7b445e0be8fd448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acaa9b0af7e2e49d6e7b445e0be8fd448">&#9670;&nbsp;</a></span>getFPRValues()</h2>
+<a id="a93f099cce5c1bb800d4a481d2424732c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93f099cce5c1bb800d4a481d2424732c">&#9670;&nbsp;</a></span>GetFprValues()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; RegisterFile::getFPRValues </td>
+          <td class="memname">std::vector&lt; uint64_t &gt; RegisterFile::GetFprValues </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -293,8 +293,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a88566e62e4df7fad0ebd75e09fe5d16f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88566e62e4df7fad0ebd75e09fe5d16f">&#9670;&nbsp;</a></span>getGPRName()</h2>
+<a id="abf701427119448cf8122387dd284dca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf701427119448cf8122387dd284dca6">&#9670;&nbsp;</a></span>GetGprName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +303,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::getGPRName </td>
+          <td class="memname">std::string RegisterFile::GetGprName </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -328,14 +328,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a84eba1f55c6c7f45666a4f272b06b0aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84eba1f55c6c7f45666a4f272b06b0aa">&#9670;&nbsp;</a></span>getGPRValues()</h2>
+<a id="a106a489cfac656e42303821efc8e1d8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a106a489cfac656e42303821efc8e1d8d">&#9670;&nbsp;</a></span>GetGprValues()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; int64_t &gt; RegisterFile::getGPRValues </td>
+          <td class="memname">std::vector&lt; uint64_t &gt; RegisterFile::GetGprValues </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -348,8 +348,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8acd3cd77b43326f2563ef7f735883a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8acd3cd77b43326f2563ef7f735883a6">&#9670;&nbsp;</a></span>getRegisterCount()</h2>
+<a id="ad591b57850a6b3bb1c1ad1456ff01f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad591b57850a6b3bb1c1ad1456ff01f05">&#9670;&nbsp;</a></span>GetRegisterCount()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -358,7 +358,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t RegisterFile::getRegisterCount </td>
+          <td class="memname">size_t RegisterFile::GetRegisterCount </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230">RegisterType</a>&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
@@ -383,8 +383,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5deaa59b25d5110aa59da68288f14214"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5deaa59b25d5110aa59da68288f14214">&#9670;&nbsp;</a></span>getVRName()</h2>
+<a id="a2605e65ff29d48c22a5085e42a5ba272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2605e65ff29d48c22a5085e42a5ba272">&#9670;&nbsp;</a></span>GetVrName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -393,7 +393,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::getVRName </td>
+          <td class="memname">std::string RegisterFile::GetVrName </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -418,14 +418,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a78e44b2a24bd39b48664b5ac9d868a70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78e44b2a24bd39b48664b5ac9d868a70">&#9670;&nbsp;</a></span>getVRValues()</h2>
+<a id="adda906b28f2951215f400949d2632f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda906b28f2951215f400949d2632f01">&#9670;&nbsp;</a></span>GetVrValues()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::array&lt; uint64_t, 8 &gt; &gt; RegisterFile::getVRValues </td>
+          <td class="memname">std::vector&lt; std::array&lt; uint64_t, 8 &gt; &gt; RegisterFile::GetVrValues </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -438,14 +438,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3c17bdfde32c9b3ee37e93b627dc2259"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c17bdfde32c9b3ee37e93b627dc2259">&#9670;&nbsp;</a></span>gprToString()</h2>
+<a id="a9216a2990ef50de54c6163ae01796809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9216a2990ef50de54c6163ae01796809">&#9670;&nbsp;</a></span>GprToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::gprToString </td>
+          <td class="memname">std::string RegisterFile::GprToString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -458,14 +458,32 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a74313db51e7d097ea8111faacc9749a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74313db51e7d097ea8111faacc9749a9">&#9670;&nbsp;</a></span>readFPR()</h2>
+<a id="a864f6e3b6ccc65796223c13c390a8d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a864f6e3b6ccc65796223c13c390a8d60">&#9670;&nbsp;</a></span>ReadCsr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double RegisterFile::readFPR </td>
+          <td class="memname">uint64_t RegisterFile::ReadCsr </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab208db6a17dac266e798394febce6c0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab208db6a17dac266e798394febce6c0b">&#9670;&nbsp;</a></span>ReadFpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t RegisterFile::ReadFpr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -485,14 +503,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acde864a5da23b018a35619edf757f669"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acde864a5da23b018a35619edf757f669">&#9670;&nbsp;</a></span>readGPR()</h2>
+<a id="a6704c638818fdc97fc5d432687c94459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6704c638818fdc97fc5d432687c94459">&#9670;&nbsp;</a></span>ReadGpr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t RegisterFile::readGPR </td>
+          <td class="memname">uint64_t RegisterFile::ReadGpr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -512,14 +530,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af0cb09169f595393286ba5d24e88efb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0cb09169f595393286ba5d24e88efb3">&#9670;&nbsp;</a></span>readVR()</h2>
+<a id="a9abba352a9b89a7fcc90cdc2f11c0613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9abba352a9b89a7fcc90cdc2f11c0613">&#9670;&nbsp;</a></span>ReadVr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt; uint64_t, 8 &gt; RegisterFile::readVR </td>
+          <td class="memname">std::array&lt; uint64_t, 8 &gt; RegisterFile::ReadVr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em></td><td>)</td>
@@ -539,14 +557,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ade4452e0848c042e2a1615de4ea63e0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade4452e0848c042e2a1615de4ea63e0a">&#9670;&nbsp;</a></span>reset()</h2>
+<a id="a70bbec9de8daf3195bc7d1fc827c113c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70bbec9de8daf3195bc7d1fc827c113c">&#9670;&nbsp;</a></span>Reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RegisterFile::reset </td>
+          <td class="memname">void RegisterFile::Reset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -554,18 +572,16 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Resets all registers to their default values. </p>
-
 </div>
 </div>
-<a id="a28749e3b715ebd11ad2814d735cfb5b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28749e3b715ebd11ad2814d735cfb5b1">&#9670;&nbsp;</a></span>vrToString()</h2>
+<a id="a0bec19dedf171a13fb2c20a291c5438a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bec19dedf171a13fb2c20a291c5438a">&#9670;&nbsp;</a></span>VrToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string RegisterFile::vrToString </td>
+          <td class="memname">std::string RegisterFile::VrToString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -578,14 +594,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1f3ad8f49160e20fce7d807de21feefa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f3ad8f49160e20fce7d807de21feefa">&#9670;&nbsp;</a></span>writeFPR()</h2>
+<a id="ad703c614dd37205dc11a43272045b6fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad703c614dd37205dc11a43272045b6fd">&#9670;&nbsp;</a></span>WriteCsr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RegisterFile::writeFPR </td>
+          <td class="memname">void RegisterFile::WriteCsr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em>, </td>
@@ -593,7 +609,35 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1eb99110e6c9be35cb02ada8bda4f846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb99110e6c9be35cb02ada8bda4f846">&#9670;&nbsp;</a></span>WriteFpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RegisterFile::WriteFpr </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -615,14 +659,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7fa96f56b6224e42d27c2f199ce39cf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fa96f56b6224e42d27c2f199ce39cf3">&#9670;&nbsp;</a></span>writeGPR()</h2>
+<a id="a0ae02cb5fbd777469d1ec353e6b1ba6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae02cb5fbd777469d1ec353e6b1ba6c">&#9670;&nbsp;</a></span>WriteGpr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RegisterFile::writeGPR </td>
+          <td class="memname">void RegisterFile::WriteGpr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em>, </td>
@@ -630,7 +674,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -652,14 +696,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a385e8b0b08c01901538d4dd6502fee81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a385e8b0b08c01901538d4dd6502fee81">&#9670;&nbsp;</a></span>writeVR()</h2>
+<a id="a9630b11fc83e74cd1bd6cc87202ef9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9630b11fc83e74cd1bd6cc87202ef9b5">&#9670;&nbsp;</a></span>WriteVr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RegisterFile::writeVR </td>
+          <td class="memname">void RegisterFile::WriteVr </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>reg</em>, </td>

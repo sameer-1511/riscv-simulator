@@ -15,30 +15,24 @@ std\+::unordered\+\_\+map$<$ std\+::string, unsigned int $>$ \mbox{\hyperlink{st
 \item 
 std\+::string \mbox{\hyperlink{structAssembledProgram_afe8761d1f655b60e13b565f1fec54e76}{filename}}
 \item 
-std\+::vector$<$ std\+::variant$<$ uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string $>$ $>$ \mbox{\hyperlink{structAssembledProgram_a2010e60b74c7eda0ade12cb69ee2dd4d}{data\+\_\+buffer}}
+std\+::vector$<$ std\+::variant$<$ uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string, float, double $>$ $>$ \mbox{\hyperlink{structAssembledProgram_abd827684cbf41302559a6b82ac8c2f0e}{data\+\_\+buffer}}
 \item 
-std\+::vector$<$ std\+::bitset$<$ 32 $>$ $>$ \mbox{\hyperlink{structAssembledProgram_a9a8d7e3e5fd0a7d7741cc0f200d9ebd1}{instruction\+\_\+buffer}}
+std\+::vector$<$ std\+::bitset$<$ 32 $>$ $>$ \mbox{\hyperlink{structAssembledProgram_aa86a747236787eb97373a6aa06f34277}{text\+\_\+buffer}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{structAssembledProgram_a2010e60b74c7eda0ade12cb69ee2dd4d}\label{structAssembledProgram_a2010e60b74c7eda0ade12cb69ee2dd4d}} 
+\mbox{\Hypertarget{structAssembledProgram_abd827684cbf41302559a6b82ac8c2f0e}\label{structAssembledProgram_abd827684cbf41302559a6b82ac8c2f0e}} 
 \index{AssembledProgram@{AssembledProgram}!data\_buffer@{data\_buffer}}
 \index{data\_buffer@{data\_buffer}!AssembledProgram@{AssembledProgram}}
 \doxysubsubsection{\texorpdfstring{data\_buffer}{data\_buffer}}
-{\footnotesize\ttfamily std\+::vector$<$std\+::variant$<$uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string$>$ $>$ Assembled\+Program\+::data\+\_\+buffer}
+{\footnotesize\ttfamily std\+::vector$<$std\+::variant$<$uint8\+\_\+t, uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t, std\+::string, float, double$>$ $>$ Assembled\+Program\+::data\+\_\+buffer}
 
 \mbox{\Hypertarget{structAssembledProgram_afe8761d1f655b60e13b565f1fec54e76}\label{structAssembledProgram_afe8761d1f655b60e13b565f1fec54e76}} 
 \index{AssembledProgram@{AssembledProgram}!filename@{filename}}
 \index{filename@{filename}!AssembledProgram@{AssembledProgram}}
 \doxysubsubsection{\texorpdfstring{filename}{filename}}
 {\footnotesize\ttfamily std\+::string Assembled\+Program\+::filename}
-
-\mbox{\Hypertarget{structAssembledProgram_a9a8d7e3e5fd0a7d7741cc0f200d9ebd1}\label{structAssembledProgram_a9a8d7e3e5fd0a7d7741cc0f200d9ebd1}} 
-\index{AssembledProgram@{AssembledProgram}!instruction\_buffer@{instruction\_buffer}}
-\index{instruction\_buffer@{instruction\_buffer}!AssembledProgram@{AssembledProgram}}
-\doxysubsubsection{\texorpdfstring{instruction\_buffer}{instruction\_buffer}}
-{\footnotesize\ttfamily std\+::vector$<$std\+::bitset$<$32$>$ $>$ Assembled\+Program\+::instruction\+\_\+buffer}
 
 \mbox{\Hypertarget{structAssembledProgram_ade3312b57abb948a18eee54e64cb4203}\label{structAssembledProgram_ade3312b57abb948a18eee54e64cb4203}} 
 \index{AssembledProgram@{AssembledProgram}!instruction\_number\_line\_number\_mapping@{instruction\_number\_line\_number\_mapping}}
@@ -57,6 +51,12 @@ std\+::vector$<$ std\+::bitset$<$ 32 $>$ $>$ \mbox{\hyperlink{structAssembledPro
 \index{symbol\_table@{symbol\_table}!AssembledProgram@{AssembledProgram}}
 \doxysubsubsection{\texorpdfstring{symbol\_table}{symbol\_table}}
 {\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, unsigned int$>$ Assembled\+Program\+::symbol\+\_\+table}
+
+\mbox{\Hypertarget{structAssembledProgram_aa86a747236787eb97373a6aa06f34277}\label{structAssembledProgram_aa86a747236787eb97373a6aa06f34277}} 
+\index{AssembledProgram@{AssembledProgram}!text\_buffer@{text\_buffer}}
+\index{text\_buffer@{text\_buffer}!AssembledProgram@{AssembledProgram}}
+\doxysubsubsection{\texorpdfstring{text\_buffer}{text\_buffer}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::bitset$<$32$>$ $>$ Assembled\+Program\+::text\+\_\+buffer}
 
 
 

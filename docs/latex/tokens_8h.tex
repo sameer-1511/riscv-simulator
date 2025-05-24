@@ -5,6 +5,15 @@
 Contains the definition of the Token\+Type enum and the \mbox{\hyperlink{structToken}{Token}} struct.  
 
 
+{\ttfamily \#include \char`\"{}../pch.\+h\char`\"{}}\newline
+Include dependency graph for tokens.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tokens_8h__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
 \nopagebreak
 \begin{figure}[H]
@@ -32,14 +41,18 @@ enum class \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a509d68099e3f0347fb2425f1a2432564}{FP\+\_\+\+REGISTER}}
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f}{VEC\+\_\+\+REGISTER}}
 , \newline
-\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}{NUM}}
+\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a53d24f3c1542701fa693245f816b7fee}{CSR\+\_\+\+REGISTER}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}{NUM}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921ae738c26bf4ce1037fa81b039a915cbf6}{FLOAT}}
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb}{LABEL}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c}{LABEL\+\_\+\+REF}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a4d9b3e9fc12849d060371eb65154c751}{COMMA}}
 , \newline
-\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286}{LPAREN}}
+\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921aac8e554801dd81a8fb60d78699756f9c}{LABEL\+\_\+\+REF}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a4d9b3e9fc12849d060371eb65154c751}{COMMA}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a45bf4f3d35a115aaa2df577ba7861286}{LPAREN}}
 , \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1}{RPAREN}}
-, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}{STRING}}
+, \newline
+\mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}{STRING}}
+, \mbox{\hyperlink{tokens_8h_aa520fbf142ba1e7e659590c07da31921a2622e9b348f05f74e3e4bb9b7d213dc8}{RM}}
  \}
 \begin{DoxyCompactList}\small\item\em Enum class representing the type of a token. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -101,8 +114,16 @@ FP\+\_\+\+REGISTER&Floating-\/point register. \\
 VEC\+\_\+\+REGISTER&Vector register. \\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CSR\_REGISTER@{CSR\_REGISTER}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!CSR\_REGISTER@{CSR\_REGISTER}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a53d24f3c1542701fa693245f816b7fee}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a53d24f3c1542701fa693245f816b7fee}} 
+CSR\+\_\+\+REGISTER&Control and Status Register. \\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{NUM@{NUM}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!NUM@{NUM}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a44119bf3bae5d40a8d0766b91c304aac}} 
 NUM&Numeric value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLOAT@{FLOAT}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!FLOAT@{FLOAT}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921ae738c26bf4ce1037fa81b039a915cbf6}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921ae738c26bf4ce1037fa81b039a915cbf6}} 
+FLOAT&Floating-\/point value. \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{LABEL@{LABEL}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!LABEL@{LABEL}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a6f434c508ad901b8667ed22f713e52bb}} 
@@ -127,6 +148,10 @@ RPAREN&Right parenthesis \textquotesingle{})\textquotesingle{}. \\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{STRING@{STRING}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!STRING@{STRING}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a63b588d5559f64f89a416e656880b949}} 
 STRING&String literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RM@{RM}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!RM@{RM}}}\mbox{\Hypertarget{tokens_8h_aa520fbf142ba1e7e659590c07da31921a2622e9b348f05f74e3e4bb9b7d213dc8}\label{tokens_8h_aa520fbf142ba1e7e659590c07da31921a2622e9b348f05f74e3e4bb9b7d213dc8}} 
+RM&Rounding mode. \\
 \hline
 
 \end{DoxyEnumFields}

@@ -77,50 +77,49 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tokens_8h.html">tokens.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classLexer.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLexer.html">Lexer</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::string filename_; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::ifstream input_; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::string current_line_; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> line_number_; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> column_number_; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">size_t</span> pos_; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  std::string filename_; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::ifstream input_; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  std::string current_line_; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> line_number_; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> column_number_; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">size_t</span> pos_; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::vector&lt;Token&gt; tokens_; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  std::vector&lt;Token&gt; tokens_; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> skipWhitespace();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> skipWhitespace();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> skipComment();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> skipComment();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> skipLine();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> skipLine();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structToken.html">Token</a> identifier();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="structToken.html">Token</a> identifier();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="structToken.html">Token</a> number();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="structToken.html">Token</a> number();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="structToken.html">Token</a> directive();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="structToken.html">Token</a> directive();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structToken.html">Token</a> stringLiteral();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="structToken.html">Token</a> stringLiteral();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structToken.html">Token</a> getNextToken();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classLexer.html#a34795506b1a97fc3776fcd6fcd9264cd">Lexer</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="structToken.html">Token</a> getNextToken();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classLexer.html#aae50996944f23853b242120df9fcba1d">Lexer</a>(std::string filename);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classLexer.html#ad26a84af23d8d303723e36e83fc4e556">~Lexer</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="classLexer.html#ad26a84af23d8d303723e36e83fc4e556">~Lexer</a>();</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::string <a class="code" href="classLexer.html#ac9f432d29889532c2930bdb462c906da">getFilename</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  std::string <a class="code" href="classLexer.html#ac9f432d29889532c2930bdb462c906da">getFilename</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::vector&lt;Token&gt; <a class="code" href="classLexer.html#ad66eb14085f3fe976763c53f9bbaf3e8">getTokenList</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  std::vector&lt;Token&gt; <a class="code" href="classLexer.html#ad66eb14085f3fe976763c53f9bbaf3e8">getTokenList</a>();</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LEXER_H</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LEXER_H</span></div>
 <div class="ttc" id="aclassLexer_html"><div class="ttname"><a href="classLexer.html">Lexer</a></div><div class="ttdoc">A class responsible for tokenizing the input source code.</div><div class="ttdef"><b>Definition:</b> lexer.h:20</div></div>
-<div class="ttc" id="aclassLexer_html_a34795506b1a97fc3776fcd6fcd9264cd"><div class="ttname"><a href="classLexer.html#a34795506b1a97fc3776fcd6fcd9264cd">Lexer::Lexer</a></div><div class="ttdeci">Lexer(const std::string &amp;filename)</div><div class="ttdoc">Constructs a Lexer object for a given file.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:13</div></div>
-<div class="ttc" id="aclassLexer_html_ac9f432d29889532c2930bdb462c906da"><div class="ttname"><a href="classLexer.html#ac9f432d29889532c2930bdb462c906da">Lexer::getFilename</a></div><div class="ttdeci">std::string getFilename() const</div><div class="ttdoc">Retrieves the name of the input file.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:20</div></div>
-<div class="ttc" id="aclassLexer_html_ad26a84af23d8d303723e36e83fc4e556"><div class="ttname"><a href="classLexer.html#ad26a84af23d8d303723e36e83fc4e556">Lexer::~Lexer</a></div><div class="ttdeci">~Lexer()</div><div class="ttdoc">Destructor that closes the input file stream.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:24</div></div>
-<div class="ttc" id="aclassLexer_html_ad66eb14085f3fe976763c53f9bbaf3e8"><div class="ttname"><a href="classLexer.html#ad66eb14085f3fe976763c53f9bbaf3e8">Lexer::getTokenList</a></div><div class="ttdeci">std::vector&lt; Token &gt; getTokenList()</div><div class="ttdoc">Retrieves the complete list of tokens.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:320</div></div>
-<div class="ttc" id="astructToken_html"><div class="ttname"><a href="structToken.html">Token</a></div><div class="ttdoc">Structure representing a token.</div><div class="ttdef"><b>Definition:</b> tokens.h:38</div></div>
+<div class="ttc" id="aclassLexer_html_aae50996944f23853b242120df9fcba1d"><div class="ttname"><a href="classLexer.html#aae50996944f23853b242120df9fcba1d">Lexer::Lexer</a></div><div class="ttdeci">Lexer(std::string filename)</div><div class="ttdoc">Constructs a Lexer object for a given file.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:16</div></div>
+<div class="ttc" id="aclassLexer_html_ac9f432d29889532c2930bdb462c906da"><div class="ttname"><a href="classLexer.html#ac9f432d29889532c2930bdb462c906da">Lexer::getFilename</a></div><div class="ttdeci">std::string getFilename() const</div><div class="ttdoc">Retrieves the name of the input file.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:23</div></div>
+<div class="ttc" id="aclassLexer_html_ad26a84af23d8d303723e36e83fc4e556"><div class="ttname"><a href="classLexer.html#ad26a84af23d8d303723e36e83fc4e556">Lexer::~Lexer</a></div><div class="ttdeci">~Lexer()</div><div class="ttdoc">Destructor that closes the input file stream.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:27</div></div>
+<div class="ttc" id="aclassLexer_html_ad66eb14085f3fe976763c53f9bbaf3e8"><div class="ttname"><a href="classLexer.html#ad66eb14085f3fe976763c53f9bbaf3e8">Lexer::getTokenList</a></div><div class="ttdeci">std::vector&lt; Token &gt; getTokenList()</div><div class="ttdoc">Retrieves the complete list of tokens.</div><div class="ttdef"><b>Definition:</b> lexer.cpp:339</div></div>
+<div class="ttc" id="astructToken_html"><div class="ttname"><a href="structToken.html">Token</a></div><div class="ttdoc">Structure representing a token.</div><div class="ttdef"><b>Definition:</b> tokens.h:43</div></div>
 <div class="ttc" id="atokens_8h_html"><div class="ttname"><a href="tokens_8h.html">tokens.h</a></div><div class="ttdoc">Contains the definition of the TokenType enum and the Token struct.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

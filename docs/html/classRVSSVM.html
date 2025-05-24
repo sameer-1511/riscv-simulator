@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classRVSSVM-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">RVSSVM Class Reference</div>  </div>
@@ -76,7 +77,7 @@ Inheritance diagram for RVSSVM:</div>
 <div class="center"><img src="classRVSSVM__inherit__graph.png" border="0" usemap="#aRVSSVM_inherit__map" alt="Inheritance graph"/></div>
 <map name="aRVSSVM_inherit__map" id="aRVSSVM_inherit__map">
 <area shape="rect" title=" " alt="" coords="5,80,83,107"/>
-<area shape="rect" href="classVMBase.html" title=" " alt="" coords="7,5,81,32"/>
+<area shape="rect" href="classVmBase.html" title=" " alt="" coords="6,5,82,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -84,77 +85,148 @@ Collaboration diagram for RVSSVM:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRVSSVM__coll__graph.png" border="0" usemap="#aRVSSVM_coll__map" alt="Collaboration graph"/></div>
 <map name="aRVSSVM_coll__map" id="aRVSSVM_coll__map">
-<area shape="rect" title=" " alt="" coords="131,171,208,197"/>
-<area shape="rect" href="classVMBase.html" title=" " alt="" coords="132,95,207,121"/>
+<area shape="rect" title=" " alt="" coords="359,184,436,211"/>
+<area shape="rect" href="classVmBase.html" title=" " alt="" coords="187,95,263,121"/>
 <area shape="rect" href="classRegisterFile.html" title="Represents a register file containing integer, floating&#45;point, and vector registers." alt="" coords="5,5,104,32"/>
-<area shape="rect" href="classALU_1_1ALU.html" title="The ALU class is responsible for performing arithmetic and logic operations." alt="" coords="128,5,211,32"/>
-<area shape="rect" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="235,5,375,32"/>
+<area shape="rect" href="classalu_1_1Alu.html" title="The alu class is responsible for performing arithmetic and logic operations." alt="" coords="129,5,199,32"/>
+<area shape="rect" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="223,5,363,32"/>
+<area shape="rect" href="classRVSSControlUnit.html" title=" " alt="" coords="332,95,463,121"/>
+<area shape="rect" href="classControlUnit.html" title="The ControlUnit class is the base class for the control unit of the CPU." alt="" coords="395,5,491,32"/>
+<area shape="rect" href="structStepDelta.html" title=" " alt="" coords="487,95,574,121"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a1be53e68e06b88a720e8c50c1a884595"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a1be53e68e06b88a720e8c50c1a884595">Fetch</a> ()</td></tr>
+<tr class="separator:a1be53e68e06b88a720e8c50c1a884595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c92521192b852397c3ba182fea8c99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#af9c92521192b852397c3ba182fea8c99">Decode</a> ()</td></tr>
+<tr class="separator:af9c92521192b852397c3ba182fea8c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6bf72c47e603412535cb63ade994727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#af6bf72c47e603412535cb63ade994727">Execute</a> ()</td></tr>
+<tr class="separator:af6bf72c47e603412535cb63ade994727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa565a8b5426dc19cc4a9abfe2f72ee9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#aa565a8b5426dc19cc4a9abfe2f72ee9b">ExecuteFloat</a> ()</td></tr>
+<tr class="separator:aa565a8b5426dc19cc4a9abfe2f72ee9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07bcf2cd78c7f481c0e8eac9b63d767"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ab07bcf2cd78c7f481c0e8eac9b63d767">ExecuteDouble</a> ()</td></tr>
+<tr class="separator:ab07bcf2cd78c7f481c0e8eac9b63d767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909efe42d1f6365578cef3502cd04426"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a909efe42d1f6365578cef3502cd04426">ExecuteVector</a> ()</td></tr>
+<tr class="separator:a909efe42d1f6365578cef3502cd04426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d401eee1018804bc76672fcea13b28a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a2d401eee1018804bc76672fcea13b28a">ExecuteCsr</a> ()</td></tr>
+<tr class="separator:a2d401eee1018804bc76672fcea13b28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12d9fecb0a1312095fa3f9a303e6a22b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a12d9fecb0a1312095fa3f9a303e6a22b">WriteMemory</a> ()</td></tr>
+<tr class="separator:a12d9fecb0a1312095fa3f9a303e6a22b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3fb37b71e508285bc8e0f4892e1c0e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#aa3fb37b71e508285bc8e0f4892e1c0e8">WriteMemoryFloat</a> ()</td></tr>
+<tr class="separator:aa3fb37b71e508285bc8e0f4892e1c0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d15537b41412ab8c59191bdbeeab4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a37d15537b41412ab8c59191bdbeeab4e">WriteMemoryDouble</a> ()</td></tr>
+<tr class="separator:a37d15537b41412ab8c59191bdbeeab4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6f358d802deea2f580469c7a061c11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a3d6f358d802deea2f580469c7a061c11">WriteMemoryVector</a> ()</td></tr>
+<tr class="separator:a3d6f358d802deea2f580469c7a061c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20a3c3b4d7f92288a65cd45b011c9db2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a20a3c3b4d7f92288a65cd45b011c9db2">WriteBack</a> ()</td></tr>
+<tr class="separator:a20a3c3b4d7f92288a65cd45b011c9db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630798c6e11ee4546d1dd71b3dcf4fcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a630798c6e11ee4546d1dd71b3dcf4fcb">WriteBackFloat</a> ()</td></tr>
+<tr class="separator:a630798c6e11ee4546d1dd71b3dcf4fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c43c1b0a03270d9335e6e73dc0dcf5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a0c43c1b0a03270d9335e6e73dc0dcf5f">WriteBackDouble</a> ()</td></tr>
+<tr class="separator:a0c43c1b0a03270d9335e6e73dc0dcf5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be204b3e7d69284119abb16b9042323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a6be204b3e7d69284119abb16b9042323">WriteBackVector</a> ()</td></tr>
+<tr class="separator:a6be204b3e7d69284119abb16b9042323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f7f30381652bed3ba3dc4f422a0021"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ad3f7f30381652bed3ba3dc4f422a0021">WriteBackCsr</a> ()</td></tr>
+<tr class="separator:ad3f7f30381652bed3ba3dc4f422a0021"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a6b5b3cd17447bfe4e88819ff55c48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a25a6b5b3cd17447bfe4e88819ff55c48">RVSSVM</a> ()</td></tr>
 <tr class="separator:a25a6b5b3cd17447bfe4e88819ff55c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a487d782e0576c027531150b39560208f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a487d782e0576c027531150b39560208f">~RVSSVM</a> ()</td></tr>
 <tr class="separator:a487d782e0576c027531150b39560208f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ae8fcf554127b3f478f814eb515618f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a0ae8fcf554127b3f478f814eb515618f">run</a> () override</td></tr>
-<tr class="separator:a0ae8fcf554127b3f478f814eb515618f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0144c812d7e41f744f451f089d59a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#af0144c812d7e41f744f451f089d59a57">step</a> () override</td></tr>
-<tr class="separator:af0144c812d7e41f744f451f089d59a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac16622085dc5b4f987744bb26836a975"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ac16622085dc5b4f987744bb26836a975">reset</a> () override</td></tr>
-<tr class="separator:ac16622085dc5b4f987744bb26836a975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cba58e3f8571759507c623ec816dc4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a3cba58e3f8571759507c623ec816dc4e">dumpState</a> (const std::string &amp;filename) override</td></tr>
-<tr class="separator:a3cba58e3f8571759507c623ec816dc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f502a38582acbe95a33ea25e71871eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a0f502a38582acbe95a33ea25e71871eb">printType</a> ()</td></tr>
-<tr class="separator:a0f502a38582acbe95a33ea25e71871eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classVMBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classVMBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classVMBase.html">VMBase</a></td></tr>
-<tr class="memitem:a75269a8612472521bf5b79d00b48d872 inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a75269a8612472521bf5b79d00b48d872">VMBase</a> ()=default</td></tr>
-<tr class="separator:a75269a8612472521bf5b79d00b48d872 inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af43164984da77e0ea193d61b3a290c7b inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af43164984da77e0ea193d61b3a290c7b">~VMBase</a> ()=default</td></tr>
-<tr class="separator:af43164984da77e0ea193d61b3a290c7b inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34df62c52d9d0e023c03340cdb7b9b2a inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a34df62c52d9d0e023c03340cdb7b9b2a">loadProgram</a> (const <a class="el" href="structAssembledProgram.html">AssembledProgram</a> &amp;program)</td></tr>
-<tr class="separator:a34df62c52d9d0e023c03340cdb7b9b2a inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6168ed83153abff37678f5e5230ef314 inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6168ed83153abff37678f5e5230ef314">getProgramCounter</a> () const</td></tr>
-<tr class="separator:a6168ed83153abff37678f5e5230ef314 inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab32a590b667b9f9416da0c4727ef73d8 inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#ab32a590b667b9f9416da0c4727ef73d8">updateProgramCounter</a> (int64_t value)</td></tr>
-<tr class="separator:ab32a590b667b9f9416da0c4727ef73d8 inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafa70c35c2911ebac0df3e981d6b385 inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#afafa70c35c2911ebac0df3e981d6b385">imm_generator</a> (uint32_t instruction)</td></tr>
-<tr class="separator:afafa70c35c2911ebac0df3e981d6b385 inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed76e5c5951a1ef9ad176548aee51b8a inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aed76e5c5951a1ef9ad176548aee51b8a">addBreakpoint</a> (uint64_t address)</td></tr>
-<tr class="separator:aed76e5c5951a1ef9ad176548aee51b8a inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a644c66cbcfde66e70738d769bd4928f7 inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a644c66cbcfde66e70738d769bd4928f7">removeBreakpoint</a> (uint64_t address)</td></tr>
-<tr class="separator:a644c66cbcfde66e70738d769bd4928f7 inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2f35f57b60c7e5d71795df3f940634f inherit pub_methods_classVMBase"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#af2f35f57b60c7e5d71795df3f940634f">checkBreakpoint</a> (uint64_t address)</td></tr>
-<tr class="separator:af2f35f57b60c7e5d71795df3f940634f inherit pub_methods_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa85843a97344299380afebc83d2a5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a0aa85843a97344299380afebc83d2a5e">Run</a> () override</td></tr>
+<tr class="separator:a0aa85843a97344299380afebc83d2a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b954269c60ab390ecca05966dacb47e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a8b954269c60ab390ecca05966dacb47e">DebugRun</a> () override</td></tr>
+<tr class="separator:a8b954269c60ab390ecca05966dacb47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5547766e7446048242849d2510e3b2ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a5547766e7446048242849d2510e3b2ef">Step</a> () override</td></tr>
+<tr class="separator:a5547766e7446048242849d2510e3b2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc759ac821f87303daa71c9480b8756"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#aabc759ac821f87303daa71c9480b8756">Undo</a> () override</td></tr>
+<tr class="separator:aabc759ac821f87303daa71c9480b8756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb130b8c84159be82027d49ce3e4279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a9cb130b8c84159be82027d49ce3e4279">Redo</a> () override</td></tr>
+<tr class="separator:a9cb130b8c84159be82027d49ce3e4279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75bbde8be42c275f928681e372d6c7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#aa75bbde8be42c275f928681e372d6c7c">Reset</a> () override</td></tr>
+<tr class="separator:aa75bbde8be42c275f928681e372d6c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf6db97ed1229c42554799d2449338e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#addf6db97ed1229c42554799d2449338e">DumpState</a> (const std::string &amp;filename) override</td></tr>
+<tr class="separator:addf6db97ed1229c42554799d2449338e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb411487b468c3a5e88780a10cedf76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a6cb411487b468c3a5e88780a10cedf76">PrintType</a> ()</td></tr>
+<tr class="separator:a6cb411487b468c3a5e88780a10cedf76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classVmBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classVmBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classVmBase.html">VmBase</a></td></tr>
+<tr class="memitem:abf599e805afcf71a94eb6d6d8a68735f inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#abf599e805afcf71a94eb6d6d8a68735f">VmBase</a> ()=default</td></tr>
+<tr class="separator:abf599e805afcf71a94eb6d6d8a68735f inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5f25b89e273d54bb85c41b4c4eb438b inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ad5f25b89e273d54bb85c41b4c4eb438b">~VmBase</a> ()=default</td></tr>
+<tr class="separator:ad5f25b89e273d54bb85c41b4c4eb438b inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d59d9f602948448e72a7f711ac32cbf inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a4d59d9f602948448e72a7f711ac32cbf">LoadProgram</a> (const <a class="el" href="structAssembledProgram.html">AssembledProgram</a> &amp;program)</td></tr>
+<tr class="separator:a4d59d9f602948448e72a7f711ac32cbf inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06d1a2ba1a7a9fbece71f643943dbd2 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ae06d1a2ba1a7a9fbece71f643943dbd2">GetProgramCounter</a> () const</td></tr>
+<tr class="separator:ae06d1a2ba1a7a9fbece71f643943dbd2 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac40cd15fd5481498cc87f9754d8ac979 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ac40cd15fd5481498cc87f9754d8ac979">UpdateProgramCounter</a> (int64_t value)</td></tr>
+<tr class="separator:ac40cd15fd5481498cc87f9754d8ac979 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9199d1c306e603e506cf57f274b9e184 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a9199d1c306e603e506cf57f274b9e184">ImmGenerator</a> (uint32_t instruction)</td></tr>
+<tr class="separator:a9199d1c306e603e506cf57f274b9e184 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2599e724c71add7faea9cb5b1e13897 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ad2599e724c71add7faea9cb5b1e13897">AddBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="separator:ad2599e724c71add7faea9cb5b1e13897 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b98734da10cee06863cb108721b716 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a63b98734da10cee06863cb108721b716">RemoveBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="separator:a63b98734da10cee06863cb108721b716 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3434d5a63ce72dee96db02224b92f04 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ad3434d5a63ce72dee96db02224b92f04">CheckBreakpoint</a> (uint64_t address)</td></tr>
+<tr class="separator:ad3434d5a63ce72dee96db02224b92f04 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73496d85a521ce015f5bfac0cd5129d3 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a73496d85a521ce015f5bfac0cd5129d3">HandleSyscall</a> ()</td></tr>
+<tr class="separator:a73496d85a521ce015f5bfac0cd5129d3 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_classVMBase"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classVMBase')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classVMBase.html">VMBase</a></td></tr>
-<tr class="memitem:a45b2ed92f4c06786e3b87ae12e19a215 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a45b2ed92f4c06786e3b87ae12e19a215">breakpoints_</a></td></tr>
-<tr class="separator:a45b2ed92f4c06786e3b87ae12e19a215 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62491479088ac4bba0c70a5018f9416 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#ac62491479088ac4bba0c70a5018f9416">current_instruction_</a></td></tr>
-<tr class="separator:ac62491479088ac4bba0c70a5018f9416 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8df40e7ac3dc168534686e841297afdc inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a8df40e7ac3dc168534686e841297afdc">program_counter_</a> = 0</td></tr>
-<tr class="separator:a8df40e7ac3dc168534686e841297afdc inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dce495b8c5dbb1cede4c364845a0a19 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a5dce495b8c5dbb1cede4c364845a0a19">cycle_s</a> = 0</td></tr>
-<tr class="separator:a5dce495b8c5dbb1cede4c364845a0a19 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d10e1f1fd78b1b51ad7ef2d4c8f59ac inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a0d10e1f1fd78b1b51ad7ef2d4c8f59ac">instructions_retired_</a> = 0</td></tr>
-<tr class="separator:a0d10e1f1fd78b1b51ad7ef2d4c8f59ac inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabe5f277c9f4c9dad3d7da4c56677f2a inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#aabe5f277c9f4c9dad3d7da4c56677f2a">cpi_</a> = 0.0</td></tr>
-<tr class="separator:aabe5f277c9f4c9dad3d7da4c56677f2a inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bcde79df09ed64ee6194e0c6669d539 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a0bcde79df09ed64ee6194e0c6669d539">ipc_</a> = 0.0</td></tr>
-<tr class="separator:a0bcde79df09ed64ee6194e0c6669d539 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54dd79d5da23967e1006417af67c5d33 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a54dd79d5da23967e1006417af67c5d33">stall_cycles_</a> = 0</td></tr>
-<tr class="separator:a54dd79d5da23967e1006417af67c5d33 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75f6d7d72500ca13939281e88a5e6b7d inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a75f6d7d72500ca13939281e88a5e6b7d">branch_mispredictions_</a> = 0</td></tr>
-<tr class="separator:a75f6d7d72500ca13939281e88a5e6b7d inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ed9a281a3ad558575ef228e40a1bd8a inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemoryController.html">MemoryController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a9ed9a281a3ad558575ef228e40a1bd8a">memory_controller_</a></td></tr>
-<tr class="separator:a9ed9a281a3ad558575ef228e40a1bd8a inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a170e94409bf86a213649499c3fd063b8 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRegisterFile.html">RegisterFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a170e94409bf86a213649499c3fd063b8">registers_</a></td></tr>
-<tr class="separator:a170e94409bf86a213649499c3fd063b8 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6356b9c808eedae8c7dfc1bde24f1d29 inherit pub_attribs_classVMBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classALU_1_1ALU.html">ALU::ALU</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVMBase.html#a6356b9c808eedae8c7dfc1bde24f1d29">alu_</a></td></tr>
-<tr class="separator:a6356b9c808eedae8c7dfc1bde24f1d29 inherit pub_attribs_classVMBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:af791e8846fc4e92787827da00a5bc809"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRVSSControlUnit.html">RVSSControlUnit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#af791e8846fc4e92787827da00a5bc809">control_unit_</a></td></tr>
+<tr class="separator:af791e8846fc4e92787827da00a5bc809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731a113960710ba745841a7f97678430"><td class="memItemLeft" align="right" valign="top">std::stack&lt; <a class="el" href="structStepDelta.html">StepDelta</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a731a113960710ba745841a7f97678430">undo_stack_</a></td></tr>
+<tr class="separator:a731a113960710ba745841a7f97678430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab108a22ac8ca3f2634b8cd2322736f1d"><td class="memItemLeft" align="right" valign="top">std::stack&lt; <a class="el" href="structStepDelta.html">StepDelta</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ab108a22ac8ca3f2634b8cd2322736f1d">redo_stack_</a></td></tr>
+<tr class="separator:ab108a22ac8ca3f2634b8cd2322736f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c5c56d7a856783a6ab9e4c3a6688ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structStepDelta.html">StepDelta</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ae6c5c56d7a856783a6ab9e4c3a6688ca">current_delta_</a></td></tr>
+<tr class="separator:ae6c5c56d7a856783a6ab9e4c3a6688ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d68bf6e4b85df7b3b40431479a10a65"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a8d68bf6e4b85df7b3b40431479a10a65">execution_result_</a> {}</td></tr>
+<tr class="separator:a8d68bf6e4b85df7b3b40431479a10a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81fccd4c10106e7aced1160d68119bbb"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a81fccd4c10106e7aced1160d68119bbb">memory_result_</a> {}</td></tr>
+<tr class="separator:a81fccd4c10106e7aced1160d68119bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22bbb0ff1567f0a6483f74f4327b606a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a22bbb0ff1567f0a6483f74f4327b606a">return_address_</a> {}</td></tr>
+<tr class="separator:a22bbb0ff1567f0a6483f74f4327b606a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adac1aa09fc07850d4f5446a9321bcee3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#adac1aa09fc07850d4f5446a9321bcee3">branch_flag_</a> = false</td></tr>
+<tr class="separator:adac1aa09fc07850d4f5446a9321bcee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa14ea6a3d63291eb637edee36c117e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a4aa14ea6a3d63291eb637edee36c117e">next_pc_</a> {}</td></tr>
+<tr class="separator:a4aa14ea6a3d63291eb637edee36c117e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc6edc37b35e69343f6ecf2cedd6caf"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a6fc6edc37b35e69343f6ecf2cedd6caf">csr_target_address_</a> {}</td></tr>
+<tr class="separator:a6fc6edc37b35e69343f6ecf2cedd6caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f749a09117cb8c313ab423c2ebf9a3"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a26f749a09117cb8c313ab423c2ebf9a3">csr_old_value_</a> {}</td></tr>
+<tr class="separator:a26f749a09117cb8c313ab423c2ebf9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae57223b65ada3f5f5dfecf6c16ce1409"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#ae57223b65ada3f5f5dfecf6c16ce1409">csr_write_val_</a> {}</td></tr>
+<tr class="separator:ae57223b65ada3f5f5dfecf6c16ce1409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7951fd1c543faff83b8aee97427c01a2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a7951fd1c543faff83b8aee97427c01a2">csr_uimm_</a> {}</td></tr>
+<tr class="separator:a7951fd1c543faff83b8aee97427c01a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_classVmBase"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classVmBase')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classVmBase.html">VmBase</a></td></tr>
+<tr class="memitem:a1ab317e9659f20f6edddad20ec241f98 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a1ab317e9659f20f6edddad20ec241f98">breakpoints_</a></td></tr>
+<tr class="separator:a1ab317e9659f20f6edddad20ec241f98 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6367cbbce3f5eeb50eb88f38531f5ca0 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a6367cbbce3f5eeb50eb88f38531f5ca0">current_instruction_</a> {}</td></tr>
+<tr class="separator:a6367cbbce3f5eeb50eb88f38531f5ca0 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a786aa9116a8240f3c80a478fa2c7bed9 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a786aa9116a8240f3c80a478fa2c7bed9">program_counter_</a> {}</td></tr>
+<tr class="separator:a786aa9116a8240f3c80a478fa2c7bed9 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649f1a05c9804dc8b32c42d0a26bfa67 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a649f1a05c9804dc8b32c42d0a26bfa67">cycle_s_</a> {}</td></tr>
+<tr class="separator:a649f1a05c9804dc8b32c42d0a26bfa67 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c2b1c72a3420353a658128abfbb5a68 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a7c2b1c72a3420353a658128abfbb5a68">instructions_retired_</a> {}</td></tr>
+<tr class="separator:a7c2b1c72a3420353a658128abfbb5a68 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afceab6c7108d84224f14c3c0b52c2fe2 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#afceab6c7108d84224f14c3c0b52c2fe2">cpi_</a> {}</td></tr>
+<tr class="separator:afceab6c7108d84224f14c3c0b52c2fe2 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf1754c3ace71973679ec2f9a212d737 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#aaf1754c3ace71973679ec2f9a212d737">ipc_</a> {}</td></tr>
+<tr class="separator:aaf1754c3ace71973679ec2f9a212d737 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38693d7be1698897816ea448231f12b9 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a38693d7be1698897816ea448231f12b9">stall_cycles_</a> {}</td></tr>
+<tr class="separator:a38693d7be1698897816ea448231f12b9 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c51d85a826a7bea080d8a9ead0913b inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a13c51d85a826a7bea080d8a9ead0913b">branch_mispredictions_</a> {}</td></tr>
+<tr class="separator:a13c51d85a826a7bea080d8a9ead0913b inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b7f11e76ff40b5fa08757fffe0a714 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemoryController.html">MemoryController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a54b7f11e76ff40b5fa08757fffe0a714">memory_controller_</a></td></tr>
+<tr class="separator:a54b7f11e76ff40b5fa08757fffe0a714 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3edc0e9c3765ae9720874b361c58e947 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRegisterFile.html">RegisterFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a3edc0e9c3765ae9720874b361c58e947">registers_</a></td></tr>
+<tr class="separator:a3edc0e9c3765ae9720874b361c58e947 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3030c966af171bb3a504c55bc53520c inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classalu_1_1Alu.html">alu::Alu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ae3030c966af171bb3a504c55bc53520c">alu_</a></td></tr>
+<tr class="separator:ae3030c966af171bb3a504c55bc53520c inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95d14315496f42dd5be394f0ab950539 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a95d14315496f42dd5be394f0ab950539">program_size_</a> = 0</td></tr>
+<tr class="separator:a95d14315496f42dd5be394f0ab950539 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a25a6b5b3cd17447bfe4e88819ff55c48"></a>
@@ -200,8 +272,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3cba58e3f8571759507c623ec816dc4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3cba58e3f8571759507c623ec816dc4e">&#9670;&nbsp;</a></span>dumpState()</h2>
+<a id="a8b954269c60ab390ecca05966dacb47e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b954269c60ab390ecca05966dacb47e">&#9670;&nbsp;</a></span>DebugRun()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +282,51 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RVSSVM::dumpState </td>
+          <td class="memname">void RVSSVM::DebugRun </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classVmBase.html#ac14764bc14c9e4dd41655c9054b1dfa4">VmBase</a>.</p>
+
+</div>
+</div>
+<a id="af9c92521192b852397c3ba182fea8c99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c92521192b852397c3ba182fea8c99">&#9670;&nbsp;</a></span>Decode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::Decode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addf6db97ed1229c42554799d2449338e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf6db97ed1229c42554799d2449338e">&#9670;&nbsp;</a></span>DumpState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::DumpState </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
@@ -224,12 +340,114 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classVMBase.html#afb840ad16d3af2b88d81a960d2036bd8">VMBase</a>.</p>
+<p>Implements <a class="el" href="classVmBase.html#aca7c8b969944cd45024acd106671175f">VmBase</a>.</p>
 
 </div>
 </div>
-<a id="a0f502a38582acbe95a33ea25e71871eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f502a38582acbe95a33ea25e71871eb">&#9670;&nbsp;</a></span>printType()</h2>
+<a id="af6bf72c47e603412535cb63ade994727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6bf72c47e603412535cb63ade994727">&#9670;&nbsp;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::Execute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d401eee1018804bc76672fcea13b28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d401eee1018804bc76672fcea13b28a">&#9670;&nbsp;</a></span>ExecuteCsr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::ExecuteCsr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab07bcf2cd78c7f481c0e8eac9b63d767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab07bcf2cd78c7f481c0e8eac9b63d767">&#9670;&nbsp;</a></span>ExecuteDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::ExecuteDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa565a8b5426dc19cc4a9abfe2f72ee9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa565a8b5426dc19cc4a9abfe2f72ee9b">&#9670;&nbsp;</a></span>ExecuteFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::ExecuteFloat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a909efe42d1f6365578cef3502cd04426"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a909efe42d1f6365578cef3502cd04426">&#9670;&nbsp;</a></span>ExecuteVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::ExecuteVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1be53e68e06b88a720e8c50c1a884595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1be53e68e06b88a720e8c50c1a884595">&#9670;&nbsp;</a></span>Fetch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::Fetch </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cb411487b468c3a5e88780a10cedf76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb411487b468c3a5e88780a10cedf76">&#9670;&nbsp;</a></span>PrintType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,7 +456,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RVSSVM::printType </td>
+          <td class="memname">void RVSSVM::PrintType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -253,8 +471,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac16622085dc5b4f987744bb26836a975"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac16622085dc5b4f987744bb26836a975">&#9670;&nbsp;</a></span>reset()</h2>
+<a id="a9cb130b8c84159be82027d49ce3e4279"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cb130b8c84159be82027d49ce3e4279">&#9670;&nbsp;</a></span>Redo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +481,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RVSSVM::reset </td>
+          <td class="memname">void RVSSVM::Redo </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -276,12 +494,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classVMBase.html#a9c6d2a78389474c82c8c00d87d3114b7">VMBase</a>.</p>
+<p>Implements <a class="el" href="classVmBase.html#ab323c0d074c2ceb9885746d1073ed505">VmBase</a>.</p>
 
 </div>
 </div>
-<a id="a0ae8fcf554127b3f478f814eb515618f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ae8fcf554127b3f478f814eb515618f">&#9670;&nbsp;</a></span>run()</h2>
+<a id="aa75bbde8be42c275f928681e372d6c7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75bbde8be42c275f928681e372d6c7c">&#9670;&nbsp;</a></span>Reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +508,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RVSSVM::run </td>
+          <td class="memname">void RVSSVM::Reset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -303,12 +521,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classVMBase.html#aba3136fa19210d26fc93f1d14addee92">VMBase</a>.</p>
+<p>Implements <a class="el" href="classVmBase.html#ae8262f906074f8e778665b73841b0352">VmBase</a>.</p>
 
 </div>
 </div>
-<a id="af0144c812d7e41f744f451f089d59a57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0144c812d7e41f744f451f089d59a57">&#9670;&nbsp;</a></span>step()</h2>
+<a id="a0aa85843a97344299380afebc83d2a5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa85843a97344299380afebc83d2a5e">&#9670;&nbsp;</a></span>Run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +535,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RVSSVM::step </td>
+          <td class="memname">void RVSSVM::Run </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -330,7 +548,397 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classVMBase.html#a34243ba15bc18d340ff573c806068bd2">VMBase</a>.</p>
+<p>Implements <a class="el" href="classVmBase.html#ab99aff7b91e22e2b041d310791ae0281">VmBase</a>.</p>
+
+</div>
+</div>
+<a id="a5547766e7446048242849d2510e3b2ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5547766e7446048242849d2510e3b2ef">&#9670;&nbsp;</a></span>Step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::Step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classVmBase.html#a78fa2e4cc76ab45ca84e164b7b0af119">VmBase</a>.</p>
+
+</div>
+</div>
+<a id="aabc759ac821f87303daa71c9480b8756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabc759ac821f87303daa71c9480b8756">&#9670;&nbsp;</a></span>Undo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::Undo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classVmBase.html#a141e025834dd6b9d68f08db7959ed391">VmBase</a>.</p>
+
+</div>
+</div>
+<a id="a20a3c3b4d7f92288a65cd45b011c9db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20a3c3b4d7f92288a65cd45b011c9db2">&#9670;&nbsp;</a></span>WriteBack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteBack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3f7f30381652bed3ba3dc4f422a0021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f7f30381652bed3ba3dc4f422a0021">&#9670;&nbsp;</a></span>WriteBackCsr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteBackCsr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c43c1b0a03270d9335e6e73dc0dcf5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c43c1b0a03270d9335e6e73dc0dcf5f">&#9670;&nbsp;</a></span>WriteBackDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteBackDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a630798c6e11ee4546d1dd71b3dcf4fcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630798c6e11ee4546d1dd71b3dcf4fcb">&#9670;&nbsp;</a></span>WriteBackFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteBackFloat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6be204b3e7d69284119abb16b9042323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be204b3e7d69284119abb16b9042323">&#9670;&nbsp;</a></span>WriteBackVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteBackVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12d9fecb0a1312095fa3f9a303e6a22b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12d9fecb0a1312095fa3f9a303e6a22b">&#9670;&nbsp;</a></span>WriteMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteMemory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37d15537b41412ab8c59191bdbeeab4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37d15537b41412ab8c59191bdbeeab4e">&#9670;&nbsp;</a></span>WriteMemoryDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteMemoryDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3fb37b71e508285bc8e0f4892e1c0e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3fb37b71e508285bc8e0f4892e1c0e8">&#9670;&nbsp;</a></span>WriteMemoryFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteMemoryFloat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d6f358d802deea2f580469c7a061c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6f358d802deea2f580469c7a061c11">&#9670;&nbsp;</a></span>WriteMemoryVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RVSSVM::WriteMemoryVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adac1aa09fc07850d4f5446a9321bcee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adac1aa09fc07850d4f5446a9321bcee3">&#9670;&nbsp;</a></span>branch_flag_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RVSSVM::branch_flag_ = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af791e8846fc4e92787827da00a5bc809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af791e8846fc4e92787827da00a5bc809">&#9670;&nbsp;</a></span>control_unit_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRVSSControlUnit.html">RVSSControlUnit</a> RVSSVM::control_unit_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26f749a09117cb8c313ab423c2ebf9a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26f749a09117cb8c313ab423c2ebf9a3">&#9670;&nbsp;</a></span>csr_old_value_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t RVSSVM::csr_old_value_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fc6edc37b35e69343f6ecf2cedd6caf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc6edc37b35e69343f6ecf2cedd6caf">&#9670;&nbsp;</a></span>csr_target_address_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t RVSSVM::csr_target_address_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7951fd1c543faff83b8aee97427c01a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7951fd1c543faff83b8aee97427c01a2">&#9670;&nbsp;</a></span>csr_uimm_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t RVSSVM::csr_uimm_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae57223b65ada3f5f5dfecf6c16ce1409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae57223b65ada3f5f5dfecf6c16ce1409">&#9670;&nbsp;</a></span>csr_write_val_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t RVSSVM::csr_write_val_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6c5c56d7a856783a6ab9e4c3a6688ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c5c56d7a856783a6ab9e4c3a6688ca">&#9670;&nbsp;</a></span>current_delta_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structStepDelta.html">StepDelta</a> RVSSVM::current_delta_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d68bf6e4b85df7b3b40431479a10a65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d68bf6e4b85df7b3b40431479a10a65">&#9670;&nbsp;</a></span>execution_result_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t RVSSVM::execution_result_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81fccd4c10106e7aced1160d68119bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81fccd4c10106e7aced1160d68119bbb">&#9670;&nbsp;</a></span>memory_result_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t RVSSVM::memory_result_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4aa14ea6a3d63291eb637edee36c117e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa14ea6a3d63291eb637edee36c117e">&#9670;&nbsp;</a></span>next_pc_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t RVSSVM::next_pc_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab108a22ac8ca3f2634b8cd2322736f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab108a22ac8ca3f2634b8cd2322736f1d">&#9670;&nbsp;</a></span>redo_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;<a class="el" href="structStepDelta.html">StepDelta</a>&gt; RVSSVM::redo_stack_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22bbb0ff1567f0a6483f74f4327b606a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22bbb0ff1567f0a6483f74f4327b606a">&#9670;&nbsp;</a></span>return_address_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t RVSSVM::return_address_ {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a731a113960710ba745841a7f97678430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731a113960710ba745841a7f97678430">&#9670;&nbsp;</a></span>undo_stack_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;<a class="el" href="structStepDelta.html">StepDelta</a>&gt; RVSSVM::undo_stack_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

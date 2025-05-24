@@ -31,12 +31,14 @@ class \mbox{\hyperlink{classRegisterFile}{Register\+File}}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}{is\+Valid\+Register}} (const std\+::string \&reg)
-\begin{DoxyCompactList}\small\item\em Checks whether a given register name is valid. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{registers_8h_a1d7613312792f85b3571d0c93a058541}{is\+Valid\+General\+Purpose\+Register}} (const std\+::string \&reg)
 \item 
-bool \mbox{\hyperlink{registers_8h_a961b5d197401316d7c6a3ac4f87b1acd}{is\+Valid\+Floating\+Point\+Register}} (const std\+::string \&reg)
+bool \mbox{\hyperlink{registers_8h_ac5db3171f17fd09e341027d11d438649}{Is\+Valid\+General\+Purpose\+Register}} (const std\+::string \&reg)
 \item 
-bool \mbox{\hyperlink{registers_8h_ad62a3359928c8b8d89600050b85a1c36}{is\+Valid\+Vector\+Register}} (const std\+::string \&reg)
+bool \mbox{\hyperlink{registers_8h_aa1a257a2fc15d22847dad688c8b3bedd}{Is\+Valid\+Floating\+Point\+Register}} (const std\+::string \&reg)
+\item 
+bool \mbox{\hyperlink{registers_8h_a316a4fc126c519f58a022cbe120ac419}{Is\+Valid\+Vector\+Register}} (const std\+::string \&reg)
+\item 
+bool \mbox{\hyperlink{registers_8h_aca47a0deb2cf271388bcba061c11ba94}{Is\+Valid\+Csr}} (const std\+::string \&reg)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -48,6 +50,10 @@ const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ac416af250858196829ea943e606823b7}{valid\+\_\+floating\+\_\+point\+\_\+registers}}
 \item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_a7468977bddf28dfd8109ea3b8583c49d}{valid\+\_\+vector\+\_\+registers}}
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ac8b865efc7bd31cca9d4e9b718cd6e46}{valid\+\_\+csr\+\_\+registers}}
+\item 
+const std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{registers_8h_a64b23cb5af0e49d9fb7135500caf6d4f}{csr\+\_\+to\+\_\+address}}
 \item 
 const std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}{reg\+\_\+alias\+\_\+to\+\_\+name}}
 \begin{DoxyCompactList}\small\item\em Map of register aliases to their actual names. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -62,17 +68,23 @@ Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{registers_8h_a961b5d197401316d7c6a3ac4f87b1acd}\label{registers_8h_a961b5d197401316d7c6a3ac4f87b1acd}} 
-\index{registers.h@{registers.h}!isValidFloatingPointRegister@{isValidFloatingPointRegister}}
-\index{isValidFloatingPointRegister@{isValidFloatingPointRegister}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{isValidFloatingPointRegister()}{isValidFloatingPointRegister()}}
-{\footnotesize\ttfamily bool is\+Valid\+Floating\+Point\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{registers_8h_aca47a0deb2cf271388bcba061c11ba94}\label{registers_8h_aca47a0deb2cf271388bcba061c11ba94}} 
+\index{registers.h@{registers.h}!IsValidCsr@{IsValidCsr}}
+\index{IsValidCsr@{IsValidCsr}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{IsValidCsr()}{IsValidCsr()}}
+{\footnotesize\ttfamily bool Is\+Valid\+Csr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{registers_8h_a1d7613312792f85b3571d0c93a058541}\label{registers_8h_a1d7613312792f85b3571d0c93a058541}} 
-\index{registers.h@{registers.h}!isValidGeneralPurposeRegister@{isValidGeneralPurposeRegister}}
-\index{isValidGeneralPurposeRegister@{isValidGeneralPurposeRegister}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{isValidGeneralPurposeRegister()}{isValidGeneralPurposeRegister()}}
-{\footnotesize\ttfamily bool is\+Valid\+General\+Purpose\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{registers_8h_aa1a257a2fc15d22847dad688c8b3bedd}\label{registers_8h_aa1a257a2fc15d22847dad688c8b3bedd}} 
+\index{registers.h@{registers.h}!IsValidFloatingPointRegister@{IsValidFloatingPointRegister}}
+\index{IsValidFloatingPointRegister@{IsValidFloatingPointRegister}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{IsValidFloatingPointRegister()}{IsValidFloatingPointRegister()}}
+{\footnotesize\ttfamily bool Is\+Valid\+Floating\+Point\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{registers_8h_ac5db3171f17fd09e341027d11d438649}\label{registers_8h_ac5db3171f17fd09e341027d11d438649}} 
+\index{registers.h@{registers.h}!IsValidGeneralPurposeRegister@{IsValidGeneralPurposeRegister}}
+\index{IsValidGeneralPurposeRegister@{IsValidGeneralPurposeRegister}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{IsValidGeneralPurposeRegister()}{IsValidGeneralPurposeRegister()}}
+{\footnotesize\ttfamily bool Is\+Valid\+General\+Purpose\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}\label{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}} 
 \index{registers.h@{registers.h}!isValidRegister@{isValidRegister}}
@@ -80,27 +92,21 @@ Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.
 \doxysubsubsection{\texorpdfstring{isValidRegister()}{isValidRegister()}}
 {\footnotesize\ttfamily bool is\+Valid\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
 
-
-
-Checks whether a given register name is valid. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The register name to check. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if the register name is valid, false otherwise. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{registers_8h_ad62a3359928c8b8d89600050b85a1c36}\label{registers_8h_ad62a3359928c8b8d89600050b85a1c36}} 
-\index{registers.h@{registers.h}!isValidVectorRegister@{isValidVectorRegister}}
-\index{isValidVectorRegister@{isValidVectorRegister}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{isValidVectorRegister()}{isValidVectorRegister()}}
-{\footnotesize\ttfamily bool is\+Valid\+Vector\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{registers_8h_a316a4fc126c519f58a022cbe120ac419}\label{registers_8h_a316a4fc126c519f58a022cbe120ac419}} 
+\index{registers.h@{registers.h}!IsValidVectorRegister@{IsValidVectorRegister}}
+\index{IsValidVectorRegister@{IsValidVectorRegister}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{IsValidVectorRegister()}{IsValidVectorRegister()}}
+{\footnotesize\ttfamily bool Is\+Valid\+Vector\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{registers_8h_a64b23cb5af0e49d9fb7135500caf6d4f}\label{registers_8h_a64b23cb5af0e49d9fb7135500caf6d4f}} 
+\index{registers.h@{registers.h}!csr\_to\_address@{csr\_to\_address}}
+\index{csr\_to\_address@{csr\_to\_address}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{csr\_to\_address}{csr\_to\_address}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$std\+::string, int$>$ csr\+\_\+to\+\_\+address\hspace{0.3cm}{\ttfamily [extern]}}
+
 \mbox{\Hypertarget{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}\label{registers_8h_af4ede5aac2f7597ad13f0a67cb8b13b5}} 
 \index{registers.h@{registers.h}!reg\_alias\_to\_name@{reg\_alias\_to\_name}}
 \index{reg\_alias\_to\_name@{reg\_alias\_to\_name}!registers.h@{registers.h}}
@@ -110,6 +116,12 @@ True if the register name is valid, false otherwise.
 
 
 Map of register aliases to their actual names. 
+
+\mbox{\Hypertarget{registers_8h_ac8b865efc7bd31cca9d4e9b718cd6e46}\label{registers_8h_ac8b865efc7bd31cca9d4e9b718cd6e46}} 
+\index{registers.h@{registers.h}!valid\_csr\_registers@{valid\_csr\_registers}}
+\index{valid\_csr\_registers@{valid\_csr\_registers}!registers.h@{registers.h}}
+\doxysubsubsection{\texorpdfstring{valid\_csr\_registers}{valid\_csr\_registers}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+csr\+\_\+registers\hspace{0.3cm}{\ttfamily [extern]}}
 
 \mbox{\Hypertarget{registers_8h_ac416af250858196829ea943e606823b7}\label{registers_8h_ac416af250858196829ea943e606823b7}} 
 \index{registers.h@{registers.h}!valid\_floating\_point\_registers@{valid\_floating\_point\_registers}}

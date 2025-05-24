@@ -1,12 +1,12 @@
-\hypertarget{classVMBase}{}\doxysection{VMBase Class Reference}
-\label{classVMBase}\index{VMBase@{VMBase}}
+\hypertarget{classVMBase}{}\doxysection{VmBase Class Reference}
+\label{classVMBase}\index{VmBase@{VmBase}}
 
 
 {\ttfamily \#include $<$vm\+\_\+base.\+h$>$}
 
 
 
-Inheritance diagram for VMBase\+:
+Inheritance diagram for VmBase\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -16,7 +16,7 @@ Inheritance diagram for VMBase\+:
 \end{figure}
 
 
-Collaboration diagram for VMBase\+:
+Collaboration diagram for VmBase\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -27,9 +27,9 @@ Collaboration diagram for VMBase\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classVMBase_a75269a8612472521bf5b79d00b48d872}{VMBase}} ()=default
+\mbox{\hyperlink{classVMBase_a75269a8612472521bf5b79d00b48d872}{VmBase}} ()=default
 \item 
-\mbox{\hyperlink{classVMBase_af43164984da77e0ea193d61b3a290c7b}{$\sim$\+VMBase}} ()=default
+\mbox{\hyperlink{classVMBase_af43164984da77e0ea193d61b3a290c7b}{$\sim$\+VmBase}} ()=default
 \item 
 void \mbox{\hyperlink{classVMBase_a34df62c52d9d0e023c03340cdb7b9b2a}{load\+Program}} (const \mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \&program)
 \item 
@@ -78,182 +78,182 @@ unsigned int \mbox{\hyperlink{classVMBase_a75f6d7d72500ca13939281e88a5e6b7d}{bra
 \item 
 \mbox{\hyperlink{classRegisterFile}{Register\+File}} \mbox{\hyperlink{classVMBase_a170e94409bf86a213649499c3fd063b8}{registers\+\_\+}}
 \item 
-\mbox{\hyperlink{classALU_1_1ALU}{ALU\+::\+ALU}} \mbox{\hyperlink{classVMBase_a6356b9c808eedae8c7dfc1bde24f1d29}{alu\+\_\+}}
+\mbox{\hyperlink{classALU_1_1ALU}{alu\+::\+alu}} \mbox{\hyperlink{classVMBase_a6356b9c808eedae8c7dfc1bde24f1d29}{alu\+\_\+}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classVMBase_a75269a8612472521bf5b79d00b48d872}\label{classVMBase_a75269a8612472521bf5b79d00b48d872}} 
-\index{VMBase@{VMBase}!VMBase@{VMBase}}
-\index{VMBase@{VMBase}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{VMBase()}{VMBase()}}
-{\footnotesize\ttfamily VMBase\+::\+VMBase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+\index{VmBase@{VmBase}!VmBase@{VmBase}}
+\index{VmBase@{VmBase}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{VmBase()}{VmBase()}}
+{\footnotesize\ttfamily VmBase\+::\+VmBase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 \mbox{\Hypertarget{classVMBase_af43164984da77e0ea193d61b3a290c7b}\label{classVMBase_af43164984da77e0ea193d61b3a290c7b}} 
-\index{VMBase@{VMBase}!````~VMBase@{$\sim$VMBase}}
-\index{````~VMBase@{$\sim$VMBase}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{$\sim$VMBase()}{~VMBase()}}
-{\footnotesize\ttfamily VMBase\+::$\sim$\+VMBase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+\index{VmBase@{VmBase}!````VmBase@{$\sim$VmBase}}
+\index{````VmBase@{$\sim$VmBase}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{$\sim$VmBase()}{VmBase()}}
+{\footnotesize\ttfamily VmBase\+::$\sim$\+VmBase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classVMBase_aed76e5c5951a1ef9ad176548aee51b8a}\label{classVMBase_aed76e5c5951a1ef9ad176548aee51b8a}} 
-\index{VMBase@{VMBase}!addBreakpoint@{addBreakpoint}}
-\index{addBreakpoint@{addBreakpoint}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{addBreakpoint()}{addBreakpoint()}}
-{\footnotesize\ttfamily void VMBase\+::add\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+\index{VmBase@{VmBase}!addBreakpoint@{addBreakpoint}}
+\index{addBreakpoint@{addBreakpoint}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{addBreakpoint()}{AddBreakpoint()}}
+{\footnotesize\ttfamily void VmBase\+::add\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVMBase_af2f35f57b60c7e5d71795df3f940634f}\label{classVMBase_af2f35f57b60c7e5d71795df3f940634f}} 
-\index{VMBase@{VMBase}!checkBreakpoint@{checkBreakpoint}}
-\index{checkBreakpoint@{checkBreakpoint}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{checkBreakpoint()}{checkBreakpoint()}}
-{\footnotesize\ttfamily bool VMBase\+::check\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+\index{VmBase@{VmBase}!checkBreakpoint@{checkBreakpoint}}
+\index{checkBreakpoint@{checkBreakpoint}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{checkBreakpoint()}{CheckBreakpoint()}}
+{\footnotesize\ttfamily bool VmBase\+::check\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVMBase_afb840ad16d3af2b88d81a960d2036bd8}\label{classVMBase_afb840ad16d3af2b88d81a960d2036bd8}} 
-\index{VMBase@{VMBase}!dumpState@{dumpState}}
-\index{dumpState@{dumpState}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{dumpState()}{dumpState()}}
-{\footnotesize\ttfamily virtual void VMBase\+::dump\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\index{VmBase@{VmBase}!dumpState@{dumpState}}
+\index{dumpState@{dumpState}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{dumpState()}{DumpState()}}
+{\footnotesize\ttfamily virtual void VmBase\+::dump\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Implemented in \mbox{\hyperlink{classRVSSVM_a3cba58e3f8571759507c623ec816dc4e}{RVSSVM}}.
 
 \mbox{\Hypertarget{classVMBase_a6168ed83153abff37678f5e5230ef314}\label{classVMBase_a6168ed83153abff37678f5e5230ef314}} 
-\index{VMBase@{VMBase}!getProgramCounter@{getProgramCounter}}
-\index{getProgramCounter@{getProgramCounter}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{getProgramCounter()}{getProgramCounter()}}
-{\footnotesize\ttfamily uint64\+\_\+t VMBase\+::get\+Program\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\index{VmBase@{VmBase}!getProgramCounter@{getProgramCounter}}
+\index{getProgramCounter@{getProgramCounter}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{getProgramCounter()}{GetProgramCounter()}}
+{\footnotesize\ttfamily uint64\+\_\+t VmBase\+::get\+Program\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classVMBase_afafa70c35c2911ebac0df3e981d6b385}\label{classVMBase_afafa70c35c2911ebac0df3e981d6b385}} 
-\index{VMBase@{VMBase}!imm\_generator@{imm\_generator}}
-\index{imm\_generator@{imm\_generator}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!imm\_generator@{imm\_generator}}
+\index{imm\_generator@{imm\_generator}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{imm\_generator()}{imm\_generator()}}
-{\footnotesize\ttfamily int64\+\_\+t VMBase\+::imm\+\_\+generator (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{instruction }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int64\+\_\+t VmBase\+::imm\+\_\+generator (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{instruction }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVMBase_a34df62c52d9d0e023c03340cdb7b9b2a}\label{classVMBase_a34df62c52d9d0e023c03340cdb7b9b2a}} 
-\index{VMBase@{VMBase}!loadProgram@{loadProgram}}
-\index{loadProgram@{loadProgram}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{loadProgram()}{loadProgram()}}
-{\footnotesize\ttfamily void VMBase\+::load\+Program (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \&}]{program }\end{DoxyParamCaption})}
+\index{VmBase@{VmBase}!loadProgram@{loadProgram}}
+\index{loadProgram@{loadProgram}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{LoadProgram()}{LoadProgram()}}
+{\footnotesize\ttfamily void VmBase\+::load\+Program (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \&}]{program }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVMBase_a644c66cbcfde66e70738d769bd4928f7}\label{classVMBase_a644c66cbcfde66e70738d769bd4928f7}} 
-\index{VMBase@{VMBase}!removeBreakpoint@{removeBreakpoint}}
-\index{removeBreakpoint@{removeBreakpoint}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{removeBreakpoint()}{removeBreakpoint()}}
-{\footnotesize\ttfamily void VMBase\+::remove\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+\index{VmBase@{VmBase}!removeBreakpoint@{removeBreakpoint}}
+\index{removeBreakpoint@{removeBreakpoint}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{removeBreakpoint()}{RemoveBreakpoint()}}
+{\footnotesize\ttfamily void VmBase\+::remove\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVMBase_a9c6d2a78389474c82c8c00d87d3114b7}\label{classVMBase_a9c6d2a78389474c82c8c00d87d3114b7}} 
-\index{VMBase@{VMBase}!reset@{reset}}
-\index{reset@{reset}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
-{\footnotesize\ttfamily virtual void VMBase\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\index{VmBase@{VmBase}!reset@{reset}}
+\index{Reset@{Reset}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily virtual void VmBase\+::Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Implemented in \mbox{\hyperlink{classRVSSVM_ac16622085dc5b4f987744bb26836a975}{RVSSVM}}.
 
 \mbox{\Hypertarget{classVMBase_aba3136fa19210d26fc93f1d14addee92}\label{classVMBase_aba3136fa19210d26fc93f1d14addee92}} 
-\index{VMBase@{VMBase}!run@{run}}
-\index{run@{run}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!run@{run}}
+\index{run@{run}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily virtual void VMBase\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void VmBase\+::Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Implemented in \mbox{\hyperlink{classRVSSVM_a0ae8fcf554127b3f478f814eb515618f}{RVSSVM}}.
 
 \mbox{\Hypertarget{classVMBase_a34243ba15bc18d340ff573c806068bd2}\label{classVMBase_a34243ba15bc18d340ff573c806068bd2}} 
-\index{VMBase@{VMBase}!step@{step}}
-\index{step@{step}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{step()}{step()}}
-{\footnotesize\ttfamily virtual void VMBase\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\index{VmBase@{VmBase}!step@{step}}
+\index{step@{step}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{step()}{Step()}}
+{\footnotesize\ttfamily virtual void VmBase\+::Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
 Implemented in \mbox{\hyperlink{classRVSSVM_af0144c812d7e41f744f451f089d59a57}{RVSSVM}}.
 
 \mbox{\Hypertarget{classVMBase_ab32a590b667b9f9416da0c4727ef73d8}\label{classVMBase_ab32a590b667b9f9416da0c4727ef73d8}} 
-\index{VMBase@{VMBase}!updateProgramCounter@{updateProgramCounter}}
-\index{updateProgramCounter@{updateProgramCounter}!VMBase@{VMBase}}
-\doxysubsubsection{\texorpdfstring{updateProgramCounter()}{updateProgramCounter()}}
-{\footnotesize\ttfamily void VMBase\+::update\+Program\+Counter (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{value }\end{DoxyParamCaption})}
+\index{VmBase@{VmBase}!updateProgramCounter@{updateProgramCounter}}
+\index{updateProgramCounter@{updateProgramCounter}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{updateProgramCounter()}{UpdateProgramCounter()}}
+{\footnotesize\ttfamily void VmBase\+::update\+Program\+Counter (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{value }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classVMBase_a6356b9c808eedae8c7dfc1bde24f1d29}\label{classVMBase_a6356b9c808eedae8c7dfc1bde24f1d29}} 
-\index{VMBase@{VMBase}!alu\_@{alu\_}}
-\index{alu\_@{alu\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!alu\_@{alu\_}}
+\index{alu\_@{alu\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{alu\_}{alu\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classALU_1_1ALU}{ALU\+::\+ALU}} VMBase\+::alu\+\_\+}
+{\footnotesize\ttfamily \mbox{\hyperlink{classALU_1_1ALU}{alu\+::\+alu}} VmBase\+::alu\+\_\+}
 
 \mbox{\Hypertarget{classVMBase_a75f6d7d72500ca13939281e88a5e6b7d}\label{classVMBase_a75f6d7d72500ca13939281e88a5e6b7d}} 
-\index{VMBase@{VMBase}!branch\_mispredictions\_@{branch\_mispredictions\_}}
-\index{branch\_mispredictions\_@{branch\_mispredictions\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!branch\_mispredictions\_@{branch\_mispredictions\_}}
+\index{branch\_mispredictions\_@{branch\_mispredictions\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{branch\_mispredictions\_}{branch\_mispredictions\_}}
-{\footnotesize\ttfamily unsigned int VMBase\+::branch\+\_\+mispredictions\+\_\+ = 0}
+{\footnotesize\ttfamily unsigned int VmBase\+::branch\+\_\+mispredictions\+\_\+ = 0}
 
 \mbox{\Hypertarget{classVMBase_a45b2ed92f4c06786e3b87ae12e19a215}\label{classVMBase_a45b2ed92f4c06786e3b87ae12e19a215}} 
-\index{VMBase@{VMBase}!breakpoints\_@{breakpoints\_}}
-\index{breakpoints\_@{breakpoints\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!breakpoints\_@{breakpoints\_}}
+\index{breakpoints\_@{breakpoints\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{breakpoints\_}{breakpoints\_}}
-{\footnotesize\ttfamily std\+::vector$<$uint64\+\_\+t$>$ VMBase\+::breakpoints\+\_\+}
+{\footnotesize\ttfamily std\+::vector$<$uint64\+\_\+t$>$ VmBase\+::breakpoints\+\_\+}
 
 \mbox{\Hypertarget{classVMBase_aabe5f277c9f4c9dad3d7da4c56677f2a}\label{classVMBase_aabe5f277c9f4c9dad3d7da4c56677f2a}} 
-\index{VMBase@{VMBase}!cpi\_@{cpi\_}}
-\index{cpi\_@{cpi\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!cpi\_@{cpi\_}}
+\index{cpi\_@{cpi\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{cpi\_}{cpi\_}}
-{\footnotesize\ttfamily float VMBase\+::cpi\+\_\+ = 0.\+0}
+{\footnotesize\ttfamily float VmBase\+::cpi\+\_\+ = 0.\+0}
 
 \mbox{\Hypertarget{classVMBase_ac62491479088ac4bba0c70a5018f9416}\label{classVMBase_ac62491479088ac4bba0c70a5018f9416}} 
-\index{VMBase@{VMBase}!current\_instruction\_@{current\_instruction\_}}
-\index{current\_instruction\_@{current\_instruction\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!current\_instruction\_@{current\_instruction\_}}
+\index{current\_instruction\_@{current\_instruction\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{current\_instruction\_}{current\_instruction\_}}
-{\footnotesize\ttfamily uint32\+\_\+t VMBase\+::current\+\_\+instruction\+\_\+}
+{\footnotesize\ttfamily uint32\+\_\+t VmBase\+::current\+\_\+instruction\+\_\+}
 
 \mbox{\Hypertarget{classVMBase_a5dce495b8c5dbb1cede4c364845a0a19}\label{classVMBase_a5dce495b8c5dbb1cede4c364845a0a19}} 
-\index{VMBase@{VMBase}!cycle\_s@{cycle\_s}}
-\index{cycle\_s@{cycle\_s}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!cycle\_s@{cycle\_s}}
+\index{cycle\_s@{cycle\_s}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{cycle\_s}{cycle\_s}}
-{\footnotesize\ttfamily unsigned int VMBase\+::cycle\+\_\+s = 0}
+{\footnotesize\ttfamily unsigned int VmBase\+::cycle\+\_\+s = 0}
 
 \mbox{\Hypertarget{classVMBase_a0d10e1f1fd78b1b51ad7ef2d4c8f59ac}\label{classVMBase_a0d10e1f1fd78b1b51ad7ef2d4c8f59ac}} 
-\index{VMBase@{VMBase}!instructions\_retired\_@{instructions\_retired\_}}
-\index{instructions\_retired\_@{instructions\_retired\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!instructions\_retired\_@{instructions\_retired\_}}
+\index{instructions\_retired\_@{instructions\_retired\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{instructions\_retired\_}{instructions\_retired\_}}
-{\footnotesize\ttfamily unsigned int VMBase\+::instructions\+\_\+retired\+\_\+ = 0}
+{\footnotesize\ttfamily unsigned int VmBase\+::instructions\+\_\+retired\+\_\+ = 0}
 
 \mbox{\Hypertarget{classVMBase_a0bcde79df09ed64ee6194e0c6669d539}\label{classVMBase_a0bcde79df09ed64ee6194e0c6669d539}} 
-\index{VMBase@{VMBase}!ipc\_@{ipc\_}}
-\index{ipc\_@{ipc\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!ipc\_@{ipc\_}}
+\index{ipc\_@{ipc\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{ipc\_}{ipc\_}}
-{\footnotesize\ttfamily float VMBase\+::ipc\+\_\+ = 0.\+0}
+{\footnotesize\ttfamily float VmBase\+::ipc\+\_\+ = 0.\+0}
 
 \mbox{\Hypertarget{classVMBase_a9ed9a281a3ad558575ef228e40a1bd8a}\label{classVMBase_a9ed9a281a3ad558575ef228e40a1bd8a}} 
-\index{VMBase@{VMBase}!memory\_controller\_@{memory\_controller\_}}
-\index{memory\_controller\_@{memory\_controller\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!memory\_controller\_@{memory\_controller\_}}
+\index{memory\_controller\_@{memory\_controller\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{memory\_controller\_}{memory\_controller\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} VMBase\+::memory\+\_\+controller\+\_\+}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} VmBase\+::memory\+\_\+controller\+\_\+}
 
 \mbox{\Hypertarget{classVMBase_a8df40e7ac3dc168534686e841297afdc}\label{classVMBase_a8df40e7ac3dc168534686e841297afdc}} 
-\index{VMBase@{VMBase}!program\_counter\_@{program\_counter\_}}
-\index{program\_counter\_@{program\_counter\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!program\_counter\_@{program\_counter\_}}
+\index{program\_counter\_@{program\_counter\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{program\_counter\_}{program\_counter\_}}
-{\footnotesize\ttfamily uint64\+\_\+t VMBase\+::program\+\_\+counter\+\_\+ = 0}
+{\footnotesize\ttfamily uint64\+\_\+t VmBase\+::program\+\_\+counter\+\_\+ = 0}
 
 \mbox{\Hypertarget{classVMBase_a170e94409bf86a213649499c3fd063b8}\label{classVMBase_a170e94409bf86a213649499c3fd063b8}} 
-\index{VMBase@{VMBase}!registers\_@{registers\_}}
-\index{registers\_@{registers\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!registers\_@{registers\_}}
+\index{registers\_@{registers\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{registers\_}{registers\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classRegisterFile}{Register\+File}} VMBase\+::registers\+\_\+}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRegisterFile}{Register\+File}} VmBase\+::registers\+\_\+}
 
 \mbox{\Hypertarget{classVMBase_a54dd79d5da23967e1006417af67c5d33}\label{classVMBase_a54dd79d5da23967e1006417af67c5d33}} 
-\index{VMBase@{VMBase}!stall\_cycles\_@{stall\_cycles\_}}
-\index{stall\_cycles\_@{stall\_cycles\_}!VMBase@{VMBase}}
+\index{VmBase@{VmBase}!stall\_cycles\_@{stall\_cycles\_}}
+\index{stall\_cycles\_@{stall\_cycles\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{stall\_cycles\_}{stall\_cycles\_}}
-{\footnotesize\ttfamily unsigned int VMBase\+::stall\+\_\+cycles\+\_\+ = 0}
+{\footnotesize\ttfamily unsigned int VmBase\+::stall\+\_\+cycles\+\_\+ = 0}
 
 
 

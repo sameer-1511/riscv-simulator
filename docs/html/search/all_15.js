@@ -1,11 +1,24 @@
 var searchData=
 [
-  ['write_408',['write',['../classMemory.html#a23e394228e46d803d654abf75a5ba7c0',1,'Memory']]],
-  ['writebyte_409',['writeByte',['../classMemory.html#a0cf67c6c6f6cc68f639a631b630c2f1e',1,'Memory::writeByte()'],['../classMemoryController.html#a71ea31b46a1bf12b8b9c6c33fc378583',1,'MemoryController::writeByte()']]],
-  ['writedoubleword_410',['writeDoubleWord',['../classMemory.html#a6646b6581734228cf3e5efec556c7eb1',1,'Memory::writeDoubleWord()'],['../classMemoryController.html#a35571cf2eb12c196fd381c2bc65ae0ca',1,'MemoryController::writeDoubleWord()']]],
-  ['writefpr_411',['writeFPR',['../classRegisterFile.html#a1f3ad8f49160e20fce7d807de21feefa',1,'RegisterFile']]],
-  ['writegpr_412',['writeGPR',['../classRegisterFile.html#a7fa96f56b6224e42d27c2f199ce39cf3',1,'RegisterFile']]],
-  ['writehalfword_413',['writeHalfWord',['../classMemory.html#af566a2a9b918da9b517265f0a9f3d9de',1,'Memory::writeHalfWord()'],['../classMemoryController.html#ab80344171123f7c7f292b56d4ffdb753',1,'MemoryController::writeHalfWord()']]],
-  ['writevr_414',['writeVR',['../classRegisterFile.html#a385e8b0b08c01901538d4dd6502fee81',1,'RegisterFile']]],
-  ['writeword_415',['writeWord',['../classMemory.html#af597f709d0d312cdf49b4ab959ba8cdd',1,'Memory::writeWord()'],['../classMemoryController.html#a2a9dc25c2368c26ea587a71da8e1ce5a',1,'MemoryController::writeWord()']]]
+  ['ini_648',['ini',['../namespacevm__config_1_1ini.html',1,'vm_config']]],
+  ['valid_5fcsr_5fregisters_649',['valid_csr_registers',['../registers_8h.html#ac8b865efc7bd31cca9d4e9b718cd6e46',1,'valid_csr_registers():&#160;registers.cpp'],['../registers_8cpp.html#ac8b865efc7bd31cca9d4e9b718cd6e46',1,'valid_csr_registers():&#160;registers.cpp']]],
+  ['valid_5ffloating_5fpoint_5fregisters_650',['valid_floating_point_registers',['../registers_8h.html#ac416af250858196829ea943e606823b7',1,'valid_floating_point_registers():&#160;registers.cpp'],['../registers_8cpp.html#ac416af250858196829ea943e606823b7',1,'valid_floating_point_registers():&#160;registers.cpp']]],
+  ['valid_5fgeneral_5fpurpose_5fregisters_651',['valid_general_purpose_registers',['../registers_8h.html#a0528a55c986b4b9e8717e14eeebeb7df',1,'valid_general_purpose_registers():&#160;registers.cpp'],['../registers_8cpp.html#a0528a55c986b4b9e8717e14eeebeb7df',1,'valid_general_purpose_registers():&#160;registers.cpp']]],
+  ['valid_5fregisters_652',['valid_registers',['../registers_8h.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp'],['../registers_8cpp.html#ad6f8d6e2d5386980756f012d74ff5412',1,'valid_registers():&#160;registers.cpp']]],
+  ['valid_5fvector_5fregisters_653',['valid_vector_registers',['../registers_8h.html#a7468977bddf28dfd8109ea3b8583c49d',1,'valid_vector_registers():&#160;registers.cpp'],['../registers_8cpp.html#a7468977bddf28dfd8109ea3b8583c49d',1,'valid_vector_registers():&#160;registers.cpp']]],
+  ['value_654',['value',['../structToken.html#a4b7142147b8598f8e24c404928d9263b',1,'Token']]],
+  ['value_655',['VALUE',['../namespacecommand__handler.html#a44c251e1711cea6749a00f36fcb08cf4aecc2e9c313faddb07e7da223c1dc5c3f',1,'command_handler']]],
+  ['vec_5fregister_656',['VEC_REGISTER',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921ab1bc3ea41540ebb15bc6be2f8ac8b03f',1,'tokens.h']]],
+  ['vector_657',['VECTOR',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230a87752381b583740610f1dfeb07fdad7e',1,'RegisterFile']]],
+  ['vm_5fasm_5fmw_2ecpp_658',['vm_asm_mw.cpp',['../vm__asm__mw_8cpp.html',1,'']]],
+  ['vm_5fasm_5fmw_2eh_659',['vm_asm_mw.h',['../vm__asm__mw_8h.html',1,'']]],
+  ['vm_5fbase_2ecpp_660',['vm_base.cpp',['../vm__base_8cpp.html',1,'']]],
+  ['vm_5fbase_2eh_661',['vm_base.h',['../vm__base_8h.html',1,'']]],
+  ['vm_5fconfig_662',['vm_config',['../namespacevm__config.html',1,'']]],
+  ['vm_5frunner_2ecpp_663',['vm_runner.cpp',['../vm__runner_8cpp.html',1,'']]],
+  ['vm_5frunner_2eh_664',['vm_runner.h',['../vm__runner_8h.html',1,'']]],
+  ['vmbase_665',['VmBase',['../classVmBase.html',1,'VmBase'],['../classVmBase.html#abf599e805afcf71a94eb6d6d8a68735f',1,'VmBase::VmBase()']]],
+  ['vmrunner_666',['VMRunner',['../classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c',1,'VMRunner::VMRunner()'],['../classVMRunner.html',1,'VMRunner']]],
+  ['vmtypes_667',['VmTypes',['../namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5',1,'vm_config']]],
+  ['vrtostring_668',['VrToString',['../classRegisterFile.html#a0bec19dedf171a13fb2c20a291c5438a',1,'RegisterFile']]]
 ];

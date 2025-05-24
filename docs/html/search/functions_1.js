@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['btypeinstructionencoding_544',['BTypeInstructionEncoding',['../structInstructionSet_1_1BTypeInstructionEncoding.html#a88a8cc7afc857d9ac75b150b7a609b6c',1,'InstructionSet::BTypeInstructionEncoding']]]
+  ['btypeinstructionencoding_825',['BTypeInstructionEncoding',['../structinstruction__set_1_1BTypeInstructionEncoding.html#a3ba23591ee77efa63baf872e304d32aa',1,'instruction_set::BTypeInstructionEncoding']]]
 ];

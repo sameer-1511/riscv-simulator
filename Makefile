@@ -1,40 +1,39 @@
-CC = g++
-CFLAGS = -I$(INCLUDE_DIR) -Wall -Wextra -pedantic -std=c++17 -g -O3
-LDFLAGS = -lm
+CC := g++
+CFLAGS := -std=c++17 -Wall -Wextra -pedantic -frounding-math -ffloat-store -g -O3 -I src/include
+LDFLAGS := -lm
 
-ASAN_FLAGS = -fsanitize=address
+ASAN_FLAGS := -fsanitize=address
 
-# -Werror
+SRC_DIR := src
+BUILD_DIR := buildmake
 
-SRC_DIR = src
-INCLUDE_DIR = src/include
-BUILD_DIR = build
+TARGET_NAME := main
+TARGET := $(BUILD_DIR)/$(TARGET_NAME)
 
-TARGET_NAME = main
-TARGET = $(BUILD_DIR)/$(TARGET_NAME)
+SRCS := $(shell find $(SRC_DIR) -name '*.cpp')
+OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-SRC = $(shell find $(SRC_DIR) -type f -name '*.cpp')
-OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRC))
-
-YELLOW = \033[1;33m
-GREEN = \033[1;32m
-RED = \033[1;31m
-NC = \033[0m
+# Colors
+YELLOW := \033[1;33m
+GREEN := \033[1;32m
+RED := \033[1;31m
+NC := \033[0m
 
 >:
-	@echo "Usage: make [all|clean|run|debug|valgrind]"
-	@echo "all: Compile the project"
-	@echo "clean: Remove build directory"
-	@echo "run: Run the project"
-	@echo "debug: Run the project in debug mode"
-	@echo "valgrind: Run the project with valgrind"
-	
+	@echo "Usage: make [all|clean|run|debug|valgrind|asan]"
+	@echo "  all: Compile the project normally"
+	@echo "  clean: Remove build directory"
+	@echo "  run: Run the compiled binary"
+	@echo "  debug: Run the binary under gdb"
+	@echo "  valgrind: Run with valgrind memory checker"
+	@echo "  asan: Compile and link with AddressSanitizer"
+
 all: $(TARGET)
 .PHONY: all
 
 $(TARGET): $(OBJS)
 	@printf "$(YELLOW)[Linking] %s$(NC)\n" "$@"
-	@$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
+	@$(CC) $(OBJS) -o $@ $(LDFLAGS)
 	@printf "$(GREEN)[Build Complete]$(NC)\n"
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -67,4 +66,3 @@ valgrind: $(TARGET)
 docs:
 	@doxygen Doxyfile
 .PHONY: docs
-

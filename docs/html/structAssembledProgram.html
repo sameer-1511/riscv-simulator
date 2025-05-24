@@ -81,20 +81,20 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6c174fa14a8ddffc0931a27ff4ad83ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe8761d1f655b60e13b565f1fec54e76"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAssembledProgram.html#afe8761d1f655b60e13b565f1fec54e76">filename</a></td></tr>
 <tr class="separator:afe8761d1f655b60e13b565f1fec54e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2010e60b74c7eda0ade12cb69ee2dd4d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::variant&lt; uint8_t, uint16_t, uint32_t, uint64_t, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAssembledProgram.html#a2010e60b74c7eda0ade12cb69ee2dd4d">data_buffer</a></td></tr>
-<tr class="separator:a2010e60b74c7eda0ade12cb69ee2dd4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a8d7e3e5fd0a7d7741cc0f200d9ebd1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::bitset&lt; 32 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAssembledProgram.html#a9a8d7e3e5fd0a7d7741cc0f200d9ebd1">instruction_buffer</a></td></tr>
-<tr class="separator:a9a8d7e3e5fd0a7d7741cc0f200d9ebd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd827684cbf41302559a6b82ac8c2f0e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::variant&lt; uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAssembledProgram.html#abd827684cbf41302559a6b82ac8c2f0e">data_buffer</a></td></tr>
+<tr class="separator:abd827684cbf41302559a6b82ac8c2f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa86a747236787eb97373a6aa06f34277"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::bitset&lt; 32 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAssembledProgram.html#aa86a747236787eb97373a6aa06f34277">text_buffer</a></td></tr>
+<tr class="separator:aa86a747236787eb97373a6aa06f34277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2010e60b74c7eda0ade12cb69ee2dd4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2010e60b74c7eda0ade12cb69ee2dd4d">&#9670;&nbsp;</a></span>data_buffer</h2>
+<a id="abd827684cbf41302559a6b82ac8c2f0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd827684cbf41302559a6b82ac8c2f0e">&#9670;&nbsp;</a></span>data_buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::variant&lt;uint8_t, uint16_t, uint32_t, uint64_t, std::string&gt; &gt; AssembledProgram::data_buffer</td>
+          <td class="memname">std::vector&lt;std::variant&lt;uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double&gt; &gt; AssembledProgram::data_buffer</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -109,20 +109,6 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::string AssembledProgram::filename</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9a8d7e3e5fd0a7d7741cc0f200d9ebd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a8d7e3e5fd0a7d7741cc0f200d9ebd1">&#9670;&nbsp;</a></span>instruction_buffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::bitset&lt;32&gt; &gt; AssembledProgram::instruction_buffer</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -165,6 +151,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::unordered_map&lt;std::string, unsigned int&gt; AssembledProgram::symbol_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa86a747236787eb97373a6aa06f34277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa86a747236787eb97373a6aa06f34277">&#9670;&nbsp;</a></span>text_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::bitset&lt;32&gt; &gt; AssembledProgram::text_buffer</td>
         </tr>
       </table>
 </div><div class="memdoc">

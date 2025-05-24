@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tokentype_782',['TokenType',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921',1,'tokens.h']]]
+  ['syntaxtype_1215',['SyntaxType',['../namespaceinstruction__set.html#a7c366784cebccd7fbfda77874d229462',1,'instruction_set']]]
 ];

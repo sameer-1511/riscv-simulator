@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['eof_5f_792',['EOF_',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4eaad20bdd2e68cb1a4410478488cb8d',1,'tokens.h']]],
-  ['expected_5fimmediate_793',['EXPECTED_IMMEDIATE',['../namespaceErrors.html#a22124df3884d912a0113de503897588da48c66164b43ae205b4ea29e666d88692',1,'Errors']]],
-  ['expected_5flabel_794',['EXPECTED_LABEL',['../namespaceErrors.html#a22124df3884d912a0113de503897588dae95902890e301eff1b3f021b9371c377',1,'Errors']]],
-  ['expected_5fregister_795',['EXPECTED_REGISTER',['../namespaceErrors.html#a22124df3884d912a0113de503897588dabb0e54b9dc15fe61b5aaf3cb0ef0867d',1,'Errors']]]
+  ['eof_5f_1231',['EOF_',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4eaad20bdd2e68cb1a4410478488cb8d',1,'tokens.h']]],
+  ['exit_1232',['EXIT',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927',1,'command_handler']]],
+  ['expected_5fimmediate_1233',['EXPECTED_IMMEDIATE',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea48c66164b43ae205b4ea29e666d88692',1,'errors']]],
+  ['expected_5flabel_1234',['EXPECTED_LABEL',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae95902890e301eff1b3f021b9371c377',1,'errors']]],
+  ['expected_5fregister_1235',['EXPECTED_REGISTER',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeabb0e54b9dc15fe61b5aaf3cb0ef0867d',1,'errors']]]
 ];

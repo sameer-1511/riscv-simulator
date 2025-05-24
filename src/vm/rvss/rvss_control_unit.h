@@ -11,14 +11,11 @@
 #include "../../pch.h"
 
 class RVSSControlUnit : public ControlUnit {
-public:
-    void setControlSignals(uint32_t instruction) override;
+ public:
+  void SetControlSignals(uint32_t instruction) override;
 
-    ALU::ALUOp getALUSignal(uint32_t instruction, bool ALUOp) override;
+  alu::AluOp GetAluSignal(uint32_t instruction, bool ALUOp) override;
 
-    
 };
-
-
 
 #endif // RVSS_CONTROL_UNIT_H

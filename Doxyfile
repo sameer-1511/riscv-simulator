@@ -2357,7 +2357,7 @@ HIDE_UNDOC_RELATIONS   = YES
 HAVE_DOT               = YES
 
 # The DOT_NUM_THREADS specifies the number of dot invocations doxygen is allowed
-# to run in parallel. When set to 0 doxygen will base this on the number of
+# to Run in parallel. When set to 0 doxygen will base this on the number of
 # processors available in the system. You can set it explicitly to a value
 # larger than 0 to get control over the balance between CPU load and processing
 # speed.
@@ -2438,11 +2438,11 @@ UML_LIMIT_NUM_FIELDS   = 10
 # If the DOT_UML_DETAILS tag is set to NO, doxygen will show attributes and
 # methods without types and arguments in the UML graphs. If the DOT_UML_DETAILS
 # tag is set to YES, doxygen will add type and arguments for attributes and
-# methods in the UML graphs. If the DOT_UML_DETAILS tag is set to NONE, doxygen
+# methods in the UML graphs. If the DOT_UML_DETAILS tag is set to kNone, doxygen
 # will not generate fields with class member information in the UML graphs. The
 # class diagrams will look similar to the default class diagrams but using UML
 # notation for the relationships.
-# Possible values are: NO, YES and NONE.
+# Possible values are: NO, YES and kNone.
 # The default value is: NO.
 # This tag requires that the tag UML_LOOK is set to YES.
 
@@ -2579,7 +2579,7 @@ DIAFILE_DIRS           =
 
 # When using plantuml, the PLANTUML_JAR_PATH tag should be used to specify the
 # path where java can find the plantuml.jar file. If left blank, it is assumed
-# PlantUML is not used or called during a preprocessing step. Doxygen will
+# PlantUML is not used or called during a preprocessing Step. Doxygen will
 # generate a warning when it encounters a \startuml command in this case and
 # will not generate output for the diagram.
 

@@ -83,8 +83,8 @@ Include dependency graph for errors.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="errors_8h__incl.png" border="0" usemap="#asrc_2assembler_2errors_8h" alt=""/></div>
 <map name="asrc_2assembler_2errors_8h" id="asrc_2assembler_2errors_8h">
-<area shape="rect" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="782,5,949,32"/>
-<area shape="rect" href="pch_8h.html" title=" " alt="" coords="831,80,900,107"/>
+<area shape="rect" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="882,5,1049,32"/>
+<area shape="rect" href="pch_8h.html" title=" " alt="" coords="931,80,1000,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,85,181"/>
 <area shape="rect" title=" " alt="" coords="110,155,173,181"/>
 <area shape="rect" title=" " alt="" coords="197,155,256,181"/>
@@ -104,6 +104,8 @@ Include dependency graph for errors.h:</div>
 <area shape="rect" title=" " alt="" coords="1588,155,1647,181"/>
 <area shape="rect" title=" " alt="" coords="1671,155,1731,181"/>
 <area shape="rect" title=" " alt="" coords="1756,155,1815,181"/>
+<area shape="rect" title=" " alt="" coords="1839,155,1902,181"/>
+<area shape="rect" title=" " alt="" coords="1927,155,1993,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -111,15 +113,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="errors_8h__dep__incl.png" border="0" usemap="#asrc_2assembler_2errors_8hdep" alt=""/></div>
 <map name="asrc_2assembler_2errors_8hdep" id="asrc_2assembler_2errors_8hdep">
-<area shape="rect" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="141,5,308,32"/>
-<area shape="rect" href="errors_8cpp.html" title=" " alt="" coords="33,80,216,107"/>
-<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="240,80,409,107"/>
-<area shape="rect" href="assembler_8h.html" title=" " alt="" coords="141,155,337,181"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,229,111,256"/>
-<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="493,229,677,256"/>
-<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="369,155,454,181"/>
-<area shape="rect" href="assembler_8cpp.html" title=" " alt="" coords="134,229,345,256"/>
-<area shape="rect" href="utils_8cpp.html" title="Contains utility functions for the VM." alt="" coords="368,229,468,256"/>
+<area shape="rect" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="722,5,889,32"/>
+<area shape="rect" href="errors_8cpp.html" title=" " alt="" coords="614,80,797,107"/>
+<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="821,80,990,107"/>
+<area shape="rect" href="assembler_8h.html" title=" " alt="" coords="286,155,482,181"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="161,237,266,263"/>
+<area shape="rect" href="csr__formats_8cpp.html" title=" " alt="" coords="525,229,713,271"/>
+<area shape="rect" href="d__formats_8cpp.html" title=" " alt="" coords="737,229,914,271"/>
+<area shape="rect" href="f__d__formats_8cpp.html" title=" " alt="" coords="1269,229,1459,271"/>
+<area shape="rect" href="i__m__formats_8cpp.html" title=" " alt="" coords="1483,229,1677,271"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="1701,237,1885,263"/>
+<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="924,155,1009,181"/>
+<area shape="rect" href="assembler_8cpp.html" title=" " alt="" coords="289,237,500,263"/>
+<area shape="rect" href="test__vm_8cpp.html" title=" " alt="" coords="5,237,136,263"/>
+<area shape="rect" href="utils_8cpp.html" title="Contains utility functions for the VM." alt="" coords="938,237,1038,263"/>
+<area shape="rect" href="rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="1062,237,1245,263"/>
 </map>
 </div>
 </div>
@@ -127,79 +135,79 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1SyntaxError.html">Errors::SyntaxError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a generic syntax error in the assembler.  <a href="structErrors_1_1SyntaxError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1SyntaxError.html">errors::SyntaxError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a generic syntax error in the assembler.  <a href="structerrors_1_1SyntaxError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1UnexpectedTokenError.html">Errors::UnexpectedTokenError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an unexpected token in the input.  <a href="structErrors_1_1UnexpectedTokenError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1UnexpectedTokenError.html">errors::UnexpectedTokenError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an unexpected token in the input.  <a href="structerrors_1_1UnexpectedTokenError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1ImmediateOutOfRangeError.html">Errors::ImmediateOutOfRangeError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an immediate value being outside the valid range.  <a href="structErrors_1_1ImmediateOutOfRangeError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1ImmediateOutOfRangeError.html">errors::ImmediateOutOfRangeError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an immediate value being outside the valid range.  <a href="structerrors_1_1ImmediateOutOfRangeError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1MisalignedImmediateError.html">Errors::MisalignedImmediateError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an immediate value being misaligned.  <a href="structErrors_1_1MisalignedImmediateError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1MisalignedImmediateError.html">errors::MisalignedImmediateError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by an immediate value being misaligned.  <a href="structerrors_1_1MisalignedImmediateError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1UnexpectedOperandError.html">Errors::UnexpectedOperandError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by encountering an unexpected operand.  <a href="structErrors_1_1UnexpectedOperandError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1UnexpectedOperandError.html">errors::UnexpectedOperandError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by encountering an unexpected operand.  <a href="structerrors_1_1UnexpectedOperandError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1InvalidLabelRefError.html">Errors::InvalidLabelRefError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by referencing an invalid or undefined label.  <a href="structErrors_1_1InvalidLabelRefError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1InvalidLabelRefError.html">errors::InvalidLabelRefError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by referencing an invalid or undefined label.  <a href="structerrors_1_1InvalidLabelRefError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1LabelRedefinitionError.html">Errors::LabelRedefinitionError</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by redefining a previously defined label.  <a href="structErrors_1_1LabelRedefinitionError.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1LabelRedefinitionError.html">errors::LabelRedefinitionError</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an error caused by redefining a previously defined label.  <a href="structerrors_1_1LabelRedefinitionError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrors_1_1InvalidRegisterError.html">Errors::InvalidRegisterError</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structerrors_1_1InvalidRegisterError.html">errors::InvalidRegisterError</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespaceErrors"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceErrors.html">Errors</a></td></tr>
+<tr class="memitem:namespaceerrors"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceerrors.html">errors</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a22124df3884d912a0113de503897588d"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588d">Errors::ErrorType</a> { <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da8015f208e97eb87d4077cf0c5d5aeb83">Errors::UNEXPECTED_TOKEN</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dad7822fa0763e672131324accbcf830d0">Errors::UNEXPECTED_EOF</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da4598db2cfeef2078a4c652100cfe25c7">Errors::UNEXPECTED_OPERAND</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da2dee638c1209e59a0584ec345d2469b5">Errors::MISSING_OPERAND</a>
+<tr class="memitem:a08d49fe09bd28d4b06dc27d2a5e3e2ae"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2ae">errors::ErrorType</a> { <br />
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea8015f208e97eb87d4077cf0c5d5aeb83">errors::UNEXPECTED_TOKEN</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aead7822fa0763e672131324accbcf830d0">errors::UNEXPECTED_EOF</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea4598db2cfeef2078a4c652100cfe25c7">errors::UNEXPECTED_OPERAND</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea2dee638c1209e59a0584ec345d2469b5">errors::MISSING_OPERAND</a>
 , <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dad747dec1e9ebdda3b5eba6ab9f3450d8">Errors::MISSING_COMMA</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dae7feccc35303a919358574bb9873ec6d">Errors::MISSING_LPAREN</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da8cb50830806d95b68fe452830a94d51e">Errors::MISSING_RPAREN</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dabb0e54b9dc15fe61b5aaf3cb0ef0867d">Errors::EXPECTED_REGISTER</a>
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aead747dec1e9ebdda3b5eba6ab9f3450d8">errors::MISSING_COMMA</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae7feccc35303a919358574bb9873ec6d">errors::MISSING_LPAREN</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea8cb50830806d95b68fe452830a94d51e">errors::MISSING_RPAREN</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeabb0e54b9dc15fe61b5aaf3cb0ef0867d">errors::EXPECTED_REGISTER</a>
 , <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da48c66164b43ae205b4ea29e666d88692">Errors::EXPECTED_IMMEDIATE</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dae95902890e301eff1b3f021b9371c377">Errors::EXPECTED_LABEL</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da6bf179afa8f7fba18cf39bc0ca6fe043">Errors::INVALID_OPERAND</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dac9a9219dfe74bd3ad1c359a2f1082822">Errors::INVALID_DIRECTIVE</a>
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea48c66164b43ae205b4ea29e666d88692">errors::EXPECTED_IMMEDIATE</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae95902890e301eff1b3f021b9371c377">errors::EXPECTED_LABEL</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea6bf179afa8f7fba18cf39bc0ca6fe043">errors::INVALID_OPERAND</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeac9a9219dfe74bd3ad1c359a2f1082822">errors::INVALID_DIRECTIVE</a>
 , <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da2e28fa293e2ca8aca645d85ad05096c3">Errors::INVALID_INSTRUCTION</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da7277cc675779f41d6cd80f43a8ec702f">Errors::INVALID_REGISTER</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dae1b0ba36bd640cb2081a4b665a8765bf">Errors::INVALID_IMMEDIATE</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dab3d145c731fec2adf80f7632dd981b47">Errors::INVALID_LABEL</a>
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea2e28fa293e2ca8aca645d85ad05096c3">errors::INVALID_INSTRUCTION</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea7277cc675779f41d6cd80f43a8ec702f">errors::INVALID_REGISTER</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae1b0ba36bd640cb2081a4b665a8765bf">errors::INVALID_IMMEDIATE</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeab3d145c731fec2adf80f7632dd981b47">errors::INVALID_LABEL</a>
 , <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dac4b6dda0a90cf1815860d0860989623d">Errors::INVALID_LABEL_REF</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da506556a229186f5b45f364032625ff5b">Errors::INVALID_TOKEN</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da3fba68b9108afef4ec5c2eb304dd63ff">Errors::INVALID_SYNTAX</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da71b8e49b5ac60a6d3468de1fa2b67932">Errors::MISALIGNED_IMMEDIATE</a>
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeac4b6dda0a90cf1815860d0860989623d">errors::INVALID_LABEL_REF</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea506556a229186f5b45f364032625ff5b">errors::INVALID_TOKEN</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea3fba68b9108afef4ec5c2eb304dd63ff">errors::INVALID_SYNTAX</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea71b8e49b5ac60a6d3468de1fa2b67932">errors::MISALIGNED_IMMEDIATE</a>
 , <br />
-&#160;&#160;<a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588dae654793b308eb6923f12cf695d6fb902">Errors::MISALIGNED_LABEL</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da1a90c26e5e0d02b67ccd5eeb0437752a">Errors::IMMEDIATE_OUT_OF_RANGE</a>
-, <a class="el" href="namespaceErrors.html#a22124df3884d912a0113de503897588da9a10f345b0f755d461a8673a5e9ef6b4">Errors::UNKNOWN_ERROR</a>
+&#160;&#160;<a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae654793b308eb6923f12cf695d6fb902">errors::MISALIGNED_LABEL</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea1a90c26e5e0d02b67ccd5eeb0437752a">errors::IMMEDIATE_OUT_OF_RANGE</a>
+, <a class="el" href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea9a10f345b0f755d461a8673a5e9ef6b4">errors::UNKNOWN_ERROR</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a22124df3884d912a0113de503897588d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates various types of errors that can occur during assembly.  <a href="namespaceErrors.html#a22124df3884d912a0113de503897588d">More...</a><br /></td></tr>
-<tr class="separator:a22124df3884d912a0113de503897588d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a08d49fe09bd28d4b06dc27d2a5e3e2ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates various types of errors that can occur during assembly.  <a href="namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2ae">More...</a><br /></td></tr>
+<tr class="separator:a08d49fe09bd28d4b06dc27d2a5e3e2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4e889a6ffc4a749982b885b7ebb8df6a"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceErrors.html#a4e889a6ffc4a749982b885b7ebb8df6a">Errors::ANSI_code_red</a> = &quot;\033[31m&quot;</td></tr>
-<tr class="memdesc:a4e889a6ffc4a749982b885b7ebb8df6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ANSI code for red-colored text.  <a href="namespaceErrors.html#a4e889a6ffc4a749982b885b7ebb8df6a">More...</a><br /></td></tr>
-<tr class="separator:a4e889a6ffc4a749982b885b7ebb8df6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8efcac48f0bbeaa7a935b070b974533b"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceErrors.html#a8efcac48f0bbeaa7a935b070b974533b">Errors::ANSI_code_reset</a> = &quot;\033[0m&quot;</td></tr>
-<tr class="memdesc:a8efcac48f0bbeaa7a935b070b974533b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ANSI code to reset text formatting.  <a href="namespaceErrors.html#a8efcac48f0bbeaa7a935b070b974533b">More...</a><br /></td></tr>
-<tr class="separator:a8efcac48f0bbeaa7a935b070b974533b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb11ca64c6ab255eb7bfc65e00f2c94"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceerrors.html#acbb11ca64c6ab255eb7bfc65e00f2c94">errors::ANSI_code_red</a> = &quot;\033[31m&quot;</td></tr>
+<tr class="memdesc:acbb11ca64c6ab255eb7bfc65e00f2c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">ANSI code for red-colored text.  <a href="namespaceerrors.html#acbb11ca64c6ab255eb7bfc65e00f2c94">More...</a><br /></td></tr>
+<tr class="separator:acbb11ca64c6ab255eb7bfc65e00f2c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf4393c33a85393d238a21ef77abfdd9"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceerrors.html#adf4393c33a85393d238a21ef77abfdd9">errors::ANSI_code_reset</a> = &quot;\033[0m&quot;</td></tr>
+<tr class="memdesc:adf4393c33a85393d238a21ef77abfdd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">ANSI code to Reset text formatting.  <a href="namespaceerrors.html#adf4393c33a85393d238a21ef77abfdd9">More...</a><br /></td></tr>
+<tr class="separator:adf4393c33a85393d238a21ef77abfdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines error handling structures and error types for syntax and semantic errors in the assembler. </p>

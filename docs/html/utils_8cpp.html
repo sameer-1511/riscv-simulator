@@ -76,68 +76,74 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="pch_8h_source.html">pch.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="registers_8h_source.html">vm/registers.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utils.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8cpp__incl.png" border="0" usemap="#asrc_2utils_8cpp" alt=""/></div>
 <map name="asrc_2utils_8cpp" id="asrc_2utils_8cpp">
-<area shape="rect" title="Contains utility functions for the VM." alt="" coords="749,5,849,32"/>
-<area shape="rect" href="pch_8h.html" title=" " alt="" coords="837,304,894,331"/>
-<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="802,80,865,107"/>
-<area shape="rect" title=" " alt="" coords="5,379,85,405"/>
-<area shape="rect" title=" " alt="" coords="110,379,173,405"/>
-<area shape="rect" title=" " alt="" coords="197,379,256,405"/>
-<area shape="rect" title=" " alt="" coords="280,379,365,405"/>
-<area shape="rect" title=" " alt="" coords="390,379,463,405"/>
-<area shape="rect" title=" " alt="" coords="488,379,563,405"/>
-<area shape="rect" title=" " alt="" coords="587,379,661,405"/>
-<area shape="rect" title=" " alt="" coords="685,379,736,405"/>
-<area shape="rect" title=" " alt="" coords="760,379,803,405"/>
-<area shape="rect" title=" " alt="" coords="827,379,904,405"/>
-<area shape="rect" title=" " alt="" coords="928,379,1003,405"/>
-<area shape="rect" title=" " alt="" coords="1027,379,1151,405"/>
-<area shape="rect" title=" " alt="" coords="1176,379,1291,405"/>
-<area shape="rect" title=" " alt="" coords="1315,379,1383,405"/>
-<area shape="rect" title=" " alt="" coords="1407,379,1473,405"/>
-<area shape="rect" title=" " alt="" coords="1497,379,1564,405"/>
-<area shape="rect" title=" " alt="" coords="1588,379,1647,405"/>
-<area shape="rect" title=" " alt="" coords="1671,379,1731,405"/>
-<area shape="rect" title=" " alt="" coords="1756,379,1815,405"/>
-<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="864,155,1019,181"/>
-<area shape="rect" href="tokens_8h.html" title="Contains the definition of the TokenType enum and the Token struct." alt="" coords="903,229,980,256"/>
-<area shape="rect" href="code__generator_8h.html" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="1005,229,1139,256"/>
-<area shape="rect" href="errors_8h.html" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="1164,229,1236,256"/>
+<area shape="rect" title="Contains utility functions for the VM." alt="" coords="792,5,892,32"/>
+<area shape="rect" href="pch_8h.html" title=" " alt="" coords="943,304,1000,331"/>
+<area shape="rect" href="utils_8h.html" title="Contains utility functions for file I/O and string manipulation." alt="" coords="811,80,873,107"/>
+<area shape="rect" href="registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="624,155,740,181"/>
+<area shape="rect" title=" " alt="" coords="1742,379,1822,405"/>
+<area shape="rect" title=" " alt="" coords="1847,379,1909,405"/>
+<area shape="rect" title=" " alt="" coords="1934,379,1993,405"/>
+<area shape="rect" title=" " alt="" coords="90,379,175,405"/>
+<area shape="rect" title=" " alt="" coords="200,379,273,405"/>
+<area shape="rect" title=" " alt="" coords="298,379,373,405"/>
+<area shape="rect" title=" " alt="" coords="397,379,471,405"/>
+<area shape="rect" title=" " alt="" coords="495,379,546,405"/>
+<area shape="rect" title=" " alt="" coords="570,379,613,405"/>
+<area shape="rect" title=" " alt="" coords="637,379,714,405"/>
+<area shape="rect" title=" " alt="" coords="738,379,813,405"/>
+<area shape="rect" title=" " alt="" coords="837,379,961,405"/>
+<area shape="rect" title=" " alt="" coords="986,379,1101,405"/>
+<area shape="rect" title=" " alt="" coords="1125,379,1193,405"/>
+<area shape="rect" title=" " alt="" coords="1217,379,1283,405"/>
+<area shape="rect" title=" " alt="" coords="1307,379,1374,405"/>
+<area shape="rect" title=" " alt="" coords="1398,379,1457,405"/>
+<area shape="rect" title=" " alt="" coords="5,379,65,405"/>
+<area shape="rect" title=" " alt="" coords="1481,379,1539,405"/>
+<area shape="rect" title=" " alt="" coords="1564,379,1627,405"/>
+<area shape="rect" title=" " alt="" coords="1651,379,1718,405"/>
+<area shape="rect" href="parser_8h.html" title="Contains the definition of the Parser class for parsing tokens and generating intermediate code." alt="" coords="765,155,919,181"/>
+<area shape="rect" href="tokens_8h.html" title="Contains the definition of the TokenType enum and the Token struct." alt="" coords="738,229,815,256"/>
+<area shape="rect" href="code__generator_8h.html" title="Contains the definition of the ICUnit struct and functions for generating machine code." alt="" coords="840,229,975,256"/>
+<area shape="rect" href="errors_8h.html" title="Defines error handling structures and error types for syntax and semantic errors in the assembler." alt="" coords="999,229,1071,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6179b35e5cda001308f2f674e2f63024"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a6179b35e5cda001308f2f674e2f63024">countLines</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a6179b35e5cda001308f2f674e2f63024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the number of lines in a given file.  <a href="utils_8cpp.html#a6179b35e5cda001308f2f674e2f63024">More...</a><br /></td></tr>
-<tr class="separator:a6179b35e5cda001308f2f674e2f63024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88c792e59824d0b46f5c47ca0dd12572"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a88c792e59824d0b46f5c47ca0dd12572">getLineFromFile</a> (const std::string &amp;fileName, unsigned int lineNumber)</td></tr>
-<tr class="memdesc:a88c792e59824d0b46f5c47ca0dd12572"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a specific line from a file.  <a href="utils_8cpp.html#a88c792e59824d0b46f5c47ca0dd12572">More...</a><br /></td></tr>
-<tr class="separator:a88c792e59824d0b46f5c47ca0dd12572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a318fd80779adfa70a90e74fc7a02d0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a6a318fd80779adfa70a90e74fc7a02d0">parseEscapedString</a> (const std::string &amp;input)</td></tr>
-<tr class="memdesc:a6a318fd80779adfa70a90e74fc7a02d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a string containing escaped characters into its unescaped form.  <a href="utils_8cpp.html#a6a318fd80779adfa70a90e74fc7a02d0">More...</a><br /></td></tr>
-<tr class="separator:a6a318fd80779adfa70a90e74fc7a02d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4018521cb03000aae5da3f04d2a9921e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a4018521cb03000aae5da3f04d2a9921e">dumpErrors</a> (const std::string &amp;filename, const std::vector&lt; <a class="el" href="structParseError.html">ParseError</a> &gt; &amp;errors)</td></tr>
-<tr class="separator:a4018521cb03000aae5da3f04d2a9921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74f180d3e5519e592af7080d44a8fe8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a74f180d3e5519e592af7080d44a8fe8b">dumpNoErrors</a> (const std::string &amp;filename)</td></tr>
-<tr class="separator:a74f180d3e5519e592af7080d44a8fe8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f1db91cc23a2bfbba2379c15eb75d05"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a9f1db91cc23a2bfbba2379c15eb75d05">CountLines</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a9f1db91cc23a2bfbba2379c15eb75d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Counts the number of lines in a given file.  <a href="utils_8cpp.html#a9f1db91cc23a2bfbba2379c15eb75d05">More...</a><br /></td></tr>
+<tr class="separator:a9f1db91cc23a2bfbba2379c15eb75d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110b46ab6e189c14e24ed3e35680b91a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a110b46ab6e189c14e24ed3e35680b91a">GetLineFromFile</a> (const std::string &amp;fileName, unsigned int lineNumber)</td></tr>
+<tr class="memdesc:a110b46ab6e189c14e24ed3e35680b91a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a specific line from a file.  <a href="utils_8cpp.html#a110b46ab6e189c14e24ed3e35680b91a">More...</a><br /></td></tr>
+<tr class="separator:a110b46ab6e189c14e24ed3e35680b91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac175dbe8421725a466a026a8eecf9b11"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#ac175dbe8421725a466a026a8eecf9b11">ParseEscapedString</a> (const std::string &amp;input)</td></tr>
+<tr class="memdesc:ac175dbe8421725a466a026a8eecf9b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a string containing escaped characters into its unescaped form.  <a href="utils_8cpp.html#ac175dbe8421725a466a026a8eecf9b11">More...</a><br /></td></tr>
+<tr class="separator:ac175dbe8421725a466a026a8eecf9b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213bff0cf89805230de1b52efeed770c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a213bff0cf89805230de1b52efeed770c">DumpErrors</a> (const std::string &amp;filename, const std::vector&lt; <a class="el" href="structParseError.html">ParseError</a> &gt; &amp;errors)</td></tr>
+<tr class="separator:a213bff0cf89805230de1b52efeed770c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8df536230d916b8a9ac30e2c586a3fc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a8df536230d916b8a9ac30e2c586a3fc2">DumpNoErrors</a> (const std::string &amp;filename)</td></tr>
+<tr class="separator:a8df536230d916b8a9ac30e2c586a3fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85cbd594debea4a885f060c8edbfc214"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8cpp.html#a85cbd594debea4a885f060c8edbfc214">DumpRegisters</a> (const std::string &amp;filename, <a class="el" href="classRegisterFile.html">RegisterFile</a> &amp;register_file)</td></tr>
+<tr class="separator:a85cbd594debea4a885f060c8edbfc214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains utility functions for the VM. </p>
 <dl class="section author"><dt>Author</dt><dd>Vishank Singh, <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a6179b35e5cda001308f2f674e2f63024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6179b35e5cda001308f2f674e2f63024">&#9670;&nbsp;</a></span>countLines()</h2>
+<a id="a9f1db91cc23a2bfbba2379c15eb75d05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f1db91cc23a2bfbba2379c15eb75d05">&#9670;&nbsp;</a></span>CountLines()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t countLines </td>
+          <td class="memname">int64_t CountLines </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
@@ -163,14 +169,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4018521cb03000aae5da3f04d2a9921e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4018521cb03000aae5da3f04d2a9921e">&#9670;&nbsp;</a></span>dumpErrors()</h2>
+<a id="a213bff0cf89805230de1b52efeed770c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213bff0cf89805230de1b52efeed770c">&#9670;&nbsp;</a></span>DumpErrors()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void dumpErrors </td>
+          <td class="memname">void DumpErrors </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
@@ -191,14 +197,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a74f180d3e5519e592af7080d44a8fe8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74f180d3e5519e592af7080d44a8fe8b">&#9670;&nbsp;</a></span>dumpNoErrors()</h2>
+<a id="a8df536230d916b8a9ac30e2c586a3fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8df536230d916b8a9ac30e2c586a3fc2">&#9670;&nbsp;</a></span>DumpNoErrors()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void dumpNoErrors </td>
+          <td class="memname">void DumpNoErrors </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
@@ -209,14 +215,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a88c792e59824d0b46f5c47ca0dd12572"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88c792e59824d0b46f5c47ca0dd12572">&#9670;&nbsp;</a></span>getLineFromFile()</h2>
+<a id="a85cbd594debea4a885f060c8edbfc214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85cbd594debea4a885f060c8edbfc214">&#9670;&nbsp;</a></span>DumpRegisters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string getLineFromFile </td>
+          <td class="memname">void DumpRegisters </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRegisterFile.html">RegisterFile</a> &amp;&#160;</td>
+          <td class="paramname"><em>register_file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a110b46ab6e189c14e24ed3e35680b91a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110b46ab6e189c14e24ed3e35680b91a">&#9670;&nbsp;</a></span>GetLineFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string GetLineFromFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>fileName</em>, </td>
@@ -254,14 +288,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6a318fd80779adfa70a90e74fc7a02d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a318fd80779adfa70a90e74fc7a02d0">&#9670;&nbsp;</a></span>parseEscapedString()</h2>
+<a id="ac175dbe8421725a466a026a8eecf9b11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac175dbe8421725a466a026a8eecf9b11">&#9670;&nbsp;</a></span>ParseEscapedString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string parseEscapedString </td>
+          <td class="memname">std::string ParseEscapedString </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
