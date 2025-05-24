@@ -20,15 +20,6 @@ struct RTypeInstructionEncoding {
       : opcode(opcode), funct3(funct3), funct7(funct7) {}
 };
 
-struct R4TypeInstructionEncoding {
-  std::bitset<7> opcode;
-  std::bitset<3> funct3;
-  std::bitset<2> func2;
-
-  R4TypeInstructionEncoding(unsigned int opcode, unsigned int funct3, unsigned int func2)
-      : opcode(opcode), funct3(funct3), func2(func2) {}
-};
-
 struct I1TypeInstructionEncoding {
   std::bitset<7> opcode;
   std::bitset<3> funct3;
@@ -217,7 +208,6 @@ enum class InstructionType {
 };
 
 extern std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map;
-extern std::unordered_map<std::string, R4TypeInstructionEncoding> R4_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map;

@@ -561,15 +561,15 @@ void RVSSVM::Step() {
     std::cout << "Program Counter: " << program_counter_ << std::endl;
 
     current_delta_.new_pc = program_counter_;
+
+    // history_.push(current_delta_);
+
     undo_stack_.push(current_delta_);
     while (!redo_stack_.empty()) {
       redo_stack_.pop();
     }
 
-    current_delta_.register_changes.clear();
-    current_delta_.memory_changes.clear();
-    current_delta_.old_pc = 0;
-    current_delta_.new_pc = 0;
+    current_delta_ = StepDelta();
   } else if (program_counter_==program_size_) {
     std::cout << "Program Counter reached end of program: " << program_counter_ << std::endl;
   } else {
@@ -586,6 +586,14 @@ void RVSSVM::Undo() {
 
   StepDelta last = undo_stack_.top();
   undo_stack_.pop();
+
+  // if (!history_.can_undo()) {
+  //     std::cout << "Nothing to undo.\n";
+  //     return;
+  // }
+
+  // StepDelta last = history_.undo();
+
   for (const auto &change : last.register_changes) {
     switch (change.reg_type) {
       case 0: { // GPR
@@ -616,11 +624,6 @@ void RVSSVM::Undo() {
   std::cout << "Program Counter: " << program_counter_ << std::endl;
 
   redo_stack_.push(last);
-  // current_delta_.register_changes.clear();
-  // current_delta_.memory_changes.clear();
-  // current_delta_.old_pc = 0;
-  // current_delta_.new_pc = 0;
-
 
 
 }
@@ -633,6 +636,13 @@ void RVSSVM::Redo() {
 
   StepDelta next = redo_stack_.top();
   redo_stack_.pop();
+
+  // if (!history_.can_redo()) {
+  //       std::cout << "Nothing to redo.\n";
+  //       return;
+  //   }
+
+  //   StepDelta next = history_.redo();
 
   for (const auto &change : next.register_changes) {
     switch (change.reg_type) {
@@ -663,13 +673,6 @@ void RVSSVM::Redo() {
   DumpRegisters(globals::registers_dump_file, registers_);
   std::cout << "Program Counter: " << program_counter_ << std::endl;
   undo_stack_.push(next);
-  // current_delta_.register_changes.clear();
-  // current_delta_.memory_changes.clear();
-  // current_delta_.old_pc = 0;
-  // current_delta_.new_pc = 0;
-  // std::cout << "Redo Step completed." << std::endl;
-
-
 
 }
 
