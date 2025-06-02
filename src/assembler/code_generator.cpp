@@ -40,7 +40,7 @@ static inline uint32_t extractRegisterIndex(const std::string &reg) {
   return static_cast<uint32_t>(std::stoi(reg.substr(1)));
 }
 
-std::bitset<32> generateRTypeMachineCode(const ICUnit &block) {
+uint32_t generateRTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::R_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -55,10 +55,10 @@ std::bitset<32> generateRTypeMachineCode(const ICUnit &block) {
   machineCode |= (funct3 << 12);
   machineCode |= (rd << 7);
   machineCode |= opcode;
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateI1TypeMachineCode(const ICUnit &block) {
+uint32_t generateI1TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::I1_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -71,10 +71,10 @@ std::bitset<32> generateI1TypeMachineCode(const ICUnit &block) {
   machineCode |= (funct3 << 12);
   machineCode |= (rd << 7);
   machineCode |= opcode;
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateI2TypeMachineCode(const ICUnit &block) {
+uint32_t generateI2TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::I2_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -86,10 +86,10 @@ std::bitset<32> generateI2TypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateI3TypeMachineCode(const ICUnit &block) {
+uint32_t generateI3TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::I3_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = 0;
   const uint32_t rs1 = 0;
@@ -100,10 +100,10 @@ std::bitset<32> generateI3TypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateSTypeMachineCode(const ICUnit &block) {
+uint32_t generateSTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::S_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
   const uint32_t rs2 = extractRegisterIndex(block.getRs2());
@@ -117,10 +117,10 @@ std::bitset<32> generateSTypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (imm_lo << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateBTypeMachineCode(const ICUnit &block) {
+uint32_t generateBTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::B_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rs1 = extractRegisterIndex(block.getRs1());
   uint32_t rs2 = extractRegisterIndex(block.getRs2());
@@ -138,10 +138,10 @@ std::bitset<32> generateBTypeMachineCode(const ICUnit &block) {
   machineCode |= (imm4_1 << 8);
   machineCode |= (imm11 << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateUTypeMachineCode(const ICUnit &block) {
+uint32_t generateUTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::U_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rd = extractRegisterIndex(block.getRd());
   uint32_t imm = static_cast<uint32_t>(std::stoi(block.getImm())) & 0xFFFFF;  // U-type: top 20 bits
@@ -149,13 +149,13 @@ std::bitset<32> generateUTypeMachineCode(const ICUnit &block) {
   machineCode |= (imm << 12);             // bits [31:12]
   machineCode |= (rd << 7);               // bits [11:7]
   machineCode |= encoding.opcode.to_ulong(); // bits [6:0]
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateJTypeMachineCode(const ICUnit &block) {
+uint32_t generateJTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::J_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rd = extractRegisterIndex(block.getRd());
-  uint32_t imm = static_cast<uint32_t>(std::stoi(block.getImm())) & 0xFFFFF; // 20-bit signed immediate
+  int32_t imm = static_cast<int32_t>(std::stoi(block.getImm())); 
   uint32_t machineCode = 0;
   machineCode |= ((imm & 0x100000) << 11); // imm[20] to bit 31
   machineCode |= ((imm & 0x7FE) << 20);    // imm[10:1] to bits 30:21
@@ -163,10 +163,10 @@ std::bitset<32> generateJTypeMachineCode(const ICUnit &block) {
   machineCode |= ((imm & 0xFF000) << 0);   // imm[19:12] to bits 19:12
   machineCode |= (rd << 7);                // bits 11:7
   machineCode |= encoding.opcode.to_ulong(); // bits 6:0
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateCSRRTypeMachineCode(const ICUnit &block) {
+uint32_t generateCSRRTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::CSR_R_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rd = extractRegisterIndex(block.getRd());
   uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -177,10 +177,10 @@ std::bitset<32> generateCSRRTypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12); // funct3[14:12]
   machineCode |= (rd << 7);                    // rd[11:7]
   machineCode |= encoding.opcode.to_ulong();   // opcode[6:0]
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateCSRITypeMachineCode(const ICUnit &block) {
+uint32_t generateCSRITypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::CSR_I_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rd = extractRegisterIndex(block.getRd());
   uint32_t zimm = static_cast<uint32_t>(std::stoi(block.getImm())) & 0b11111;     // zimm is 5-bit (not 3-bit!)
@@ -191,10 +191,10 @@ std::bitset<32> generateCSRITypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12); // funct3[14:12]
   machineCode |= (rd << 7);                     // rd[11:7]
   machineCode |= encoding.opcode.to_ulong();    // opcode[6:0]
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block) {
+uint32_t generateFDRTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_R_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -206,10 +206,10 @@ std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block) {
+uint32_t generateFDR1TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_R1_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -222,10 +222,10 @@ std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block) {
   machineCode |= (rm << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDR2TypeMachineCode(const ICUnit &block) {
+uint32_t generateFDR2TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_R2_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -237,10 +237,10 @@ std::bitset<32> generateFDR2TypeMachineCode(const ICUnit &block) {
   machineCode |= (rm << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDR3TypeMachineCode(const ICUnit &block) {
+uint32_t generateFDR3TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_R3_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -251,10 +251,10 @@ std::bitset<32> generateFDR3TypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDR4TypeMachineCode(const ICUnit &block) {
+uint32_t generateFDR4TypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_R4_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -269,10 +269,10 @@ std::bitset<32> generateFDR4TypeMachineCode(const ICUnit &block) {
   machineCode |= (rm << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDITypeMachineCode(const ICUnit &block) {
+uint32_t generateFDITypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_I_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
@@ -283,10 +283,10 @@ std::bitset<32> generateFDITypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (rd << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block) {
+uint32_t generateFDSTypeMachineCode(const ICUnit &block) {
   const auto &encoding = instruction_set::F_D_S_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
   const uint32_t rs2 = extractRegisterIndex(block.getRs2());
@@ -300,14 +300,14 @@ std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block) {
   machineCode |= (encoding.funct3.to_ulong() << 12);
   machineCode |= (imm_lo << 7);
   machineCode |= encoding.opcode.to_ulong();
-  return std::bitset<32>(machineCode);
+  return machineCode;
 }
 
-std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
-  std::vector<std::bitset<32>> machine_code;
+std::vector<uint32_t> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
+  std::vector<uint32_t> machine_code;
   for (const auto &pair : IntermediateCode) {
     const ICUnit &block = pair.first;
-    std::bitset<32> code;
+    uint32_t code;
     if (instruction_set::isValidRTypeInstruction(block.getOpcode())) {
       code = generateRTypeMachineCode(block);
     } else if (instruction_set::isValidI1TypeInstruction(block.getOpcode())) {

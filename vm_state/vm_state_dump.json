@@ -1,0 +1,11 @@
+{
+    "program_counter": 4,
+    "current_instruction": 268435895,
+    "cycle_count": 1,
+    "instructions_retired": 1,
+    "cpi": 0,
+    "ipc": 0,
+    "stall_cycles": 0,
+    "branch_mispredictions": 0,
+    "breakpoints": ["0x3c"]
+}

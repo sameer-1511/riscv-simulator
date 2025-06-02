@@ -9,6 +9,36 @@
 #include "utils.h"
 #include "vm/registers.h"
 
+void setupVmStateDirectory() {
+  std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";
+  if (!std::filesystem::exists(vm_state_dir)) {
+    std::filesystem::create_directories(vm_state_dir);
+  }
+
+  std::filesystem::path registers_file = vm_state_dir / "registers_dump.json";
+  std::filesystem::path errors_file = vm_state_dir / "errors_dump.json";
+  std::filesystem::path memory_dump_file = vm_state_dir / "memory_dump.json";
+  // std::filesystem::path cache_dump_file = vm_state_dir / "cache_dump.json";
+  std::filesystem::path vm_state_dump_file = vm_state_dir / "vm_state_dump.json";
+
+  if (!std::filesystem::exists(registers_file)) {
+    std::ofstream(registers_file).close();
+  }
+  if (!std::filesystem::exists(errors_file)) {
+    std::ofstream(errors_file).close();
+  }
+  if (!std::filesystem::exists(memory_dump_file)) {
+    std::ofstream(memory_dump_file).close();
+  }
+  // if (!std::filesystem::exists(cache_dump_file)) {
+  //   std::ofstream(cache_dump_file).close();
+  // }
+  if (!std::filesystem::exists(vm_state_dump_file)) {
+    std::ofstream(vm_state_dump_file).close();
+  }
+}
+
+
 int64_t CountLines(const std::string &filename) {
   std::ifstream file(filename);
   if (!file.is_open()) {

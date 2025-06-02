@@ -8,6 +8,8 @@
 #ifndef COMMAND_HANDLER_H
 #define COMMAND_HANDLER_H
 
+#include "./vm/rvss/rvss_vm.h"
+
 namespace command_handler {
 enum class CommandType {
   INVALID,
@@ -45,7 +47,7 @@ struct Command {
 
 Command ParseCommand(const std::string &input);
 
-void ExecuteCommand(const Command& command);
+void ExecuteCommand(const Command& command, RVSSVM& vm);
 
 } // namespace CommandParser
 

@@ -148,7 +148,6 @@ class RVSSVM : public VmBase {
   void Undo() override;
   void Redo() override;
   void Reset() override;
-  void DumpState(const std::string &filename) override;
 
   void PrintType() {
     std::cout << "rvssvm" << std::endl;

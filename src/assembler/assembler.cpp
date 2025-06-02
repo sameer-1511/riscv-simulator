@@ -47,7 +47,7 @@ AssembledProgram assemble(const std::string &filename) {
     //     std::cout << block << std::endl;
     // }
 
-    std::vector<std::bitset<32>> machine_code_bits = generateMachineCode(parser.getIntermediateCode());
+    std::vector<uint32_t> machine_code_bits = generateMachineCode(parser.getIntermediateCode());
 
     program.data_buffer = parser.getDataBuffer();
     program.text_buffer = machine_code_bits;

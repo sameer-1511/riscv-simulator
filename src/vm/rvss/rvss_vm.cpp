@@ -14,6 +14,7 @@
 
 RVSSVM::RVSSVM() : VmBase() {
   DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
 }
 
 RVSSVM::~RVSSVM() = default;
@@ -243,31 +244,43 @@ void RVSSVM::WriteMemory() {
     }
   }
 
-  uint64_t addr = execution_result_;
-  uint64_t old_mem = memory_controller_.ReadDoubleWord(addr);
+  uint64_t addr = 0;
+  uint64_t old_mem = 0;
+  uint64_t new_mem = 0;
 
   if (control_unit_.GetMemWrite()) {
     switch (funct3) {
       case 0b000: {// SB
+        addr = execution_result_;
+        old_mem = memory_controller_.ReadByte(addr);
         memory_controller_.WriteByte(execution_result_, registers_.ReadGpr(rs2) & 0xFF);
+        new_mem = memory_controller_.ReadByte(addr);
         break;
       }
       case 0b001: {// SH
+        addr = execution_result_;
+        old_mem = memory_controller_.ReadHalfWord(addr);
         memory_controller_.WriteHalfWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFF);
+        new_mem = memory_controller_.ReadHalfWord(addr);
         break;
       }
       case 0b010: {// SW
+        addr = execution_result_;
+        old_mem = memory_controller_.ReadWord(addr);
         memory_controller_.WriteWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFF);
+        new_mem = memory_controller_.ReadWord(addr);
         break;
       }
       case 0b011: {// SD
+        addr = execution_result_;
+        old_mem = memory_controller_.ReadDoubleWord(addr);
         memory_controller_.WriteDoubleWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFFFFFFFFFF);
+        new_mem = memory_controller_.ReadDoubleWord(addr);
         break;
       }
     }
   }
 
-  uint64_t new_mem = memory_controller_.ReadDoubleWord(addr);
   if (old_mem!=new_mem) {
     current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
   }
@@ -527,7 +540,8 @@ void RVSSVM::Run() {
     instructions_retired_++;
     cycle_s_++;
   }
-  // DumpRegisters(globals::registers_dump_file, registers_.getRegisters());
+  DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
 }
 
 void RVSSVM::DebugRun() {
@@ -545,6 +559,8 @@ void RVSSVM::DebugRun() {
       break;
     }
   }
+  DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
 }
 
 void RVSSVM::Step() {
@@ -558,6 +574,7 @@ void RVSSVM::Step() {
     instructions_retired_++;
     cycle_s_++;
     DumpRegisters(globals::registers_dump_file, registers_);
+    DumpState(globals::vm_state_dump_file);
     std::cout << "Program Counter: " << program_counter_ << std::endl;
 
     current_delta_.new_pc = program_counter_;
@@ -621,6 +638,7 @@ void RVSSVM::Undo() {
   instructions_retired_--;
   cycle_s_--;
   DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
   std::cout << "Program Counter: " << program_counter_ << std::endl;
 
   redo_stack_.push(last);
@@ -671,6 +689,7 @@ void RVSSVM::Redo() {
   instructions_retired_++;
   cycle_s_++;
   DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
   std::cout << "Program Counter: " << program_counter_ << std::endl;
   undo_stack_.push(next);
 
@@ -702,9 +721,6 @@ void RVSSVM::Reset() {
 
 }
 
-void RVSSVM::DumpState(const std::string &filename) {
-  (void) filename;
-}
 
 
 

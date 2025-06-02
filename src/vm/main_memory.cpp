@@ -191,10 +191,46 @@ void Memory::PrintMemory(const uint64_t address, uint rows) {
   std::cout << "-----------------------------------------------------------------\n";
 }
 
-void dumpMemory(const uint64_t address, uint rows) {
-  (void) address;
-  (void) rows;
-  // TODO: do this
+void Memory::DumpMemory(std::vector<std::string> args) {
+    std::ofstream file(globals::memory_dump_file);
+    if (!file.is_open()) {
+        throw std::runtime_error("Unable to open memory dump file: " + globals::memory_dump_file);
+    }
+    file << "{\n";
+
+    for (size_t i = 0; i < args.size(); i+=2) {
+        if (i + 1 >= args.size()) {
+            throw std::invalid_argument("Invalid number of arguments for memory dump.");
+        }
+        uint64_t address = std::stoull(args[i], nullptr, 16);
+        uint64_t rows = std::stoull(args[i + 1]);
+        for (uint64_t j = 0; j < rows; ++j) {
+          uint64_t current_address = address + (j*8);
+          if (current_address >= memory_size_) {
+            break;
+          }
+          file << R"(    "0x)" << std::hex << std::setw(16) << std::setfill('0') << current_address << R"(": )";
+      
+          file << R"("0x)";
+          for (size_t k = 0; k < 8; k++) {
+              file << std::hex << std::setw(2) << std::setfill('0') 
+                    << static_cast<int>(Read(address + j * 8 + k));
+          }
+          file << R"(")";
+          if (j < rows - 1 || i < args.size() - 2) {
+              file << ",";
+          }
+          file << "\n";
+
+        }
+        if (i < args.size() - 2) {
+          file << "\n";
+        }
+    }
+
+    file << "}\n";
+    file.close();
+
 }
 
 void Memory::printMemoryUsage() const {

@@ -70,8 +70,8 @@ public:
       memory_.PrintMemory(address, rows);
     }
 
-    void DumpMemory(const uint64_t address, uint rows) {
-      memory_.DumpMemory(address, rows);
+    void DumpMemory(std::vector<std::string> args) {
+      memory_.DumpMemory(args);
     }
 
 };

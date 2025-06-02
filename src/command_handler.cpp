@@ -18,15 +18,15 @@ Command ParseCommand(const std::string &input) {
     command_type = command_handler::CommandType::RUN;
   } else if (command_str=="debug") {
     command_type = command_handler::CommandType::DEBUG;
-  } else if (command_str=="Step" || command_str=="s") {
+  } else if (command_str=="step" || command_str=="s") {
     command_type = command_handler::CommandType::STEP;
   } else if (command_str=="undo" || command_str=="u") {
     command_type = command_handler::CommandType::UNDO;
   } else if (command_str=="redo" || command_str=="r") {
     command_type = command_handler::CommandType::REDO;
-  } else if (command_str=="Reset") {
+  } else if (command_str=="reset") {
     command_type = command_handler::CommandType::RESET;
-  } else if (command_str=="dump_mem") {
+  } else if (command_str=="dump_mem" || command_str=="dmem") {
     command_type = command_handler::CommandType::DUMP_MEMORY;
   } else if (command_str=="print_mem" || command_str=="pmem") {
     command_type = command_handler::CommandType::PRINT_MEMORY;
@@ -49,8 +49,9 @@ Command ParseCommand(const std::string &input) {
   return Command(command_type, args);
 }
 
-void ExecuteCommand(const Command &command) {
-  (void) command; // Suppress unused variable warning
+void ExecuteCommand(const Command &command, RVSSVM& vm) {
+  (void)vm;
+  (void)command;
 }
 
 } // namespace command_handler

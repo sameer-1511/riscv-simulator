@@ -10,6 +10,9 @@
 #include "pch.h"
 #include "./assembler/parser.h"
 #include "vm/registers.h"
+#include "vm/vm_base.h"
+
+void setupVmStateDirectory();
 
 /**
  * @brief Counts the number of lines in a given file.

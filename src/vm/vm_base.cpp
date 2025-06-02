@@ -11,14 +11,15 @@
 
 
 void VmBase::LoadProgram(const AssembledProgram &program) {
+    program_ = program;
     unsigned int counter = 0;
     for (const auto &instruction: program.text_buffer) {
-      memory_controller_.WriteWord(counter, static_cast<uint32_t>(instruction.to_ulong()));
+      memory_controller_.WriteWord(counter, instruction);
         counter += 4;
     }
 
     program_size_ = counter;
-  AddBreakpoint(program_size_);
+    AddBreakpoint(program_size_);
 
     unsigned int data_counter = 0;
     uint64_t base_data_address = globals::data_section_start;
@@ -56,6 +57,8 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
         }, data);
     }
 
+    DumpState(globals::vm_state_dump_file);
+    std::cout << "VM_STARTED" << std::endl;
 
 }
 
@@ -148,25 +151,70 @@ int32_t VmBase::ImmGenerator(uint32_t instruction) {
 
 
 void VmBase::AddBreakpoint(uint64_t address) {
-    breakpoints_.emplace_back(address);
-    std::cout << "Breakpoint added at address: " << std::hex << address << std::dec << std::endl;
-    std::cout << "Breakpoints: ";
-    for (const auto &bp : breakpoints_) {
-        std::cout << std::hex << bp << " ";
+    uint64_t line = address;
+    uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
+    if (CheckBreakpoint(bp)) {
+        std::cerr << "Breakpoint already exists at line: " << line << std::endl;
+        return;
     }
-    std::cout << std::dec << std::endl;
-    std::cout << "Program Counter: " << std::hex << program_counter_ << std::dec << std::endl;
+    breakpoints_.emplace_back(bp);
+    DumpState(globals::vm_state_dump_file);
+    // for (const auto &bp : breakpoints_) {
+    //     std::cout << std::hex << bp << " ";
+    // }
+    // std::cout << std::dec << std::endl;
 }
 
 void VmBase::RemoveBreakpoint(uint64_t address) {
-    breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), address), breakpoints_.end());
+    uint64_t line = address;
+    uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
+    if (!CheckBreakpoint(bp)) {
+        std::cerr << "No breakpoint exists at line: " << line << std::endl;
+        return;
+    }
+    // Remove the breakpoint from the vector
+    breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), bp), breakpoints_.end());
+    DumpState(globals::vm_state_dump_file);
 }
 
 bool VmBase::CheckBreakpoint(uint64_t address) {
     return std::find(breakpoints_.begin(), breakpoints_.end(), address) != breakpoints_.end();
 }
 
-void handleSyscall() {
+void VmBase::HandleSyscall() {
 }
 
+void VmBase::DumpState(const std::string &filename) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for dumping VM state: " << filename << std::endl;
+        return;
+    }
+
+    unsigned int instruction_number = program_counter_ / 4;
+    unsigned int current_line = program_.instruction_number_line_number_mapping[instruction_number];
+
+    file << "{\n";
+    file << "    \"program_counter\": " << "\"0x" << std::hex << program_counter_ << std::dec << "\",\n";
+    file << "    \"current_line\": " << current_line << ",\n";
+    file << "    \"current_instruction\": " << "\"0x" << std::hex << std::setw(8) << std::setfill('0') << current_instruction_ << std::dec << "\",\n";
+    file << "    \"cycle_count\": " << cycle_s_ << ",\n";
+    file << "    \"instructions_retired\": " << instructions_retired_ << ",\n";
+    file << "    \"cpi\": " << cpi_ << ",\n";
+    file << "    \"ipc\": " << ipc_ << ",\n";
+    file << "    \"stall_cycles\": " << stall_cycles_ << ",\n";
+    file << "    \"branch_mispredictions\": " << branch_mispredictions_ << ",\n";
+    file << "    \"breakpoints\": [";
+    for (size_t i = 1; i < breakpoints_.size(); ++i) {
+        program_.instruction_number_line_number_mapping[breakpoints_[i] / 4];
+        file << program_.instruction_number_line_number_mapping[breakpoints_[i] / 4];
+        if (i < breakpoints_.size() - 1) {
+            file << ", ";
+        }
+    }
+    file << "]\n";
+    file << "}\n";
+    file.close();
+
+}
 

@@ -181,7 +181,7 @@ class Memory {
 
   void PrintMemory(uint64_t address, uint rows);
 
-  void DumpMemory(const uint64_t address, uint rows);
+  void DumpMemory(std::vector<std::string> args);
 
   void printMemoryUsage() const;
 };

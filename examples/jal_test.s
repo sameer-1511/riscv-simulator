@@ -12,8 +12,6 @@ lui x3, 0x10000
 # divu x15, x12, x13
 
 # fadd.s f10, f2, f3
-csrrwi x10, frm, 2
-csrrw x10, frm, x0
 
 
 addi x16, x0, -1

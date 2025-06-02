@@ -151,7 +151,7 @@ std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUni
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateRTypeMachineCode(const ICUnit &block);
+uint32_t generateRTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for an I1-type instruction.
@@ -159,7 +159,7 @@ std::bitset<32> generateRTypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateI1TypeMachineCode(const ICUnit &block);
+uint32_t generateI1TypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for an I2-type instruction.
@@ -167,7 +167,7 @@ std::bitset<32> generateI1TypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateI2TypeMachineCode(const ICUnit &block);
+uint32_t generateI2TypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for an I3-type instruction.
@@ -175,7 +175,7 @@ std::bitset<32> generateI2TypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateI3TypeMachineCode(const ICUnit &block);
+uint32_t generateI3TypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for an S-type instruction.
@@ -183,7 +183,7 @@ std::bitset<32> generateI3TypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateSTypeMachineCode(const ICUnit &block);
+uint32_t generateSTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a B-type instruction.
@@ -191,7 +191,7 @@ std::bitset<32> generateSTypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateBTypeMachineCode(const ICUnit &block);
+uint32_t generateBTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a U-type instruction.
@@ -199,7 +199,7 @@ std::bitset<32> generateBTypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateUTypeMachineCode(const ICUnit &block);
+uint32_t generateUTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code for a J-type instruction.
@@ -207,18 +207,18 @@ std::bitset<32> generateUTypeMachineCode(const ICUnit &block);
  * @param block The ICUnit representing the instruction.
  * @return The machine code bitset<32>.
  */
-std::bitset<32> generateJTypeMachineCode(const ICUnit &block);
+uint32_t generateJTypeMachineCode(const ICUnit &block);
 
-std::bitset<32> generateCSRRTypeMachineCode(const ICUnit &block);
-std::bitset<32> generateCSRITypeMachineCode(const ICUnit &block);
+uint32_t generateCSRRTypeMachineCode(const ICUnit &block);
+uint32_t generateCSRITypeMachineCode(const ICUnit &block);
 
-std::bitset<32> generateFDRTypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDR1TypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDR2TypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDR3TypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDR4TypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDITypeMachineCode(const ICUnit &block);
-std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block);
+uint32_t generateFDRTypeMachineCode(const ICUnit &block);
+uint32_t generateFDR1TypeMachineCode(const ICUnit &block);
+uint32_t generateFDR2TypeMachineCode(const ICUnit &block);
+uint32_t generateFDR3TypeMachineCode(const ICUnit &block);
+uint32_t generateFDR4TypeMachineCode(const ICUnit &block);
+uint32_t generateFDITypeMachineCode(const ICUnit &block);
+uint32_t generateFDSTypeMachineCode(const ICUnit &block);
 
 /**
  * @brief Generates machine code from a vector of intermediate code blocks.
@@ -226,6 +226,6 @@ std::bitset<32> generateFDSTypeMachineCode(const ICUnit &block);
  * @param IntermediateCode A vector of pairs containing ICUnit and a boolean flag.
  * @return A vector of bitset<32> representing the machine code.
  */
-std::vector<std::bitset<32>> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode);
+std::vector<uint32_t> generateMachineCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode);
 
 #endif // CODE_GENERATOR_H

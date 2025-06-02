@@ -42,8 +42,7 @@ void generateElfFile(const AssembledProgram &program, const std::string &output_
   elfFile.write(reinterpret_cast<const char *>(&shstrtabSection), sizeof(shstrtabSection));
 
   // Write `.text` section (machine code)
-  for (const auto &inst : program.text_buffer) {
-    uint32_t instruction = inst.to_ulong();
+  for (const auto &instruction : program.text_buffer) {
     elfFile.write(reinterpret_cast<const char *>(&instruction), sizeof(instruction));
   }
 

@@ -19,7 +19,7 @@ public:
     VmBase() = default;
     ~VmBase() = default;
 
-    // AssembledProgram program_;
+    AssembledProgram program_;
 
     std::vector<uint64_t> breakpoints_;
 
@@ -67,7 +67,7 @@ public:
     virtual void Undo() = 0;
     virtual void Redo() = 0;
     virtual void Reset() = 0;
-    virtual void DumpState(const std::string &filename) = 0;
+    void DumpState(const std::string &filename);
 
 };
 

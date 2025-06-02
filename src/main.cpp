@@ -22,12 +22,7 @@
 #include "command_handler.h"
 
 int main() {
-  // AssembledProgram program = assemble("/home/vis/Desk/codes/assembler/examples/f_d_test.s");
-
-  // VMRunner vmRunner;
-  // vmRunner.custom();
-  // vmRunner.LoadProgram(program);
-
+  setupVmStateDirectory();
 
 
 
@@ -35,7 +30,7 @@ int main() {
   AssembledProgram program;
   RVSSVM vm;
   try {
-    program = assemble("/home/vis/Desk/codes/assembler/examples/f_d_test.s");
+    program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
   } catch (const std::runtime_error &e) {
     std::cerr << e.what() << '\n';
     return 0;
@@ -58,7 +53,7 @@ int main() {
 
   std::string command_buffer;
   while (true) {
-    std::cout << "=> ";
+    // std::cout << "=> ";
     std::getline(std::cin, command_buffer);
     command_handler::Command command = command_handler::ParseCommand(command_buffer);
     if (command.type==command_handler::CommandType::LOAD) {
@@ -86,20 +81,18 @@ int main() {
     } else if (command.type==command_handler::CommandType::EXIT) {
       break;
     } else if (command.type==command_handler::CommandType::ADD_BREAKPOINT) {
-      vm.AddBreakpoint(std::stoul(command.args[0], nullptr, 16));
-      std::cout << "Breakpoint added at address: " << command.args[0] << std::endl;
+      vm.AddBreakpoint(std::stoul(command.args[0], nullptr, 10));
     } else if (command.type==command_handler::CommandType::REMOVE_BREAKPOINT) {
-      vm.RemoveBreakpoint(std::stoul(command.args[0], nullptr, 16));
-      std::cout << "Breakpoint removed at address: " << command.args[0] << std::endl;
+      vm.RemoveBreakpoint(std::stoul(command.args[0], nullptr, 10));
     } else if (command.type==command_handler::CommandType::DUMP_MEMORY) {
-      // uint64_t address = std::stoull(command.args[0], nullptr, 16);
-      // uint64_t rows = std::stoull(command.args[1]);
-      // vm.memory_controller_.DumpMemory(address, rows);
+      vm.memory_controller_.DumpMemory(command.args);
       // std::cout << "Memory dumped." << std::endl;
     } else if (command.type==command_handler::CommandType::PRINT_MEMORY) {
-      uint64_t address = std::stoull(command.args[0], nullptr, 16);
-      uint64_t rows = std::stoull(command.args[1]);
-      vm.memory_controller_.PrintMemory(address, rows);
+      for (size_t i = 0; i < command.args.size(); i+=2) {
+        uint64_t address = std::stoull(command.args[i], nullptr, 16);
+        uint64_t rows = std::stoull(command.args[i+1]);
+        vm.memory_controller_.PrintMemory(address, rows);
+      }
       std::cout << std::endl;
     } else if (command.type==command_handler::CommandType::DUMP_CACHE) {
       std::cout << "Cache dumped." << std::endl;

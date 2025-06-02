@@ -18,7 +18,7 @@ struct AssembledProgram {
 
   std::string filename;
   std::vector<std::variant<uint8_t, uint16_t, uint32_t, uint64_t, std::string, float, double>> data_buffer;
-  std::vector<std::bitset<32>> text_buffer;
+  std::vector<uint32_t> text_buffer;
 };
 
 #endif // VM_ASM_MW_H

@@ -20,5 +20,6 @@
 #include <regex>
 #include <cmath>
 #include <cstdint>
+#include <filesystem>
 
 // g++ -x c++-header pch.h -o pch.h.gch
