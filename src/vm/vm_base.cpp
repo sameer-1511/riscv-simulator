@@ -17,9 +17,8 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
       memory_controller_.WriteWord(counter, instruction);
         counter += 4;
     }
-
     program_size_ = counter;
-    AddBreakpoint(program_size_);
+    AddBreakpoint(program_size_, false);  // address
 
     unsigned int data_counter = 0;
     uint64_t base_data_address = globals::data_section_start;
@@ -56,9 +55,11 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
             }
         }, data);
     }
+    std::cout << "VM_PROGRAM_LOADED" << std::endl;
+    output_status_ = "VM_PROGRAM_LOADED";
 
     DumpState(globals::vm_state_dump_file);
-    std::cout << "VM_STARTED" << std::endl;
+    
 
 }
 
@@ -150,31 +151,63 @@ int32_t VmBase::ImmGenerator(uint32_t instruction) {
 }
 
 
-void VmBase::AddBreakpoint(uint64_t address) {
-    uint64_t line = address;
-    uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
-    if (CheckBreakpoint(bp)) {
-        std::cerr << "Breakpoint already exists at line: " << line << std::endl;
-        return;
+void VmBase::AddBreakpoint(uint64_t val, bool is_line) {
+    if (is_line) {
+        // If the value is a line number, convert it to an instruction address
+        if (program_.line_number_instruction_number_mapping.find(val) == program_.line_number_instruction_number_mapping.end()) {
+            std::cerr << "Invalid line number: " << val << std::endl;
+            return;
+        }
+        uint64_t line = val;
+        uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
+        if (CheckBreakpoint(bp)) {
+            std::cerr << "Breakpoint already exists at line: " << line << std::endl;
+            return;
+        }
+        breakpoints_.emplace_back(bp);
+    } else {
+        if (val % 4 != 0) {
+            std::cerr << "Invalid instruction address: " << val << ". Must be a multiple of 4." << std::endl;
+            return;
+        }
+        if (CheckBreakpoint(val)) {
+            std::cerr << "Breakpoint already exists at address: " << val << std::endl;
+            return;
+        }
+        breakpoints_.emplace_back(val);
     }
-    breakpoints_.emplace_back(bp);
+
     DumpState(globals::vm_state_dump_file);
-    // for (const auto &bp : breakpoints_) {
-    //     std::cout << std::hex << bp << " ";
-    // }
-    // std::cout << std::dec << std::endl;
 }
 
-void VmBase::RemoveBreakpoint(uint64_t address) {
-    uint64_t line = address;
-    uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
-    if (!CheckBreakpoint(bp)) {
-        std::cerr << "No breakpoint exists at line: " << line << std::endl;
-        return;
+void VmBase::RemoveBreakpoint(uint64_t val, bool is_line) {
+    if (is_line) {
+        // If the value is a line number, convert it to an instruction address
+        if (program_.line_number_instruction_number_mapping.find(val) == program_.line_number_instruction_number_mapping.end()) {
+            std::cerr << "Invalid line number: " << val << std::endl;
+            return;
+        }
+        uint64_t line = val;
+        uint64_t bp = program_.line_number_instruction_number_mapping[line] * 4;
+        if (!CheckBreakpoint(bp)) {
+            std::cerr << "No breakpoint exists at line: " << line << std::endl;
+            return;
+        }
+        breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), bp), breakpoints_.end());
+    } else {
+        if (val % 4 != 0) {
+            std::cerr << "Invalid instruction address: " << val << ". Must be a multiple of 4." << std::endl;
+            return;
+        }
+        if (!CheckBreakpoint(val)) {
+            std::cerr << "No breakpoint exists at address: " << val << std::endl;
+            return;
+        }
+        breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), val), breakpoints_.end());
     }
-    // Remove the breakpoint from the vector
-    breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), bp), breakpoints_.end());
     DumpState(globals::vm_state_dump_file);
+
+
 }
 
 bool VmBase::CheckBreakpoint(uint64_t address) {
@@ -195,7 +228,7 @@ void VmBase::DumpState(const std::string &filename) {
     unsigned int current_line = program_.instruction_number_line_number_mapping[instruction_number];
 
     file << "{\n";
-    file << "    \"program_counter\": " << "\"0x" << std::hex << program_counter_ << std::dec << "\",\n";
+    file << "    \"program_counter\": " << "\"0x" << std::hex << std::setw(8) << std::setfill('0') << program_counter_ << std::dec << "\",\n";
     file << "    \"current_line\": " << current_line << ",\n";
     file << "    \"current_instruction\": " << "\"0x" << std::hex << std::setw(8) << std::setfill('0') << current_instruction_ << std::dec << "\",\n";
     file << "    \"cycle_count\": " << cycle_s_ << ",\n";
@@ -212,7 +245,8 @@ void VmBase::DumpState(const std::string &filename) {
             file << ", ";
         }
     }
-    file << "]\n";
+    file << "],\n";
+    file << "    \"output_status\": \"" << output_status_ << "\"\n";
     file << "}\n";
     file.close();
 

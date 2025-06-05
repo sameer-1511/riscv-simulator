@@ -57,13 +57,8 @@ void RVSSVM::Execute() {
     reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
   }
 
-  // std::cout << "Reg1 value: " << std::hex << reg1_value << std::dec << std::endl;
-  // std::cout << "Reg2 value: " << std::hex << reg2_value << std::dec << std::endl;
-
-
   alu::AluOp aluOperation = control_unit_.GetAluSignal(current_instruction_, control_unit_.GetAluOp());
   std::tie(execution_result_, overflow) = alu_.execute(aluOperation, reg1_value, reg2_value);
-  // std::cout << "Execution result: " << std::hex << execution_result_ << std::dec << std::endl;
 
 
   if (control_unit_.GetBranch()) {
@@ -141,15 +136,8 @@ void RVSSVM::ExecuteFloat() {
     reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
   }
 
-  // std::cout << "Reg1 value: " << std::hex << reg1_value << std::dec << std::endl;
-  // std::cout << "Reg2 value: " << std::hex << reg2_value << std::dec << std::endl;
-  // std::cout << "Reg3 value: " << std::hex << reg3_value << std::dec << std::endl;
-
-
-
   alu::AluOp aluOperation = control_unit_.GetAluSignal(current_instruction_, control_unit_.GetAluOp());
   std::tie(execution_result_, fcsr_status) = alu::Alu::fpexecute(aluOperation, reg1_value, reg2_value, reg3_value, rm);
-  // std::cout << "Execution result: " << std::hex << execution_result_ << std::dec << std::endl;
 
   registers_.WriteCsr(0x003, fcsr_status);
 }
@@ -540,13 +528,17 @@ void RVSSVM::Run() {
     instructions_retired_++;
     cycle_s_++;
   }
+  if (program_counter_ >= program_size_) {
+    std::cout << "VM_PROGRAM_END" << std::endl;
+    output_status_ = "VM_PROGRAM_END";
+  }
   DumpRegisters(globals::registers_dump_file, registers_);
   DumpState(globals::vm_state_dump_file);
 }
 
 void RVSSVM::DebugRun() {
   while (program_counter_ < program_size_) {
-    if (std::find(breakpoints_.begin(), breakpoints_.end(), program_counter_)==breakpoints_.end()) {
+    if (std::find(breakpoints_.begin(), breakpoints_.end(), program_counter_) == breakpoints_.end()) {
       Fetch();
       Decode();
       Execute();
@@ -554,10 +546,16 @@ void RVSSVM::DebugRun() {
       WriteBack();
       instructions_retired_++;
       cycle_s_++;
+      std::cout << "Program Counter: " << program_counter_ << std::endl;
     } else {
-      std::cout << "Breakpoint hit at address: " << program_counter_ << std::endl;
+      std::cout << "VM_BREAKPOINT_HIT " << program_counter_ << std::endl;
+      output_status_ = "VM_BREAKPOINT_HIT";
       break;
     }
+  }
+  if (program_counter_ >= program_size_) {
+    std::cout << "VM_PROGRAM_END" << std::endl;
+    output_status_ = "VM_PROGRAM_END";
   }
   DumpRegisters(globals::registers_dump_file, registers_);
   DumpState(globals::vm_state_dump_file);
@@ -573,8 +571,6 @@ void RVSSVM::Step() {
     WriteBack();
     instructions_retired_++;
     cycle_s_++;
-    DumpRegisters(globals::registers_dump_file, registers_);
-    DumpState(globals::vm_state_dump_file);
     std::cout << "Program Counter: " << program_counter_ << std::endl;
 
     current_delta_.new_pc = program_counter_;
@@ -587,17 +583,28 @@ void RVSSVM::Step() {
     }
 
     current_delta_ = StepDelta();
-  } else if (program_counter_==program_size_) {
-    std::cout << "Program Counter reached end of program: " << program_counter_ << std::endl;
-  } else {
-    std::cout << "Program Counter out of bounds: " << program_counter_ << std::endl;
-    std::cout << "Program size: " << program_size_ << std::endl;
+    output_status_ = "VM_STEP_COMPLETED";
+    if (program_counter_ >= program_size_) {
+      std::cout << "VM_LAST_INSTRUCTION_STEPPED" << std::endl;
+      output_status_ = "VM_LAST_INSTRUCTION_STEPPED";
+    }
+
+
+
+
+
+  } else if (program_counter_ >= program_size_) {
+    std::cout << "VM_PROGRAM_END" << std::endl;
+    output_status_ = "VM_PROGRAM_END";
   }
+  DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
 }
 
 void RVSSVM::Undo() {
   if (undo_stack_.empty()) {
-    std::cout << "No more Undo steps available." << std::endl;
+    std::cout << "VM_NO_MORE_UNDO" << std::endl;
+    output_status_ = "VM_NO_MORE_UNDO";
     return;
   }
 
@@ -637,18 +644,19 @@ void RVSSVM::Undo() {
   program_counter_ = last.old_pc;
   instructions_retired_--;
   cycle_s_--;
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
   std::cout << "Program Counter: " << program_counter_ << std::endl;
 
   redo_stack_.push(last);
 
+  output_status_ = "VM_UNDO_COMPLETED";
 
+  DumpRegisters(globals::registers_dump_file, registers_);
+  DumpState(globals::vm_state_dump_file);
 }
 
 void RVSSVM::Redo() {
   if (redo_stack_.empty()) {
-    std::cout << "No more Redo steps available." << std::endl;
+    std::cout << "VM_NO_MORE_REDO" << std::endl;
     return;
   }
 

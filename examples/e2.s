@@ -1,8 +1,9 @@
-addi x0, x1, 1
-
+addi x1, x0, 1
+addi x10, x0, 1
 
 fdsff:
 lol:
+addi x10, x10, 1
 jal x1, 12
 
 mul x1, x0, x10

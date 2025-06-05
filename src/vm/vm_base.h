@@ -33,6 +33,8 @@ public:
     unsigned int stall_cycles_{};
     unsigned int branch_mispredictions_{};
 
+    std::string output_status_;
+
 
 
     MemoryController memory_controller_;
@@ -49,8 +51,8 @@ public:
     
     int32_t ImmGenerator(uint32_t instruction);
 
-    void AddBreakpoint(uint64_t address);
-    void RemoveBreakpoint(uint64_t address);
+    void AddBreakpoint(uint64_t val, bool is_line = true);
+    void RemoveBreakpoint(uint64_t val, bool is_line = true);
     bool CheckBreakpoint(uint64_t address);
 
     // void fetchInstruction();

@@ -30,7 +30,7 @@ int main() {
   AssembledProgram program;
   RVSSVM vm;
   try {
-    program = assemble("/home/vis/Desk/codes/assembler/examples/jal_test.s");
+    program = assemble("/home/vis/Desk/codes/assembler/examples/test2.s");
   } catch (const std::runtime_error &e) {
     std::cerr << e.what() << '\n';
     return 0;
@@ -49,7 +49,9 @@ int main() {
   //     count += 4;
   // }
 
-  vm.LoadProgram(program);
+  // vm.LoadProgram(program);
+
+  std::cout << "VM_STARTED" << std::endl;
 
   std::string command_buffer;
   while (true) {
@@ -65,10 +67,10 @@ int main() {
       std::cout << "Program running..." << std::endl;
     } else if (command.type==command_handler::CommandType::DEBUG) {
       vm.DebugRun();
-      std::cout << "Debugging..." << std::endl;
+      // std::cout << "Debugging..." << std::endl;
     } else if (command.type==command_handler::CommandType::STEP) {
       vm.Step();
-      std::cout << "Stepping..." << std::endl;
+      // std::cout << "Stepping..." << std::endl;
     } else if (command.type==command_handler::CommandType::UNDO) {
       vm.Undo();
       std::cout << "Undoing..." << std::endl;
@@ -79,6 +81,8 @@ int main() {
       vm.Reset();
       std::cout << "VM Reset." << std::endl;
     } else if (command.type==command_handler::CommandType::EXIT) {
+      vm.output_status_ = "VM_STOPPED";
+      vm.DumpState(globals::vm_state_dump_file);
       break;
     } else if (command.type==command_handler::CommandType::ADD_BREAKPOINT) {
       vm.AddBreakpoint(std::stoul(command.args[0], nullptr, 10));
