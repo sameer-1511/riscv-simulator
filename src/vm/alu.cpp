@@ -262,6 +262,27 @@ namespace alu {
       result = std::fma(-a, b, c);
       break;
     }
+    case AluOp::FADD_S: {
+      result = a + b;
+      break;
+    }
+    case AluOp::FSUB_S: {
+      result = a - b;
+      break;
+    }
+    case AluOp::FMUL_S: {
+      result = a * b;
+      break;
+    }
+    case AluOp::FDIV_S: {
+      if (b == 0.0f) {
+        result = std::numeric_limits<float>::quiet_NaN();
+        fcsr |= FCSR_DIV_BY_ZERO;
+      } else {
+        result = a / b;
+      }
+      break;
+    }
     case AluOp::FSQRT_S: {
       if (a < 0.0f) {
         result = std::numeric_limits<float>::quiet_NaN();
@@ -517,6 +538,27 @@ namespace alu {
     }
     case AluOp::FNMSUB_D: {
       result = std::fma(-a, b, c);
+      break;
+    }
+    case AluOp::FADD_D: {
+      result = a + b;
+      break;
+    }
+    case AluOp::FSUB_D: {
+      result = a - b;
+      break;
+    }
+    case AluOp::FMUL_D: {
+      result = a * b;
+      break;
+    }
+    case AluOp::FDIV_D: {
+      if (b == 0.0) {
+        result = std::numeric_limits<double>::quiet_NaN();
+        fcsr |= FCSR_DIV_BY_ZERO;
+      } else {
+        result = a / b;
+      }
       break;
     }
     case AluOp::FSQRT_D: {

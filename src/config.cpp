@@ -84,7 +84,7 @@ void vm_config::ini::Set(const std::string &section, const std::string &key, con
     bool key_found = false, section_found = false;
 
     while (std::getline(file, line)) {
-      Trim(line);
+        Trim(line);
         if (line[0] == '[' && line.back() == ']') {
             current_section = line.substr(1, line.size() - 2);
           Trim(current_section);

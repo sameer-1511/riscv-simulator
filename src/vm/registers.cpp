@@ -12,7 +12,6 @@ RegisterFile::RegisterFile() = default;
 void RegisterFile::Reset() {
   gpr_.fill(0);
   fpr_.fill(0.0);
-  for (auto &vec : vr_) vec.fill(0);
   csr_.fill(0);
   csr_[0x002] = 0b000; // Default: RNE (IEEE 754)
 }
@@ -39,16 +38,6 @@ void RegisterFile::WriteFpr(size_t reg, uint64_t value) {
   fpr_[reg] = value;
 }
 
-std::array<uint64_t, 8> RegisterFile::ReadVr(size_t reg) const {
-  if (reg >= NUM_VR) throw std::out_of_range("Invalid VR index");
-  return vr_[reg];
-}
-
-void RegisterFile::WriteVr(size_t reg, const std::array<uint64_t, 8> &value) {
-  if (reg >= NUM_VR) throw std::out_of_range("Invalid VR index");
-  vr_[reg] = value;
-}
-
 uint64_t RegisterFile::ReadCsr(size_t reg) const {
   if (reg >= NUM_CSR) throw std::out_of_range("Invalid CSR index");
   return csr_[reg];
@@ -66,107 +55,6 @@ std::vector<uint64_t> RegisterFile::GetGprValues() const {
 std::vector<uint64_t> RegisterFile::GetFprValues() const {
   return {fpr_.begin(), fpr_.end()};
 }
-
-std::vector<std::array<uint64_t, 8>> RegisterFile::GetVrValues() const {
-  return vr_;
-}
-
-std::string RegisterFile::GprToString() const {
-  return FormatRegisterValues(gpr_);
-}
-
-std::string RegisterFile::FprToString() const {
-  return FormatRegisterValues(fpr_);
-}
-
-std::string RegisterFile::VrToString() const {
-  std::string result;
-  char buffer[32];
-  for (size_t i = 0; i < vr_.size(); ++i) {
-    result += "VR[" + std::to_string(i) + "] : ";
-    for (const auto &val : vr_[i]) {
-      std::snprintf(buffer, sizeof(buffer), "%016lX ", val);
-      result += buffer;
-    }
-    result += "\n";
-  }
-  return result;
-}
-
-/*
-std::string RegisterFile::VrToString() const {
-    std::ostringstream oss;
-    for (size_t i = 0; i < vr_.size(); ++i) {
-        oss << "VR[" << i << "] : ";
-        for (const auto& val : vr_[i]) {
-            oss << std::hex << std::setfill('0') << std::setw(16) << val << " ";
-        }
-        oss << "\n";
-    }
-    return oss.str();
-}
-*/
-
-size_t RegisterFile::GetRegisterCount(RegisterType type) {
-  switch (type) {
-    case RegisterType::INTEGER: return NUM_GPR;
-    case RegisterType::FLOATING_POINT: return NUM_FPR;
-    case RegisterType::VECTOR: return NUM_VR;
-    default: return 0;
-  }
-}
-
-std::string RegisterFile::GetGprName(size_t reg) {
-  return "GPR[" + std::to_string(reg) + "]";
-}
-
-std::string RegisterFile::GetFprName(size_t reg) {
-  return "FPR[" + std::to_string(reg) + "]";
-}
-
-std::string RegisterFile::GetVrName(size_t reg) {
-  return "VR[" + std::to_string(reg) + "]";
-}
-
-template<typename T>
-std::string RegisterFile::FormatRegisterValues(const std::array<T, NUM_GPR> &values) {
-  std::ostringstream oss;
-  for (size_t i = 0; i < values.size(); ++i) {
-    oss << "R[" << i << "] : " << values[i] << "\n";
-  }
-  return oss.str();
-}
-
-const std::unordered_set<std::string> valid_registers = {
-    "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9",
-    "x10", "x11", "x12", "x13", "x14", "x15", "x16", "x17", "x18", "x19",
-    "x20", "x21", "x22", "x23", "x24", "x25", "x26", "x27", "x28", "x29",
-    "x30", "x31",
-
-    "zero",
-    "ra", "sp", "gp", "tp", "t0", "t1", "t2", "s0", "s1",
-    "a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "s2",
-    "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11",
-    "t3", "t4", "t5", "t6",
-
-    "f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9",
-    "f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17", "f18", "f19",
-    "f20", "f21", "f22", "f23", "f24", "f25", "f26", "f27", "f28", "f29",
-    "f30", "f31",
-
-    "ft0", "ft1", "ft2", "ft3", "ft4", "ft5", "ft6", "ft7",
-    "fs0", "fs1", "fa0", "fa1", "fa2", "fa3", "fa4", "fa5",
-    "fa6", "fa7", "fs2", "fs3", "fs4", "fs5", "fs6", "fs7",
-    "fs8", "fs9", "fs10", "fs11", "ft8", "ft9", "ft10", "ft11",
-    "ft12", "ft13", "ft14", "ft15", "ft16", "ft17", "ft18", "ft19",
-    "ft20", "ft21", "ft22", "ft23", "ft24", "ft25", "ft26", "ft27",
-    "ft28", "ft29", "ft30", "ft31",
-
-    "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9",
-    "v10", "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19",
-    "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29",
-    "v30", "v31",
-};
 
 const std::unordered_set<std::string> valid_general_purpose_registers = {
     "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9",
@@ -194,13 +82,6 @@ const std::unordered_set<std::string> valid_floating_point_registers = {
     "ft12", "ft13", "ft14", "ft15", "ft16", "ft17", "ft18", "ft19",
     "ft20", "ft21", "ft22", "ft23", "ft24", "ft25", "ft26", "ft27",
     "ft28", "ft29", "ft30", "ft31",
-};
-
-const std::unordered_set<std::string> valid_vector_registers = {
-    "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9",
-    "v10", "v11", "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19",
-    "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28", "v29",
-    "v30", "v31",
 };
 
 const std::unordered_set<std::string> valid_csr_registers = {
@@ -349,20 +230,12 @@ const std::unordered_map<std::string, std::string> reg_alias_to_name = {
 
 };
 
-bool isValidRegister(const std::string &reg) {
-  return valid_registers.find(reg)!=valid_registers.end();
-}
-
 bool IsValidGeneralPurposeRegister(const std::string &reg) {
   return valid_general_purpose_registers.find(reg)!=valid_general_purpose_registers.end();
 }
 
 bool IsValidFloatingPointRegister(const std::string &reg) {
   return valid_floating_point_registers.find(reg)!=valid_floating_point_registers.end();
-}
-
-bool IsValidVectorRegister(const std::string &reg) {
-  return valid_vector_registers.find(reg)!=valid_vector_registers.end();
 }
 
 bool IsValidCsr(const std::string &reg) {

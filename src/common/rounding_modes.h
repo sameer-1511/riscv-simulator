@@ -17,7 +17,6 @@ enum class RoundingMode {
   DYN   // Dynamic rounding mode (in rm field, means use frm CSR)
 };
 
-// For assembler/parser to map strings to enum
 inline const std::unordered_map<std::string, RoundingMode> stringToRoundingMode = {
     {"rne", RoundingMode::RNE},
     {"rtz", RoundingMode::RTZ},
@@ -27,7 +26,6 @@ inline const std::unordered_map<std::string, RoundingMode> stringToRoundingMode 
     {"dyn", RoundingMode::DYN}
 };
 
-// Optional: Map enum to encoding (if VM uses integer encodings for rm field)
 inline const std::unordered_map<RoundingMode, int> roundingModeEncoding = {
     {RoundingMode::RNE, 0b000},
     {RoundingMode::RTZ, 0b001},

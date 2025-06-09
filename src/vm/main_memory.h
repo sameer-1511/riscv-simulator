@@ -183,6 +183,8 @@ class Memory {
 
   void DumpMemory(std::vector<std::string> args);
 
+  [[nodiscard]] std::string GetMemoryPoint(uint64_t address);
+
   void printMemoryUsage() const;
 };
 

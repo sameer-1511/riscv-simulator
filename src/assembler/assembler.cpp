@@ -74,8 +74,10 @@ AssembledProgram assemble(const std::string &filename) {
     DumpNoErrors(globals::errors_dump_file);
 
   } else {
-    parser.printErrors();
     DumpErrors(globals::errors_dump_file, parser.getErrors());
+    if (globals::verbose_errors_print) {
+      parser.printErrors();
+    }
     throw std::runtime_error("Failed to parse file: " + filename);
   }
 

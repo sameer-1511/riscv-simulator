@@ -188,25 +188,6 @@ enum class SyntaxType {
   O_FPR_C_I_LP_GPR_RP,    ///< Opcode floating-point-register , immediate , lparen ( general-register ) rparen
 };
 
-/**
- * @brief Enum that represents different types of opcodes.
- */
-enum class InstructionType {
-  R,      ///< R-type instruction
-  R4,     ///< R4-type instruction
-  I1,     ///< I-type instruction with 12-bit immediate
-  I2,     ///< I-type instruction with 6-bit immediate and a funct6 field
-  I3,     ///< I-type instruction of ecall and ebreak
-  S,      ///< S-type instruction
-  B,      ///< B-type instruction
-  U,      ///< U-type instruction
-  J,      ///< J-type instruction
-  CSR_R,   ///< CSR R-type instruction
-  CSR_I,   ///< CSR I-type instruction
-  M,      ///< M-extension instruction
-  F       ///< F-extension instruction
-};
-
 extern std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_encoding_map;
 extern std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map;
@@ -225,13 +206,6 @@ extern std::unordered_map<std::string, FDR3TypeInstructionEncoding> F_D_R3_type_
 extern std::unordered_map<std::string, FDR4TypeInstructionEncoding> F_D_R4_type_instruction_encoding_map;
 extern std::unordered_map<std::string, FDITypeInstructionEncoding> F_D_I_type_instruction_encoding_map;
 extern std::unordered_map<std::string, FDSTypeInstructionEncoding> F_D_S_type_instruction_encoding_map;
-
-/**
- * @brief A map that associates instruction names with their corresponding opcode type.
- * 
- * This map stores the opcode type for various instructions, indexed by their names.
- */
-extern std::unordered_map<std::string, InstructionType> instruction_opcode_type_map;
 
 /**
  * @brief A map that associates instruction names with their expected syntax.

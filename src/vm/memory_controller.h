@@ -18,9 +18,6 @@ class MemoryController {
 private:
     Memory memory_; ///< The main memory object.
 public:
-    /**
-     * @brief Constructs a MemoryController object.
-     */
     MemoryController() = default;
 
     void Reset() {
@@ -28,7 +25,6 @@ public:
     }
 
     void PrintCacheStatus() const {
-
         std::string cacheEnabled = vm_config::ini::Get("Cache", "cache_enabled");
         std::cout << "Cache enabled: " << cacheEnabled << std::endl;
     }
@@ -49,20 +45,19 @@ public:
       memory_.WriteDoubleWord(address, value);
     }
 
-    uint8_t ReadByte(uint64_t address) {
+    [[nodiscard]] uint8_t ReadByte(uint64_t address) {
         return memory_.ReadByte(address);
     }
 
-    uint16_t ReadHalfWord(uint64_t address) {
+    [[nodiscard]] uint16_t ReadHalfWord(uint64_t address) {
         return memory_.ReadHalfWord(address);
     }
 
-    uint32_t ReadWord(uint64_t address) {
+    [[nodiscard]] uint32_t ReadWord(uint64_t address) {
         return memory_.ReadWord(address);
-
     }
 
-    uint64_t ReadDoubleWord(uint64_t address) {
+    [[nodiscard]] uint64_t ReadDoubleWord(uint64_t address) {
         return memory_.ReadDoubleWord(address);
     }
 
@@ -72,6 +67,10 @@ public:
 
     void DumpMemory(std::vector<std::string> args) {
       memory_.DumpMemory(args);
+    }
+
+    std::string GetMemoryPoint(uint64_t address) {
+      return memory_.GetMemoryPoint(address);
     }
 
 };

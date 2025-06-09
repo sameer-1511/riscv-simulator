@@ -24,32 +24,44 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
     uint64_t base_data_address = globals::data_section_start;
     for (const auto& data : program.data_buffer) {
         std::visit([&](auto&& value) {
-            using T = std::decay_t<decltype(value)>;  // Deduce the type of the value
+            using T = std::decay_t<decltype(value)>; 
+            auto align = [&](unsigned int alignment) {
+                if (data_counter % alignment != 0)
+                    data_counter += alignment - (data_counter % alignment);
+            };
+
             if constexpr (std::is_same_v<T, uint8_t>) {
-              memory_controller_.WriteByte(base_data_address + data_counter, value);  // Write a byte
+                align(1);
+                memory_controller_.WriteByte(base_data_address + data_counter, value);  // Write a byte
                 data_counter += 1;
             } else if constexpr (std::is_same_v<T, uint16_t>) {
-              memory_controller_.WriteHalfWord(base_data_address + data_counter, value);  // Write a halfword (16 bits)
+                align(2);
+                memory_controller_.WriteHalfWord(base_data_address + data_counter, value);  // Write a halfword (16 bits)
                 data_counter += 2;
             } else if constexpr (std::is_same_v<T, uint32_t>) {
-              memory_controller_.WriteWord(base_data_address + data_counter, value);  // Write a word (32 bits)
+                align(4);
+                memory_controller_.WriteWord(base_data_address + data_counter, value);  // Write a word (32 bits)
                 data_counter += 4;
             } else if constexpr (std::is_same_v<T, uint64_t>) {
-              memory_controller_.WriteDoubleWord(base_data_address + data_counter, value);  // Write a double word (64 bits)
+                align(8);
+                memory_controller_.WriteDoubleWord(base_data_address + data_counter, value);  // Write a double word (64 bits)
                 data_counter += 8;
             } else if constexpr (std::is_same_v<T, float>) {
+                align(4);
                 uint32_t float_as_int;
                 std::memcpy(&float_as_int, &value, sizeof(float));
-              memory_controller_.WriteWord(base_data_address + data_counter, float_as_int);  // Write the float as a word
+                memory_controller_.WriteWord(base_data_address + data_counter, float_as_int);  // Write the float as a word
                 data_counter += 4;
             } else if constexpr (std::is_same_v<T, double>) {
+                align(8);
                 uint64_t double_as_int;
                 std::memcpy(&double_as_int, &value, sizeof(double));
-              memory_controller_.WriteDoubleWord(base_data_address + data_counter, double_as_int);  // Write the double as a double word
+                memory_controller_.WriteDoubleWord(base_data_address + data_counter, double_as_int);  // Write the double as a double word
                 data_counter += 8;
             } else if constexpr (std::is_same_v<T, std::string>) {
+                align(1);
                 for (size_t i = 0; i < value.size(); i++) {
-                  memory_controller_.WriteByte(base_data_address + data_counter, static_cast<uint8_t>(value[i]));  // Write each byte of the string
+                    memory_controller_.WriteByte(base_data_address + data_counter, static_cast<uint8_t>(value[i]));  // Write each byte of the string
                     data_counter += 1;
                 }
             }

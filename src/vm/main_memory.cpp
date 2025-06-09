@@ -231,6 +231,20 @@ void Memory::DumpMemory(std::vector<std::string> args) {
     file << "}\n";
     file.close();
 
+    std::cout << "VM_MEMORY_DUMPED" << std::endl;
+
+}
+
+std::string Memory::GetMemoryPoint(uint64_t address) {
+  if (address >= memory_size_ - 7) {
+    throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
+  }
+
+  uint64_t value = ReadDoubleWord(address);
+  std::stringstream ss;
+  ss << "[0x" << std::hex << std::setw(16) << std::setfill('0') << value << "]";
+  return ss.str();
+
 }
 
 void Memory::printMemoryUsage() const {

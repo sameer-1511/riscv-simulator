@@ -30,6 +30,8 @@ Command ParseCommand(const std::string &input) {
     command_type = command_handler::CommandType::DUMP_MEMORY;
   } else if (command_str=="print_mem" || command_str=="pmem") {
     command_type = command_handler::CommandType::PRINT_MEMORY;
+  } else if (command_str=="get_mem_point" || command_str=="gmp") {
+    command_type = command_handler::CommandType::GET_MEMORY_POINT;
   } else if (command_str=="dump_cache") {
     command_type = command_handler::CommandType::DUMP_CACHE;
   } else if (command_str=="add_breakpoint") {

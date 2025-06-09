@@ -9,6 +9,20 @@
 #include "../../vm/registers.h"
 #include "../../utils.h"
 
+bool Parser::parse_O() {
+  if (peekToken(1).type==TokenType::EOF_ || peekToken(1).line_number!=currentToken().line_number
+      ) {
+    ICUnit block;
+    block.setOpcode(currentToken().value);
+    skipCurrentLine();
+    intermediate_code_.emplace_back(block, true);
+    instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
+    instruction_index_++;
+    return true;
+  }
+  return false;
+}
+
 bool Parser::parse_O_GPR_C_GPR_C_GPR() {
   if (peekToken(1).line_number==currentToken().line_number
       && peekToken(1).type==TokenType::GP_REGISTER

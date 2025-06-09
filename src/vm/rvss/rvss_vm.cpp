@@ -169,7 +169,6 @@ void RVSSVM::ExecuteDouble() {
 
   alu::AluOp aluOperation = control_unit_.GetAluSignal(current_instruction_, control_unit_.GetAluOp());
   std::tie(execution_result_, fcsr_status) = alu::Alu::dfpexecute(aluOperation, reg1_value, reg2_value, reg3_value, rm);
-
 }
 
 void RVSSVM::ExecuteVector() {
@@ -538,6 +537,7 @@ void RVSSVM::Run() {
 
 void RVSSVM::DebugRun() {
   while (program_counter_ < program_size_) {
+    current_delta_.old_pc = program_counter_;
     if (std::find(breakpoints_.begin(), breakpoints_.end(), program_counter_) == breakpoints_.end()) {
       Fetch();
       Decode();
@@ -547,6 +547,14 @@ void RVSSVM::DebugRun() {
       instructions_retired_++;
       cycle_s_++;
       std::cout << "Program Counter: " << program_counter_ << std::endl;
+
+      current_delta_.new_pc = program_counter_;
+      // history_.push(current_delta_);
+      undo_stack_.push(current_delta_);
+      while (!redo_stack_.empty()) {
+        redo_stack_.pop();
+      }
+      current_delta_ = StepDelta();
     } else {
       std::cout << "VM_BREAKPOINT_HIT " << program_counter_ << std::endl;
       output_status_ = "VM_BREAKPOINT_HIT";
@@ -583,15 +591,15 @@ void RVSSVM::Step() {
     }
 
     current_delta_ = StepDelta();
-    output_status_ = "VM_STEP_COMPLETED";
-    if (program_counter_ >= program_size_) {
+
+
+    if (program_counter_ < program_size_) {
+      std::cout << "VM_STEP_COMPLETED" << std::endl;
+      output_status_ = "VM_STEP_COMPLETED";
+    } else if (program_counter_ >= program_size_) {
       std::cout << "VM_LAST_INSTRUCTION_STEPPED" << std::endl;
       output_status_ = "VM_LAST_INSTRUCTION_STEPPED";
     }
-
-
-
-
 
   } else if (program_counter_ >= program_size_) {
     std::cout << "VM_PROGRAM_END" << std::endl;
@@ -649,6 +657,7 @@ void RVSSVM::Undo() {
   redo_stack_.push(last);
 
   output_status_ = "VM_UNDO_COMPLETED";
+  std::cout << "VM_UNDO_COMPLETED" << std::endl;
 
   DumpRegisters(globals::registers_dump_file, registers_);
   DumpState(globals::vm_state_dump_file);

@@ -17,6 +17,8 @@ extern std::string cache_dump_file;
 extern std::string vm_state_dump_file;
 //extern std::string output_file;
 
+extern bool verbose_errors_print;
+extern bool verbose_warnings;
 
 extern unsigned int data_section_start;
 

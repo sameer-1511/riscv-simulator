@@ -598,20 +598,19 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
 
     {"fclass.s", {SyntaxType::O_GPR_C_FPR}},
 
-    {"fmv.x.w",
-     {SyntaxType::O_GPR_C_FPR}}, // x[n][0:31] to f[m][0:31], 32-bit floating-point value from an f (floating-point) register into an x (integer) register without conversion
+    {"fmv.x.w", {SyntaxType::O_GPR_C_FPR}}, // x[n][0:31] to f[m][0:31], 32-bit floating-point value from an f (floating-point) register into an x (integer) register without conversion
     {"fmv.w.x", {SyntaxType::O_FPR_C_GPR}}, // f[n][0:31] to x[m][0:31],
 
     {"fcvt.w.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->int32
+    {"fcvt.wu.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->uint32
     {"fcvt.l.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->int64
+    {"fcvt.lu.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->uint64
 
     {"fcvt.s.w", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // int32->f32
-    {"fcvt.s.l", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // int64->f32
-
-    {"fcvt.wu.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->uint32
-    {"fcvt.lu.s", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->uint64
     {"fcvt.s.wu", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // uint32->f32
+    {"fcvt.s.l", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // int64->f32
     {"fcvt.s.lu", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // uint64->f32
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -643,16 +642,14 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"fclass.d", {SyntaxType::O_GPR_C_FPR}},
 
     {"fcvt.w.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int32, sign extends
+    {"fcvt.wu.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint32, sign extends
     {"fcvt.l.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->int64
+    {"fcvt.lu.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint64
 
     {"fcvt.d.w", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // int32->f64
-    {"fcvt.d.l", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // int64->f64
-
-    {"fcvt.wu.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint32, sign extends
-    {"fcvt.lu.d", {SyntaxType::O_GPR_C_FPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // f64->uint64
     {"fcvt.d.wu", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // uint32->f64
+    {"fcvt.d.l", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // int64->f64
     {"fcvt.d.lu", {SyntaxType::O_FPR_C_GPR, SyntaxType::O_FPR_C_GPR_C_RM}}, // uint64->f64
-
 
     {"fcvt.s.d", {SyntaxType::O_FPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f64->f32
     {"fcvt.d.s", {SyntaxType::O_FPR_C_FPR, SyntaxType::O_GPR_C_FPR_C_RM}}, // f32->f64
@@ -784,6 +781,7 @@ bool isDInstruction(const uint32_t &instruction) {
   uint8_t opcode = (instruction & 0b1111111);
   uint8_t funct3 = (instruction >> 12) & 0b111;
   uint8_t funct7 = (instruction >> 25) & 0b1111111;
+  
 
   switch (opcode) {
     case 0b0000111: // fld
@@ -794,11 +792,10 @@ bool isDInstruction(const uint32_t &instruction) {
       break;
     }
     case 0b1010011: {
-      if (!(funct7 & 0b1)) {
-        if (funct7==0b0100001) {
-          return false; // fcvt.d.s
-        }
+      if (funct7 & 0b1) {
         return true;
+      } else if (funct7==0b0100000) {
+        return true; // fcvt.s.d
       }
     }
     default: break;

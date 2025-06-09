@@ -197,7 +197,7 @@ void DumpRegisters(const std::string &filename, RegisterFile &register_file) {
 
   file << "    \"fp_registers\": {\n";
   for (size_t i = 0; i < fp_registers.size(); ++i) {
-    file << "        \"x" << i << "\"";
+    file << "        \"f" << i << "\"";
     file << std::string((i >= 10 ? 0 : 1), ' ');
     file << ": \"0x";
     file << std::hex << std::setw(16) << std::setfill('0')
