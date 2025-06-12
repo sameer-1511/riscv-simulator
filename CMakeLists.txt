@@ -39,14 +39,21 @@ endif()
 
 
 # tests
+option(ENABLE_TESTS "Build tests" OFF)
 
+if(ENABLE_TESTS)
+    find_package(GTest REQUIRED)
+    include_directories(${GTEST_INCLUDE_DIRS})
+    list(REMOVE_ITEM SRC_FILES "${CMAKE_SOURCE_DIR}/src/main.cpp")
+    add_executable(tests ${SRC_FILES} ${TEST_FILES})
+    target_link_libraries(tests GTest::GTest GTest::Main pthread)
+    add_custom_target(test_run
+        COMMAND ./tests
+        DEPENDS tests
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
+endif()
 
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
-list(REMOVE_ITEM SRC_FILES "${CMAKE_SOURCE_DIR}/src/main.cpp")
-
-add_executable(tests ${SRC_FILES} ${TEST_FILES})
-target_link_libraries(tests GTest::GTest GTest::Main pthread)
 
 add_custom_target(run
     COMMAND ${PROJECT_NAME}
@@ -66,11 +73,7 @@ add_custom_target(valgrind
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
-add_custom_target(test_run
-    COMMAND ./tests
-    DEPENDS tests
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
+
 
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
