@@ -114,11 +114,11 @@ int main(int argc, char *argv[]) {
         program = assemble(command.args[0]);
         std::cout << "VM_PARSE_SUCCESS" << std::endl;
         vm.output_status_ = "VM_PARSE_SUCCESS";
-        vm.DumpState(globals::vm_state_dump_file);
+        vm.DumpState(globals::vm_state_dump_file_path);
       } catch (const std::runtime_error &e) {
         std::cout << "VM_PARSE_ERROR" << std::endl;
         vm.output_status_ = "VM_PARSE_ERROR";
-        vm.DumpState(globals::vm_state_dump_file);
+        vm.DumpState(globals::vm_state_dump_file_path);
         std::cerr << e.what() << '\n';
         continue;
       }
@@ -129,22 +129,17 @@ int main(int argc, char *argv[]) {
       std::cout << "Program running..." << std::endl;
     } else if (command.type==command_handler::CommandType::DEBUG) {
       vm.DebugRun();
-      // std::cout << "Debugging..." << std::endl;
     } else if (command.type==command_handler::CommandType::STEP) {
       vm.Step();
-      // std::cout << "Stepping..." << std::endl;
     } else if (command.type==command_handler::CommandType::UNDO) {
       vm.Undo();
-      std::cout << "Undoing..." << std::endl;
     } else if (command.type==command_handler::CommandType::REDO) {
       vm.Redo();
-      std::cout << "Redoing..." << std::endl;
     } else if (command.type==command_handler::CommandType::RESET) {
       vm.Reset();
-      std::cout << "VM Reset." << std::endl;
     } else if (command.type==command_handler::CommandType::EXIT) {
       vm.output_status_ = "VM_STOPPED";
-      vm.DumpState(globals::vm_state_dump_file);
+      vm.DumpState(globals::vm_state_dump_file_path);
       break;
     } else if (command.type==command_handler::CommandType::ADD_BREAKPOINT) {
       vm.AddBreakpoint(std::stoul(command.args[0], nullptr, 10));

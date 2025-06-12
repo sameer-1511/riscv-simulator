@@ -192,9 +192,9 @@ void Memory::PrintMemory(const uint64_t address, uint rows) {
 }
 
 void Memory::DumpMemory(std::vector<std::string> args) {
-    std::ofstream file(globals::memory_dump_file);
+    std::ofstream file(globals::memory_dump_file_path);
     if (!file.is_open()) {
-        throw std::runtime_error("Unable to open memory dump file: " + globals::memory_dump_file);
+        throw std::runtime_error("Unable to open memory dump file: " + globals::memory_dump_file_path.string());
     }
     file << "{\n";
 

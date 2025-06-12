@@ -71,10 +71,10 @@ AssembledProgram assemble(const std::string &filename) {
       return line_number_instruction_number_mapping;
     }();
 
-    DumpNoErrors(globals::errors_dump_file);
+    DumpNoErrors(globals::errors_dump_file_path);
 
   } else {
-    DumpErrors(globals::errors_dump_file, parser.getErrors());
+    DumpErrors(globals::errors_dump_file_path, parser.getErrors());
     if (globals::verbose_errors_print) {
       parser.printErrors();
     }

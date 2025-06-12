@@ -13,8 +13,8 @@
 #include <cctype>
 
 RVSSVM::RVSSVM() : VmBase() {
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
 }
 
 RVSSVM::~RVSSVM() = default;
@@ -531,8 +531,8 @@ void RVSSVM::Run() {
     std::cout << "VM_PROGRAM_END" << std::endl;
     output_status_ = "VM_PROGRAM_END";
   }
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
 }
 
 void RVSSVM::DebugRun() {
@@ -565,8 +565,8 @@ void RVSSVM::DebugRun() {
     std::cout << "VM_PROGRAM_END" << std::endl;
     output_status_ = "VM_PROGRAM_END";
   }
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
 }
 
 void RVSSVM::Step() {
@@ -605,8 +605,8 @@ void RVSSVM::Step() {
     std::cout << "VM_PROGRAM_END" << std::endl;
     output_status_ = "VM_PROGRAM_END";
   }
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
 }
 
 void RVSSVM::Undo() {
@@ -659,8 +659,8 @@ void RVSSVM::Undo() {
   output_status_ = "VM_UNDO_COMPLETED";
   std::cout << "VM_UNDO_COMPLETED" << std::endl;
 
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
 }
 
 void RVSSVM::Redo() {
@@ -705,8 +705,8 @@ void RVSSVM::Redo() {
   program_counter_ = next.new_pc;
   instructions_retired_++;
   cycle_s_++;
-  DumpRegisters(globals::registers_dump_file, registers_);
-  DumpState(globals::vm_state_dump_file);
+  DumpRegisters(globals::registers_dump_file_path, registers_);
+  DumpState(globals::vm_state_dump_file_path);
   std::cout << "Program Counter: " << program_counter_ << std::endl;
   undo_stack_.push(next);
 

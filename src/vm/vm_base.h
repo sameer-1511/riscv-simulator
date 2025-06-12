@@ -69,7 +69,7 @@ public:
     virtual void Undo() = 0;
     virtual void Redo() = 0;
     virtual void Reset() = 0;
-    void DumpState(const std::string &filename);
+    void DumpState(const std::filesystem::path &filename);
 
 };
 

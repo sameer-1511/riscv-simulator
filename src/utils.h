@@ -42,10 +42,12 @@ std::string GetLineFromFile(const std::string &fileName, unsigned int lineNumber
  */
 std::string ParseEscapedString(const std::string &input);
 
-void DumpErrors(const std::string &filename, const std::vector<ParseError> &errors);
+void DumpErrors(const std::filesystem::path &filename, const std::vector<ParseError> &errors);
 
-void DumpNoErrors(const std::string &filename);
+void DumpNoErrors(const std::filesystem::path &filename);
 
-void DumpRegisters(const std::string &filename, RegisterFile &register_file);
+void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register_file);\
+
+void SetupConfigFile();
 
 #endif // UTILS_H

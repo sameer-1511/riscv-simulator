@@ -1,0 +1,46 @@
+name: Build and Release VM
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger when pushing a version tag like v1.0.0
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Rename Binary
+        shell: bash
+        run: |
+          mkdir output
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            cp build/Release/vm.exe output/vm-${{ matrix.os }}.exe
+          else
+            cp build/vm output/vm-${{ matrix.os }}
+          fi
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: |
+            output/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -8,6 +8,7 @@
 
 #include "utils.h"
 #include "vm/registers.h"
+#include "globals.h"
 
 void setupVmStateDirectory() {
   std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";
@@ -17,9 +18,9 @@ void setupVmStateDirectory() {
 
   std::filesystem::path registers_file = vm_state_dir / "registers_dump.json";
   std::filesystem::path errors_file = vm_state_dir / "errors_dump.json";
-  std::filesystem::path memory_dump_file = vm_state_dir / "memory_dump.json";
-  // std::filesystem::path cache_dump_file = vm_state_dir / "cache_dump.json";
-  std::filesystem::path vm_state_dump_file = vm_state_dir / "vm_state_dump.json";
+  // std::filesystem::path memory_dump_file = vm_state_dir / "memory_dump.json";
+  // std::filesystem::path cache_dump_file_path = vm_state_dir / "cache_dump.json";
+  std::filesystem::path vm_state_dump_file_path = vm_state_dir / "vm_state_dump.json";
 
   if (!std::filesystem::exists(registers_file)) {
     std::ofstream(registers_file).close();
@@ -27,15 +28,21 @@ void setupVmStateDirectory() {
   if (!std::filesystem::exists(errors_file)) {
     std::ofstream(errors_file).close();
   }
-  if (!std::filesystem::exists(memory_dump_file)) {
-    std::ofstream(memory_dump_file).close();
+  if (!std::filesystem::exists(globals::memory_dump_file_path)) {
+    std::ofstream(globals::memory_dump_file_path).close();
   }
-  // if (!std::filesystem::exists(cache_dump_file)) {
-  //   std::ofstream(cache_dump_file).close();
-  // }
-  if (!std::filesystem::exists(vm_state_dump_file)) {
-    std::ofstream(vm_state_dump_file).close();
+  if (!std::filesystem::exists(globals::cache_dump_file_path)) {
+    std::ofstream(globals::cache_dump_file_path).close();
   }
+  if (!std::filesystem::exists(vm_state_dump_file_path)) {
+    std::ofstream(vm_state_dump_file_path).close();
+  }
+
+  if (!std::filesystem::exists(globals::config_file_path)) {
+    SetupConfigFile();
+  }
+
+  
 }
 
 
@@ -102,10 +109,10 @@ std::string ParseEscapedString(const std::string &input) {
   return oss.str();
 }
 
-void DumpErrors(const std::string &filename, const std::vector<ParseError> &errors) {
+void DumpErrors(const std::filesystem::path &filename, const std::vector<ParseError> &errors) {
   std::ofstream file(filename);
   if (!file.is_open()) {
-    throw std::runtime_error("Unable to open file: " + filename);
+    throw std::runtime_error("Unable to open file: " + filename.string());
   }
 
   file << "{\n";
@@ -130,10 +137,10 @@ void DumpErrors(const std::string &filename, const std::vector<ParseError> &erro
   file.close();
 }
 
-void DumpNoErrors(const std::string &filename) {
+void DumpNoErrors(const std::filesystem::path &filename) {
   std::ofstream file(filename);
   if (!file.is_open()) {
-    throw std::runtime_error("Unable to open file: " + filename);
+    throw std::runtime_error("Unable to open file: " + filename.string());
   }
 
   file << "{\n";
@@ -144,14 +151,14 @@ void DumpNoErrors(const std::string &filename) {
   file.close();
 }
 
-void DumpRegisters(const std::string &filename, RegisterFile &register_file) {
+void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register_file) {
 
   std::vector<uint64_t> gp_registers = register_file.GetGprValues();
   std::vector<uint64_t> fp_registers = register_file.GetFprValues();
 
   std::ofstream file(filename);
   if (!file.is_open()) {
-    throw std::runtime_error("Unable to open file: " + filename);
+    throw std::runtime_error("Unable to open file: " + filename.string());
   }
 
   file << "{\n";
@@ -226,4 +233,40 @@ void DumpRegisters(const std::string &filename, RegisterFile &register_file) {
   file << "}\n";
 
   file.close();
+}
+
+void SetupConfigFile() {
+  std::ofstream config_file(globals::config_file_path);
+  if (!config_file.is_open()) {
+    throw std::runtime_error("Unable to open config file: " + globals::config_file_path.string());
+  }
+
+  config_file << "[General]\n";
+  config_file << "name=vm\n\n";
+
+  config_file << "[Execution]\n";
+  config_file << "processor_type=single_stage\n";
+  config_file << "hazard_detection=false\n";
+  config_file << "forwarding=false\n";
+  config_file << "branch_prediction=none\n\n";
+
+  config_file << "[Memory]\n";
+  config_file << "memory_size=0xffffffffffffffff\n";
+  config_file << "block_size=1024\n\n";
+
+  config_file << "[Cache]\n";
+  config_file << "cache_enabled=false\n";
+  config_file << "cache_size=0\n";
+  config_file << "cache_block_size=0\n";
+  config_file << "cache_associativity=0\n";
+  config_file << "cache_read_miss_policy=read_allocate\n";
+  config_file << "cache_replacement_policy=LRU\n";
+  config_file << "cache_write_hit_policy=write_back\n";
+  config_file << "cache_write_miss_policy=write_allocate\n\n";
+
+  config_file << "[BranchPrediction]\n";
+  config_file << "branch_prediction_type=always_not_taken\n";
+  config_file << "branch_prediction_table_size=0\n";
+  config_file << "branch_prediction_table_associativity=0\n";
+  config_file.close();
 }

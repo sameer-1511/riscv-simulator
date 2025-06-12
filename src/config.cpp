@@ -6,26 +6,6 @@
 
 #include "config.h"
 
-std::string vm_config::GetKeyValue(const std::string &key) {
-    std::ifstream configFile(globals::config_file);
-    if (!configFile.is_open()) {
-        std::cerr << "Error: Could not open configuration file: " << globals::config_file << std::endl;
-        return "";
-    }
-
-    std::string line;
-    while (std::getline(configFile, line)) {
-        if (line.find(key) != std::string::npos) {
-            size_t pos = line.find('=');
-            if (pos != std::string::npos) {
-                return line.substr(pos + 1);
-            }
-        }
-    }
-
-    return "";
-}
-
 void vm_config::ini::Trim(std::string &str) {
     size_t start = str.find_first_not_of(" \t");
     size_t end = str.find_last_not_of(" \t");
@@ -33,9 +13,9 @@ void vm_config::ini::Trim(std::string &str) {
 }
 
 std::string vm_config::ini::Get(const std::string &section, const std::string &key) {
-    std::ifstream file(globals::config_file);
+    std::ifstream file(globals::config_file_path);
     if (!file.is_open()) {
-        throw std::runtime_error("Could not open config file: " + globals::config_file);
+        throw std::runtime_error("Could not open config file: " + globals::config_file_path.string());
     }
 
     std::string line, current_section;
@@ -74,9 +54,9 @@ std::string vm_config::ini::Get(const std::string &section, const std::string &k
 }
 
 void vm_config::ini::Set(const std::string &section, const std::string &key, const std::string &value) {
-    std::ifstream file(globals::config_file);
+    std::ifstream file(globals::config_file_path);
     if (!file.is_open()) {
-        throw std::runtime_error("Could not open config file: " + globals::config_file);
+        throw std::runtime_error("Could not open config file: " + globals::config_file_path.string());
     }
 
     std::ostringstream buffer;
@@ -116,9 +96,9 @@ void vm_config::ini::Set(const std::string &section, const std::string &key, con
         throw std::invalid_argument("Key not found: " + key);
     }
 
-    std::ofstream out_file(globals::config_file, std::ios::trunc);
+    std::ofstream out_file(globals::config_file_path, std::ios::trunc);
     if (!out_file.is_open()) {
-        throw std::runtime_error("Could not open config file for writing: " + globals::config_file);
+        throw std::runtime_error("Could not open config file for writing: " + globals::config_file_path.string());
     }
     out_file << buffer.str();
 }

@@ -70,7 +70,7 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
     std::cout << "VM_PROGRAM_LOADED" << std::endl;
     output_status_ = "VM_PROGRAM_LOADED";
 
-    DumpState(globals::vm_state_dump_file);
+    DumpState(globals::vm_state_dump_file_path);
     
 
 }
@@ -189,7 +189,7 @@ void VmBase::AddBreakpoint(uint64_t val, bool is_line) {
         breakpoints_.emplace_back(val);
     }
 
-    DumpState(globals::vm_state_dump_file);
+    DumpState(globals::vm_state_dump_file_path);
 }
 
 void VmBase::RemoveBreakpoint(uint64_t val, bool is_line) {
@@ -217,7 +217,7 @@ void VmBase::RemoveBreakpoint(uint64_t val, bool is_line) {
         }
         breakpoints_.erase(std::remove(breakpoints_.begin(), breakpoints_.end(), val), breakpoints_.end());
     }
-    DumpState(globals::vm_state_dump_file);
+    DumpState(globals::vm_state_dump_file_path);
 
 
 }
@@ -229,10 +229,10 @@ bool VmBase::CheckBreakpoint(uint64_t address) {
 void VmBase::HandleSyscall() {
 }
 
-void VmBase::DumpState(const std::string &filename) {
+void VmBase::DumpState(const std::filesystem::path &filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Error opening file for dumping VM state: " << filename << std::endl;
+        std::cerr << "Error opening file for dumping VM state: " << filename.string() << std::endl;
         return;
     }
 

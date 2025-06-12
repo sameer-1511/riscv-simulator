@@ -20,14 +20,6 @@ enum class VmTypes {
 };
 
 /**
- * @brief Retrieves the value associated with a given key from the configuration.
- *
- * @param key The key whose value needs to be retrieved.
- * @return The value associated with the key as a string.
- */
-std::string GetKeyValue(const std::string &key);
-
-/**
  * @namespace ini
  * @brief Namespace for handling ini file operations.
  */
