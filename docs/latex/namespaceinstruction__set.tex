@@ -5,8 +5,6 @@
 \item 
 struct \mbox{\hyperlink{structinstruction__set_1_1RTypeInstructionEncoding}{RType\+Instruction\+Encoding}}
 \item 
-struct \mbox{\hyperlink{structinstruction__set_1_1R4TypeInstructionEncoding}{R4\+Type\+Instruction\+Encoding}}
-\item 
 struct \mbox{\hyperlink{structinstruction__set_1_1I1TypeInstructionEncoding}{I1\+Type\+Instruction\+Encoding}}
 \item 
 struct \mbox{\hyperlink{structinstruction__set_1_1I2TypeInstructionEncoding}{I2\+Type\+Instruction\+Encoding}}
@@ -73,26 +71,7 @@ enum class \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874
 , \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462a4acbd7a3820c4fe37725ec992ebe084a}{O\+\_\+\+GPR\+\_\+\+C\+\_\+\+FPR\+\_\+\+C\+\_\+\+FPR}}
 , \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462a4b80d7d1223745bdf966288df20f1fa3}{O\+\_\+\+FPR\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+GPR\+\_\+\+RP}}
  \}
-\begin{DoxyCompactList}\small\item\em Enum that represents different syntax types for instructions. \end{DoxyCompactList}\item 
-enum class \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}{Instruction\+Type}} \{ \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6}{R}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29}{R4}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aa18c217c4f2a811afcaaf5052945e31b}{I1}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8213a4c2934a732d4ab7d75e9d3e32f4}{I2}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240af4a3f9ad212c5f18078484d1b535ea95}{I3}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a5dbc98dcc983a70728bd082d1a47546e}{S}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571}{B}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb}{U}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aff44570aca8241914870afbc310cdb85}{J}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a7b200155e45b2ee127a58ac05b60a67e}{CSR\+\_\+R}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a167d1c854dc79f1522d638b4a72a87ca}{CSR\+\_\+I}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a69691c7bdcc3ce6d5d8a1361f22d04ac}{M}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a800618943025315f869e4e1f09471012}{F}}
- \}
-\begin{DoxyCompactList}\small\item\em Enum that represents different types of opcodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enum that represents different syntax types for instructions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -184,78 +163,10 @@ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1FDSTypeInstructionEncoding}{FDSType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_a5d37d30556dd68b58a56ac0e134aa17c}{F\+\_\+\+D\+\_\+\+S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462}{Syntax\+Type}} $>$ $>$ \mbox{\hyperlink{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}{instruction\+\_\+syntax\+\_\+map}}
-\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their expected syntax. \end{DoxyCompactList}\item 
-std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1R4TypeInstructionEncoding}{R4\+Type\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_a1afd240cbdbda8e426147b77461f2f8c}{R4\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
-\item 
-std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}{Instruction\+Type}} $>$ \mbox{\hyperlink{namespaceinstruction__set_ad8147b2668ddda6cf39325bec3f31c20}{instruction\+\_\+opcode\+\_\+type\+\_\+map}}
-\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their corresponding opcode type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their expected syntax. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}} 
-\index{instruction\_set@{instruction\_set}!InstructionType@{InstructionType}}
-\index{InstructionType@{InstructionType}!instruction\_set@{instruction\_set}}
-\doxysubsubsection{\texorpdfstring{InstructionType}{InstructionType}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}{instruction\+\_\+set\+::\+Instruction\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
-
-
-
-Enum that represents different types of opcodes. 
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{R@{R}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!R@{R}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6}} 
-R&R-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{R4@{R4}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!R4@{R4}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29}} 
-R4&R4-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{I1@{I1}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!I1@{I1}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aa18c217c4f2a811afcaaf5052945e31b}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aa18c217c4f2a811afcaaf5052945e31b}} 
-I1&I-\/type instruction with 12-\/bit immediate. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{I2@{I2}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!I2@{I2}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8213a4c2934a732d4ab7d75e9d3e32f4}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8213a4c2934a732d4ab7d75e9d3e32f4}} 
-I2&I-\/type instruction with 6-\/bit immediate and a funct6 field. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{I3@{I3}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!I3@{I3}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240af4a3f9ad212c5f18078484d1b535ea95}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240af4a3f9ad212c5f18078484d1b535ea95}} 
-I3&I-\/type instruction of ecall and ebreak. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{S@{S}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!S@{S}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a5dbc98dcc983a70728bd082d1a47546e}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a5dbc98dcc983a70728bd082d1a47546e}} 
-S&S-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{B@{B}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!B@{B}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571}} 
-B&B-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{U@{U}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!U@{U}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb}} 
-U&U-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{J@{J}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!J@{J}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aff44570aca8241914870afbc310cdb85}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aff44570aca8241914870afbc310cdb85}} 
-J&J-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{CSR\_R@{CSR\_R}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!CSR\_R@{CSR\_R}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a7b200155e45b2ee127a58ac05b60a67e}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a7b200155e45b2ee127a58ac05b60a67e}} 
-CSR\+\_\+R&CSR R-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{CSR\_I@{CSR\_I}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!CSR\_I@{CSR\_I}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a167d1c854dc79f1522d638b4a72a87ca}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a167d1c854dc79f1522d638b4a72a87ca}} 
-CSR\+\_\+I&CSR I-\/type instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{M@{M}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!M@{M}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a69691c7bdcc3ce6d5d8a1361f22d04ac}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a69691c7bdcc3ce6d5d8a1361f22d04ac}} 
-M&M-\/extension instruction. \\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{F@{F}!instruction\_set@{instruction\_set}}\index{instruction\_set@{instruction\_set}!F@{F}}}\mbox{\Hypertarget{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a800618943025315f869e4e1f09471012}\label{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a800618943025315f869e4e1f09471012}} 
-F&F-\/extension instruction. \\
-\hline
-
-\end{DoxyEnumFields}
 \mbox{\Hypertarget{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462}\label{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462}} 
 \index{instruction\_set@{instruction\_set}!SyntaxType@{SyntaxType}}
 \index{SyntaxType@{SyntaxType}!instruction\_set@{instruction\_set}}
@@ -759,17 +670,7 @@ O\+\_\+\+FPR\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+GPR\+\_\+\+RP&Opcode floating-\/
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{namespaceinstruction__set_ad8147b2668ddda6cf39325bec3f31c20}\label{namespaceinstruction__set_ad8147b2668ddda6cf39325bec3f31c20}} 
-\index{instruction\_set@{instruction\_set}!instruction\_opcode\_type\_map@{instruction\_opcode\_type\_map}}
-\index{instruction\_opcode\_type\_map@{instruction\_opcode\_type\_map}!instruction\_set@{instruction\_set}}
-\doxysubsubsection{\texorpdfstring{instruction\_opcode\_type\_map}{instruction\_opcode\_type\_map}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}{Instruction\+Type}}$>$ instruction\+\_\+set\+::instruction\+\_\+opcode\+\_\+type\+\_\+map\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-A map that associates instruction names with their corresponding opcode type. 
-
-This map stores the opcode type for various instructions, indexed by their names. \mbox{\Hypertarget{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}\label{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}} 
+\mbox{\Hypertarget{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}\label{namespaceinstruction__set_a5e20a1ab57999f19806854d6ccceeedb}} 
 \index{instruction\_set@{instruction\_set}!instruction\_syntax\_map@{instruction\_syntax\_map}}
 \index{instruction\_syntax\_map@{instruction\_syntax\_map}!instruction\_set@{instruction\_set}}
 \doxysubsubsection{\texorpdfstring{instruction\_syntax\_map}{instruction\_syntax\_map}}
@@ -792,12 +693,6 @@ This map stores the expected syntax for various instructions, indexed by their n
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{namespaceinstruction__set_a1afd240cbdbda8e426147b77461f2f8c}\label{namespaceinstruction__set_a1afd240cbdbda8e426147b77461f2f8c}} 
-\index{instruction\_set@{instruction\_set}!R4\_type\_instruction\_encoding\_map@{R4\_type\_instruction\_encoding\_map}}
-\index{R4\_type\_instruction\_encoding\_map@{R4\_type\_instruction\_encoding\_map}!instruction\_set@{instruction\_set}}
-\doxysubsubsection{\texorpdfstring{R4\_type\_instruction\_encoding\_map}{R4\_type\_instruction\_encoding\_map}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structinstruction__set_1_1R4TypeInstructionEncoding}{R4\+Type\+Instruction\+Encoding}}$>$ instruction\+\_\+set\+::\+R4\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map\hspace{0.3cm}{\ttfamily [extern]}}
-
 \mbox{\Hypertarget{namespaceinstruction__set_a859191af4ff841c4c7486a6a19c7fa7a}\label{namespaceinstruction__set_a859191af4ff841c4c7486a6a19c7fa7a}} 
 \index{instruction\_set@{instruction\_set}!R\_type\_instruction\_encoding\_map@{R\_type\_instruction\_encoding\_map}}
 \index{R\_type\_instruction\_encoding\_map@{R\_type\_instruction\_encoding\_map}!instruction\_set@{instruction\_set}}

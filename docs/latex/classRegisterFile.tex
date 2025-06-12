@@ -36,10 +36,6 @@ uint64\+\_\+t \mbox{\hyperlink{classRegisterFile_ab208db6a17dac266e798394febce6c
 \begin{DoxyCompactList}\small\item\em Reads the value of a Floating-\/\+Point Register (FPR). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classRegisterFile_a1eb99110e6c9be35cb02ada8bda4f846}{Write\+Fpr}} (size\+\_\+t reg, uint64\+\_\+t value)
 \begin{DoxyCompactList}\small\item\em Writes a value to a Floating-\/\+Point Register (FPR). \end{DoxyCompactList}\item 
-std\+::array$<$ uint64\+\_\+t, 8 $>$ \mbox{\hyperlink{classRegisterFile_a9abba352a9b89a7fcc90cdc2f11c0613}{Read\+Vr}} (size\+\_\+t reg) const
-\begin{DoxyCompactList}\small\item\em Reads the value of a Vector Register (VR). \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classRegisterFile_a9630b11fc83e74cd1bd6cc87202ef9b5}{Write\+Vr}} (size\+\_\+t reg, const std\+::array$<$ uint64\+\_\+t, 8 $>$ \&value)
-\begin{DoxyCompactList}\small\item\em Writes a value to a Vector Register (VR). \end{DoxyCompactList}\item 
 uint64\+\_\+t \mbox{\hyperlink{classRegisterFile_a864f6e3b6ccc65796223c13c390a8d60}{Read\+Csr}} (size\+\_\+t reg) const
 \item 
 void \mbox{\hyperlink{classRegisterFile_ad703c614dd37205dc11a43272045b6fd}{Write\+Csr}} (size\+\_\+t reg, uint64\+\_\+t value)
@@ -47,26 +43,7 @@ void \mbox{\hyperlink{classRegisterFile_ad703c614dd37205dc11a43272045b6fd}{Write
 std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classRegisterFile_a106a489cfac656e42303821efc8e1d8d}{Get\+Gpr\+Values}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the values of all General-\/\+Purpose Registers (GPR). \end{DoxyCompactList}\item 
 std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classRegisterFile_a93f099cce5c1bb800d4a481d2424732c}{Get\+Fpr\+Values}} () const
-\begin{DoxyCompactList}\small\item\em Retrieves the values of all Floating-\/\+Point Registers (FPR). \end{DoxyCompactList}\item 
-std\+::vector$<$ std\+::array$<$ uint64\+\_\+t, 8 $>$ $>$ \mbox{\hyperlink{classRegisterFile_adda906b28f2951215f400949d2632f01}{Get\+Vr\+Values}} () const
-\begin{DoxyCompactList}\small\item\em Retrieves the values of all Vector Registers (VR). \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classRegisterFile_a9216a2990ef50de54c6163ae01796809}{Gpr\+To\+String}} () const
-\begin{DoxyCompactList}\small\item\em Converts the General-\/\+Purpose Register (GPR) values to a string. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classRegisterFile_adb0b85d72592741e36dcedc74bd4a549}{Fpr\+To\+String}} () const
-\begin{DoxyCompactList}\small\item\em Converts the Floating-\/\+Point Register (FPR) values to a string. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classRegisterFile_a0bec19dedf171a13fb2c20a291c5438a}{Vr\+To\+String}} () const
-\begin{DoxyCompactList}\small\item\em Converts the Vector Register (VR) values to a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static size\+\_\+t \mbox{\hyperlink{classRegisterFile_ad591b57850a6b3bb1c1ad1456ff01f05}{Get\+Register\+Count}} (\mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230}{Register\+Type}} type)
-\begin{DoxyCompactList}\small\item\em Gets the count of registers of a specific type. \end{DoxyCompactList}\item 
-static std\+::string \mbox{\hyperlink{classRegisterFile_abf701427119448cf8122387dd284dca6}{Get\+Gpr\+Name}} (size\+\_\+t reg)
-\begin{DoxyCompactList}\small\item\em Gets the name of a General-\/\+Purpose Register (GPR). \end{DoxyCompactList}\item 
-static std\+::string \mbox{\hyperlink{classRegisterFile_a157ed07e6780f7a0dc85ae109995963f}{Get\+Fpr\+Name}} (size\+\_\+t reg)
-\begin{DoxyCompactList}\small\item\em Gets the name of a Floating-\/\+Point Register (FPR). \end{DoxyCompactList}\item 
-static std\+::string \mbox{\hyperlink{classRegisterFile_a2605e65ff29d48c22a5085e42a5ba272}{Get\+Vr\+Name}} (size\+\_\+t reg)
-\begin{DoxyCompactList}\small\item\em Gets the name of a Vector Register (VR). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the values of all Floating-\/\+Point Registers (FPR). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -117,37 +94,6 @@ CSR&Control and Status Register (CSR). \\
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classRegisterFile_adb0b85d72592741e36dcedc74bd4a549}\label{classRegisterFile_adb0b85d72592741e36dcedc74bd4a549}} 
-\index{RegisterFile@{RegisterFile}!FprToString@{FprToString}}
-\index{FprToString@{FprToString}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{FprToString()}{FprToString()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Fpr\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Converts the Floating-\/\+Point Register (FPR) values to a string. 
-
-\begin{DoxyReturn}{Returns}
-A string representation of the FPR values. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_a157ed07e6780f7a0dc85ae109995963f}\label{classRegisterFile_a157ed07e6780f7a0dc85ae109995963f}} 
-\index{RegisterFile@{RegisterFile}!GetFprName@{GetFprName}}
-\index{GetFprName@{GetFprName}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GetFprName()}{GetFprName()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Get\+Fpr\+Name (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{reg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Gets the name of a Floating-\/\+Point Register (FPR). 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The index of the FPR. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The name of the FPR. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classRegisterFile_a93f099cce5c1bb800d4a481d2424732c}\label{classRegisterFile_a93f099cce5c1bb800d4a481d2424732c}} 
 \index{RegisterFile@{RegisterFile}!GetFprValues@{GetFprValues}}
 \index{GetFprValues@{GetFprValues}!RegisterFile@{RegisterFile}}
@@ -161,24 +107,6 @@ Retrieves the values of all Floating-\/\+Point Registers (FPR).
 \begin{DoxyReturn}{Returns}
 A vector containing the values of all FPRs. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_abf701427119448cf8122387dd284dca6}\label{classRegisterFile_abf701427119448cf8122387dd284dca6}} 
-\index{RegisterFile@{RegisterFile}!GetGprName@{GetGprName}}
-\index{GetGprName@{GetGprName}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GetGprName()}{GetGprName()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Get\+Gpr\+Name (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{reg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Gets the name of a General-\/\+Purpose Register (GPR). 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The index of the GPR. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The name of the GPR. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classRegisterFile_a106a489cfac656e42303821efc8e1d8d}\label{classRegisterFile_a106a489cfac656e42303821efc8e1d8d}} 
 \index{RegisterFile@{RegisterFile}!GetGprValues@{GetGprValues}}
 \index{GetGprValues@{GetGprValues}!RegisterFile@{RegisterFile}}
@@ -191,68 +119,6 @@ Retrieves the values of all General-\/\+Purpose Registers (GPR).
 
 \begin{DoxyReturn}{Returns}
 A vector containing the values of all GPRs. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_ad591b57850a6b3bb1c1ad1456ff01f05}\label{classRegisterFile_ad591b57850a6b3bb1c1ad1456ff01f05}} 
-\index{RegisterFile@{RegisterFile}!GetRegisterCount@{GetRegisterCount}}
-\index{GetRegisterCount@{GetRegisterCount}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GetRegisterCount()}{GetRegisterCount()}}
-{\footnotesize\ttfamily size\+\_\+t Register\+File\+::\+Get\+Register\+Count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRegisterFile_ad20885f84b337c67fd63b230e11ba230}{Register\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Gets the count of registers of a specific type. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em type} & The type of register (GPR, FPR, or VR). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The number of registers of the specified type. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_a2605e65ff29d48c22a5085e42a5ba272}\label{classRegisterFile_a2605e65ff29d48c22a5085e42a5ba272}} 
-\index{RegisterFile@{RegisterFile}!GetVrName@{GetVrName}}
-\index{GetVrName@{GetVrName}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GetVrName()}{GetVrName()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Get\+Vr\+Name (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{reg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Gets the name of a Vector Register (VR). 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The index of the VR. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The name of the VR. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_adda906b28f2951215f400949d2632f01}\label{classRegisterFile_adda906b28f2951215f400949d2632f01}} 
-\index{RegisterFile@{RegisterFile}!GetVrValues@{GetVrValues}}
-\index{GetVrValues@{GetVrValues}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GetVrValues()}{GetVrValues()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::array$<$ uint64\+\_\+t, 8 $>$ $>$ Register\+File\+::\+Get\+Vr\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Retrieves the values of all Vector Registers (VR). 
-
-\begin{DoxyReturn}{Returns}
-A vector containing the arrays of values of all VRs. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_a9216a2990ef50de54c6163ae01796809}\label{classRegisterFile_a9216a2990ef50de54c6163ae01796809}} 
-\index{RegisterFile@{RegisterFile}!GprToString@{GprToString}}
-\index{GprToString@{GprToString}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{GprToString()}{GprToString()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Gpr\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Converts the General-\/\+Purpose Register (GPR) values to a string. 
-
-\begin{DoxyReturn}{Returns}
-A string representation of the GPR values. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classRegisterFile_a864f6e3b6ccc65796223c13c390a8d60}\label{classRegisterFile_a864f6e3b6ccc65796223c13c390a8d60}} 
 \index{RegisterFile@{RegisterFile}!ReadCsr@{ReadCsr}}
@@ -296,43 +162,12 @@ Reads the value of a General-\/\+Purpose Register (GPR).
 \begin{DoxyReturn}{Returns}
 The value of the GPR at the specified index. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classRegisterFile_a9abba352a9b89a7fcc90cdc2f11c0613}\label{classRegisterFile_a9abba352a9b89a7fcc90cdc2f11c0613}} 
-\index{RegisterFile@{RegisterFile}!ReadVr@{ReadVr}}
-\index{ReadVr@{ReadVr}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{ReadVr()}{ReadVr()}}
-{\footnotesize\ttfamily std\+::array$<$ uint64\+\_\+t, 8 $>$ Register\+File\+::\+Read\+Vr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{reg }\end{DoxyParamCaption}) const}
-
-
-
-Reads the value of a Vector Register (VR). 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The index of the VR to read. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The array representing the value of the VR at the specified index. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classRegisterFile_a70bbec9de8daf3195bc7d1fc827c113c}\label{classRegisterFile_a70bbec9de8daf3195bc7d1fc827c113c}} 
 \index{RegisterFile@{RegisterFile}!Reset@{Reset}}
 \index{Reset@{Reset}!RegisterFile@{RegisterFile}}
 \doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
 {\footnotesize\ttfamily void Register\+File\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classRegisterFile_a0bec19dedf171a13fb2c20a291c5438a}\label{classRegisterFile_a0bec19dedf171a13fb2c20a291c5438a}} 
-\index{RegisterFile@{RegisterFile}!VrToString@{VrToString}}
-\index{VrToString@{VrToString}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{VrToString()}{VrToString()}}
-{\footnotesize\ttfamily std\+::string Register\+File\+::\+Vr\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Converts the Vector Register (VR) values to a string. 
-
-\begin{DoxyReturn}{Returns}
-A string representation of the VR values. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classRegisterFile_ad703c614dd37205dc11a43272045b6fd}\label{classRegisterFile_ad703c614dd37205dc11a43272045b6fd}} 
 \index{RegisterFile@{RegisterFile}!WriteCsr@{WriteCsr}}
 \index{WriteCsr@{WriteCsr}!RegisterFile@{RegisterFile}}
@@ -371,23 +206,6 @@ Writes a value to a General-\/\+Purpose Register (GPR).
 {\em reg} & The index of the GPR to write. \\
 \hline
 {\em value} & The value to write. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classRegisterFile_a9630b11fc83e74cd1bd6cc87202ef9b5}\label{classRegisterFile_a9630b11fc83e74cd1bd6cc87202ef9b5}} 
-\index{RegisterFile@{RegisterFile}!WriteVr@{WriteVr}}
-\index{WriteVr@{WriteVr}!RegisterFile@{RegisterFile}}
-\doxysubsubsection{\texorpdfstring{WriteVr()}{WriteVr()}}
-{\footnotesize\ttfamily void Register\+File\+::\+Write\+Vr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{reg,  }\item[{const std\+::array$<$ uint64\+\_\+t, 8 $>$ \&}]{value }\end{DoxyParamCaption})}
-
-
-
-Writes a value to a Vector Register (VR). 
-
-
-\begin{DoxyParams}{Parameters}
-{\em reg} & The index of the VR to write. \\
-\hline
-{\em value} & The array representing the value to write. \\
 \hline
 \end{DoxyParams}
 

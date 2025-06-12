@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['instructiontype_1212',['InstructionType',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240',1,'instruction_set']]]
+  ['registertype_1171',['RegisterType',['../classRegisterFile.html#ad20885f84b337c67fd63b230e11ba230',1,'RegisterFile']]],
+  ['roundingmode_1172',['RoundingMode',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101',1,'rounding_modes.h']]]
 ];

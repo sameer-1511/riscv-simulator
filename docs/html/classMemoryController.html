@@ -77,7 +77,6 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c055d1bda8ede9928fd8a3b08b86d41"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#a0c055d1bda8ede9928fd8a3b08b86d41">MemoryController</a> ()=default</td></tr>
-<tr class="memdesc:a0c055d1bda8ede9928fd8a3b08b86d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM.">MemoryController</a> object.  <a href="classMemoryController.html#a0c055d1bda8ede9928fd8a3b08b86d41">More...</a><br /></td></tr>
 <tr class="separator:a0c055d1bda8ede9928fd8a3b08b86d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0d58cab4e7fcda0a1c767c68e383826"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#af0d58cab4e7fcda0a1c767c68e383826">Reset</a> ()</td></tr>
 <tr class="separator:af0d58cab4e7fcda0a1c767c68e383826"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,8 +100,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a56739a684cfb225821f97705375d0f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75439359d472f770f07c2d58013ae94e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#a75439359d472f770f07c2d58013ae94e">PrintMemory</a> (const uint64_t address, uint rows)</td></tr>
 <tr class="separator:a75439359d472f770f07c2d58013ae94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab964271b4724ec24da0fbf6afa1d7b94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#ab964271b4724ec24da0fbf6afa1d7b94">DumpMemory</a> (const uint64_t address, uint rows)</td></tr>
-<tr class="separator:ab964271b4724ec24da0fbf6afa1d7b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de5a245e8ca1faff107ba69fce7dd72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#a8de5a245e8ca1faff107ba69fce7dd72">DumpMemory</a> (std::vector&lt; std::string &gt; args)</td></tr>
+<tr class="separator:a8de5a245e8ca1faff107ba69fce7dd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d5d1f8ae791a29fb4227eba194ed7b6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMemoryController.html#a2d5d1f8ae791a29fb4227eba194ed7b6">GetMemoryPoint</a> (uint64_t address)</td></tr>
+<tr class="separator:a2d5d1f8ae791a29fb4227eba194ed7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM.">MemoryController</a> class is responsible for managing memory in the VM. </p>
@@ -130,13 +131,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM.">MemoryController</a> object. </p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab964271b4724ec24da0fbf6afa1d7b94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab964271b4724ec24da0fbf6afa1d7b94">&#9670;&nbsp;</a></span>DumpMemory()</h2>
+<a id="a8de5a245e8ca1faff107ba69fce7dd72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de5a245e8ca1faff107ba69fce7dd72">&#9670;&nbsp;</a></span>DumpMemory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,19 +146,35 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void MemoryController::DumpMemory </td>
           <td>(</td>
-          <td class="paramtype">const uint64_t&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>rows</em>&#160;</td>
         </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d5d1f8ae791a29fb4227eba194ed7b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d5d1f8ae791a29fb4227eba194ed7b6">&#9670;&nbsp;</a></span>GetMemoryPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
         <tr>
+          <td class="memname">std::string MemoryController::GetMemoryPoint </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>

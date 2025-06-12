@@ -90,10 +90,11 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92">DUMP_MEMORY</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817">PRINT_MEMORY</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69">GET_MEMORY_POINT</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5">DUMP_CACHE</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db">ADD_BREAKPOINT</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15">REMOVE_BREAKPOINT</a>
+&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db">ADD_BREAKPOINT</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15">REMOVE_BREAKPOINT</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927">EXIT</a>
 <br />
  }</td></tr>
@@ -113,8 +114,8 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aa154f73d4d471f39cfd87bc8068bd815"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcommand__handler_1_1Command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommand__handler.html#aa154f73d4d471f39cfd87bc8068bd815">ParseCommand</a> (const std::string &amp;input)</td></tr>
 <tr class="separator:aa154f73d4d471f39cfd87bc8068bd815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2716d6234a188e296870d78cc7080eff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommand__handler.html#a2716d6234a188e296870d78cc7080eff">ExecuteCommand</a> (const <a class="el" href="structcommand__handler_1_1Command.html">Command</a> &amp;command)</td></tr>
-<tr class="separator:a2716d6234a188e296870d78cc7080eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32eea363a2d5c5e4b4b6c71626058fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommand__handler.html#a32eea363a2d5c5e4b4b6c71626058fa1">ExecuteCommand</a> (const <a class="el" href="structcommand__handler_1_1Command.html">Command</a> &amp;command, <a class="el" href="classRVSSVM.html">RVSSVM</a> &amp;vm)</td></tr>
+<tr class="separator:a32eea363a2d5c5e4b4b6c71626058fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>File Name: <a class="el" href="command__handler_8cpp.html">command_handler.cpp</a> Author: Vishank Singh Github: <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a></p>
@@ -179,6 +180,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1"></a>RESET&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92"></a>DUMP_MEMORY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817"></a>PRINT_MEMORY&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69"></a>GET_MEMORY_POINT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5"></a>DUMP_CACHE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db"></a>ADD_BREAKPOINT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15"></a>REMOVE_BREAKPOINT&#160;</td><td class="fielddoc"></td></tr>
@@ -188,8 +190,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2716d6234a188e296870d78cc7080eff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2716d6234a188e296870d78cc7080eff">&#9670;&nbsp;</a></span>ExecuteCommand()</h2>
+<a id="a32eea363a2d5c5e4b4b6c71626058fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32eea363a2d5c5e4b4b6c71626058fa1">&#9670;&nbsp;</a></span>ExecuteCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,8 +200,18 @@ Functions</h2></td></tr>
           <td class="memname">void command_handler::ExecuteCommand </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structcommand__handler_1_1Command.html">Command</a> &amp;&#160;</td>
-          <td class="paramname"><em>command</em></td><td>)</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classRVSSVM.html">RVSSVM</a> &amp;&#160;</td>
+          <td class="paramname"><em>vm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

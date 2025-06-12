@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Vm\+Base\+:
-\nopagebreak
+Inheritance diagram for Vm\+Base\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,9 +38,9 @@ void \mbox{\hyperlink{classVmBase_ac40cd15fd5481498cc87f9754d8ac979}{Update\+Pro
 \item 
 int32\+\_\+t \mbox{\hyperlink{classVmBase_a9199d1c306e603e506cf57f274b9e184}{Imm\+Generator}} (uint32\+\_\+t instruction)
 \item 
-void \mbox{\hyperlink{classVmBase_ad2599e724c71add7faea9cb5b1e13897}{Add\+Breakpoint}} (uint64\+\_\+t address)
+void \mbox{\hyperlink{classVmBase_a572c7bc04834aa6c5e8b81848a449edc}{Add\+Breakpoint}} (uint64\+\_\+t val, bool is\+\_\+line=true)
 \item 
-void \mbox{\hyperlink{classVmBase_a63b98734da10cee06863cb108721b716}{Remove\+Breakpoint}} (uint64\+\_\+t address)
+void \mbox{\hyperlink{classVmBase_aecc5b0b4fdfa89cfae4c71aff1275210}{Remove\+Breakpoint}} (uint64\+\_\+t val, bool is\+\_\+line=true)
 \item 
 bool \mbox{\hyperlink{classVmBase_ad3434d5a63ce72dee96db02224b92f04}{Check\+Breakpoint}} (uint64\+\_\+t address)
 \item 
@@ -59,10 +58,12 @@ virtual void \mbox{\hyperlink{classVmBase_ab323c0d074c2ceb9885746d1073ed505}{Red
 \item 
 virtual void \mbox{\hyperlink{classVmBase_ae8262f906074f8e778665b73841b0352}{Reset}} ()=0
 \item 
-virtual void \mbox{\hyperlink{classVmBase_aca7c8b969944cd45024acd106671175f}{Dump\+State}} (const std\+::string \&filename)=0
+void \mbox{\hyperlink{classVmBase_aa4c112996906a10c6e8a27cbd5091c22}{Dump\+State}} (const std\+::filesystem\+::path \&filename)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \mbox{\hyperlink{classVmBase_a8232ad061e0f14d237c83c22a2ef4781}{program\+\_\+}}
 \item 
 std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classVmBase_a1ab317e9659f20f6edddad20ec241f98}{breakpoints\+\_\+}}
 \item 
@@ -81,6 +82,8 @@ float \mbox{\hyperlink{classVmBase_aaf1754c3ace71973679ec2f9a212d737}{ipc\+\_\+}
 unsigned int \mbox{\hyperlink{classVmBase_a38693d7be1698897816ea448231f12b9}{stall\+\_\+cycles\+\_\+}} \{\}
 \item 
 unsigned int \mbox{\hyperlink{classVmBase_a13c51d85a826a7bea080d8a9ead0913b}{branch\+\_\+mispredictions\+\_\+}} \{\}
+\item 
+std\+::string \mbox{\hyperlink{classVmBase_aa43e33d68e5bd133abb0b519b0e08b6e}{output\+\_\+status\+\_\+}}
 \item 
 \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} \mbox{\hyperlink{classVmBase_a54b7f11e76ff40b5fa08757fffe0a714}{memory\+\_\+controller\+\_\+}}
 \item 
@@ -108,11 +111,11 @@ uint64\+\_\+t \mbox{\hyperlink{classVmBase_a95d14315496f42dd5be394f0ab950539}{pr
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classVmBase_ad2599e724c71add7faea9cb5b1e13897}\label{classVmBase_ad2599e724c71add7faea9cb5b1e13897}} 
+\mbox{\Hypertarget{classVmBase_a572c7bc04834aa6c5e8b81848a449edc}\label{classVmBase_a572c7bc04834aa6c5e8b81848a449edc}} 
 \index{VmBase@{VmBase}!AddBreakpoint@{AddBreakpoint}}
 \index{AddBreakpoint@{AddBreakpoint}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{AddBreakpoint()}{AddBreakpoint()}}
-{\footnotesize\ttfamily void Vm\+Base\+::\+Add\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vm\+Base\+::\+Add\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{val,  }\item[{bool}]{is\+\_\+line = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVmBase_ad3434d5a63ce72dee96db02224b92f04}\label{classVmBase_ad3434d5a63ce72dee96db02224b92f04}} 
 \index{VmBase@{VmBase}!CheckBreakpoint@{CheckBreakpoint}}
@@ -130,15 +133,11 @@ uint64\+\_\+t \mbox{\hyperlink{classVmBase_a95d14315496f42dd5be394f0ab950539}{pr
 
 Implemented in \mbox{\hyperlink{classRVSSVM_a8b954269c60ab390ecca05966dacb47e}{RVSSVM}}.
 
-\mbox{\Hypertarget{classVmBase_aca7c8b969944cd45024acd106671175f}\label{classVmBase_aca7c8b969944cd45024acd106671175f}} 
+\mbox{\Hypertarget{classVmBase_aa4c112996906a10c6e8a27cbd5091c22}\label{classVmBase_aa4c112996906a10c6e8a27cbd5091c22}} 
 \index{VmBase@{VmBase}!DumpState@{DumpState}}
 \index{DumpState@{DumpState}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{DumpState()}{DumpState()}}
-{\footnotesize\ttfamily virtual void Vm\+Base\+::\+Dump\+State (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Implemented in \mbox{\hyperlink{classRVSSVM_addf6db97ed1229c42554799d2449338e}{RVSSVM}}.
+{\footnotesize\ttfamily void Vm\+Base\+::\+Dump\+State (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVmBase_ae06d1a2ba1a7a9fbece71f643943dbd2}\label{classVmBase_ae06d1a2ba1a7a9fbece71f643943dbd2}} 
 \index{VmBase@{VmBase}!GetProgramCounter@{GetProgramCounter}}
@@ -174,11 +173,11 @@ Implemented in \mbox{\hyperlink{classRVSSVM_addf6db97ed1229c42554799d2449338e}{R
 
 Implemented in \mbox{\hyperlink{classRVSSVM_a9cb130b8c84159be82027d49ce3e4279}{RVSSVM}}.
 
-\mbox{\Hypertarget{classVmBase_a63b98734da10cee06863cb108721b716}\label{classVmBase_a63b98734da10cee06863cb108721b716}} 
+\mbox{\Hypertarget{classVmBase_aecc5b0b4fdfa89cfae4c71aff1275210}\label{classVmBase_aecc5b0b4fdfa89cfae4c71aff1275210}} 
 \index{VmBase@{VmBase}!RemoveBreakpoint@{RemoveBreakpoint}}
 \index{RemoveBreakpoint@{RemoveBreakpoint}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{RemoveBreakpoint()}{RemoveBreakpoint()}}
-{\footnotesize\ttfamily void Vm\+Base\+::\+Remove\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vm\+Base\+::\+Remove\+Breakpoint (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{val,  }\item[{bool}]{is\+\_\+line = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classVmBase_ae8262f906074f8e778665b73841b0352}\label{classVmBase_ae8262f906074f8e778665b73841b0352}} 
 \index{VmBase@{VmBase}!Reset@{Reset}}
@@ -282,6 +281,18 @@ Implemented in \mbox{\hyperlink{classRVSSVM_aabc759ac821f87303daa71c9480b8756}{R
 \index{memory\_controller\_@{memory\_controller\_}!VmBase@{VmBase}}
 \doxysubsubsection{\texorpdfstring{memory\_controller\_}{memory\_controller\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} Vm\+Base\+::memory\+\_\+controller\+\_\+}
+
+\mbox{\Hypertarget{classVmBase_aa43e33d68e5bd133abb0b519b0e08b6e}\label{classVmBase_aa43e33d68e5bd133abb0b519b0e08b6e}} 
+\index{VmBase@{VmBase}!output\_status\_@{output\_status\_}}
+\index{output\_status\_@{output\_status\_}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{output\_status\_}{output\_status\_}}
+{\footnotesize\ttfamily std\+::string Vm\+Base\+::output\+\_\+status\+\_\+}
+
+\mbox{\Hypertarget{classVmBase_a8232ad061e0f14d237c83c22a2ef4781}\label{classVmBase_a8232ad061e0f14d237c83c22a2ef4781}} 
+\index{VmBase@{VmBase}!program\_@{program\_}}
+\index{program\_@{program\_}!VmBase@{VmBase}}
+\doxysubsubsection{\texorpdfstring{program\_}{program\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} Vm\+Base\+::program\+\_\+}
 
 \mbox{\Hypertarget{classVmBase_a786aa9116a8240f3c80a478fa2c7bed9}\label{classVmBase_a786aa9116a8240f3c80a478fa2c7bed9}} 
 \index{VmBase@{VmBase}!program\_counter\_@{program\_counter\_}}

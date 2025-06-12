@@ -30,26 +30,18 @@ class \mbox{\hyperlink{classRegisterFile}{Register\+File}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}{is\+Valid\+Register}} (const std\+::string \&reg)
-\item 
 bool \mbox{\hyperlink{registers_8h_ac5db3171f17fd09e341027d11d438649}{Is\+Valid\+General\+Purpose\+Register}} (const std\+::string \&reg)
 \item 
 bool \mbox{\hyperlink{registers_8h_aa1a257a2fc15d22847dad688c8b3bedd}{Is\+Valid\+Floating\+Point\+Register}} (const std\+::string \&reg)
-\item 
-bool \mbox{\hyperlink{registers_8h_a316a4fc126c519f58a022cbe120ac419}{Is\+Valid\+Vector\+Register}} (const std\+::string \&reg)
 \item 
 bool \mbox{\hyperlink{registers_8h_aca47a0deb2cf271388bcba061c11ba94}{Is\+Valid\+Csr}} (const std\+::string \&reg)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}{valid\+\_\+registers}}
-\begin{DoxyCompactList}\small\item\em Set of valid register names for validation. \end{DoxyCompactList}\item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_a0528a55c986b4b9e8717e14eeebeb7df}{valid\+\_\+general\+\_\+purpose\+\_\+registers}}
 \item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ac416af250858196829ea943e606823b7}{valid\+\_\+floating\+\_\+point\+\_\+registers}}
-\item 
-const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_a7468977bddf28dfd8109ea3b8583c49d}{valid\+\_\+vector\+\_\+registers}}
 \item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{registers_8h_ac8b865efc7bd31cca9d4e9b718cd6e46}{valid\+\_\+csr\+\_\+registers}}
 \item 
@@ -85,18 +77,6 @@ Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.
 \index{IsValidGeneralPurposeRegister@{IsValidGeneralPurposeRegister}!registers.h@{registers.h}}
 \doxysubsubsection{\texorpdfstring{IsValidGeneralPurposeRegister()}{IsValidGeneralPurposeRegister()}}
 {\footnotesize\ttfamily bool Is\+Valid\+General\+Purpose\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}\label{registers_8h_acc5c38a9f53a883c61a1214fd6b765eb}} 
-\index{registers.h@{registers.h}!isValidRegister@{isValidRegister}}
-\index{isValidRegister@{isValidRegister}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{isValidRegister()}{isValidRegister()}}
-{\footnotesize\ttfamily bool is\+Valid\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{registers_8h_a316a4fc126c519f58a022cbe120ac419}\label{registers_8h_a316a4fc126c519f58a022cbe120ac419}} 
-\index{registers.h@{registers.h}!IsValidVectorRegister@{IsValidVectorRegister}}
-\index{IsValidVectorRegister@{IsValidVectorRegister}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{IsValidVectorRegister()}{IsValidVectorRegister()}}
-{\footnotesize\ttfamily bool Is\+Valid\+Vector\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg }\end{DoxyParamCaption})}
 
 
 
@@ -134,20 +114,4 @@ Map of register aliases to their actual names.
 \index{valid\_general\_purpose\_registers@{valid\_general\_purpose\_registers}!registers.h@{registers.h}}
 \doxysubsubsection{\texorpdfstring{valid\_general\_purpose\_registers}{valid\_general\_purpose\_registers}}
 {\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+general\+\_\+purpose\+\_\+registers\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}\label{registers_8h_ad6f8d6e2d5386980756f012d74ff5412}} 
-\index{registers.h@{registers.h}!valid\_registers@{valid\_registers}}
-\index{valid\_registers@{valid\_registers}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{valid\_registers}{valid\_registers}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+registers\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Set of valid register names for validation. 
-
-\mbox{\Hypertarget{registers_8h_a7468977bddf28dfd8109ea3b8583c49d}\label{registers_8h_a7468977bddf28dfd8109ea3b8583c49d}} 
-\index{registers.h@{registers.h}!valid\_vector\_registers@{valid\_vector\_registers}}
-\index{valid\_vector\_registers@{valid\_vector\_registers}!registers.h@{registers.h}}
-\doxysubsubsection{\texorpdfstring{valid\_vector\_registers}{valid\_vector\_registers}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$ valid\+\_\+vector\+\_\+registers\hspace{0.3cm}{\ttfamily [extern]}}
 

@@ -27,8 +27,6 @@ This graph shows which files directly or indirectly include this file\+:
 \item 
 struct \mbox{\hyperlink{structinstruction__set_1_1RTypeInstructionEncoding}{instruction\+\_\+set\+::\+RType\+Instruction\+Encoding}}
 \item 
-struct \mbox{\hyperlink{structinstruction__set_1_1R4TypeInstructionEncoding}{instruction\+\_\+set\+::\+R4\+Type\+Instruction\+Encoding}}
-\item 
 struct \mbox{\hyperlink{structinstruction__set_1_1I1TypeInstructionEncoding}{instruction\+\_\+set\+::\+I1\+Type\+Instruction\+Encoding}}
 \item 
 struct \mbox{\hyperlink{structinstruction__set_1_1I2TypeInstructionEncoding}{instruction\+\_\+set\+::\+I2\+Type\+Instruction\+Encoding}}
@@ -100,26 +98,7 @@ enum class \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874
 , \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462a4acbd7a3820c4fe37725ec992ebe084a}{instruction\+\_\+set\+::\+O\+\_\+\+GPR\+\_\+\+C\+\_\+\+FPR\+\_\+\+C\+\_\+\+FPR}}
 , \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874d229462a4b80d7d1223745bdf966288df20f1fa3}{instruction\+\_\+set\+::\+O\+\_\+\+FPR\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+GPR\+\_\+\+RP}}
  \}
-\begin{DoxyCompactList}\small\item\em Enum that represents different syntax types for instructions. \end{DoxyCompactList}\item 
-enum class \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240}{instruction\+\_\+set\+::\+Instruction\+Type}} \{ \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6}{instruction\+\_\+set\+::R}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29}{instruction\+\_\+set\+::\+R4}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aa18c217c4f2a811afcaaf5052945e31b}{instruction\+\_\+set\+::\+I1}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a8213a4c2934a732d4ab7d75e9d3e32f4}{instruction\+\_\+set\+::\+I2}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240af4a3f9ad212c5f18078484d1b535ea95}{instruction\+\_\+set\+::\+I3}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a5dbc98dcc983a70728bd082d1a47546e}{instruction\+\_\+set\+::S}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571}{instruction\+\_\+set\+::B}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb}{instruction\+\_\+set\+::U}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240aff44570aca8241914870afbc310cdb85}{instruction\+\_\+set\+::J}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a7b200155e45b2ee127a58ac05b60a67e}{instruction\+\_\+set\+::\+CSR\+\_\+R}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a167d1c854dc79f1522d638b4a72a87ca}{instruction\+\_\+set\+::\+CSR\+\_\+I}}
-, \mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a69691c7bdcc3ce6d5d8a1361f22d04ac}{instruction\+\_\+set\+::M}}
-, \newline
-\mbox{\hyperlink{namespaceinstruction__set_a5da6be637cb9629f6e57484b20ad3240a800618943025315f869e4e1f09471012}{instruction\+\_\+set\+::F}}
- \}
-\begin{DoxyCompactList}\small\item\em Enum that represents different types of opcodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enum that represents different syntax types for instructions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -173,13 +152,6 @@ bool \mbox{\hyperlink{namespaceinstruction__set_a5303fb0dd8dd34c268231c47f85a02f
 \item 
 std\+::string \mbox{\hyperlink{namespaceinstruction__set_a605befee774c8275dccbdf096ac5b66f}{instruction\+\_\+set\+::get\+Expected\+Syntaxes}} (const std\+::string \&opcode)
 \end{DoxyCompactItemize}
-\doxysubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-std\+::unordered\+\_\+map$<$ std\+::string, R4\+Type\+Instruction\+Encoding $>$ \mbox{\hyperlink{namespaceinstruction__set_a1afd240cbdbda8e426147b77461f2f8c}{instruction\+\_\+set\+::\+R4\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
-\item 
-std\+::unordered\+\_\+map$<$ std\+::string, Instruction\+Type $>$ \mbox{\hyperlink{namespaceinstruction__set_ad8147b2668ddda6cf39325bec3f31c20}{instruction\+\_\+set\+::instruction\+\_\+opcode\+\_\+type\+\_\+map}}
-\begin{DoxyCompactList}\small\item\em A map that associates instruction names with their corresponding opcode type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

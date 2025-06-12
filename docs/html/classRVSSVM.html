@@ -85,14 +85,15 @@ Collaboration diagram for RVSSVM:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRVSSVM__coll__graph.png" border="0" usemap="#aRVSSVM_coll__map" alt="Collaboration graph"/></div>
 <map name="aRVSSVM_coll__map" id="aRVSSVM_coll__map">
-<area shape="rect" title=" " alt="" coords="359,184,436,211"/>
-<area shape="rect" href="classVmBase.html" title=" " alt="" coords="187,95,263,121"/>
+<area shape="rect" title=" " alt="" coords="501,184,579,211"/>
+<area shape="rect" href="classVmBase.html" title=" " alt="" coords="299,95,375,121"/>
 <area shape="rect" href="classRegisterFile.html" title="Represents a register file containing integer, floating&#45;point, and vector registers." alt="" coords="5,5,104,32"/>
-<area shape="rect" href="classalu_1_1Alu.html" title="The alu class is responsible for performing arithmetic and logic operations." alt="" coords="129,5,199,32"/>
-<area shape="rect" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="223,5,363,32"/>
-<area shape="rect" href="classRVSSControlUnit.html" title=" " alt="" coords="332,95,463,121"/>
-<area shape="rect" href="classControlUnit.html" title="The ControlUnit class is the base class for the control unit of the CPU." alt="" coords="395,5,491,32"/>
-<area shape="rect" href="structStepDelta.html" title=" " alt="" coords="487,95,574,121"/>
+<area shape="rect" href="structAssembledProgram.html" title=" " alt="" coords="128,5,277,32"/>
+<area shape="rect" href="classalu_1_1Alu.html" title="The alu class is responsible for performing arithmetic and logic operations." alt="" coords="302,5,373,32"/>
+<area shape="rect" href="classMemoryController.html" title="The MemoryController class is responsible for managing memory in the VM." alt="" coords="397,5,537,32"/>
+<area shape="rect" href="classRVSSControlUnit.html" title=" " alt="" coords="475,95,605,121"/>
+<area shape="rect" href="classControlUnit.html" title="The ControlUnit class is the base class for the control unit of the CPU." alt="" coords="568,5,664,32"/>
+<area shape="rect" href="structStepDelta.html" title=" " alt="" coords="630,95,717,121"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -146,8 +147,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9cb130b8c84159be82027d49ce3e4279"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75bbde8be42c275f928681e372d6c7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#aa75bbde8be42c275f928681e372d6c7c">Reset</a> () override</td></tr>
 <tr class="separator:aa75bbde8be42c275f928681e372d6c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addf6db97ed1229c42554799d2449338e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#addf6db97ed1229c42554799d2449338e">DumpState</a> (const std::string &amp;filename) override</td></tr>
-<tr class="separator:addf6db97ed1229c42554799d2449338e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cb411487b468c3a5e88780a10cedf76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a6cb411487b468c3a5e88780a10cedf76">PrintType</a> ()</td></tr>
 <tr class="separator:a6cb411487b468c3a5e88780a10cedf76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classVmBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classVmBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classVmBase.html">VmBase</a></td></tr>
@@ -163,14 +162,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac40cd15fd5481498cc87f9754d8ac979 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9199d1c306e603e506cf57f274b9e184 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a9199d1c306e603e506cf57f274b9e184">ImmGenerator</a> (uint32_t instruction)</td></tr>
 <tr class="separator:a9199d1c306e603e506cf57f274b9e184 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2599e724c71add7faea9cb5b1e13897 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ad2599e724c71add7faea9cb5b1e13897">AddBreakpoint</a> (uint64_t address)</td></tr>
-<tr class="separator:ad2599e724c71add7faea9cb5b1e13897 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63b98734da10cee06863cb108721b716 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a63b98734da10cee06863cb108721b716">RemoveBreakpoint</a> (uint64_t address)</td></tr>
-<tr class="separator:a63b98734da10cee06863cb108721b716 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572c7bc04834aa6c5e8b81848a449edc inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a572c7bc04834aa6c5e8b81848a449edc">AddBreakpoint</a> (uint64_t val, bool is_line=true)</td></tr>
+<tr class="separator:a572c7bc04834aa6c5e8b81848a449edc inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc5b0b4fdfa89cfae4c71aff1275210 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#aecc5b0b4fdfa89cfae4c71aff1275210">RemoveBreakpoint</a> (uint64_t val, bool is_line=true)</td></tr>
+<tr class="separator:aecc5b0b4fdfa89cfae4c71aff1275210 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3434d5a63ce72dee96db02224b92f04 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#ad3434d5a63ce72dee96db02224b92f04">CheckBreakpoint</a> (uint64_t address)</td></tr>
 <tr class="separator:ad3434d5a63ce72dee96db02224b92f04 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73496d85a521ce015f5bfac0cd5129d3 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a73496d85a521ce015f5bfac0cd5129d3">HandleSyscall</a> ()</td></tr>
 <tr class="separator:a73496d85a521ce015f5bfac0cd5129d3 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4c112996906a10c6e8a27cbd5091c22 inherit pub_methods_classVmBase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#aa4c112996906a10c6e8a27cbd5091c22">DumpState</a> (const std::filesystem::path &amp;filename)</td></tr>
+<tr class="separator:aa4c112996906a10c6e8a27cbd5091c22 inherit pub_methods_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -201,6 +202,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7951fd1c543faff83b8aee97427c01a2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRVSSVM.html#a7951fd1c543faff83b8aee97427c01a2">csr_uimm_</a> {}</td></tr>
 <tr class="separator:a7951fd1c543faff83b8aee97427c01a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classVmBase"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classVmBase')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classVmBase.html">VmBase</a></td></tr>
+<tr class="memitem:a8232ad061e0f14d237c83c22a2ef4781 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAssembledProgram.html">AssembledProgram</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a8232ad061e0f14d237c83c22a2ef4781">program_</a></td></tr>
+<tr class="separator:a8232ad061e0f14d237c83c22a2ef4781 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ab317e9659f20f6edddad20ec241f98 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a1ab317e9659f20f6edddad20ec241f98">breakpoints_</a></td></tr>
 <tr class="separator:a1ab317e9659f20f6edddad20ec241f98 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6367cbbce3f5eeb50eb88f38531f5ca0 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a6367cbbce3f5eeb50eb88f38531f5ca0">current_instruction_</a> {}</td></tr>
@@ -219,6 +222,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a38693d7be1698897816ea448231f12b9 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13c51d85a826a7bea080d8a9ead0913b inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a13c51d85a826a7bea080d8a9ead0913b">branch_mispredictions_</a> {}</td></tr>
 <tr class="separator:a13c51d85a826a7bea080d8a9ead0913b inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43e33d68e5bd133abb0b519b0e08b6e inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#aa43e33d68e5bd133abb0b519b0e08b6e">output_status_</a></td></tr>
+<tr class="separator:aa43e33d68e5bd133abb0b519b0e08b6e inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b7f11e76ff40b5fa08757fffe0a714 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMemoryController.html">MemoryController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a54b7f11e76ff40b5fa08757fffe0a714">memory_controller_</a></td></tr>
 <tr class="separator:a54b7f11e76ff40b5fa08757fffe0a714 inherit pub_attribs_classVmBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3edc0e9c3765ae9720874b361c58e947 inherit pub_attribs_classVmBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRegisterFile.html">RegisterFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVmBase.html#a3edc0e9c3765ae9720874b361c58e947">registers_</a></td></tr>
@@ -313,34 +318,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="addf6db97ed1229c42554799d2449338e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addf6db97ed1229c42554799d2449338e">&#9670;&nbsp;</a></span>DumpState()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RVSSVM::DumpState </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classVmBase.html#aca7c8b969944cd45024acd106671175f">VmBase</a>.</p>
 
 </div>
 </div>

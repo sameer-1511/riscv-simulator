@@ -1,9 +1,9 @@
 <map id="test/test_memory.cpp" name="test/test_memory.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="788,5,951,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="733,80,837,107"/>
-<area shape="rect" id="node3" href="$main__memory_8h.html" title="Contains the definition of the MemoryBlock and Memory classes." alt="" coords="861,80,1048,107"/>
-<area shape="rect" id="node4" href="$pch_8h.html" title=" " alt="" coords="931,304,1000,331"/>
-<area shape="rect" id="node26" href="$config_8h.html" title="Contains configuration options for the assembler." alt="" coords="952,155,1037,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="849,5,1012,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="795,80,899,107"/>
+<area shape="rect" id="node3" href="$main__memory_8h.html" title="Contains the definition of the MemoryBlock and Memory classes." alt="" coords="923,80,1109,107"/>
+<area shape="rect" id="node4" href="$pch_8h.html" title=" " alt="" coords="992,304,1061,331"/>
+<area shape="rect" id="node27" href="$config_8h.html" title="Contains configuration options for the assembler." alt="" coords="1013,155,1099,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="5,379,85,405"/>
 <area shape="rect" id="node6" title=" " alt="" coords="110,379,173,405"/>
 <area shape="rect" id="node7" title=" " alt="" coords="197,379,256,405"/>
@@ -25,5 +25,6 @@
 <area shape="rect" id="node23" title=" " alt="" coords="1756,379,1815,405"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1839,379,1902,405"/>
 <area shape="rect" id="node25" title=" " alt="" coords="1927,379,1993,405"/>
-<area shape="rect" id="node27" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="1003,229,1085,256"/>
+<area shape="rect" id="node26" title=" " alt="" coords="2017,379,2108,405"/>
+<area shape="rect" id="node28" href="$globals_8h.html" title="Contains global definitions and includes for the assembler." alt="" coords="1065,229,1146,256"/>
 </map>

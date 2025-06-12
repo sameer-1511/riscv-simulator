@@ -1,17 +1,8 @@
 var searchData=
 [
-  ['r_1386',['R',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6',1,'instruction_set']]],
-  ['r4_1387',['R4',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29',1,'instruction_set']]],
-  ['rdn_1388',['RDN',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a099ecf1e2eedcbbb36750f8ad7fc7f81',1,'rounding_modes.h']]],
-  ['redo_1389',['REDO',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f',1,'command_handler']]],
-  ['register_1390',['REGISTER',['../namespacecommand__handler.html#a44c251e1711cea6749a00f36fcb08cf4ad17455cfcb88a53f1603fb817e09c2d6',1,'command_handler']]],
-  ['remove_5fbreakpoint_1391',['REMOVE_BREAKPOINT',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15',1,'command_handler']]],
-  ['reset_1392',['RESET',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1',1,'command_handler']]],
-  ['rm_1393',['RM',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a2622e9b348f05f74e3e4bb9b7d213dc8',1,'tokens.h']]],
-  ['rmm_1394',['RMM',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a595b30b7583a6cd50bdc591e4420034b',1,'rounding_modes.h']]],
-  ['rne_1395',['RNE',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101abbbffe540e9df36d8c8f847b529e3282',1,'rounding_modes.h']]],
-  ['rparen_1396',['RPAREN',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921afccedc90f87593a3b31536bd658808b1',1,'tokens.h']]],
-  ['rtz_1397',['RTZ',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a529a841dde2e78d144c1814e3fc5ac60',1,'rounding_modes.h']]],
-  ['run_1398',['RUN',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a855520d2a5b0b1a64b939e7e30889e2a',1,'command_handler']]],
-  ['rup_1399',['RUP',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101a5ba30c5a3edeca6b0b2fd1050ecf3370',1,'rounding_modes.h']]]
+  ['undo_1351',['UNDO',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1',1,'command_handler']]],
+  ['unexpected_5feof_1352',['UNEXPECTED_EOF',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aead7822fa0763e672131324accbcf830d0',1,'errors']]],
+  ['unexpected_5foperand_1353',['UNEXPECTED_OPERAND',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea4598db2cfeef2078a4c652100cfe25c7',1,'errors']]],
+  ['unexpected_5ftoken_1354',['UNEXPECTED_TOKEN',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea8015f208e97eb87d4077cf0c5d5aeb83',1,'errors']]],
+  ['unknown_5ferror_1355',['UNKNOWN_ERROR',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea9a10f345b0f755d461a8673a5e9ef6b4',1,'errors']]]
 ];

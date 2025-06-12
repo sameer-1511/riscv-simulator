@@ -3,7 +3,7 @@ name: Build and Release VM
 on:
   push:
     tags:
-      - 'v*'  # Trigger when pushing a version tag like v1.0.0
+      - 'v*' 
 
 jobs:
   build:

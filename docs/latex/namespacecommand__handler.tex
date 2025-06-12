@@ -21,10 +21,11 @@ enum class \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48b
 , \newline
 \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}{DUMP\+\_\+\+MEMORY}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817}{PRINT\+\_\+\+MEMORY}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69}{GET\+\_\+\+MEMORY\+\_\+\+POINT}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5}{DUMP\+\_\+\+CACHE}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{ADD\+\_\+\+BREAKPOINT}}
 , \newline
-\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{REMOVE\+\_\+\+BREAKPOINT}}
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{ADD\+\_\+\+BREAKPOINT}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{REMOVE\+\_\+\+BREAKPOINT}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927}{EXIT}}
  \}
 \item 
@@ -42,7 +43,7 @@ enum class \mbox{\hyperlink{namespacecommand__handler_a44c251e1711cea6749a00f36f
 \item 
 \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}} \mbox{\hyperlink{namespacecommand__handler_aa154f73d4d471f39cfd87bc8068bd815}{Parse\+Command}} (const std\+::string \&input)
 \item 
-void \mbox{\hyperlink{namespacecommand__handler_a2716d6234a188e296870d78cc7080eff}{Execute\+Command}} (const \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}} \&command)
+void \mbox{\hyperlink{namespacecommand__handler_a32eea363a2d5c5e4b4b6c71626058fa1}{Execute\+Command}} (const \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}} \&command, \mbox{\hyperlink{classRVSSVM}{RVSSVM}} \&vm)
 \end{DoxyCompactItemize}
 
 
@@ -127,6 +128,10 @@ DUMP\+\_\+\+MEMORY&\\
 PRINT\+\_\+\+MEMORY&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GET\_MEMORY\_POINT@{GET\_MEMORY\_POINT}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!GET\_MEMORY\_POINT@{GET\_MEMORY\_POINT}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69}} 
+GET\+\_\+\+MEMORY\+\_\+\+POINT&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DUMP\_CACHE@{DUMP\_CACHE}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!DUMP\_CACHE@{DUMP\_CACHE}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5}} 
 DUMP\+\_\+\+CACHE&\\
 \hline
@@ -147,11 +152,11 @@ EXIT&\\
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespacecommand__handler_a2716d6234a188e296870d78cc7080eff}\label{namespacecommand__handler_a2716d6234a188e296870d78cc7080eff}} 
+\mbox{\Hypertarget{namespacecommand__handler_a32eea363a2d5c5e4b4b6c71626058fa1}\label{namespacecommand__handler_a32eea363a2d5c5e4b4b6c71626058fa1}} 
 \index{command\_handler@{command\_handler}!ExecuteCommand@{ExecuteCommand}}
 \index{ExecuteCommand@{ExecuteCommand}!command\_handler@{command\_handler}}
 \doxysubsubsection{\texorpdfstring{ExecuteCommand()}{ExecuteCommand()}}
-{\footnotesize\ttfamily void command\+\_\+handler\+::\+Execute\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}} \&}]{command }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void command\+\_\+handler\+::\+Execute\+Command (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}} \&}]{command,  }\item[{\mbox{\hyperlink{classRVSSVM}{RVSSVM}} \&}]{vm }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{namespacecommand__handler_aa154f73d4d471f39cfd87bc8068bd815}\label{namespacecommand__handler_aa154f73d4d471f39cfd87bc8068bd815}} 
 \index{command\_handler@{command\_handler}!ParseCommand@{ParseCommand}}

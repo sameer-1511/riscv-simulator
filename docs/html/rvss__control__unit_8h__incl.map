@@ -1,10 +1,10 @@
 <map id="src/vm/rvss/rvss_control_unit.h" name="src/vm/rvss/rvss_control_unit.h">
-<area shape="rect" id="node1" title="RVSS Control Unit." alt="" coords="975,5,1155,47"/>
-<area shape="rect" id="node2" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="1051,95,1212,121"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1022,244,1091,271"/>
-<area shape="rect" id="node25" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="1094,169,1185,196"/>
-<area shape="rect" id="node26" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1209,169,1264,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1825,319,1905,345"/>
+<area shape="rect" id="node1" title="RVSS Control Unit." alt="" coords="1047,5,1227,47"/>
+<area shape="rect" id="node2" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="1123,95,1284,121"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1094,244,1163,271"/>
+<area shape="rect" id="node26" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="1166,169,1257,196"/>
+<area shape="rect" id="node27" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1281,169,1336,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1939,319,2019,345"/>
 <area shape="rect" id="node5" title=" " alt="" coords="5,319,68,345"/>
 <area shape="rect" id="node6" title=" " alt="" coords="93,319,151,345"/>
 <area shape="rect" id="node7" title=" " alt="" coords="175,319,261,345"/>
@@ -23,7 +23,8 @@
 <area shape="rect" id="node20" title=" " alt="" coords="1483,319,1542,345"/>
 <area shape="rect" id="node21" title=" " alt="" coords="1567,319,1627,345"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1651,319,1710,345"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1929,319,1992,345"/>
+<area shape="rect" id="node23" title=" " alt="" coords="2044,319,2107,345"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1734,319,1801,345"/>
-<area shape="rect" id="node27" title=" " alt="" coords="1207,244,1266,271"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1825,319,1915,345"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1279,244,1338,271"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="src/vm/alu.cpp" name="src/vm/alu.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1469,5,1587,32"/>
-<area shape="rect" id="node2" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1467,80,1522,107"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1055,155,1124,181"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1930,229,1993,256"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1532,155,1591,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1563,5,1680,32"/>
+<area shape="rect" id="node2" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1561,80,1615,107"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1127,155,1196,181"/>
+<area shape="rect" id="node23" title=" " alt="" coords="2045,229,2107,256"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1625,155,1684,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="5,229,85,256"/>
 <area shape="rect" id="node5" title=" " alt="" coords="110,229,173,256"/>
 <area shape="rect" id="node6" title=" " alt="" coords="197,229,256,256"/>
@@ -24,4 +24,5 @@
 <area shape="rect" id="node21" title=" " alt="" coords="1671,229,1731,256"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1756,229,1815,256"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1839,229,1905,256"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1929,229,2020,256"/>
 </map>

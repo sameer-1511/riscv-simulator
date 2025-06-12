@@ -1,6 +1,6 @@
 <map id="src/globals.h" name="src/globals.h">
-<area shape="rect" id="node1" title="Contains global definitions and includes for the assembler." alt="" coords="913,5,1017,32"/>
-<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="937,80,994,107"/>
+<area shape="rect" id="node1" title="Contains global definitions and includes for the assembler." alt="" coords="975,5,1079,32"/>
+<area shape="rect" id="node2" href="$pch_8h.html" title=" " alt="" coords="998,80,1055,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,85,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="110,155,173,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="197,155,256,181"/>
@@ -22,4 +22,5 @@
 <area shape="rect" id="node21" title=" " alt="" coords="1756,155,1815,181"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1839,155,1902,181"/>
 <area shape="rect" id="node23" title=" " alt="" coords="1927,155,1993,181"/>
+<area shape="rect" id="node24" title=" " alt="" coords="2017,155,2108,181"/>
 </map>

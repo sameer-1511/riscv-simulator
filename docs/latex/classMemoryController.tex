@@ -13,7 +13,7 @@ The \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} class is respon
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classMemoryController_a0c055d1bda8ede9928fd8a3b08b86d41}{Memory\+Controller}} ()=default
-\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} object. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{classMemoryController_af0d58cab4e7fcda0a1c767c68e383826}{Reset}} ()
 \item 
 void \mbox{\hyperlink{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}{Print\+Cache\+Status}} () const
@@ -36,7 +36,9 @@ uint64\+\_\+t \mbox{\hyperlink{classMemoryController_a56739a684cfb225821f9770537
 \item 
 void \mbox{\hyperlink{classMemoryController_a75439359d472f770f07c2d58013ae94e}{Print\+Memory}} (const uint64\+\_\+t address, uint rows)
 \item 
-void \mbox{\hyperlink{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}{Dump\+Memory}} (const uint64\+\_\+t address, uint rows)
+void \mbox{\hyperlink{classMemoryController_a8de5a245e8ca1faff107ba69fce7dd72}{Dump\+Memory}} (std\+::vector$<$ std\+::string $>$ args)
+\item 
+std\+::string \mbox{\hyperlink{classMemoryController_a2d5d1f8ae791a29fb4227eba194ed7b6}{Get\+Memory\+Point}} (uint64\+\_\+t address)
 \end{DoxyCompactItemize}
 
 
@@ -52,16 +54,18 @@ The \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} class is respon
 
 
 
-Constructs a \mbox{\hyperlink{classMemoryController}{Memory\+Controller}} object. 
-
-
-
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}\label{classMemoryController_ab964271b4724ec24da0fbf6afa1d7b94}} 
+\mbox{\Hypertarget{classMemoryController_a8de5a245e8ca1faff107ba69fce7dd72}\label{classMemoryController_a8de5a245e8ca1faff107ba69fce7dd72}} 
 \index{MemoryController@{MemoryController}!DumpMemory@{DumpMemory}}
 \index{DumpMemory@{DumpMemory}!MemoryController@{MemoryController}}
 \doxysubsubsection{\texorpdfstring{DumpMemory()}{DumpMemory()}}
-{\footnotesize\ttfamily void Memory\+Controller\+::\+Dump\+Memory (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{address,  }\item[{uint}]{rows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Memory\+Controller\+::\+Dump\+Memory (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMemoryController_a2d5d1f8ae791a29fb4227eba194ed7b6}\label{classMemoryController_a2d5d1f8ae791a29fb4227eba194ed7b6}} 
+\index{MemoryController@{MemoryController}!GetMemoryPoint@{GetMemoryPoint}}
+\index{GetMemoryPoint@{GetMemoryPoint}!MemoryController@{MemoryController}}
+\doxysubsubsection{\texorpdfstring{GetMemoryPoint()}{GetMemoryPoint()}}
+{\footnotesize\ttfamily std\+::string Memory\+Controller\+::\+Get\+Memory\+Point (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}\label{classMemoryController_a34af4b33fdb95584d4cbbd97f0aaac82}} 
 \index{MemoryController@{MemoryController}!PrintCacheStatus@{PrintCacheStatus}}

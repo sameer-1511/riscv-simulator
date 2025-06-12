@@ -1,8 +1,8 @@
 <map id="src/assembler/elf_util.cpp" name="src/assembler/elf_util.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="871,5,1060,32"/>
-<area shape="rect" id="node2" href="$elf__util_8h.html" title=" " alt="" coords="926,80,1005,107"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="931,229,1000,256"/>
-<area shape="rect" id="node25" href="$vm__asm__mw_8h.html" title="Contains functions to handle assembler input for the VM." alt="" coords="951,155,1083,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="932,5,1121,32"/>
+<area shape="rect" id="node2" href="$elf__util_8h.html" title=" " alt="" coords="987,80,1066,107"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="992,229,1061,256"/>
+<area shape="rect" id="node26" href="$vm__asm__mw_8h.html" title="Contains functions to handle assembler input for the VM." alt="" coords="1013,155,1145,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="5,304,85,331"/>
 <area shape="rect" id="node5" title=" " alt="" coords="110,304,173,331"/>
 <area shape="rect" id="node6" title=" " alt="" coords="197,304,256,331"/>
@@ -24,4 +24,5 @@
 <area shape="rect" id="node22" title=" " alt="" coords="1756,304,1815,331"/>
 <area shape="rect" id="node23" title=" " alt="" coords="1839,304,1902,331"/>
 <area shape="rect" id="node24" title=" " alt="" coords="1927,304,1993,331"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2017,304,2108,331"/>
 </map>

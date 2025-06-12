@@ -1,18 +1,17 @@
 var searchData=
 [
-  ['u_633',['U',['../namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb',1,'instruction_set']]],
-  ['u_5ftype_5finstruction_5fencoding_5fmap_634',['U_type_instruction_encoding_map',['../namespaceinstruction__set.html#a8dc1d0372413156d015ff8f7e85a4efe',1,'instruction_set']]],
-  ['undo_635',['Undo',['../classRVSSVM.html#aabc759ac821f87303daa71c9480b8756',1,'RVSSVM::Undo()'],['../classVmBase.html#a141e025834dd6b9d68f08db7959ed391',1,'VmBase::Undo()']]],
-  ['undo_636',['UNDO',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1',1,'command_handler']]],
-  ['undo_5fstack_5f_637',['undo_stack_',['../classRVSSVM.html#a731a113960710ba745841a7f97678430',1,'RVSSVM']]],
-  ['unexpected_5feof_638',['UNEXPECTED_EOF',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aead7822fa0763e672131324accbcf830d0',1,'errors']]],
-  ['unexpected_5foperand_639',['UNEXPECTED_OPERAND',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea4598db2cfeef2078a4c652100cfe25c7',1,'errors']]],
-  ['unexpected_5ftoken_640',['UNEXPECTED_TOKEN',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea8015f208e97eb87d4077cf0c5d5aeb83',1,'errors']]],
-  ['unexpectedoperanderror_641',['UnexpectedOperandError',['../structerrors_1_1UnexpectedOperandError.html',1,'errors::UnexpectedOperandError'],['../structerrors_1_1UnexpectedOperandError.html#a94396fd323a94328e699a14467a9ca99',1,'errors::UnexpectedOperandError::UnexpectedOperandError()']]],
-  ['unexpectedtokenerror_642',['UnexpectedTokenError',['../structerrors_1_1UnexpectedTokenError.html',1,'errors::UnexpectedTokenError'],['../structerrors_1_1UnexpectedTokenError.html#a236bc1c5c9d2afeb534d38fab45aae9d',1,'errors::UnexpectedTokenError::UnexpectedTokenError()']]],
-  ['unknown_5ferror_643',['UNKNOWN_ERROR',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea9a10f345b0f755d461a8673a5e9ef6b4',1,'errors']]],
-  ['updateprogramcounter_644',['UpdateProgramCounter',['../classVmBase.html#ac40cd15fd5481498cc87f9754d8ac979',1,'VmBase']]],
-  ['utils_2ecpp_645',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2eh_646',['utils.h',['../utils_8h.html',1,'']]],
-  ['utypeinstructionencoding_647',['UTypeInstructionEncoding',['../structinstruction__set_1_1UTypeInstructionEncoding.html',1,'instruction_set::UTypeInstructionEncoding'],['../structinstruction__set_1_1UTypeInstructionEncoding.html#aa35e9b41d62ab6b26810dfd86c25f6f0',1,'instruction_set::UTypeInstructionEncoding::UTypeInstructionEncoding()']]]
+  ['u_5ftype_5finstruction_5fencoding_5fmap_605',['U_type_instruction_encoding_map',['../namespaceinstruction__set.html#a8dc1d0372413156d015ff8f7e85a4efe',1,'instruction_set']]],
+  ['undo_606',['Undo',['../classRVSSVM.html#aabc759ac821f87303daa71c9480b8756',1,'RVSSVM::Undo()'],['../classVmBase.html#a141e025834dd6b9d68f08db7959ed391',1,'VmBase::Undo()']]],
+  ['undo_607',['UNDO',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1',1,'command_handler']]],
+  ['undo_5fstack_5f_608',['undo_stack_',['../classRVSSVM.html#a731a113960710ba745841a7f97678430',1,'RVSSVM']]],
+  ['unexpected_5feof_609',['UNEXPECTED_EOF',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aead7822fa0763e672131324accbcf830d0',1,'errors']]],
+  ['unexpected_5foperand_610',['UNEXPECTED_OPERAND',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea4598db2cfeef2078a4c652100cfe25c7',1,'errors']]],
+  ['unexpected_5ftoken_611',['UNEXPECTED_TOKEN',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea8015f208e97eb87d4077cf0c5d5aeb83',1,'errors']]],
+  ['unexpectedoperanderror_612',['UnexpectedOperandError',['../structerrors_1_1UnexpectedOperandError.html',1,'errors::UnexpectedOperandError'],['../structerrors_1_1UnexpectedOperandError.html#a94396fd323a94328e699a14467a9ca99',1,'errors::UnexpectedOperandError::UnexpectedOperandError()']]],
+  ['unexpectedtokenerror_613',['UnexpectedTokenError',['../structerrors_1_1UnexpectedTokenError.html',1,'errors::UnexpectedTokenError'],['../structerrors_1_1UnexpectedTokenError.html#a236bc1c5c9d2afeb534d38fab45aae9d',1,'errors::UnexpectedTokenError::UnexpectedTokenError()']]],
+  ['unknown_5ferror_614',['UNKNOWN_ERROR',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea9a10f345b0f755d461a8673a5e9ef6b4',1,'errors']]],
+  ['updateprogramcounter_615',['UpdateProgramCounter',['../classVmBase.html#ac40cd15fd5481498cc87f9754d8ac979',1,'VmBase']]],
+  ['utils_2ecpp_616',['utils.cpp',['../utils_8cpp.html',1,'']]],
+  ['utils_2eh_617',['utils.h',['../utils_8h.html',1,'']]],
+  ['utypeinstructionencoding_618',['UTypeInstructionEncoding',['../structinstruction__set_1_1UTypeInstructionEncoding.html',1,'instruction_set::UTypeInstructionEncoding'],['../structinstruction__set_1_1UTypeInstructionEncoding.html#aa35e9b41d62ab6b26810dfd86c25f6f0',1,'instruction_set::UTypeInstructionEncoding::UTypeInstructionEncoding()']]]
 ];

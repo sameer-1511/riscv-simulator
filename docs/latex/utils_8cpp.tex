@@ -8,6 +8,7 @@ Contains utility functions for the VM.
 {\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}vm/registers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
 Include dependency graph for utils.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -19,17 +20,21 @@ Include dependency graph for utils.\+cpp\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{utils_8cpp_af3f95999ef175e14de3c42754e4224aa}{setup\+Vm\+State\+Directory}} ()
+\item 
 int64\+\_\+t \mbox{\hyperlink{utils_8cpp_a9f1db91cc23a2bfbba2379c15eb75d05}{Count\+Lines}} (const std\+::string \&filename)
 \begin{DoxyCompactList}\small\item\em Counts the number of lines in a given file. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}{Get\+Line\+From\+File}} (const std\+::string \&file\+Name, unsigned int line\+Number)
 \begin{DoxyCompactList}\small\item\em Retrieves a specific line from a file. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{utils_8cpp_ac175dbe8421725a466a026a8eecf9b11}{Parse\+Escaped\+String}} (const std\+::string \&input)
 \begin{DoxyCompactList}\small\item\em Parses a string containing escaped characters into its unescaped form. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{utils_8cpp_a213bff0cf89805230de1b52efeed770c}{Dump\+Errors}} (const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&errors)
+void \mbox{\hyperlink{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}{Dump\+Errors}} (const std\+::filesystem\+::path \&filename, const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&errors)
 \item 
-void \mbox{\hyperlink{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}{Dump\+No\+Errors}} (const std\+::string \&filename)
+void \mbox{\hyperlink{utils_8cpp_a4d37503b8b0f0ed512522c5ba71682ca}{Dump\+No\+Errors}} (const std\+::filesystem\+::path \&filename)
 \item 
-void \mbox{\hyperlink{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}{Dump\+Registers}} (const std\+::string \&filename, \mbox{\hyperlink{classRegisterFile}{Register\+File}} \&register\+\_\+file)
+void \mbox{\hyperlink{utils_8cpp_a4645b448c63ee103e8ae566d83b45470}{Dump\+Registers}} (const std\+::filesystem\+::path \&filename, \mbox{\hyperlink{classRegisterFile}{Register\+File}} \&register\+\_\+file)
+\item 
+void \mbox{\hyperlink{utils_8cpp_a105ade81d4e257f3764e557f57773066}{Setup\+Config\+File}} ()
 \end{DoxyCompactItemize}
 
 
@@ -65,23 +70,23 @@ The number of lines in the file.
 {\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{utils_8cpp_a213bff0cf89805230de1b52efeed770c}\label{utils_8cpp_a213bff0cf89805230de1b52efeed770c}} 
+\mbox{\Hypertarget{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}\label{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}} 
 \index{utils.cpp@{utils.cpp}!DumpErrors@{DumpErrors}}
 \index{DumpErrors@{DumpErrors}!utils.cpp@{utils.cpp}}
 \doxysubsubsection{\texorpdfstring{DumpErrors()}{DumpErrors()}}
-{\footnotesize\ttfamily void Dump\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&}]{errors }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Dump\+Errors (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{structParseError}{Parse\+Error}} $>$ \&}]{errors }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}\label{utils_8cpp_a8df536230d916b8a9ac30e2c586a3fc2}} 
+\mbox{\Hypertarget{utils_8cpp_a4d37503b8b0f0ed512522c5ba71682ca}\label{utils_8cpp_a4d37503b8b0f0ed512522c5ba71682ca}} 
 \index{utils.cpp@{utils.cpp}!DumpNoErrors@{DumpNoErrors}}
 \index{DumpNoErrors@{DumpNoErrors}!utils.cpp@{utils.cpp}}
 \doxysubsubsection{\texorpdfstring{DumpNoErrors()}{DumpNoErrors()}}
-{\footnotesize\ttfamily void Dump\+No\+Errors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Dump\+No\+Errors (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}\label{utils_8cpp_a85cbd594debea4a885f060c8edbfc214}} 
+\mbox{\Hypertarget{utils_8cpp_a4645b448c63ee103e8ae566d83b45470}\label{utils_8cpp_a4645b448c63ee103e8ae566d83b45470}} 
 \index{utils.cpp@{utils.cpp}!DumpRegisters@{DumpRegisters}}
 \index{DumpRegisters@{DumpRegisters}!utils.cpp@{utils.cpp}}
 \doxysubsubsection{\texorpdfstring{DumpRegisters()}{DumpRegisters()}}
-{\footnotesize\ttfamily void Dump\+Registers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{classRegisterFile}{Register\+File}} \&}]{register\+\_\+file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Dump\+Registers (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename,  }\item[{\mbox{\hyperlink{classRegisterFile}{Register\+File}} \&}]{register\+\_\+file }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}\label{utils_8cpp_a110b46ab6e189c14e24ed3e35680b91a}} 
 \index{utils.cpp@{utils.cpp}!GetLineFromFile@{GetLineFromFile}}
@@ -128,3 +133,15 @@ Parses a string containing escaped characters into its unescaped form.
 \begin{DoxyReturn}{Returns}
 The unescaped string. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{utils_8cpp_a105ade81d4e257f3764e557f57773066}\label{utils_8cpp_a105ade81d4e257f3764e557f57773066}} 
+\index{utils.cpp@{utils.cpp}!SetupConfigFile@{SetupConfigFile}}
+\index{SetupConfigFile@{SetupConfigFile}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{SetupConfigFile()}{SetupConfigFile()}}
+{\footnotesize\ttfamily void Setup\+Config\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utils_8cpp_af3f95999ef175e14de3c42754e4224aa}\label{utils_8cpp_af3f95999ef175e14de3c42754e4224aa}} 
+\index{utils.cpp@{utils.cpp}!setupVmStateDirectory@{setupVmStateDirectory}}
+\index{setupVmStateDirectory@{setupVmStateDirectory}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{setupVmStateDirectory()}{setupVmStateDirectory()}}
+{\footnotesize\ttfamily void setup\+Vm\+State\+Directory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

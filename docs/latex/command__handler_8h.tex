@@ -1,6 +1,7 @@
 \hypertarget{command__handler_8h}{}\doxysection{src/command\+\_\+handler.h File Reference}
 \label{command__handler_8h}\index{src/command\_handler.h@{src/command\_handler.h}}
 {\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./vm/rvss/rvss\+\_\+vm.\+h\char`\"{}}\newline
 Include dependency graph for command\+\_\+handler.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -9,8 +10,7 @@ Include dependency graph for command\+\_\+handler.\+h\+:
 \includegraphics[width=350pt]{command__handler_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -43,10 +43,11 @@ enum class \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48b
 , \newline
 \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}{command\+\_\+handler\+::\+DUMP\+\_\+\+MEMORY}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817}{command\+\_\+handler\+::\+PRINT\+\_\+\+MEMORY}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69}{command\+\_\+handler\+::\+GET\+\_\+\+MEMORY\+\_\+\+POINT}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5}{command\+\_\+handler\+::\+DUMP\+\_\+\+CACHE}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{command\+\_\+handler\+::\+ADD\+\_\+\+BREAKPOINT}}
 , \newline
-\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{command\+\_\+handler\+::\+REMOVE\+\_\+\+BREAKPOINT}}
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{command\+\_\+handler\+::\+ADD\+\_\+\+BREAKPOINT}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{command\+\_\+handler\+::\+REMOVE\+\_\+\+BREAKPOINT}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927}{command\+\_\+handler\+::\+EXIT}}
  \}
 \item 
@@ -64,5 +65,5 @@ enum class \mbox{\hyperlink{namespacecommand__handler_a44c251e1711cea6749a00f36f
 \item 
 Command \mbox{\hyperlink{namespacecommand__handler_aa154f73d4d471f39cfd87bc8068bd815}{command\+\_\+handler\+::\+Parse\+Command}} (const std\+::string \&input)
 \item 
-void \mbox{\hyperlink{namespacecommand__handler_a2716d6234a188e296870d78cc7080eff}{command\+\_\+handler\+::\+Execute\+Command}} (const Command \&command)
+void \mbox{\hyperlink{namespacecommand__handler_a32eea363a2d5c5e4b4b6c71626058fa1}{command\+\_\+handler\+::\+Execute\+Command}} (const Command \&command, \mbox{\hyperlink{classRVSSVM}{RVSSVM}} \&vm)
 \end{DoxyCompactItemize}

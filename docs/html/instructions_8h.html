@@ -69,8 +69,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">instructions.h File Reference</div>  </div>
 </div><!--header-->
@@ -84,8 +83,8 @@ Include dependency graph for instructions.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="instructions_8h__incl.png" border="0" usemap="#asrc_2common_2instructions_8h" alt=""/></div>
 <map name="asrc_2common_2instructions_8h" id="asrc_2common_2instructions_8h">
-<area shape="rect" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="868,5,1063,32"/>
-<area shape="rect" href="pch_8h.html" title=" " alt="" coords="931,80,1000,107"/>
+<area shape="rect" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="929,5,1124,32"/>
+<area shape="rect" href="pch_8h.html" title=" " alt="" coords="992,80,1061,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,85,181"/>
 <area shape="rect" title=" " alt="" coords="110,155,173,181"/>
 <area shape="rect" title=" " alt="" coords="197,155,256,181"/>
@@ -107,6 +106,7 @@ Include dependency graph for instructions.h:</div>
 <area shape="rect" title=" " alt="" coords="1756,155,1815,181"/>
 <area shape="rect" title=" " alt="" coords="1839,155,1902,181"/>
 <area shape="rect" title=" " alt="" coords="1927,155,1993,181"/>
+<area shape="rect" title=" " alt="" coords="2017,155,2108,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -121,10 +121,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="d__formats_8cpp.html" title=" " alt="" coords="588,80,765,121"/>
 <area shape="rect" href="f__d__formats_8cpp.html" title=" " alt="" coords="790,80,979,121"/>
 <area shape="rect" href="i__m__formats_8cpp.html" title=" " alt="" coords="1004,80,1197,121"/>
-<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="1222,87,1406,114"/>
-<area shape="rect" href="instructions_8cpp.html" title=" " alt="" coords="1431,87,1640,114"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="1664,87,1769,114"/>
-<area shape="rect" href="rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="1793,87,1976,114"/>
+<area shape="rect" href="pseudo__formats_8cpp.html" title=" " alt="" coords="1222,80,1438,121"/>
+<area shape="rect" href="parser_8cpp.html" title="Contains the implementation of the Parser class for parsing tokens and generating intermediate code." alt="" coords="1462,87,1646,114"/>
+<area shape="rect" href="instructions_8cpp.html" title=" " alt="" coords="1671,87,1880,114"/>
+<area shape="rect" href="rvss__vm_8cpp.html" title="RVSS VM implementation." alt="" coords="1904,87,2087,114"/>
 </map>
 </div>
 </div>
@@ -133,8 +133,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinstruction__set_1_1RTypeInstructionEncoding.html">instruction_set::RTypeInstructionEncoding</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinstruction__set_1_1R4TypeInstructionEncoding.html">instruction_set::R4TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinstruction__set_1_1I1TypeInstructionEncoding.html">instruction_set::I1TypeInstructionEncoding</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,27 +208,6 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a7c366784cebccd7fbfda77874d229462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum that represents different syntax types for instructions.  <a href="namespaceinstruction__set.html#a7c366784cebccd7fbfda77874d229462">More...</a><br /></td></tr>
 <tr class="separator:a7c366784cebccd7fbfda77874d229462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5da6be637cb9629f6e57484b20ad3240"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240">instruction_set::InstructionType</a> { <br />
-&#160;&#160;<a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240ae1e1d3d40573127e9ee0480caf1283d6">instruction_set::R</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a8717ce4dfdc86a4b576d9e983ab9fb29">instruction_set::R4</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240aa18c217c4f2a811afcaaf5052945e31b">instruction_set::I1</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a8213a4c2934a732d4ab7d75e9d3e32f4">instruction_set::I2</a>
-, <br />
-&#160;&#160;<a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240af4a3f9ad212c5f18078484d1b535ea95">instruction_set::I3</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a5dbc98dcc983a70728bd082d1a47546e">instruction_set::S</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a9d5ed678fe57bcca610140957afab571">instruction_set::B</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a4c614360da93c0a041b22e537de151eb">instruction_set::U</a>
-, <br />
-&#160;&#160;<a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240aff44570aca8241914870afbc310cdb85">instruction_set::J</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a7b200155e45b2ee127a58ac05b60a67e">instruction_set::CSR_R</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a167d1c854dc79f1522d638b4a72a87ca">instruction_set::CSR_I</a>
-, <a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a69691c7bdcc3ce6d5d8a1361f22d04ac">instruction_set::M</a>
-, <br />
-&#160;&#160;<a class="el" href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240a800618943025315f869e4e1f09471012">instruction_set::F</a>
-<br />
- }</td></tr>
-<tr class="memdesc:a5da6be637cb9629f6e57484b20ad3240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum that represents different types of opcodes.  <a href="namespaceinstruction__set.html#a5da6be637cb9629f6e57484b20ad3240">More...</a><br /></td></tr>
-<tr class="separator:a5da6be637cb9629f6e57484b20ad3240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -284,14 +261,6 @@ Functions</h2></td></tr>
 <tr class="separator:a5303fb0dd8dd34c268231c47f85a02fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a605befee774c8275dccbdf096ac5b66f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a605befee774c8275dccbdf096ac5b66f">instruction_set::getExpectedSyntaxes</a> (const std::string &amp;opcode)</td></tr>
 <tr class="separator:a605befee774c8275dccbdf096ac5b66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a1afd240cbdbda8e426147b77461f2f8c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, R4TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a1afd240cbdbda8e426147b77461f2f8c">instruction_set::R4_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a1afd240cbdbda8e426147b77461f2f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8147b2668ddda6cf39325bec3f31c20"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, InstructionType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#ad8147b2668ddda6cf39325bec3f31c20">instruction_set::instruction_opcode_type_map</a></td></tr>
-<tr class="memdesc:ad8147b2668ddda6cf39325bec3f31c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map that associates instruction names with their corresponding opcode type.  <a href="namespaceinstruction__set.html#ad8147b2668ddda6cf39325bec3f31c20">More...</a><br /></td></tr>
-<tr class="separator:ad8147b2668ddda6cf39325bec3f31c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains the declarations for the InstructionEncoding struct and related functions. </p>

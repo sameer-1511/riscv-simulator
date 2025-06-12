@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['debug_1226',['DEBUG',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15',1,'command_handler']]],
-  ['directive_1227',['DIRECTIVE',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a31e340aa5b97f6d91317dff3a239cc5e',1,'tokens.h']]],
-  ['dump_5fcache_1228',['DUMP_CACHE',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5',1,'command_handler']]],
-  ['dump_5fmemory_1229',['DUMP_MEMORY',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92',1,'command_handler']]],
-  ['dyn_1230',['DYN',['../rounding__modes_8h.html#a5959c934b204c7bcb6766cfaea8ae101abf98e34f5989ce23714de7c60952a6b7',1,'rounding_modes.h']]]
+  ['eof_5f_1186',['EOF_',['../tokens_8h.html#aa520fbf142ba1e7e659590c07da31921a4eaad20bdd2e68cb1a4410478488cb8d',1,'tokens.h']]],
+  ['exit_1187',['EXIT',['../namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927',1,'command_handler']]],
+  ['expected_5fimmediate_1188',['EXPECTED_IMMEDIATE',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aea48c66164b43ae205b4ea29e666d88692',1,'errors']]],
+  ['expected_5flabel_1189',['EXPECTED_LABEL',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeae95902890e301eff1b3f021b9371c377',1,'errors']]],
+  ['expected_5fregister_1190',['EXPECTED_REGISTER',['../namespaceerrors.html#a08d49fe09bd28d4b06dc27d2a5e3e2aeabb0e54b9dc15fe61b5aaf3cb0ef0867d',1,'errors']]]
 ];
