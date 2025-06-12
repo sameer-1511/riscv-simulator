@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <map>
 #include <set>
+#include <stack>
 #include <memory>
 #include <optional>
 #include <unordered_map>
