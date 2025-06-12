@@ -13,6 +13,7 @@ jobs:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
@@ -23,8 +24,21 @@ jobs:
       - name: Set up CMake
         uses: lukka/get-cmake@latest
 
+      - name: Install MinGW (Windows only)
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install mingw -y
+          echo "C:\ProgramData\chocolatey\bin" >> $GITHUB_PATH
+          echo "C:\Program Files\mingw-w64\bin" >> $GITHUB_PATH
+
       - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF
+        run: |
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF
+          else
+            cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF
+          fi
+        shell: bash
 
       - name: Build
         run: cmake --build build --config Release
