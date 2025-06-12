@@ -179,7 +179,7 @@ class Memory {
 
   void WriteDouble(uint64_t address, double value);
 
-  void PrintMemory(uint64_t address, uint rows);
+  void PrintMemory(uint64_t address, unsigned int rows);
 
   void DumpMemory(std::vector<std::string> args);
 

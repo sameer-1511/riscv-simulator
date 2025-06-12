@@ -167,7 +167,7 @@ void Memory::WriteDouble(uint64_t address, double value) {
   }
 }
 
-void Memory::PrintMemory(const uint64_t address, uint rows) {
+void Memory::PrintMemory(const uint64_t address, unsigned int rows) {
   constexpr size_t bytes_per_row = 8; // One row equals 64 bytes
   std::cout << "Memory Dump at Address: 0x" << std::hex << address << std::dec << "\n";
   std::cout << "-----------------------------------------------------------------\n";
