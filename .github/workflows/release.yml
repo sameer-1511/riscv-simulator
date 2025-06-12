@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-20.04, windows-latest, macos-latest]
 
     steps:
       - name: Checkout code
@@ -48,7 +48,7 @@ jobs:
         run: |
           mkdir output
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            cp build/Release/vm.exe output/vm-${{ matrix.os }}.exe
+            cp build/vm.exe output/vm-${{ matrix.os }}.exe
           else
             cp build/vm output/vm-${{ matrix.os }}
           fi
