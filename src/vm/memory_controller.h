@@ -61,7 +61,7 @@ public:
         return memory_.ReadDoubleWord(address);
     }
 
-    void PrintMemory(const uint64_t address, uint rows) {
+    void PrintMemory(const uint64_t address, unsigned int rows) {
       memory_.PrintMemory(address, rows);
     }
 
