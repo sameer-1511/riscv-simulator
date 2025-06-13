@@ -16,6 +16,7 @@
 #include <fstream>
 #include <iomanip>
 #include <algorithm>
+#include <sstream>
 
 uint8_t Memory::Read(uint64_t address) {
   if (address >= memory_size_) {
