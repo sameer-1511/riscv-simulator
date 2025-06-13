@@ -12,6 +12,7 @@
 #include <filesystem>
 #include <fstream>
 #include <vector>
+#include <sstream>
 
 void setupVmStateDirectory() {
   std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";
