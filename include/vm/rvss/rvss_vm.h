@@ -14,6 +14,7 @@
 #include <stack>
 #include <vector>
 #include <iostream>
+#include <cstdint>
 
 // TODO: use a circular buffer instead of a stack for undo/redo
 
@@ -26,8 +27,8 @@ struct RegisterChange {
 
 struct MemoryChange {
   uint64_t address;
-  uint64_t old_bytes;
-  uint64_t new_bytes;
+  std::vector<uint64_t> old_bytes_vec; 
+  std::vector<uint64_t> new_bytes_vec; 
 };
 
 struct StepDelta {
@@ -98,6 +99,8 @@ struct StepDelta {
 class RVSSVM : public VmBase {
  public:
   RVSSControlUnit control_unit_;
+  std::atomic<bool> stop_requested_ = false;
+
 
   std::stack<StepDelta> undo_stack_;
   std::stack<StepDelta> redo_stack_;
@@ -128,18 +131,16 @@ class RVSSVM : public VmBase {
   void Execute();
   void ExecuteFloat();
   void ExecuteDouble();
-  void ExecuteVector();
   void ExecuteCsr();
+  void HandleSyscall();
 
   void WriteMemory();
   void WriteMemoryFloat();
   void WriteMemoryDouble();
-  void WriteMemoryVector();
 
   void WriteBack();
   void WriteBackFloat();
   void WriteBackDouble();
-  void WriteBackVector();
   void WriteBackCsr();
 
   RVSSVM();
@@ -151,6 +152,18 @@ class RVSSVM : public VmBase {
   void Undo() override;
   void Redo() override;
   void Reset() override;
+
+  void RequestStop() {
+    stop_requested_ = true;
+  }
+
+  bool IsStopRequested() const {
+    return stop_requested_;
+  }
+  
+  void ClearStop() {
+    stop_requested_ = false;
+  }
 
   void PrintType() {
     std::cout << "rvssvm" << std::endl;

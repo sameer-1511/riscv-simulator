@@ -17,6 +17,20 @@
 #include <string>
 #include <filesystem>
 #include <cstdint>
+#include <mutex>
+#include <condition_variable>
+#include <queue>
+#include <atomic>
+
+enum SyscallCode {
+    SYSCALL_PRINT_INT = 1,
+    SYSCALL_PRINT_FLOAT = 2,
+    SYSCALL_PRINT_STRING = 4,
+    SYSCALL_EXIT = 10,
+    SYSCALL_READ = 63,
+    SYSCALL_WRITE = 64,
+};
+
 
 class VmBase {
 public:
@@ -24,6 +38,10 @@ public:
     ~VmBase() = default;
 
     AssembledProgram program_;
+    std::atomic<bool> stop_requested_ = false;
+    std::mutex input_mutex_;
+    std::condition_variable input_cv_;
+    std::queue<std::string> input_queue_;
 
     std::vector<uint64_t> breakpoints_;
 
@@ -38,6 +56,8 @@ public:
     unsigned int branch_mispredictions_{};
 
     std::string output_status_;
+
+    
 
 
 
@@ -65,7 +85,8 @@ public:
     // void memoryAccess();
     // void writeback();
 
-    void HandleSyscall();
+    // void HandleSyscall();
+    void PrintString(uint64_t address);
 
     virtual void Run() = 0;
     virtual void DebugRun() = 0;
@@ -76,6 +97,11 @@ public:
     void DumpState(const std::filesystem::path &filename);
 
     void ModifyRegister(const std::string &reg_name, uint64_t value);
+    void PushInput(const std::string& input) {
+        std::lock_guard<std::mutex> lock(input_mutex_);
+        input_queue_.push(input);
+        input_cv_.notify_one();
+    }
 
 };
 

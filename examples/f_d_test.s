@@ -9,6 +9,8 @@
 
 .section .text
 
+addi x3, x1, 0
+
 
 lui x3, 0x10000
 # ld x4, 0(x0)

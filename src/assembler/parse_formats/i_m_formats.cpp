@@ -16,6 +16,7 @@ bool Parser::parse_O() {
       ) {
     ICUnit block;
     block.setOpcode(currentToken().value);
+    block.setLineNumber(currentToken().line_number);
     skipCurrentLine();
     intermediate_code_.emplace_back(block, true);
     instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();

@@ -222,7 +222,7 @@ void Memory::DumpMemory(std::vector<std::string> args) {
           file << R"(    "0x)" << std::hex << std::setw(16) << std::setfill('0') << current_address << R"(": )";
       
           file << R"("0x)";
-          for (size_t k = 0; k < 8; k++) {
+          for (int k = 7; k >= 0; k--) {
               file << std::hex << std::setw(2) << std::setfill('0') 
                     << static_cast<int>(Read(address + j * 8 + k));
           }
@@ -247,15 +247,22 @@ void Memory::DumpMemory(std::vector<std::string> args) {
 
 std::string Memory::GetMemoryPoint(uint64_t address) {
   if (address >= memory_size_ - 7) {
-    throw std::out_of_range(std::string("Memory address out of range: ") + std::to_string(address));
+    throw std::out_of_range("Memory address out of range: " + std::to_string(address));
   }
 
-  uint64_t value = ReadDoubleWord(address);
+  uint64_t value = ReadDoubleWord(address); 
   std::stringstream ss;
-  ss << "[0x" << std::hex << std::setw(16) << std::setfill('0') << value << "]";
-  return ss.str();
+  ss << "[0x";
 
+  for (int i = 7; i >= 0; --i) {
+    uint8_t byte = (value >> (i * 8)) & 0xFF;
+    ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte);
+  }
+
+  ss << "]";
+  return ss.str();
 }
+
 
 void Memory::printMemoryUsage() const {
   std::cout << "Memory Usage Report:\n";

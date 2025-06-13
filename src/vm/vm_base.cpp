@@ -15,6 +15,7 @@
 #include <filesystem>
 #include <algorithm>
 #include <cstring>
+#include <thread>
 
 
 void VmBase::LoadProgram(const AssembledProgram &program) {
@@ -233,7 +234,14 @@ bool VmBase::CheckBreakpoint(uint64_t address) {
     return std::find(breakpoints_.begin(), breakpoints_.end(), address) != breakpoints_.end();
 }
 
-void VmBase::HandleSyscall() {
+
+void VmBase::PrintString(uint64_t address) {
+    while (true) {
+        char c = memory_controller_.ReadByte(address);
+        if (c == '\0') break;
+        std::cout << c;
+        address++;
+    }
 }
 
 void VmBase::DumpState(const std::filesystem::path &filename) {

@@ -10,6 +10,7 @@ std::filesystem::path globals::vm_state_dump_file_path = (std::filesystem::path(
 
 bool globals::verbose_errors_print = false;
 bool globals::verbose_warnings = false;
+bool globals::vm_as_backend = false;
 
 
 unsigned int globals::data_section_start = 0x10000000;

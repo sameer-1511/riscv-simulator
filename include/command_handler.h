@@ -15,7 +15,8 @@ enum class CommandType {
   INVALID,
   LOAD,
   RUN,
-  DEBUG,
+  STOP,
+  DEBUG_RUN,
   STEP,
   UNDO,
   REDO,
@@ -27,6 +28,7 @@ enum class CommandType {
   DUMP_CACHE,
   ADD_BREAKPOINT,
   REMOVE_BREAKPOINT,
+  VM_STDIN,
   EXIT
 };
 

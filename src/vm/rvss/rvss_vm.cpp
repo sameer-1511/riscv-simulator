@@ -16,6 +16,11 @@
 #include <tuple>
 #include <stack>  
 #include <algorithm>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <queue>
+#include <atomic>
 
 RVSSVM::RVSSVM() : VmBase() {
   DumpRegisters(globals::registers_dump_file_path, registers_);
@@ -36,6 +41,11 @@ void RVSSVM::Decode() {
 void RVSSVM::Execute() {
   uint8_t opcode = current_instruction_ & 0b1111111;
   uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+
+  if (opcode == 0b1110011 && funct3 == 0b000) {
+    HandleSyscall();
+    return;
+  }
 
   if (instruction_set::isFInstruction(current_instruction_)) { // RV64 F
     ExecuteFloat();
@@ -176,10 +186,6 @@ void RVSSVM::ExecuteDouble() {
   std::tie(execution_result_, fcsr_status) = alu::Alu::dfpexecute(aluOperation, reg1_value, reg2_value, reg3_value, rm);
 }
 
-void RVSSVM::ExecuteVector() {
-  return;
-}
-
 void RVSSVM::ExecuteCsr() {
   uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
   uint16_t csr = (current_instruction_ >> 20) & 0xFFF;
@@ -191,9 +197,167 @@ void RVSSVM::ExecuteCsr() {
   csr_uimm_ = rs1;
 }
 
+void RVSSVM::HandleSyscall() {
+  uint64_t syscall_number = registers_.ReadGpr(17);
+  switch (syscall_number) {
+    case SYSCALL_PRINT_INT: {
+        if (!globals::vm_as_backend) {
+            std::cout << "[Syscall output: ";
+        } else {
+          std::cout << "VM_STDOUT_START" << std::endl;
+        }
+        std::cout << static_cast<int64_t>(registers_.ReadGpr(10)); // Print signed integer
+        if (!globals::vm_as_backend) {
+            std::cout << "]" << std::endl;
+        } else {
+          std::cout << "VM_STDOUT_END" << std::endl;
+        }
+        break;
+    }
+    case SYSCALL_PRINT_FLOAT: { // print float
+        if (!globals::vm_as_backend) {
+            std::cout << "[Syscall output: ";
+        }
+        float float_value = registers_.ReadGpr(10);
+        std::cout << std::fixed << std::setprecision(6) << float_value; 
+        if (!globals::vm_as_backend) {
+            std::cout << "]" << std::endl;
+        }
+        break;
+    }
+    case SYSCALL_PRINT_STRING: {
+        if (!globals::vm_as_backend) {
+            std::cout << "[Syscall output: ";
+        }
+        PrintString(registers_.ReadGpr(10)); // Print string
+        if (!globals::vm_as_backend) {
+            std::cout << "]" << std::endl;
+        }
+        break;
+    }
+    case SYSCALL_EXIT: {
+        stop_requested_ = true; // Stop the VM
+        if (!globals::vm_as_backend) {
+            std::cout << "VM_EXIT" << std::endl;
+        }
+        output_status_ = "VM_EXIT";
+        std::cout << "Exited with exit code: " << registers_.ReadGpr(10) << std::endl;
+        exit(0); // Exit the program
+        break;
+    }
+    case SYSCALL_READ: { // Read
+      uint64_t file_descriptor = registers_.ReadGpr(10);
+      uint64_t buffer_address = registers_.ReadGpr(11);
+      uint64_t length = registers_.ReadGpr(12);
+
+      if (file_descriptor == 0) {
+        // Read from stdin
+        std::string input;
+        {
+          std::cout << "VM_STDIN_START" << std::endl;
+          output_status_ = "VM_STDIN_START";
+          std::unique_lock<std::mutex> lock(input_mutex_);
+          input_cv_.wait(lock, [this]() { 
+            return !input_queue_.empty(); 
+          });
+          output_status_ = "VM_STDIN_END";
+          std::cout << "VM_STDIN_END" << std::endl;
+
+          input = input_queue_.front();
+          input_queue_.pop();
+        }
+
+
+        size_t num_chunks = (length + 1) / sizeof(uint64_t) + 1;
+        std::vector<uint64_t> old_bytes_vec(num_chunks, 0);
+        std::vector<uint64_t> new_bytes_vec(num_chunks, 0);
+
+        for (size_t i = 0; i < num_chunks; ++i) {
+          uint64_t chunk = 0;
+          for (size_t byte = 0; byte < 8; ++byte) {
+            size_t addr = buffer_address + i * 8 + byte;
+            if (addr < buffer_address + length) {
+              chunk |= static_cast<uint64_t>(memory_controller_.ReadByte(addr)) << (byte * 8);
+            }
+          }
+          old_bytes_vec[i] = chunk;
+        }
+
+        
+        for (size_t i = 0; i < input.size() && i < length; ++i) {
+          memory_controller_.WriteByte(buffer_address + i, static_cast<uint8_t>(input[i]));
+        }
+        if (input.size() < length) {
+          memory_controller_.WriteByte(buffer_address + input.size(), '\0');
+        }
+
+        for (size_t i = 0; i < num_chunks; ++i) {
+          uint64_t chunk = 0;
+          for (size_t byte = 0; byte < 8; ++byte) {
+            size_t addr = buffer_address + i * 8 + byte;
+            if (addr < buffer_address + length + 1) {  // include null terminator
+              chunk |= static_cast<uint64_t>(memory_controller_.ReadByte(addr)) << (byte * 8);
+            }
+          }
+          new_bytes_vec[i] = chunk;
+        }
+
+        current_delta_.memory_changes.push_back({
+          buffer_address, 
+          old_bytes_vec, 
+          new_bytes_vec
+        });
+
+        uint64_t old_reg = registers_.ReadGpr(10);
+        unsigned int reg_index = 10;
+        unsigned int reg_type = 0; // 0 for GPR, 1 for CSR, 2 for FPR
+        registers_.WriteGpr(10, static_cast<uint64_t>(input.size())); 
+        uint64_t new_reg = static_cast<uint64_t>(input.size());
+        if (old_reg != new_reg) {
+          current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
+        }
+
+      } else {
+          std::cerr << "Unsupported file descriptor: " << file_descriptor << std::endl;
+      }
+      break;
+    }
+    case SYSCALL_WRITE: { // Write
+        uint64_t file_descriptor = registers_.ReadGpr(10);
+        uint64_t buffer_address = registers_.ReadGpr(11);
+        uint64_t length = registers_.ReadGpr(12);
+
+        if (file_descriptor == 1) { // stdout
+          std::cout << "VM_STDOUT_START" << std::endl;
+          output_status_ = "VM_STDOUT_START";
+          for (uint64_t i = 0; i < length; ++i) {
+              char c = memory_controller_.ReadByte(buffer_address + i);
+              std::cout << c;
+          }
+          std::cout << std::flush; 
+          output_status_ = "VM_STDOUT_END";
+          std::cout << "VM_STDOUT_END" << std::endl;
+          registers_.WriteGpr(10, length);
+        } else {
+            std::cerr << "Unsupported file descriptor: " << file_descriptor << std::endl;
+        }
+        break;
+    }
+    default: {
+      std::cerr << "Unknown syscall number: " << syscall_number << std::endl;
+      break;
+    }
+  }
+}
+
 void RVSSVM::WriteMemory() {
+  uint8_t opcode = current_instruction_ & 0b1111111;
   uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
   uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
+
+  if (opcode == 0b1110011 && funct3 == 0b000) {
+    return;
+  }
 
   if (instruction_set::isFInstruction(current_instruction_)) { // RV64 F
     WriteMemoryFloat();
@@ -237,44 +401,48 @@ void RVSSVM::WriteMemory() {
   }
 
   uint64_t addr = 0;
-  uint64_t old_mem = 0;
-  uint64_t new_mem = 0;
+  std::vector<uint64_t> old_bytes_vec;
+  std::vector<uint64_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) {
     switch (funct3) {
       case 0b000: {// SB
         addr = execution_result_;
-        old_mem = memory_controller_.ReadByte(addr);
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         memory_controller_.WriteByte(execution_result_, registers_.ReadGpr(rs2) & 0xFF);
-        new_mem = memory_controller_.ReadByte(addr);
+        old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         break;
       }
       case 0b001: {// SH
         addr = execution_result_;
-        old_mem = memory_controller_.ReadHalfWord(addr);
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         memory_controller_.WriteHalfWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFF);
-        new_mem = memory_controller_.ReadHalfWord(addr);
+        old_bytes_vec.push_back(memory_controller_.ReadHalfWord(addr));
         break;
       }
       case 0b010: {// SW
         addr = execution_result_;
-        old_mem = memory_controller_.ReadWord(addr);
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         memory_controller_.WriteWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFF);
-        new_mem = memory_controller_.ReadWord(addr);
+        old_bytes_vec.push_back(memory_controller_.ReadWord(addr));
         break;
       }
       case 0b011: {// SD
         addr = execution_result_;
-        old_mem = memory_controller_.ReadDoubleWord(addr);
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         memory_controller_.WriteDoubleWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFFFFFFFFFF);
-        new_mem = memory_controller_.ReadDoubleWord(addr);
+        old_bytes_vec.push_back(memory_controller_.ReadDoubleWord(addr));
         break;
       }
     }
   }
 
-  if (old_mem!=new_mem) {
-    current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+  if (old_bytes_vec != new_bytes_vec) {
+    current_delta_.memory_changes.push_back({
+      addr,
+      old_bytes_vec,
+      new_bytes_vec
+    });
   }
 }
 
@@ -286,19 +454,19 @@ void RVSSVM::WriteMemoryFloat() {
   }
 
   uint64_t addr = 0;
-  uint64_t old_mem = 0;
-  uint64_t new_mem = 0;
+  std::vector<uint64_t> old_bytes_vec;
+  std::vector<uint64_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) { // FSW
     addr = execution_result_;
-    old_mem = memory_controller_.ReadDoubleWord(addr);
+    old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
     uint32_t val = registers_.ReadFpr(rs2) & 0xFFFFFFFF;
     memory_controller_.WriteWord(execution_result_, val);
-    new_mem = memory_controller_.ReadDoubleWord(addr);
+    new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
   }
 
-  if (old_mem!=new_mem) {
-    current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+  if (old_bytes_vec!=new_bytes_vec) {
+    current_delta_.memory_changes.push_back({addr, old_bytes_vec, new_bytes_vec});
   }
 }
 
@@ -310,29 +478,30 @@ void RVSSVM::WriteMemoryDouble() {
   }
 
   uint64_t addr = 0;
-  uint64_t old_mem = 0;
-  uint64_t new_mem = 0;
+  std::vector<uint64_t> old_bytes_vec;
+  std::vector<uint64_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) {// FSD
     addr = execution_result_;
-    old_mem = memory_controller_.ReadDoubleWord(addr);
+    old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
     memory_controller_.WriteDoubleWord(execution_result_, registers_.ReadFpr(rs2));
-    new_mem = memory_controller_.ReadDoubleWord(addr);
+    new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
   }
 
-  if (old_mem!=new_mem) {
-    current_delta_.memory_changes.push_back({addr, old_mem, new_mem});
+  if (old_bytes_vec!=new_bytes_vec) {
+    current_delta_.memory_changes.push_back({addr, old_bytes_vec, new_bytes_vec});
   }
-}
-
-void RVSSVM::WriteMemoryVector() {
-  return;
 }
 
 void RVSSVM::WriteBack() {
   uint8_t opcode = current_instruction_ & 0b1111111;
+  uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
   uint8_t rd = (current_instruction_ >> 7) & 0b11111;
   int32_t imm = ImmGenerator(current_instruction_);
+
+  if (opcode == 0b1110011 && funct3 == 0b000) {
+    return;
+  }
 
   if (instruction_set::isFInstruction(current_instruction_)) { // RV64 F
     WriteBackFloat();
@@ -471,10 +640,6 @@ void RVSSVM::WriteBackDouble() {
   return;
 }
 
-void RVSSVM::WriteBackVector() {
-  return;
-}
-
 void RVSSVM::WriteBackCsr() {
   uint8_t rd = (current_instruction_ >> 7) & 0b11111;
   uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
@@ -523,7 +688,8 @@ void RVSSVM::WriteBackCsr() {
 }
 
 void RVSSVM::Run() {
-  while (program_counter_ < program_size_) {
+  ClearStop();
+  while (!stop_requested_ && program_counter_ < program_size_) {
     Fetch();
     Decode();
     Execute();
@@ -541,7 +707,8 @@ void RVSSVM::Run() {
 }
 
 void RVSSVM::DebugRun() {
-  while (program_counter_ < program_size_) {
+  ClearStop();
+  while (!stop_requested_ && program_counter_ < program_size_) {
     current_delta_.old_pc = program_counter_;
     if (std::find(breakpoints_.begin(), breakpoints_.end(), program_counter_) == breakpoints_.end()) {
       Fetch();
@@ -651,7 +818,9 @@ void RVSSVM::Undo() {
   }
 
   for (const auto &change : last.memory_changes) {
-    memory_controller_.WriteDoubleWord(change.address, change.old_bytes);
+    for (size_t i = 0; i < change.old_bytes_vec.size(); ++i) {
+      memory_controller_.WriteDoubleWord(change.address + i * 8, change.old_bytes_vec[i]);
+    }
   }
 
   program_counter_ = last.old_pc;
@@ -704,7 +873,9 @@ void RVSSVM::Redo() {
   }
 
   for (const auto &change : next.memory_changes) {
-    memory_controller_.WriteDoubleWord(change.address, change.new_bytes);
+    for (size_t i = 0; i < change.new_bytes_vec.size(); ++i) {
+      memory_controller_.WriteDoubleWord(change.address + i * 8, change.new_bytes_vec[i]);
+    }
   }
 
   program_counter_ = next.new_pc;
