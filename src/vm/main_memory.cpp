@@ -4,8 +4,18 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "main_memory.h"
-#include "../globals.h"
+#include "vm/main_memory.h"
+#include "globals.h"
+
+#include <cstdint>
+#include <stdexcept>
+#include <cstring>
+#include <iostream>
+#include <vector>
+#include <ostream>
+#include <fstream>
+#include <iomanip>
+#include <algorithm>
 
 uint8_t Memory::Read(uint64_t address) {
   if (address >= memory_size_) {

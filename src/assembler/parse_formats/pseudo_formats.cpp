@@ -4,10 +4,12 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "../parser.h"
-#include "../../common/instructions.h"
-#include "../../vm/registers.h"
-#include "../../utils.h"
+#include "assembler/parser.h"
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include "utils.h"
+
+#include <string>
 
 bool Parser::parse_pseudo() {
   if (currentToken().value=="la") {
@@ -21,7 +23,6 @@ bool Parser::parse_pseudo() {
         ) {
       if (symbol_table_.find(peekToken(3).value)!=symbol_table_.end()
           && symbol_table_[peekToken(3).value].isData) {
-        std::cout << "Found label" << std::endl;
         // TODO: Implement la pseudo instruction
       }
       skipCurrentLine();

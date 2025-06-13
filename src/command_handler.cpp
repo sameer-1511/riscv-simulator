@@ -5,6 +5,10 @@
  */
 #include "command_handler.h"
 
+#include <string>
+#include <sstream>
+#include <vector>
+
 namespace command_handler {
 Command ParseCommand(const std::string &input) {
   std::istringstream iss(input);
@@ -26,6 +30,8 @@ Command ParseCommand(const std::string &input) {
     command_type = command_handler::CommandType::REDO;
   } else if (command_str=="reset") {
     command_type = command_handler::CommandType::RESET;
+  } else if (command_str=="modify_register" || command_str=="mreg") {
+    command_type = command_handler::CommandType::MODIFY_REGISTER;
   } else if (command_str=="dump_mem" || command_str=="dmem") {
     command_type = command_handler::CommandType::DUMP_MEMORY;
   } else if (command_str=="print_mem" || command_str=="pmem") {

@@ -1,5 +1,4 @@
 .data
-bb: .dword 0x1234567890
 aa: .word 0x12345
 cc: .word -32
 

@@ -4,8 +4,13 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "registers.h"
-#include "../pch.h"
+#include "vm/registers.h"
+
+#include <stdexcept>
+#include <unordered_set>
+#include <unordered_map>
+#include <vector>
+#include <array>
 
 RegisterFile::RegisterFile() = default;
 
@@ -55,6 +60,21 @@ std::vector<uint64_t> RegisterFile::GetGprValues() const {
 std::vector<uint64_t> RegisterFile::GetFprValues() const {
   return {fpr_.begin(), fpr_.end()};
 }
+
+void RegisterFile::ModifyRegister(const std::string &reg_name, uint64_t value) {
+  std::string reg_name_n = reg_alias_to_name.at(reg_name);
+  if (IsValidGeneralPurposeRegister(reg_name_n)) {
+    WriteGpr(std::stoi(reg_name_n.substr(1)), value);
+  } else if (IsValidFloatingPointRegister(reg_name_n)) {
+    WriteFpr(std::stoi(reg_name_n.substr(1)), value);
+  } else if (IsValidCsr(reg_name_n)) {
+    WriteCsr(csr_to_address.at(reg_name_n), value);
+  } else {
+    throw std::invalid_argument("Invalid register name: " + reg_name_n);
+  }
+}
+
+
 
 const std::unordered_set<std::string> valid_general_purpose_registers = {
     "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9",
@@ -227,6 +247,10 @@ const std::unordered_map<std::string, std::string> reg_alias_to_name = {
     {"f29", "f29"},
     {"f30", "f30"},
     {"f31", "f31"},
+
+    {"fflags", "fflags"},
+    {"frm", "frm"},
+    {"fcsr", "fcsr"},
 
 };
 

@@ -4,10 +4,12 @@
  * Github: https://github.com/VishankSingh
  */
 
-#include "../parser.h"
-#include "../../common/instructions.h"
-#include "../../vm/registers.h"
-#include "../../utils.h"
+#include "assembler/parser.h"
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include "utils.h"
+
+#include <string>
 
 bool Parser::parse_O() {
   if (peekToken(1).type==TokenType::EOF_ || peekToken(1).line_number!=currentToken().line_number

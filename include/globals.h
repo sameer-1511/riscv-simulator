@@ -1,0 +1,28 @@
+/**
+ * @file globals.h
+ * @brief Contains global definitions and includes for the assembler.
+ * @author Vishank Singh, https://github.com/VishankSingh
+ */
+#ifndef GLOBALS_H
+#define GLOBALS_H
+
+#include <filesystem>
+
+namespace globals {
+extern std::filesystem::path config_file_path;
+extern std::filesystem::path errors_dump_file_path;
+extern std::filesystem::path registers_dump_file_path;
+extern std::filesystem::path memory_dump_file_path;
+extern std::filesystem::path cache_dump_file_path;
+extern std::filesystem::path vm_state_dump_file_path;
+//extern std::string output_file;
+
+extern bool verbose_errors_print;
+extern bool verbose_warnings;
+
+extern unsigned int data_section_start;
+
+void initGlobals();
+}
+
+#endif // GLOBALS_H

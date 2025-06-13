@@ -4,11 +4,15 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "parser.h"
+#include "assembler/parser.h"
 
-#include "../common/instructions.h"
-#include "../vm/registers.h"
-#include "../utils.h"
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include "utils.h"
+
+#include <cstdint>
+#include <iostream>
+#include <vector>
 
 Token Parser::prevToken() {
   if (pos_ > 0) {

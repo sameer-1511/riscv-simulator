@@ -5,4 +5,3 @@
  */
 
 #include "vm_asm_mw.h"
-#include "pch.h"

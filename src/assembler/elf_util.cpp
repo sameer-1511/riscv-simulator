@@ -1,5 +1,12 @@
 
-#include "elf_util.h"
+#include "assembler/elf_util.h"
+
+#include "vm_asm_mw.h"
+
+#include <iostream>
+#include <fstream>
+#include <variant>
+#include <cstdint>
 
 void generateElfFile(const AssembledProgram &program, const std::string &output_filename) {
   std::ofstream elfFile(output_filename, std::ios::binary);

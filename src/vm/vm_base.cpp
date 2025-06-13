@@ -4,10 +4,17 @@
  * @author Vishank Singh, https://VishankSingh
  */
 
-#include "vm_base.h"
+#include "vm/vm_base.h"
 
-#include "../globals.h"
+#include "globals.h"
 
+#include <cstdint>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <filesystem>
+#include <algorithm>
+#include <cstring>
 
 
 void VmBase::LoadProgram(const AssembledProgram &program) {
@@ -264,3 +271,6 @@ void VmBase::DumpState(const std::filesystem::path &filename) {
 
 }
 
+void VmBase::ModifyRegister(const std::string &reg_name, uint64_t value) {
+    registers_.ModifyRegister(reg_name, value);
+}

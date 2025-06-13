@@ -4,10 +4,13 @@
  * Github: https://github.com/VishankSingh
  */
 
-#include "../parser.h"
-#include "../../common/instructions.h"
-#include "../../vm/registers.h"
-#include "../../utils.h"
+#include "assembler/parser.h"
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include "utils.h"
+
+
+#include <string>
 
 bool Parser::parse_O_GPR_C_CSR_C_GPR() {
   if (peekToken(1).line_number==currentToken().line_number

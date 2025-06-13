@@ -4,8 +4,8 @@
  * Github: https://github.com/VishankSingh
  */
 
-#include "../parser.h"
-#include "../../common/instructions.h"
-#include "../../vm/registers.h"
-#include "../../utils.h"
+#include "assembler/parser.h"
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include "utils.h"
 

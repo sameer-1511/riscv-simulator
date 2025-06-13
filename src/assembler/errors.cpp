@@ -6,9 +6,10 @@
  */
 /** @endcond */
 
-#include "errors.h"
+#include "assembler/errors.h"
 
-#include "../pch.h"
+#include <ostream>
+#include <iomanip>
 
 namespace errors {
 

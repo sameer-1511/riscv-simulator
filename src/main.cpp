@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "main.h"
 #include "./assembler/assembler.h"
 #include "./assembler/elf_util.h"
@@ -8,6 +6,10 @@
 #include "./vm/rvss/rvss_vm.h"
 #include "vm_runner.h"
 #include "command_handler.h"
+
+#include <iostream>
+
+
 
 int main(int argc, char *argv[]) {
   if (argc <= 1) {
@@ -145,7 +147,29 @@ int main(int argc, char *argv[]) {
       vm.AddBreakpoint(std::stoul(command.args[0], nullptr, 10));
     } else if (command.type==command_handler::CommandType::REMOVE_BREAKPOINT) {
       vm.RemoveBreakpoint(std::stoul(command.args[0], nullptr, 10));
-    } else if (command.type==command_handler::CommandType::DUMP_MEMORY) {
+    } else if (command.type==command_handler::CommandType::MODIFY_REGISTER) {
+      try {
+        if (command.args.size() != 2) {
+          std::cout << "VM_MODIFY_REGISTER_ERROR" << std::endl;
+          continue;
+        }
+        std::string reg_name = command.args[0];
+        uint64_t value = std::stoull(command.args[1], nullptr, 16);
+        vm.ModifyRegister(reg_name, value);
+        DumpRegisters(globals::registers_dump_file_path, vm.registers_);
+      } catch (const std::out_of_range &e) {
+        std::cout << "VM_MODIFY_REGISTER_ERROR" << std::endl;
+        continue;
+      } catch (const std::exception& e) {
+        std::cout << "VM_MODIFY_REGISTER_ERROR" << std::endl;
+        continue;
+      }
+    }
+    
+    
+    
+    
+    else if (command.type==command_handler::CommandType::DUMP_MEMORY) {
       try {
         vm.memory_controller_.DumpMemory(command.args);
       } catch (const std::out_of_range &e) {

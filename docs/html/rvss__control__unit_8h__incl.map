@@ -1,30 +1,9 @@
 <map id="src/vm/rvss/rvss_control_unit.h" name="src/vm/rvss/rvss_control_unit.h">
-<area shape="rect" id="node1" title="RVSS Control Unit." alt="" coords="1047,5,1227,47"/>
-<area shape="rect" id="node2" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="1123,95,1284,121"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="1094,244,1163,271"/>
-<area shape="rect" id="node26" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="1166,169,1257,196"/>
-<area shape="rect" id="node27" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="1281,169,1336,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1939,319,2019,345"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,319,68,345"/>
-<area shape="rect" id="node6" title=" " alt="" coords="93,319,151,345"/>
-<area shape="rect" id="node7" title=" " alt="" coords="175,319,261,345"/>
-<area shape="rect" id="node8" title=" " alt="" coords="285,319,359,345"/>
-<area shape="rect" id="node9" title=" " alt="" coords="383,319,458,345"/>
-<area shape="rect" id="node10" title=" " alt="" coords="482,319,557,345"/>
-<area shape="rect" id="node11" title=" " alt="" coords="581,319,631,345"/>
-<area shape="rect" id="node12" title=" " alt="" coords="655,319,698,345"/>
-<area shape="rect" id="node13" title=" " alt="" coords="722,319,799,345"/>
-<area shape="rect" id="node14" title=" " alt="" coords="823,319,898,345"/>
-<area shape="rect" id="node15" title=" " alt="" coords="923,319,1047,345"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1071,319,1186,345"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1211,319,1279,345"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1303,319,1368,345"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1393,319,1459,345"/>
-<area shape="rect" id="node20" title=" " alt="" coords="1483,319,1542,345"/>
-<area shape="rect" id="node21" title=" " alt="" coords="1567,319,1627,345"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1651,319,1710,345"/>
-<area shape="rect" id="node23" title=" " alt="" coords="2044,319,2107,345"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1734,319,1801,345"/>
-<area shape="rect" id="node25" title=" " alt="" coords="1825,319,1915,345"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1279,244,1338,271"/>
+<area shape="rect" id="node1" title="RVSS Control Unit." alt="" coords="5,5,185,47"/>
+<area shape="rect" id="node2" href="$control__unit__base_8h.html" title="Control unit base class definition." alt="" coords="81,95,243,121"/>
+<area shape="rect" id="node3" href="$pch_8h.html" title=" " alt="" coords="95,244,165,271"/>
+<area shape="rect" id="node4" href="$registers_8h.html" title="Contains the definition of the RegisterFile class for managing registers in the simulator." alt="" coords="125,169,215,196"/>
+<area shape="rect" id="node5" href="$alu_8h.html" title="Contains the definition of the alu class for performing arithmetic and logic operations." alt="" coords="240,169,295,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="278,244,337,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="191,244,253,271"/>
 </map>

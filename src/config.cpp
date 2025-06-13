@@ -6,6 +6,10 @@
 
 #include "config.h"
 
+#include <string>
+#include <fstream>
+#include <sstream>
+
 void vm_config::ini::Trim(std::string &str) {
     size_t start = str.find_first_not_of(" \t");
     size_t end = str.find_last_not_of(" \t");

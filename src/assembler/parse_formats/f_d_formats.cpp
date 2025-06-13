@@ -4,11 +4,13 @@
  * Github: https://github.com/VishankSingh
  */
 
-#include "../parser.h"
-#include "../../common/instructions.h"
-#include "../../vm/registers.h"
-#include "../../utils.h"
-#include "../../common/rounding_modes.h"
+#include "assembler/parser.h"
+#include "common/instructions.h"
+#include "common/rounding_modes.h"
+#include "vm/registers.h"
+#include "utils.h"
+
+#include <string>
 
 bool Parser::parse_O_FPR_C_FPR_C_FPR_C_FPR() {
   if (peekToken(1).line_number==currentToken().line_number

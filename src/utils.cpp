@@ -4,11 +4,14 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "pch.h"
 
 #include "utils.h"
 #include "vm/registers.h"
 #include "globals.h"
+
+#include <filesystem>
+#include <fstream>
+#include <vector>
 
 void setupVmStateDirectory() {
   std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";

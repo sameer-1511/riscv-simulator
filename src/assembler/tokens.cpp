@@ -6,8 +6,11 @@
  */
 /** @endcond */
 
-#include "../pch.h"
-#include "tokens.h"
+#include "assembler/tokens.h"
+
+#include <iostream>
+#include <string>
+
 
 std::ostream &operator<<(std::ostream &os, const Token &token) {
   os << "Token(Type: " << tokenTypeToString(token.type)

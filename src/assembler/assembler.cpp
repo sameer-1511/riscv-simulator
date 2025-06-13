@@ -6,9 +6,15 @@
  */
 /** @endcond */
 
-#include "assembler.h"
-#include "../utils.h"
-#include "../globals.h"
+#include "assembler/assembler.h"
+#include "utils.h"
+#include "globals.h"
+
+#include <string>
+#include <memory>
+#include <stdexcept>
+#include <vector>
+#include <map>
 
 AssembledProgram assemble(const std::string &filename) {
   std::unique_ptr<Lexer> lexer;

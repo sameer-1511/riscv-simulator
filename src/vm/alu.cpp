@@ -4,10 +4,11 @@
  * Github: https://github.com/VishankSingh
  */
 
-#include "alu.h"
-#include "../pch.h"
+#include "vm/alu.h"
 #include <cfenv>
 #include <cmath>
+#include <cstdint>
+#include <cstring>
 
 namespace alu {
 

@@ -6,7 +6,12 @@
  */
 /** @endcond */
 
-#include "instructions.h"
+#include "common/instructions.h"
+
+#include <unordered_set>
+#include <unordered_map>
+#include <string>
+#include <vector>
 
 namespace instruction_set {
 static const std::unordered_set<std::string> valid_instructions = {

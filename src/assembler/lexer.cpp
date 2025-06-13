@@ -4,14 +4,19 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "../pch.h"
 
-#include "lexer.h"
+#include "assembler/lexer.h"
+
+#include "common/instructions.h"
+#include "vm/registers.h"
+#include"common/rounding_modes.h"
 
 #include <utility>
-#include "../common/instructions.h"
-#include "../vm/registers.h"
-#include"../common/rounding_modes.h"
+#include <string>
+#include <stdexcept>
+#include <regex>
+#include <iostream>
+#include <fstream>
 
 Lexer::Lexer(std::string filename) : filename_(std::move(filename)), line_number_(0), column_number_(0), pos_(0) {
   input_.open(filename_);

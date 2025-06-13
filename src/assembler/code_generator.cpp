@@ -4,9 +4,12 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "code_generator.h"
-#include "../pch.h"
-#include "../common/instructions.h"
+#include "assembler/code_generator.h"
+#include "common/instructions.h"
+
+#include <vector>
+#include <string>
+#include <stdexcept>
 
 std::vector<std::string> printIntermediateCode(const std::vector<std::pair<ICUnit, bool>> &IntermediateCode) {
   std::vector<std::string> ICList;

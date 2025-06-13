@@ -4,7 +4,9 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "control_unit_base.h"
+#include "vm/control_unit_base.h"
+
+#include <cstdint>
 
 bool ControlUnit::GetAluSrc() const {
   return alu_src_;

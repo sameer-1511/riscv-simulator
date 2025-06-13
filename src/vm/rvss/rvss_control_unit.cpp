@@ -4,8 +4,10 @@
  * @author Vishank Singh, https://github.com/VishankSingh
  */
 
-#include "rvss_control_unit.h"
-#include "../alu.h"
+#include "vm/rvss/rvss_control_unit.h"
+#include "vm/alu.h"
+
+#include <cstdint>
 
 
 void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
