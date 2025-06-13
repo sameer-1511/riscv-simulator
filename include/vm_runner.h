@@ -14,6 +14,7 @@
 
 #include <memory>
 #include <stdexcept>
+#include <sstream>
 
 inline std::unique_ptr<VmBase> createVM(vm_config::VmTypes vmType) {
   if (vmType==vm_config::VmTypes::SINGLE_STAGE) {
