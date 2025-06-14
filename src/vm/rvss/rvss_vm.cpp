@@ -204,7 +204,7 @@ void RVSSVM::HandleSyscall() {
         if (!globals::vm_as_backend) {
             std::cout << "[Syscall output: ";
         } else {
-          std::cout << "VM_STDOUT_START" << std::endl;
+          std::cout << "VM_STDOUT_START";
         }
         std::cout << static_cast<int64_t>(registers_.ReadGpr(10)); // Print signed integer
         if (!globals::vm_as_backend) {
@@ -217,11 +217,34 @@ void RVSSVM::HandleSyscall() {
     case SYSCALL_PRINT_FLOAT: { // print float
         if (!globals::vm_as_backend) {
             std::cout << "[Syscall output: ";
+        } else {
+          std::cout << "VM_STDOUT_START";
         }
-        float float_value = registers_.ReadGpr(10);
-        std::cout << std::fixed << std::setprecision(6) << float_value; 
+        float float_value;
+        uint64_t raw = registers_.ReadGpr(10);
+        std::memcpy(&float_value, &raw, sizeof(float_value));
+        std::cout << std::fixed << float_value; 
         if (!globals::vm_as_backend) {
             std::cout << "]" << std::endl;
+        } else {
+          std::cout << "VM_STDOUT_END" << std::endl;
+        }
+        break;
+    }
+    case SYSCALL_PRINT_DOUBLE: { // print double
+        if (!globals::vm_as_backend) {
+            std::cout << "[Syscall output: ";
+        } else {
+          std::cout << "VM_STDOUT_START";
+        }
+        double double_value;
+        uint64_t raw = registers_.ReadGpr(10);
+        std::memcpy(&double_value, &raw, sizeof(double_value));
+        std::cout << double_value; 
+        if (!globals::vm_as_backend) {
+            std::cout << "]" << std::endl;
+        } else {
+          std::cout << "VM_STDOUT_END" << std::endl;
         }
         break;
     }
@@ -312,7 +335,7 @@ void RVSSVM::HandleSyscall() {
         uint64_t length = registers_.ReadGpr(12);
 
         if (file_descriptor == 1) { // stdout
-          std::cout << "VM_STDOUT_START" << std::endl;
+          std::cout << "VM_STDOUT_START";
           output_status_ = "VM_STDOUT_START";
           uint64_t bytes_printed = 0;
           for (uint64_t i = 0; i < length; ++i) {
@@ -537,7 +560,7 @@ void RVSSVM::WriteBack() {
   unsigned int reg_type = 0; // 0 for GPR, 1 for CSR, 2 for FPR
 
 
-  if (control_unit_.GetRegWrite() && rd!=0) { // Avoid writing to x0
+  if (control_unit_.GetRegWrite()) { 
     switch (opcode) {
       case 0b0110011: // R-Type
       case 0b0010011: // I-Type
@@ -587,7 +610,7 @@ void RVSSVM::WriteBackFloat() {
   unsigned int reg_type = 2; // 0 for GPR, 1 for CSR, 2 for FPR
   uint64_t new_reg = 0;
 
-  if (control_unit_.GetRegWrite() && rd!=0) {
+  if (control_unit_.GetRegWrite()) {
     // write to GPR
     if (funct7==0b1010000
         || funct7==0b1100000
@@ -627,7 +650,7 @@ void RVSSVM::WriteBackDouble() {
   unsigned int reg_type = 2; // 0 for GPR, 1 for CSR, 2 for FPR
   uint64_t new_reg = 0;
 
-  if (control_unit_.GetRegWrite() && rd!=0) {
+  if (control_unit_.GetRegWrite()) {
     // write to GPR
     if (funct7==0b1010001
         || funct7==0b1100001
@@ -664,38 +687,38 @@ void RVSSVM::WriteBackCsr() {
 
   switch (funct3) {
     case 0b001: { // CSRRW
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       registers_.WriteCsr(csr_target_address_, csr_write_val_);
       break;
     }
     case 0b010: { // CSRRS
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       if (csr_write_val_!=0) {
         registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_write_val_);
       }
       break;
     }
     case 0b011: { // CSRRC
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       if (csr_write_val_!=0) {
         registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_write_val_);
       }
       break;
     }
     case 0b101: { // CSRRWI
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       registers_.WriteCsr(csr_target_address_, csr_uimm_);
       break;
     }
     case 0b110: { // CSRRSI
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       if (csr_uimm_!=0) {
         registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_uimm_);
       }
       break;
     }
     case 0b111: { // CSRRCI
-      if (rd!=0) registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteGpr(rd, csr_old_value_);
       if (csr_uimm_!=0) {
         registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_uimm_);
       }

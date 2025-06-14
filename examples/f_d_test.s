@@ -15,14 +15,14 @@ addi x3, x1, 0
 lui x3, 0x10000
 # ld x4, 0(x0)
 # sd x4, 0(x3)
-addi sp, x3, 0x100
+# addi sp, x3, 0x100
 
 
-fld f7, 8(x3)
+# fld f7, 8(x3)
 
-flw f10, 0(x3)
-flw f11, 4(x3)
-fadd.s f12, f10, f11
+# flw f10, 0(x3)
+# flw f11, 4(x3)
+# fadd.s f12, f10, f11
 
 fld f13, 8(x3)
 fld f14, 16(x3)
