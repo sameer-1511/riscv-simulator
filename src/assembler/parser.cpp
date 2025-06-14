@@ -370,21 +370,18 @@ void Parser::parseTextDirective() {
 void Parser::parse() {
   instruction_index_ = 0;
   while (currentToken().type!=TokenType::EOF_) {
-    if (currentToken().type == TokenType::DIRECTIVE) {
-      if (currentToken().value == "section") {
-        nextToken();
-      }
-      if (currentToken().value=="data" && currentToken().type==TokenType::DIRECTIVE) {
-        nextToken();
-        parseDataDirective();
-      } else if (currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) {
-        nextToken();
-        parseTextDirective();
-      }
-      //else if (currentToken().value == "bss") {
-      //  parseBssDirective();
-      //}
+    if (currentToken().value == "section" && currentToken().type == TokenType::DIRECTIVE) {
+      nextToken();
+    } else if (currentToken().value=="data" && currentToken().type==TokenType::DIRECTIVE) {
+      nextToken();
+      parseDataDirective();
+    } else if (currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) {
+      nextToken();
+      parseTextDirective();
     }
+    //else if (currentToken().value == "bss") {
+    //  parseBssDirective();
+    //}
     else if (currentToken().type==TokenType::LABEL || currentToken().type==TokenType::OPCODE) {
       parseTextDirective();
     }

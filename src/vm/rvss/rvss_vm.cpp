@@ -295,8 +295,8 @@ void RVSSVM::HandleSyscall() {
         uint64_t old_reg = registers_.ReadGpr(10);
         unsigned int reg_index = 10;
         unsigned int reg_type = 0; // 0 for GPR, 1 for CSR, 2 for FPR
-        registers_.WriteGpr(10, static_cast<uint64_t>(input.size())); 
-        uint64_t new_reg = static_cast<uint64_t>(input.size());
+        uint64_t new_reg = std::min(static_cast<uint64_t>(length), static_cast<uint64_t>(input.size()));
+        registers_.WriteGpr(10, new_reg); 
         if (old_reg != new_reg) {
           current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
         }
@@ -314,14 +314,27 @@ void RVSSVM::HandleSyscall() {
         if (file_descriptor == 1) { // stdout
           std::cout << "VM_STDOUT_START" << std::endl;
           output_status_ = "VM_STDOUT_START";
+          uint64_t bytes_printed = 0;
           for (uint64_t i = 0; i < length; ++i) {
               char c = memory_controller_.ReadByte(buffer_address + i);
+              // if (c == '\0') {
+              //     break;
+              // }
               std::cout << c;
+              bytes_printed++;
           }
           std::cout << std::flush; 
           output_status_ = "VM_STDOUT_END";
           std::cout << "VM_STDOUT_END" << std::endl;
-          registers_.WriteGpr(10, length);
+
+          uint64_t old_reg = registers_.ReadGpr(10);
+          unsigned int reg_index = 10;
+          unsigned int reg_type = 0; // 0 for GPR, 1 for CSR, 2 for FPR
+          uint64_t new_reg = std::min(static_cast<uint64_t>(length), bytes_printed);
+          registers_.WriteGpr(10, new_reg);
+          if (old_reg != new_reg) {
+            current_delta_.register_changes.push_back({reg_index, reg_type, old_reg, new_reg});
+          }
         } else {
             std::cerr << "Unsupported file descriptor: " << file_descriptor << std::endl;
         }
@@ -732,6 +745,14 @@ void RVSSVM::DebugRun() {
         redo_stack_.pop();
       }
       current_delta_ = StepDelta();
+      if (program_counter_ < program_size_) {
+        std::cout << "VM_STEP_COMPLETED" << std::endl;
+        output_status_ = "VM_STEP_COMPLETED";
+      } else if (program_counter_ >= program_size_) {
+        std::cout << "VM_LAST_INSTRUCTION_STEPPED" << std::endl;
+        output_status_ = "VM_LAST_INSTRUCTION_STEPPED";
+      }
+      
     } else {
       std::cout << "VM_BREAKPOINT_HIT " << program_counter_ << std::endl;
       output_status_ = "VM_BREAKPOINT_HIT";
