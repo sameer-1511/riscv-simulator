@@ -27,8 +27,8 @@ struct RegisterChange {
 
 struct MemoryChange {
   uint64_t address;
-  std::vector<uint64_t> old_bytes_vec; 
-  std::vector<uint64_t> new_bytes_vec; 
+  std::vector<uint8_t> old_bytes_vec; 
+  std::vector<uint8_t> new_bytes_vec; 
 };
 
 struct StepDelta {

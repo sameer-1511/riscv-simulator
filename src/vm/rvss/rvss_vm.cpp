@@ -268,21 +268,12 @@ void RVSSVM::HandleSyscall() {
         }
 
 
-        size_t num_chunks = (length + 1) / sizeof(uint64_t) + 1;
-        std::vector<uint64_t> old_bytes_vec(num_chunks, 0);
-        std::vector<uint64_t> new_bytes_vec(num_chunks, 0);
+        std::vector<uint8_t> old_bytes_vec(length, 0);
+        std::vector<uint8_t> new_bytes_vec(length, 0);
 
-        for (size_t i = 0; i < num_chunks; ++i) {
-          uint64_t chunk = 0;
-          for (size_t byte = 0; byte < 8; ++byte) {
-            size_t addr = buffer_address + i * 8 + byte;
-            if (addr < buffer_address + length) {
-              chunk |= static_cast<uint64_t>(memory_controller_.ReadByte(addr)) << (byte * 8);
-            }
-          }
-          old_bytes_vec[i] = chunk;
+        for (size_t i = 0; i < length; ++i) {
+          old_bytes_vec[i] = memory_controller_.ReadByte(buffer_address + i);
         }
-
         
         for (size_t i = 0; i < input.size() && i < length; ++i) {
           memory_controller_.WriteByte(buffer_address + i, static_cast<uint8_t>(input[i]));
@@ -291,15 +282,8 @@ void RVSSVM::HandleSyscall() {
           memory_controller_.WriteByte(buffer_address + input.size(), '\0');
         }
 
-        for (size_t i = 0; i < num_chunks; ++i) {
-          uint64_t chunk = 0;
-          for (size_t byte = 0; byte < 8; ++byte) {
-            size_t addr = buffer_address + i * 8 + byte;
-            if (addr < buffer_address + length + 1) {  // include null terminator
-              chunk |= static_cast<uint64_t>(memory_controller_.ReadByte(addr)) << (byte * 8);
-            }
-          }
-          new_bytes_vec[i] = chunk;
+        for (size_t i = 0; i < length; ++i) {
+          new_bytes_vec[i] = memory_controller_.ReadByte(buffer_address + i);
         }
 
         current_delta_.memory_changes.push_back({
@@ -401,37 +385,49 @@ void RVSSVM::WriteMemory() {
   }
 
   uint64_t addr = 0;
-  std::vector<uint64_t> old_bytes_vec;
-  std::vector<uint64_t> new_bytes_vec;
+  std::vector<uint8_t> old_bytes_vec;
+  std::vector<uint8_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) {
     switch (funct3) {
       case 0b000: {// SB
         addr = execution_result_;
-        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
-        memory_controller_.WriteByte(execution_result_, registers_.ReadGpr(rs2) & 0xFF);
         old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+        memory_controller_.WriteByte(execution_result_, registers_.ReadGpr(rs2) & 0xFF);
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
         break;
       }
       case 0b001: {// SH
         addr = execution_result_;
-        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+        for (size_t i = 0; i < 2; ++i) {
+          old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         memory_controller_.WriteHalfWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFF);
-        old_bytes_vec.push_back(memory_controller_.ReadHalfWord(addr));
+        for (size_t i = 0; i < 2; ++i) {
+          new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         break;
       }
       case 0b010: {// SW
         addr = execution_result_;
-        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+        for (size_t i = 0; i < 4; ++i) {
+          old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         memory_controller_.WriteWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFF);
-        old_bytes_vec.push_back(memory_controller_.ReadWord(addr));
+        for (size_t i = 0; i < 4; ++i) {
+          new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         break;
       }
       case 0b011: {// SD
         addr = execution_result_;
-        new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+        for (size_t i = 0; i < 8; ++i) {
+          old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         memory_controller_.WriteDoubleWord(execution_result_, registers_.ReadGpr(rs2) & 0xFFFFFFFFFFFFFFFF);
-        old_bytes_vec.push_back(memory_controller_.ReadDoubleWord(addr));
+        for (size_t i = 0; i < 8; ++i) {
+          new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+        }
         break;
       }
     }
@@ -454,15 +450,20 @@ void RVSSVM::WriteMemoryFloat() {
   }
 
   uint64_t addr = 0;
-  std::vector<uint64_t> old_bytes_vec;
-  std::vector<uint64_t> new_bytes_vec;
+  std::vector<uint8_t> old_bytes_vec;
+  std::vector<uint8_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) { // FSW
     addr = execution_result_;
-    old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+    for (size_t i = 0; i < 4; ++i) {
+      old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+    }
     uint32_t val = registers_.ReadFpr(rs2) & 0xFFFFFFFF;
     memory_controller_.WriteWord(execution_result_, val);
-    new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+    // new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+    for (size_t i = 0; i < 4; ++i) {
+      new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+    }
   }
 
   if (old_bytes_vec!=new_bytes_vec) {
@@ -478,14 +479,18 @@ void RVSSVM::WriteMemoryDouble() {
   }
 
   uint64_t addr = 0;
-  std::vector<uint64_t> old_bytes_vec;
-  std::vector<uint64_t> new_bytes_vec;
+  std::vector<uint8_t> old_bytes_vec;
+  std::vector<uint8_t> new_bytes_vec;
 
   if (control_unit_.GetMemWrite()) {// FSD
     addr = execution_result_;
-    old_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+    for (size_t i = 0; i < 8; ++i) {
+      old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+    }
     memory_controller_.WriteDoubleWord(execution_result_, registers_.ReadFpr(rs2));
-    new_bytes_vec.push_back(memory_controller_.ReadByte(addr));
+    for (size_t i = 0; i < 8; ++i) {
+      new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+    }
   }
 
   if (old_bytes_vec!=new_bytes_vec) {
@@ -819,7 +824,7 @@ void RVSSVM::Undo() {
 
   for (const auto &change : last.memory_changes) {
     for (size_t i = 0; i < change.old_bytes_vec.size(); ++i) {
-      memory_controller_.WriteDoubleWord(change.address + i * 8, change.old_bytes_vec[i]);
+      memory_controller_.WriteByte(change.address + i, change.old_bytes_vec[i]);
     }
   }
 
@@ -874,7 +879,7 @@ void RVSSVM::Redo() {
 
   for (const auto &change : next.memory_changes) {
     for (size_t i = 0; i < change.new_bytes_vec.size(); ++i) {
-      memory_controller_.WriteDoubleWord(change.address + i * 8, change.new_bytes_vec[i]);
+      memory_controller_.WriteByte(change.address + i, change.new_bytes_vec[i]);
     }
   }
 
