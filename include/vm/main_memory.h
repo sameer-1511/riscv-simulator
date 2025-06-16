@@ -7,7 +7,7 @@
 #ifndef MAIN_MEMORY_H
 #define MAIN_MEMORY_H
 
-#include "../config.h"
+#include "config.h"
 
 #include <vector>
 #include <unordered_map>
@@ -20,9 +20,7 @@
  */
 struct MemoryBlock {
   std::vector<uint8_t> data; ///< A vector representing the memory block data.
-  unsigned int block_size = vm_config::ini::Get("Memory", "block_size").empty()
-                            ? 1024 : std::stoi(vm_config::ini::Get("Memory",
-                                                                   "block_size")); ///< The size of the memory block in bytes.
+  unsigned int block_size = vm_config::config.getMemoryBlockSize(); ///< The size of the memory block in bytes.
 
   /**
    * @brief Constructs a MemoryBlock with a size of 1 KB initialized to 0.
@@ -39,10 +37,7 @@ class Memory {
  private:
   std::unordered_map<uint64_t, MemoryBlock> blocks_; ///< A map storing memory blocks, indexed by block index.
   unsigned int block_size_; ///< The size of each memory block in bytes.
-  uint64_t memory_size_ = vm_config::ini::Get("Memory", "memory_size").empty()
-                          ? 0xffffffffffffffff : std::stoull(vm_config::ini::Get("Memory", "memory_size").substr(2),
-                                                             nullptr,
-                                                             16); ///< The total memory size in bytes.
+  uint64_t memory_size_ = vm_config::config.getMemorySize(); ///< The total memory size in bytes.
 
   /**
    * @brief Gets the block index for a given memory address.
@@ -94,8 +89,7 @@ class Memory {
    * @brief Constructs a Memory object.
    */
   Memory() {
-    block_size_ = vm_config::ini::Get("Memory", "block_size").empty()
-                  ? 1024 : std::stoi(vm_config::ini::Get("Memory", "block_size"));
+    block_size_ = vm_config::config.getMemoryBlockSize();
   }
   /**
    * @brief Destroys the Memory object.
@@ -188,7 +182,7 @@ class Memory {
 
   void DumpMemory(std::vector<std::string> args);
 
-  [[nodiscard]] std::string GetMemoryPoint(uint64_t address);
+  void GetMemoryPoint(std::string address);
 
   void printMemoryUsage() const;
 };

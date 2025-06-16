@@ -29,8 +29,6 @@ public:
     }
 
     void PrintCacheStatus() const {
-        std::string cacheEnabled = vm_config::ini::Get("Cache", "cache_enabled");
-        std::cout << "Cache enabled: " << cacheEnabled << std::endl;
     }
 
     void WriteByte(uint64_t address, uint8_t value) {
@@ -73,7 +71,7 @@ public:
       memory_.DumpMemory(args);
     }
 
-    std::string GetMemoryPoint(uint64_t address) {
+    void GetMemoryPoint(std::string address) {
       return memory_.GetMemoryPoint(address);
     }
 

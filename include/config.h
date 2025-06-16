@@ -7,6 +7,12 @@
 #define CONFIG_H
 
 #include "globals.h"
+#include <string>
+#include <iostream>
+#include <stdexcept>
+#include <cstdint>
+#include <fstream>
+#include <sstream>
 
 /**
  * @namespace vm_config
@@ -18,39 +24,76 @@ enum class VmTypes {
   MULTI_STAGE
 };
 
-/**
- * @namespace ini
- * @brief Namespace for handling ini file operations.
- */
-namespace ini {
-/**
- * @brief Trims leading and trailing whitespace from a string.
- *
- * @param str The string to be trimmed.
- */
-[[maybe_unused]] void Trim(std::string &str);
+struct VmConfig {
+  VmTypes vm_type = VmTypes::SINGLE_STAGE;
+  uint64_t run_step_delay = 300;
+  uint64_t memory_size = 0xffffffffffffffff; // 64-bit address space
+  uint64_t memory_block_size = 1024; // 1 KB blocks
 
-/**
- * @brief Retrieves the value associated with a given section and key.
- *
- * @param section The section containing the key.
- * @param key The key whose value needs to be retrieved.
- * @return The value associated with the key as a string.
- */
-std::string Get(const std::string &section, const std::string &key);
+  void setVmType(const VmTypes &type) {
+    vm_type = type;
+  }
 
-/**
- * @brief Sets the value for a given section and key.
- *
- * @param section The section containing the key.
- * @param key The key to be modified.
- * @param value The value to be set for the key.
- */
-void Set(const std::string &section, const std::string &key, const std::string &value);
+  VmTypes getVmType() const {
+    return vm_type;
+  }
+  void setRunStepDelay(uint64_t delay) {
+    run_step_delay = delay;
+    std::cout << "Run step delay set to: " << run_step_delay << " ms" << std::endl;
+  }
+  uint64_t getRunStepDelay() const {
+    return run_step_delay;
+  }
+  void setMemorySize(uint64_t size) {
+    memory_size = size;
+  }
+  uint64_t getMemorySize() const {
+    return memory_size;
+  }
+  void setMemoryBlockSize(uint64_t size) {
+    memory_block_size = size;
+  }
+  uint64_t getMemoryBlockSize() const {
+    return memory_block_size;
+  }
 
-} // namespace ini
+  void modifyConfig(const std::string &section, const std::string &key, const std::string &value) {
+    if (section == "Execution") {
+      if (key == "processor_type") {
+        if (value == "single_stage") {
+          setVmType(VmTypes::SINGLE_STAGE);
+        } else if (value == "multi_stage") {
+          setVmType(VmTypes::MULTI_STAGE);
+        } else {
+          throw std::invalid_argument("Unknown VM type: " + value);
+        }
+      } else if (key == "run_step_delay") {
+        setRunStepDelay(std::stoull(value));
+      } else {
+        throw std::invalid_argument("Unknown key: " + key);
+      }
+    } else if (section == "Memory") {
+      if (key == "memory_size") {
+        setMemorySize(std::stoull(value));
+      } else if (key == "memory_block_size") {
+        setMemoryBlockSize(std::stoull(value));
+      } else {
+        throw std::invalid_argument("Unknown key: " + key);
+      }
+    }
+    
+    
+    
+    else {
+      throw std::invalid_argument("Unknown section: " + section);
+    }
+  }
 
-VmTypes GetVmType();
+
+};
+
+extern VmConfig config;
+
 
 } // namespace vm_config
 

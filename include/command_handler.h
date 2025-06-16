@@ -13,6 +13,7 @@
 namespace command_handler {
 enum class CommandType {
   INVALID,
+  MODIFY_CONFIG,
   LOAD,
   RUN,
   STOP,

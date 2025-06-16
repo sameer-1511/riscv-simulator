@@ -246,22 +246,26 @@ void Memory::DumpMemory(std::vector<std::string> args) {
 
 }
 
-std::string Memory::GetMemoryPoint(uint64_t address) {
+void Memory::GetMemoryPoint(std::string addr_str) {
+  uint64_t address = std::stoull(addr_str, nullptr, 16);
   if (address >= memory_size_ - 7) {
     throw std::out_of_range("Memory address out of range: " + std::to_string(address));
   }
 
   uint64_t value = ReadDoubleWord(address); 
-  std::stringstream ss;
-  ss << "[0x";
+  // std::stringstream ss;
+  std::cerr << "VM_MEMORY_POINT_START";
+  std::cerr << addr_str;
+  std::cerr << "[0x";
 
   for (int i = 7; i >= 0; --i) {
     uint8_t byte = (value >> (i * 8)) & 0xFF;
-    ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte);
+    std::cerr << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << std::dec;
   }
 
-  ss << "]";
-  return ss.str();
+  std::cerr << "]";
+  std::cerr << "VM_MEMORY_POINT_END" << std::endl;
+  
 }
 
 

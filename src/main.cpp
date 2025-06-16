@@ -1,15 +1,16 @@
 #include "main.h"
-#include "./assembler/assembler.h"
-#include "./assembler/elf_util.h"
+#include "assembler/assembler.h"
 #include "utils.h"
 #include "globals.h"
-#include "./vm/rvss/rvss_vm.h"
+#include "vm/rvss/rvss_vm.h"
 #include "vm_runner.h"
 #include "command_handler.h"
+#include "config.h"
 
 #include <iostream>
 #include <thread>
 #include <bitset>
+#include <regex>
 
 
 
@@ -85,7 +86,6 @@ int main(int argc, char *argv[]) {
 
 
 
-
   AssembledProgram program;
   RVSSVM vm;
   // try {
@@ -135,6 +135,25 @@ int main(int argc, char *argv[]) {
     // std::cout << "=> ";
     std::getline(std::cin, command_buffer);
     command_handler::Command command = command_handler::ParseCommand(command_buffer);
+
+    if (command.type==command_handler::CommandType::MODIFY_CONFIG) {
+      if (command.args.size() != 3) {
+        std::cout << "VM_MODIFY_CONFIG_ERROR" << std::endl;
+        continue;
+      }
+      try {
+        vm_config::config.modifyConfig(command.args[0], command.args[1], command.args[2]);
+        std::cout << "VM_MODIFY_CONFIG_SUCCESS" << std::endl;
+      } catch (const std::exception &e) {
+        std::cout << "VM_MODIFY_CONFIG_ERROR" << std::endl;
+        std::cerr << e.what() << '\n';
+        continue;
+      }
+      continue;
+    }
+
+
+
     if (command.type==command_handler::CommandType::LOAD) {
       try {
         program = assemble(command.args[0]);
@@ -226,8 +245,8 @@ int main(int argc, char *argv[]) {
         std::cout << "VM_GET_MEMORY_POINT_ERROR" << std::endl;
         continue;
       }
-      uint64_t address = std::stoull(command.args[0], nullptr, 16);
-      std::cout << vm.memory_controller_.GetMemoryPoint(address) << std::endl;
+      // uint64_t address = std::stoull(command.args[0], nullptr, 16);
+      vm.memory_controller_.GetMemoryPoint(command.args[0]);
     } 
 
 
@@ -239,7 +258,7 @@ int main(int argc, char *argv[]) {
     else if (command.type==command_handler::CommandType::DUMP_CACHE) {
       std::cout << "Cache dumped." << std::endl;
     } else {
-      std::cout << "Invalid commaffnd." << std::endl;
+      std::cout << "Invalid command.";
       std::cout << command_buffer << std::endl;
     }
 

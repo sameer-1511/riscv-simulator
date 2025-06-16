@@ -9,6 +9,7 @@
 #include "utils.h"
 #include "globals.h"
 #include "common/instructions.h"
+#include "config.h"
 
 #include <cctype>
 #include <cstdint>
@@ -110,7 +111,7 @@ void RVSSVM::Execute() {
     UpdateProgramCounter(-4);
     return_address_ = program_counter_ + 4;
     if (opcode==0b1100111) { // JALR
-      UpdateProgramCounter((execution_result_ & ~1) - program_counter_);
+      UpdateProgramCounter(reg1_value + execution_result_);
     } else { // JAL
       UpdateProgramCounter(imm);
     }
@@ -223,7 +224,7 @@ void RVSSVM::HandleSyscall() {
         float float_value;
         uint64_t raw = registers_.ReadGpr(10);
         std::memcpy(&float_value, &raw, sizeof(float_value));
-        std::cout << std::fixed << float_value; 
+        std::cout << std::setprecision(std::numeric_limits<float>::max_digits10) << float_value;
         if (!globals::vm_as_backend) {
             std::cout << "]" << std::endl;
         } else {
@@ -240,7 +241,7 @@ void RVSSVM::HandleSyscall() {
         double double_value;
         uint64_t raw = registers_.ReadGpr(10);
         std::memcpy(&double_value, &raw, sizeof(double_value));
-        std::cout << double_value; 
+        std::cout << std::setprecision(std::numeric_limits<double>::max_digits10) << double_value;
         if (!globals::vm_as_backend) {
             std::cout << "]" << std::endl;
         } else {
@@ -775,6 +776,11 @@ void RVSSVM::DebugRun() {
         std::cout << "VM_LAST_INSTRUCTION_STEPPED" << std::endl;
         output_status_ = "VM_LAST_INSTRUCTION_STEPPED";
       }
+      DumpRegisters(globals::registers_dump_file_path, registers_);
+      DumpState(globals::vm_state_dump_file_path);
+
+      unsigned int delay_ms = vm_config::config.getRunStepDelay();
+      std::this_thread::sleep_for(std::chrono::milliseconds(delay_ms));
       
     } else {
       std::cout << "VM_BREAKPOINT_HIT " << program_counter_ << std::endl;
