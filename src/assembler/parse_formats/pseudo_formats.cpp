@@ -8,6 +8,7 @@
 #include "common/instructions.h"
 #include "vm/registers.h"
 #include "utils.h"
+#include "config.h"
 
 #include <string>
 
@@ -21,12 +22,52 @@ bool Parser::parse_pseudo() {
         && peekToken(3).type==TokenType::LABEL_REF
         && (peekToken(4).type==TokenType::EOF_ || peekToken(4).line_number!=currentToken().line_number)
         ) {
-      if (symbol_table_.find(peekToken(3).value)!=symbol_table_.end()
-          && symbol_table_[peekToken(3).value].isData) {
-        // TODO: Implement la pseudo instruction
+      std::string reg = reg_alias_to_name.at(peekToken(1).value);
+      std::string label = peekToken(3).value;
+
+      if (symbol_table_.find(label)!=symbol_table_.end() && symbol_table_[label].isData) {
+        uint64_t address = symbol_table_[label].address; // relative to data section (e.g., 0,8,16,...)
+        uint64_t data_section_start = vm_config::config.getDataSectionStart();
+        uint64_t symbol_addr = data_section_start + address;
+        uint64_t pc = instruction_index_ * 4;
+        int64_t offset = static_cast<int64_t>(symbol_addr) - static_cast<int64_t>(pc);
+        int32_t hi20 = (offset + 0x800) >> 12;
+        int32_t lo12 = offset - (hi20 << 12);
+
+        ICUnit auipc_instr;
+        auipc_instr.setOpcode("auipc");
+        auipc_instr.setRd(reg);
+        auipc_instr.setRs1("");
+        auipc_instr.setRs2("");
+        auipc_instr.setImm(std::to_string(hi20));
+        auipc_instr.setLineNumber(currentToken().line_number);
+
+        // std::cout << "auipc " << reg << ", " << "0x" << std::hex << hi20 << std::dec << std::endl;
+
+        ICUnit addi_instr;
+        addi_instr.setOpcode("addi");
+        addi_instr.setRd(reg);
+        addi_instr.setRs1(reg);
+        addi_instr.setRs2("");
+        addi_instr.setImm(std::to_string(lo12));
+        addi_instr.setLineNumber(currentToken().line_number);
+
+        // std::cout << "addi " << reg << ", " << reg << ", " << lo12 << std::dec << std::endl;
+
+        intermediate_code_.emplace_back(auipc_instr, true);
+        instruction_number_line_number_mapping_[instruction_index_] = auipc_instr.getLineNumber();
+        instruction_index_++;
+
+        intermediate_code_.emplace_back(addi_instr, true);
+        instruction_number_line_number_mapping_[instruction_index_] = addi_instr.getLineNumber();
+        instruction_index_++;
+
+
+
+
       }
       skipCurrentLine();
-      instruction_index_++;
+      // instruction_index_+=2;
       return true;
     }
     return false;

@@ -77,11 +77,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::NUM) {
           data_buffer_.emplace_back(static_cast<uint64_t>(std::stoull(currentToken().value)));
+          data_index_ += 8;
         }
-        data_index_ += 8;
         nextToken();
       }
     } else if (currentToken().value=="word") {
@@ -89,11 +88,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::NUM) {
           data_buffer_.emplace_back(static_cast<uint32_t>(std::stoull(currentToken().value)));
+          data_index_ += 4;
         }
-        data_index_ += 4;
         nextToken();
       }
 
@@ -102,11 +100,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::NUM) {
           data_buffer_.emplace_back(static_cast<uint16_t>(std::stoull(currentToken().value)));
+          data_index_ += 2;
         }
-        data_index_ += 2;
         nextToken();
       }
     } else if (currentToken().value=="byte") {
@@ -114,11 +111,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::NUM) {
           data_buffer_.emplace_back(static_cast<uint8_t>(std::stoull(currentToken().value)));
+          data_index_ += 1;
         }
-        data_index_ += 1;
         nextToken();
       }
     } else if (currentToken().value=="float") {
@@ -126,11 +122,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::FLOAT
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::FLOAT) {
           data_buffer_.emplace_back(static_cast<float>(std::stof(currentToken().value)));
+          data_index_ += 4;
         }
-        data_index_ += 4;
         nextToken();
       }
     } else if (currentToken().value=="double") {
@@ -138,11 +133,10 @@ void Parser::parseDataDirective() {
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::FLOAT
               || currentToken().type==TokenType::COMMA)) {
-
         if (currentToken().type==TokenType::FLOAT) {
           data_buffer_.emplace_back(static_cast<double>(std::stod(currentToken().value)));
+          data_index_ += 8;
         }
-        data_index_ += 8;
         nextToken();
       }
     } else if (currentToken().value=="string") {
@@ -154,6 +148,7 @@ void Parser::parseDataDirective() {
         if (currentToken().type==TokenType::STRING) {
           std::string rawString = currentToken().value;
           std::string processedString = ParseEscapedString(rawString);
+          processedString.push_back('\0'); 
           data_buffer_.emplace_back(static_cast<std::string>(processedString));
           data_index_ += processedString.size();
         }
@@ -369,24 +364,53 @@ void Parser::parseTextDirective() {
 
 void Parser::parse() {
   instruction_index_ = 0;
+  data_index_ = 0;
+
+  // first pass: skip sections and directives and collect labels in data section
   while (currentToken().type!=TokenType::EOF_) {
     if (currentToken().value == "section" && currentToken().type == TokenType::DIRECTIVE) {
       nextToken();
     } else if (currentToken().value=="data" && currentToken().type==TokenType::DIRECTIVE) {
       nextToken();
       parseDataDirective();
+    } else if ((currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) || (currentToken().type==TokenType::LABEL || currentToken().type==TokenType::OPCODE)) {
+      while (currentToken().type!=TokenType::EOF_ && currentToken().value!="data") {
+        nextToken();
+      }
+    }
+      
+    else {
+      errors_.count++;
+      recordError(ParseError(currentToken().line_number,
+                             "Invalid token: Expected .data, .text, or <opcode> or <label>"));
+      errors_.all_errors.emplace_back(
+          errors::SyntaxError("Invalid token", "Expected: .data, .text, or <opcode> or <label>",
+                              filename_,
+                              currentToken().line_number,
+                              currentToken().column_number,
+                              GetLineFromFile(filename_, currentToken().line_number)));
+      nextToken();
+    }
+  }
+
+  // second pass: parse text section and generate intermediate code
+  pos_ = 0; // reset position to start parsing text section
+  instruction_index_ = 0; // reset instruction index for text section
+
+  while (currentToken().type!=TokenType::EOF_) {
+    if (currentToken().value == "section" && currentToken().type == TokenType::DIRECTIVE) {
+      nextToken();
+    } else if (currentToken().value=="data" && currentToken().type==TokenType::DIRECTIVE) {
+      while (currentToken().type!=TokenType::EOF_ && currentToken().value!="text") {
+        nextToken();
+      }
     } else if (currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) {
       nextToken();
       parseTextDirective();
     }
-    //else if (currentToken().value == "bss") {
-    //  parseBssDirective();
-    //}
     else if (currentToken().type==TokenType::LABEL || currentToken().type==TokenType::OPCODE) {
       parseTextDirective();
-    }
-      
-    else {
+    } else {
       errors_.count++;
       recordError(ParseError(currentToken().line_number,
                              "Invalid token: Expected .data, .text, or <opcode> or <label>"));
@@ -470,7 +494,8 @@ void Parser::parse() {
             continue;
           }
         }
-      } else {
+      } 
+      else {
         errors_.count++;
         recordError(ParseError(block.getLineNumber(), "Invalid label reference: Label references data"));
         errors_.all_errors.emplace_back(
@@ -479,7 +504,6 @@ void Parser::parse() {
                                          GetLineFromFile(filename_, block.getLineNumber())));
         continue;
       }
-
       intermediate_code_[index].first = block;
       intermediate_code_[index].second = true;
     } else {

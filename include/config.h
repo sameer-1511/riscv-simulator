@@ -29,6 +29,7 @@ struct VmConfig {
   uint64_t run_step_delay = 300;
   uint64_t memory_size = 0xffffffffffffffff; // 64-bit address space
   uint64_t memory_block_size = 1024; // 1 KB blocks
+  uint64_t data_section_start = 0x10000000; // Default start address for data section
 
   void setVmType(const VmTypes &type) {
     vm_type = type;
@@ -56,6 +57,12 @@ struct VmConfig {
   uint64_t getMemoryBlockSize() const {
     return memory_block_size;
   }
+  void setDataSectionStart(uint64_t start) {
+    data_section_start = start;
+  }
+  uint64_t getDataSectionStart() const {
+    return data_section_start;
+  }
 
   void modifyConfig(const std::string &section, const std::string &key, const std::string &value) {
     if (section == "Execution") {
@@ -77,10 +84,12 @@ struct VmConfig {
         setMemorySize(std::stoull(value));
       } else if (key == "memory_block_size") {
         setMemoryBlockSize(std::stoull(value));
+      } else if (key == "data_section_start") {
+        setDataSectionStart(std::stoull(value, nullptr, 16));
       } else {
         throw std::invalid_argument("Unknown key: " + key);
       }
-    }
+    } 
     
     
     

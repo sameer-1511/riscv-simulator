@@ -7,6 +7,7 @@
 #include "vm/vm_base.h"
 
 #include "globals.h"
+#include "config.h"
 
 #include <cstdint>
 #include <iostream>
@@ -29,7 +30,7 @@ void VmBase::LoadProgram(const AssembledProgram &program) {
     AddBreakpoint(program_size_, false);  // address
 
     unsigned int data_counter = 0;
-    uint64_t base_data_address = globals::data_section_start;
+    uint64_t base_data_address = vm_config::config.getDataSectionStart();
     for (const auto& data : program.data_buffer) {
         std::visit([&](auto&& value) {
             using T = std::decay_t<decltype(value)>; 

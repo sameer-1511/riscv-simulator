@@ -1,7 +1,13 @@
 .section .data
 .double 2.3, -0.2
-.string "\n"
+str: .string "\n"
+
+
+
+
 .text
+# la a0, str          # Load address of the string into a0
+
 addi a7, x0, 63       # syscall number for read
 addi a0, x0, 0        # file descriptor: stdin
 lui a1, 0x10001       # addi a2, x0, 15       # read 10 bytes
@@ -16,8 +22,9 @@ ecall
 
 addi a7, x0, 64
 addi a0, x0, 1        # file descriptor: stdout
-lui a1, 0x10000
-addi a1, a1, 16
+# lui a1, 0x10000
+# addi a1, a1, 16
+la a1, str          # Load address of the string into a1
 addi a2, x0, 1        # write 1 byte
 ecall
 
