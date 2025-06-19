@@ -91,13 +91,16 @@ bool Parser::parse_O_GPR_C_GPR_C_I() {
         } else {
           errors_.count++;
           recordError(ParseError(peekToken(5).line_number, "Immediate value out of range"));
-          errors_.all_errors.emplace_back(errors::ImmediateOutOfRangeError("Immediate value out of range",
-                                                                           "Expected: 0 <= imm <= 31",
-                                                                           filename_,
-                                                                           peekToken(5).line_number,
-                                                                           peekToken(5).column_number,
-                                                                           GetLineFromFile(filename_,
-                                                                                           peekToken(5).line_number)));
+          errors_.all_errors.emplace_back(
+            errors::ImmediateOutOfRangeError(
+              "Immediate value out of range",
+              "Expected: 0 <= imm <= 31",
+              filename_,
+              peekToken(5).line_number,
+              peekToken(5).column_number,
+              GetLineFromFile(filename_, peekToken(5).line_number)
+            )
+          );
           skipCurrentLine();
           return true;
         }
@@ -363,57 +366,93 @@ bool Parser::parse_O_GPR_C_IL() {
 }
 
 bool Parser::parse_O_GPR_C_DL() {
-  if (peekToken(1).line_number==currentToken().line_number
-      && peekToken(1).type==TokenType::GP_REGISTER
-      && peekToken(2).line_number==currentToken().line_number
-      && peekToken(2).type==TokenType::COMMA
-      && peekToken(3).line_number==currentToken().line_number
-      && peekToken(3).type==TokenType::LABEL_REF
-      && (peekToken(4).type==TokenType::EOF_ || peekToken(4).line_number!=currentToken().line_number)
-      ) {
-    ICUnit block;
-    block.setOpcode(currentToken().value);
-    block.setLineNumber(currentToken().line_number);
-    if (instruction_set::isValidITypeInstruction(block.getOpcode())) {
-      std::string reg = reg_alias_to_name.at(peekToken(1).value);
-      block.setRd(reg);
-      if (symbol_table_.find(peekToken(3).value)!=symbol_table_.end() &&
-          symbol_table_[peekToken(3).value].isData) {
-        uint64_t address = symbol_table_[peekToken(3).value].address;
-        auto offset = static_cast<int64_t>(address);
-        if (-2048 <= offset && offset <= 2047) {
-          block.setImm(std::to_string(offset));
-        } else {
-          errors_.count++;
-          recordError(ParseError(peekToken(3).line_number, "Immediate value out of range"));
-          errors_.all_errors.emplace_back(errors::ImmediateOutOfRangeError("Immediate value out of range",
-                                                                           "Expected: -2048 <= imm <= 2047",
-                                                                           filename_,
-                                                                           peekToken(3).line_number,
-                                                                           peekToken(3).column_number,
-                                                                           GetLineFromFile(filename_,
-                                                                                           peekToken(3).line_number)));
-          skipCurrentLine();
-          return true;
-        }
-      } else {
-        back_patch_.push_back(instruction_index_);
-        block.setImm(peekToken(3).value);
-        intermediate_code_.emplace_back(block, false);
-        instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
-        instruction_index_++;
-        skipCurrentLine();
-        return true;
-      }
+  if (peekToken(1).line_number == currentToken().line_number &&
+      peekToken(1).type == TokenType::GP_REGISTER &&
+      peekToken(2).line_number == currentToken().line_number &&
+      peekToken(2).type == TokenType::COMMA &&
+      peekToken(3).line_number == currentToken().line_number &&
+      peekToken(3).type == TokenType::LABEL_REF &&
+      (peekToken(4).type == TokenType::EOF_ || peekToken(4).line_number != currentToken().line_number)) {
+
+    std::string reg = reg_alias_to_name.at(peekToken(1).value);
+    std::string label = peekToken(3).value;
+    std::string opcode = currentToken().value;
+
+    // if (opcode != "ld" && opcode != "lw" && opcode != "lh" && opcode != "lb") {
+    //   errors_.count++;
+    //   recordError(ParseError(peekToken(3).line_number, "Unsupported opcode for load pseudo-instruction"));
+    //   errors_.all_errors.emplace_back(
+    //     errors::InvalidOpcodeError(
+    //       "Unsupported opcode for pseudo-instruction",
+    //       "Expected: ld, lw, lh, or lb",
+    //       filename_,
+    //       peekToken(3).line_number,
+    //       peekToken(3).column_number,
+    //       GetLineFromFile(filename_, peekToken(3).line_number)
+    //     )
+    //   );
+    //   skipCurrentLine();
+    //   return true;
+    // }
+
+    if (symbol_table_.find(label) == symbol_table_.end() || !symbol_table_[label].isData) {
+      errors_.count++;
+      recordError(ParseError(peekToken(3).line_number, "Invalid label reference"));
+      errors_.all_errors.emplace_back(
+        errors::InvalidLabelRefError(
+          "Invalid label reference",
+          "Expected: Label defined in .data section",
+          filename_,
+          peekToken(3).line_number,
+          peekToken(3).column_number,
+          GetLineFromFile(filename_, peekToken(3).line_number)
+        )
+      );
+      skipCurrentLine();
+      return true;
     }
-    skipCurrentLine();
-    intermediate_code_.emplace_back(block, true);
-    instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
+
+    uint64_t address = symbol_table_[label].address;
+    uint64_t data_section_start = vm_config::config.getDataSectionStart();
+    uint64_t symbol_addr = data_section_start + address;
+    uint64_t pc = instruction_index_ * 4;
+
+    int64_t offset = static_cast<int64_t>(symbol_addr) - static_cast<int64_t>(pc);
+    int32_t hi20 = (offset + 0x800) >> 12;
+    int32_t lo12 = offset - (hi20 << 12);
+
+    ICUnit auipc_instr;
+    auipc_instr.setOpcode("auipc");
+    auipc_instr.setLineNumber(currentToken().line_number);
+    auipc_instr.setRd(reg);
+    auipc_instr.setImm(std::to_string(hi20));
+
+    ICUnit load_instr;
+    load_instr.setOpcode(opcode);
+    load_instr.setLineNumber(currentToken().line_number);
+    load_instr.setRd(reg);
+    load_instr.setRs1(reg);
+    load_instr.setImm(std::to_string(lo12));
+
+    std::cout << "auipc " << reg << ", 0x" << std::hex << hi20 << std::dec << std::endl;
+
+    std::cout << load_instr.getOpcode() << " " << reg << ", " << lo12 << "(" << reg << ")" << std::endl;
+
+    intermediate_code_.emplace_back(auipc_instr, true);
+    instruction_number_line_number_mapping_[instruction_index_] = auipc_instr.getLineNumber();
     instruction_index_++;
+
+    intermediate_code_.emplace_back(load_instr, true);
+    instruction_number_line_number_mapping_[instruction_index_] = load_instr.getLineNumber();
+    instruction_index_++;
+
+    skipCurrentLine();
     return true;
   }
+
   return false;
 }
+
 
 bool Parser::parse_O_GPR_C_I_LP_GPR_RP() {
   if (peekToken(1).line_number==currentToken().line_number

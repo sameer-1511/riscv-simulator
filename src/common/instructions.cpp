@@ -271,9 +271,9 @@ std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_e
     {"lw", {0b0000011, 0b010}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"lb", {0b0000011, 0b000}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"ld", {0b0000011, 0b011}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
-    {"lbu", {0b0000011, 0b100}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
-    {"lhu", {0b0000011, 0b101}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
-    {"lwu", {0b0000011, 0b110}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
+    {"lbu", {0b0000011, 0b100}}, // O_GPR_C_I_LP_GPR_RP,
+    {"lhu", {0b0000011, 0b101}}, // O_GPR_C_I_LP_GPR_RP,
+    {"lwu", {0b0000011, 0b110}}, // O_GPR_C_I_LP_GPR_RP,
 
     {"jalr", {0b1100111, 0b000}}, // O_GR_C_I, O_GPR_C_IL
 };
@@ -488,9 +488,9 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"lh", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
     {"lw", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
     {"ld", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
-    {"lbu", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
-    {"lhu", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
-    {"lwu", {SyntaxType::O_GPR_C_I_LP_GPR_RP, SyntaxType::O_GPR_C_DL}},
+    {"lbu", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
+    {"lhu", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
+    {"lwu", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
 
     {"sb", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
     {"sh", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},

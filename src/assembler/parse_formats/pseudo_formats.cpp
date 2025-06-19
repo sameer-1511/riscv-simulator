@@ -61,10 +61,17 @@ bool Parser::parse_pseudo() {
         intermediate_code_.emplace_back(addi_instr, true);
         instruction_number_line_number_mapping_[instruction_index_] = addi_instr.getLineNumber();
         instruction_index_++;
-
-
-
-
+      } else {
+        errors_.count++;
+        recordError(ParseError(currentToken().line_number, "Invalid label reference"));
+        errors_.all_errors.emplace_back(
+          errors::InvalidLabelRefError(
+            "Invalid label reference",
+            "Expected: Label defined in .data section",
+            filename_,
+            currentToken().line_number,
+            currentToken().column_number,
+            GetLineFromFile(filename_, currentToken().line_number)));
       }
       skipCurrentLine();
       // instruction_index_+=2;
@@ -148,13 +155,14 @@ bool Parser::parse_pseudo() {
       } else {
         errors_.count++;
         recordError(ParseError(currentToken().line_number, "Immediate value out of range"));
-        errors_.all_errors.emplace_back(errors::ImmediateOutOfRangeError("Immediate value out of range",
-                                                                         "Expected: -1048576 <= imm <= 1048575",
-                                                                         filename_,
-                                                                         currentToken().line_number,
-                                                                         currentToken().column_number,
-                                                                         GetLineFromFile(filename_,
-                                                                                         currentToken().line_number)));
+        errors_.all_errors.emplace_back(
+          errors::ImmediateOutOfRangeError(
+            "Immediate value out of range",
+            "Expected: -1048576 <= imm <= 1048575",
+            filename_,
+            currentToken().line_number,
+            currentToken().column_number,
+            GetLineFromFile(filename_, currentToken().line_number)));
       }
       skipCurrentLine();
       return true;

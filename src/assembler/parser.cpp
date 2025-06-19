@@ -60,6 +60,10 @@ void Parser::recordError(const ParseError &error) {
 
 
 void Parser::parseDataDirective() {
+  auto align = [&](unsigned int alignment) {
+    if (data_index_ % alignment != 0)
+      data_index_ += alignment - (data_index_ % alignment);
+  };
   while (currentToken().value!="text"
       && currentToken().value!="data"
       && currentToken().value!="bss"
@@ -67,6 +71,36 @@ void Parser::parseDataDirective() {
       && currentToken().type!=TokenType::EOF_) {
 
     if (currentToken().type==TokenType::LABEL) {
+      if (peekToken(1).value=="word") {
+        align(4);
+      } else if (peekToken(1).value=="dword") {
+        align(8);
+      } else if (peekToken(1).value=="halfword") {
+        align(2);
+      } else if (peekToken(1).value=="byte") {
+        align(1);
+      } else if (peekToken(1).value=="float") {
+        align(4);
+      } else if (peekToken(1).value=="double") {
+        align(8);
+      } else if (peekToken(1).value=="string") {
+        align(1);
+      } else {
+        errors_.count++;
+        recordError(
+          ParseError(
+            currentToken().line_number, "Invalid label: Expected .dword, .word, .halfword, .byte, .string"
+          )
+        );
+        errors_.all_errors.emplace_back(
+          errors::SyntaxError(
+            "Invalid label", "Expected: dword, word, halfword, byte, string",
+            filename_, currentToken().line_number,
+            currentToken().column_number,
+            GetLineFromFile(filename_, currentToken().line_number)
+          )
+        );
+      }
       symbol_table_[currentToken().value] = {data_index_, currentToken().line_number, true};
       nextToken();
       continue;
@@ -78,6 +112,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::NUM) {
+          align(8);
           data_buffer_.emplace_back(static_cast<uint64_t>(std::stoull(currentToken().value)));
           data_index_ += 8;
         }
@@ -89,6 +124,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::NUM) {
+          align(4);
           data_buffer_.emplace_back(static_cast<uint32_t>(std::stoull(currentToken().value)));
           data_index_ += 4;
         }
@@ -101,6 +137,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::NUM) {
+          align(2);
           data_buffer_.emplace_back(static_cast<uint16_t>(std::stoull(currentToken().value)));
           data_index_ += 2;
         }
@@ -112,6 +149,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::NUM
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::NUM) {
+          align(1);
           data_buffer_.emplace_back(static_cast<uint8_t>(std::stoull(currentToken().value)));
           data_index_ += 1;
         }
@@ -123,6 +161,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::FLOAT
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::FLOAT) {
+          align(4);
           data_buffer_.emplace_back(static_cast<float>(std::stof(currentToken().value)));
           data_index_ += 4;
         }
@@ -134,6 +173,7 @@ void Parser::parseDataDirective() {
           && (currentToken().type==TokenType::FLOAT
               || currentToken().type==TokenType::COMMA)) {
         if (currentToken().type==TokenType::FLOAT) {
+          align(8);
           data_buffer_.emplace_back(static_cast<double>(std::stod(currentToken().value)));
           data_index_ += 8;
         }
@@ -148,7 +188,8 @@ void Parser::parseDataDirective() {
         if (currentToken().type==TokenType::STRING) {
           std::string rawString = currentToken().value;
           std::string processedString = ParseEscapedString(rawString);
-          processedString.push_back('\0'); 
+          processedString.push_back('\0');
+          align(1); 
           data_buffer_.emplace_back(static_cast<std::string>(processedString));
           data_index_ += processedString.size();
         }
