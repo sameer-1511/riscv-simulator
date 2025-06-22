@@ -113,34 +113,27 @@ bool Parser::parse_pseudo() {
       ICUnit block;
       block.setOpcode(currentToken().value);
       int64_t imm = std::stoll(peekToken(3).value);
+      std::string reg = reg_alias_to_name.at(peekToken(1).value);
       if (-2048 <= imm && imm <= 2047) {
         block.setLineNumber(currentToken().line_number);
         block.setOpcode("addi");
-        std::string reg;
-        reg = reg_alias_to_name.at(peekToken(1).value);
         block.setRd(reg);
         block.setRs1("x0");
         block.setImm(peekToken(3).value);
         intermediate_code_.emplace_back(block, true);
-        instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
-        instruction_index_++;
-      } else if (-1048576 <= imm && imm <= 1048575) {
+        instruction_number_line_number_mapping_[instruction_index_++] = block.getLineNumber();
+      } else if (-2147483648LL <= imm && imm <= 2147483647LL) {
         int64_t upper = (imm + (1 << 11)) >> 12;
         int64_t lower = imm - (upper << 12);
 
-        // Emit lui instruction
         ICUnit luiBlock;
         luiBlock.setLineNumber(currentToken().line_number);
         luiBlock.setOpcode("lui");
-        std::string reg;
-        reg = reg_alias_to_name.at(peekToken(1).value);
         luiBlock.setRd(reg);
         luiBlock.setImm(std::to_string(upper));
         intermediate_code_.emplace_back(luiBlock, true);
-        instruction_number_line_number_mapping_[instruction_index_] = luiBlock.getLineNumber();
-        instruction_index_++;
+        instruction_number_line_number_mapping_[instruction_index_++] = luiBlock.getLineNumber();
 
-        // Emit addi instruction (if lower part is non-zero)
         if (lower!=0) {
           ICUnit addiBlock;
           addiBlock.setLineNumber(currentToken().line_number);
@@ -149,20 +142,36 @@ bool Parser::parse_pseudo() {
           addiBlock.setRs1(reg);
           addiBlock.setImm(std::to_string(lower));
           intermediate_code_.emplace_back(addiBlock, true);
-          instruction_number_line_number_mapping_[instruction_index_] = addiBlock.getLineNumber();
-          instruction_index_++;
+          instruction_number_line_number_mapping_[instruction_index_++] = addiBlock.getLineNumber();
         }
-      } else {
+      } 
+      else if (INT64_MIN <= imm && imm <= INT64_MAX) {
         errors_.count++;
         recordError(ParseError(currentToken().line_number, "Immediate value out of range"));
         errors_.all_errors.emplace_back(
           errors::ImmediateOutOfRangeError(
             "Immediate value out of range",
-            "Expected: -1048576 <= imm <= 1048575",
+            "Expected: -2^31 <= imm <= 2^31 - 1",
             filename_,
             currentToken().line_number,
             currentToken().column_number,
-            GetLineFromFile(filename_, currentToken().line_number)));
+            GetLineFromFile(filename_, currentToken().line_number)
+          )
+        );
+      }
+      else {
+        errors_.count++;
+        recordError(ParseError(currentToken().line_number, "Immediate value out of range"));
+        errors_.all_errors.emplace_back(
+          errors::ImmediateOutOfRangeError(
+            "Immediate value out of range",
+            "Expected: -2^31 <= imm <= 2^31 - 1",
+            filename_,
+            currentToken().line_number,
+            currentToken().column_number,
+            GetLineFromFile(filename_, currentToken().line_number)
+          )
+        );
       }
       skipCurrentLine();
       return true;
