@@ -111,7 +111,6 @@ void RVSSVM::Execute() {
     UpdateProgramCounter(-4);
     return_address_ = program_counter_ + 4;
     if (opcode==0b1100111) { // JALR
-      std::cout << "+++++Execution result: " << execution_result_ << std::endl;
       UpdateProgramCounter(-program_counter_ + (execution_result_));
     } else { // JAL
       UpdateProgramCounter(imm);
