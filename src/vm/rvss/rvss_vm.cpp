@@ -106,12 +106,13 @@ void RVSSVM::Execute() {
     }
   }
 
-  if (control_unit_.GetBranch() && branch_flag_) { // JAL, JALR
+  if (control_unit_.GetBranch()) { // JAL, JALR
     next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in Fetch()
     UpdateProgramCounter(-4);
     return_address_ = program_counter_ + 4;
     if (opcode==0b1100111) { // JALR
-      UpdateProgramCounter(reg1_value + execution_result_);
+      std::cout << "+++++Execution result: " << execution_result_ << std::endl;
+      UpdateProgramCounter(-program_counter_ + (execution_result_));
     } else { // JAL
       UpdateProgramCounter(imm);
     }
@@ -590,7 +591,7 @@ void RVSSVM::WriteBack() {
     // Updated in Execute()
   }
   if (opcode==0b1100111) { // JALR
-    registers_.WriteGpr(rd, return_address_); // Write back to rs1
+    // registers_.WriteGpr(rd, return_address_); // Write back to rs1
     // Updated in Execute()
   }
 

@@ -9,7 +9,7 @@ ninja for faster builds.)
 
 To run the simulator, use the following command:
 
-```bash
+```
 ./vm --start-vm
 ```
 
