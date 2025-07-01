@@ -69,7 +69,8 @@ void Parser::parseDataDirective() {
       && currentToken().value!="bss"
       && currentToken().value!="section"
       && currentToken().type!=TokenType::EOF_) {
-
+      
+        
     if (currentToken().type==TokenType::LABEL) {
       if (peekToken(1).value=="word") {
         align(4);
@@ -85,16 +86,19 @@ void Parser::parseDataDirective() {
         align(8);
       } else if (peekToken(1).value=="string") {
         align(1);
+      } else if (peekToken(1).value=="zero") {
+        align(1);
       } else {
         errors_.count++;
         recordError(
           ParseError(
-            currentToken().line_number, "Invalid label: Expected .dword, .word, .halfword, .byte, .string"
+            currentToken().line_number, 
+            "Invalid directive: Expected .dword, .word, .halfword, .byte, .float, .double, .string, .zero"
           )
         );
         errors_.all_errors.emplace_back(
           errors::SyntaxError(
-            "Invalid label", "Expected: dword, word, halfword, byte, string",
+            "Invalid directive", "Expected .dword, .word, .halfword, .byte, .float, .double, .string, .zero",
             filename_, currentToken().line_number,
             currentToken().column_number,
             GetLineFromFile(filename_, currentToken().line_number)
@@ -179,6 +183,40 @@ void Parser::parseDataDirective() {
         }
         nextToken();
       }
+    } else if (currentToken().value=="zero") {
+      std::cout << "Zero directive encountered at line: " << currentToken().line_number << std::endl;
+      std::cout << "Current token value: " << currentToken().value << std::endl;
+      nextToken();
+      while (currentToken().type!=TokenType::EOF_
+          && (currentToken().type==TokenType::NUM
+              || currentToken().type==TokenType::COMMA)) {
+        if (currentToken().type==TokenType::NUM) {
+          unsigned long long num = std::stoull(currentToken().value);
+          if (num > 0) {
+            align(1);
+            for (unsigned long long i = 0; i < num; ++i) {
+              data_buffer_.emplace_back(static_cast<uint8_t>(0));
+              data_index_ += 1;
+            }
+          } else {
+            errors_.count++;
+            recordError(
+              ParseError(
+                currentToken().line_number, "Invalid zero directive: Expected a positive number"
+              )
+            );
+            errors_.all_errors.emplace_back(
+              errors::SyntaxError(
+                "Invalid zero directive", "Expected a positive number",
+                filename_, currentToken().line_number,
+                currentToken().column_number,
+                GetLineFromFile(filename_, currentToken().line_number)
+              )
+            );
+          }
+        }
+        nextToken();
+      }
     } else if (currentToken().value=="string") {
       nextToken();
       while (currentToken().type!=TokenType::EOF_
@@ -197,13 +235,20 @@ void Parser::parseDataDirective() {
       }
     } else {
       errors_.count++;
-      recordError(ParseError(currentToken().line_number,
-                             "Invalid directive: Expected .dword, .word, .halfword, .byte, .string"));
+      recordError(
+        ParseError(
+          currentToken().line_number,
+          "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        )
+      );
       errors_.all_errors.emplace_back(
-          errors::SyntaxError("Invalid directive", "Expected: dword, word, halfword, byte, string",
-                              filename_, currentToken().line_number,
-                              currentToken().column_number,
-                              GetLineFromFile(filename_, currentToken().line_number)));
+        errors::SyntaxError(
+          "Invalid directive", "Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero",
+          filename_, currentToken().line_number,
+          currentToken().column_number,
+          GetLineFromFile(filename_, currentToken().line_number)
+        )
+      );
       nextToken();
     }
   }
@@ -401,21 +446,84 @@ void Parser::parseTextDirective() {
   }
 }
 
+void Parser::parseBSSDirective() {
+  while (currentToken().value!="text"
+      && currentToken().value!="data"
+      && currentToken().value!="bss"
+      && currentToken().value!="section"
+      && currentToken().type!=TokenType::EOF_) {
+      
+    nextToken();
+
+    // if (currentToken().type==TokenType::LABEL) {
+    //   if (peekToken(1).value=="space") {
+    //     nextToken();
+    //     nextToken();
+    //     if (currentToken().type==TokenType::NUM) {
+    //       symbol_table_[currentToken().value] = {data_index_, currentToken().line_number, true};
+    //       data_index_ += std::stoull(currentToken().value);
+    //       nextToken();
+    //     } else {
+    //       errors_.count++;
+    //       recordError(ParseError(currentToken().line_number,
+    //                              "Invalid syntax: Expected a number after .space"));
+    //       errors_.all_errors.emplace_back(
+    //           errors::SyntaxError("Invalid syntax", "Expected a number after .space",
+    //                               filename_, currentToken().line_number,
+    //                               currentToken().column_number,
+    //                               GetLineFromFile(filename_, currentToken().line_number)));
+    //       nextToken();
+    //     }
+    //   } else {
+    //     errors_.count++;
+    //     recordError(ParseError(currentToken().line_number,
+    //                            "Invalid label: Expected .space"));
+    //     errors_.all_errors.emplace_back(
+    //         errors::SyntaxError("Invalid label", "Expected: .space",
+    //                             filename_, currentToken().line_number,
+    //                             currentToken().column_number,
+    //                             GetLineFromFile(filename_, currentToken().line_number)));
+    //     nextToken();
+    //   }
+    // } else {
+    //   errors_.count++;
+    //   recordError(ParseError(currentToken().line_number,
+    //                          "Invalid directive: Expected .space"));
+    //   errors_.all_errors.emplace_back(
+    //       errors::SyntaxError("Invalid directive", "Expected: .space",
+    //                           filename_, currentToken().line_number,
+    //                           currentToken().column_number,
+    //                           GetLineFromFile(filename_, currentToken().line_number)));
+    //   nextToken();
+    // }
+  }
+}
+
 // TODO: implement bss directive
 
 void Parser::parse() {
   instruction_index_ = 0;
   data_index_ = 0;
 
-  // first pass: skip sections and directives and collect labels in data section
+  // first pass: skip sections and directives and collect labels in data section and bss section
   while (currentToken().type!=TokenType::EOF_) {
     if (currentToken().value == "section" && currentToken().type == TokenType::DIRECTIVE) {
       nextToken();
     } else if (currentToken().value=="data" && currentToken().type==TokenType::DIRECTIVE) {
       nextToken();
       parseDataDirective();
-    } else if ((currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) || (currentToken().type==TokenType::LABEL || currentToken().type==TokenType::OPCODE)) {
-      while (currentToken().type!=TokenType::EOF_ && currentToken().value!="data") {
+    } else if (currentToken().value=="bss" && currentToken().type==TokenType::DIRECTIVE) {
+      nextToken();
+      parseBSSDirective();
+    }
+    
+    
+    
+    
+    
+    else if ((currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) 
+          || (currentToken().type==TokenType::LABEL || currentToken().type==TokenType::OPCODE)) {
+      while (currentToken().type!=TokenType::EOF_ && currentToken().value!="data" && currentToken().value!="section" && currentToken().value!="bss") {
         nextToken();
       }
     }
@@ -445,7 +553,13 @@ void Parser::parse() {
       while (currentToken().type!=TokenType::EOF_ && currentToken().value!="text") {
         nextToken();
       }
-    } else if (currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) {
+    } else if (currentToken().value=="bss" && currentToken().type==TokenType::DIRECTIVE) {
+      while (currentToken().type!=TokenType::EOF_ && currentToken().value!="text") {
+        nextToken();
+      }
+    }
+    
+    else if (currentToken().value=="text" && currentToken().type==TokenType::DIRECTIVE) {
       nextToken();
       parseTextDirective();
     }
@@ -454,9 +568,9 @@ void Parser::parse() {
     } else {
       errors_.count++;
       recordError(ParseError(currentToken().line_number,
-                             "Invalid token: Expected .data, .text, or <opcode> or <label>"));
+                             "Invalid token: Expected .data, .text, .bss or <opcode> or <label>"));
       errors_.all_errors.emplace_back(
-          errors::SyntaxError("Invalid token", "Expected: .data, .text, or <opcode> or <label>",
+          errors::SyntaxError("Invalid token", "Expected: .data, .text, .bss or <opcode> or <label>",
                               filename_,
                               currentToken().line_number,
                               currentToken().column_number,

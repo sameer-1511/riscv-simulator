@@ -30,6 +30,8 @@ struct VmConfig {
   uint64_t memory_size = 0xffffffffffffffff; // 64-bit address space
   uint64_t memory_block_size = 1024; // 1 KB blocks
   uint64_t data_section_start = 0x10000000; // Default start address for data section
+  uint64_t text_section_start = 0x0; // Default start address for text section
+  uint64_t bss_section_start = 0x11000000; // Default start address for BSS section
 
   void setVmType(const VmTypes &type) {
     vm_type = type;
@@ -64,6 +66,22 @@ struct VmConfig {
     return data_section_start;
   }
 
+  void setTextSectionStart(uint64_t start) {
+    text_section_start = start;
+  }
+
+  uint64_t getTextSectionStart() const {
+    return text_section_start;
+  }
+
+  void setBssSectionStart(uint64_t start) {
+    bss_section_start = start;
+  }
+
+  uint64_t getBssSectionStart() const {
+    return bss_section_start;
+  }
+
   void modifyConfig(const std::string &section, const std::string &key, const std::string &value) {
     if (section == "Execution") {
       if (key == "processor_type") {
@@ -86,7 +104,15 @@ struct VmConfig {
         setMemoryBlockSize(std::stoull(value));
       } else if (key == "data_section_start") {
         setDataSectionStart(std::stoull(value, nullptr, 16));
-      } else {
+      } else if (key == "text_section_start") {
+        setTextSectionStart(std::stoull(value, nullptr, 16));
+      } else if (key == "bss_section_start") {
+        setBssSectionStart(std::stoull(value, nullptr, 16));
+      }
+      
+      
+      
+      else {
         throw std::invalid_argument("Unknown key: " + key);
       }
     } 

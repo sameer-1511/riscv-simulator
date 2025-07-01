@@ -158,6 +158,11 @@ class Parser {
    */
   void parseTextDirective();
 
+  /**
+   * @brief Parses a bss directive.
+   */
+  void parseBSSDirective();
+
  public:
   /**
    * @brief Constructs a Parser instance.

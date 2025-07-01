@@ -80,7 +80,7 @@ bool Parser::parse_pseudo() {
     return false;
   }
 
-    // nop
+  // nop
   else if (currentToken().value=="nop") {
     if (peekToken(1).type==TokenType::EOF_
         || peekToken(1).line_number!=currentToken().line_number) {
@@ -100,7 +100,8 @@ bool Parser::parse_pseudo() {
     }
     return false;
   }
-    // li
+  
+  // li
   else if (currentToken().value=="li") {
     if (peekToken(1).line_number==currentToken().line_number
         && peekToken(1).type==TokenType::GP_REGISTER
@@ -178,7 +179,8 @@ bool Parser::parse_pseudo() {
     }
     return false;
   }
-    // mv
+  
+  // mv
   else if (currentToken().value=="mv") {
     if (peekToken(1).line_number==currentToken().line_number
         && peekToken(1).type==TokenType::GP_REGISTER
@@ -205,7 +207,8 @@ bool Parser::parse_pseudo() {
     }
     return false;
   }
-    // not
+  
+  // not
   else if (currentToken().value=="not") {
     if (peekToken(1).line_number==currentToken().line_number
         && peekToken(1).type==TokenType::GP_REGISTER
@@ -232,15 +235,23 @@ bool Parser::parse_pseudo() {
     return false;
   }
 
-    // neg
-  else if (currentToken().value=="neg") {
-    skipCurrentLine();
-    return true;
-  }
-    // negw
-  else if (currentToken().value=="negw") {
-    skipCurrentLine();
-    return true;
+  // ret
+  else if (currentToken().value=="ret") {
+    if (peekToken(1).type==TokenType::EOF_
+        || peekToken(1).line_number!=currentToken().line_number) {
+      ICUnit block;
+      block.setOpcode("jalr");
+      block.setLineNumber(currentToken().line_number);
+      block.setRd("x0");
+      block.setRs1("x1");
+      block.setImm("0");
+      intermediate_code_.emplace_back(block, true);
+      instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
+      instruction_index_++;
+      nextToken();
+      return true;
+    }
+    return false;
   }
   return false;
 }
