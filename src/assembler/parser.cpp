@@ -184,8 +184,6 @@ void Parser::parseDataDirective() {
         nextToken();
       }
     } else if (currentToken().value=="zero") {
-      std::cout << "Zero directive encountered at line: " << currentToken().line_number << std::endl;
-      std::cout << "Current token value: " << currentToken().value << std::endl;
       nextToken();
       while (currentToken().type!=TokenType::EOF_
           && (currentToken().type==TokenType::NUM
@@ -581,11 +579,11 @@ void Parser::parse() {
 
   for (unsigned int index : back_patch_) {
     ICUnit block = intermediate_code_[index].first;
-    if (symbol_table_.find(block.getImm())!=symbol_table_.end()) {
+    if (symbol_table_.find(block.getLabel())!=symbol_table_.end()) {
 
       if (instruction_set::isValidBTypeInstruction(block.getOpcode())) {
-        if (!symbol_table_[block.getImm()].isData) {
-          uint64_t address = symbol_table_[block.getImm()].address;
+        if (!symbol_table_[block.getLabel()].isData) {
+          uint64_t address = symbol_table_[block.getLabel()].address;
           auto offset = static_cast<int64_t>(address - index*4);
           if (-4096 <= offset && offset <= 4095) {
             block.setImm(std::to_string(offset));
@@ -612,12 +610,12 @@ void Parser::parse() {
                                            GetLineFromFile(filename_, block.getLineNumber())));
         }
       } else if (instruction_set::isValidJTypeInstruction(block.getOpcode())) {
-        if (!symbol_table_[block.getImm()].isData) {
-          uint64_t address = symbol_table_[block.getImm()].address;
+        if (!symbol_table_[block.getLabel()].isData) {
+          uint64_t address = symbol_table_[block.getLabel()].address;
           auto offset = static_cast<int64_t>(address - index*4);
           if (-1048576 <= offset && offset <= 1048575) {
             block.setImm(std::to_string(offset));
-            block.setLabel(block.getImm());
+            // block.setLabel(block.getImm());
           } else {
             errors_.count++;
             recordError(ParseError(block.getLineNumber(), "Immediate value out of range"));
@@ -631,11 +629,11 @@ void Parser::parse() {
             continue;
           }
         } else {
-          uint64_t address = symbol_table_[block.getImm()].address;
+          uint64_t address = symbol_table_[block.getLabel()].address;
           auto offset = static_cast<int64_t>(address - index*4);
           if (-1048576 <= offset && offset <= 1048575) {
             block.setImm(std::to_string(offset));
-            block.setLabel(block.getImm());
+            // block.setLabel(block.getImm());
           } else {
             errors_.count++;
             recordError(ParseError(block.getLineNumber(), "Immediate value out of range"));
@@ -679,6 +677,10 @@ unsigned int Parser::getErrorCount() const {
 
 const std::vector<ParseError> &Parser::getErrors() const {
   return errors_.parse_errors;
+}
+
+const std::map<std::string, SymbolData> &Parser::getSymbolTable() const {
+  return symbol_table_;
 }
 
 void Parser::printErrors() const {

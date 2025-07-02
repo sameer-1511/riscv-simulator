@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <iomanip>
 
 /**
  * @brief Represents a unit of intermediate code used for generating machine code.
@@ -23,8 +24,9 @@
  */
 struct ICUnit {
   unsigned int line_number; ///< Line number in the source code corresponding to this block.
+  unsigned int instruction_index; ///< Index of the instruction in the intermediate code.
   std::array<char, 21> opcode;  ///< Opcode string (up to 20 characters, null-terminated).
-  std::array<char, 6> rd;      ///< Destination register name (up to 20 characters, null-terminated).
+  std::array<char, 6> rd;      ///< Destination register name (up to 20 characters, null-terminated). Eg: "x1", "f4", etc.
   std::array<char, 6> rs1;     ///< Source register 1 name (up to 20 characters, null-terminated).
   std::array<char, 6> rs2;     ///< Source register 2 name (up to 20 characters, null-terminated).
   std::array<char, 6> rs3;     ///< Immediate value (up to 32 characters, null-terminated).
@@ -43,18 +45,63 @@ struct ICUnit {
   }
 
   friend std::ostream &operator<<(std::ostream &os, const ICUnit &unit) {
-    os << unit.opcode.data() << "|"
-       << unit.rd.data() << "|"
-       << unit.rs1.data() << "|"
-       << unit.rs2.data() << "|"
-       << unit.rs3.data() << "|"
-       << unit.imm.data() << "|"
-       << unit.label;
+    auto emit_if_filled = [&os](const std::array<char, 6> &field,
+                                bool &first_operand) {
+      if (field[0] != '\0') {                  
+        os << (first_operand ? " " : ", ")      
+          << field.data();
+        first_operand = false;
+      }
+    };
+
+    // 1. line number + opcode
+    os 
+    // << std::hex 
+    //    << unit.instruction_index * 4
+    //    << std::setw(0) << std::dec 
+    //    << ": " 
+       << unit.opcode.data();
+
+    // 2. operands
+    bool first = true;
+    emit_if_filled(unit.rd,  first);
+    emit_if_filled(unit.rs1, first);
+    emit_if_filled(unit.rs2, first);
+    emit_if_filled(unit.rs3, first);
+
+    // 3. immediates (33‑byte array so treat separately)
+    if (unit.imm[0] != '\0') {
+      os << (first ? " " : ", ") << unit.imm.data();
+      first = false;
+    }
+
+    // 4. CSR (print only if non‑zero)
+    if (unit.csr != 0) {
+      std::ios_base::fmtflags f(os.flags());           // save stream flags
+      os << " csr=0x" << std::hex << unit.csr;         // hex looks nicer
+      os.flags(f);                                     // restore flags
+    }
+
+    // 5. rounding mode (print only if non‑zero)
+    if (unit.rm != 0) {
+      os << " rm=" << static_cast<int>(unit.rm);
+    }
+
+    // 6. label (if any) — put at the end in angle brackets
+    if (!unit.label.empty()) {
+      os << " <" << unit.label << '>';
+    }
+
     return os;
   }
 
+
   void setLineNumber(unsigned int value) {
     line_number = value;
+  }
+
+  void setInstructionIndex(unsigned int value) {
+    instruction_index = value;
   }
 
   void setOpcode(const std::string &value) {
@@ -101,6 +148,10 @@ struct ICUnit {
 
   [[nodiscard]] unsigned int getLineNumber() const {
     return line_number;
+  }
+
+  [[nodiscard]] unsigned int getInstructionIndex() const {
+    return instruction_index;
   }
 
   [[nodiscard]] std::string getOpcode() const {

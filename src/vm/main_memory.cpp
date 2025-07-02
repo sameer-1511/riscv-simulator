@@ -197,7 +197,7 @@ void Memory::PrintMemory(const uint64_t address, unsigned int rows) {
     }
     std::cout << "| 0x" << std::hex << std::setw(16) << std::setfill('0')
               << static_cast<int64_t>(ReadDoubleWord(current_address));
-    std::cout << std::dec << "\n";
+    std::cout << std::dec << std::setfill(' ') << "\n";
   }
   std::cout << "-----------------------------------------------------------------\n";
 }
@@ -231,7 +231,7 @@ void Memory::DumpMemory(std::vector<std::string> args) {
           if (j < rows - 1 || i < args.size() - 2) {
               file << ",";
           }
-          file << "\n";
+          file << std::setfill(' ') <<  "\n";
 
         }
         if (i < args.size() - 2) {
@@ -260,7 +260,7 @@ void Memory::GetMemoryPoint(std::string addr_str) {
 
   for (int i = 7; i >= 0; --i) {
     uint8_t byte = (value >> (i * 8)) & 0xFF;
-    std::cerr << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << std::dec;
+    std::cerr << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << std::dec << std::setfill(' ');
   }
 
   std::cerr << "]";

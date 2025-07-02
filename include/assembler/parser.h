@@ -33,41 +33,41 @@ struct ParseError {
 };
 
 /**
+ * @brief Tracks parsing errors.
+ */
+struct ErrorTracker {
+  unsigned int count = 0; ///< The total number of errors.
+  std::vector<ParseError> parse_errors; ///< A list of parse errors.
+  std::vector<std::variant<
+      errors::SyntaxError,
+      errors::UnexpectedTokenError,
+      errors::ImmediateOutOfRangeError,
+      errors::MisalignedImmediateError,
+      errors::UnexpectedOperandError,
+      errors::InvalidLabelRefError,
+      errors::LabelRedefinitionError,
+      errors::InvalidRegisterError
+  >> all_errors; ///< A list of all errors, including syntax and semantic errors.
+};
+
+/**
+ * @brief Stores data about a symbol.
+ */
+struct SymbolData {
+  uint64_t address; ///< The address or instruction location of the symbol.
+  uint64_t line_number; ///< The line number where the symbol is defined.
+  bool isData; ///< Indicates if the symbol represents data or code.
+};
+
+/**
  * @brief The Parser class is responsible for parsing tokens and generating intermediate code and symbol tables.
  */
 class Parser {
  private:
-  /**
-   * @brief Stores data about a symbol.
-   */
-  struct SymbolData {
-    uint64_t address; ///< The address or instruction location of the symbol.
-    uint64_t line_number; ///< The line number where the symbol is defined.
-    bool isData; ///< Indicates if the symbol represents data or code.
-  };
-
   std::string filename_; ///< The filename being parsed.
   std::vector<Token> tokens_; ///< The list of tokens to parse.
   size_t pos_ = 0; ///< The current position in the token list.
   unsigned int instruction_index_ = 0; ///< The current instruction index.
-
-  /**
-   * @brief Tracks parsing errors.
-   */
-  struct ErrorTracker {
-    unsigned int count = 0; ///< The total number of errors.
-    std::vector<ParseError> parse_errors; ///< A list of parse errors.
-    std::vector<std::variant<
-        errors::SyntaxError,
-        errors::UnexpectedTokenError,
-        errors::ImmediateOutOfRangeError,
-        errors::MisalignedImmediateError,
-        errors::UnexpectedOperandError,
-        errors::InvalidLabelRefError,
-        errors::LabelRedefinitionError,
-        errors::InvalidRegisterError
-    >> all_errors; ///< A list of all errors, including syntax and semantic errors.
-  };
 
   ErrorTracker errors_; ///< The error tracker instance.
 
@@ -202,7 +202,7 @@ class Parser {
 
   [[nodiscard]] const std::map<unsigned int, unsigned int> &getInstructionNumberLineNumberMapping() const;
 
-//  [[nodiscard]] const std::unordered_map<std::string, unsigned int> &getSymbolTable() const;
+  [[nodiscard]] const std::map<std::string, SymbolData> &getSymbolTable() const;
 
   /**
    * @brief Prints the list of errors to the console.

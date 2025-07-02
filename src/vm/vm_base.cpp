@@ -257,9 +257,18 @@ void VmBase::DumpState(const std::filesystem::path &filename) {
     unsigned int current_line = program_.instruction_number_line_number_mapping[instruction_number];
 
     file << "{\n";
-    file << "    \"program_counter\": " << "\"0x" << std::hex << std::setw(8) << std::setfill('0') << program_counter_ << std::dec << "\",\n";
+    file << "    \"program_counter\": " << "\"0x" 
+         << std::hex << std::setw(8) << std::setfill('0') 
+         << program_counter_ 
+         << std::dec << std::setfill(' ') 
+         << "\",\n";
     file << "    \"current_line\": " << current_line << ",\n";
-    file << "    \"current_instruction\": " << "\"0x" << std::hex << std::setw(8) << std::setfill('0') << current_instruction_ << std::dec << "\",\n";
+    file << "    \"current_instruction\": " << "\"0x" 
+         << std::hex << std::setw(8) << std::setfill('0') 
+         << current_instruction_ 
+         << std::dec << std::setfill(' ') 
+         << "\",\n";
+    file << "    \"disassembly_line_number\": " << program_.instruction_number_disassembly_mapping[instruction_number] << ",\n";
     file << "    \"cycle_count\": " << cycle_s_ << ",\n";
     file << "    \"instructions_retired\": " << instructions_retired_ << ",\n";
     file << "    \"cpi\": " << cpi_ << ",\n";

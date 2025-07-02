@@ -13,24 +13,24 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <algorithm>
+#include <fstream>
 
 void setupVmStateDirectory() {
-  std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";
-  if (!std::filesystem::exists(vm_state_dir)) {
-    std::filesystem::create_directories(vm_state_dir);
+  // std::filesystem::path vm_state_dir = std::filesystem::path(".") / "vm_state";
+  if (!std::filesystem::exists(globals::vm_state_directory)) {
+    std::filesystem::create_directories(globals::vm_state_directory);
   }
 
-  std::filesystem::path registers_file = vm_state_dir / "registers_dump.json";
-  std::filesystem::path errors_file = vm_state_dir / "errors_dump.json";
-  // std::filesystem::path memory_dump_file = vm_state_dir / "memory_dump.json";
-  // std::filesystem::path cache_dump_file_path = vm_state_dir / "cache_dump.json";
-  std::filesystem::path vm_state_dump_file_path = vm_state_dir / "vm_state_dump.json";
+  // std::filesystem::path registers_file = vm_state_dir / "registers_dump.json";
+  // std::filesystem::path errors_file = vm_state_dir / "errors_dump.json";
+  // std::filesystem::path vm_state_dump_file_path = vm_state_dir / "vm_state_dump.json";
 
-  if (!std::filesystem::exists(registers_file)) {
-    std::ofstream(registers_file).close();
+  if (!std::filesystem::exists(globals::registers_dump_file_path)) {
+    std::ofstream(globals::registers_dump_file_path).close();
   }
-  if (!std::filesystem::exists(errors_file)) {
-    std::ofstream(errors_file).close();
+  if (!std::filesystem::exists(globals::errors_dump_file_path)) {
+    std::ofstream(globals::errors_dump_file_path).close();
   }
   if (!std::filesystem::exists(globals::memory_dump_file_path)) {
     std::ofstream(globals::memory_dump_file_path).close();
@@ -38,8 +38,11 @@ void setupVmStateDirectory() {
   if (!std::filesystem::exists(globals::cache_dump_file_path)) {
     std::ofstream(globals::cache_dump_file_path).close();
   }
-  if (!std::filesystem::exists(vm_state_dump_file_path)) {
-    std::ofstream(vm_state_dump_file_path).close();
+  if (!std::filesystem::exists(globals::vm_state_dump_file_path)) {
+    std::ofstream(globals::vm_state_dump_file_path).close();
+  }
+  if (!std::filesystem::exists(globals::disassembly_file_path)) {
+    std::ofstream(globals::disassembly_file_path).close();
   }
 
   if (!std::filesystem::exists(globals::config_file_path)) {
@@ -178,7 +181,7 @@ void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register
 
       file << "        \"" << key << "\": \"0x"
            << std::hex << std::setw(16) << std::setfill('0') << register_file.ReadCsr(value)
-           << std::setw(0) << std::dec << "\"";
+           << std::setw(0) << std::setfill(' ') << std::dec << "\"";
 
       ++it;
       if (it!=end) {
@@ -198,7 +201,7 @@ void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register
     file << ": \"0x";
     file << std::hex << std::setw(16) << std::setfill('0')
          << gp_registers[i]
-         << std::setw(0) << std::dec << "\"";
+         << std::setw(0) << std::setfill(' ') << std::dec << "\"";
     if (i!=gp_registers.size() - 1) {
       file << ",";
     }
@@ -213,7 +216,7 @@ void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register
     file << ": \"0x";
     file << std::hex << std::setw(16) << std::setfill('0')
          << fp_registers[i]
-         << std::setw(0) << std::dec << "\"";
+         << std::setw(0) << std::setfill(' ') << std::dec << "\"";
 
     if (i!=fp_registers.size() - 1) {
       file << ",";
@@ -238,6 +241,148 @@ void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register
 
   file.close();
 }
+
+// void DumpDisasssembly(const std::filesystem::path &filename, const AssembledProgram &program) {
+//   const std::map<std::string, SymbolData>& symbol_table = program.symbol_table;
+//   // auto& insntrucion_number_disassembly_mapping = program.insntrucion_number_disassembly_mapping;
+//   // auto& line_number_instruction_number_mapping = program.line_number_instruction_number_mapping;
+//   // const auto& instruction_number_line_number_mapping = program.instruction_number_line_number_mapping;
+//   std::vector<std::pair<ICUnit, bool>> intermediate_code = program.intermediate_code;
+//   const auto& text_buffer = program.text_buffer;
+//   std::map<unsigned int, unsigned int> disassembly_number_line_number_mapping;
+//   std::unordered_map<uint64_t, std::string> label_for_address;
+//   for (const auto& [name, data] : symbol_table) {
+//     if (!data.isData) {
+//       label_for_address[data.address] = name; // overwrites previous if same address
+//     }
+//     // std::cout << "Symbol: " << name
+//     //           << ", Address: " << std::hex << data.address
+//     //           << ", Line: " << data.line_number
+//     //           << (data.isData ? " (Data)" : " (Code)") << std::dec << std::endl;
+//   }
+//   if (label_for_address.find(0) == label_for_address.end()) {
+//     label_for_address[0] = "start"; // Add a default label for address 0
+//   }
+//   unsigned int instruction_index = 0;
+//   // unsigned int symbol_index = 0;
+//   unsigned int line_number = 1;
+//   size_t max_address = intermediate_code.size() * 4;
+//   int hex_digits = 1;
+//   size_t temp = max_address;
+//   while (temp >>= 4) ++hex_digits;
+//   while (instruction_index < intermediate_code.size()) {
+//     const auto& [ICBlock, isData] = intermediate_code[instruction_index];
+//     uint64_t current_address = instruction_index * 4;
+//     auto it = label_for_address.find(current_address);
+//     if (it != label_for_address.end()) {
+//       if (line_number > 1) {
+//         std::cout << std::endl;
+//       }
+//       ++line_number;
+//       std::cout << std::setw(16) << std::setfill('0') << std::hex
+//                 << current_address 
+//                 << std::dec << std::setfill(' ') 
+//                 << " <" << it->second << ">:" << std::endl;
+//       ++line_number;
+//     }
+//     std::cout << "  "
+//               << std::setw(hex_digits) << std::setfill(' ') << std::right << std::hex
+//               << current_address 
+//               << std::dec << std::left << std::setw(0)
+//               << ": ";
+//     if (instruction_index < text_buffer.size()) {
+//       uint32_t raw = text_buffer[instruction_index];
+//       std::cout << std::setfill('0') << std::setw(8) << std::right << std::hex 
+//                 << raw 
+//                 << std::dec << std::setfill(' ') << "          	";
+//     } else {
+//       std::cout << " ????????\t";
+//     }
+//     std::cout << ICBlock << std::endl;
+//     disassembly_number_line_number_mapping[instruction_index] = line_number;
+//     ++line_number;
+//     ++instruction_index;
+//   }
+//   std::cout << "\n[Disassembly Number → Line Number Mapping]\n";
+//   for (const auto& [inst_idx, line] : disassembly_number_line_number_mapping) {
+//     std::cout << "Instruction " << inst_idx << " => Line " << line << '\n';
+//   }
+// }
+
+void DumpDisasssembly(const std::filesystem::path &filename, AssembledProgram &program) {
+  std::ofstream out(filename);
+  if (!out) {
+    std::cerr << "Failed to open disassembly output file: " << filename << std::endl;
+    return;
+  }
+
+  const std::map<std::string, SymbolData>& symbol_table = program.symbol_table;
+  const std::vector<std::pair<ICUnit, bool>>& intermediate_code = program.intermediate_code;
+  const std::vector<uint32_t>& text_buffer = program.text_buffer;
+  std::map<unsigned int, unsigned int> instruction_number_disassembly_mapping;
+
+  std::unordered_map<uint64_t, std::string> label_for_address;
+  for (const auto& [name, data] : symbol_table) {
+    if (!data.isData) {
+      label_for_address[data.address] = name;
+    }
+  }
+
+  if (label_for_address.find(0) == label_for_address.end()) {
+    label_for_address[0] = "start";
+  }
+
+  unsigned int instruction_index = 0;
+  unsigned int line_number = 1;
+
+  size_t max_address = intermediate_code.size() * 4;
+  int hex_digits = 1;
+  size_t temp = max_address;
+  while (temp >>= 4) ++hex_digits;
+
+  while (instruction_index < intermediate_code.size()) {
+    const auto& [ICBlock, isData] = intermediate_code[instruction_index];
+    uint64_t current_address = instruction_index * 4;
+
+    auto it = label_for_address.find(current_address);
+    if (it != label_for_address.end()) {
+      if (line_number > 1) {
+        out << std::endl;
+        ++line_number;
+      }
+      out << std::setw(16) << std::setfill('0') << std::hex
+          << current_address
+          << std::dec << std::setfill(' ')
+          << " <" << it->second << ">:" << std::endl;
+      ++line_number;
+    }
+
+    out << "  "
+        << std::setw(hex_digits) << std::setfill(' ') << std::right << std::hex
+        << current_address
+        << std::dec << std::left << std::setw(0)
+        << ": ";
+
+    if (instruction_index < text_buffer.size()) {
+      uint32_t raw = text_buffer[instruction_index];
+      out << std::setfill('0') << std::setw(8) << std::right << std::hex
+          << raw
+          << std::dec << std::setfill(' ') << "             ";
+    } else {
+      out << " ????????             ";
+    }
+
+    out << ICBlock << std::endl; 
+    instruction_number_disassembly_mapping[instruction_index] = line_number;
+
+    ++line_number;
+    ++instruction_index;
+  }
+
+  program.instruction_number_disassembly_mapping = instruction_number_disassembly_mapping;
+}
+
+
 
 void SetupConfigFile() {
   std::ofstream config_file(globals::config_file_path);

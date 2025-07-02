@@ -17,6 +17,7 @@ bool Parser::parse_O() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     skipCurrentLine();
     intermediate_code_.emplace_back(block, true);
     instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
@@ -42,6 +43,7 @@ bool Parser::parse_O_GPR_C_GPR_C_GPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
 
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
@@ -76,6 +78,7 @@ bool Parser::parse_O_GPR_C_GPR_C_I() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     if (instruction_set::isValidITypeInstruction(block.getOpcode())) {
@@ -179,6 +182,7 @@ bool Parser::parse_O_GPR_C_I() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     if (instruction_set::isValidUTypeInstruction(block.getOpcode())) {
@@ -260,6 +264,7 @@ bool Parser::parse_O_GPR_C_GPR_C_IL() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     if (instruction_set::isValidBTypeInstruction(block.getOpcode())) {
@@ -289,7 +294,7 @@ bool Parser::parse_O_GPR_C_GPR_C_IL() {
         }
       } else {
         back_patch_.push_back(instruction_index_);
-        block.setImm(peekToken(5).value);
+        block.setLabel(peekToken(5).value);
         intermediate_code_.emplace_back(block, false);
         instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
         instruction_index_++;
@@ -322,6 +327,7 @@ bool Parser::parse_O_GPR_C_IL() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     if (instruction_set::isValidJTypeInstruction(block.getOpcode())) {
       std::string reg;
       reg = reg_alias_to_name.at(peekToken(1).value);
@@ -348,7 +354,7 @@ bool Parser::parse_O_GPR_C_IL() {
         }
       } else {
         back_patch_.push_back(instruction_index_);
-        block.setImm(peekToken(3).value);
+        block.setLabel(peekToken(3).value);
         intermediate_code_.emplace_back(block, false);
         instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
         instruction_index_++;
@@ -424,12 +430,14 @@ bool Parser::parse_O_GPR_C_DL() {
     ICUnit auipc_instr;
     auipc_instr.setOpcode("auipc");
     auipc_instr.setLineNumber(currentToken().line_number);
+    auipc_instr.setInstructionIndex(instruction_index_);
     auipc_instr.setRd(reg);
     auipc_instr.setImm(std::to_string(hi20));
 
     ICUnit load_instr;
     load_instr.setOpcode(opcode);
     load_instr.setLineNumber(currentToken().line_number);
+    auipc_instr.setInstructionIndex(instruction_index_+1);
     load_instr.setRd(reg);
     load_instr.setRs1(reg);
     load_instr.setImm(std::to_string(lo12));
@@ -453,7 +461,6 @@ bool Parser::parse_O_GPR_C_DL() {
   return false;
 }
 
-
 bool Parser::parse_O_GPR_C_I_LP_GPR_RP() {
   if (peekToken(1).line_number==currentToken().line_number
       && peekToken(1).type==TokenType::GP_REGISTER
@@ -472,6 +479,7 @@ bool Parser::parse_O_GPR_C_I_LP_GPR_RP() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     if (instruction_set::isValidITypeInstruction(block.getOpcode())) {
       reg = reg_alias_to_name.at(peekToken(1).value);

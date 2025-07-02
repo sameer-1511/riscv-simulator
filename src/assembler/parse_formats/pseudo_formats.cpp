@@ -54,10 +54,12 @@ bool Parser::parse_pseudo() {
 
         // std::cout << "addi " << reg << ", " << reg << ", " << lo12 << std::dec << std::endl;
 
+        auipc_instr.setInstructionIndex(instruction_index_);
         intermediate_code_.emplace_back(auipc_instr, true);
         instruction_number_line_number_mapping_[instruction_index_] = auipc_instr.getLineNumber();
         instruction_index_++;
 
+        addi_instr.setInstructionIndex(instruction_index_);
         intermediate_code_.emplace_back(addi_instr, true);
         instruction_number_line_number_mapping_[instruction_index_] = addi_instr.getLineNumber();
         instruction_index_++;
@@ -87,10 +89,11 @@ bool Parser::parse_pseudo() {
       ICUnit block;
       block.setOpcode(currentToken().value);
       block.setLineNumber(currentToken().line_number);
+      block.setInstructionIndex(instruction_index_);
       block.setOpcode("addi");
       block.setRd("x0");
       block.setRs1("x0");
-      block.setRs2("x0");
+      // block.setRs2("x0");
       block.setImm("0");
       intermediate_code_.emplace_back(block, true);
       instruction_number_line_number_mapping_[instruction_index_] = block.getLineNumber();
@@ -117,6 +120,7 @@ bool Parser::parse_pseudo() {
       std::string reg = reg_alias_to_name.at(peekToken(1).value);
       if (-2048 <= imm && imm <= 2047) {
         block.setLineNumber(currentToken().line_number);
+        block.setInstructionIndex(instruction_index_);
         block.setOpcode("addi");
         block.setRd(reg);
         block.setRs1("x0");
@@ -129,6 +133,7 @@ bool Parser::parse_pseudo() {
 
         ICUnit luiBlock;
         luiBlock.setLineNumber(currentToken().line_number);
+        luiBlock.setInstructionIndex(instruction_index_);
         luiBlock.setOpcode("lui");
         luiBlock.setRd(reg);
         luiBlock.setImm(std::to_string(upper));
@@ -138,6 +143,7 @@ bool Parser::parse_pseudo() {
         if (lower!=0) {
           ICUnit addiBlock;
           addiBlock.setLineNumber(currentToken().line_number);
+          addiBlock.setInstructionIndex(instruction_index_);
           addiBlock.setOpcode("addi");
           addiBlock.setRd(reg);
           addiBlock.setRs1(reg);
@@ -193,6 +199,7 @@ bool Parser::parse_pseudo() {
       ICUnit block;
       block.setOpcode("add");
       block.setLineNumber(currentToken().line_number);
+      block.setInstructionIndex(instruction_index_);
       std::string reg;
       reg = reg_alias_to_name.at(peekToken(1).value);
       block.setRd(reg);
@@ -221,6 +228,7 @@ bool Parser::parse_pseudo() {
       ICUnit block;
       block.setOpcode("xori");
       block.setLineNumber(currentToken().line_number);
+      block.setInstructionIndex(instruction_index_);
       std::string reg = reg_alias_to_name.at(peekToken(1).value);
       block.setRd(reg);
       reg = reg_alias_to_name.at(peekToken(3).value);
@@ -242,6 +250,7 @@ bool Parser::parse_pseudo() {
       ICUnit block;
       block.setOpcode("jalr");
       block.setLineNumber(currentToken().line_number);
+      block.setInstructionIndex(instruction_index_);
       block.setRd("x0");
       block.setRs1("x1");
       block.setImm("0");

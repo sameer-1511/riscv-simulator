@@ -15,6 +15,8 @@
 #include <stdexcept>
 #include <vector>
 #include <map>
+#include <iostream>
+#include <algorithm>
 
 AssembledProgram assemble(const std::string &filename) {
   std::unique_ptr<Lexer> lexer;
@@ -43,19 +45,11 @@ AssembledProgram assemble(const std::string &filename) {
   program.filename = filename;
 
   if (parser.getErrorCount()==0) {
-    // parser.printDataBuffers();
-    // parser.printSymbolTable();
-    // parser.printIntermediateCode();
-
-    // std::vector<std::pair<ICUnit, bool>> intermediate_code_ = parser.getIntermediateCode();
-    // for (const auto &pair : intermediate_code_) {
-    //     const ICUnit &block = pair.first;
-    //     std::cout << block << std::endl;
-    // }
 
     std::vector<uint32_t> machine_code_bits = generateMachineCode(parser.getIntermediateCode());
 
     program.data_buffer = parser.getDataBuffer();
+    program.intermediate_code = parser.getIntermediateCode();
     program.text_buffer = machine_code_bits;
     program.instruction_number_line_number_mapping = parser.getInstructionNumberLineNumberMapping();
 
@@ -76,6 +70,11 @@ AssembledProgram assemble(const std::string &filename) {
       }
       return line_number_instruction_number_mapping;
     }();
+
+    program.symbol_table = parser.getSymbolTable();
+
+    
+    DumpDisasssembly(globals::disassembly_file_path, program);
 
     DumpNoErrors(globals::errors_dump_file_path);
 

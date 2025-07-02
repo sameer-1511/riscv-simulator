@@ -32,6 +32,7 @@ bool Parser::parse_O_FPR_C_FPR_C_FPR_C_FPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -75,6 +76,7 @@ bool Parser::parse_O_FPR_C_FPR_C_FPR_C_FPR_C_RM() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -114,6 +116,7 @@ bool Parser::parse_O_FPR_C_FPR_C_FPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -151,6 +154,7 @@ bool Parser::parse_O_FPR_C_FPR_C_FPR_C_RM() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -184,6 +188,7 @@ bool Parser::parse_O_FPR_C_FPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -215,6 +220,7 @@ bool Parser::parse_O_FPR_C_FPR_C_RM() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -246,6 +252,7 @@ bool Parser::parse_O_FPR_C_GPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -277,6 +284,7 @@ bool Parser::parse_O_FPR_C_GPR_C_RM() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -308,6 +316,7 @@ bool Parser::parse_O_GPR_C_FPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -339,6 +348,7 @@ bool Parser::parse_O_GPR_C_FPR_C_RM() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -374,6 +384,7 @@ bool Parser::parse_O_GPR_C_FPR_C_FPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
     reg = reg_alias_to_name.at(peekToken(1).value);
     block.setRd(reg);
@@ -408,6 +419,7 @@ bool Parser::parse_O_FPR_C_I_LP_GPR_RP() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     if (instruction_set::isValidFDITypeInstruction(block.getOpcode())) {

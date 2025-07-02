@@ -7,9 +7,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "./assembler/parser.h"
+#include "assembler/parser.h"
 #include "vm/registers.h"
 #include "vm/vm_base.h"
+#include "vm_asm_mw.h"
 
 #include <string>
 #include <filesystem>
@@ -48,7 +49,9 @@ void DumpErrors(const std::filesystem::path &filename, const std::vector<ParseEr
 
 void DumpNoErrors(const std::filesystem::path &filename);
 
-void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register_file);\
+void DumpRegisters(const std::filesystem::path &filename, RegisterFile &register_file);
+
+void DumpDisasssembly(const std::filesystem::path &filename, AssembledProgram &program);
 
 void SetupConfigFile();
 
