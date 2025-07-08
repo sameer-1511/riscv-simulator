@@ -10,22 +10,27 @@ struct \mbox{\hyperlink{structcommand__handler_1_1Command}{Command}}
 \item 
 enum class \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681}{Command\+Type}} \{ \newline
 \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681accc0377a8afbf50e7094f5c23a8af223}{INVALID}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acf327e3d6754435f38fb1b9f696f2ea3}{MODIFY\+\_\+\+CONFIG}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615d2885ef7576cedd9aafbb2578f028}{LOAD}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a855520d2a5b0b1a64b939e7e30889e2a}{RUN}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15}{DEBUG}}
 , \newline
-\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7}{STEP}}
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615a46af313786fc4e349f34118be111}{STOP}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a43f1fb13a498a620fc2e19b6fa55ab51}{DEBUG\+\_\+\+RUN}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7}{STEP}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1}{UNDO}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f}{REDO}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1}{RESET}}
 , \newline
-\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}{DUMP\+\_\+\+MEMORY}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817}{PRINT\+\_\+\+MEMORY}}
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f}{REDO}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1}{RESET}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab0fe93313e04f4e2c261e0ff20dfdbcb}{MODIFY\+\_\+\+REGISTER}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}{DUMP\+\_\+\+MEMORY}}
+, \newline
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817}{PRINT\+\_\+\+MEMORY}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69}{GET\+\_\+\+MEMORY\+\_\+\+POINT}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5}{DUMP\+\_\+\+CACHE}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{ADD\+\_\+\+BREAKPOINT}}
 , \newline
-\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db}{ADD\+\_\+\+BREAKPOINT}}
-, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{REMOVE\+\_\+\+BREAKPOINT}}
+\mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}{REMOVE\+\_\+\+BREAKPOINT}}
+, \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a3cbd204eb9b0446f83da767225380a79}{VM\+\_\+\+STDIN}}
 , \mbox{\hyperlink{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927}{EXIT}}
  \}
 \item 
@@ -48,9 +53,9 @@ void \mbox{\hyperlink{namespacecommand__handler_a32eea363a2d5c5e4b4b6c71626058fa
 
 
 \doxysubsection{Detailed Description}
-File Name\+: \mbox{\hyperlink{command__handler_8cpp}{command\+\_\+handler.\+cpp}} Author\+: Vishank Singh Github\+: \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}}
+File Name\+: \mbox{\hyperlink{command__handler_8h}{command\+\_\+handler.\+h}} Author\+: Vishank Singh Github\+: \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}}
 
-File Name\+: \mbox{\hyperlink{command__handler_8h}{command\+\_\+handler.\+h}} Author\+: Vishank Singh Github\+: \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
+File Name\+: \mbox{\hyperlink{command__handler_8cpp}{command\+\_\+handler.\+cpp}} Author\+: Vishank Singh Github\+: \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
 
 \doxysubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{namespacecommand__handler_a44c251e1711cea6749a00f36fcb08cf4}\label{namespacecommand__handler_a44c251e1711cea6749a00f36fcb08cf4}} 
@@ -92,6 +97,10 @@ VALUE&\\
 INVALID&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODIFY\_CONFIG@{MODIFY\_CONFIG}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!MODIFY\_CONFIG@{MODIFY\_CONFIG}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acf327e3d6754435f38fb1b9f696f2ea3}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acf327e3d6754435f38fb1b9f696f2ea3}} 
+MODIFY\+\_\+\+CONFIG&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{LOAD@{LOAD}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!LOAD@{LOAD}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615d2885ef7576cedd9aafbb2578f028}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615d2885ef7576cedd9aafbb2578f028}} 
 LOAD&\\
 \hline
@@ -100,8 +109,12 @@ LOAD&\\
 RUN&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!DEBUG@{DEBUG}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15}} 
-DEBUG&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STOP@{STOP}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!STOP@{STOP}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615a46af313786fc4e349f34118be111}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a615a46af313786fc4e349f34118be111}} 
+STOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG\_RUN@{DEBUG\_RUN}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!DEBUG\_RUN@{DEBUG\_RUN}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a43f1fb13a498a620fc2e19b6fa55ab51}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a43f1fb13a498a620fc2e19b6fa55ab51}} 
+DEBUG\+\_\+\+RUN&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{STEP@{STEP}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!STEP@{STEP}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7}} 
@@ -118,6 +131,10 @@ REDO&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{RESET@{RESET}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!RESET@{RESET}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1}} 
 RESET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODIFY\_REGISTER@{MODIFY\_REGISTER}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!MODIFY\_REGISTER@{MODIFY\_REGISTER}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab0fe93313e04f4e2c261e0ff20dfdbcb}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681ab0fe93313e04f4e2c261e0ff20dfdbcb}} 
+MODIFY\+\_\+\+REGISTER&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DUMP\_MEMORY@{DUMP\_MEMORY}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!DUMP\_MEMORY@{DUMP\_MEMORY}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92}} 
@@ -142,6 +159,10 @@ ADD\+\_\+\+BREAKPOINT&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{REMOVE\_BREAKPOINT@{REMOVE\_BREAKPOINT}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!REMOVE\_BREAKPOINT@{REMOVE\_BREAKPOINT}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15}} 
 REMOVE\+\_\+\+BREAKPOINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VM\_STDIN@{VM\_STDIN}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!VM\_STDIN@{VM\_STDIN}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a3cbd204eb9b0446f83da767225380a79}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681a3cbd204eb9b0446f83da767225380a79}} 
+VM\+\_\+\+STDIN&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!command\_handler@{command\_handler}}\index{command\_handler@{command\_handler}!EXIT@{EXIT}}}\mbox{\Hypertarget{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927}\label{namespacecommand__handler_a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927}} 

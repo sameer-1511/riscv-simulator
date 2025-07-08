@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['f_5fd_5fformats_2ecpp_738',['f_d_formats.cpp',['../f__d__formats_8cpp.html',1,'']]]
+  ['globals_2ecpp_809',['globals.cpp',['../globals_8cpp.html',1,'']]],
+  ['globals_2eh_810',['globals.h',['../globals_8h.html',1,'']]]
 ];

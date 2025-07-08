@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RISC-V Simulator: src/vm_runner.h Source File</title>
+<title>RISC-V Simulator: include/vm_runner.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,67 +73,56 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef VM_RUNNER_H</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define VM_RUNNER_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pch_8h.html">pch.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vm__base_8h.html">vm/vm_base.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rvss__vm_8h.html">vm/rvss/rvss_vm.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vm__asm__mw_8h.html">vm_asm_mw.h</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="vm__runner_8h.html#a630a638fdb43063a6225a456e52ade54">   17</a></span>&#160;<span class="keyword">inline</span> std::unique_ptr&lt;VmBase&gt; <a class="code" href="vm__runner_8h.html#a630a638fdb43063a6225a456e52ade54">createVM</a>(<a class="code" href="namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5">vm_config::VmTypes</a> vmType) {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordflow">if</span> (vmType==<a class="code" href="namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5a2c4a0af0ffe5afecf34ef3401408722c">vm_config::VmTypes::SINGLE_STAGE</a>) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;RVSSVM&gt;();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classVMRunner.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classVMRunner.html">VMRunner</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  std::unique_ptr&lt;VmBase&gt; vm_;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c">   28</a></span>&#160;  <a class="code" href="classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c">VMRunner</a>() {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5">vm_config::VmTypes</a> vmType = <a class="code" href="namespacevm__config.html#a66c9a182111f5aeccfa304e71a03d817">vm_config::GetVmType</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    vm_ = <a class="code" href="vm__runner_8h.html#a630a638fdb43063a6225a456e52ade54">createVM</a>(vmType);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classVMRunner.html#a332c8203799e890053f62f3e3aee120d">   33</a></span>&#160;  <a class="code" href="classVMRunner.html#a332c8203799e890053f62f3e3aee120d">~VMRunner</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vm__base_8h.html">vm/vm_base.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rvss__vm_8h.html">vm/rvss/rvss_vm.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vm__asm__mw_8h.html">vm_asm_mw.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// inline std::unique_ptr&lt;VmBase&gt; createVM(vm_config::VmTypes vmType) {</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//   if (vmType==vm_config::VmTypes::SINGLE_STAGE) {</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//     return std::make_unique&lt;RVSSVM&gt;();</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//   }</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//   return nullptr;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// }</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// class VMRunner {</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//   std::unique_ptr&lt;VmBase&gt; vm_;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//  public:</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//   VMRunner() {</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//     vm_config::VmTypes vmType = vm_config::GetVmType();</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//     vm_ = createVM(vmType);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//   }</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classVMRunner.html#a6c33841a07c753ae4bdfae67cbc62f53">   35</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classVMRunner.html#a6c33841a07c753ae4bdfae67cbc62f53">LoadProgram</a>(<span class="keyword">const</span> <a class="code" href="structAssembledProgram.html">AssembledProgram</a> &amp;program) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    vm_-&gt;LoadProgram(program);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classVMRunner.html#aa51e57ce2b3ae2da2728d10c5e6d7b82">   39</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classVMRunner.html#aa51e57ce2b3ae2da2728d10c5e6d7b82">Custom</a>() {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">auto</span> vmInstance = <span class="keyword">dynamic_cast&lt;</span><a class="code" href="classRVSSVM.html">RVSSVM</a> *<span class="keyword">&gt;</span>(vm_.get())) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      vmInstance-&gt;PrintType();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;VM not initialized.&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classVMRunner.html#acc0ab2db4728281bb40797766b92a714">   47</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classVMRunner.html#acc0ab2db4728281bb40797766b92a714">Step</a>() {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    vm_-&gt;Step();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">//   ~VMRunner() = default;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//   void LoadProgram(const AssembledProgram &amp;program) {</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//     vm_-&gt;LoadProgram(program);</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//   }</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//   void Custom() {</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//     if (auto vmInstance = dynamic_cast&lt;RVSSVM *&gt;(vm_.get())) {</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">//       vmInstance-&gt;PrintType();</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">//     } else {</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">//       throw std::runtime_error(&quot;VM not initialized.&quot;);</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//     }</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">//   }</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//   void Step() {</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">//     vm_-&gt;Step();</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//   }</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// VM_RUNNER_H</span></div>
-<div class="ttc" id="aclassRVSSVM_html"><div class="ttname"><a href="classRVSSVM.html">RVSSVM</a></div><div class="ttdef"><b>Definition:</b> rvss_vm.h:95</div></div>
-<div class="ttc" id="aclassVMRunner_html"><div class="ttname"><a href="classVMRunner.html">VMRunner</a></div><div class="ttdef"><b>Definition:</b> vm_runner.h:25</div></div>
-<div class="ttc" id="aclassVMRunner_html_a332c8203799e890053f62f3e3aee120d"><div class="ttname"><a href="classVMRunner.html#a332c8203799e890053f62f3e3aee120d">VMRunner::~VMRunner</a></div><div class="ttdeci">~VMRunner()=default</div></div>
-<div class="ttc" id="aclassVMRunner_html_a6c33841a07c753ae4bdfae67cbc62f53"><div class="ttname"><a href="classVMRunner.html#a6c33841a07c753ae4bdfae67cbc62f53">VMRunner::LoadProgram</a></div><div class="ttdeci">void LoadProgram(const AssembledProgram &amp;program)</div><div class="ttdef"><b>Definition:</b> vm_runner.h:35</div></div>
-<div class="ttc" id="aclassVMRunner_html_aa51e57ce2b3ae2da2728d10c5e6d7b82"><div class="ttname"><a href="classVMRunner.html#aa51e57ce2b3ae2da2728d10c5e6d7b82">VMRunner::Custom</a></div><div class="ttdeci">void Custom()</div><div class="ttdef"><b>Definition:</b> vm_runner.h:39</div></div>
-<div class="ttc" id="aclassVMRunner_html_acc0ab2db4728281bb40797766b92a714"><div class="ttname"><a href="classVMRunner.html#acc0ab2db4728281bb40797766b92a714">VMRunner::Step</a></div><div class="ttdeci">void Step()</div><div class="ttdef"><b>Definition:</b> vm_runner.h:47</div></div>
-<div class="ttc" id="aclassVMRunner_html_adc8be3a614a7fd6bfc9ff7c39e18382c"><div class="ttname"><a href="classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c">VMRunner::VMRunner</a></div><div class="ttdeci">VMRunner()</div><div class="ttdef"><b>Definition:</b> vm_runner.h:28</div></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// };</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// VM_RUNNER_H</span></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Contains configuration options for the assembler.</div></div>
-<div class="ttc" id="anamespacevm__config_html_a66c9a182111f5aeccfa304e71a03d817"><div class="ttname"><a href="namespacevm__config.html#a66c9a182111f5aeccfa304e71a03d817">vm_config::GetVmType</a></div><div class="ttdeci">VmTypes GetVmType()</div><div class="ttdef"><b>Definition:</b> config.cpp:106</div></div>
-<div class="ttc" id="anamespacevm__config_html_aa4eeb50c28c404f656938f58b44562b5"><div class="ttname"><a href="namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5">vm_config::VmTypes</a></div><div class="ttdeci">VmTypes</div><div class="ttdef"><b>Definition:</b> config.h:17</div></div>
-<div class="ttc" id="anamespacevm__config_html_aa4eeb50c28c404f656938f58b44562b5a2c4a0af0ffe5afecf34ef3401408722c"><div class="ttname"><a href="namespacevm__config.html#aa4eeb50c28c404f656938f58b44562b5a2c4a0af0ffe5afecf34ef3401408722c">vm_config::VmTypes::SINGLE_STAGE</a></div><div class="ttdeci">@ SINGLE_STAGE</div></div>
-<div class="ttc" id="apch_8h_html"><div class="ttname"><a href="pch_8h.html">pch.h</a></div></div>
 <div class="ttc" id="arvss__vm_8h_html"><div class="ttname"><a href="rvss__vm_8h.html">rvss_vm.h</a></div><div class="ttdoc">RVSS VM definition.</div></div>
-<div class="ttc" id="astructAssembledProgram_html"><div class="ttname"><a href="structAssembledProgram.html">AssembledProgram</a></div><div class="ttdef"><b>Definition:</b> vm_asm_mw.h:12</div></div>
 <div class="ttc" id="avm__asm__mw_8h_html"><div class="ttname"><a href="vm__asm__mw_8h.html">vm_asm_mw.h</a></div><div class="ttdoc">Contains functions to handle assembler input for the VM.</div></div>
 <div class="ttc" id="avm__base_8h_html"><div class="ttname"><a href="vm__base_8h.html">vm_base.h</a></div><div class="ttdoc">File containing the base class for the virtual machine.</div></div>
-<div class="ttc" id="avm__runner_8h_html_a630a638fdb43063a6225a456e52ade54"><div class="ttname"><a href="vm__runner_8h.html#a630a638fdb43063a6225a456e52ade54">createVM</a></div><div class="ttdeci">std::unique_ptr&lt; VmBase &gt; createVM(vm_config::VmTypes vmType)</div><div class="ttdef"><b>Definition:</b> vm_runner.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

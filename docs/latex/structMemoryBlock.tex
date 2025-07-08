@@ -19,7 +19,7 @@ Represents a memory block containing 1 KB of memory.
 \item 
 std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{structMemoryBlock_a0cd70c89ef3b4b7ebfd25aa48b2db04f}{data}}
 \begin{DoxyCompactList}\small\item\em A vector representing the memory block data. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{structMemoryBlock_a4fc9655625b9d635d1c0458e5d096373}{block\+\_\+size}}
+unsigned int \mbox{\hyperlink{structMemoryBlock_a4fc9655625b9d635d1c0458e5d096373}{block\+\_\+size}} = vm\+\_\+config\+::config.\+get\+Memory\+Block\+Size()
 \begin{DoxyCompactList}\small\item\em The size of the memory block in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -44,15 +44,8 @@ Constructs a \mbox{\hyperlink{structMemoryBlock}{Memory\+Block}} with a size of 
 \index{MemoryBlock@{MemoryBlock}!block\_size@{block\_size}}
 \index{block\_size@{block\_size}!MemoryBlock@{MemoryBlock}}
 \doxysubsubsection{\texorpdfstring{block\_size}{block\_size}}
-{\footnotesize\ttfamily unsigned int Memory\+Block\+::block\+\_\+size}
+{\footnotesize\ttfamily unsigned int Memory\+Block\+::block\+\_\+size = vm\+\_\+config\+::config.\+get\+Memory\+Block\+Size()}
 
-{\bfseries Initial value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{= \mbox{\hyperlink{namespacevm__config_1_1ini_a178e6d2759e8c73c2c2295cb5dba1339}{vm\_config::ini::Get}}(\textcolor{stringliteral}{"{}Memory"{}}, \textcolor{stringliteral}{"{}block\_size"{}}).empty()}
-\DoxyCodeLine{                            ? 1024 : std::stoi(\mbox{\hyperlink{namespacevm__config_1_1ini_a178e6d2759e8c73c2c2295cb5dba1339}{vm\_config::ini::Get}}(\textcolor{stringliteral}{"{}Memory"{}},}
-\DoxyCodeLine{                                                                   \textcolor{stringliteral}{"{}block\_size"{}}))}
-
-\end{DoxyCode}
 
 
 The size of the memory block in bytes. 
@@ -71,4 +64,4 @@ A vector representing the memory block data.
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/vm/\mbox{\hyperlink{main__memory_8h}{main\+\_\+memory.\+h}}\end{DoxyCompactItemize}
+include/vm/\mbox{\hyperlink{main__memory_8h}{main\+\_\+memory.\+h}}\end{DoxyCompactItemize}

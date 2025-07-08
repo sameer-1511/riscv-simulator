@@ -117,6 +117,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a93f099cce5c1bb800d4a481d2424732c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a93f099cce5c1bb800d4a481d2424732c">GetFprValues</a> () const</td></tr>
 <tr class="memdesc:a93f099cce5c1bb800d4a481d2424732c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the values of all Floating-Point Registers (FPR).  <a href="classRegisterFile.html#a93f099cce5c1bb800d4a481d2424732c">More...</a><br /></td></tr>
 <tr class="separator:a93f099cce5c1bb800d4a481d2424732c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb719f462ce76e7c0839e2cfd853185"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRegisterFile.html#a2fb719f462ce76e7c0839e2cfd853185">ModifyRegister</a> (const std::string &amp;reg_name, uint64_t value)</td></tr>
+<tr class="separator:a2fb719f462ce76e7c0839e2cfd853185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a register file containing integer, floating-point, and vector registers. </p>
@@ -221,6 +223,34 @@ Public Member Functions</h2></td></tr>
 
 <p>Retrieves the values of all General-Purpose Registers (GPR). </p>
 <dl class="section return"><dt>Returns</dt><dd>A vector containing the values of all GPRs. </dd></dl>
+
+</div>
+</div>
+<a id="a2fb719f462ce76e7c0839e2cfd853185"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fb719f462ce76e7c0839e2cfd853185">&#9670;&nbsp;</a></span>ModifyRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RegisterFile::ModifyRegister </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -416,7 +446,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/vm/<a class="el" href="registers_8h_source.html">registers.h</a></li>
+<li>include/vm/<a class="el" href="registers_8h_source.html">registers.h</a></li>
 <li>src/vm/<a class="el" href="registers_8cpp.html">registers.cpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,15 +1,17 @@
-\hypertarget{vm__runner_8h}{}\doxysection{src/vm\+\_\+runner.h File Reference}
-\label{vm__runner_8h}\index{src/vm\_runner.h@{src/vm\_runner.h}}
+\hypertarget{vm__runner_8h}{}\doxysection{include/vm\+\_\+runner.h File Reference}
+\label{vm__runner_8h}\index{include/vm\_runner.h@{include/vm\_runner.h}}
 
 
-This file contains the declaration of the \mbox{\hyperlink{classVMRunner}{VMRunner}} class.  
+This file contains the declaration of the VMRunner class.  
 
 
-{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}vm/vm\+\_\+base.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}vm/rvss/rvss\+\_\+vm.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}vm\+\_\+asm\+\_\+mw.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
 Include dependency graph for vm\+\_\+runner.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -18,37 +20,19 @@ Include dependency graph for vm\+\_\+runner.\+h\+:
 \includegraphics[width=350pt]{vm__runner_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=283pt]{vm__runner_8h__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-class \mbox{\hyperlink{classVMRunner}{VMRunner}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVmBase}{Vm\+Base}} $>$ \mbox{\hyperlink{vm__runner_8h_a630a638fdb43063a6225a456e52ade54}{create\+VM}} (\mbox{\hyperlink{namespacevm__config_aa4eeb50c28c404f656938f58b44562b5}{vm\+\_\+config\+::\+Vm\+Types}} vm\+Type)
-\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This file contains the declaration of the \mbox{\hyperlink{classVMRunner}{VMRunner}} class. 
+This file contains the declaration of the VMRunner class. 
 
 \begin{DoxyAuthor}{Author}
 Vishank Singh, \href{https://github.com/VishankSingh}{\texttt{ https\+://github.\+com/\+Vishank\+Singh}} 
 \end{DoxyAuthor}
-
-
-\doxysubsection{Function Documentation}
-\mbox{\Hypertarget{vm__runner_8h_a630a638fdb43063a6225a456e52ade54}\label{vm__runner_8h_a630a638fdb43063a6225a456e52ade54}} 
-\index{vm\_runner.h@{vm\_runner.h}!createVM@{createVM}}
-\index{createVM@{createVM}!vm\_runner.h@{vm\_runner.h}}
-\doxysubsubsection{\texorpdfstring{createVM()}{createVM()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classVmBase}{Vm\+Base}}$>$ create\+VM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevm__config_aa4eeb50c28c404f656938f58b44562b5}{vm\+\_\+config\+::\+Vm\+Types}}}]{vm\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-

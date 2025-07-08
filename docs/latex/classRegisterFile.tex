@@ -43,7 +43,9 @@ void \mbox{\hyperlink{classRegisterFile_ad703c614dd37205dc11a43272045b6fd}{Write
 std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classRegisterFile_a106a489cfac656e42303821efc8e1d8d}{Get\+Gpr\+Values}} () const
 \begin{DoxyCompactList}\small\item\em Retrieves the values of all General-\/\+Purpose Registers (GPR). \end{DoxyCompactList}\item 
 std\+::vector$<$ uint64\+\_\+t $>$ \mbox{\hyperlink{classRegisterFile_a93f099cce5c1bb800d4a481d2424732c}{Get\+Fpr\+Values}} () const
-\begin{DoxyCompactList}\small\item\em Retrieves the values of all Floating-\/\+Point Registers (FPR). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the values of all Floating-\/\+Point Registers (FPR). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegisterFile_a2fb719f462ce76e7c0839e2cfd853185}{Modify\+Register}} (const std\+::string \&reg\+\_\+name, uint64\+\_\+t value)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -120,6 +122,12 @@ Retrieves the values of all General-\/\+Purpose Registers (GPR).
 \begin{DoxyReturn}{Returns}
 A vector containing the values of all GPRs. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classRegisterFile_a2fb719f462ce76e7c0839e2cfd853185}\label{classRegisterFile_a2fb719f462ce76e7c0839e2cfd853185}} 
+\index{RegisterFile@{RegisterFile}!ModifyRegister@{ModifyRegister}}
+\index{ModifyRegister@{ModifyRegister}!RegisterFile@{RegisterFile}}
+\doxysubsubsection{\texorpdfstring{ModifyRegister()}{ModifyRegister()}}
+{\footnotesize\ttfamily void Register\+File\+::\+Modify\+Register (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reg\+\_\+name,  }\item[{uint64\+\_\+t}]{value }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classRegisterFile_a864f6e3b6ccc65796223c13c390a8d60}\label{classRegisterFile_a864f6e3b6ccc65796223c13c390a8d60}} 
 \index{RegisterFile@{RegisterFile}!ReadCsr@{ReadCsr}}
 \index{ReadCsr@{ReadCsr}!RegisterFile@{RegisterFile}}
@@ -212,5 +220,5 @@ Writes a value to a General-\/\+Purpose Register (GPR).
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/vm/\mbox{\hyperlink{registers_8h}{registers.\+h}}\item 
+include/vm/\mbox{\hyperlink{registers_8h}{registers.\+h}}\item 
 src/vm/\mbox{\hyperlink{registers_8cpp}{registers.\+cpp}}\end{DoxyCompactItemize}

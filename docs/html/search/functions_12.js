@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['vmbase_978',['VmBase',['../classVmBase.html#abf599e805afcf71a94eb6d6d8a68735f',1,'VmBase']]],
-  ['vmrunner_979',['VMRunner',['../classVMRunner.html#adc8be3a614a7fd6bfc9ff7c39e18382c',1,'VMRunner']]]
+  ['undo_1065',['Undo',['../classRVSSVM.html#aabc759ac821f87303daa71c9480b8756',1,'RVSSVM::Undo()'],['../classVmBase.html#a141e025834dd6b9d68f08db7959ed391',1,'VmBase::Undo()']]],
+  ['unexpectedoperanderror_1066',['UnexpectedOperandError',['../structerrors_1_1UnexpectedOperandError.html#a94396fd323a94328e699a14467a9ca99',1,'errors::UnexpectedOperandError']]],
+  ['unexpectedtokenerror_1067',['UnexpectedTokenError',['../structerrors_1_1UnexpectedTokenError.html#a236bc1c5c9d2afeb534d38fab45aae9d',1,'errors::UnexpectedTokenError']]],
+  ['updateprogramcounter_1068',['UpdateProgramCounter',['../classVmBase.html#ac40cd15fd5481498cc87f9754d8ac979',1,'VmBase']]],
+  ['utypeinstructionencoding_1069',['UTypeInstructionEncoding',['../structinstruction__set_1_1UTypeInstructionEncoding.html#aa35e9b41d62ab6b26810dfd86c25f6f0',1,'instruction_set::UTypeInstructionEncoding']]]
 ];

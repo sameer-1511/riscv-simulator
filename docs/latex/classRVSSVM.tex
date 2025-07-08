@@ -35,9 +35,9 @@ void \mbox{\hyperlink{classRVSSVM_aa565a8b5426dc19cc4a9abfe2f72ee9b}{Execute\+Fl
 \item 
 void \mbox{\hyperlink{classRVSSVM_ab07bcf2cd78c7f481c0e8eac9b63d767}{Execute\+Double}} ()
 \item 
-void \mbox{\hyperlink{classRVSSVM_a909efe42d1f6365578cef3502cd04426}{Execute\+Vector}} ()
-\item 
 void \mbox{\hyperlink{classRVSSVM_a2d401eee1018804bc76672fcea13b28a}{Execute\+Csr}} ()
+\item 
+void \mbox{\hyperlink{classRVSSVM_a7c78d0dea8af111abb05b1b62b402772}{Handle\+Syscall}} ()
 \item 
 void \mbox{\hyperlink{classRVSSVM_a12d9fecb0a1312095fa3f9a303e6a22b}{Write\+Memory}} ()
 \item 
@@ -45,15 +45,11 @@ void \mbox{\hyperlink{classRVSSVM_aa3fb37b71e508285bc8e0f4892e1c0e8}{Write\+Memo
 \item 
 void \mbox{\hyperlink{classRVSSVM_a37d15537b41412ab8c59191bdbeeab4e}{Write\+Memory\+Double}} ()
 \item 
-void \mbox{\hyperlink{classRVSSVM_a3d6f358d802deea2f580469c7a061c11}{Write\+Memory\+Vector}} ()
-\item 
 void \mbox{\hyperlink{classRVSSVM_a20a3c3b4d7f92288a65cd45b011c9db2}{Write\+Back}} ()
 \item 
 void \mbox{\hyperlink{classRVSSVM_a630798c6e11ee4546d1dd71b3dcf4fcb}{Write\+Back\+Float}} ()
 \item 
 void \mbox{\hyperlink{classRVSSVM_a0c43c1b0a03270d9335e6e73dc0dcf5f}{Write\+Back\+Double}} ()
-\item 
-void \mbox{\hyperlink{classRVSSVM_a6be204b3e7d69284119abb16b9042323}{Write\+Back\+Vector}} ()
 \item 
 void \mbox{\hyperlink{classRVSSVM_ad3f7f30381652bed3ba3dc4f422a0021}{Write\+Back\+Csr}} ()
 \item 
@@ -73,12 +69,20 @@ void \mbox{\hyperlink{classRVSSVM_a9cb130b8c84159be82027d49ce3e4279}{Redo}} () o
 \item 
 void \mbox{\hyperlink{classRVSSVM_aa75bbde8be42c275f928681e372d6c7c}{Reset}} () override
 \item 
+void \mbox{\hyperlink{classRVSSVM_a989ddd15e98b143799703dd41b859bf7}{Request\+Stop}} ()
+\item 
+bool \mbox{\hyperlink{classRVSSVM_a5e21b4bd05329a9f78579208988de719}{Is\+Stop\+Requested}} () const
+\item 
+void \mbox{\hyperlink{classRVSSVM_a1934a8a076f44dd66abd79972886a021}{Clear\+Stop}} ()
+\item 
 void \mbox{\hyperlink{classRVSSVM_a6cb411487b468c3a5e88780a10cedf76}{Print\+Type}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classRVSSControlUnit}{RVSSControl\+Unit}} \mbox{\hyperlink{classRVSSVM_af791e8846fc4e92787827da00a5bc809}{control\+\_\+unit\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classRVSSVM_a65484df815fde89d6fddb059c192b414}{stop\+\_\+requested\+\_\+}} = false
 \item 
 std\+::stack$<$ \mbox{\hyperlink{structStepDelta}{Step\+Delta}} $>$ \mbox{\hyperlink{classRVSSVM_a731a113960710ba745841a7f97678430}{undo\+\_\+stack\+\_\+}}
 \item 
@@ -122,6 +126,12 @@ uint8\+\_\+t \mbox{\hyperlink{classRVSSVM_a7951fd1c543faff83b8aee97427c01a2}{csr
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRVSSVM_a1934a8a076f44dd66abd79972886a021}\label{classRVSSVM_a1934a8a076f44dd66abd79972886a021}} 
+\index{RVSSVM@{RVSSVM}!ClearStop@{ClearStop}}
+\index{ClearStop@{ClearStop}!RVSSVM@{RVSSVM}}
+\doxysubsubsection{\texorpdfstring{ClearStop()}{ClearStop()}}
+{\footnotesize\ttfamily void RVSSVM\+::\+Clear\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \mbox{\Hypertarget{classRVSSVM_a8b954269c60ab390ecca05966dacb47e}\label{classRVSSVM_a8b954269c60ab390ecca05966dacb47e}} 
 \index{RVSSVM@{RVSSVM}!DebugRun@{DebugRun}}
 \index{DebugRun@{DebugRun}!RVSSVM@{RVSSVM}}
@@ -162,17 +172,23 @@ Implements \mbox{\hyperlink{classVmBase_ac14764bc14c9e4dd41655c9054b1dfa4}{Vm\+B
 \doxysubsubsection{\texorpdfstring{ExecuteFloat()}{ExecuteFloat()}}
 {\footnotesize\ttfamily void RVSSVM\+::\+Execute\+Float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classRVSSVM_a909efe42d1f6365578cef3502cd04426}\label{classRVSSVM_a909efe42d1f6365578cef3502cd04426}} 
-\index{RVSSVM@{RVSSVM}!ExecuteVector@{ExecuteVector}}
-\index{ExecuteVector@{ExecuteVector}!RVSSVM@{RVSSVM}}
-\doxysubsubsection{\texorpdfstring{ExecuteVector()}{ExecuteVector()}}
-{\footnotesize\ttfamily void RVSSVM\+::\+Execute\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{classRVSSVM_a1be53e68e06b88a720e8c50c1a884595}\label{classRVSSVM_a1be53e68e06b88a720e8c50c1a884595}} 
 \index{RVSSVM@{RVSSVM}!Fetch@{Fetch}}
 \index{Fetch@{Fetch}!RVSSVM@{RVSSVM}}
 \doxysubsubsection{\texorpdfstring{Fetch()}{Fetch()}}
 {\footnotesize\ttfamily void RVSSVM\+::\+Fetch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRVSSVM_a7c78d0dea8af111abb05b1b62b402772}\label{classRVSSVM_a7c78d0dea8af111abb05b1b62b402772}} 
+\index{RVSSVM@{RVSSVM}!HandleSyscall@{HandleSyscall}}
+\index{HandleSyscall@{HandleSyscall}!RVSSVM@{RVSSVM}}
+\doxysubsubsection{\texorpdfstring{HandleSyscall()}{HandleSyscall()}}
+{\footnotesize\ttfamily void RVSSVM\+::\+Handle\+Syscall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRVSSVM_a5e21b4bd05329a9f78579208988de719}\label{classRVSSVM_a5e21b4bd05329a9f78579208988de719}} 
+\index{RVSSVM@{RVSSVM}!IsStopRequested@{IsStopRequested}}
+\index{IsStopRequested@{IsStopRequested}!RVSSVM@{RVSSVM}}
+\doxysubsubsection{\texorpdfstring{IsStopRequested()}{IsStopRequested()}}
+{\footnotesize\ttfamily bool RVSSVM\+::\+Is\+Stop\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classRVSSVM_a6cb411487b468c3a5e88780a10cedf76}\label{classRVSSVM_a6cb411487b468c3a5e88780a10cedf76}} 
 \index{RVSSVM@{RVSSVM}!PrintType@{PrintType}}
@@ -189,6 +205,12 @@ Implements \mbox{\hyperlink{classVmBase_ac14764bc14c9e4dd41655c9054b1dfa4}{Vm\+B
 
 
 Implements \mbox{\hyperlink{classVmBase_ab323c0d074c2ceb9885746d1073ed505}{Vm\+Base}}.
+
+\mbox{\Hypertarget{classRVSSVM_a989ddd15e98b143799703dd41b859bf7}\label{classRVSSVM_a989ddd15e98b143799703dd41b859bf7}} 
+\index{RVSSVM@{RVSSVM}!RequestStop@{RequestStop}}
+\index{RequestStop@{RequestStop}!RVSSVM@{RVSSVM}}
+\doxysubsubsection{\texorpdfstring{RequestStop()}{RequestStop()}}
+{\footnotesize\ttfamily void RVSSVM\+::\+Request\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classRVSSVM_aa75bbde8be42c275f928681e372d6c7c}\label{classRVSSVM_aa75bbde8be42c275f928681e372d6c7c}} 
 \index{RVSSVM@{RVSSVM}!Reset@{Reset}}
@@ -254,12 +276,6 @@ Implements \mbox{\hyperlink{classVmBase_a141e025834dd6b9d68f08db7959ed391}{Vm\+B
 \doxysubsubsection{\texorpdfstring{WriteBackFloat()}{WriteBackFloat()}}
 {\footnotesize\ttfamily void RVSSVM\+::\+Write\+Back\+Float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classRVSSVM_a6be204b3e7d69284119abb16b9042323}\label{classRVSSVM_a6be204b3e7d69284119abb16b9042323}} 
-\index{RVSSVM@{RVSSVM}!WriteBackVector@{WriteBackVector}}
-\index{WriteBackVector@{WriteBackVector}!RVSSVM@{RVSSVM}}
-\doxysubsubsection{\texorpdfstring{WriteBackVector()}{WriteBackVector()}}
-{\footnotesize\ttfamily void RVSSVM\+::\+Write\+Back\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{classRVSSVM_a12d9fecb0a1312095fa3f9a303e6a22b}\label{classRVSSVM_a12d9fecb0a1312095fa3f9a303e6a22b}} 
 \index{RVSSVM@{RVSSVM}!WriteMemory@{WriteMemory}}
 \index{WriteMemory@{WriteMemory}!RVSSVM@{RVSSVM}}
@@ -277,12 +293,6 @@ Implements \mbox{\hyperlink{classVmBase_a141e025834dd6b9d68f08db7959ed391}{Vm\+B
 \index{WriteMemoryFloat@{WriteMemoryFloat}!RVSSVM@{RVSSVM}}
 \doxysubsubsection{\texorpdfstring{WriteMemoryFloat()}{WriteMemoryFloat()}}
 {\footnotesize\ttfamily void RVSSVM\+::\+Write\+Memory\+Float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classRVSSVM_a3d6f358d802deea2f580469c7a061c11}\label{classRVSSVM_a3d6f358d802deea2f580469c7a061c11}} 
-\index{RVSSVM@{RVSSVM}!WriteMemoryVector@{WriteMemoryVector}}
-\index{WriteMemoryVector@{WriteMemoryVector}!RVSSVM@{RVSSVM}}
-\doxysubsubsection{\texorpdfstring{WriteMemoryVector()}{WriteMemoryVector()}}
-{\footnotesize\ttfamily void RVSSVM\+::\+Write\+Memory\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -359,6 +369,12 @@ Implements \mbox{\hyperlink{classVmBase_a141e025834dd6b9d68f08db7959ed391}{Vm\+B
 \doxysubsubsection{\texorpdfstring{return\_address\_}{return\_address\_}}
 {\footnotesize\ttfamily uint64\+\_\+t RVSSVM\+::return\+\_\+address\+\_\+ \{\}}
 
+\mbox{\Hypertarget{classRVSSVM_a65484df815fde89d6fddb059c192b414}\label{classRVSSVM_a65484df815fde89d6fddb059c192b414}} 
+\index{RVSSVM@{RVSSVM}!stop\_requested\_@{stop\_requested\_}}
+\index{stop\_requested\_@{stop\_requested\_}!RVSSVM@{RVSSVM}}
+\doxysubsubsection{\texorpdfstring{stop\_requested\_}{stop\_requested\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ RVSSVM\+::stop\+\_\+requested\+\_\+ = false}
+
 \mbox{\Hypertarget{classRVSSVM_a731a113960710ba745841a7f97678430}\label{classRVSSVM_a731a113960710ba745841a7f97678430}} 
 \index{RVSSVM@{RVSSVM}!undo\_stack\_@{undo\_stack\_}}
 \index{undo\_stack\_@{undo\_stack\_}!RVSSVM@{RVSSVM}}
@@ -369,5 +385,5 @@ Implements \mbox{\hyperlink{classVmBase_a141e025834dd6b9d68f08db7959ed391}{Vm\+B
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/vm/rvss/\mbox{\hyperlink{rvss__vm_8h}{rvss\+\_\+vm.\+h}}\item 
+include/vm/rvss/\mbox{\hyperlink{rvss__vm_8h}{rvss\+\_\+vm.\+h}}\item 
 src/vm/rvss/\mbox{\hyperlink{rvss__vm_8cpp}{rvss\+\_\+vm.\+cpp}}\end{DoxyCompactItemize}

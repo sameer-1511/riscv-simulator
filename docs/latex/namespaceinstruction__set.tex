@@ -77,7 +77,7 @@ enum class \mbox{\hyperlink{namespaceinstruction__set_a7c366784cebccd7fbfda77874
 \item 
 bool \mbox{\hyperlink{namespaceinstruction__set_a684c8ea1bb0cd5f2fcdb698286ce49bd}{is\+Valid\+Instruction}} (const std\+::string \&instruction)
 \item 
-bool \mbox{\hyperlink{namespaceinstruction__set_a668e9ecc710a59fcbb491271997d4100}{is\+Valid\+RType\+Instruction}} (const std\+::string \&instruction)
+bool \mbox{\hyperlink{namespaceinstruction__set_a2dbf58ce982702b5ebd65bedbad55f1a}{is\+Valid\+RType\+Instruction}} (const std\+::string \&name)
 \item 
 bool \mbox{\hyperlink{namespaceinstruction__set_ac10fca95259b7db81e9d64605dd6d7fd}{is\+Valid\+IType\+Instruction}} (const std\+::string \&instruction)
 \item 
@@ -132,9 +132,9 @@ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1I1TypeInstructionEncoding}{I1\+Type\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_ad362b1b3167d50a18c67c280b54012b3}{I1\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
-std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1I3TypeInstructionEncoding}{I3\+Type\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_a1e1482a4d9c3475f9750286a89db56ac}{I3\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
-\item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1I2TypeInstructionEncoding}{I2\+Type\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_a51290da536b0f0b8fad0e76c5d63300c}{I2\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1I3TypeInstructionEncoding}{I3\+Type\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_a1e1482a4d9c3475f9750286a89db56ac}{I3\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
 std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structinstruction__set_1_1STypeInstructionEncoding}{SType\+Instruction\+Encoding}} $>$ \mbox{\hyperlink{namespaceinstruction__set_ab50cca829f0e03ebbe8b71abc0145f8c}{S\+\_\+type\+\_\+instruction\+\_\+encoding\+\_\+map}}
 \item 
@@ -410,11 +410,11 @@ O\+\_\+\+FPR\+\_\+\+C\+\_\+\+I\+\_\+\+LP\+\_\+\+GPR\+\_\+\+RP&Opcode floating-\/
 \doxysubsubsection{\texorpdfstring{isValidPseudoInstruction()}{isValidPseudoInstruction()}}
 {\footnotesize\ttfamily bool instruction\+\_\+set\+::is\+Valid\+Pseudo\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{namespaceinstruction__set_a668e9ecc710a59fcbb491271997d4100}\label{namespaceinstruction__set_a668e9ecc710a59fcbb491271997d4100}} 
+\mbox{\Hypertarget{namespaceinstruction__set_a2dbf58ce982702b5ebd65bedbad55f1a}\label{namespaceinstruction__set_a2dbf58ce982702b5ebd65bedbad55f1a}} 
 \index{instruction\_set@{instruction\_set}!isValidRTypeInstruction@{isValidRTypeInstruction}}
 \index{isValidRTypeInstruction@{isValidRTypeInstruction}!instruction\_set@{instruction\_set}}
 \doxysubsubsection{\texorpdfstring{isValidRTypeInstruction()}{isValidRTypeInstruction()}}
-{\footnotesize\ttfamily bool instruction\+\_\+set\+::is\+Valid\+RType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instruction }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool instruction\+\_\+set\+::is\+Valid\+RType\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{namespaceinstruction__set_a402f2c32c5f3981e732c5a7bada97398}\label{namespaceinstruction__set_a402f2c32c5f3981e732c5a7bada97398}} 
 \index{instruction\_set@{instruction\_set}!isValidSTypeInstruction@{isValidSTypeInstruction}}

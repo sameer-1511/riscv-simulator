@@ -76,8 +76,12 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a16938e23c332b0d727322ffa4e5ee660"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a16938e23c332b0d727322ffa4e5ee660">vm_state_directory</a> = std::filesystem::path(&quot;.&quot;) / &quot;vm_state&quot;</td></tr>
+<tr class="separator:a16938e23c332b0d727322ffa4e5ee660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4371da31b2e38c3ed3e4bbe6f6ea756d"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a4371da31b2e38c3ed3e4bbe6f6ea756d">config_file_path</a> = (std::filesystem::path(&quot;.&quot;)/&quot;vm_state&quot;/&quot;config.ini&quot;)</td></tr>
 <tr class="separator:a4371da31b2e38c3ed3e4bbe6f6ea756d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb2e27b096375cbfbb54f0118d0c9c4"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a4fb2e27b096375cbfbb54f0118d0c9c4">disassembly_file_path</a> = (std::filesystem::path(&quot;.&quot;)/&quot;vm_state&quot;/&quot;disassembly.txt&quot;)</td></tr>
+<tr class="separator:a4fb2e27b096375cbfbb54f0118d0c9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c793cd30fee5a5830c09f5da66ad597"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a8c793cd30fee5a5830c09f5da66ad597">errors_dump_file_path</a> = (std::filesystem::path(&quot;.&quot;)/&quot;vm_state&quot;/&quot;errors_dump.json&quot;)</td></tr>
 <tr class="separator:a8c793cd30fee5a5830c09f5da66ad597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71fe4e87fbec0b990ffe7bc7e592d0d1"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a71fe4e87fbec0b990ffe7bc7e592d0d1">registers_dump_file_path</a> = (std::filesystem::path(&quot;.&quot;)/&quot;vm_state&quot;/&quot;registers_dump.json&quot;)</td></tr>
@@ -92,6 +96,10 @@ Variables</h2></td></tr>
 <tr class="separator:a23d4de6e5986a330c86d741c092a94b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa15799ed881a164e64eb167bf6e8a9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#afa15799ed881a164e64eb167bf6e8a9e">verbose_warnings</a> = false</td></tr>
 <tr class="separator:afa15799ed881a164e64eb167bf6e8a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3af4ada39791277323bd8a32c3ec6caa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#a3af4ada39791277323bd8a32c3ec6caa">vm_as_backend</a> = false</td></tr>
+<tr class="separator:a3af4ada39791277323bd8a32c3ec6caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb16734b649eb981c3f2e6cb218106be"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#aeb16734b649eb981c3f2e6cb218106be">text_section_start</a> = 0x00000000</td></tr>
+<tr class="separator:aeb16734b649eb981c3f2e6cb218106be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae569afb99e3b6782cc92c0545417ffab"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceglobals.html#ae569afb99e3b6782cc92c0545417ffab">data_section_start</a> = 0x10000000</td></tr>
 <tr class="separator:ae569afb99e3b6782cc92c0545417ffab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -180,6 +188,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a4fb2e27b096375cbfbb54f0118d0c9c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb2e27b096375cbfbb54f0118d0c9c4">&#9670;&nbsp;</a></span>disassembly_file_path</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path globals::disassembly_file_path = (std::filesystem::path(&quot;.&quot;)/&quot;vm_state&quot;/&quot;disassembly.txt&quot;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8c793cd30fee5a5830c09f5da66ad597"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c793cd30fee5a5830c09f5da66ad597">&#9670;&nbsp;</a></span>errors_dump_file_path</h2>
 
@@ -246,6 +276,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aeb16734b649eb981c3f2e6cb218106be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb16734b649eb981c3f2e6cb218106be">&#9670;&nbsp;</a></span>text_section_start</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int globals::text_section_start = 0x00000000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a23d4de6e5986a330c86d741c092a94b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23d4de6e5986a330c86d741c092a94b8">&#9670;&nbsp;</a></span>verbose_errors_print</h2>
 
@@ -279,6 +331,50 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool globals::verbose_warnings = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3af4ada39791277323bd8a32c3ec6caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af4ada39791277323bd8a32c3ec6caa">&#9670;&nbsp;</a></span>vm_as_backend</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool globals::vm_as_backend = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16938e23c332b0d727322ffa4e5ee660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16938e23c332b0d727322ffa4e5ee660">&#9670;&nbsp;</a></span>vm_state_directory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path globals::vm_state_directory = std::filesystem::path(&quot;.&quot;) / &quot;vm_state&quot;</td>
         </tr>
       </table>
   </td>

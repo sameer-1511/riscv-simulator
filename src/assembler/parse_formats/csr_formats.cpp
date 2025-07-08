@@ -28,6 +28,7 @@ bool Parser::parse_O_GPR_C_CSR_C_GPR() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     reg = reg_alias_to_name.at(peekToken(1).value);
@@ -62,6 +63,7 @@ bool Parser::parse_O_GPR_C_CSR_C_I() {
     ICUnit block;
     block.setOpcode(currentToken().value);
     block.setLineNumber(currentToken().line_number);
+    block.setInstructionIndex(instruction_index_);
     std::string reg;
 
     reg = reg_alias_to_name.at(peekToken(1).value);

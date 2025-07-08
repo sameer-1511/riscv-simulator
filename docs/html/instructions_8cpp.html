@@ -67,21 +67,29 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">instructions.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="instructions_8h_source.html">instructions.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="instructions_8h_source.html">common/instructions.h</a>&quot;</code><br />
+<code>#include &lt;unordered_set&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for instructions.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="instructions_8cpp__incl.png" border="0" usemap="#asrc_2common_2instructions_8cpp" alt=""/></div>
 <map name="asrc_2common_2instructions_8cpp" id="asrc_2common_2instructions_8cpp">
-<area shape="rect" title=" " alt="" coords="5,5,215,32"/>
-<area shape="rect" href="instructions_8h.html" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="55,80,165,107"/>
-<area shape="rect" href="pch_8h.html" title=" " alt="" coords="75,155,145,181"/>
+<area shape="rect" title=" " alt="" coords="211,5,420,32"/>
+<area shape="rect" href="instructions_8h.html" title="Contains the declarations for the InstructionEncoding struct and related functions." alt="" coords="107,80,278,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,68,181"/>
+<area shape="rect" title=" " alt="" coords="266,155,325,181"/>
+<area shape="rect" title=" " alt="" coords="349,155,473,181"/>
+<area shape="rect" title=" " alt="" coords="403,80,518,107"/>
+<area shape="rect" title=" " alt="" coords="183,155,242,181"/>
+<area shape="rect" title=" " alt="" coords="93,155,159,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -94,8 +102,8 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a684c8ea1bb0cd5f2fcdb698286ce49bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a684c8ea1bb0cd5f2fcdb698286ce49bd">instruction_set::isValidInstruction</a> (const std::string &amp;instruction)</td></tr>
 <tr class="separator:a684c8ea1bb0cd5f2fcdb698286ce49bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a668e9ecc710a59fcbb491271997d4100"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a668e9ecc710a59fcbb491271997d4100">instruction_set::isValidRTypeInstruction</a> (const std::string &amp;instruction)</td></tr>
-<tr class="separator:a668e9ecc710a59fcbb491271997d4100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dbf58ce982702b5ebd65bedbad55f1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a2dbf58ce982702b5ebd65bedbad55f1a">instruction_set::isValidRTypeInstruction</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:a2dbf58ce982702b5ebd65bedbad55f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac10fca95259b7db81e9d64605dd6d7fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#ac10fca95259b7db81e9d64605dd6d7fd">instruction_set::isValidITypeInstruction</a> (const std::string &amp;instruction)</td></tr>
 <tr class="separator:ac10fca95259b7db81e9d64605dd6d7fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2686c6cb47421100c0845826a00d6686"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a2686c6cb47421100c0845826a00d6686">instruction_set::isValidI1TypeInstruction</a> (const std::string &amp;instruction)</td></tr>
@@ -142,46 +150,6 @@ Functions</h2></td></tr>
 <tr class="separator:a5303fb0dd8dd34c268231c47f85a02fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a605befee774c8275dccbdf096ac5b66f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a605befee774c8275dccbdf096ac5b66f">instruction_set::getExpectedSyntaxes</a> (const std::string &amp;opcode)</td></tr>
 <tr class="separator:a605befee774c8275dccbdf096ac5b66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a859191af4ff841c4c7486a6a19c7fa7a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, RTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a859191af4ff841c4c7486a6a19c7fa7a">instruction_set::R_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a859191af4ff841c4c7486a6a19c7fa7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad362b1b3167d50a18c67c280b54012b3"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, I1TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#ad362b1b3167d50a18c67c280b54012b3">instruction_set::I1_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:ad362b1b3167d50a18c67c280b54012b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e1482a4d9c3475f9750286a89db56ac"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, I3TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a1e1482a4d9c3475f9750286a89db56ac">instruction_set::I3_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a1e1482a4d9c3475f9750286a89db56ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51290da536b0f0b8fad0e76c5d63300c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, I2TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a51290da536b0f0b8fad0e76c5d63300c">instruction_set::I2_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a51290da536b0f0b8fad0e76c5d63300c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab50cca829f0e03ebbe8b71abc0145f8c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, STypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#ab50cca829f0e03ebbe8b71abc0145f8c">instruction_set::S_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:ab50cca829f0e03ebbe8b71abc0145f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e35acfc82b9e41676104e2747733de6"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, BTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a3e35acfc82b9e41676104e2747733de6">instruction_set::B_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a3e35acfc82b9e41676104e2747733de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dc1d0372413156d015ff8f7e85a4efe"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, UTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a8dc1d0372413156d015ff8f7e85a4efe">instruction_set::U_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a8dc1d0372413156d015ff8f7e85a4efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374dcbb396c16fc22f77466bff4f7861"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, JTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a374dcbb396c16fc22f77466bff4f7861">instruction_set::J_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a374dcbb396c16fc22f77466bff4f7861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1beeefc4c920a816ef63d2cc2394b97"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, CSR_RTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#ae1beeefc4c920a816ef63d2cc2394b97">instruction_set::CSR_R_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:ae1beeefc4c920a816ef63d2cc2394b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4073c9c96c0ad7b56852d98859e1baa3"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, CSR_ITypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a4073c9c96c0ad7b56852d98859e1baa3">instruction_set::CSR_I_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a4073c9c96c0ad7b56852d98859e1baa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf78416d8c2c005a6fd3c9caead1ff2"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDRTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a5cf78416d8c2c005a6fd3c9caead1ff2">instruction_set::F_D_R_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a5cf78416d8c2c005a6fd3c9caead1ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bc401050f099acc0422f451287d5da1"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDR1TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a4bc401050f099acc0422f451287d5da1">instruction_set::F_D_R1_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a4bc401050f099acc0422f451287d5da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff8e79787a2060e8e8b53c20348cb66"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDR2TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a4ff8e79787a2060e8e8b53c20348cb66">instruction_set::F_D_R2_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a4ff8e79787a2060e8e8b53c20348cb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add9dd2648cc982b1271c28b41c99e18b"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDR3TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#add9dd2648cc982b1271c28b41c99e18b">instruction_set::F_D_R3_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:add9dd2648cc982b1271c28b41c99e18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a430c1ddcd83a4d8f4f2d6686e4be53d5"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDR4TypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a430c1ddcd83a4d8f4f2d6686e4be53d5">instruction_set::F_D_R4_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a430c1ddcd83a4d8f4f2d6686e4be53d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5c5f93de8a03f2601cc9f734101d966"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDITypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#af5c5f93de8a03f2601cc9f734101d966">instruction_set::F_D_I_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:af5c5f93de8a03f2601cc9f734101d966"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d37d30556dd68b58a56ac0e134aa17c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, FDSTypeInstructionEncoding &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a5d37d30556dd68b58a56ac0e134aa17c">instruction_set::F_D_S_type_instruction_encoding_map</a></td></tr>
-<tr class="separator:a5d37d30556dd68b58a56ac0e134aa17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e20a1ab57999f19806854d6ccceeedb"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::vector&lt; SyntaxType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceinstruction__set.html#a5e20a1ab57999f19806854d6ccceeedb">instruction_set::instruction_syntax_map</a></td></tr>
-<tr class="memdesc:a5e20a1ab57999f19806854d6ccceeedb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A map that associates instruction names with their expected syntax.  <a href="namespaceinstruction__set.html#a5e20a1ab57999f19806854d6ccceeedb">More...</a><br /></td></tr>
-<tr class="separator:a5e20a1ab57999f19806854d6ccceeedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

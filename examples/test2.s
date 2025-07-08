@@ -12,7 +12,7 @@ li a7, 63               # syscall number for read
 li a0, 0                # file descriptor: stdin
 la a1, buffer           # Load address of buffer 
 addi a2, x0,15          # read 15 bytes
-ecall         
+ecall
 
 addi a7, x0, 64         # syscall number for write
 addi a0, x0, 1          # file descriptor: stdout
@@ -36,7 +36,7 @@ ecall
 jal ra, print_newline
 
 li a7, 1                # syscall number for print integer
-li a0, 42               # Load integer 42 into a0        
+li a0, 42
 ecall
 
 
@@ -46,7 +46,7 @@ jal x0, exit
 print_newline:
     li a7, 64           # syscall number for write
     li a0, 1            # file descriptor: stdout
-    la a1, newline 
+    la a1, newline
     li a0, 1            # write 1 byte
     ecall
     ret

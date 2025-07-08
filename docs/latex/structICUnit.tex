@@ -16,6 +16,8 @@ Represents a unit of intermediate code used for generating machine code.
 \item 
 void \mbox{\hyperlink{structICUnit_a422db7dc5ec05859dff23f857db9032c}{set\+Line\+Number}} (unsigned int value)
 \item 
+void \mbox{\hyperlink{structICUnit_a6636fb97fb7cabdd8fb198bca5ba1c25}{set\+Instruction\+Index}} (unsigned int value)
+\item 
 void \mbox{\hyperlink{structICUnit_ad0edc47ffa9a7197a588ec02f01bf7c0}{set\+Opcode}} (const std\+::string \&value)
 \item 
 void \mbox{\hyperlink{structICUnit_a566ba9cecb196f02a2ca1b03236f3c13}{set\+Rd}} (const std\+::string \&value)
@@ -35,6 +37,8 @@ void \mbox{\hyperlink{structICUnit_a91d304043cc6b35beba02b90704101dc}{set\+Label
 void \mbox{\hyperlink{structICUnit_a964fe26dccc9c4088774a66a2de5ec05}{set\+Rm}} (uint8\+\_\+t value)
 \item 
 unsigned int \mbox{\hyperlink{structICUnit_aa90e09cadd85f9e91d0f365b9d991a49}{get\+Line\+Number}} () const
+\item 
+unsigned int \mbox{\hyperlink{structICUnit_a83e2b707b35e48f75f123b32e6cb15fb}{get\+Instruction\+Index}} () const
 \item 
 std\+::string \mbox{\hyperlink{structICUnit_adb5ed326c13be41d0ed272878ee7f261}{get\+Opcode}} () const
 \item 
@@ -59,10 +63,12 @@ uint8\+\_\+t \mbox{\hyperlink{structICUnit_ab07219f827335b338905e555b5a05263}{ge
 \item 
 unsigned int \mbox{\hyperlink{structICUnit_a6d0abe84de5612ca74dc7ec11352a190}{line\+\_\+number}}
 \begin{DoxyCompactList}\small\item\em Line number in the source code corresponding to this block. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structICUnit_a081ce1e12c3d898aae2c2e42c75a8254}{instruction\+\_\+index}}
+\begin{DoxyCompactList}\small\item\em Index of the instruction in the intermediate code. \end{DoxyCompactList}\item 
 std\+::array$<$ char, 21 $>$ \mbox{\hyperlink{structICUnit_a713091fe83a24ddea9df6b0a8b0fdbda}{opcode}}
 \begin{DoxyCompactList}\small\item\em Opcode string (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
 std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_aa9aa05995849c6ac8cbe1d127d1f922e}{rd}}
-\begin{DoxyCompactList}\small\item\em Destination register name (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destination register name (up to 20 characters, null-\/terminated). Eg\+: \char`\"{}x1\char`\"{}, \char`\"{}f4\char`\"{}, etc. \end{DoxyCompactList}\item 
 std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_a5cc64dcce86bb9c70403503ddd1e6978}{rs1}}
 \begin{DoxyCompactList}\small\item\em Source register 1 name (up to 20 characters, null-\/terminated). \end{DoxyCompactList}\item 
 std\+::array$<$ char, 6 $>$ \mbox{\hyperlink{structICUnit_a65f2bf2a14c45bb210439ed02862232c}{rs2}}
@@ -110,6 +116,12 @@ This struct stores the details of an intermediate code block, including the line
 \index{getImm@{getImm}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{getImm()}{getImm()}}
 {\footnotesize\ttfamily std\+::string ICUnit\+::get\+Imm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structICUnit_a83e2b707b35e48f75f123b32e6cb15fb}\label{structICUnit_a83e2b707b35e48f75f123b32e6cb15fb}} 
+\index{ICUnit@{ICUnit}!getInstructionIndex@{getInstructionIndex}}
+\index{getInstructionIndex@{getInstructionIndex}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{getInstructionIndex()}{getInstructionIndex()}}
+{\footnotesize\ttfamily unsigned int ICUnit\+::get\+Instruction\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{structICUnit_a48541c71a4005599181fa9ec022551f4}\label{structICUnit_a48541c71a4005599181fa9ec022551f4}} 
 \index{ICUnit@{ICUnit}!getLabel@{getLabel}}
@@ -170,6 +182,12 @@ This struct stores the details of an intermediate code block, including the line
 \index{setImm@{setImm}!ICUnit@{ICUnit}}
 \doxysubsubsection{\texorpdfstring{setImm()}{setImm()}}
 {\footnotesize\ttfamily void ICUnit\+::set\+Imm (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structICUnit_a6636fb97fb7cabdd8fb198bca5ba1c25}\label{structICUnit_a6636fb97fb7cabdd8fb198bca5ba1c25}} 
+\index{ICUnit@{ICUnit}!setInstructionIndex@{setInstructionIndex}}
+\index{setInstructionIndex@{setInstructionIndex}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{setInstructionIndex()}{setInstructionIndex()}}
+{\footnotesize\ttfamily void ICUnit\+::set\+Instruction\+Index (\begin{DoxyParamCaption}\item[{unsigned int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{structICUnit_a91d304043cc6b35beba02b90704101dc}\label{structICUnit_a91d304043cc6b35beba02b90704101dc}} 
 \index{ICUnit@{ICUnit}!setLabel@{setLabel}}
@@ -251,6 +269,16 @@ Control and Status Register (CSR) value.
 
 Immediate value (up to 32 characters, null-\/terminated). 
 
+\mbox{\Hypertarget{structICUnit_a081ce1e12c3d898aae2c2e42c75a8254}\label{structICUnit_a081ce1e12c3d898aae2c2e42c75a8254}} 
+\index{ICUnit@{ICUnit}!instruction\_index@{instruction\_index}}
+\index{instruction\_index@{instruction\_index}!ICUnit@{ICUnit}}
+\doxysubsubsection{\texorpdfstring{instruction\_index}{instruction\_index}}
+{\footnotesize\ttfamily unsigned int ICUnit\+::instruction\+\_\+index}
+
+
+
+Index of the instruction in the intermediate code. 
+
 \mbox{\Hypertarget{structICUnit_a921f316aff42a88dd124f88c1c9b0c4d}\label{structICUnit_a921f316aff42a88dd124f88c1c9b0c4d}} 
 \index{ICUnit@{ICUnit}!label@{label}}
 \index{label@{label}!ICUnit@{ICUnit}}
@@ -289,7 +317,7 @@ Opcode string (up to 20 characters, null-\/terminated).
 
 
 
-Destination register name (up to 20 characters, null-\/terminated). 
+Destination register name (up to 20 characters, null-\/terminated). Eg\+: \char`\"{}x1\char`\"{}, \char`\"{}f4\char`\"{}, etc. 
 
 \mbox{\Hypertarget{structICUnit_a1862ec48ba599365d6f38c5e0f69f84c}\label{structICUnit_a1862ec48ba599365d6f38c5e0f69f84c}} 
 \index{ICUnit@{ICUnit}!rm@{rm}}
@@ -335,4 +363,4 @@ Immediate value (up to 32 characters, null-\/terminated).
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/assembler/\mbox{\hyperlink{code__generator_8h}{code\+\_\+generator.\+h}}\end{DoxyCompactItemize}
+include/assembler/\mbox{\hyperlink{code__generator_8h}{code\+\_\+generator.\+h}}\end{DoxyCompactItemize}

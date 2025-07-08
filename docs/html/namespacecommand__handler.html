@@ -79,22 +79,27 @@ Classes</h2></td></tr>
 Enumerations</h2></td></tr>
 <tr class="memitem:a49f72bb84305031f68e77b48be812681"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681">CommandType</a> { <br />
 &#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681accc0377a8afbf50e7094f5c23a8af223">INVALID</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681acf327e3d6754435f38fb1b9f696f2ea3">MODIFY_CONFIG</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a615d2885ef7576cedd9aafbb2578f028">LOAD</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a855520d2a5b0b1a64b939e7e30889e2a">RUN</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15">DEBUG</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7">STEP</a>
+&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a615a46af313786fc4e349f34118be111">STOP</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a43f1fb13a498a620fc2e19b6fa55ab51">DEBUG_RUN</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7">STEP</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1">UNDO</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f">REDO</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1">RESET</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92">DUMP_MEMORY</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817">PRINT_MEMORY</a>
+&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f">REDO</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1">RESET</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681ab0fe93313e04f4e2c261e0ff20dfdbcb">MODIFY_REGISTER</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92">DUMP_MEMORY</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817">PRINT_MEMORY</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69">GET_MEMORY_POINT</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5">DUMP_CACHE</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db">ADD_BREAKPOINT</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db">ADD_BREAKPOINT</a>
-, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15">REMOVE_BREAKPOINT</a>
+&#160;&#160;<a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15">REMOVE_BREAKPOINT</a>
+, <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681a3cbd204eb9b0446f83da767225380a79">VM_STDIN</a>
 , <a class="el" href="namespacecommand__handler.html#a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927">EXIT</a>
 <br />
  }</td></tr>
@@ -118,8 +123,8 @@ Functions</h2></td></tr>
 <tr class="separator:a32eea363a2d5c5e4b4b6c71626058fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File Name: <a class="el" href="command__handler_8cpp.html">command_handler.cpp</a> Author: Vishank Singh Github: <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a></p>
-<p>File Name: <a class="el" href="command__handler_8h.html">command_handler.h</a> Author: Vishank Singh Github: <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </p>
+<div class="textblock"><p>File Name: <a class="el" href="command__handler_8h.html">command_handler.h</a> Author: Vishank Singh Github: <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a></p>
+<p>File Name: <a class="el" href="command__handler_8cpp.html">command_handler.cpp</a> Author: Vishank Singh Github: <a href="https://github.com/VishankSingh">https://github.com/VishankSingh</a> </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a44c251e1711cea6749a00f36fcb08cf4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44c251e1711cea6749a00f36fcb08cf4">&#9670;&nbsp;</a></span>CommandArgumentType</h2>
@@ -171,19 +176,23 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681accc0377a8afbf50e7094f5c23a8af223"></a>INVALID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681acf327e3d6754435f38fb1b9f696f2ea3"></a>MODIFY_CONFIG&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a615d2885ef7576cedd9aafbb2578f028"></a>LOAD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a855520d2a5b0b1a64b939e7e30889e2a"></a>RUN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681adc30ec20708ef7b0f641ef78b7880a15"></a>DEBUG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a615a46af313786fc4e349f34118be111"></a>STOP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a43f1fb13a498a620fc2e19b6fa55ab51"></a>DEBUG_RUN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a522f694f92e679d874a1cc2b2616c3d7"></a>STEP&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a269940bcad6fddf5c68d3e67f767c3d1"></a>UNDO&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681ac07bf946a7da4553f9f2776656e0d60f"></a>REDO&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681ab5859d8721cfdc0312b2838b9c985bc1"></a>RESET&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681ab0fe93313e04f4e2c261e0ff20dfdbcb"></a>MODIFY_REGISTER&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681acecaa410a5dbf8993459edf9f5227a92"></a>DUMP_MEMORY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681aac0e0a212458cb501d6a64b97e1ca817"></a>PRINT_MEMORY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a8c3c1a5f272ba8b70b2de2d21d98ef69"></a>GET_MEMORY_POINT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681af4981f876938b4f77a6a883cdc0631d5"></a>DUMP_CACHE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a495ead75498c058e80ac36a65b2399db"></a>ADD_BREAKPOINT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a1af1483e77cfe2abd58e8eb639768b15"></a>REMOVE_BREAKPOINT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681a3cbd204eb9b0446f83da767225380a79"></a>VM_STDIN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a49f72bb84305031f68e77b48be812681aa42b2fb0e720a080e79a92f4ca97d927"></a>EXIT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 

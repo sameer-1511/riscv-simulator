@@ -82,6 +82,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4d709ebd2a3d1a0611f26b2ae8f7aae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a422db7dc5ec05859dff23f857db9032c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a422db7dc5ec05859dff23f857db9032c">setLineNumber</a> (unsigned int value)</td></tr>
 <tr class="separator:a422db7dc5ec05859dff23f857db9032c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6636fb97fb7cabdd8fb198bca5ba1c25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a6636fb97fb7cabdd8fb198bca5ba1c25">setInstructionIndex</a> (unsigned int value)</td></tr>
+<tr class="separator:a6636fb97fb7cabdd8fb198bca5ba1c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0edc47ffa9a7197a588ec02f01bf7c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#ad0edc47ffa9a7197a588ec02f01bf7c0">setOpcode</a> (const std::string &amp;value)</td></tr>
 <tr class="separator:ad0edc47ffa9a7197a588ec02f01bf7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566ba9cecb196f02a2ca1b03236f3c13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a566ba9cecb196f02a2ca1b03236f3c13">setRd</a> (const std::string &amp;value)</td></tr>
@@ -102,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a964fe26dccc9c4088774a66a2de5ec05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa90e09cadd85f9e91d0f365b9d991a49"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#aa90e09cadd85f9e91d0f365b9d991a49">getLineNumber</a> () const</td></tr>
 <tr class="separator:aa90e09cadd85f9e91d0f365b9d991a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e2b707b35e48f75f123b32e6cb15fb"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a83e2b707b35e48f75f123b32e6cb15fb">getInstructionIndex</a> () const</td></tr>
+<tr class="separator:a83e2b707b35e48f75f123b32e6cb15fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb5ed326c13be41d0ed272878ee7f261"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#adb5ed326c13be41d0ed272878ee7f261">getOpcode</a> () const</td></tr>
 <tr class="separator:adb5ed326c13be41d0ed272878ee7f261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21974b7d3094b23d555327a06106320f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a21974b7d3094b23d555327a06106320f">getRd</a> () const</td></tr>
@@ -126,11 +130,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6d0abe84de5612ca74dc7ec11352a190"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a6d0abe84de5612ca74dc7ec11352a190">line_number</a></td></tr>
 <tr class="memdesc:a6d0abe84de5612ca74dc7ec11352a190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Line number in the source code corresponding to this block.  <a href="structICUnit.html#a6d0abe84de5612ca74dc7ec11352a190">More...</a><br /></td></tr>
 <tr class="separator:a6d0abe84de5612ca74dc7ec11352a190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a081ce1e12c3d898aae2c2e42c75a8254"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a081ce1e12c3d898aae2c2e42c75a8254">instruction_index</a></td></tr>
+<tr class="memdesc:a081ce1e12c3d898aae2c2e42c75a8254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the instruction in the intermediate code.  <a href="structICUnit.html#a081ce1e12c3d898aae2c2e42c75a8254">More...</a><br /></td></tr>
+<tr class="separator:a081ce1e12c3d898aae2c2e42c75a8254"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a713091fe83a24ddea9df6b0a8b0fdbda"><td class="memItemLeft" align="right" valign="top">std::array&lt; char, 21 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a713091fe83a24ddea9df6b0a8b0fdbda">opcode</a></td></tr>
 <tr class="memdesc:a713091fe83a24ddea9df6b0a8b0fdbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opcode string (up to 20 characters, null-terminated).  <a href="structICUnit.html#a713091fe83a24ddea9df6b0a8b0fdbda">More...</a><br /></td></tr>
 <tr class="separator:a713091fe83a24ddea9df6b0a8b0fdbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9aa05995849c6ac8cbe1d127d1f922e"><td class="memItemLeft" align="right" valign="top">std::array&lt; char, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#aa9aa05995849c6ac8cbe1d127d1f922e">rd</a></td></tr>
-<tr class="memdesc:aa9aa05995849c6ac8cbe1d127d1f922e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destination register name (up to 20 characters, null-terminated).  <a href="structICUnit.html#aa9aa05995849c6ac8cbe1d127d1f922e">More...</a><br /></td></tr>
+<tr class="memdesc:aa9aa05995849c6ac8cbe1d127d1f922e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destination register name (up to 20 characters, null-terminated). Eg: "x1", "f4", etc.  <a href="structICUnit.html#aa9aa05995849c6ac8cbe1d127d1f922e">More...</a><br /></td></tr>
 <tr class="separator:aa9aa05995849c6ac8cbe1d127d1f922e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cc64dcce86bb9c70403503ddd1e6978"><td class="memItemLeft" align="right" valign="top">std::array&lt; char, 6 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structICUnit.html#a5cc64dcce86bb9c70403503ddd1e6978">rs1</a></td></tr>
 <tr class="memdesc:a5cc64dcce86bb9c70403503ddd1e6978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source register 1 name (up to 20 characters, null-terminated).  <a href="structICUnit.html#a5cc64dcce86bb9c70403503ddd1e6978">More...</a><br /></td></tr>
@@ -225,6 +232,31 @@ Friends</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::string ICUnit::getImm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83e2b707b35e48f75f123b32e6cb15fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83e2b707b35e48f75f123b32e6cb15fb">&#9670;&nbsp;</a></span>getInstructionIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ICUnit::getInstructionIndex </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -478,6 +510,32 @@ Friends</h2></td></tr>
           <td class="memname">void ICUnit::setImm </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6636fb97fb7cabdd8fb198bca5ba1c25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6636fb97fb7cabdd8fb198bca5ba1c25">&#9670;&nbsp;</a></span>setInstructionIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ICUnit::setInstructionIndex </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -769,6 +827,22 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a081ce1e12c3d898aae2c2e42c75a8254"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a081ce1e12c3d898aae2c2e42c75a8254">&#9670;&nbsp;</a></span>instruction_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ICUnit::instruction_index</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Index of the instruction in the intermediate code. </p>
+
+</div>
+</div>
 <a id="a921f316aff42a88dd124f88c1c9b0c4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a921f316aff42a88dd124f88c1c9b0c4d">&#9670;&nbsp;</a></span>label</h2>
 
@@ -829,7 +903,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destination register name (up to 20 characters, null-terminated). </p>
+<p>Destination register name (up to 20 characters, null-terminated). Eg: "x1", "f4", etc. </p>
 
 </div>
 </div>
@@ -898,7 +972,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/assembler/<a class="el" href="code__generator_8h_source.html">code_generator.h</a></li>
+<li>include/assembler/<a class="el" href="code__generator_8h_source.html">code_generator.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

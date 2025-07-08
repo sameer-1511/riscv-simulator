@@ -5,10 +5,14 @@
 Contains utility functions for the VM.  
 
 
-{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}vm/registers.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
 Include dependency graph for utils.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -33,6 +37,8 @@ void \mbox{\hyperlink{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}{Dump\+Errors
 void \mbox{\hyperlink{utils_8cpp_a4d37503b8b0f0ed512522c5ba71682ca}{Dump\+No\+Errors}} (const std\+::filesystem\+::path \&filename)
 \item 
 void \mbox{\hyperlink{utils_8cpp_a4645b448c63ee103e8ae566d83b45470}{Dump\+Registers}} (const std\+::filesystem\+::path \&filename, \mbox{\hyperlink{classRegisterFile}{Register\+File}} \&register\+\_\+file)
+\item 
+void \mbox{\hyperlink{utils_8cpp_a05b17231f2df6613889cdeccfdffa6c0}{Dump\+Disasssembly}} (const std\+::filesystem\+::path \&filename, \mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \&program)
 \item 
 void \mbox{\hyperlink{utils_8cpp_a105ade81d4e257f3764e557f57773066}{Setup\+Config\+File}} ()
 \end{DoxyCompactItemize}
@@ -70,6 +76,12 @@ The number of lines in the file.
 {\em std\+::ios\+\_\+base\+::failure} & If the file cannot be opened. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{utils_8cpp_a05b17231f2df6613889cdeccfdffa6c0}\label{utils_8cpp_a05b17231f2df6613889cdeccfdffa6c0}} 
+\index{utils.cpp@{utils.cpp}!DumpDisasssembly@{DumpDisasssembly}}
+\index{DumpDisasssembly@{DumpDisasssembly}!utils.cpp@{utils.cpp}}
+\doxysubsubsection{\texorpdfstring{DumpDisasssembly()}{DumpDisasssembly()}}
+{\footnotesize\ttfamily void Dump\+Disasssembly (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{filename,  }\item[{\mbox{\hyperlink{structAssembledProgram}{Assembled\+Program}} \&}]{program }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}\label{utils_8cpp_ae36d66b20fc71d0bfdee0a0fbdd9d8de}} 
 \index{utils.cpp@{utils.cpp}!DumpErrors@{DumpErrors}}
 \index{DumpErrors@{DumpErrors}!utils.cpp@{utils.cpp}}

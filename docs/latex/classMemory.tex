@@ -50,7 +50,7 @@ void \mbox{\hyperlink{classMemory_a189725aa5c6c3f1da845f83d471823d9}{Print\+Memo
 \item 
 void \mbox{\hyperlink{classMemory_af0469898647f13dcefaf754864d57d5c}{Dump\+Memory}} (std\+::vector$<$ std\+::string $>$ args)
 \item 
-std\+::string \mbox{\hyperlink{classMemory_aa5e870120726d13af12660a28b5b5232}{Get\+Memory\+Point}} (uint64\+\_\+t address)
+void \mbox{\hyperlink{classMemory_a9e97d95abba646be547575aba6040b3d}{Get\+Memory\+Point}} (std\+::string address)
 \item 
 void \mbox{\hyperlink{classMemory_a3ecb28f33d2f59ed261390f67552af99}{print\+Memory\+Usage}} () const
 \end{DoxyCompactItemize}
@@ -89,11 +89,11 @@ Destroys the \mbox{\hyperlink{classMemory}{Memory}} object.
 \doxysubsubsection{\texorpdfstring{DumpMemory()}{DumpMemory()}}
 {\footnotesize\ttfamily void Memory\+::\+Dump\+Memory (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{args }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classMemory_aa5e870120726d13af12660a28b5b5232}\label{classMemory_aa5e870120726d13af12660a28b5b5232}} 
+\mbox{\Hypertarget{classMemory_a9e97d95abba646be547575aba6040b3d}\label{classMemory_a9e97d95abba646be547575aba6040b3d}} 
 \index{Memory@{Memory}!GetMemoryPoint@{GetMemoryPoint}}
 \index{GetMemoryPoint@{GetMemoryPoint}!Memory@{Memory}}
 \doxysubsubsection{\texorpdfstring{GetMemoryPoint()}{GetMemoryPoint()}}
-{\footnotesize\ttfamily std\+::string Memory\+::\+Get\+Memory\+Point (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{address }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Memory\+::\+Get\+Memory\+Point (\begin{DoxyParamCaption}\item[{std\+::string}]{address }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classMemory_a189725aa5c6c3f1da845f83d471823d9}\label{classMemory_a189725aa5c6c3f1da845f83d471823d9}} 
 \index{Memory@{Memory}!PrintMemory@{PrintMemory}}
@@ -316,5 +316,5 @@ Writes a 32-\/bit word to the given memory address.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/vm/\mbox{\hyperlink{main__memory_8h}{main\+\_\+memory.\+h}}\item 
+include/vm/\mbox{\hyperlink{main__memory_8h}{main\+\_\+memory.\+h}}\item 
 src/vm/\mbox{\hyperlink{main__memory_8cpp}{main\+\_\+memory.\+cpp}}\end{DoxyCompactItemize}

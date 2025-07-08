@@ -1,36 +1,43 @@
-\hypertarget{config_8h}{}\doxysection{src/config.h File Reference}
-\label{config_8h}\index{src/config.h@{src/config.h}}
+\hypertarget{config_8h}{}\doxysection{include/config.h File Reference}
+\label{config_8h}\index{include/config.h@{include/config.h}}
 
 
 Contains configuration options for the assembler.  
 
 
-{\ttfamily \#include \char`\"{}pch.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}globals.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
 Include dependency graph for config.\+h\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=177pt]{config_8h__incl}
+\includegraphics[width=350pt]{config_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{config_8h__dep__incl}
 \end{center}
 \end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvm__config_1_1VmConfig}{vm\+\_\+config\+::\+Vm\+Config}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespacevm__config}{vm\+\_\+config}}
-\begin{DoxyCompactList}\small\item\em Namespace for VM configuration management. \end{DoxyCompactList}\item 
- \mbox{\hyperlink{namespaceini}{ini}}
-\begin{DoxyCompactList}\small\item\em Namespace for handling ini file operations. \end{DoxyCompactList}\item 
- \mbox{\hyperlink{namespacevm__config_1_1ini}{vm\+\_\+config\+::ini}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Namespace for VM configuration management. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,16 +45,10 @@ enum class \mbox{\hyperlink{namespacevm__config_aa4eeb50c28c404f656938f58b44562b
 , \mbox{\hyperlink{namespacevm__config_aa4eeb50c28c404f656938f58b44562b5ad300fd0998c340710fb890f72de460b1}{vm\+\_\+config\+::\+MULTI\+\_\+\+STAGE}}
  \}
 \end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacevm__config_1_1ini_a58e69fe3a5a770cfd49d3c635e75ddd5}{vm\+\_\+config\+::ini\+::\+Trim}} (std\+::string \&str)
-\begin{DoxyCompactList}\small\item\em Trims leading and trailing whitespace from a string. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{namespacevm__config_1_1ini_a178e6d2759e8c73c2c2295cb5dba1339}{vm\+\_\+config\+::ini\+::\+Get}} (const std\+::string \&section, const std\+::string \&key)
-\begin{DoxyCompactList}\small\item\em Retrieves the value associated with a given section and key. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacevm__config_1_1ini_a1b4b63f6f7ac80efd5503d276c30f5ff}{vm\+\_\+config\+::ini\+::\+Set}} (const std\+::string \&section, const std\+::string \&key, const std\+::string \&value)
-\begin{DoxyCompactList}\small\item\em Sets the value for a given section and key. \end{DoxyCompactList}\item 
-Vm\+Types \mbox{\hyperlink{namespacevm__config_a66c9a182111f5aeccfa304e71a03d817}{vm\+\_\+config\+::\+Get\+Vm\+Type}} ()
+Vm\+Config \mbox{\hyperlink{namespacevm__config_a69afb29f3814a3526848dae1dfbd07c4}{vm\+\_\+config\+::config}}
 \end{DoxyCompactItemize}
 
 

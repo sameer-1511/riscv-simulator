@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['risc_2dv_20simulator_1363',['RISC-V simulator',['../md_README.html',1,'']]]
+  ['changelog_1492',['CHANGELOG',['../md_CHANGELOG.html',1,'']]],
+  ['commands_1493',['Commands',['../md_COMMANDS.html',1,'']]]
 ];

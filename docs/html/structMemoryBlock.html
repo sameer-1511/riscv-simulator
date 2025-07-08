@@ -86,7 +86,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMemoryBlock.html#a0cd70c89ef3b4b7ebfd25aa48b2db04f">data</a></td></tr>
 <tr class="memdesc:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector representing the memory block data.  <a href="structMemoryBlock.html#a0cd70c89ef3b4b7ebfd25aa48b2db04f">More...</a><br /></td></tr>
 <tr class="separator:a0cd70c89ef3b4b7ebfd25aa48b2db04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fc9655625b9d635d1c0458e5d096373"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">block_size</a></td></tr>
+<tr class="memitem:a4fc9655625b9d635d1c0458e5d096373"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">block_size</a> = vm_config::config.getMemoryBlockSize()</td></tr>
 <tr class="memdesc:a4fc9655625b9d635d1c0458e5d096373"><td class="mdescLeft">&#160;</td><td class="mdescRight">The size of the memory block in bytes.  <a href="structMemoryBlock.html#a4fc9655625b9d635d1c0458e5d096373">More...</a><br /></td></tr>
 <tr class="separator:a4fc9655625b9d635d1c0458e5d096373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -128,15 +128,11 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int MemoryBlock::block_size</td>
+          <td class="memname">unsigned int MemoryBlock::block_size = vm_config::config.getMemoryBlockSize()</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacevm__config_1_1ini.html#a178e6d2759e8c73c2c2295cb5dba1339">vm_config::ini::Get</a>(<span class="stringliteral">&quot;Memory&quot;</span>, <span class="stringliteral">&quot;block_size&quot;</span>).empty()</div>
-<div class="line">                            ? 1024 : std::stoi(<a class="code" href="namespacevm__config_1_1ini.html#a178e6d2759e8c73c2c2295cb5dba1339">vm_config::ini::Get</a>(<span class="stringliteral">&quot;Memory&quot;</span>,</div>
-<div class="line">                                                                   <span class="stringliteral">&quot;block_size&quot;</span>))</div>
-<div class="ttc" id="anamespacevm__config_1_1ini_html_a178e6d2759e8c73c2c2295cb5dba1339"><div class="ttname"><a href="namespacevm__config_1_1ini.html#a178e6d2759e8c73c2c2295cb5dba1339">vm_config::ini::Get</a></div><div class="ttdeci">std::string Get(const std::string &amp;section, const std::string &amp;key)</div><div class="ttdoc">Retrieves the value associated with a given section and key.</div><div class="ttdef"><b>Definition:</b> config.cpp:15</div></div>
-</div><!-- fragment -->
+
 <p>The size of the memory block in bytes. </p>
 
 </div>
@@ -158,7 +154,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/vm/<a class="el" href="main__memory_8h_source.html">main_memory.h</a></li>
+<li>include/vm/<a class="el" href="main__memory_8h_source.html">main_memory.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
