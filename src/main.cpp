@@ -111,6 +111,7 @@ int main(int argc, char *argv[]) {
   // vm.LoadProgram(program);
 
   std::cout << "VM_STARTED" << std::endl;
+  std::cout << globals::invokation_path << std::endl;
 
   std::thread vm_thread;
   bool vm_running = false;

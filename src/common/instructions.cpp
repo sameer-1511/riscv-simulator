@@ -14,6 +14,361 @@
 #include <vector>
 
 namespace instruction_set {
+
+std::unordered_map<Instruction, InstructionEncoding> instruction_encoding_map = {
+    {Instruction::kadd,      {0b0110011, -1, 0b000, -1, -1, 0b0000000}},
+    {Instruction::ksub,      {0b0110011, -1, 0b000, -1, -1, 0b0100000}},
+    {Instruction::ksll,      {0b0110011, -1, 0b001, -1, -1, 0b0000000}},
+    {Instruction::kslt,      {0b0110011, -1, 0b010, -1, -1, 0b0000000}},
+    {Instruction::ksltu,     {0b0110011, -1, 0b011, -1, -1, 0b0000000}},
+    {Instruction::kxor,      {0b0110011, -1, 0b100, -1, -1, 0b0000000}},
+    {Instruction::ksrl,      {0b0110011, -1, 0b101, -1, -1, 0b0000000}},
+    {Instruction::ksra,      {0b0110011, -1, 0b101, -1, -1, 0b0100000}},
+    {Instruction::kor,       {0b0110011, -1, 0b110, -1, -1, 0b0000000}},
+    {Instruction::kand,      {0b0110011, -1, 0b111, -1, -1, 0b0000000}},
+
+    {Instruction::kmul,      {0b0110011, -1, 0b000, -1, -1, 0b0000001}},
+    {Instruction::kmulh,     {0b0110011, -1, 0b001, -1, -1, 0b0000001}},
+    {Instruction::kmulhsu,   {0b0110011, -1, 0b010, -1, -1, 0b0000001}},
+    {Instruction::kmulhu,    {0b0110011, -1, 0b011, -1, -1, 0b0000001}},
+    {Instruction::kdiv,      {0b0110011, -1, 0b100, -1, -1, 0b0000001}},
+    {Instruction::kdivu,     {0b0110011, -1, 0b101, -1, -1, 0b0000001}},
+    {Instruction::krem,      {0b0110011, -1, 0b110, -1, -1, 0b0000001}},
+    {Instruction::kremu,     {0b0110011, -1, 0b111, -1, -1, 0b0000001}},
+
+    {Instruction::kaddw,     {0b0111011, -1, 0b000, -1, -1, 0b0000000}},
+    {Instruction::ksubw,     {0b0111011, -1, 0b000, -1, -1, 0b0100000}},
+    {Instruction::ksllw,     {0b0111011, -1, 0b001, -1, -1, 0b0000000}},
+    {Instruction::ksrlw,     {0b0111011, -1, 0b101, -1, -1, 0b0000000}},
+    {Instruction::ksraw,     {0b0111011, -1, 0b101, -1, -1, 0b0100000}},
+
+    {Instruction::kmulw,     {0b0111011, -1, 0b000, -1, -1, 0b0000001}},
+    {Instruction::kdivw,     {0b0111011, -1, 0b100, -1, -1, 0b0000001}},
+    {Instruction::kdivuw,    {0b0111011, -1, 0b101, -1, -1, 0b0000001}},
+    {Instruction::kremw,     {0b0111011, -1, 0b110, -1, -1, 0b0000001}},
+    {Instruction::kremuw,    {0b0111011, -1, 0b111, -1, -1, 0b0000001}},
+
+    {Instruction::kecall,    {0b1110011, -1, 0b000, -1, -1, 0b0000000}},
+    {Instruction::kebreak,   {0b1110011, -1, 0b001, -1, -1, 0b0000000}},
+
+    {Instruction::kslli,     {0b0010011, -1, 0b001, -1, -1, 0b0000000}},
+    {Instruction::ksrli,     {0b0010011, -1, 0b101, -1, -1, 0b0000000}},
+    {Instruction::ksrai,     {0b0010011, -1, 0b101, -1, -1, 0b0100000}},
+
+    {Instruction::kslliw,    {0b0011011, -1, 0b001, -1, -1, 0b0000000}},
+    {Instruction::ksrliw,    {0b0011011, -1, 0b101, -1, -1, 0b0000000}},
+    {Instruction::ksraiw,    {0b0011011, -1, 0b101, -1, -1, 0b0100000}},
+
+
+    {Instruction::kfsgnj_s,  {0b1010011, -1, 0b000, -1, -1, 0b0010000}},
+    {Instruction::kfsgnjn_s, {0b1010011, -1, 0b001, -1, -1, 0b0010000}},
+    {Instruction::kfsgnjx_s, {0b1010011, -1, 0b010, -1, -1, 0b0010000}},
+
+    {Instruction::kfmin_s,   {0b1010011, -1, 0b000, -1, -1, 0b0010100}},
+    {Instruction::kfmax_s,   {0b1010011, -1, 0b001, -1, -1, 0b0010100}},
+
+    {Instruction::kfle_s,    {0b1010011, -1, 0b000, -1, -1, 0b1010000}},
+    {Instruction::kflt_s,    {0b1010011, -1, 0b001, -1, -1, 0b1010000}},
+    {Instruction::kfeq_s,    {0b1010011, -1, 0b010, -1, -1, 0b1010000}},
+
+    {Instruction::kfsgnj_d,  {0b1010011, -1, 0b000, -1, -1, 0b0010001}},
+    {Instruction::kfsgnjn_d, {0b1010011, -1, 0b001, -1, -1, 0b0010001}},
+    {Instruction::kfsgnjx_d, {0b1010011, -1, 0b010, -1, -1, 0b0010001}},
+
+    {Instruction::kfmin_d,   {0b1010011, -1, 0b000, -1, -1, 0b0010101}},
+    {Instruction::kfmax_d,   {0b1010011, -1, 0b001, -1, -1, 0b0010101}},
+
+    {Instruction::kfle_d,    {0b1010011, -1, 0b000, -1, -1, 0b1010001}},
+    {Instruction::kflt_d,    {0b1010011, -1, 0b001, -1, -1, 0b1010001}},
+    {Instruction::kfeq_d,    {0b1010011, -1, 0b010, -1, -1, 0b1010001}},
+
+
+
+
+    {Instruction::kaddi,     {0b0010011, -1, 0b000, -1, -1, -1}},
+    {Instruction::kslti,     {0b0010011, -1, 0b010, -1, -1, -1}},
+    {Instruction::ksltiu,    {0b0010011, -1, 0b011, -1, -1, -1}},
+    {Instruction::kxori,     {0b0010011, -1, 0b100, -1, -1, -1}},
+    {Instruction::kori,      {0b0010011, -1, 0b110, -1, -1, -1}},
+    {Instruction::kandi,     {0b0010011, -1, 0b111, -1, -1, -1}},
+
+    {Instruction::kaddiw,    {0b0011011, -1, 0b000, -1, -1, -1}},
+
+    {Instruction::klb,       {0b0000011, -1, 0b000, -1, -1, -1}},
+    {Instruction::klh,       {0b0000011, -1, 0b001, -1, -1, -1}},
+    {Instruction::klw,       {0b0000011, -1, 0b010, -1, -1, -1}},
+    {Instruction::kld,       {0b0000011, -1, 0b011, -1, -1, -1}},
+    {Instruction::klbu,      {0b0000011, -1, 0b100, -1, -1, -1}},
+    {Instruction::klhu,      {0b0000011, -1, 0b101, -1, -1, -1}},
+    {Instruction::klwu,      {0b0000011, -1, 0b110, -1, -1, -1}},
+
+    {Instruction::kjalr,     {0b1100111, -1, 0b000, -1, -1, -1}},
+
+
+    {Instruction::ksb,       {0b0100011, -1, 0b000, -1, -1, -1}},
+    {Instruction::ksh,       {0b0100011, -1, 0b001, -1, -1, -1}},
+    {Instruction::ksw,       {0b0100011, -1, 0b010, -1, -1, -1}},
+    {Instruction::ksd,       {0b0100011, -1, 0b011, -1, -1, -1}},
+
+
+    {Instruction::kbeq,      {0b1100011, -1, 0b000, -1, -1, -1}},
+    {Instruction::kbne,      {0b1100011, -1, 0b001, -1, -1, -1}},
+    {Instruction::kblt,      {0b1100011, -1, 0b100, -1, -1, -1}},
+    {Instruction::kbge,      {0b1100011, -1, 0b101, -1, -1, -1}},
+    {Instruction::kbltu,     {0b1100011, -1, 0b110, -1, -1, -1}},
+    {Instruction::kbgeu,     {0b1100011, -1, 0b111, -1, -1, -1}},
+
+
+    {Instruction::kcsrrw,    {0b1110011, -1, 0b001, -1, -1, -1}},
+    {Instruction::kcsrrs,    {0b1110011, -1, 0b010, -1, -1, -1}},
+    {Instruction::kcsrrc,    {0b1110011, -1, 0b011, -1, -1, -1}},
+    {Instruction::kcsrrwi,   {0b1110011, -1, 0b101, -1, -1, -1}},
+    {Instruction::kcsrrsi,   {0b1110011, -1, 0b110, -1, -1, -1}},
+    {Instruction::kcsrrci,   {0b1110011, -1, 0b111, -1, -1, -1}},
+
+
+    {Instruction::kflw,      {0b0000111, -1, 0b010, -1, -1, -1}},
+    {Instruction::kfsw,      {0b0100111, -1, 0b010, -1, -1, -1}},
+    {Instruction::kfld,      {0b0000111, -1, 0b011, -1, -1, -1}},
+    {Instruction::kfsd,      {0b0100111, -1, 0b011, -1, -1, -1}},
+
+
+
+
+    {Instruction::klui,      {0b0110111, -1, -1, -1, -1, -1}},
+    {Instruction::kauipc,    {0b0010111, -1, -1, -1, -1, -1}},
+    
+    {Instruction::kjal,      {0b1101111, -1, -1, -1, -1, -1}},
+
+
+
+
+
+    {Instruction::kfadd_s,   {0b1010011, -1, -1, -1, -1, 0b0000000}},
+    {Instruction::kfsub_s,   {0b1010011, -1, -1, -1, -1, 0b0000100}},
+    {Instruction::kfmul_s,   {0b1010011, -1, -1, -1, -1, 0b0001000}},
+    {Instruction::kfdiv_s,   {0b1010011, -1, -1, -1, -1, 0b0001100}},
+
+    {Instruction::kfadd_d,   {0b1010011, -1, -1, -1, -1, 0b0000001}},
+    {Instruction::kfsub_d,   {0b1010011, -1, -1, -1, -1, 0b0000101}},
+    {Instruction::kfmul_d,   {0b1010011, -1, -1, -1, -1, 0b0001001}},
+    {Instruction::kfdiv_d,   {0b1010011, -1, -1, -1, -1, 0b0001101}},
+
+
+    {Instruction::kfsqrt_s,  {0b1010011, -1, -1, 0b00000, -1, 0b0101100}},
+
+    {Instruction::kfcvt_w_s, {0b1010011, -1, -1, 0b00000, -1, 0b1100000}},
+    {Instruction::kfcvt_wu_s,{0b1010011, -1, -1, 0b00001, -1, 0b1100000}},
+    {Instruction::kfcvt_l_s, {0b1010011, -1, -1, 0b00010, -1, 0b1100000}},
+    {Instruction::kfcvt_lu_s,{0b1010011, -1, -1, 0b00011, -1, 0b1100000}},
+
+    {Instruction::kfcvt_s_w, {0b1010011, -1, -1, 0b00000, -1, 0b1101000}},
+    {Instruction::kfcvt_s_wu,{0b1010011, -1, -1, 0b00001, -1, 0b1101000}},
+    {Instruction::kfcvt_s_l, {0b1010011, -1, -1, 0b00010, -1, 0b1101000}},
+    {Instruction::kfcvt_s_lu,{0b1010011, -1, -1, 0b00011, -1, 0b1101000}},
+
+    {Instruction::kfsqrt_d,  {0b1010011, -1, -1, 0b00000, -1, 0b0101101}},
+
+    {Instruction::kfcvt_w_d, {0b1010011, -1, -1, 0b00000, -1, 0b1100001}},
+    {Instruction::kfcvt_wu_d,{0b1010011, -1, -1, 0b00001, -1, 0b1100001}},
+    {Instruction::kfcvt_l_d, {0b1010011, -1, -1, 0b00010, -1, 0b1100001}},
+    {Instruction::kfcvt_lu_d,{0b1010011, -1, -1, 0b00011, -1, 0b1100001}},
+
+    {Instruction::kfcvt_d_w, {0b1010011, -1, -1, 0b00000, -1, 0b1101001}},
+    {Instruction::kfcvt_d_wu,{0b1010011, -1, -1, 0b00001, -1, 0b1101001}},
+    {Instruction::kfcvt_d_l, {0b1010011, -1, -1, 0b00010, -1, 0b1101001}},
+    {Instruction::kfcvt_d_lu,{0b1010011, -1, -1, 0b00011, -1, 0b1101001}},
+
+    {Instruction::kfcvt_s_d, {0b1010011, -1, -1, 0b00001, -1, 0b0100000}},
+    {Instruction::kfcvt_d_s, {0b1010011, -1, -1, 0b00000, -1, 0b0100001}},
+
+
+    {Instruction::kfmv_x_w,  {0b1010011, -1, 0b000, 0b00000, -1, 0b1110000}},
+    {Instruction::kfmv_x_d,  {0b1010011, -1, 0b000, 0b00000, -1, 0b1110001}},
+    {Instruction::kfmv_w_x,  {0b1010011, -1, 0b000, 0b00000, -1, 0b1111000}},
+    {Instruction::kfmv_d_x,  {0b1010011, -1, 0b000, 0b00000, -1, 0b1111001}},
+    {Instruction::kfclass_s, {0b1010011, -1, 0b001, 0b00000, -1, 0b1110000}},
+    {Instruction::kfclass_d, {0b1010011, -1, 0b001, 0b00000, -1, 0b1110001}},
+
+    
+    {Instruction::kfmadd_s,  {0b1000011, 0b00, -1, -1, -1, -1}},
+    {Instruction::kfmsub_s,  {0b1000111, 0b00, -1, -1, -1, -1}},
+    {Instruction::kfnmsub_s, {0b1001011, 0b00, -1, -1, -1, -1}},
+    {Instruction::kfnmadd_s, {0b1001111, 0b00, -1, -1, -1, -1}},
+
+    {Instruction::kfmadd_d,  {0b1000011, 0b01, -1, -1, -1, -1}},
+    {Instruction::kfmsub_d,  {0b1000111, 0b01, -1, -1, -1, -1}},
+    {Instruction::kfnmsub_d, {0b1001011, 0b01, -1, -1, -1, -1}},
+    {Instruction::kfnmadd_d, {0b1001111, 0b01, -1, -1, -1, -1}},
+
+
+
+
+};
+
+std::unordered_map<std::string, Instruction> instruction_string_map = {
+    {"add", Instruction::kadd},
+    {"sub", Instruction::ksub},
+    {"and", Instruction::kand},
+    {"or", Instruction::kor},
+    {"xor", Instruction::kxor},
+    {"sll", Instruction::ksll},
+    {"srl", Instruction::ksrl},
+    {"sra", Instruction::ksra},
+    {"slt", Instruction::kslt},
+    {"sltu", Instruction::ksltu},
+
+    {"addw", Instruction::kaddw},
+    {"subw", Instruction::ksubw},
+    {"sllw", Instruction::ksllw},
+    {"srliw", Instruction::ksrliw},
+    {"sraiw", Instruction::ksraiw},
+
+    {"sllw", Instruction::ksllw},
+    {"srlw", Instruction::ksrlw},
+    {"sraw", Instruction::ksraw},
+
+    {"mul", Instruction::kmul},
+    {"mulh", Instruction::kmulh},
+    {"mulhsu", Instruction::kmulhsu},
+    {"mulhu", Instruction::kmulhu},
+    {"div", Instruction::kdiv},
+    {"divu", Instruction::kdivu},
+    {"rem", Instruction::krem},
+    {"remu", Instruction::kremu},
+
+    {"mulw", Instruction::kmulw},
+    {"divw", Instruction::kdivw},
+    {"divuw", Instruction::kdivuw},
+    {"remw", Instruction::kremw},
+    {"remuw", Instruction::kremuw},
+
+    {"addi", Instruction::kaddi},
+    {"xori", Instruction::kxori},
+    {"ori", Instruction::kori},
+    {"andi", Instruction::kandi},
+    {"slli", Instruction::kslli},
+    {"srli", Instruction::ksrli},
+    {"srai", Instruction::ksrai},
+    {"slti", Instruction::kslti},
+    {"sltiu", Instruction::ksltiu},
+
+    {"addiw", Instruction::kaddiw},
+    {"slliw", Instruction::kslliw},
+    {"srliw", Instruction::ksrliw},
+    {"sraiw", Instruction::ksraiw},
+
+    {"lb", Instruction::klb},
+    {"lh", Instruction::klh},
+    {"lw", Instruction::klw},
+    {"ld", Instruction::kld},
+    {"lbu", Instruction::klbu},
+    {"lhu", Instruction::klhu},
+    {"lwu", Instruction::klwu},
+
+    {"sb", Instruction::ksb},
+    {"sh", Instruction::ksh},
+    {"sw", Instruction::ksw},
+    {"sd", Instruction::ksd},
+
+    {"beq", Instruction::kbeq},
+    {"bne", Instruction::kbne},
+    {"blt", Instruction::kblt},
+    {"bge", Instruction::kbge},
+    {"bltu", Instruction::kbltu},
+    {"bgeu", Instruction::kbgeu},
+
+    {"lui", Instruction::klui},
+    {"auipc", Instruction::kauipc},
+
+    {"jal", Instruction::kjal},
+    {"jalr", Instruction::kjalr},
+
+    {"ecall", Instruction::kecall},
+    {"ebreak", Instruction::kebreak},
+
+    {"csrrw", Instruction::kcsrrw},
+    {"csrrs", Instruction::kcsrrs},
+    {"csrrc", Instruction::kcsrrc},
+    {"csrrwi", Instruction::kcsrrwi},
+    {"csrrsi", Instruction::kcsrrsi},
+    {"csrrci", Instruction::kcsrrci},
+
+    {"fsgnj.s", Instruction::kfsgnj_s},
+    {"fsgnjn.s", Instruction::kfsgnjn_s},
+    {"fsgnjx.s", Instruction::kfsgnjx_s},
+    {"fmin.s", Instruction::kfmin_s},
+    {"fmax.s", Instruction::kfmax_s},
+    {"fle.s", Instruction::kfle_s},
+    {"flt.s", Instruction::kflt_s},
+    {"feq.s", Instruction::kfeq_s},
+
+    {"fsgnj.d", Instruction::kfsgnj_d},
+    {"fsgnjn.d", Instruction::kfsgnjn_d},
+    {"fsgnjx.d", Instruction::kfsgnjx_d},
+    {"fmin.d", Instruction::kfmin_d},
+    {"fmax.d", Instruction::kfmax_d},
+    {"fle.d", Instruction::kfle_d},
+    {"flt.d", Instruction::kflt_d},
+    {"feq.d", Instruction::kfeq_d},
+
+    {"fadd.s", Instruction::kfadd_s},
+    {"fsub.s", Instruction::kfsub_s},
+    {"fmul.s", Instruction::kfmul_s},
+    {"fdiv.s", Instruction::kfdiv_s},
+    {"fsqrt.s", Instruction::kfsqrt_s},
+
+    {"fadd.d", Instruction::kfadd_d},
+    {"fsub.d", Instruction::kfsub_d},
+    {"fmul.d", Instruction::kfmul_d},
+    {"fdiv.d", Instruction::kfdiv_d},
+    {"fsqrt.d", Instruction::kfsqrt_d},
+
+    {"fcvt.w.s", Instruction::kfcvt_w_s},
+    {"fcvt.wu.s", Instruction::kfcvt_wu_s},
+    {"fcvt.l.s", Instruction::kfcvt_l_s},
+    {"fcvt.lu.s", Instruction::kfcvt_lu_s},
+    {"fcvt.s.w", Instruction::kfcvt_s_w},
+    {"fcvt.s.wu", Instruction::kfcvt_s_wu},
+    {"fcvt.s.l", Instruction::kfcvt_s_l},
+    {"fcvt.s.lu", Instruction::kfcvt_s_lu},
+
+    {"fcvt.w.d", Instruction::kfcvt_w_d},
+    {"fcvt.wu.d", Instruction::kfcvt_wu_d},
+    {"fcvt.l.d", Instruction::kfcvt_l_d},
+    {"fcvt.lu.d", Instruction::kfcvt_lu_d},
+    {"fcvt.d.w", Instruction::kfcvt_d_w},
+    {"fcvt.d.wu", Instruction::kfcvt_d_wu},
+    {"fcvt.d.l", Instruction::kfcvt_d_l},
+    {"fcvt.d.lu", Instruction::kfcvt_d_lu},
+
+    {"fcvt.s.d", Instruction::kfcvt_s_d},
+    {"fcvt.d.s", Instruction::kfcvt_d_s},
+
+    {"fmv.x.s", Instruction::kfmv_x_w},
+    {"fmv.x.d", Instruction::kfmv_x_d},
+    {"fmv.s.x", Instruction::kfmv_w_x},
+    {"fmv.d.x", Instruction::kfmv_d_x},
+    {"fclass.s", Instruction::kfclass_s},
+    {"fclass.d", Instruction::kfclass_d},
+
+    {"fmadd.s", Instruction::kfmadd_s},
+    {"fmsub.s", Instruction::kfmsub_s},
+    {"fnmsub.s", Instruction::kfnmsub_s},
+    {"fnmadd.s", Instruction::kfnmadd_s},
+    {"fmadd.d", Instruction::kfmadd_d},
+    {"fmsub.d", Instruction::kfmsub_d},
+    {"fnmsub.d", Instruction::kfnmsub_d},
+    {"fnmadd.d", Instruction::kfnmadd_d},
+
+    {"flw", Instruction::kflw},
+    {"fsw", Instruction::kfsw},
+    {"fld", Instruction::kfld},
+    {"fsd", Instruction::kfsd}
+
+};
+
+
 static const std::unordered_set<std::string> valid_instructions = {
     "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
     "addw", "subw", "sllw", "srlw", "sraw",
@@ -267,9 +622,9 @@ std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_e
 
     {"addiw", {0b0011011, 0b000}}, // O_GPR_C_GPR_C_I
 
+    {"lb", {0b0000011, 0b000}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"lh", {0b0000011, 0b001}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"lw", {0b0000011, 0b010}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
-    {"lb", {0b0000011, 0b000}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"ld", {0b0000011, 0b011}}, // O_GPR_C_I_LP_GPR_RP, O_GPR_C_DL
     {"lbu", {0b0000011, 0b100}}, // O_GPR_C_I_LP_GPR_RP,
     {"lhu", {0b0000011, 0b101}}, // O_GPR_C_I_LP_GPR_RP,

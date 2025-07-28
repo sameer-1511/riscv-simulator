@@ -15,6 +15,70 @@
 
 namespace instruction_set {
 
+
+enum class Instruction {
+  kadd, ksub, kand, kor, kxor, ksll, ksrl, ksra, kslt, ksltu,
+  kaddw, ksubw, ksllw, ksrlw, ksraw,
+  kaddi, kxori, kori, kandi, kslli, ksrli, ksrai, kslti, ksltiu,
+  kaddiw, kslliw, ksrliw, ksraiw,
+  klb, klh, klw, kld, klbu, klhu, klwu,
+  ksb, ksh, ksw, ksd,
+  kbeq, kbne, kblt, kbge, kbltu, kbgeu,
+  klui, kauipc,
+  kjal, kjalr,
+  kecall, kebreak,
+  kcsrrw, kcsrrs, kcsrrc, kcsrrwi, kcsrrsi, kcsrrci,
+  kla, knop, kli, kmv, knot, kneg, knegw,
+  ksextw, kseqz, ksnez, ksltz, ksgtz,
+  kbeqz, kbnez, kblez, kbgez, kbltz, kbgtz,
+  kbgt, kble, kbgtu, kbleu,
+  kj, kjr, kret, kcall, ktail, kfence, kfence_i,
+
+  kmul, kmulh, kmulhsu, kmulhu, kdiv, kdivu, krem, kremu,
+  kmulw, kdivw, kdivuw, kremw, kremuw,
+
+  kflw, kfsw, kfmadd_s, kfmsub_s, kfnmsub_s, kfnmadd_s,
+  kfadd_s, kfsub_s, kfmul_s, kfdiv_s, kfsqrt_s,
+  kfsgnj_s, kfsgnjn_s, kfsgnjx_s,
+  kfmin_s, kfmax_s,
+  kfcvt_w_s, kfcvt_wu_s, kfmv_x_w, kfmv_w_x,
+  kfeq_s, kflt_s, kfle_s,
+  kfclass_s, kfcvt_s_w, kfcvt_s_wu,
+  kfcvt_l_s, kfcvt_lu_s, kfcvt_s_l, kfcvt_s_lu,
+
+  kfld, kfsd, kfmadd_d, kfmsub_d, kfnmsub_d, kfnmadd_d,
+  kfadd_d, kfsub_d, kfmul_d, kfdiv_d, kfsqrt_d,
+  kfsgnj_d, kfsgnjn_d, kfsgnjx_d,
+  kfmin_d, kfmax_d,
+  kfcvt_s_d, kfcvt_d_s,
+  kfeq_d, kflt_d, kfle_d,
+  kfclass_d, kfcvt_w_d, kfcvt_wu_d, kfcvt_d_w, kfcvt_d_wu,
+  kfcvt_l_d, kfcvt_lu_d, kfmv_x_d, kfcvt_d_l, kfcvt_d_lu, kfmv_d_x
+};
+
+// TODO: use enum class for instruction encoding
+
+
+struct InstructionEncoding {
+  int opcode;
+  int funct2;
+  int funct3;
+  int funct5;
+  int funct6;
+  int funct7;
+  
+  InstructionEncoding(int opcode, int funct2, int funct3, int funct5, int funct6, int funct7)
+  : opcode(opcode), funct2(funct2), funct3(funct3), funct5(funct5), funct6(funct6), funct7(funct7) {}
+};
+
+// opcode, funct2, funct3, funct5, func6, funct7
+// TODO: use enum in place of strings from the parser stage
+extern std::unordered_map<Instruction, InstructionEncoding> instruction_encoding_map;
+
+extern std::unordered_map<std::string, Instruction> instruction_string_map;
+
+
+
 struct RTypeInstructionEncoding {
   std::bitset<7> opcode;
   std::bitset<3> funct3;

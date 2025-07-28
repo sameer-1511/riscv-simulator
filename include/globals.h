@@ -9,6 +9,7 @@
 #include <filesystem>
 
 namespace globals {
+extern std::filesystem::path invokation_path;
 extern std::filesystem::path vm_state_directory;
 extern std::filesystem::path config_file_path;
 extern std::filesystem::path disassembly_file_path;

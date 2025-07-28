@@ -198,6 +198,7 @@ void RVSSVM::ExecuteCsr() {
   csr_uimm_ = rs1;
 }
 
+// TODO: implement writeback for syscalls
 void RVSSVM::HandleSyscall() {
   uint64_t syscall_number = registers_.ReadGpr(17);
   switch (syscall_number) {
@@ -424,6 +425,9 @@ void RVSSVM::WriteMemory() {
   uint64_t addr = 0;
   std::vector<uint8_t> old_bytes_vec;
   std::vector<uint8_t> new_bytes_vec;
+
+  // TODO: use direct read to read memory for undo/redo functionality, i.e. ReadByte -> ReadByte_d
+
 
   if (control_unit_.GetMemWrite()) {
     switch (funct3) {
