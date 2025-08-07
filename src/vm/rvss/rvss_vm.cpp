@@ -78,44 +78,65 @@ void RVSSVM::Execute() {
 
 
   if (control_unit_.GetBranch()) {
-    switch (funct3) {
-      case 0b000: {// BEQ
-        branch_flag_ = (execution_result_==0);
-        break;
+    if (opcode==0b1100111 || opcode==0b1101111) { // JALR or JAL
+      next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in Fetch()
+      UpdateProgramCounter(-4);
+      return_address_ = program_counter_ + 4;
+      if (opcode==0b1100111) { // JALR
+        UpdateProgramCounter(-program_counter_ + (execution_result_));
+      } else { // JAL
+        UpdateProgramCounter(imm);
       }
-      case 0b001: {// BNE
-        branch_flag_ = (execution_result_!=0);
-        break;
+    } else if (opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbeq).opcode ||
+               opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbne).opcode ||
+               opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kblt).opcode ||
+               opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbge).opcode ||
+               opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbltu).opcode ||
+               opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbgeu).opcode) {
+      switch (funct3) {
+        case 0b000: {// BEQ
+          branch_flag_ = (execution_result_==0);
+          break;
+        }
+        case 0b001: {// BNE
+          branch_flag_ = (execution_result_!=0);
+          break;
+        }
+        case 0b100: {// BLT
+          branch_flag_ = (execution_result_==1);
+          break;
+        }
+        case 0b101: {// BGE
+          branch_flag_ = (execution_result_==0);
+          break;
+        }
+        case 0b110: {// BLTU
+          branch_flag_ = (execution_result_==1);
+          break;
+        }
+        case 0b111: {// BGEU
+          branch_flag_ = (execution_result_==0);
+          break;
+        }
       }
-      case 0b100: {// BLT
-        branch_flag_ = (execution_result_==1);
-        break;
-      }
-      case 0b101: {// BGE
-        branch_flag_ = (execution_result_==0);
-        break;
-      }
-      case 0b110: {// BLTU
-        branch_flag_ = (execution_result_==1);
-        break;
-      }
-      case 0b111: {// BGEU
-        branch_flag_ = (execution_result_==0);
-        break;
-      }
+
     }
+
+
+
   }
 
-  if (control_unit_.GetBranch()) { // JAL, JALR
-    next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in Fetch()
+  
+  if (branch_flag_ && (opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbeq).opcode ||
+      opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbne).opcode ||
+      opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kblt).opcode ||
+      opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbge).opcode ||
+      opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbltu).opcode ||
+      opcode==instruction_set::instruction_encoding_map.at(instruction_set::Instruction::kbgeu).opcode)) {
     UpdateProgramCounter(-4);
-    return_address_ = program_counter_ + 4;
-    if (opcode==0b1100111) { // JALR
-      UpdateProgramCounter(-program_counter_ + (execution_result_));
-    } else { // JAL
-      UpdateProgramCounter(imm);
-    }
+    UpdateProgramCounter(imm);
   }
+
 
   if (opcode==0b0010111) { // AUIPC
     execution_result_ = static_cast<int64_t>(program_counter_) - 4 + (imm << 12);
@@ -810,7 +831,7 @@ void RVSSVM::Step() {
     WriteBack();
     instructions_retired_++;
     cycle_s_++;
-    std::cout << "Program Counter: " << program_counter_ << std::endl;
+    std::cout << "Program Counter: " << std::hex << program_counter_ << std::dec << std::endl;
 
     current_delta_.new_pc = program_counter_;
 
