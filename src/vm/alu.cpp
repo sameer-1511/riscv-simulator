@@ -9,8 +9,36 @@
 #include <cmath>
 #include <cstdint>
 #include <cstring>
+#include <iostream>
+#include <vector>
 
 namespace alu {
+
+static std::string decode_fclass(uint16_t res) {
+  static const std::vector<std::string> labels = {
+    "-infinity",   
+    "-normal",      
+    "-subnormal", 
+    "-zero",        
+    "+zero",    
+    "+subnormal", 
+    "+normal",    
+    "+infinity",    
+    "signaling NaN",
+    "quiet NaN"   
+  };
+
+  std::string output;
+  for (int i = 0; i < 10; i++) {
+    if (res & (1 << i)) {
+      if (!output.empty()) output += ", ";
+      output += labels[i];
+    }
+  }
+
+  return output.empty() ? "unknown" : output;
+}
+
 
 [[nodiscard]] std::pair<uint64_t, bool> Alu::execute(AluOp op, uint64_t a, uint64_t b) {
   switch (op) {
@@ -457,6 +485,9 @@ namespace alu {
       else if (std::isnan(af)) res |= 1 << 9; // quiet NaN
 
       std::fesetround(original_rm);
+      // std::cout << "Class: " << decode_fclass(res) << "\n";
+
+
       return {res, fcsr};
     }
     case AluOp::FMV_X_W: {

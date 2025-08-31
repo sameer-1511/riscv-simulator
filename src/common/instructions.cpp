@@ -12,30 +12,50 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <array>
 
 namespace instruction_set {
 
+
+std::array<InstructionEncoding, static_cast<size_t>(Instruction::COUNT)> instruction_encoding_array = {{
+  InstructionEncoding(0b0110011, -1, -1, -1, -1, -1), // kRtype
+  InstructionEncoding(0b0010011, -1, -1, -1, -1, -1), // kItype
+  InstructionEncoding(0b0100011, -1, -1, -1, -1, -1), // kStype
+  InstructionEncoding(0b1100011, -1, -1, -1, -1, -1), // kBtype
+  InstructionEncoding(0b1101111, -1, -1, -1, -1, -1), // kJtype
+  InstructionEncoding(0b0110111, -1, -1, -1, -1, -1), // kUtype
+
+  InstructionEncoding(0b1110011, -1, -1, -1, -1, -1), // CSR type instructions
+
+  InstructionEncoding(0b0110011, -1, 0b000, -1, -1, 0b0000000), // kadd
+  InstructionEncoding(0b0110011, -1, 0b000, -1, -1, 0b0100000), // ksub
+  InstructionEncoding(0b0110011, -1, 0b001, -1, -1, 0b0000000), // ksll
+  InstructionEncoding(0b0110011, -1, 0b010, -1, -1, 0b0000000), // kslt
+  InstructionEncoding(0b0110011, -1, 0b011, -1, -1, 0b0000000), // ksltu
+  InstructionEncoding(0b0110011, -1, 0b100, -1, -1, 0b0000000), // kxor
+  InstructionEncoding(0b0110011, -1, 0b101, -1, -1, 0b0000000), // ksrl
+  InstructionEncoding(0b0110011, -1, 0b101, -1, -1, 0b0100000), // ksra
+  InstructionEncoding(0b0110011, -1, 0b110, -1, -1, 0b0000000), // kor
+  InstructionEncoding(0b0110011, -1, 0b111, -1, -1, 0b0000000), // kand
+
+  InstructionEncoding(0b0110011, -1, 0b000, -1, -1, 0b0000001), // kmul
+  InstructionEncoding(0b0110011, -1, 0b001, -1, -1, 0b0000001), // kmulh
+  InstructionEncoding(0b0110011, -1, 0b010, -1, -1, 0b0000001), // kmulhsu
+  InstructionEncoding(0b0110011, -1, 0b011, -1, -1, 0b0000001), // kmulhu
+  InstructionEncoding(0b0110011, -1, 0b100, -1, -1, 0b0000001), // kdiv
+  InstructionEncoding(0b0110011, -1, 0b101, -1, -1, 0b0000001), // kdivu
+  InstructionEncoding(0b0110011, -1, 0b110, -1, -1, 0b0000001), // krem
+  InstructionEncoding(0b0110011, -1, 0b111, -1, -1, 0b0000001), // kremu
+
+  InstructionEncoding(0b0111011, -1, 0b000, -1, -1, 0b0000000), // kaddw
+
+
+
+
+}};
+
+
 std::unordered_map<Instruction, InstructionEncoding> instruction_encoding_map = {
-    {Instruction::kadd,      {0b0110011, -1, 0b000, -1, -1, 0b0000000}},
-    {Instruction::ksub,      {0b0110011, -1, 0b000, -1, -1, 0b0100000}},
-    {Instruction::ksll,      {0b0110011, -1, 0b001, -1, -1, 0b0000000}},
-    {Instruction::kslt,      {0b0110011, -1, 0b010, -1, -1, 0b0000000}},
-    {Instruction::ksltu,     {0b0110011, -1, 0b011, -1, -1, 0b0000000}},
-    {Instruction::kxor,      {0b0110011, -1, 0b100, -1, -1, 0b0000000}},
-    {Instruction::ksrl,      {0b0110011, -1, 0b101, -1, -1, 0b0000000}},
-    {Instruction::ksra,      {0b0110011, -1, 0b101, -1, -1, 0b0100000}},
-    {Instruction::kor,       {0b0110011, -1, 0b110, -1, -1, 0b0000000}},
-    {Instruction::kand,      {0b0110011, -1, 0b111, -1, -1, 0b0000000}},
-
-    {Instruction::kmul,      {0b0110011, -1, 0b000, -1, -1, 0b0000001}},
-    {Instruction::kmulh,     {0b0110011, -1, 0b001, -1, -1, 0b0000001}},
-    {Instruction::kmulhsu,   {0b0110011, -1, 0b010, -1, -1, 0b0000001}},
-    {Instruction::kmulhu,    {0b0110011, -1, 0b011, -1, -1, 0b0000001}},
-    {Instruction::kdiv,      {0b0110011, -1, 0b100, -1, -1, 0b0000001}},
-    {Instruction::kdivu,     {0b0110011, -1, 0b101, -1, -1, 0b0000001}},
-    {Instruction::krem,      {0b0110011, -1, 0b110, -1, -1, 0b0000001}},
-    {Instruction::kremu,     {0b0110011, -1, 0b111, -1, -1, 0b0000001}},
-
     {Instruction::kaddw,     {0b0111011, -1, 0b000, -1, -1, 0b0000000}},
     {Instruction::ksubw,     {0b0111011, -1, 0b000, -1, -1, 0b0100000}},
     {Instruction::ksllw,     {0b0111011, -1, 0b001, -1, -1, 0b0000000}},
@@ -49,7 +69,6 @@ std::unordered_map<Instruction, InstructionEncoding> instruction_encoding_map = 
     {Instruction::kremuw,    {0b0111011, -1, 0b111, -1, -1, 0b0000001}},
 
     {Instruction::kecall,    {0b1110011, -1, 0b000, -1, -1, 0b0000000}},
-    {Instruction::kebreak,   {0b1110011, -1, 0b001, -1, -1, 0b0000000}},
 
     {Instruction::kslli,     {0b0010011, -1, 0b001, -1, -1, 0b0000000}},
     {Instruction::ksrli,     {0b0010011, -1, 0b101, -1, -1, 0b0000000}},
@@ -285,7 +304,6 @@ std::unordered_map<std::string, Instruction> instruction_string_map = {
     {"jalr", Instruction::kjalr},
 
     {"ecall", Instruction::kecall},
-    {"ebreak", Instruction::kebreak},
 
     {"csrrw", Instruction::kcsrrw},
     {"csrrs", Instruction::kcsrrs},
@@ -379,7 +397,7 @@ static const std::unordered_set<std::string> valid_instructions = {
     "beq", "bne", "blt", "bge", "bltu", "bgeu",
     "lui", "auipc",
     "jal", "jalr",
-    "ecall", "ebreak",
+    "ecall",
 
     "csrrw", "csrrs", "csrrc", "csrrwi", "csrrsi", "csrrci",
 
@@ -449,7 +467,7 @@ static const std::unordered_set<std::string> I2TypeInstructions = {
 };
 
 static const std::unordered_set<std::string> I3TypeInstructions = {
-    "ecall", "ebreak"
+    "ecall"
 };
 
 static const std::unordered_set<std::string> STypeInstructions = {
@@ -486,24 +504,24 @@ static const std::unordered_set<std::string> BaseExtensionInstructions = {
     "beq", "bne", "blt", "bge", "bltu", "bgeu",
     "lui", "auipc",
     "jal", "jalr",
-    "ecall", "ebreak",
+    "ecall",
 };
 
 static const std::unordered_set<std::string> CSRRInstructions = {
-    "csrrw", "csrrs", "csrrc"
+    "csrrw", "csrrs", "csrrc",
 };
 
 static const std::unordered_set<std::string> CSRIInstructions = {
-    "csrrwi", "csrrsi", "csrrci"
+    "csrrwi", "csrrsi", "csrrci",
 };
 
 static const std::unordered_set<std::string> CSRInstructions = {
-    "csrrw", "csrrs", "csrrc", "csrrwi", "csrrsi", "csrrci"
+    "csrrw", "csrrs", "csrrc", "csrrwi", "csrrsi", "csrrci",
 };
 
 static const std::unordered_set<std::string> MExtensionInstructions = {
     "mul", "mulh", "mulhsu", "mulhu", "div", "divu", "rem", "remu",
-    "mulw", "divw", "divuw", "remw", "remuw"
+    "mulw", "divw", "divuw", "remw", "remuw",
 };
 
 //====================================================================================
@@ -536,7 +554,7 @@ static const std::unordered_set<std::string> FDExtensionR2TypeInstructions = {
 
 static const std::unordered_set<std::string> FDExtensionR3TypeInstructions = {
     "fmv.x.w", "fmv.w.x",
-    "fclass.s"
+    "fclass.s",
     "fclass.d",
     "fmv.x.d", "fmv.d.x",
 };
@@ -547,11 +565,11 @@ static const std::unordered_set<std::string> FDExtensionR4TypeInstructions = {
 };
 
 static const std::unordered_set<std::string> FDExtensionITypeInstructions = {
-    "flw", "fld"
+    "flw", "fld",
 };
 
 static const std::unordered_set<std::string> FDExtensionSTypeInstructions = {
-    "fsw", "fsd"
+    "fsw", "fsd",
 };
 
 static const std::unordered_set<std::string> FExtensionInstructions = {
@@ -563,17 +581,6 @@ static const std::unordered_set<std::string> FExtensionInstructions = {
     "feq.s", "flt.s", "fle.s",
     "fclass.s", "fcvt.s.w", "fcvt.s.wu", "fmv.w.x",
     "fcvt.l.s", "fcvt.lu.s", "fcvt.s.l", "fcvt.s.lu",
-};
-
-static const std::unordered_set<std::string> DExtensionInstructions = {
-    "fld", "fsd", "fmadd.d", "fmsub.d", "fnmsub.d", "fnmadd.d",
-    "fadd.d", "fsub.d", "fmul.d", "fdiv.d", "fsqrt.d",
-    "fsgnj.d", "fsgnjn.d", "fsgnjx.d",
-    "fmin.d", "fmax.d",
-    "fcvt.s.d", "fcvt.d.s",
-    "feq.d", "flt.d", "fle.d",
-    "fclass.d", "fcvt.w.d", "fcvt.wu.d", "fmv.x.d",
-    "fcvt.l.d", "fcvt.lu.d", "fcvt.d.l", "fcvt.d.lu",
 };
 
 std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map = {
@@ -635,7 +642,6 @@ std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_e
 
 std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map = {
     {"ecall", {0b1110011, 0b000, 0b0000000}}, // O
-    {"ebreak", {0b1110011, 0b001, 0b0000000}}, // O
 };
 
 std::unordered_map<std::string, I2TypeInstructionEncoding> I2_type_instruction_encoding_map = {
@@ -867,7 +873,6 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"jalr", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
 
     {"ecall", {SyntaxType::O}},
-    {"ebreak", {SyntaxType::O}},
 
 ///////////////////////////////////////////////////////////////////////////////////
 

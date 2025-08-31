@@ -12,11 +12,19 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <array>
 
 namespace instruction_set {
 
 
-enum class Instruction {
+enum Instruction {
+  // Utility categorical encodings
+  kRtype, kItype, kStype, kBtype, kJtype, kUtype,
+  
+  kCsrType, // CSR type instructions
+
+
+  // Real instructions
   kadd, ksub, kand, kor, kxor, ksll, ksrl, ksra, kslt, ksltu,
   kaddw, ksubw, ksllw, ksrlw, ksraw,
   kaddi, kxori, kori, kandi, kslli, ksrli, ksrai, kslti, ksltiu,
@@ -26,7 +34,7 @@ enum class Instruction {
   kbeq, kbne, kblt, kbge, kbltu, kbgeu,
   klui, kauipc,
   kjal, kjalr,
-  kecall, kebreak,
+  kecall,
   kcsrrw, kcsrrs, kcsrrc, kcsrrwi, kcsrrsi, kcsrrci,
   kla, knop, kli, kmv, knot, kneg, knegw,
   ksextw, kseqz, ksnez, ksltz, ksgtz,
@@ -53,7 +61,10 @@ enum class Instruction {
   kfcvt_s_d, kfcvt_d_s,
   kfeq_d, kflt_d, kfle_d,
   kfclass_d, kfcvt_w_d, kfcvt_wu_d, kfcvt_d_w, kfcvt_d_wu,
-  kfcvt_l_d, kfcvt_lu_d, kfmv_x_d, kfcvt_d_l, kfcvt_d_lu, kfmv_d_x
+  kfcvt_l_d, kfcvt_lu_d, kfmv_x_d, kfcvt_d_l, kfcvt_d_lu, kfmv_d_x,
+
+  COUNT // sentinel for length
+
 };
 
 // TODO: use enum class for instruction encoding
@@ -66,14 +77,21 @@ struct InstructionEncoding {
   int funct5;
   int funct6;
   int funct7;
+
+  InstructionEncoding() 
+            : opcode(0), funct2(0), funct3(0), funct5(0), funct6(0), funct7(0) {}
+
   
   InstructionEncoding(int opcode, int funct2, int funct3, int funct5, int funct6, int funct7)
   : opcode(opcode), funct2(funct2), funct3(funct3), funct5(funct5), funct6(funct6), funct7(funct7) {}
 };
 
+extern std::array<InstructionEncoding, static_cast<size_t>(Instruction::COUNT)> instruction_encoding_array;
+
 // opcode, funct2, funct3, funct5, func6, funct7
 // TODO: use enum in place of strings from the parser stage
 extern std::unordered_map<Instruction, InstructionEncoding> instruction_encoding_map;
+
 
 extern std::unordered_map<std::string, Instruction> instruction_string_map;
 

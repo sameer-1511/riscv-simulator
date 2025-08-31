@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
   AssembledProgram program;
   RVSSVM vm;
   // try {
-  //   program = assemble("/home/vis/Desk/codes/assembler/examples/test2.s");
+  //   program = assemble("/home/vis/Desk/codes/assembler/examples/ftest.s");
   // } catch (const std::runtime_error &e) {
   //   std::cerr << e.what() << '\n';
   //   return 0;
@@ -219,8 +219,50 @@ int main(int argc, char *argv[]) {
         std::cout << "VM_MODIFY_REGISTER_ERROR" << std::endl;
         continue;
       }
+    } else if (command.type==command_handler::CommandType::GET_REGISTER) {
+      std::string reg_str = command.args[0];
+      if (reg_str[0] == 'x') {
+        std::cout << "VM_REGISTER_VAL_START";
+        std::cout << "0x"
+                  << std::hex
+                  << vm.registers_.ReadGpr(std::stoi(reg_str.substr(1))) 
+                  << std::dec;
+        std::cout << "VM_REGISTER_VAL_END"<< std::endl;
+      } 
     }
-    
+
+  
+    else if (command.type==command_handler::CommandType::MODIFY_MEMORY) {
+      if (command.args.size() != 3) {
+        std::cout << "VM_MODIFY_MEMORY_ERROR" << std::endl;
+        continue;
+      }
+      try {
+        uint64_t address = std::stoull(command.args[0], nullptr, 16);
+        std::string type = command.args[1];
+        uint64_t value = std::stoull(command.args[2], nullptr, 16);
+
+        if (type == "byte") {
+          vm.memory_controller_.WriteByte(address, static_cast<uint8_t>(value));
+        } else if (type == "half") {
+          vm.memory_controller_.WriteHalfWord(address, static_cast<uint16_t>(value));
+        } else if (type == "word") {
+          vm.memory_controller_.WriteWord(address, static_cast<uint32_t>(value));
+        } else if (type == "double") {
+          vm.memory_controller_.WriteDoubleWord(address, value);
+        } else {
+          std::cout << "VM_MODIFY_MEMORY_ERROR" << std::endl;
+          continue;
+        }
+        std::cout << "VM_MODIFY_MEMORY_SUCCESS" << std::endl;
+      } catch (const std::out_of_range &e) {
+        std::cout << "VM_MODIFY_MEMORY_ERROR" << std::endl;
+        continue;
+      } catch (const std::exception& e) {
+        std::cout << "VM_MODIFY_MEMORY_ERROR" << std::endl;
+        continue;
+      }
+    }
     
     
     

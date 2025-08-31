@@ -36,7 +36,15 @@ Command ParseCommand(const std::string &input) {
     command_type = command_handler::CommandType::RESET;
   } else if (command_str=="modify_register" || command_str=="mreg") {
     command_type = command_handler::CommandType::MODIFY_REGISTER;
-  } else if (command_str=="dump_mem" || command_str=="dmem") {
+  } else if (command_str=="get_register" || command_str=="greg") {
+    command_type = command_handler::CommandType::GET_REGISTER;
+  } else if (command_str=="modify_memory" || command_str=="mmem") {
+    command_type = command_handler::CommandType::MODIFY_MEMORY;
+  } 
+  
+  
+  
+  else if (command_str=="dump_mem" || command_str=="dmem") {
     command_type = command_handler::CommandType::DUMP_MEMORY;
   } else if (command_str=="print_mem" || command_str=="pmem") {
     command_type = command_handler::CommandType::PRINT_MEMORY;
