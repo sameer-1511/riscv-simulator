@@ -25,7 +25,6 @@ extern bool verbose_warnings;
 extern bool vm_as_backend;
 
 extern unsigned int text_section_start;
-extern unsigned int data_section_start;
 
 void initGlobals();
 }

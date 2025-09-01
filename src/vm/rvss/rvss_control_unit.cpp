@@ -9,6 +9,12 @@
 
 #include <cstdint>
 
+#include "common/instructions.h"
+using instruction_set::Instruction;
+using instruction_set::get_instr_encoding;
+
+
+
 
 void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
   uint8_t opcode = instruction & 0b1111111;
@@ -17,12 +23,15 @@ void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
   alu_op_ = false;
 
   switch (opcode) {
-    case 0b0110011: {// R-type (kAdd, kSub, kAnd, kOr, kXor, kSll, kSrl, etc.)
+    case 0b0110011: /* R-type (kAdd, kSub, kAnd, kOr, kXor, kSll, kSrl, etc.) */ {
       reg_write_ = true;
       alu_op_ = true;
       break;
     }
-    case 0b0000011: {// Load instructions (LB, LH, LW, LD)
+    case 0b0000011: 
+    
+    
+    {// Load instructions (LB, LH, LW, LD)
       alu_src_ = true;
       mem_to_reg_ = true;
       reg_write_ = true;

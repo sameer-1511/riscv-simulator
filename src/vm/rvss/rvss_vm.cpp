@@ -23,8 +23,8 @@
 #include <queue>
 #include <atomic>
 
-using instruction_set::instruction_encoding_array;
 using instruction_set::Instruction;
+using instruction_set::get_instr_encoding;
 
 
 RVSSVM::RVSSVM() : VmBase() {
@@ -47,8 +47,8 @@ void RVSSVM::Execute() {
   uint8_t opcode = current_instruction_ & 0b1111111;
   uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
-  if (opcode == instruction_set::instruction_encoding_map.at(Instruction::kecall).opcode && 
-      funct3 == instruction_set::instruction_encoding_map.at(Instruction::kecall).funct3) {
+  if (opcode == get_instr_encoding(Instruction::kecall).opcode && 
+      funct3 == get_instr_encoding(Instruction::kecall).funct3) {
     HandleSyscall();
     return;
   }
@@ -59,7 +59,7 @@ void RVSSVM::Execute() {
   } else if (instruction_set::isDInstruction(current_instruction_)) {
     ExecuteDouble();
     return;
-  } else if (opcode==instruction_encoding_array.at(Instruction::kCsrType).opcode) {
+  } else if (opcode==0b1110011) {
     ExecuteCsr();
     return;
   }
@@ -83,22 +83,22 @@ void RVSSVM::Execute() {
 
 
   if (control_unit_.GetBranch()) {
-    if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kjalr).opcode || 
-        opcode==instruction_set::instruction_encoding_map.at(Instruction::kjal).opcode) {
+    if (opcode==get_instr_encoding(Instruction::kjalr).opcode || 
+        opcode==get_instr_encoding(Instruction::kjal).opcode) {
       next_pc_ = static_cast<int64_t>(program_counter_); // PC was already updated in Fetch()
       UpdateProgramCounter(-4);
       return_address_ = program_counter_ + 4;
-      if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kjalr).opcode) { 
+      if (opcode==get_instr_encoding(Instruction::kjalr).opcode) { 
         UpdateProgramCounter(-program_counter_ + (execution_result_));
-      } else if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kjal).opcode) {
+      } else if (opcode==get_instr_encoding(Instruction::kjal).opcode) {
         UpdateProgramCounter(imm);
       }
-    } else if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kbeq).opcode ||
-               opcode==instruction_set::instruction_encoding_map.at(Instruction::kbne).opcode ||
-               opcode==instruction_set::instruction_encoding_map.at(Instruction::kblt).opcode ||
-               opcode==instruction_set::instruction_encoding_map.at(Instruction::kbge).opcode ||
-               opcode==instruction_set::instruction_encoding_map.at(Instruction::kbltu).opcode ||
-               opcode==instruction_set::instruction_encoding_map.at(Instruction::kbgeu).opcode) {
+    } else if (opcode==get_instr_encoding(Instruction::kbeq).opcode ||
+               opcode==get_instr_encoding(Instruction::kbne).opcode ||
+               opcode==get_instr_encoding(Instruction::kblt).opcode ||
+               opcode==get_instr_encoding(Instruction::kbge).opcode ||
+               opcode==get_instr_encoding(Instruction::kbltu).opcode ||
+               opcode==get_instr_encoding(Instruction::kbgeu).opcode) {
       switch (funct3) {
         case 0b000: {// BEQ
           branch_flag_ = (execution_result_==0);
@@ -133,13 +133,13 @@ void RVSSVM::Execute() {
   }
 
   
-  if (branch_flag_ && opcode==instruction_encoding_array.at(Instruction::kBtype).opcode) {
+  if (branch_flag_ && opcode==0b1100011) {
     UpdateProgramCounter(-4);
     UpdateProgramCounter(imm);
   }
 
 
-  if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kauipc).opcode) { // AUIPC
+  if (opcode==get_instr_encoding(Instruction::kauipc).opcode) { // AUIPC
     execution_result_ = static_cast<int64_t>(program_counter_) - 4 + (imm << 12);
 
   }
@@ -572,8 +572,8 @@ void RVSSVM::WriteBack() {
   uint8_t rd = (current_instruction_ >> 7) & 0b11111;
   int32_t imm = ImmGenerator(current_instruction_);
 
-  if (opcode == instruction_set::instruction_encoding_map.at(Instruction::kecall).opcode && 
-      funct3 == instruction_set::instruction_encoding_map.at(Instruction::kecall).funct3) { // ecall
+  if (opcode == get_instr_encoding(Instruction::kecall).opcode && 
+      funct3 == get_instr_encoding(Instruction::kecall).funct3) { // ecall
     return;
   }
 
@@ -583,7 +583,7 @@ void RVSSVM::WriteBack() {
   } else if (instruction_set::isDInstruction(current_instruction_)) {
     WriteBackDouble();
     return;
-  } else if (opcode==instruction_encoding_array.at(Instruction::kCsrType).opcode) { // CSR opcode
+  } else if (opcode==0b1110011) { // CSR opcode
     WriteBackCsr();
     return;
   }
@@ -595,22 +595,22 @@ void RVSSVM::WriteBack() {
 
   if (control_unit_.GetRegWrite()) { 
     switch (opcode) {
-      case 0b0110011: // R-Type
-      case 0b0010011: // I-Type
-      case 0b0010111: {// AUIPC
+      case get_instr_encoding(Instruction::kRtype).opcode: /* R-Type */
+      case get_instr_encoding(Instruction::kItype).opcode: /* I-Type */
+      case get_instr_encoding(Instruction::kauipc).opcode: /* AUIPC */ {
         registers_.WriteGpr(rd, execution_result_);
         break;
       }
-      case 0b0000011: {// Load
+      case get_instr_encoding(Instruction::kLoadType).opcode: /* Load */ { 
         registers_.WriteGpr(rd, memory_result_);
         break;
       }
-      case 0b1100111: // JALR
-      case 0b1101111: {// JAL
+      case get_instr_encoding(Instruction::kjalr).opcode: /* JALR */
+      case get_instr_encoding(Instruction::kjal).opcode: /* JAL */ {
         registers_.WriteGpr(rd, next_pc_);
         break;
       }
-      case 0b0110111: {// LUI
+      case get_instr_encoding(Instruction::klui).opcode: /* LUI */ {
         registers_.WriteGpr(rd, (imm << 12));
         break;
       }
@@ -618,10 +618,10 @@ void RVSSVM::WriteBack() {
     }
   }
 
-  if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kjal).opcode) { // JAL
+  if (opcode==get_instr_encoding(Instruction::kjal).opcode) /* JAL */ {
     // Updated in Execute()
   }
-  if (opcode==instruction_set::instruction_encoding_map.at(Instruction::kjalr).opcode) { // JALR
+  if (opcode==get_instr_encoding(Instruction::kjalr).opcode) /* JALR */ {
     // registers_.WriteGpr(rd, return_address_); // Write back to rs1
     // Updated in Execute()
   }
@@ -644,30 +644,63 @@ void RVSSVM::WriteBackFloat() {
   uint64_t new_reg = 0;
 
   if (control_unit_.GetRegWrite()) {
-    // write to GPR
-    if (funct7==0b1010000
-        || funct7==0b1100000
-        || funct7==0b1110000) { // f(eq|lt|le).s, fcvt.(w|wu|l|lu).s
-      old_reg = registers_.ReadGpr(rd);
-      registers_.WriteGpr(rd, execution_result_);
-      new_reg = execution_result_;
-      reg_type = 0; // GPR
+    switch(funct7) {
+      // write to GPR
+      case get_instr_encoding(Instruction::kfle_s).funct7: // f(eq|lt|le).s
+      case get_instr_encoding(Instruction::kfcvt_w_s).funct7: // fcvt.(w|wu|l|lu).s
+      case get_instr_encoding(Instruction::kfmv_x_w).funct7: // fmv.x.w , fclass.s
+      {
+        old_reg = registers_.ReadGpr(rd);
+        registers_.WriteGpr(rd, execution_result_);
+        new_reg = execution_result_;
+        reg_type = 0; // GPR
+        break;
+      }
 
-    }
       // write to FPR
-    else if (opcode==0b0000111) {
-      // std::cout << "+++++ Writing to float load: " << memory_result_ << std::endl;
-      
-      old_reg = registers_.ReadFpr(rd);
-      registers_.WriteFpr(rd, memory_result_);
-      new_reg = memory_result_;
-      reg_type = 2; // FPR
-    } else {
-      old_reg = registers_.ReadFpr(rd);
-      registers_.WriteFpr(rd, execution_result_);
-      new_reg = execution_result_;
-      reg_type = 2; // FPR
+      default: {
+        switch (opcode) {
+          case get_instr_encoding(Instruction::kflw).opcode: {
+            old_reg = registers_.ReadFpr(rd);
+            registers_.WriteFpr(rd, memory_result_);
+            new_reg = memory_result_;
+            reg_type = 2; // FPR
+            break;
+          }
+
+          default: {
+            old_reg = registers_.ReadFpr(rd);
+            registers_.WriteFpr(rd, execution_result_);
+            new_reg = execution_result_;
+            reg_type = 2; // FPR
+            break;
+          }
+        }
+      }
     }
+
+    // // write to GPR
+    // if (funct7==0b1010000
+    //     || funct7==0b1100000
+    //     || funct7==0b1110000) { // f(eq|lt|le).s, fcvt.(w|wu|l|lu).s
+    //   old_reg = registers_.ReadGpr(rd);
+    //   registers_.WriteGpr(rd, execution_result_);
+    //   new_reg = execution_result_;
+    //   reg_type = 0; // GPR
+
+    // }
+    // // write to FPR
+    // else if (opcode==get_instr_encoding(Instruction::kflw).opcode) {
+    //   old_reg = registers_.ReadFpr(rd);
+    //   registers_.WriteFpr(rd, memory_result_);
+    //   new_reg = memory_result_;
+    //   reg_type = 2; // FPR
+    // } else {
+    //   old_reg = registers_.ReadFpr(rd);
+    //   registers_.WriteFpr(rd, execution_result_);
+    //   new_reg = execution_result_;
+    //   reg_type = 2; // FPR
+    // }
   }
 
   if (old_reg!=new_reg) {
@@ -720,87 +753,66 @@ void RVSSVM::WriteBackCsr() {
   uint8_t rd = (current_instruction_ >> 7) & 0b11111;
   uint8_t funct3 = (current_instruction_ >> 12) & 0b111;
 
-  if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrw).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    registers_.WriteCsr(csr_target_address_, csr_write_val_);
-  } else if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrs).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    if (csr_write_val_!=0) {
-      registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_write_val_);
+  switch (funct3) {
+    case get_instr_encoding(Instruction::kcsrrw).funct3: { // CSRRW
+      registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteCsr(csr_target_address_, csr_write_val_);
+      break;
     }
-  } else if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrc).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    if (csr_write_val_!=0) {
-      registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_write_val_);
+    case get_instr_encoding(Instruction::kcsrrs).funct3: { // CSRRS
+      registers_.WriteGpr(rd, csr_old_value_);
+      if (csr_write_val_!=0) {
+        registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_write_val_);
+      }
+      break;
     }
-  } else if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrwi).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    registers_.WriteCsr(csr_target_address_, csr_uimm_);
-  } else if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrsi).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    if (csr_uimm_!=0) {
-      registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_uimm_);
+    case get_instr_encoding(Instruction::kcsrrc).funct3: { // CSRRC
+      registers_.WriteGpr(rd, csr_old_value_);
+      if (csr_write_val_!=0) {
+        registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_write_val_);
+      }
+      break;
     }
-  } else if (funct3==instruction_set::instruction_encoding_map.at(Instruction::kcsrrci).funct3) {
-    registers_.WriteGpr(rd, csr_old_value_);
-    if (csr_uimm_!=0) {
-      registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_uimm_);
+    case get_instr_encoding(Instruction::kcsrrwi).funct3: { // CSRRWI
+      registers_.WriteGpr(rd, csr_old_value_);
+      registers_.WriteCsr(csr_target_address_, csr_uimm_);
+      break;
+    }
+    case get_instr_encoding(Instruction::kcsrrsi).funct3: { // CSRRSI
+      registers_.WriteGpr(rd, csr_old_value_);
+      if (csr_uimm_!=0) {
+        registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_uimm_);
+      }
+      break;
+    }
+    case get_instr_encoding(Instruction::kcsrrci).funct3: { // CSRRCI
+      registers_.WriteGpr(rd, csr_old_value_);
+      if (csr_uimm_!=0) {
+        registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_uimm_);
+      }
+      break;
     }
   }
-
-  // switch (funct3) {
-  //   case 0b001: { // CSRRW
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     registers_.WriteCsr(csr_target_address_, csr_write_val_);
-  //     break;
-  //   }
-  //   case 0b010: { // CSRRS
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     if (csr_write_val_!=0) {
-  //       registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_write_val_);
-  //     }
-  //     break;
-  //   }
-  //   case 0b011: { // CSRRC
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     if (csr_write_val_!=0) {
-  //       registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_write_val_);
-  //     }
-  //     break;
-  //   }
-  //   case 0b101: { // CSRRWI
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     registers_.WriteCsr(csr_target_address_, csr_uimm_);
-  //     break;
-  //   }
-  //   case 0b110: { // CSRRSI
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     if (csr_uimm_!=0) {
-  //       registers_.WriteCsr(csr_target_address_, csr_old_value_ | csr_uimm_);
-  //     }
-  //     break;
-  //   }
-  //   case 0b111: { // CSRRCI
-  //     registers_.WriteGpr(rd, csr_old_value_);
-  //     if (csr_uimm_!=0) {
-  //       registers_.WriteCsr(csr_target_address_, csr_old_value_ & ~csr_uimm_);
-  //     }
-  //     break;
-  //   }
-  // }
 
 }
 
 void RVSSVM::Run() {
   ClearStop();
+  uint64_t instruction_executed = 0;
+
   while (!stop_requested_ && program_counter_ < program_size_) {
+    if (instruction_executed > vm_config::config.getInstructionExecutionLimit())
+      break;
+
     Fetch();
     Decode();
     Execute();
     WriteMemory();
     WriteBack();
     instructions_retired_++;
+    instruction_executed++;
     cycle_s_++;
+    std::cout << "Program Counter: " << program_counter_ << std::endl;
   }
   if (program_counter_ >= program_size_) {
     std::cout << "VM_PROGRAM_END" << std::endl;
@@ -812,7 +824,10 @@ void RVSSVM::Run() {
 
 void RVSSVM::DebugRun() {
   ClearStop();
+  uint64_t instruction_executed = 0;
   while (!stop_requested_ && program_counter_ < program_size_) {
+    if (instruction_executed > vm_config::config.getInstructionExecutionLimit())
+      break;
     current_delta_.old_pc = program_counter_;
     if (std::find(breakpoints_.begin(), breakpoints_.end(), program_counter_) == breakpoints_.end()) {
       Fetch();
@@ -821,6 +836,7 @@ void RVSSVM::DebugRun() {
       WriteMemory();
       WriteBack();
       instructions_retired_++;
+      instruction_executed++;
       cycle_s_++;
       std::cout << "Program Counter: " << program_counter_ << std::endl;
 

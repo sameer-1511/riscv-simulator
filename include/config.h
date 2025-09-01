@@ -33,6 +33,8 @@ struct VmConfig {
   uint64_t text_section_start = 0x0; // Default start address for text section
   uint64_t bss_section_start = 0x11000000; // Default start address for BSS section
 
+  uint64_t instruction_execution_limit = 100;
+
   void setVmType(const VmTypes &type) {
     vm_type = type;
   }
@@ -82,6 +84,14 @@ struct VmConfig {
     return bss_section_start;
   }
 
+  void setInstructionExecutionLimit(uint64_t limit) {
+    instruction_execution_limit = limit;
+  }
+
+  uint64_t getInstructionExecutionLimit() const {
+    return instruction_execution_limit;
+  }
+
   void modifyConfig(const std::string &section, const std::string &key, const std::string &value) {
     if (section == "Execution") {
       if (key == "processor_type") {
@@ -94,7 +104,11 @@ struct VmConfig {
         }
       } else if (key == "run_step_delay") {
         setRunStepDelay(std::stoull(value));
-      } else {
+      } else if (key == "instruction_execution_limit") {
+        setInstructionExecutionLimit(std::stoull(value));
+      }
+      
+      else {
         throw std::invalid_argument("Unknown key: " + key);
       }
     } else if (section == "Memory") {
@@ -116,8 +130,7 @@ struct VmConfig {
         throw std::invalid_argument("Unknown key: " + key);
       }
     } 
-    
-    
+
     
     else {
       throw std::invalid_argument("Unknown section: " + section);

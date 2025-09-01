@@ -21,6 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Extract version
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME}" >> $GITHUB_ENV
+
       - name: Set up CMake
         uses: lukka/get-cmake@latest
 
@@ -48,9 +52,9 @@ jobs:
         run: |
           mkdir output
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            cp build/vm.exe output/vm-${{ matrix.os }}.exe
+            cp build/vm.exe output/vm-${{ env.VERSION }}-${{ matrix.os }}.exe
           else
-            cp build/vm output/vm-${{ matrix.os }}
+            cp build/vm output/vm-${{ env.VERSION }}-${{ matrix.os }}
           fi
 
       - name: Upload Release Asset

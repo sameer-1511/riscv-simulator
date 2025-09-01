@@ -38,7 +38,8 @@
   - Modifies the internal configuration by setting the specified key in the given section to the provided value.
   - `Execution`
     - `processor_type` (string) : `single_stage` | `multi_stage`  
-    - `run_step_delay` (unsigned int) : milliseconds  
+    - `run_step_delay` (unsigned int) : milliseconds
+    - `instruction_execution_limit` (unsigned int) : Specifies the number of instruction to run on one use of `run` button. Set to `0` for no limit.
   - `Memory`
     - `memory_size` (unsigned int) : bytes
     - `memory_block_size` (unsigned int) : bytes  

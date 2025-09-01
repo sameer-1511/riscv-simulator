@@ -17,4 +17,3 @@ bool globals::verbose_warnings = false;
 bool globals::vm_as_backend = false;
 
 unsigned int globals::text_section_start = 0x00000000;
-unsigned int globals::data_section_start = 0x10000000;
