@@ -659,6 +659,8 @@ bool isValidPseudoInstruction(const std::string &instruction);
 
 bool isValidBaseExtensionInstruction(const std::string &instruction);
 
+bool isValidMExtensionInstruction(const std::string &instruction);
+
 bool isValidCSRRTypeInstruction(const std::string &instruction);
 bool isValidCSRITypeInstruction(const std::string &instruction);
 bool isValidCSRInstruction(const std::string &instruction);

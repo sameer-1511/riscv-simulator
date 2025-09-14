@@ -35,6 +35,10 @@ struct VmConfig {
 
   uint64_t instruction_execution_limit = 100;
 
+  bool m_extension_enabled = true;
+  bool f_extension_enabled = true;
+  bool d_extension_enabled = true;
+
   void setVmType(const VmTypes &type) {
     vm_type = type;
   }
@@ -92,6 +96,30 @@ struct VmConfig {
     return instruction_execution_limit;
   }
 
+  void setMExtensionEnabled(bool enabled) {
+    m_extension_enabled = enabled;
+  }
+
+  bool getMExtensionEnabled() const {
+    return m_extension_enabled;
+  }
+
+  void setFExtensionEnabled(bool enabled) {
+    f_extension_enabled = enabled;
+  }
+
+  bool getFExtensionEnabled() const {
+    return f_extension_enabled;
+  }
+
+  void setDExtensionEnabled(bool enabled) {
+    d_extension_enabled = enabled;
+  }
+
+  bool getDExtensionEnabled() const {
+    return d_extension_enabled;
+  }
+
   void modifyConfig(const std::string &section, const std::string &key, const std::string &value) {
     if (section == "Execution") {
       if (key == "processor_type") {
@@ -131,7 +159,33 @@ struct VmConfig {
       }
     } 
 
-    
+    else if (section == "Assembler") {
+      if (key == "m_extension_enabled") {
+        if (value == "true") {
+          setMExtensionEnabled(true);
+        } else if (value == "false") {
+          setMExtensionEnabled(false);
+        } else {
+          throw std::invalid_argument("Unknown value: " + value);
+        }
+      } else if (key == "f_extension_enabled") {
+        if (value == "true") {
+          setFExtensionEnabled(true);
+        } else if (value == "false") {
+          setFExtensionEnabled(false);  
+        } else {
+          throw std::invalid_argument("Unknown value: " + value);
+        }
+      } else if (key == "d_extension_enabled") {
+        if (value == "true") {
+          setDExtensionEnabled(true);
+        } else if (value == "false") {
+          setDExtensionEnabled(false);
+        } else {
+          throw std::invalid_argument("Unknown value: " + value);
+        }
+      }
+    }
     else {
       throw std::invalid_argument("Unknown section: " + section);
     }

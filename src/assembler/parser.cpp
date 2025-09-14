@@ -9,6 +9,7 @@
 #include "common/instructions.h"
 #include "vm/registers.h"
 #include "utils.h"
+#include "config.h"
 
 #include <cstdint>
 #include <iostream>
@@ -278,6 +279,19 @@ void Parser::parseTextDirective() {
       symbol_table_[currentToken().value] = {instruction_index_*4, currentToken().line_number, false};
       nextToken();
     } else if (currentToken().type==TokenType::OPCODE) {
+      if (instruction_set::isValidMExtensionInstruction(currentToken().value) && vm_config::config.getMExtensionEnabled() == false) {
+        errors_.count++;
+        recordError(ParseError(currentToken().line_number, "Unexpected opcode, M extension is disabled: " + currentToken().value));
+        errors_.all_errors.emplace_back(errors::UnexpectedTokenError("Unexpected opcode, M extension is disabled",
+                                                                   filename_,
+                                                                   currentToken().line_number,
+                                                                   currentToken().column_number,
+                                                                   GetLineFromFile(filename_,
+                                                                                   currentToken().line_number)));
+        skipCurrentLine();
+        continue;
+      }
+
       std::vector<instruction_set::SyntaxType>
           syntaxes = instruction_set::instruction_syntax_map[currentToken().value];
 

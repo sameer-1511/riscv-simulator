@@ -374,6 +374,8 @@ static const std::unordered_set<std::string> FExtensionInstructions = {
     "fcvt.l.s", "fcvt.lu.s", "fcvt.s.l", "fcvt.s.lu",
 };
 
+static const std::unordered_set<std::string> DExtensionInstructions = {};
+
 std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_encoding_map = {
     {"add", {0b0110011, 0b000, 0b0000000}}, // O_GPR_C_GPR_C_GPR
     {"sub", {0b0110011, 0b000, 0b0100000}}, // O_GPR_C_GPR_C_GPR
@@ -863,6 +865,10 @@ bool isValidPseudoInstruction(const std::string &instruction) {
 
 bool isValidBaseExtensionInstruction(const std::string &instruction) {
   return BaseExtensionInstructions.find(instruction)!=BaseExtensionInstructions.end();
+}
+
+bool isValidMExtensionInstruction(const std::string &instruction) {
+  return MExtensionInstructions.find(instruction)!=MExtensionInstructions.end();
 }
 
 bool isValidCSRRTypeInstruction(const std::string &instruction) {

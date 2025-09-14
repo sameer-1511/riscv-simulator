@@ -13,6 +13,8 @@ lui x3, 0x10000
 
 # fadd.s f10, f2, f3
 
+mul x10, x10, x10
+
 
 addi x16, x0, -1
 sd x16, 0(x3)
