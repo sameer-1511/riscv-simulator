@@ -134,6 +134,7 @@ Token Lexer::number() {
 
   while (pos_ < current_line_.size()
       && (std::isdigit(current_line_[pos_])
+          || std::isalpha(current_line_[pos_])
           || current_line_[pos_]=='-'
           || current_line_[pos_]=='x'
           || current_line_[pos_]=='X'

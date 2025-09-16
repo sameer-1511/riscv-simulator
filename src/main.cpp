@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
   AssembledProgram program;
   RVSSVM vm;
   // try {
-  //   program = assemble("/home/vis/Desk/codes/assembler/examples/ftest.s");
+  //   program = assemble("/home/vis/Desk/codes/assembler/examples/ntest1.s");
   // } catch (const std::runtime_error &e) {
   //   std::cerr << e.what() << '\n';
   //   return 0;
