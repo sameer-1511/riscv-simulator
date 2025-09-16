@@ -1,4 +1,33 @@
 {
-    "errorCode": 0,
-    "errors": []
+    "errorCode": 1,
+    "errors": [
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        },
+        {
+            "line": 2,
+            "message": "Invalid directive: Expected .dword, .word, .halfword, .byte, .string, .float, .double, .zero"
+        }
+    ]
 }

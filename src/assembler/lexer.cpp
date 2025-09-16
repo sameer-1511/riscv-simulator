@@ -139,6 +139,7 @@ Token Lexer::number() {
           || current_line_[pos_]=='X'
           || current_line_[pos_]=='o'
           || current_line_[pos_]=='O'
+          || current_line_[pos_]=='0'
           || current_line_[pos_]=='b'
           || current_line_[pos_]=='B'
           || current_line_[pos_]=='.'

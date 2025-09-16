@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <string>
+#include <cstdint>
 
 /**
  * @brief Represents a register file containing integer, floating-point, and vector registers.
