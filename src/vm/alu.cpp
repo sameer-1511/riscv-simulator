@@ -448,6 +448,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0f;
       } else {
         result = (a==b) ? 1.0f : 0.0f;
+        if (result == 1.0f) {
+          return {0b1,fcsr};
+        }
       }
       break;
     }
@@ -456,6 +459,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0f;
       } else {
         result = (a < b) ? 1.0f : 0.0f;
+        if (result == 1.0f) {
+          return {0b1,fcsr};
+        }
       }
       break;
     }
@@ -464,6 +470,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0f;
       } else {
         result = (a <= b) ? 1.0f : 0.0f;
+        if (result == 1.0f) {
+          return {0b1, fcsr};
+        }
       }
       break;
     }
@@ -730,6 +739,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0;
       } else {
         result = (a==b) ? 1.0 : 0.0;
+        if (result == 1.0) {
+          return {0b1,fcsr};
+        }
       }
       break;
     }
@@ -738,6 +750,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0;
       } else {
         result = (a < b) ? 1.0 : 0.0;
+        if (result == 1.0) {
+          return {0b1,fcsr};
+        }
       }
       break;
     }
@@ -746,6 +761,9 @@ static std::string decode_fclass(uint16_t res) {
         result = 0.0;
       } else {
         result = (a <= b) ? 1.0 : 0.0;
+        if (result == 1.0) {
+          return {0b1,fcsr};
+        }
       }
       break;
     }
