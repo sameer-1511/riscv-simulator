@@ -42,6 +42,8 @@ enum Instruction {
   ksra, 
   kor, 
   kand,
+  //Custom
+  kbigmul,
 
   kaddw, 
   ksubw, 

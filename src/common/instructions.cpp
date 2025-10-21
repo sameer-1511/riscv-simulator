@@ -27,6 +27,8 @@ std::unordered_map<std::string, Instruction> instruction_string_map = {
     {"sra", Instruction::ksra},
     {"slt", Instruction::kslt},
     {"sltu", Instruction::ksltu},
+    //Custom
+    {"bigmul", Instruction::kbigmul},
 
     {"addw", Instruction::kaddw},
     {"subw", Instruction::ksubw},
@@ -219,13 +221,17 @@ static const std::unordered_set<std::string> valid_instructions = {
     "fcvt.s.d", "fcvt.d.s",
     "feq.d", "flt.d", "fle.d",
     "fclass.d", "fcvt.w.d", "fcvt.wu.d", "fcvt.d.w", "fcvt.d.wu",
-    "fcvt.l.d", "fcvt.lu.d", "fmv.x.d", "fcvt.d.l", "fcvt.d.lu", "fmv.d.x"
+    "fcvt.l.d", "fcvt.lu.d", "fmv.x.d", "fcvt.d.l", "fcvt.d.lu", "fmv.d.x",
+    //Custom
+    "bigmul"
 
 };
 
 static const std::unordered_set<std::string> RTypeInstructions = {
     // Base RV32I
     "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
+    // Custom
+    "bigmul",
 
     // RV64
     "addw", "subw", "sllw", "srlw", "sraw",
@@ -387,6 +393,8 @@ std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_enc
     {"sra", {0b0110011, 0b101, 0b0100000}}, // O_GPR_C_GPR_C_GPR
     {"slt", {0b0110011, 0b010, 0b0000000}}, // O_GPR_C_GPR_C_GPR
     {"sltu", {0b0110011, 0b011, 0b0000000}}, // O_GPR_C_GPR_C_GPR
+    //Custom========================================================
+    {"bigmul", {0b0110011, 0b000, 0b0000010}}, // O_GPR_C_GPR_C_GPR
 
     {"addw", {0b0111011, 0b000, 0b0000000}}, // O_GPR_C_GPR_C_GPR
     {"subw", {0b0111011, 0b000, 0b0100000}}, // O_GPR_C_GPR_C_GPR
@@ -627,6 +635,8 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"sra", {SyntaxType::O_GPR_C_GPR_C_GPR}},
     {"slt", {SyntaxType::O_GPR_C_GPR_C_GPR}},
     {"sltu", {SyntaxType::O_GPR_C_GPR_C_GPR}},
+    //Custom
+    {"bigmul", {SyntaxType::O_GPR_C_GPR_C_GPR}},
 
     {"addi", {SyntaxType::O_GPR_C_GPR_C_I}},
     {"xori", {SyntaxType::O_GPR_C_GPR_C_I}},
