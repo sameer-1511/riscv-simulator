@@ -56,6 +56,9 @@ enum class AluOp {
     kSraw, ///< Shift right arithmetic word operation.
     kSlt, ///< Set less than operation.
     kSltu, ///< Unsigned set less than operation.
+   
+    //Custom
+    kbigmul, ///< Custom big multiplication
 
     kbigmul, ///< big integer multiplication.
 
@@ -200,6 +203,9 @@ inline std::ostream& operator<<(std::ostream& os, const AluOp& op) {
         case AluOp::FDIV_D: os << "FDIV_D"; break;
         case AluOp::FSQRT_D: os << "FSQRT_D"; break;
         case AluOp::FSGNJ_D: os << "FSGNJ_D"; break;
+
+        //Custom
+        case AluOp::kbigmul: os << "kbigmul"; break;
 
 
         default: os << "UNKNOWN"; break;
