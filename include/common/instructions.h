@@ -243,7 +243,9 @@ inline constexpr std::array<InstructionEncoding, static_cast<size_t>(Instruction
   InstructionEncoding(Instruction::kor,         0b0110011, -1, 0b110, -1, -1, 0b0000000), // kor
   InstructionEncoding(Instruction::kand,        0b0110011, -1, 0b111, -1, -1, 0b0000000), // kand
 
+  InstructionEncoding(Instruction::kbigmul,     0b0110011, -1, 0b000, -1, -1, 0b0000010), // custom kbigmul
 
+  
   InstructionEncoding(Instruction::kmul,        0b0110011, -1, 0b000, -1, -1, 0b0000001), // kmul
   InstructionEncoding(Instruction::kmulh,       0b0110011, -1, 0b001, -1, -1, 0b0000001), // kmulh
   InstructionEncoding(Instruction::kmulhsu,     0b0110011, -1, 0b010, -1, -1, 0b0000001), // kmulhsu
@@ -414,6 +416,7 @@ constexpr const InstructionEncoding& get_instr_encoding(Instruction instr) {
       if (enc.instr == instr) {
         return enc;
       }
+
     }
     for (const auto& enc : compiletime_instruction_encoding_array) {
       if (enc.instr == Instruction::INVALID) {

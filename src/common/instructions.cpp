@@ -223,7 +223,7 @@ static const std::unordered_set<std::string> valid_instructions = {
     "fclass.d", "fcvt.w.d", "fcvt.wu.d", "fcvt.d.w", "fcvt.d.wu",
     "fcvt.l.d", "fcvt.lu.d", "fmv.x.d", "fcvt.d.l", "fcvt.d.lu", "fmv.d.x",
     //Custom
-    "bigmul"
+    "bigmul",
 
 };
 
@@ -302,6 +302,8 @@ static const std::unordered_set<std::string> BaseExtensionInstructions = {
     "lui", "auipc",
     "jal", "jalr",
     "ecall",
+    // coustom
+    "bigmul",
 };
 
 static const std::unordered_set<std::string> CSRRInstructions = {

@@ -5,6 +5,7 @@
  */
 
 #include "vm/alu.h"
+#include "bigmul_unit.h"
 #include <cfenv>
 #include <cmath>
 #include <cstdint>
@@ -232,6 +233,13 @@ static std::string decode_fclass(uint16_t res) {
     }
     case AluOp::kSltu: {
       return {static_cast<uint64_t>(a < b), false};
+    }
+
+    //custom
+    case AluOp::kbigmul: {
+       // Use your bigmul unit to perform the multiplication
+    uint64_t result = bigmul_unit::bigmul(a, b);
+    return {result, false}; // Assuming no overflow detection for now
     }
     default: return {0, false};
   }
