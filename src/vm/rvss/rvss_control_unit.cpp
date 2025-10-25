@@ -148,6 +148,10 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
                 return alu::AluOp::kMul;
                 break;
             }
+            //Custom
+            case 0b0000010: {// bigmul
+                return alu::AluOp::kbigmul;
+                break;
             }
             break;
         }
