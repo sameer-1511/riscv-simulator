@@ -264,6 +264,9 @@ uint32_t generateUTypeMachineCode(const ICUnit &block);
  * @return The machine code bitset<32>.
  */
 uint32_t generateJTypeMachineCode(const ICUnit &block);
+//Custom
+uint32_t generateRLTypeMachineCode(const ICUnit &block);
+uint32_t generateSRTypeMachineCode(const ICUnit &block);
 
 uint32_t generateCSRRTypeMachineCode(const ICUnit &block);
 uint32_t generateCSRITypeMachineCode(const ICUnit &block);
