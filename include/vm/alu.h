@@ -58,9 +58,8 @@ enum class AluOp {
     kSltu, ///< Unsigned set less than operation.
    
     //Custom
+    kldbm, ///< Custom loat data
     kbigmul, ///< Custom big multiplication
-
-    kbigmul, ///< big integer multiplication.
 
     // Floating point operations
     kFmadd_s, ///< Floating point multiply-add single operation.
@@ -165,7 +164,9 @@ inline std::ostream& operator<<(std::ostream& os, const AluOp& op) {
         case AluOp::kSrlw: os << "kSrlw"; break;
         case AluOp::kSraw: os << "kSraw"; break;
         
-        case AluOp::kbigmul: os << "kbigmul";break; // custom
+        //Custom
+        case AluOp::kldbm: os << "kldbm"; break;
+        case AluOp::kbigmul: os << "kbigmul"; break;
 
         case AluOp::kFmadd_s: os << "kFmadd_s"; break;
         case AluOp::kFmsub_s: os << "kFmsub_s"; break;
@@ -203,11 +204,7 @@ inline std::ostream& operator<<(std::ostream& os, const AluOp& op) {
         case AluOp::FDIV_D: os << "FDIV_D"; break;
         case AluOp::FSQRT_D: os << "FSQRT_D"; break;
         case AluOp::FSGNJ_D: os << "FSGNJ_D"; break;
-
-        //Custom
-        case AluOp::kbigmul: os << "kbigmul"; break;
-
-
+        
         default: os << "UNKNOWN"; break;
     }
     return os;

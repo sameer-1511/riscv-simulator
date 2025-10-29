@@ -27,8 +27,6 @@ std::unordered_map<std::string, Instruction> instruction_string_map = {
     {"sra", Instruction::ksra},
     {"slt", Instruction::kslt},
     {"sltu", Instruction::ksltu},
-    //Custom
-    {"bigmul", Instruction::kbigmul},
 
     {"addw", Instruction::kaddw},
     {"subw", Instruction::ksubw},
@@ -175,7 +173,11 @@ std::unordered_map<std::string, Instruction> instruction_string_map = {
     {"flw", Instruction::kflw},
     {"fsw", Instruction::kfsw},
     {"fld", Instruction::kfld},
-    {"fsd", Instruction::kfsd}
+    {"fsd", Instruction::kfsd},
+
+    //Custom
+    {"bigmul", Instruction::kbigmul},
+    {"ldbm", Instruction::kldbm},
 
 };
 
@@ -223,15 +225,13 @@ static const std::unordered_set<std::string> valid_instructions = {
     "fclass.d", "fcvt.w.d", "fcvt.wu.d", "fcvt.d.w", "fcvt.d.wu",
     "fcvt.l.d", "fcvt.lu.d", "fmv.x.d", "fcvt.d.l", "fcvt.d.lu", "fmv.d.x",
     //Custom
-    "bigmul",
+    "bigmul", "ldbm",
 
 };
 
 static const std::unordered_set<std::string> RTypeInstructions = {
     // Base RV32I
     "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
-    // Custom
-    "bigmul",
 
     // RV64
     "addw", "subw", "sllw", "srlw", "sraw",
@@ -291,6 +291,14 @@ static const std::unordered_set<std::string> PseudoInstructions = {
     "j", "jr", "ret", "call", "tail", "fence", "fence_i",
 };
 
+//Custom
+static const std::unordered_set<std::string> RLTypeInstructions = {
+  "ldbm",
+};
+static const std::unordered_set<std::string> SRTypeInstructions = {
+  "bigmul",
+};
+
 static const std::unordered_set<std::string> BaseExtensionInstructions = {
     "add", "sub", "and", "or", "xor", "sll", "srl", "sra", "slt", "sltu",
     "addw", "subw", "sllw", "srlw", "sraw",
@@ -302,8 +310,8 @@ static const std::unordered_set<std::string> BaseExtensionInstructions = {
     "lui", "auipc",
     "jal", "jalr",
     "ecall",
-    // coustom
-    "bigmul",
+    //Custom
+    "bigmul", "ldbm",
 };
 
 static const std::unordered_set<std::string> CSRRInstructions = {
@@ -395,8 +403,6 @@ std::unordered_map<std::string, RTypeInstructionEncoding> R_type_instruction_enc
     {"sra", {0b0110011, 0b101, 0b0100000}}, // O_GPR_C_GPR_C_GPR
     {"slt", {0b0110011, 0b010, 0b0000000}}, // O_GPR_C_GPR_C_GPR
     {"sltu", {0b0110011, 0b011, 0b0000000}}, // O_GPR_C_GPR_C_GPR
-    //Custom========================================================
-    {"bigmul", {0b0110011, 0b000, 0b0000010}}, // O_GPR_C_GPR_C_GPR
 
     {"addw", {0b0111011, 0b000, 0b0000000}}, // O_GPR_C_GPR_C_GPR
     {"subw", {0b0111011, 0b000, 0b0100000}}, // O_GPR_C_GPR_C_GPR
@@ -440,7 +446,7 @@ std::unordered_map<std::string, I1TypeInstructionEncoding> I1_type_instruction_e
     {"lhu", {0b0000011, 0b101}}, // O_GPR_C_I_LP_GPR_RP,
     {"lwu", {0b0000011, 0b110}}, // O_GPR_C_I_LP_GPR_RP,
 
-    {"jalr", {0b1100111, 0b000}}, // O_GR_C_I, O_GPR_C_IL
+    {"jalr", {0b1100111, 0b000}}, // O_GPR_C_I, O_GPR_C_IL
 };
 
 std::unordered_map<std::string, I3TypeInstructionEncoding> I3_type_instruction_encoding_map = {
@@ -480,6 +486,14 @@ std::unordered_map<std::string, UTypeInstructionEncoding> U_type_instruction_enc
 
 std::unordered_map<std::string, JTypeInstructionEncoding> J_type_instruction_encoding_map = {
     {"jal", {0b1101111}}, // O_GPR_C_IL
+};
+
+//Custom
+std::unordered_map<std::string, RLTypeInstructionEncoding> RL_type_instruction_encoding_map = {
+  {"ldbm", {0b0101010, 0b000, 0b0000000}}, //O_GPR_C_GPR_C_GPR
+};
+std::unordered_map<std::string, SRTypeInstructionEncoding> SR_type_instruction_encoding_map = {
+  {"bigmul", {0b0111111, 0b000}}, //O_GPR_C_I_LP_GPR_RP
 };
 
 std::unordered_map<std::string, CSR_RTypeInstructionEncoding> CSR_R_type_instruction_encoding_map{
@@ -637,8 +651,6 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"sra", {SyntaxType::O_GPR_C_GPR_C_GPR}},
     {"slt", {SyntaxType::O_GPR_C_GPR_C_GPR}},
     {"sltu", {SyntaxType::O_GPR_C_GPR_C_GPR}},
-    //Custom
-    {"bigmul", {SyntaxType::O_GPR_C_GPR_C_GPR}},
 
     {"addi", {SyntaxType::O_GPR_C_GPR_C_I}},
     {"xori", {SyntaxType::O_GPR_C_GPR_C_I}},
@@ -678,6 +690,10 @@ std::unordered_map<std::string, std::vector<SyntaxType>> instruction_syntax_map 
     {"jalr", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
 
     {"ecall", {SyntaxType::O}},
+
+    //Custom
+    {"ldbm", {SyntaxType::O_GPR_C_GPR_C_GPR}},
+    {"bigmul", {SyntaxType::O_GPR_C_I_LP_GPR_RP}},
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -873,6 +889,14 @@ bool isValidJTypeInstruction(const std::string &instruction) {
 
 bool isValidPseudoInstruction(const std::string &instruction) {
   return PseudoInstructions.find(instruction)!=PseudoInstructions.end();
+}
+
+//Custom
+bool isValidRLTypeInstruction(const std::string &instruction) {
+  return RLTypeInstructions.find(instruction)!=RLTypeInstructions.end();
+}
+bool isValidSRTypeInstruction(const std::string &instruction) {
+  return SRTypeInstructions.find(instruction)!=SRTypeInstructions.end();
 }
 
 bool isValidBaseExtensionInstruction(const std::string &instruction) {

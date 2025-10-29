@@ -55,6 +55,13 @@ void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
       alu_op_ = true;
       break;
     }
+    //Custom
+    case 0b0101010: {// RL
+        break;
+    }
+    case 0b0111111: {// SR
+        break;
+    }
     case 0b0110111: {// LUI (Load Upper Immediate)
       alu_src_ = true;
       reg_write_ = true;
@@ -354,6 +361,30 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
         return alu::AluOp::kAdd;
         break;
     }
+    case 0b0101010: {//RL Type
+        switch (funct3)
+        {
+        case 0b000: {// ldbm
+            switch (funct7){
+                case 0b0000000 : 
+                return alu::AluOp::kldbm;
+            }
+            break;
+        }
+        break;
+        }
+    }
+    case 0b0111111: {//SR Type
+        switch (funct3)
+        {
+        case 0b000: {// ldbm
+            return alu::AluOp::kbigmul;
+            break;
+        }
+        break;
+        }
+    }
+
     case 0b0110111: {// LUI
         return alu::AluOp::kAdd;
         break;
