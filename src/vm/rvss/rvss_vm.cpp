@@ -10,7 +10,7 @@
 #include "globals.h"
 #include "common/instructions.h"
 #include "config.h"
-#include "bigmul_unit.h"
+#include "vm/bigmul_unit.h"
 
 #include <cctype>
 #include <cstdint>

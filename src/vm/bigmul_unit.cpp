@@ -4,6 +4,11 @@
 
 namespace bigmul_unit {
 
+// Define the arrays that were declared as extern in the header
+uint8_t cacheA[512];
+uint8_t cacheB[512];
+uint8_t resultCache[1024];
+
 void loadDatafrombuffer(const std::vector<uint8_t>& bufA, const std::vector<uint8_t>& bufB) {
     // Copy data from buffers to caches, ensuring we don't overflow
     size_t sizeA = std::min(bufA.size(), sizeof(cacheA));
