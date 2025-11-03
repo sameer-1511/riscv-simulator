@@ -21,6 +21,7 @@ void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
 
   alu_src_ = mem_to_reg_ = reg_write_ = mem_read_ = mem_write_ = branch_ = false;
   alu_op_ = false;
+  bigmul_busy_ = false;
 
   switch (opcode) {
     case 0b0110011: /* R-type (kAdd, kSub, kAnd, kOr, kXor, kSll, kSrl, etc.) */ {
@@ -63,6 +64,7 @@ void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
     case 0b0111111: {// SR
         alu_op_ = true;
         mem_write_ = true;
+        bigmul_busy_ = true;
         break;
     }
     case 0b0110111: {// LUI (Load Upper Immediate)

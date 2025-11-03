@@ -95,14 +95,12 @@ void RVSSVM::Execute() {
     return;
   }
 
-  if(opcode == get_instr_encoding(Instruction::kbigmul).opcode){
-    // uint64_t Addr_result = reg1_value;
-    // uint64_t dummy = reg2_value;
-    // uint64_t immediate = imm;
-
+  if (opcode == get_instr_encoding(Instruction::kbigmul).opcode) {
+    // BIGMUL: compute using accelerator (bypass ALU) and schedule a memory write at rs1+imm
     uint64_t target_addr = reg1_value + static_cast<int64_t>(imm);
+    // run the accelerator once; it will fill bigmul_unit::resultCache and record result length
     bigmul_unit::executeBigmul();
-
+    execution_result_ = target_addr;
     return;
   }
 
@@ -487,6 +485,29 @@ void RVSSVM::WriteMemory() {
 
 
   if (control_unit_.GetMemWrite()) {
+    if (opcode == get_instr_encoding(Instruction::kbigmul).opcode) {
+      addr = execution_result_;
+      old_bytes_vec.clear();
+      new_bytes_vec.clear();
+      size_t resultLen = bigmul_unit::getResultSize();
+      // read old bytes
+      for (size_t i = 0; i < resultLen; ++i) {
+        old_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+      }
+      // write result bytes from bigmul_unit::resultCache
+      for (size_t i = 0; i < resultLen; ++i) {
+        memory_controller_.WriteByte(addr + i, bigmul_unit::resultCache[i]);
+      }
+      // read new bytes
+      for (size_t i = 0; i < resultLen; ++i) {
+        new_bytes_vec.push_back(memory_controller_.ReadByte(addr + i));
+      }
+      if (old_bytes_vec != new_bytes_vec) {
+        current_delta_.memory_changes.push_back({addr, old_bytes_vec, new_bytes_vec});
+      }
+      bigmul_unit::invalidateCaches();
+      return;
+    }
     switch (funct3) {
       case 0b000: {// SB
         addr = execution_result_;

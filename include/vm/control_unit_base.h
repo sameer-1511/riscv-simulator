@@ -24,6 +24,7 @@ class ControlUnit {
     mem_write_ = false;
     branch_ = false;
     alu_op_ = 0;
+    bigmul_busy_ = false;
   }
 
   virtual void SetControlSignals(uint32_t instruction) = 0;
@@ -45,7 +46,7 @@ class ControlUnit {
   bool mem_write_ = false;
   bool mem_to_reg_ = false;
   bool pc_src_ = false;
-
+  bool bigmul_busy_ = false;
   uint8_t alu_op_{};
 };
 

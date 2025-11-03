@@ -2,6 +2,7 @@
 #define BIGMUL_UNIT_H
 
 #include <cstdint>
+#include <cstddef>
 #include <iostream>
 #include <unordered_map>
 #include <vector>
@@ -14,7 +15,11 @@ namespace bigmul_unit {
 
     void loadDatafrombuffer(const std::vector<uint8_t>& bufA, const std::vector<uint8_t>& bufB);
     void loadData(uint64_t addr1, uint64_t addr2); // from LDBM
-    uint64_t executeBigmul();
+    // Execute the big multiply on previously-loaded caches. Returns number of bytes written into resultCache.
+    std::size_t executeBigmul();
+    // Query how many result bytes are valid from the last run.
+    std::size_t getResultSize();
+    void invalidateCaches();
 
 } // namespace bigmul_unit
 

@@ -10,9 +10,21 @@ void loadData(uint64_t addr1, uint64_t addr2) {
     // to be filled later
 }
 
-uint64_t executeBigmul() {
+std::size_t executeBigmul() {
     // to be filled later
+    // stub: no result produced yet
+    return 0;
+}
+
+std::size_t getResultSize() {
+    // to be filled later
+    return 0;
+}
+
+void invalidateCaches(){
+
     return ;
 }
+
 
 } // namespace bigmul_unit
