@@ -10,6 +10,7 @@
 #include "globals.h"
 #include "common/instructions.h"
 #include "config.h"
+#include "bigmul_unit.h"
 
 #include <cctype>
 #include <cstdint>
@@ -64,6 +65,8 @@ void RVSSVM::Execute() {
     return;
   }
 
+
+
   uint8_t rs1 = (current_instruction_ >> 15) & 0b11111;
   uint8_t rs2 = (current_instruction_ >> 20) & 0b11111;
 
@@ -73,6 +76,35 @@ void RVSSVM::Execute() {
   uint64_t reg2_value = registers_.ReadGpr(rs2);
 
   bool overflow = false;
+
+  if(opcode == get_instr_encoding(Instruction::kldbm).opcode){
+    uint64_t addr_A = reg1_value;
+    uint64_t addr_B = reg2_value;
+
+    const size_t chunkSize = 512; // matches bigmul cache size in header
+    std::vector<uint8_t> bufA(chunkSize), bufB(chunkSize);
+    for (size_t i = 0; i < chunkSize; ++i) {
+      bufA[i] = memory_controller_.ReadByte(addr_A + i);
+      bufB[i] = memory_controller_.ReadByte(addr_B + i);
+    }
+
+    // call into bigmul unit to load caches from buffers
+    bigmul_unit::loadDatafrombuffer(bufA, bufB);
+
+    // LDBM is a memory-stage operation — stop further ALU execution for this inst.
+    return;
+  }
+
+  if(opcode == get_instr_encoding(Instruction::kbigmul).opcode){
+    // uint64_t Addr_result = reg1_value;
+    // uint64_t dummy = reg2_value;
+    // uint64_t immediate = imm;
+
+    uint64_t target_addr = reg1_value + static_cast<int64_t>(imm);
+    bigmul_unit::executeBigmul();
+
+    return;
+  }
 
   if (control_unit_.GetAluSrc()) {
     reg2_value = static_cast<uint64_t>(static_cast<int64_t>(imm));
@@ -803,6 +835,9 @@ void RVSSVM::Run() {
   while (!stop_requested_ && program_counter_ < program_size_) {
     if (instruction_executed > vm_config::config.getInstructionExecutionLimit())
       break;
+
+    //Custom
+    if(stall_flag_) continue;
 
     Fetch();
     Decode();

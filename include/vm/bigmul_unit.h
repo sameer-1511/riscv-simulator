@@ -8,12 +8,13 @@
 
 namespace bigmul_unit {
 
-uint8_t cacheA[512];
+    uint8_t cacheA[512];
     uint8_t cacheB[512];
     uint8_t resultCache[1024];
 
+    void loadDatafrombuffer(const std::vector<uint8_t>& bufA, const std::vector<uint8_t>& bufB);
     void loadData(uint64_t addr1, uint64_t addr2); // from LDBM
-    uint64_t executeBigmul(uint64_t rs1, uint64_t rs2);
+    uint64_t executeBigmul();
 
 } // namespace bigmul_unit
 

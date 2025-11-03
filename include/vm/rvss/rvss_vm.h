@@ -118,6 +118,9 @@ class RVSSVM : public VmBase {
   bool branch_flag_ = false;
   int64_t next_pc_{}; // for jal, jalr,
 
+  //Custom
+  bool stall_flag_ = false;
+
   // CSR intermediate variables
   uint16_t csr_target_address_{};
   uint64_t csr_old_value_{};
