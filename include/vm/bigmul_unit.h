@@ -14,10 +14,8 @@ namespace bigmul_unit {
     uint8_t resultCache[1024];
 
     void loadDatafrombuffer(const std::vector<uint8_t>& bufA, const std::vector<uint8_t>& bufB);
-    void loadData(uint64_t addr1, uint64_t addr2); // from LDBM
-    // Execute the big multiply on previously-loaded caches. Returns number of bytes written into resultCache.
+    void loadData(uint64_t addr1, uint64_t addr2);
     std::size_t executeBigmul();
-    // Query how many result bytes are valid from the last run.
     std::size_t getResultSize();
     void invalidateCaches();
 
