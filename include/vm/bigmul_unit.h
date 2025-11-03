@@ -8,18 +8,12 @@
 
 namespace bigmul_unit {
 
-// External declarations (will be defined in the .cpp file)
-extern uint64_t GPR[32];
-extern uint64_t FPR[32];
-extern std::unordered_map<uint64_t, uint64_t> cache;
+uint8_t cacheA[512];
+    uint8_t cacheB[512];
+    uint8_t resultCache[1024];
 
-// Helper functions
-uint64_t readGPR(int idx);
-void writeGPR(int idx, uint64_t val);
-uint64_t readCache(uint64_t addr);
-void writeCache(uint64_t addr, uint64_t val);
-uint64_t bigmul(uint64_t a, uint64_t b);
-uint64_t executeBigMul(int rd, int rs1, int rs2);
+    void loadData(uint64_t addr1, uint64_t addr2); // from LDBM
+    uint64_t executeBigmul(uint64_t rs1, uint64_t rs2);
 
 } // namespace bigmul_unit
 

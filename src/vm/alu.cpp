@@ -238,7 +238,7 @@ static std::string decode_fclass(uint16_t res) {
     //custom
     case AluOp::kbigmul: {
        // Use your bigmul unit to perform the multiplication
-    uint64_t result = bigmul_unit::bigmul(a, b);
+    uint64_t result = bigmul_unit::executeBigmul(a, b);
     return {result, false}; // Assuming no overflow detection for now
     }
     default: return {0, false};

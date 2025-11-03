@@ -377,7 +377,8 @@ std::vector<uint32_t> generateMachineCode(const std::vector<std::pair<ICUnit, bo
       code = generateRLTypeMachineCode(block);
     } else if (instruction_set::isValidSRTypeInstruction(block.getOpcode())) {
       code = generateSRTypeMachineCode(block);
-    } else if (instruction_set::isValidCSRRTypeInstruction(block.getOpcode())) {
+    } 
+    else if (instruction_set::isValidCSRRTypeInstruction(block.getOpcode())) {
       code = generateCSRRTypeMachineCode(block);
     } else if (instruction_set::isValidCSRITypeInstruction(block.getOpcode())) {
       code = generateCSRITypeMachineCode(block);
