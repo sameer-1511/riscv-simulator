@@ -163,7 +163,7 @@ uint32_t generateUTypeMachineCode(const ICUnit &block) {
 }
 
 uint32_t generateJTypeMachineCode(const ICUnit &block) {
-  const auto &encoding = instruction_set::RL_type_instruction_encoding_map.at(block.getOpcode());
+  const auto &encoding = instruction_set::J_type_instruction_encoding_map.at(block.getOpcode());
   uint32_t rd = extractRegisterIndex(block.getRd());
   int32_t imm = static_cast<int32_t>(std::stoi(block.getImm())); 
   uint32_t machineCode = 0;
@@ -178,7 +178,7 @@ uint32_t generateJTypeMachineCode(const ICUnit &block) {
 
 //Custom
 uint32_t generateRLTypeMachineCode(const ICUnit &block) {
-  const auto &encoding = instruction_set::R_type_instruction_encoding_map.at(block.getOpcode());
+  const auto &encoding = instruction_set::RL_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rd = extractRegisterIndex(block.getRd());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
   const uint32_t rs2 = extractRegisterIndex(block.getRs2());
@@ -195,7 +195,7 @@ uint32_t generateRLTypeMachineCode(const ICUnit &block) {
   return machineCode;
 }
 uint32_t generateSRTypeMachineCode(const ICUnit &block) {
-  const auto &encoding = instruction_set::S_type_instruction_encoding_map.at(block.getOpcode());
+  const auto &encoding = instruction_set::SR_type_instruction_encoding_map.at(block.getOpcode());
   const uint32_t rs1 = extractRegisterIndex(block.getRs1());
   const uint32_t rs2 = extractRegisterIndex(block.getRs2());
   const uint32_t imm = static_cast<uint32_t>(std::stoi(block.getImm()));
