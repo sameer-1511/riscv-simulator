@@ -39,7 +39,19 @@ AssembledProgram assemble(const std::string &filename) {
   // }
 
   Parser parser(lexer->getFilename(), tokens);
-  parser.parse();
+  try {
+    parser.parse();
+  } catch (const std::out_of_range &e) {
+    std::cerr << "Assembler internal error (out_of_range) while parsing file: "
+              << filename << ": " << e.what() << std::endl;
+    parser.printErrors();
+    throw std::runtime_error(std::string("Assembler parsing failed: ") + e.what());
+  } catch (const std::exception &e) {
+    std::cerr << "Assembler exception while parsing file: "
+              << filename << ": " << e.what() << std::endl;
+    parser.printErrors();
+    throw;
+  }
 
   AssembledProgram program;
   program.filename = filename;

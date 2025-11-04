@@ -161,6 +161,8 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
                 break;
             }
         }
+        break;
+        }
         case 0b001: {// kSll, kMulh
             switch (funct7)
             {
@@ -360,6 +362,7 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
         return alu::AluOp::kAdd;
         break;
     }
+    //Custom
     case 0b0111111: {//SR Type
         switch (funct3)
         {
@@ -369,6 +372,7 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
         }
         break;
         }
+        break;
     }
 
     case 0b0110111: {// LUI
@@ -787,10 +791,11 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
         break;
     }
 
-    
-    }
-    
     return alu::AluOp::kNone;
     }
-    return alu::AluOp::kNone;
 }
+    
+//     return alu::AluOp::kNone;
+//     }
+//     return alu::AluOp::kNone;
+// }

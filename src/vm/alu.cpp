@@ -15,7 +15,7 @@
 
 namespace alu {
 
-static std::string decode_fclass(uint16_t res) {
+[[maybe_unused]] static std::string decode_fclass(uint16_t res) {
   static const std::vector<std::string> labels = {
     "-infinity",   
     "-normal",      

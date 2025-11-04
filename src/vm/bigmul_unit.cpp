@@ -27,6 +27,8 @@ void loadDatafrombuffer(const std::vector<uint8_t>& bufA, const std::vector<uint
 }
 
 void loadData(uint64_t addr1, uint64_t addr2) {
+    (void) addr1;
+    (void) addr2;
     // This function would need access to memory system
     // For now, just zero out the caches as placeholder
     std::memset(cacheA, 0, sizeof(cacheA));
