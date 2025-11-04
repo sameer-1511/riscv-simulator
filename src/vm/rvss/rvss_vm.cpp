@@ -11,6 +11,7 @@
 #include "common/instructions.h"
 #include "config.h"
 #include "vm/bigmul_unit.h"
+#include "vm/vm_base.h"
 
 #include <cctype>
 #include <cstdint>
@@ -76,6 +77,25 @@ void RVSSVM::Execute() {
   uint64_t reg2_value = registers_.ReadGpr(rs2);
 
   bool overflow = false;
+  // DEBUG: print current instruction fields
+{
+  uint8_t opcode_dbg = current_instruction_ & 0x7F;
+  uint8_t funct3_dbg = (current_instruction_ >> 12) & 0x7;
+  uint8_t rs1_dbg = (current_instruction_ >> 15) & 0x1F;
+  uint8_t rs2_dbg = (current_instruction_ >> 20) & 0x1F;
+  int32_t imm_dbg = ImmGenerator(current_instruction_);
+  std::cout << "[DBG Execute] pc=0x" << std::hex << program_counter_ - 4
+            << " instr=0x" << current_instruction_
+            << " opcode=" << std::dec << (int)opcode_dbg
+            << " funct3=" << (int)funct3_dbg
+            << " rs1=x" << (int)rs1_dbg
+            << " rs2=x" << (int)rs2_dbg
+            << " imm=" << std::dec << imm_dbg
+            << " reg1=0x" << std::hex << reg1_value
+            << " reg2=0x" << reg2_value
+            << std::endl;
+}
+
 
   if(opcode == get_instr_encoding(Instruction::kldbm).opcode){
     uint64_t addr_A = reg1_value;
@@ -87,6 +107,11 @@ void RVSSVM::Execute() {
       bufA[i] = memory_controller_.ReadByte(addr_A + i);
       bufB[i] = memory_controller_.ReadByte(addr_B + i);
     }
+    std::cout << "[DBG ldbm] addrA=0x" << std::hex << addr_A << " addrB=0x" << addr_B << " bufA[0..7]=";
+for (int i=0;i<8;i++) std::cout << std::hex << (int)bufA[i] << " ";
+std::cout << " bufB[0..7]=";
+for (int i=0;i<8;i++) std::cout << std::hex << (int)bufB[i] << " ";
+std::cout << std::endl;
 
     // call into bigmul unit to load caches from buffers
     bigmul_unit::loadDatafrombuffer(bufA, bufB);
@@ -94,12 +119,23 @@ void RVSSVM::Execute() {
     // LDBM is a memory-stage operation — stop further ALU execution for this inst.
     return;
   }
-
+   std::cout << "BIGMUL opcode: " 
+              << (int)get_instr_encoding(Instruction::kbigmul).opcode 
+              << std::endl;
   if (opcode == get_instr_encoding(Instruction::kbigmul).opcode) {
+    std::cerr << "[BIGMUL] Executing multiplication\n";
     // BIGMUL: compute using accelerator (bypass ALU) and schedule a memory write at rs1+imm
     uint64_t target_addr = reg1_value + static_cast<int64_t>(imm);
     // run the accelerator once; it will fill bigmul_unit::resultCache and record result length
     bigmul_unit::executeBigmul();
+    size_t dbg_len = bigmul_unit::getResultSize();
+std::cout << "[DBG bigmul exec] target_addr=0x" << std::hex << target_addr
+          << " resultLen=" << std::dec << dbg_len << " result[0..7]=";
+for (size_t i=0; i < std::min<size_t>(dbg_len, 8); ++i) {
+  std::cout << std::hex << (int)bigmul_unit::resultCache[i] << " ";
+}
+std::cout << std::endl;
+
     execution_result_ = target_addr;
     return;
   }
@@ -505,6 +541,9 @@ void RVSSVM::WriteMemory() {
       if (old_bytes_vec != new_bytes_vec) {
         current_delta_.memory_changes.push_back({addr, old_bytes_vec, new_bytes_vec});
       }
+      std::cout << "[DBG bigmul write] addr=0x" << std::hex << addr << " wrote " << std::dec << resultLen << " bytes: ";
+for (size_t i=0;i<resultLen;i++) std::cout << std::hex << (int)memory_controller_.ReadByte(addr + i) << " ";
+std::cout << std::endl;
       bigmul_unit::invalidateCaches();
       return;
     }

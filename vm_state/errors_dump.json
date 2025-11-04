@@ -1,9 +1,1 @@
-{
-    "errorCode": 1,
-    "errors": [
-        {
-            "line": 3,
-            "message": "Immediate value out of range"
-        }
-    ]
-}
+{}

@@ -74,7 +74,12 @@ std::size_t executeBigmul() {
 
 std::size_t getResultSize() {
     // Find the first non-zero byte from the end
-    size_t size = sizeof(resultCache);
+    size_t sizeA = sizeof(cacheA);
+    while (sizeA > 0 && cacheA[sizeA - 1] == 0) --sizeA;
+    
+    size_t sizeB = sizeof(cacheB);
+    while (sizeB > 0 && cacheB[sizeB - 1] == 0) --sizeB;
+    size_t size = sizeA + sizeB;
     while (size > 0 && resultCache[size - 1] == 0) {
         --size;
     }

@@ -57,14 +57,17 @@ void RVSSControlUnit::SetControlSignals(uint32_t instruction) {
       break;
     }
     //Custom
-    case 0b0101010: {// RL
-        mem_read_ = true;
+    case 0b0101010: {// LDBM
+        mem_read_ = true;        // Need to read from both source buffers
+        reg_write_ = false;      // LDBM doesn't write to a register
+        alu_op_ = false;         // No ALU operation needed
         break;
     }
-    case 0b0111111: {// SR
-        alu_op_ = true;
-        mem_write_ = true;
-        bigmul_busy_ = true;
+    case 0b0111111: {// BIGMUL
+        alu_op_ = false;        // BIGMUL has its own execution unit, no ALU needed
+        mem_write_ = true;      // Will write result to memory
+        bigmul_busy_ = true;    // Indicate bigmul operation in progress
+        reg_write_ = false;     // No register write needed
         break;
     }
     case 0b0110111: {// LUI (Load Upper Immediate)
@@ -362,18 +365,19 @@ alu::AluOp RVSSControlUnit::GetAluSignal(uint32_t instruction, bool ALUOp) {
         return alu::AluOp::kAdd;
         break;
     }
-    //Custom
-    case 0b0111111: {//SR Type
-        switch (funct3)
-        {
-        case 0b000: {// bigmul
-            return alu::AluOp::kbigmul;
-            break;
-        }
-        break;
-        }
-        break;
-    }
+    // //Custom
+    // case 0b0111111: {//SR Type
+    //     switch (funct3)
+    //     {
+    //     case 0b000: {// bigmul
+    //         return alu::AluOp::kbigmul;
+    //         break;
+    //     }
+    //     break;
+    //     }
+    //     break;
+    // }
+
 
     case 0b0110111: {// LUI
         return alu::AluOp::kAdd;
